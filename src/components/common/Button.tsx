@@ -1,23 +1,25 @@
 import { ReactNode } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 const variantStyles = {
   primary: {
-    default: 'bg-main-500 hover:bg-main-800 text-white cursor-pointer',
-    selected: '',
+    default: 'bg-main-500 hover:bg-main-800 text-white cursor-pointer active:scale-90 transition',
+    selected: 'active:scale-50',
     disable: 'bg-gray2 text-gray5 cursor-not-allowed',
   },
   secondary: {
-    default: 'bg-main-50 text-main-500 hover:border hover:border-main-100 cursor-pointer',
-    selected: 'bg-main-50 border border-main-300 text-main-500',
+    default:
+      'border border-transparent bg-main-50 text-main-500 hover:border-main-100 cursor-pointer active:scale-90 transition',
+    selected: 'bg-main-50 border border-main-300 text-main-500 active:scale-50',
     disable: 'bg-gray2 text-gray5 cursor-not-allowed',
   },
   outline: {
-    default: 'bg-white text-gray5 border border-gray2 hover:border-main-100 cursor-pointer',
+    default: 'bg-white text-gray5 border border-gray2 hover:border-main-100 cursor-pointer active:scale-90 transition',
     selected: 'bg-main-100 border border-main-500 text-main-500',
     disable: 'bg-gray2 text-gray5 cursor-not-allowed',
   },
   ghost: {
-    default: 'text-gray5 hover:bg-gray2 cursor-pointer',
+    default: 'text-gray5 hover:bg-gray2 cursor-pointer active:scale-90 transition',
     selected: 'bg-gray1 border border-gray3 text-gray5',
     disable: 'bg-gray2 text-gray5 cursor-not-allowed',
   },
@@ -58,7 +60,12 @@ export default function Button({
   const sizeClass = sizeStyles[size]
   const className = [base, variantClass, sizeClass].join(' ')
   return (
-    <button disabled={disabled} type={buttonType} onClick={onClick} className={`${className} ${customClassName}`}>
+    <button
+      disabled={disabled}
+      type={buttonType}
+      onClick={onClick}
+      className={twMerge(`${className}`, customClassName)}
+    >
       {leftIcon ? leftIcon : null}
       {children}
       {rightIcon ? rightIcon : null}
