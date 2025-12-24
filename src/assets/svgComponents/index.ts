@@ -1,5 +1,7 @@
 export { default as AlarmIcon } from './AlarmIcon'
 export { default as BackIcon } from './BackIcon'
+export { default as DeleteIcon } from './DeleteIcon'
 export { default as LanguageIcon } from './LanguageIcon'
 export { default as LogoIcon } from './LogoIcon'
+export { default as Main5000PlusIcon } from './Main5000PlusIcon'
 export { default as SearchIcon } from './SearchIcon'

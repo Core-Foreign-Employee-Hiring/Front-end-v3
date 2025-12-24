@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgDeleteIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 20 20" {...props}><path fill="#6F717C" d="M15.5 5.314a.5.5 0 1 1 0 1.001H6v6.181A2.5 2.5 0 0 0 8.5 15h3c1.38 0 2.5-1.12 2.5-2.503V7.4a.5.5 0 1 1 1 0v5.096A3.5 3.5 0 0 1 11.5 16h-3A3.5 3.5 0 0 1 5 12.496v-6.18h-.5a.5.5 0 0 1 0-1.002zm-7 2.378a.5.5 0 0 1 .5.5v4.279a.5.5 0 1 1-1 0V8.192a.5.5 0 0 1 .5-.5m3 0a.5.5 0 0 1 .5.5v4.279a.5.5 0 1 1-1 0V8.192a.5.5 0 0 1 .5-.5M12 4a.5.5 0 0 1 0 1.001H8A.5.5 0 0 1 8 4z" /></svg>;
+export default SvgDeleteIcon;
