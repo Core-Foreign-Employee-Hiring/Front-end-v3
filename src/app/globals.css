@@ -66,7 +66,7 @@ body {
 }
 
 /* 폰트 */
-@utility title-lg {
+@utility kr-title-lg {
   font-family: Pretendard, serif;
   font-size: 24px;
   font-style: normal;
@@ -75,7 +75,7 @@ body {
   letter-spacing: -0.36px;
 }
 
-@utility title-md {
+@utility kr-title-md {
   font-family: Pretendard, serif;
   font-size: 20px;
   font-style: normal;
@@ -84,7 +84,7 @@ body {
   letter-spacing: -0.3px;
 }
 
-@utility title-sm {
+@utility kr-title-sm {
   font-family: Pretendard, serif;
   font-size: 16px;
   font-style: normal;
@@ -93,7 +93,7 @@ body {
   letter-spacing: -0.24px;
 }
 
-@utility subtitle-lg {
+@utility kr-subtitle-lg {
   font-family: Pretendard, serif;
   font-size: 18px;
   font-style: normal;
@@ -102,7 +102,7 @@ body {
   letter-spacing: -0.27px;
 }
 
-@utility subtitle-md {
+@utility kr-subtitle-md {
   font-family: Pretendard, serif;
   font-size: 16px;
   font-style: normal;
@@ -111,7 +111,7 @@ body {
   letter-spacing: -0.24px;
 }
 
-@utility subtitle-sm {
+@utility kr-subtitle-sm {
   font-family: Pretendard, serif;
   font-size: 14px;
   font-style: normal;
@@ -120,7 +120,7 @@ body {
   letter-spacing: -0.21px;
 }
 
-@utility body-md {
+@utility kr-body-md {
   font-family: Pretendard, serif;
   font-size: 16px;
   font-style: normal;
@@ -129,7 +129,7 @@ body {
   letter-spacing: -0.24px;
 }
 
-@utility body-sm {
+@utility kr-body-sm {
   font-family: Pretendard, serif;
   font-size: 14px;
   font-style: normal;
@@ -138,7 +138,7 @@ body {
   letter-spacing: -0.21px;
 }
 
-@utility button {
+@utility kr-button {
   font-family: Pretendard, serif;
   font-size: 14px;
   font-style: normal;
@@ -147,7 +147,7 @@ body {
   letter-spacing: -0.21px;
 }
 
-@utility small {
+@utility kr-small {
   font-family: Pretendard, serif;
   font-size: 12px;
   font-style: normal;
@@ -156,7 +156,7 @@ body {
   letter-spacing: -0.18px;
 }
 
-@utility badge-md {
+@utility kr-badge-md {
   font-family: Pretendard, serif;
   font-size: 14px;
   font-style: normal;
@@ -165,7 +165,7 @@ body {
   letter-spacing: -0.21px;
 }
 
-@utility badge-sm {
+@utility kr-badge-sm {
   font-family: Pretendard, serif;
   font-size: 12px;
   font-style: normal;
