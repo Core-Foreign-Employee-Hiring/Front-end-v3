@@ -28,7 +28,6 @@ const sizeStyles = {
   sm: 'gap-x-1 h-[36px] kr-button py-1 px-4 rounded-[8px]',
 }
 
-
 interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost'
   state?: 'default' | 'selected' | 'disable'
@@ -42,18 +41,24 @@ interface ButtonProps {
   buttonType?: 'button' | 'submit'
 }
 
-export default function Button({variant = 'primary', state = 'default', size = 'lg', buttonType, disabled, children, onClick, rightIcon, leftIcon, customClassName}: ButtonProps) {
+export default function Button({
+  variant = 'primary',
+  state = 'default',
+  size = 'lg',
+  buttonType,
+  disabled,
+  children,
+  onClick,
+  rightIcon,
+  leftIcon,
+  customClassName,
+}: ButtonProps) {
   const base = 'flex items-center justify-center w-full rounded'
   const variantClass = variantStyles[variant][state]
   const sizeClass = sizeStyles[size]
   const className = [base, variantClass, sizeClass].join(' ')
   return (
-    <button
-      disabled={disabled}
-      type={buttonType}
-      onClick={onClick}
-      className={`${className} ${customClassName}`}
-    >
+    <button disabled={disabled} type={buttonType} onClick={onClick} className={`${className} ${customClassName}`}>
       {leftIcon ? leftIcon : null}
       {children}
       {rightIcon ? rightIcon : null}
