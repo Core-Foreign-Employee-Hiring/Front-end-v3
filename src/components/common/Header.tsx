@@ -42,7 +42,9 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
               key={item.href}
               href={item.href}
               className={`kr-title-sm transition-colors ${
-                currentPath === item.href ? 'text-main-500' : 'hover:text-main-400 text-black'
+                currentPath === item.href
+                  ? 'text-main-500 hover:text-main-300'
+                  : 'hover:text-main-400 hover:text-gray5 text-black'
               }`}
             >
               {item.label}
