@@ -1,26 +1,183 @@
-@import "tailwindcss";
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Pretendard Variable';
+  /* Using 'truetype-variations' or 'truetype' is often better */
+  src: url('/fonts/PretendardVariable.ttf') format('truetype-variations'),
+  url('/fonts/PretendardVariable.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* tailwindCSS에서 해당 color들을 사용할 수 있도록 변경 */
+/* :root에 선언된 애들을 사용하고 있어서 그대로 뒀습니다. 아래와 같이 @theme에 선언해주면 tailwindcss처럼 사용할 수 있어서 @theme도 만들었습니다. */
+@theme {
+  --color-black: #1E1E1E;
+  --color-gray1: #F7F8F9;
+  --color-gray2: #E9EBEF;
+  --color-gray3: #C5C6CD;
+  --color-gray4: #999BA5;
+  --color-gray5: #6F717C;
+  --color-white: #ffffff;
+
+  --color-error-light: #FFDFDB;
+  --color-error: #FF5F4A;
+
+  --color-sub1: #00B0A9;
+  --color-sub2: #C151F5;
+  --color-sub3: #FFB038;
+  --color-sub5: #018DFF;
+
+  --color-main-800: #3617B3;
+  --color-main-500: #5551F5;
+  --color-main-300: #768AFE;
+  --color-main-100: #DDE0FF;
+  --color-main-50: #F0F1FF;
+
+  --shadow-middlemodal: 0px 4px 50px 0px #0000000d;
+  --shadow-location-search: 0px 4px 28px 0px #0000000d;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* 전역 폰트 스타일 */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-pretendard), sans-serif; /* Pretendard를 기본 폰트로 */
+  background-color: #E9EBEF;
+  color: #1e1e1e;
 }
+
+
+/* 스크롤 바 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* 스크롤바 트랙 (배경) */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 스크롤바 핸들 (움직이는 부분) */
+::-webkit-scrollbar-thumb {
+  background: #c5c6cd;
+  border-radius: 999px;
+}
+
+/* 폰트 */
+@utility title-lg {
+  font-family: Pretendard, serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 36px */
+  letter-spacing: -0.36px;
+}
+
+@utility title-md {
+  font-family: Pretendard, serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 30px */
+  letter-spacing: -0.3px;
+}
+
+@utility title-sm {
+  font-family: Pretendard, serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 24px */
+  letter-spacing: -0.24px;
+}
+
+@utility subtitle-lg {
+  font-family: Pretendard, serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 27px */
+  letter-spacing: -0.27px;
+}
+
+@utility subtitle-md {
+  font-family: Pretendard, serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 24px */
+  letter-spacing: -0.24px;
+}
+
+@utility subtitle-sm {
+  font-family: Pretendard, serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%; /* 21px */
+  letter-spacing: -0.21px;
+}
+
+@utility body-md {
+  font-family: Pretendard, serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: -0.24px;
+}
+
+@utility body-sm {
+  font-family: Pretendard, serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 21px */
+  letter-spacing: -0.21px;
+}
+
+@utility button {
+  font-family: Pretendard, serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 100%; /* 14px */
+  letter-spacing: -0.21px;
+}
+
+@utility small {
+  font-family: Pretendard, serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%; /* 14.4px */
+  letter-spacing: -0.18px;
+}
+
+@utility badge-md {
+  font-family: Pretendard, serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 120%; /* 16.8px */
+  letter-spacing: -0.21px;
+}
+
+@utility badge-sm {
+  font-family: Pretendard, serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%; /* 14.4px */
+  letter-spacing: -0.18px;
+}
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1200px;
+  --breakpoint-wide: 1440px;
+}
+

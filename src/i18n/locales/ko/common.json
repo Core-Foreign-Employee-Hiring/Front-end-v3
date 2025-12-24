@@ -1,0 +1,939 @@
+{
+  "navigation": {
+    "home": "홈",
+    "archive": "합격 아카이브",
+    "study": "스터디",
+    "login": "로그인",
+    "signup": "회원가입",
+    "loginRequiredMessage": "로그인이 필요해요",
+    "logout": "로그아웃",
+    "nameSuffix": "님"
+  },
+
+  "modal": {
+    "language": {
+      "title": "언어 선택",
+      "korea": "한국어",
+      "english": "영어",
+      "done": "완료"
+    }
+  },
+
+  "mypage": {
+    "h1": "마이페이지",
+    "button": {
+      "next": "다음",
+      "back": "이전",
+      "done": "수정완료"
+    },
+
+    "menu": {
+      "userInfo": "회원정보",
+      "myArchive": "내 아카이브"
+    },
+
+    "archive": {
+      "priceSymbol": "원",
+      "review": {
+        "view": {
+          "title": "리뷰",
+          "write": "작성"
+        },
+        "write": {
+          "title": "리뷰 작성",
+          "placeholder": "리뷰를 남겨보세요!",
+          "paymentCompleted": "결제완료",
+          "rating": "평점",
+          "review": "리뷰",
+          "bottomButton": "작성하기"
+        }
+
+      },
+      "sold": {
+        "title": "판매한 아카이브",
+        "moreButton": "더보기",
+        "withdrawn": "인출완료"
+      },
+      "write": {
+        "title": "작성한 아카이브",
+        "moreButton": "더보기",
+        "content1": "총",
+        "content2": "개 판매됨"
+      },
+      "purchased": {
+        "title": "구매한 아카이브",
+        "paymentCompleted": "결제완료",
+        "noReviewMessage": "아직 리뷰를 작성하지 않았어요.",
+        "button": {
+          "more": "더보기",
+          "download": "다운로드",
+          "myReview": "내가 쓴 리뷰",
+          "addReview": "리뷰 작성하기"
+        }
+      }
+    },
+    "userInfo": {
+      "modifyUserInfo": "회원정보 수정",
+      "modifyIDAndPW": "아이디 | 비밀번호 변경",
+      "name": {
+        "label": "이름"
+      },
+      "education": {
+        "label": "학력",
+        "placeholder": "학력을 선택해주세요."
+      },
+      "terms": {
+        "label": "약관동의",
+        "adInfoAgreementSmsMms": "(선택) 광고성 정보 수신 동의 (SNS/MMS)",
+        "adInfoAgreementEmail": "(선택) 광고성 정보 수신 동의 (이메일)"
+      },
+      "gender": {
+        "label": "성별",
+        "MALE": "남자",
+        "FEMALE": "여자",
+        "NOGENDER": "선택 안함"
+      },
+      "visa": {
+        "label": "비자",
+        "placeholder": "비자를 선택해주세요."
+      },
+      "birthDay": {
+        "label": "생년월일"
+      },
+      "nationality": {
+        "label": "국적",
+        "placeholder": "국적을 선택해주세요."
+      },
+      "address": {
+        "label": "주소",
+        "searchAddressButton": "주소찾기",
+        "zipcodePlaceholder": "우편번호",
+        "address1Placeholder": "주소를 입력해주세요.",
+        "address2Placeholder": "상세주소를 입력해주세요."
+      },
+      "email": {
+        "label": "이메일",
+        "placeholder": "이메일을 입력해주세요.",
+        "verifyCode": "인증번호",
+        "sendingMessage": "전송 중...",
+        "verifiedEmail": "이메일 인증",
+        "emailRegisteredError": "이미 등록된 이메일입니다.",
+        "verifyCodePlaceholder": "인증번호 입력",
+        "verifiedButton": "인증하기",
+        "verifiedSuccess": "인증되었습니다.",
+        "verifiedError": "인증코드를 다시 확인해주세요."
+      },
+      "phoneNumber": {
+        "label": "전화번호",
+        "placeholder": "'-' 제외하고 번호 입력",
+        "verifyCode": "인증번호",
+        "sendingMessage": "전송 중...",
+        "verifiedPhoneNumber": "이메일 인증",
+        "phoneRegisteredError": "이미 등록된 전화번호입니다.",
+        "verifyCodePlaceholder": "인증번호 입력",
+        "verifiedButton": "인증하기",
+        "verifiedSuccess": "인증되었습니다.",
+        "verifiedError": "인증코드를 다시 확인해주세요."
+      }
+    }
+  },
+
+  "archiveHome": {
+    "h1": "합격 아카이브",
+    "counter": "건",
+    "searchPlaceholder": "궁금한 아카이브를 검색해보세요.",
+    "searchButton": "검색",
+    "addArchiveButton": "아카이브 등록",
+    "loadingMessage": "로딩중...",
+    "noSearchResultMessage": "검색 결과가 없습니다."
+  },
+
+  "archiveDetail": {
+    "inquireTitle": "문의하기",
+    "inquireMessage": "문의는 오픈채팅에서 진행하실 수 있습니다.",
+    "noRegisteredUrlMessage": "등록된 URL이 없습니다.",
+    "description": "설명",
+    "review": "리뷰",
+    "noRegisteredReviewMessage": "등록된 리뷰가 없습니다.",
+    "inquireButton": "문의",
+    "purchaseButton": "구매하기",
+    "priceSymbol": "원"
+  },
+
+  "login": {
+    "title": "로그인",
+    "description": "Korfit 회원이 되어 더 많은 서비스를 즐겨보세요!",
+    "id": {
+      "label": "아이디",
+      "placeholder": "아이디를 입력해주세요.",
+      "save": "아이디저장",
+      "searchId": "아이디 찾기"
+    },
+    "pw": {
+      "label": "비밀번호",
+      "placeholder": "비밀번호를 입력해주세요.",
+      "searchPW": "비밀번호 찾기",
+      "error": "아이디 또는 비밀번호가 맞지 않아요"
+    }
+  },
+
+  "signUp": {
+    "nextButton": "다음",
+    "beforeButton": "이전",
+    "completeButton": "완료",
+    "title": "회원가입",
+    "step1Content": "필수 정보",
+    "step2Content": "추가 정보",
+    "id": {
+      "label": "아이디",
+      "placeholder": "아이디를 입력해주세요.",
+      "duplication": "중복확인",
+      "successMessage": "사용 가능한 아이디입니다.",
+      "errorMessage": "사용 불가능한 아이디입니다."
+    },
+    "pw": {
+      "label": "비밀번호",
+      "placeholder": "대소문자, 숫자, 기호 포함 8~15자",
+      "pwError": "비밀번호는 대소문자, 숫자, 기호 포함 8~15자를 만족해야 합니다.",
+      "duplicationPWLabel": "비밀번호 중복확인",
+      "duplicationPWPlaceholder": "대소문자, 숫자, 기호 포함 8~15자",
+      "duplicationPWError": "비밀번호가 일치하지 않습니다."
+    },
+    "name": {
+      "label": "이름",
+      "placeholder": "이름을 작성해주세요."
+    },
+    "phoneNumber": {
+      "label": "전화번호",
+      "placeholder": "'-' 제외하고 번호 입력",
+      "verifyCode": "인증번호",
+      "sendingMessage": "전송 중...",
+      "phoneRegisteredError": "이미 등록된 전화번호입니다.",
+      "verifyCodePlaceholder": "인증번호 입력",
+      "verifiedButton": "인증하기",
+      "verifiedSuccess": "인증되었습니다.",
+      "verifiedError": "인증코드를 다시 확인해주세요."
+    },
+    "email": {
+      "label": "이메일",
+      "placeholder": "이메일을 입력해주세요.",
+      "verifyCode": "인증번호",
+      "sendingMessage": "전송 중...",
+      "emailRegisteredError": "이미 등록된 이메일입니다.",
+      "verifyCodePlaceholder": "인증번호 입력",
+      "verifiedButton": "인증하기",
+      "verifiedSuccess": "인증되었습니다.",
+      "verifiedError": "인증코드를 다시 확인해주세요."
+    },
+    "jobRole": {
+      "label": "직무",
+      "selectButton": "직무 선택",
+      "modifyButton": "직무 수정"
+    },
+    "address": {
+      "label": "주소",
+      "searchAddressButton": "주소찾기",
+      "zipcodePlaceholder": "우편번호",
+      "address1Placeholder": "주소를 입력해주세요.",
+      "address2Placeholder": "상세주소를 입력해주세요."
+    },
+    "birthDay": {
+      "label": "생년월일"
+    },
+    "education": {
+      "label": "학력",
+      "placeholder": "학력을 선택해주세요.",
+      "content": {
+        "highSchoolGraduate": "고졸",
+        "universityEnrolled": "대학 재학",
+        "universityGraduateOrExpected": "대졸 및 예정",
+        "graduateSchoolEnrolled": "대학원 재학",
+        "graduateSchoolGraduateOrExpected": "대학원졸 및 예정"
+      }
+    },
+    "terms": {
+      "termsOfServiceAgreement": "(필수) 서비스 이용약관 동의",
+      "personalInfoAgreement": "(필수) 개인정보 수집 및 이용 동의",
+      "over15": "(필수)만 15세 이상 동의",
+      "adInfoAgreementSmsMms": "(선택) 광고성 정보 수신 동의 (SNS/MMS)",
+      "adInfoAgreementEmail": "광고성 정보 수신 동의 (이메일)",
+      "allOptions": "전체 동의"
+    },
+
+    "gender": {
+      "label": "성별",
+      "MALE": "남자",
+      "FEMALE": "여자",
+      "NOGENDER": "선택 안함"
+    },
+    "visa": {
+      "label": "비자",
+      "placeholder": "비자를 선택해주세요.",
+      "searchVisaPlaceholder": "비자 종류를 검색하세요",
+      "noSearchResultMessage": "검색 결과가 없습니다."
+    },
+    "nationality": {
+      "label": "국적",
+      "placeholder": "국적을 선택해주세요.",
+      "content": {
+        "GHANA": "Ghana (가나)",
+        "GABON": "Gabon (가봉)",
+        "GUYANA": "Guyana (가이아나)",
+        "GAMBIA": "Gambia (감비아)",
+        "GUATEMALA": "Guatemala (과테말라)",
+        "GRENADA": "Grenada (그레나다)",
+        "GREECE": "Greece (그리스)",
+        "GUINEA": "Guinea (기니)",
+        "GUINEA_BISSAU": "Guinea-Bissau (기니비사우)",
+        "NAMIBIA": "Namibia (나미비아)",
+        "NAURU": "Nauru (나우루)",
+        "NIGERIA": "Nigeria (나이지리아)",
+        "REPUBLIC_OF_SOUTH_SUDAN": "Republic Of South Sudan (남수단)",
+        "SOUTH_AFRICA": "South Africa (남아프리카 공화국)",
+        "REPUBLIC_OF_SOUTH_OSSETIA": "Republic Of South Ossetia (남오세티야)",
+        "NETHERLANDS": "Netherlands (네덜란드)",
+        "NEPAL": "Nepal (네팔)",
+        "NORWAY": "Norway (노르웨이)",
+        "NEW_ZEALAND": "New Zealand (뉴질랜드)",
+        "NIGER": "Niger (니제르)",
+        "NICARAGUA": "Nicaragua (니카라과)",
+        "KOREA_REPUBLIC_OF": "Korea, Republic Of (대한민국)",
+        "TAIWAN": "Taiwan (대만)",
+        "DENMARK": "Denmark (덴마크)",
+        "DOMINICAN_REPUBLIC": "Dominican Republic (도미니카 공화국)",
+        "DOMINICA": "Dominica (도미니카 연방)",
+        "GERMANY": "Germany (독일)",
+        "EAST_TIMOR": "East Timor (동티모르)",
+        "LAO_PEOPLE_DEMOCRATIC_REPUBLIC": "Lao People’s Democratic Republic (라오스)",
+        "LIBERIA": "Liberia (라이베리아)",
+        "LATVIA": "Latvia (라트비아)",
+        "RUSSIAN_FEDERATION": "Russian Federation (러시아)",
+        "LEBANON": "Lebanon (레바논)",
+        "LESOTHO": "Lesotho (레소토)",
+        "ROMANIA": "Romania (루마니아)",
+        "LUXEMBOURG": "Luxembourg (룩셈부르크)",
+        "RWANDA": "Rwanda (르완다)",
+        "LIBYAN_ARAB_JAMAHIRIYA": "Libyan Arab Jamahiriya (리비아)",
+        "REPUBLIC_OF_LITHUANIA": "Republic of Lithuania (리투아니아)",
+        "LIECHTENSTEIN": "Liechtenstein (리히텐슈타인)",
+        "MADAGASCAR": "Madagascar (마다가스카르)",
+        "MARSHALL_ISLANDS": "Marshall Islands (마셜 제도)",
+        "MALAWI": "Malawi (말라위)",
+        "MALAYSIA": "Malaysia (말레이시아)",
+        "MALI": "Mali (말리)",
+        "MEXICO": "Mexico (멕시코)",
+        "MONACO": "Monaco (모나코)",
+        "MOROCCO": "Morocco (모로코)",
+        "MAURITIUS": "Mauritius (모리셔스)",
+        "MAURITANIA": "Mauritania (모리타니)",
+        "MOZAMBIQUE": "Mozambique (모잠비크)",
+        "MONTENEGRO": "Montenegro (몬테네그로)",
+        "MOLDOVA": "Moldova (몰도바)",
+        "MALDIVES": "Maldives (몰디브)",
+        "MALTA": "Malta (몰타)",
+        "MONGOLIA": "Mongolia (몽골)",
+        "UNITED_STATES": "United States (미국)",
+        "MYANMAR": "Myanmar (미얀마)",
+        "FEDERATED_STATES_OF_MICRONESIA": "Federated States of Micronesia (미크로네시아 연방)",
+        "VANUATU": "Vanuatu (바누아투)",
+        "BAHRAIN": "Bahrain (바레인)",
+        "BARBADOS": "Barbados (바베이도스)",
+        "VATICAN_CITY": "Vatican City (바티칸)",
+        "BAHAMAS": "Bahamas (바하마)",
+        "BANGLADESH": "Bangladesh (방글라데시)",
+        "BENIN": "Benin (베냉)",
+        "VENEZUELA": "Venezuela (베네수엘라)",
+        "VIETNAM": "Vietnam (베트남)",
+        "BELGIUM": "Belgium (벨기에)",
+        "BELARUS": "Belarus (벨라루스)",
+        "BELIZE": "Belize (벨리즈)",
+        "BOSNIA_AND_HERZEGOVINA": "Bosnia and Herzegovina (보스니아 헤르체고비나)",
+        "BOTSWANA": "Botswana (보츠와나)",
+        "BOLIVIA": "Bolivia (볼리비아)",
+        "BURUNDI": "Burundi (부룬디)",
+        "BURKINA_FASO": "Burkina Faso (부르키나파소)",
+        "BHUTAN": "Bhutan (부탄)",
+        "NORTH_MACEDONIA": "North Macedonia (북마케도니아)",
+        "NORTHERN_CYPRUS": "Northern Cyprus (북키프로스)",
+        "NORTH_KOREA": "North Korea (북한)",
+        "BULGARIA": "Bulgaria (불가리아)",
+        "BRAZIL": "Brazil (브라질)",
+        "BRUNEI": "Brunei (브루나이)",
+        "SAMOA": "Samoa (사모아)",
+        "SAUDI_ARABIA": "Saudi Arabia (사우디아라비아)",
+        "SAN_MARINO": "San Marino (산마리노)",
+        "SAO_TOME_AND_PRINCIPE": "São Tomé and Príncipe (상투메 프린시페)",
+        "WESTERN_SAHARA": "Western Sahara (서사하라)",
+        "SENEGAL": "Senegal (세네갈)",
+        "SERBIA": "Serbia (세르비아)",
+        "SEYCHELLES": "Seychelles (세이셸)",
+        "SAINT_LUCIA": "Saint Lucia (세인트루시아)",
+        "SAINT_VINCENT_AND_THE_GRENADINES": "Saint Vincent and the Grenadines (세인트빈센트 그레나딘)",
+        "SAINT_KITTS_AND_NEVIS": "Saint Kitts and Nevis (세인트키츠 네비스)",
+        "SOMALIA": "Somalia (소말리아)",
+        "SOMALILAND": "Somaliland (소말릴란드)",
+        "SOLOMON_ISLANDS": "Solomon Islands (솔로몬 제도)",
+        "SUDAN": "Sudan (수단)",
+        "SURINAME": "Suriname (수리남)",
+        "SRI_LANKA": "Sri Lanka (스리랑카)",
+        "SWEDEN": "Sweden (스웨덴)",
+        "SWITZERLAND": "Switzerland (스위스)",
+        "SPAIN": "Spain (스페인)",
+        "SLOVAKIA": "Slovakia (슬로바키아)",
+        "SLOVENIA": "Slovenia (슬로베니아)",
+        "SYRIA": "Syria (시리아)",
+        "SIERRA_LEONE": "Sierra Leone (시에라리온)",
+        "SINGAPORE": "Singapore (싱가포르)",
+        "UNITED_ARAB_EMIRATES": "United Arab Emirates (아랍에미리트)",
+        "ARMENIA": "Armenia (아르메니아)",
+        "ARGENTINA": "Argentina (아르헨티나)",
+        "ARTSAKH": "Artsakh (아르차흐)",
+        "ICELAND": "Iceland (아이슬란드)",
+        "HAITI": "Haiti (아이티)",
+        "IRELAND": "Ireland (아일랜드)",
+        "AZERBAIJAN": "Azerbaijan (아제르바이잔)",
+        "AFGHANISTAN": "Afghanistan (아프가니스탄)",
+        "ANDORRA": "Andorra (안도라)",
+        "ALBANIA": "Albania (알바니아)",
+        "ALGERIA": "Algeria (알제리)",
+        "ABKHAZIA": "Abkhazia (압하지야)",
+        "ANGOLA": "Angola (앙골라)",
+        "ANTIGUA_AND_BARBUDA": "Antigua and Barbuda (앤티가 바부다)",
+        "ERITREA": "Eritrea (에리트레아)",
+        "ESWATINI": "Eswatini (에스와티니)",
+        "ESTONIA": "Estonia (에스토니아)",
+        "ECUADOR": "Ecuador (에콰도르)",
+        "ETHIOPIA": "Ethiopia (에티오피아)",
+        "EL_SALVADOR": "El Salvador (엘살바도르)",
+        "UNITED_KINGDOM": "United Kingdom (영국)",
+        "YEMEN": "Yemen (예멘)",
+        "OMAN": "Oman (오만)",
+        "AUSTRIA": "Austria (오스트리아)",
+        "HONDURAS": "Honduras (온두라스)",
+        "JORDAN": "Jordan (요르단)",
+        "UGANDA": "Uganda (우간다)",
+        "URUGUAY": "Uruguay (우루과이)",
+        "UZBEKISTAN": "Uzbekistan (우즈베키스탄)",
+        "UKRAINE": "Ukraine (우크라이나)",
+        "IRAQ": "Iraq (이라크)",
+        "IRAN": "Iran (이란)",
+        "ISRAEL": "Israel (이스라엘)",
+        "EGYPT": "Egypt (이집트)",
+        "ITALY": "Italy (이탈리아)",
+        "INDIA": "India (인도)",
+        "INDONESIA": "Indonesia (인도네시아)",
+        "JAPAN": "Japan (일본)",
+        "JAMAICA": "Jamaica (자메이카)",
+        "ZAMBIA": "Zambia (잠비아)",
+        "EQUATORIAL_GUINEA": "Equatorial Guinea (적도 기니)",
+        "GEORGIA": "Georgia (조지아)",
+        "CHINA": "China (중국)",
+        "CENTRAL_AFRICAN_REPUBLIC": "Central African Republic (중앙아프리카 공화국)",
+        "DJIBOUTI": "Djibouti (지부티)",
+        "ZIMBABWE": "Zimbabwe (짐바브웨)",
+        "CHAD": "Chad (차드)",
+        "CZECH_REPUBLIC": "Czech Republic (체코)",
+        "CHILE": "Chile (칠레)",
+        "CAMEROON": "Cameroon (카메룬)",
+        "CABO_VERDE": "Cabo Verde (카보베르데)",
+        "KAZAKHSTAN": "Kazakhstan (카자흐스탄)",
+        "QATAR": "Qatar (카타르)",
+        "CAMBODIA": "Cambodia (캄보디아)",
+        "CANADA": "Canada (캐나다)",
+        "KENYA": "Kenya (케냐)",
+        "COMOROS": "Comoros (코모로)",
+        "KOSOVO": "Kosovo (코소보)",
+        "COSTA_RICA": "Costa Rica (코스타리카)",
+        "COTE_DIVOIRE": "Côte d’Ivoire (코트디부아르)",
+        "COLOMBIA": "Colombia (콜롬비아)",
+        "REPUBLIC_OF_THE_CONGO": "Republic of the Congo (콩고 공화국)",
+        "DEMOCRATIC_REPUBLIC_OF_THE_CONGO": "Democratic Republic of the Congo (콩고 민주 공화국)",
+        "CUBA": "Cuba (쿠바)",
+        "KUWAIT": "Kuwait (쿠웨이트)",
+        "CROATIA": "Croatia (크로아티아)",
+        "KYRGYZSTAN": "Kyrgyzstan (키르기스스탄)",
+        "KIRIBATI": "Kiribati (키리바시)",
+        "CYPRUS": "Cyprus (키프로스)",
+        "TAJIKISTAN": "Tajikistan (타지키스탄)",
+        "TANZANIA": "Tanzania (탄자니아)",
+        "THAILAND": "Thailand (태국)",
+        "TOGO": "Togo (토고)",
+        "TONGA": "Tonga (통가)",
+        "TURKMENISTAN": "Turkmenistan (투르크메니스탄)",
+        "TUVALU": "Tuvalu (투발루)",
+        "TUNISIA": "Tunisia (튀니지)",
+        "TURKIYE": "Türkiye (튀르키예)",
+        "TRANSNISTRIA": "Transnistria (트란스니스트리아)",
+        "TRINIDAD_AND_TOBAGO": "Trinidad and Tobago (트리니다드 토바고)",
+        "PANAMA": "Panama (파나마)",
+        "PARAGUAY": "Paraguay (파라과이)",
+        "PAKISTAN": "Pakistan (파키스탄)",
+        "PAPUA_NEW_GUINEA": "Papua New Guinea (파푸아 뉴기니아)",
+        "PALAU": "Palau (팔라우)",
+        "PALESTINE": "Palestine (팔레스타인)",
+        "PERU": "Peru (페루)",
+        "PORTUGAL": "Portugal (포르투갈)",
+        "POLAND": "Poland (폴란드)",
+        "FRANCE": "France (프랑스)",
+        "FIJI": "Fiji (피지)",
+        "FINLAND": "Finland (핀란드)",
+        "PHILIPPINES": "Philippines (필리핀)",
+        "HUNGARY": "Hungary (헝가리)",
+        "AUSTRALIA": "Australia (호주)",
+        "HONG_KONG": "Hong Kong (홍콩)",
+        "MACAU": "Macau (마카오)"
+      }
+    }
+  },
+
+  "recruitDetail": {
+    "apply": {
+      "title": "지원하기",
+      "close": "닫기",
+      "InputApplicationMethodButton": {
+        "copy": "복사 중...",
+        "EMAIL": "이메일 복사",
+        "PHONE_SMS": "전화번호 복사",
+        "WEBSITE": "웹페이지 이동"
+      },
+      "applicationMethod": {
+        "EMAIL": "‘이메일 지원’",
+        "PHONE_SMS": "‘전화 / 문자 지원’",
+        "WEBSITE": "‘웹사이트 지원‘"
+      }
+    },
+    "headerTitle": "공고",
+    "recruitInfo": {
+      "jobCategories": "직종",
+      "workDayType": "근무요일",
+      "workTime": "근무시간",
+      "address": "근무지",
+      "salary": "급여",
+      "salarySymbol": "원",
+      "workType": {
+        "ONSITE": "대면",
+        "HYBRID": "혼합근무",
+        "REMOTE": "비대면",
+        "ETC": "기타"
+      },
+      "salaryType": {
+        "ANNUAL": "연봉",
+        "DAILY": "일급",
+        "WEEKLY": "주급",
+        "HOURLY": "시급",
+        "MONTHLY": "월급",
+        "ETC": "기타"
+      },
+      "workDaysType": {
+        "WEEKDAYS": "평일(월, 화, 수, 목, 금)",
+        "WEEKENDS": "주말(토, 일)",
+        "FULL_WEEK": "주 7일(월~일)",
+        "SIX_DAYS": "주 6일",
+        "MONDAY": "월요일",
+        "TUESDAY": "화요일",
+        "WEDNESDAY": "수요일",
+        "THURSDAY": "목요일",
+        "FRIDAY": "금요일",
+        "SATURDAY": "토요일",
+        "SUNDAY": "일요일",
+        "ETC": "기타"
+      }
+    },
+    "detailInfo":{
+      "title": "상세 정보 (모집 포스터)",
+      "mainTasks": "주요업무",
+      "qualifications": "자격요건",
+      "preferences": "우대사항",
+      "others":"기타"
+    },
+    "companyInfo": {
+      "companyAddress": "회사주소",
+      "representativeName": "대표자명",
+      "businessType": "업종",
+      "companyType": "기업형태",
+      "establishedDate": "설립일"
+    }
+  },
+
+  "recruitHome": {
+    "h1": "공고 전체",
+    "searchPlaceholder": "채용 공고를 검색해보세요.",
+    "countSuffix": "건",
+    "filters": {
+      "visa": "비자",
+      "jobRoles": "직무",
+      "language": "관련 언어",
+      "region": "근무 지역",
+      "contractType": "계약 형태"
+    },
+    "card": {
+      "othersSuffix": "외",
+      "count": "종"
+    },
+    "loadingMorePostsMessage": "더 많은 공고를 불러오는 중...",
+    "noMorePostsMessage": "모든 공고를 확인했습니다.",
+    "noSearchResultsMessage": "검색 결과가 없습니다."
+  },
+  "filter": {
+    "unknown": "알 수 없음",
+    "button": {
+      "reset": "초기화",
+      "apply": "적용"
+    },
+    "contractTypeFilter": {
+      "title": "계약 형태 선택",
+      "content": {
+        "INTERN": "인턴",
+        "NEWCOMER": "신입",
+        "EXPERIENCED": "경력",
+        "CONTRACT": "계약직",
+        "REGULAR": "정규직"
+      }
+    },
+    "regionFilter": {
+      "title": "지역 선택",
+      "content": {
+        "SEOUL": "서울특별시",
+        "GYEONGGI": "경기도",
+        "INCHEON": "인천광역시",
+        "BUSAN": "부산광역시",
+        "DAEJEON": "대전광역시",
+        "DAEGU": "대구광역시",
+        "ULSAN": "울산광역시",
+        "GWANGJU": "광주광역시",
+        "GANGWON": "강원특별자치도",
+        "SEJONG": "세종특별자치도",
+        "CHUNGBUK": "충청북도",
+        "CHUNGNAM": "충청남도",
+        "GYEONGBUK": "경상북도",
+        "GYEONGNAM": "경상남도",
+        "JEJU": "제주특별자치도",
+        "JEONBUK": "전라북도",
+        "JEONNAM": "전라남도"
+      }
+    },
+    "requiredLanguageFilter": {
+      "title": "언어 선택",
+      "placeHolder": "관련 언어를 검색하세요.",
+      "content": {
+        "ENGLISH": "영어",
+        "CHINESE": "중국어",
+        "HINDI": "힌디어",
+        "SPANISH": "스페인어",
+        "FRENCH": "프랑스어",
+        "ARABIC": "아랍어",
+        "BENGALI": "벵골어",
+        "PORTUGUESE": "포르투갈어",
+        "RUSSIAN": "러시아어",
+        "URDU": "우르두어",
+        "INDONESIAN": "인도네시아어",
+        "GERMAN": "독일어",
+        "JAPANESE": "일본어",
+        "SWAHILI": "스와힐리어",
+        "MARATHI": "마라티어",
+        "TELUGU": "텔루구어",
+        "TURKISH": "튀르키예어",
+        "TAMIL": "타밀어",
+        "VIETNAMESE": "베트남어",
+        "KOREAN": "한국어",
+        "ITALIAN": "이탈리아어",
+        "PERSIAN": "페르시아어",
+        "POLISH": "폴란드어",
+        "UKRAINIAN": "우크라이나어"
+      }
+    },
+    "visaFilter": {
+      "title": "비자 선택",
+      "content": {
+        "A1": "A-1 외교",
+        "A2": "A-2 공무",
+        "A3": "A-3 협정",
+        "B1": "B-1 사증면제",
+        "B2": "B-2 관광통과",
+        "C1": "C-1 일시취재",
+        "C3": "C-3 단기방문",
+        "C4": "C-4 문화예술",
+        "D2": "D-2 유학",
+        "D3": "D-3 기술연수",
+        "D4": "D-4 일반연수",
+        "D5": "D-5 취재",
+        "D6": "D-6 종교",
+        "D7": "D-7 주재",
+        "D8": "D-8 기업투자",
+        "D9": "D-9 무역경영",
+        "D10": "D-10 구직",
+        "E1": "E-1 교수",
+        "E2": "E-2 회화지도",
+        "E3": "E-3 연구",
+        "E4": "E-4 기술지도",
+        "E5": "E-5 전문직업",
+        "E6": "E-6 예술흥행",
+        "E7": "E-7 특정활동",
+        "E8": "E-8 계절근로",
+        "E9": "E-9 비전문취업",
+        "E10": "E-10 선원취업",
+        "F1": "F-1 방문동거",
+        "F2": "F-2 거주",
+        "F3": "F-3 동반",
+        "F4": "F-4 재외동포",
+        "F5": "F-5 영주",
+        "F6": "F-6 결혼이민",
+        "G1": "G-1 기타",
+        "H1": "H-1 관광취업",
+        "H2": "H-2 방문취업",
+        "F27": "F-2-7 점수제 우수인재"
+      }
+    },
+    "jobRoleFilter": {
+      "title": "직무 선택",
+      "jobRoleSearchPlaceHolder": "직군 또는 직무를 검색해보세요.",
+      "category": {
+        "JOB_1": {
+          "unknown": "알 수 없음",
+          "title": "IT/개발",
+          "SOFTWARE_ENGINEER": "소프트웨어 엔지니어",
+          "WEB_DEVELOPER": "웹 개발자",
+          "BACKEND_DEVELOPER": "백엔드 개발자",
+          "FRONTEND_DEVELOPER": "프론트엔드 개발자",
+          "JAVA_DEVELOPER": "자바 개발자",
+          "C_CPP_DEVELOPER": "C/C++ 개발자",
+          "PYTHON_DEVELOPER": "파이썬 개발자",
+          "MACHINE_LEARNING_ENGINEER": "머신러닝 엔지니어",
+          "DEVOPS_ENGINEER": "DevOps / 시스템 관리자",
+          "DATA_ENGINEER": "데이터 엔지니어",
+          "NODEJS_DEVELOPER": "Node.js 개발자",
+          "SYSTEM_NETWORK_ADMIN": "시스템/네트워크 관리자",
+          "ANDROID_DEVELOPER": "안드로이드 개발자",
+          "IOS_DEVELOPER": "iOS 개발자",
+          "EMBEDDED_DEVELOPER": "임베디드 개발자",
+          "TECH_SUPPORT": "기술지원",
+          "QA_TEST_ENGINEER": "QA / 테스트 엔지니어",
+          "DATA_SCIENTIST": "데이터 사이언티스트",
+          "SECURITY_ENGINEER": "보안 엔지니어",
+          "BIGDATA_ENGINEER": "빅데이터 엔지니어",
+          "HARDWARE_ENGINEER": "하드웨어 엔지니어",
+          "BLOCKCHAIN_ENGINEER": "블록체인 엔지니어",
+          "CROSS_PLATFORM_APP_DEVELOPER": "크로스플랫폼 앱 개발자",
+          "DBA": "DBA",
+          "PHP_DEVELOPER": "PHP 개발자",
+          "DOTNET_DEVELOPER": ".NET 개발자",
+          "GRAPHICS_ENGINEER": "그래픽스 엔지니어",
+          "AR_VR_ENGINEER": "AR/VR 엔지니어",
+          "RUBY_ON_RAILS_DEVELOPER": "루비온레일즈 개발자"
+        },
+        "JOB_2": {
+          "unknown": "알 수 없음",
+          "title": "경영/비즈니스",
+          "PM_PO": "PM/PO",
+          "PROJECT_MANAGER": "프로젝트 매니저",
+          "STRATEGY_PLANNER": "전략 기획자",
+          "OPERATIONS_MANAGER": "운영 매니저",
+          "DATA_ANALYST": "데이터 분석가",
+          "BRAND_MANAGER": "브랜드 매니저",
+          "GLOBAL_BUSINESS_DEVELOPER": "해외 사업개발 / 기획자",
+          "CONSULTANT": "컨설턴트",
+          "PURCHASING_MANAGER": "구매담당",
+          "BUSINESS_INNOVATOR": "경영 혁신가",
+          "AGILE_COACH": "애자일코치"
+        },
+
+        "JOB_3": {
+          "unknown": "알 수 없음",
+          "title": "마케팅/광고",
+          "MARKETING_MANAGER": "마케팅 매니저",
+          "DIGITAL_MARKETER": "디지털 마케터",
+          "CONTENT_MARKETER": "콘텐츠 마케터",
+          "PERFORMANCE_MARKETER": "퍼포먼스 마케터",
+          "BRAND_MARKETER": "브랜드 마케터",
+          "GLOBAL_MARKETING_MANAGER": "글로벌 마케팅 매니저",
+          "SNS_MARKETER": "SNS 마케터",
+          "PR_SPECIALIST": "PR 전문가",
+          "GROWTH_HACKER": "그로스 해커",
+          "MARKETING_DIRECTOR": "마케팅 디렉터",
+          "MARKET_RESEARCHER": "마켓 리서치"
+        },
+        "JOB_4": {
+          "unknown": "알 수 없음",
+          "title": "디자인",
+          "UI_UX_DESIGNER": "UI/UX 디자이너",
+          "WEB_DESIGNER": "웹 디자이너",
+          "GRAPHIC_DESIGNER": "그래픽 디자이너",
+          "SPACE_DESIGNER": "공간 디자이너",
+          "MOTION_DESIGNER": "영상/모션 디자이너",
+          "FASHION_DESIGNER": "패션 디자이너",
+          "ART_DIRECTOR": "아트 디렉터",
+          "INDUSTRIAL_DESIGNER": "산업 디자이너",
+          "FURNITURE_DESIGNER": "가구 디자이너",
+          "LANDSCAPE_DESIGNER": "조경 디자이너"
+        },
+        "JOB_5": {
+          "unknown": "알 수 없음",
+          "title": "영업",
+          "INTERNATIONAL_SALES": "해외영업",
+          "TECHNICAL_SALES": "기술영업",
+          "SOLUTION_CONSULTANT": "솔루션 컨설턴트",
+          "MEDIA_SALES": "미디어 세일즈",
+          "CUSTOMER_SUCCESS_MANAGER": "고객성공매니저",
+          "SALES_ENGINEER": "세일즈 엔지니어"
+        },
+        "JOB_6": {
+          "unknown": "알 수 없음",
+          "title": "고객서비스/리테일",
+          "GLOBAL_CS_MANAGER": "글로벌 CS 매니저",
+          "RETAIL_MD": "리테일 MD",
+          "CUSTOMER_SUPPORT": "고객 지원/상담",
+          "FASHION_MD": "패션 MD",
+          "CRM_SPECIALIST": "CRM 전문가",
+          "RECEPTIONIST": "리셉션",
+          "TRAVEL_AGENT": "여행 에이전트",
+          "FLIGHT_ATTENDANT": "승무원",
+          "STORE_CLERK": "매장점원",
+          "TOURISM_WORKER": "관광숙박업 종사자"
+        },
+        "JOB_7": {
+          "unknown": "알 수 없음",
+          "title": "통/번역",
+          "INTERPRETER": "통역사",
+          "TRANSLATOR": "번역가",
+          "LOCALIZATION_SPECIALIST": "로컬라이제이션 전문가"
+        },
+        "JOB_8": {
+          "unknown": "알 수 없음",
+          "title": "미디어",
+          "CONTENT_CREATOR": "콘텐츠 크리에이터",
+          "VIDEO_EDITOR": "영상 편집가",
+          "VIDEO_PRODUCER": "비디오 제작",
+          "WRITER": "작가",
+          "PHOTOGRAPHER": "사진작가",
+          "JOURNALIST": "저널리스트",
+          "CURATOR": "큐레이터"
+        },
+        "JOB_9": {
+          "unknown": "알 수 없음",
+          "title": "엔지니어링/설계",
+          "ELECTRICAL_ENGINEER": "전자 엔지니어",
+          "ROBOTICS_AUTOMATION_ENGINEER": "로봇/자동화",
+          "MECHANICAL_ENGINEER": "기계 엔지니어",
+          "CAD_3D_DESIGNER": "CAD/3D 설계자",
+          "ELECTRIC_ENGINEER": "전기 엔지니어",
+          "CONTROL_ENGINEER": "제어 엔지니어",
+          "PRODUCT_ENGINEER": "제품 엔지니어",
+          "ELECTROMECHANICAL_ENGINEER": "전자기계 공학자",
+          "EQUIPMENT_ENGINEER": "장비 엔지니어",
+          "QA_ENGINEER": "QA 엔지니어",
+          "INDUSTRIAL_ENGINEER": "산업 엔지니어",
+          "RF_ENGINEER": "RF 엔지니어",
+          "CHEMICAL_ENGINEER": "화학공학 엔지니어",
+          "AEROSPACE_ENGINEER": "항공우주 엔지니어",
+          "IC_ENGINEER": "I&C 엔지니어",
+          "MATERIAL_ENGINEER": "재료공학자",
+          "PLANT_ENGINEER": "플랜트 엔지니어",
+          "PLASTIC_ENGINEER": "플라스틱 엔지니어",
+          "QC_ENGINEER": "QC 엔지니어",
+          "STRUCTURAL_ENGINEER": "구조공학 엔지니어",
+          "CONSTRUCTION_ENGINEER": "건설 엔지니어",
+          "CIVIL_ENGINEER": "토목 엔지니어",
+          "ENVIRONMENTAL_ENGINEER": "환경 엔지니어",
+          "PRODUCTION_ENGINEER": "생산공학 엔지니어",
+          "RND_RESEARCHER": "R&D / 연구원"
+        },
+        "JOB_10": {
+          "unknown": "알 수 없음",
+          "title": "인사/HR",
+          "GLOBAL_HR_MANAGER": "글로벌 HR 매니저",
+          "RECRUITER": "리크루터",
+          "HR_CONSULTANT": "HR 컨설턴트",
+          "TECH_TRAINER": "기술 교육",
+          "INHOUSE_TRAINER": "사내 강사"
+        },
+        "JOB_11": {
+          "unknown": "알 수 없음",
+          "title": "게임 제작",
+          "GAME_PLANNER": "게임 기획자",
+          "GAME_ARTIST": "게임 아티스트",
+          "GAME_CLIENT_DEVELOPER": "게임 클라이언트 개발자",
+          "UNITY_DEVELOPER": "유니티 개발자",
+          "GAME_GRAPHIC_DESIGNER": "게임 그래픽 디자이너",
+          "GAME_SERVER_DEVELOPER": "게임 서버 개발자",
+          "MOBILE_GAME_DEVELOPER": "모바일 게임 개발자",
+          "UNREAL_DEVELOPER": "언리얼 개발자"
+        },
+        "JOB_12": {
+          "unknown": "알 수 없음",
+          "title": "금융",
+          "INVESTMENT_BANKER": "투자은행가",
+          "ASSET_MANAGER": "자산 운용가",
+          "FINANCIAL_ENGINEER": "금융공학자"
+        },
+        "JOB_13": {
+          "unknown": "알 수 없음",
+          "title": "제조/생산",
+          "MACHINE_TECHNICIAN": "기계제작 기술자",
+          "MANUFACTURING_TEST_ENGINEER": "제조 테스트 엔지니어",
+          "MANUFACTURING_ENGINEER": "제조 엔지니어",
+          "MANUFACTURING_CHEMIST": "제조 화학자",
+          "SEMICONDUCTOR_DISPLAY_ENGINEER": "반도체/디스플레이 엔지니어",
+          "PRODUCTION_WORKER": "생산직 종사자"
+        },
+        "JOB_14": {
+          "unknown": "알 수 없음",
+          "title": "교육",
+          "INSTRUCTOR": "강사",
+          "LANGUAGE_EDUCATOR": "외국어교육"
+        },
+        "JOB_15": {
+          "unknown": "알 수 없음",
+          "title": "의료/제약/바이오",
+          "BIOTECH_RESEARCHER": "생명공학 연구원",
+          "CLINICAL_RESEARCHER": "임상시험 연구원",
+          "MICROBIOLOGIST": "미생물학자",
+          "HOSPITAL_COORDINATOR": "병원 코디네이터",
+          "PHARMACEUTICAL_CHEMIST": "약학 분석 화학자",
+          "GENETIC_ENGINEER": "유전공학자",
+          "CAREGIVER": "요양보호사"
+        },
+        "JOB_16": {
+          "unknown": "알 수 없음",
+          "title": "물류/무역",
+          "LOGISTICS_MANAGER": "물류담당",
+          "LOGISTICS_ANALYST": "물류 분석가",
+          "EXPORT_IMPORT_OFFICER": "수출입사무",
+          "TRADE_OFFICER": "무역사무",
+          "BUYER_MANAGER": "바이어관리/상담/개발",
+          "AIR_TRANSPORT_AGENT": "항공 운송",
+          "MARINE_TRANSPORT_AGENT": "해운/해양 운송",
+          "LOGISTICS_FIELD_WORKER": "물류 현장직 종사자"
+        },
+        "JOB_17": {
+          "unknown": "알 수 없음",
+          "title": "외식/푸드 서비스",
+          "FOOD_SERVICE_WORKER": "외식업 종사자",
+          "CHEF": "요리사",
+          "MENU_DEVELOPER": "메뉴개발",
+          "BARTENDER": "바텐더",
+          "SOMMELIER": "소믈리에",
+          "FOOD_STYLIST": "푸드스타일리스트"
+        },
+        "JOB_18": {
+          "unknown": "알 수 없음",
+          "title": "건설/시설",
+          "ARCHITECT": "건축가",
+          "CONSTRUCTION_SUPERVISOR": "건축 감리자",
+          "MAINTENANCE_MANAGER": "유지보수 관리자",
+          "CONSTRUCTION_WORKER": "건설 현장직 종사자",
+          "WELDER": "용접공",
+          "CARPENTER": "목수",
+          "HEAVY_EQUIPMENT_TECHNICIAN": "중장비 기술자"
+        },
+        "JOB_19": {
+          "unknown": "알 수 없음",
+          "title": "엔터테인먼트",
+          "MODEL": "모델",
+          "ACTOR": "배우",
+          "SHOW_HOST": "방송 진행자"
+        }
+
+      }
+    }
+  }
+}

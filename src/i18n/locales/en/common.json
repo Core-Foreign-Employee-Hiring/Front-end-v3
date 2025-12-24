@@ -1,0 +1,961 @@
+{
+  "navigation": {
+    "home": "Home",
+    "archive": "Acceptance Archive",
+    "study": "Study",
+    "login": "Log In",
+    "signup": "Sign Up",
+    "loginRequiredMessage": "Login is required",
+    "logout": "Log Out",
+    "nameSuffix": ""
+  },
+
+  "login": {
+    "title": "Log In",
+    "description": "Become a Korfit member and enjoy more services!",
+    "id": {
+      "label": "ID",
+      "placeholder": "Please enter your ID.",
+      "save": "Save ID",
+      "searchId": "Find ID"
+    },
+    "pw": {
+      "label": "Password",
+      "placeholder": "Please enter your password.",
+      "searchPW": "Find Password",
+      "error": "The ID or password is incorrect."
+    }
+  },
+
+  "mypage": {
+    "h1": "MyPage",
+    "button": {
+      "next": "Next",
+      "back": "Back",
+      "done": "Save Changes"
+    },
+
+    "menu": {
+      "userInfo": "Profile Information",
+      "myArchive": "My Archive"
+    },
+    "archive": {
+      "priceSymbol": "KRW",
+      "review": {
+        "view": {
+          "title": "Review",
+          "write": "Write"
+        },
+        "write": {
+          "title": "Write a Review",
+          "placeholder": "Leave your review!",
+          "paymentCompleted": "Payment Completed",
+          "rating": "Rating",
+          "review": "Review",
+          "bottomButton": "Submit"
+        }
+      },
+
+      "sold": {
+        "title": "Sold Archives",
+        "moreButton": "View More",
+        "withdrawn": "Payout Completed"
+      },
+      "write": {
+        "title": "Created Archives",
+        "moreButton": "View More",
+        "content1": "Total",
+        "content2": "sold"
+      },
+      "purchased": {
+        "title": "Purchased Archives",
+        "paymentCompleted": "Payment Completed",
+        "noReviewMessage": "You haven't written a review yet.",
+        "button": {
+          "more": "View More",
+          "download": "Download",
+          "myReview": "My Review",
+          "addReview": "Write a Review"
+        }
+      }
+    },
+
+    "userInfo": {
+      "modifyUserInfo": "Edit Profile Information",
+      "modifyIDAndPW": "Change ID | Password",
+
+      "name": {
+        "label": "Name"
+      },
+
+      "education": {
+        "label": "Education",
+        "placeholder": "Select your education level."
+      },
+
+      "terms": {
+        "label": "Terms & Agreements",
+        "adInfoAgreementSmsMms": "(Optional) Receive promotional messages (SNS/MMS)",
+        "adInfoAgreementEmail": "(Optional) Receive promotional emails"
+      },
+
+      "gender": {
+        "label": "Gender",
+        "MALE": "Male",
+        "FEMALE": "Female",
+        "NOGENDER": "Prefer not to say"
+      },
+
+      "visa": {
+        "label": "Visa",
+        "placeholder": "Select your visa type."
+      },
+
+      "birthDay": {
+        "label": "Date of Birth"
+      },
+
+      "nationality": {
+        "label": "Nationality",
+        "placeholder": "Select your nationality."
+      },
+
+      "address": {
+        "label": "Address",
+        "searchAddressButton": "Search Address",
+        "zipcodePlaceholder": "Postal Code",
+        "address1Placeholder": "Enter your address.",
+        "address2Placeholder": "Enter details (optional)."
+      },
+
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email.",
+        "verifyCode": "Verification Code",
+        "sendingMessage": "Sending...",
+        "verifiedEmail": "Email Verification",
+        "emailRegisteredError": "This email is already registered.",
+        "verifyCodePlaceholder": "Enter verification code",
+        "verifiedButton": "Verify",
+        "verifiedSuccess": "Email verified.",
+        "verifiedError": "Invalid verification code."
+      },
+
+      "phoneNumber": {
+        "label": "Phone Number",
+        "placeholder": "Enter number without '-'",
+        "verifyCode": "Verification Code",
+        "sendingMessage": "Sending...",
+        "verifiedPhoneNumber": "Phone Verification",
+        "phoneRegisteredError": "This phone number is already registered.",
+        "verifyCodePlaceholder": "Enter verification code",
+        "verifiedButton": "Verify",
+        "verifiedSuccess": "Phone number verified.",
+        "verifiedError": "Invalid verification code."
+      }
+    }
+  },
+
+
+  "archiveHome": {
+    "h1": "Pass Archive",
+    "counter": "items",
+    "searchPlaceholder": "Search archives...",
+    "searchButton": "Search",
+    "addArchiveButton": "Add Archive",
+    "loadingMessage": "Loading...",
+    "noSearchResultMessage": "No results found."
+  },
+
+  "archiveDetail": {
+    "inquireTitle": "Inquiry",
+    "inquireMessage": "For inquiries, please contact us via Open Chat.",
+    "noRegisteredUrlMessage": "No URL registered.",
+    "description": "Description",
+    "review": "Review",
+    "noRegisteredReviewMessage": "No reviews available.",
+    "inquireButton": "Inquiry",
+    "purchaseButton": "Buy Now",
+    "priceSymbol": "KRW"
+  },
+
+
+  "signUp": {
+    "nextButton": "Next",
+    "beforeButton": "Back",
+    "completeButton": "Done",
+    "title": "Sign Up",
+    "step1Content": "Required Info",
+    "step2Content": "Additional Info",
+
+    "id": {
+      "label": "Username",
+      "placeholder": "Enter your username",
+      "duplication": "Check",
+      "successMessage": "This username is available.",
+      "errorMessage": "This username is not available."
+    },
+
+    "pw": {
+      "label": "Password",
+      "placeholder": "8–15 characters incl. letters, numbers, symbols",
+      "pwError": "Password must meet all requirements.",
+      "duplicationPWLabel": "Confirm Password",
+      "duplicationPWPlaceholder": "Re-enter your password",
+      "duplicationPWError": "Passwords do not match."
+    },
+
+    "name": {
+      "label": "Name",
+      "placeholder": "Enter your name"
+    },
+
+    "phoneNumber": {
+      "label": "Phone Number",
+      "placeholder": "Enter without '-'",
+      "verifyCode": "Verification Code",
+      "sendingMessage": "Sending...",
+      "phoneRegisteredError": "This phone number is already registered.",
+      "verifyCodePlaceholder": "Enter code",
+      "verifiedButton": "Verify",
+      "verifiedSuccess": "Verified",
+      "verifiedError": "Invalid verification code."
+    },
+
+    "email": {
+      "label": "Email",
+      "placeholder": "Enter your email",
+      "verifyCode": "Verification Code",
+      "sendingMessage": "Sending...",
+      "emailRegisteredError": "This email is already registered.",
+      "verifyCodePlaceholder": "Enter code",
+      "verifiedButton": "Verify",
+      "verifiedSuccess": "Verified",
+      "verifiedError": "Invalid verification code."
+    },
+
+    "jobRole": {
+      "label": "Job Role",
+      "selectButton": "Select Role",
+      "modifyButton": "Edit Role"
+    },
+
+    "address": {
+      "label": "Address",
+      "searchAddressButton": "Find Address",
+      "zipcodePlaceholder": "Postal Code",
+      "address1Placeholder": "Enter address",
+      "address2Placeholder": "Enter details"
+    },
+
+    "birthDay": {
+      "label": "Date of Birth"
+    },
+
+    "education": {
+      "label": "Education",
+      "placeholder": "Select your education",
+      "content": {
+        "highSchoolGraduate": "High School Graduate",
+        "universityEnrolled": "University Enrolled",
+        "universityGraduateOrExpected": "Bachelor's / Expected",
+        "graduateSchoolEnrolled": "Graduate School Enrolled",
+        "graduateSchoolGraduateOrExpected": "Master's+ / Expected"
+      }
+    },
+
+    "terms": {
+      "termsOfServiceAgreement": "(Required) Terms of Service",
+      "personalInfoAgreement": "(Required) Personal Data Use",
+      "over15": "(Required) I am 15 or older",
+      "adInfoAgreementSmsMms": "(Optional) Marketing Info (SMS/MMS)",
+      "adInfoAgreementEmail": "Marketing Info (Email)",
+      "allOptions": "Agree to All"
+    },
+
+    "gender": {
+      "label": "Gender",
+      "MALE": "Male",
+      "FEMALE": "Female",
+      "NOGENDER": "Prefer not to say"
+    },
+
+    "visa": {
+      "label": "Visa Type",
+      "placeholder": "Select your visa",
+      "searchVisaPlaceholder": "Search visa type",
+      "noSearchResultMessage": "No results found."
+    },
+
+    "nationality": {
+      "label": "Nationality",
+      "placeholder": "Select your nationality",
+      "content": {
+        "GHANA": "Ghana (가나)",
+        "GABON": "Gabon (가봉)",
+        "GUYANA": "Guyana (가이아나)",
+        "GAMBIA": "Gambia (감비아)",
+        "GUATEMALA": "Guatemala (과테말라)",
+        "GRENADA": "Grenada (그레나다)",
+        "GREECE": "Greece (그리스)",
+        "GUINEA": "Guinea (기니)",
+        "GUINEA_BISSAU": "Guinea-Bissau (기니비사우)",
+        "NAMIBIA": "Namibia (나미비아)",
+        "NAURU": "Nauru (나우루)",
+        "NIGERIA": "Nigeria (나이지리아)",
+        "REPUBLIC_OF_SOUTH_SUDAN": "Republic Of South Sudan (남수단)",
+        "SOUTH_AFRICA": "South Africa (남아프리카 공화국)",
+        "REPUBLIC_OF_SOUTH_OSSETIA": "Republic Of South Ossetia (남오세티야)",
+        "NETHERLANDS": "Netherlands (네덜란드)",
+        "NEPAL": "Nepal (네팔)",
+        "NORWAY": "Norway (노르웨이)",
+        "NEW_ZEALAND": "New Zealand (뉴질랜드)",
+        "NIGER": "Niger (니제르)",
+        "NICARAGUA": "Nicaragua (니카라과)",
+        "KOREA_REPUBLIC_OF": "Korea, Republic Of (대한민국)",
+        "TAIWAN": "Taiwan (대만)",
+        "DENMARK": "Denmark (덴마크)",
+        "DOMINICAN_REPUBLIC": "Dominican Republic (도미니카 공화국)",
+        "DOMINICA": "Dominica (도미니카 연방)",
+        "GERMANY": "Germany (독일)",
+        "EAST_TIMOR": "East Timor (동티모르)",
+        "LAO_PEOPLE_DEMOCRATIC_REPUBLIC": "Lao People’s Democratic Republic (라오스)",
+        "LIBERIA": "Liberia (라이베리아)",
+        "LATVIA": "Latvia (라트비아)",
+        "RUSSIAN_FEDERATION": "Russian Federation (러시아)",
+        "LEBANON": "Lebanon (레바논)",
+        "LESOTHO": "Lesotho (레소토)",
+        "ROMANIA": "Romania (루마니아)",
+        "LUXEMBOURG": "Luxembourg (룩셈부르크)",
+        "RWANDA": "Rwanda (르완다)",
+        "LIBYAN_ARAB_JAMAHIRIYA": "Libyan Arab Jamahiriya (리비아)",
+        "REPUBLIC_OF_LITHUANIA": "Republic of Lithuania (리투아니아)",
+        "LIECHTENSTEIN": "Liechtenstein (리히텐슈타인)",
+        "MADAGASCAR": "Madagascar (마다가스카르)",
+        "MARSHALL_ISLANDS": "Marshall Islands (마셜 제도)",
+        "MALAWI": "Malawi (말라위)",
+        "MALAYSIA": "Malaysia (말레이시아)",
+        "MALI": "Mali (말리)",
+        "MEXICO": "Mexico (멕시코)",
+        "MONACO": "Monaco (모나코)",
+        "MOROCCO": "Morocco (모로코)",
+        "MAURITIUS": "Mauritius (모리셔스)",
+        "MAURITANIA": "Mauritania (모리타니)",
+        "MOZAMBIQUE": "Mozambique (모잠비크)",
+        "MONTENEGRO": "Montenegro (몬테네그로)",
+        "MOLDOVA": "Moldova (몰도바)",
+        "MALDIVES": "Maldives (몰디브)",
+        "MALTA": "Malta (몰타)",
+        "MONGOLIA": "Mongolia (몽골)",
+        "UNITED_STATES": "United States (미국)",
+        "MYANMAR": "Myanmar (미얀마)",
+        "FEDERATED_STATES_OF_MICRONESIA": "Federated States of Micronesia (미크로네시아 연방)",
+        "VANUATU": "Vanuatu (바누아투)",
+        "BAHRAIN": "Bahrain (바레인)",
+        "BARBADOS": "Barbados (바베이도스)",
+        "VATICAN_CITY": "Vatican City (바티칸)",
+        "BAHAMAS": "Bahamas (바하마)",
+        "BANGLADESH": "Bangladesh (방글라데시)",
+        "BENIN": "Benin (베냉)",
+        "VENEZUELA": "Venezuela (베네수엘라)",
+        "VIETNAM": "Vietnam (베트남)",
+        "BELGIUM": "Belgium (벨기에)",
+        "BELARUS": "Belarus (벨라루스)",
+        "BELIZE": "Belize (벨리즈)",
+        "BOSNIA_AND_HERZEGOVINA": "Bosnia and Herzegovina (보스니아 헤르체고비나)",
+        "BOTSWANA": "Botswana (보츠와나)",
+        "BOLIVIA": "Bolivia (볼리비아)",
+        "BURUNDI": "Burundi (부룬디)",
+        "BURKINA_FASO": "Burkina Faso (부르키나파소)",
+        "BHUTAN": "Bhutan (부탄)",
+        "NORTH_MACEDONIA": "North Macedonia (북마케도니아)",
+        "NORTHERN_CYPRUS": "Northern Cyprus (북키프로스)",
+        "NORTH_KOREA": "North Korea (북한)",
+        "BULGARIA": "Bulgaria (불가리아)",
+        "BRAZIL": "Brazil (브라질)",
+        "BRUNEI": "Brunei (브루나이)",
+        "SAMOA": "Samoa (사모아)",
+        "SAUDI_ARABIA": "Saudi Arabia (사우디아라비아)",
+        "SAN_MARINO": "San Marino (산마리노)",
+        "SAO_TOME_AND_PRINCIPE": "São Tomé and Príncipe (상투메 프린시페)",
+        "WESTERN_SAHARA": "Western Sahara (서사하라)",
+        "SENEGAL": "Senegal (세네갈)",
+        "SERBIA": "Serbia (세르비아)",
+        "SEYCHELLES": "Seychelles (세이셸)",
+        "SAINT_LUCIA": "Saint Lucia (세인트루시아)",
+        "SAINT_VINCENT_AND_THE_GRENADINES": "Saint Vincent and the Grenadines (세인트빈센트 그레나딘)",
+        "SAINT_KITTS_AND_NEVIS": "Saint Kitts and Nevis (세인트키츠 네비스)",
+        "SOMALIA": "Somalia (소말리아)",
+        "SOMALILAND": "Somaliland (소말릴란드)",
+        "SOLOMON_ISLANDS": "Solomon Islands (솔로몬 제도)",
+        "SUDAN": "Sudan (수단)",
+        "SURINAME": "Suriname (수리남)",
+        "SRI_LANKA": "Sri Lanka (스리랑카)",
+        "SWEDEN": "Sweden (스웨덴)",
+        "SWITZERLAND": "Switzerland (스위스)",
+        "SPAIN": "Spain (스페인)",
+        "SLOVAKIA": "Slovakia (슬로바키아)",
+        "SLOVENIA": "Slovenia (슬로베니아)",
+        "SYRIA": "Syria (시리아)",
+        "SIERRA_LEONE": "Sierra Leone (시에라리온)",
+        "SINGAPORE": "Singapore (싱가포르)",
+        "UNITED_ARAB_EMIRATES": "United Arab Emirates (아랍에미리트)",
+        "ARMENIA": "Armenia (아르메니아)",
+        "ARGENTINA": "Argentina (아르헨티나)",
+        "ARTSAKH": "Artsakh (아르차흐)",
+        "ICELAND": "Iceland (아이슬란드)",
+        "HAITI": "Haiti (아이티)",
+        "IRELAND": "Ireland (아일랜드)",
+        "AZERBAIJAN": "Azerbaijan (아제르바이잔)",
+        "AFGHANISTAN": "Afghanistan (아프가니스탄)",
+        "ANDORRA": "Andorra (안도라)",
+        "ALBANIA": "Albania (알바니아)",
+        "ALGERIA": "Algeria (알제리)",
+        "ABKHAZIA": "Abkhazia (압하지야)",
+        "ANGOLA": "Angola (앙골라)",
+        "ANTIGUA_AND_BARBUDA": "Antigua and Barbuda (앤티가 바부다)",
+        "ERITREA": "Eritrea (에리트레아)",
+        "ESWATINI": "Eswatini (에스와티니)",
+        "ESTONIA": "Estonia (에스토니아)",
+        "ECUADOR": "Ecuador (에콰도르)",
+        "ETHIOPIA": "Ethiopia (에티오피아)",
+        "EL_SALVADOR": "El Salvador (엘살바도르)",
+        "UNITED_KINGDOM": "United Kingdom (영국)",
+        "YEMEN": "Yemen (예멘)",
+        "OMAN": "Oman (오만)",
+        "AUSTRIA": "Austria (오스트리아)",
+        "HONDURAS": "Honduras (온두라스)",
+        "JORDAN": "Jordan (요르단)",
+        "UGANDA": "Uganda (우간다)",
+        "URUGUAY": "Uruguay (우루과이)",
+        "UZBEKISTAN": "Uzbekistan (우즈베키스탄)",
+        "UKRAINE": "Ukraine (우크라이나)",
+        "IRAQ": "Iraq (이라크)",
+        "IRAN": "Iran (이란)",
+        "ISRAEL": "Israel (이스라엘)",
+        "EGYPT": "Egypt (이집트)",
+        "ITALY": "Italy (이탈리아)",
+        "INDIA": "India (인도)",
+        "INDONESIA": "Indonesia (인도네시아)",
+        "JAPAN": "Japan (일본)",
+        "JAMAICA": "Jamaica (자메이카)",
+        "ZAMBIA": "Zambia (잠비아)",
+        "EQUATORIAL_GUINEA": "Equatorial Guinea (적도 기니)",
+        "GEORGIA": "Georgia (조지아)",
+        "CHINA": "China (중국)",
+        "CENTRAL_AFRICAN_REPUBLIC": "Central African Republic (중앙아프리카 공화국)",
+        "DJIBOUTI": "Djibouti (지부티)",
+        "ZIMBABWE": "Zimbabwe (짐바브웨)",
+        "CHAD": "Chad (차드)",
+        "CZECH_REPUBLIC": "Czech Republic (체코)",
+        "CHILE": "Chile (칠레)",
+        "CAMEROON": "Cameroon (카메룬)",
+        "CABO_VERDE": "Cabo Verde (카보베르데)",
+        "KAZAKHSTAN": "Kazakhstan (카자흐스탄)",
+        "QATAR": "Qatar (카타르)",
+        "CAMBODIA": "Cambodia (캄보디아)",
+        "CANADA": "Canada (캐나다)",
+        "KENYA": "Kenya (케냐)",
+        "COMOROS": "Comoros (코모로)",
+        "KOSOVO": "Kosovo (코소보)",
+        "COSTA_RICA": "Costa Rica (코스타리카)",
+        "COTE_DIVOIRE": "Côte d’Ivoire (코트디부아르)",
+        "COLOMBIA": "Colombia (콜롬비아)",
+        "REPUBLIC_OF_THE_CONGO": "Republic of the Congo (콩고 공화국)",
+        "DEMOCRATIC_REPUBLIC_OF_THE_CONGO": "Democratic Republic of the Congo (콩고 민주 공화국)",
+        "CUBA": "Cuba (쿠바)",
+        "KUWAIT": "Kuwait (쿠웨이트)",
+        "CROATIA": "Croatia (크로아티아)",
+        "KYRGYZSTAN": "Kyrgyzstan (키르기스스탄)",
+        "KIRIBATI": "Kiribati (키리바시)",
+        "CYPRUS": "Cyprus (키프로스)",
+        "TAJIKISTAN": "Tajikistan (타지키스탄)",
+        "TANZANIA": "Tanzania (탄자니아)",
+        "THAILAND": "Thailand (태국)",
+        "TOGO": "Togo (토고)",
+        "TONGA": "Tonga (통가)",
+        "TURKMENISTAN": "Turkmenistan (투르크메니스탄)",
+        "TUVALU": "Tuvalu (투발루)",
+        "TUNISIA": "Tunisia (튀니지)",
+        "TURKIYE": "Türkiye (튀르키예)",
+        "TRANSNISTRIA": "Transnistria (트란스니스트리아)",
+        "TRINIDAD_AND_TOBAGO": "Trinidad and Tobago (트리니다드 토바고)",
+        "PANAMA": "Panama (파나마)",
+        "PARAGUAY": "Paraguay (파라과이)",
+        "PAKISTAN": "Pakistan (파키스탄)",
+        "PAPUA_NEW_GUINEA": "Papua New Guinea (파푸아 뉴기니아)",
+        "PALAU": "Palau (팔라우)",
+        "PALESTINE": "Palestine (팔레스타인)",
+        "PERU": "Peru (페루)",
+        "PORTUGAL": "Portugal (포르투갈)",
+        "POLAND": "Poland (폴란드)",
+        "FRANCE": "France (프랑스)",
+        "FIJI": "Fiji (피지)",
+        "FINLAND": "Finland (핀란드)",
+        "PHILIPPINES": "Philippines (필리핀)",
+        "HUNGARY": "Hungary (헝가리)",
+        "AUSTRALIA": "Australia (호주)",
+        "HONG_KONG": "Hong Kong (홍콩)",
+        "MACAU": "Macau (마카오)"
+      }
+    }
+  },
+
+  "recruitDetail": {
+    "apply": {
+      "title": "Apply",
+      "close": "Close",
+      "InputApplicationMethodButton": {
+        "copy": "Copying...",
+        "EMAIL": "Copy Email",
+        "PHONE_SMS": "Copy Phone Number",
+        "WEBSITE": "Go to Website"
+      },
+      "applicationMethod": {
+        "EMAIL": "'Email Application'",
+        "PHONE_SMS": "'Phone / SMS Application'",
+        "WEBSITE": "'Website Application'"
+      }
+    },
+    "headerTitle": "Job Posting",
+    "recruitInfo": {
+      "jobCategories": "Job Category",
+      "workDayType": "Work Days",
+      "workTime": "Work Hours",
+      "address": "Work Location",
+      "salary": "Salary",
+      "salarySymbol": "₩",
+      "workType": {
+        "ONSITE": "On-site",
+        "HYBRID": "Hybrid",
+        "REMOTE": "Remote",
+        "ETC": "Other"
+      },
+      "salaryType": {
+        "ANNUAL": "Yearly",
+        "DAILY": "Daily",
+        "WEEKLY": "Weekly",
+        "HOURLY": "Hourly",
+        "MONTHLY": "Monthly",
+        "ETC": "Other"
+      },
+      "workDaysType": {
+        "WEEKDAYS": "Weekdays",
+        "WEEKENDS": "Weekends",
+        "FULL_WEEK": "7 Days",
+        "SIX_DAYS": "6 Days",
+        "MONDAY": "Mon",
+        "TUESDAY": "Tue",
+        "WEDNESDAY": "Wed",
+        "THURSDAY": "Thu",
+        "FRIDAY": "Fri",
+        "SATURDAY": "Sat",
+        "SUNDAY": "Sun",
+        "ETC": "Other"
+      }
+    },
+    "detailInfo": {
+      "title": "Details",
+      "mainTasks": "Tasks",
+      "qualifications": "Requirements",
+      "preferences": "Preferred",
+      "others": "Other"
+    },
+    "companyInfo": {
+      "companyAddress": "Address",
+      "representativeName": "CEO",
+      "businessType": "Industry",
+      "companyType": "Company Type",
+      "establishedDate": "Founded"
+    }
+  },
+
+
+  "recruitHome": {
+    "h1": "All Job Posts",
+    "searchPlaceholder": "Search job postings",
+    "countSuffix": " posts",
+    "filters": {
+      "visa": "Visa",
+      "jobRoles": "Job Role",
+      "language": "Required Language",
+      "region": "Work Location",
+      "contractType": "Contract Type"
+    },
+    "card": {
+      "othersSuffix": "Other than",
+      "count": "type(s)"
+    },
+    "loadingMorePostsMessage": "Loading more posts...",
+    "noMorePostsMessage": "You've reached the end of the list.",
+    "noSearchResultsMessage": "No search results found."
+  },
+
+  "filter": {
+    "unknown": "unknown",
+    "button": {
+      "reset": "Reset",
+      "apply": "Apply"
+    },
+
+    "contractTypeFilter": {
+      "title": "Select Contract Type",
+      "content": {
+        "INTERN": "Intern",
+        "NEWCOMER": "Entry-level",
+        "EXPERIENCED": "Experienced",
+        "CONTRACT": "Contract",
+        "REGULAR": "Full-time"
+      }
+    },
+
+    "regionFilter": {
+      "title": "Select Region",
+      "content": {
+        "SEOUL": "Seoul",
+        "GYEONGGI": "Gyeonggi",
+        "INCHEON": "Incheon",
+        "BUSAN": "Busan",
+        "DAEJEON": "Daejeon",
+        "DAEGU": "Daegu",
+        "ULSAN": "Ulsan",
+        "GWANGJU": "Gwangju",
+        "GANGWON": "Gangwon",
+        "SEJONG": "Sejong",
+        "CHUNGBUK": "Chungbuk",
+        "CHUNGNAM": "Chungnam",
+        "GYEONGBUK": "Gyeongbuk",
+        "GYEONGNAM": "Gyeongnam",
+        "JEJU": "Jeju",
+        "JEONBUK": "Jeonbuk",
+        "JEONNAM": "Jeonnam"
+      }
+    },
+
+    "requiredLanguageFilter": {
+      "title": "Select Language",
+      "placeHolder": "Search related languages.",
+      "content": {
+        "ENGLISH": "English",
+        "CHINESE": "Chinese",
+        "HINDI": "Hindi",
+        "SPANISH": "Spanish",
+        "FRENCH": "French",
+        "ARABIC": "Arabic",
+        "BENGALI": "Bengali",
+        "PORTUGUESE": "Portuguese",
+        "RUSSIAN": "Russian",
+        "URDU": "Urdu",
+        "INDONESIAN": "Indonesian",
+        "GERMAN": "German",
+        "JAPANESE": "Japanese",
+        "SWAHILI": "Swahili",
+        "MARATHI": "Marathi",
+        "TELUGU": "Telugu",
+        "TURKISH": "Turkish",
+        "TAMIL": "Tamil",
+        "VIETNAMESE": "Vietnamese",
+        "KOREAN": "Korean",
+        "ITALIAN": "Italian",
+        "PERSIAN": "Persian",
+        "POLISH": "Polish",
+        "UKRAINIAN": "Ukrainian"
+      }
+    },
+
+    "jobRoleFilter": {
+      "title": "Select Job Role",
+      "jobRoleSearchPlaceHolder": "Search by job category or role.",
+      "category": {
+        "JOB_1": {
+          "unknown": "unknown",
+          "title": "IT/Development",
+          "SOFTWARE_ENGINEER": "Software Engineer",
+          "WEB_DEVELOPER": "Web Developer",
+          "BACKEND_DEVELOPER": "Backend Developer",
+          "FRONTEND_DEVELOPER": "Frontend Developer",
+          "JAVA_DEVELOPER": "Java Developer",
+          "C_CPP_DEVELOPER": "C/C++ Developer",
+          "PYTHON_DEVELOPER": "Python Developer",
+          "MACHINE_LEARNING_ENGINEER": "Machine Learning Engineer",
+          "DEVOPS_ENGINEER": "DevOps / System Administrator",
+          "DATA_ENGINEER": "Data Engineer",
+          "NODEJS_DEVELOPER": "Node.js Developer",
+          "SYSTEM_NETWORK_ADMIN": "System/Network Administrator",
+          "ANDROID_DEVELOPER": "Android Developer",
+          "IOS_DEVELOPER": "iOS Developer",
+          "EMBEDDED_DEVELOPER": "Embedded Developer",
+          "TECH_SUPPORT": "Technical Support",
+          "QA_TEST_ENGINEER": "QA / Test Engineer",
+          "DATA_SCIENTIST": "Data Scientist",
+          "SECURITY_ENGINEER": "Security Engineer",
+          "BIGDATA_ENGINEER": "Big Data Engineer",
+          "HARDWARE_ENGINEER": "Hardware Engineer",
+          "BLOCKCHAIN_ENGINEER": "Blockchain Engineer",
+          "CROSS_PLATFORM_APP_DEVELOPER": "Cross-Platform App Developer",
+          "DBA": "DBA",
+          "PHP_DEVELOPER": "PHP Developer",
+          "DOTNET_DEVELOPER": ".NET Developer",
+          "GRAPHICS_ENGINEER": "Graphics Engineer",
+          "AR_VR_ENGINEER": "AR/VR Engineer",
+          "RUBY_ON_RAILS_DEVELOPER": "Ruby on Rails Developer"
+        },
+        "JOB_2": {
+          "unknown": "unknown",
+          "title": "Business/Management",
+          "PM_PO": "PM/PO",
+          "PROJECT_MANAGER": "Project Manager",
+          "STRATEGY_PLANNER": "Strategy Planner",
+          "OPERATIONS_MANAGER": "Operations Manager",
+          "DATA_ANALYST": "Data Analyst",
+          "BRAND_MANAGER": "Brand Manager",
+          "GLOBAL_BUSINESS_DEVELOPER": "Global Business Developer / Planner",
+          "CONSULTANT": "Consultant",
+          "PURCHASING_MANAGER": "Purchasing Manager",
+          "BUSINESS_INNOVATOR": "Business Innovator",
+          "AGILE_COACH": "Agile Coach"
+        },
+        "JOB_3": {
+          "unknown": "unknown",
+          "title": "Marketing/Advertising",
+          "MARKETING_MANAGER": "Marketing Manager",
+          "DIGITAL_MARKETER": "Digital Marketer",
+          "CONTENT_MARKETER": "Content Marketer",
+          "PERFORMANCE_MARKETER": "Performance Marketer",
+          "BRAND_MARKETER": "Brand Marketer",
+          "GLOBAL_MARKETING_MANAGER": "Global Marketing Manager",
+          "SNS_MARKETER": "SNS Marketer",
+          "PR_SPECIALIST": "PR Specialist",
+          "GROWTH_HACKER": "Growth Hacker",
+          "MARKETING_DIRECTOR": "Marketing Director",
+          "MARKET_RESEARCHER": "Market Researcher"
+        },
+        "JOB_4": {
+          "unknown": "unknown",
+          "title": "Design",
+          "UI_UX_DESIGNER": "UI/UX Designer",
+          "WEB_DESIGNER": "Web Designer",
+          "GRAPHIC_DESIGNER": "Graphic Designer",
+          "SPACE_DESIGNER": "Space Designer",
+          "MOTION_DESIGNER": "Video/Motion Designer",
+          "FASHION_DESIGNER": "Fashion Designer",
+          "ART_DIRECTOR": "Art Director",
+          "INDUSTRIAL_DESIGNER": "Industrial Designer",
+          "FURNITURE_DESIGNER": "Furniture Designer",
+          "LANDSCAPE_DESIGNER": "Landscape Designer"
+        },
+        "JOB_5": {
+          "unknown": "unknown",
+          "title": "Sales",
+          "INTERNATIONAL_SALES": "International Sales",
+          "TECHNICAL_SALES": "Technical Sales",
+          "SOLUTION_CONSULTANT": "Solution Consultant",
+          "MEDIA_SALES": "Media Sales",
+          "CUSTOMER_SUCCESS_MANAGER": "Customer Success Manager",
+          "SALES_ENGINEER": "Sales Engineer"
+        },
+        "JOB_6": {
+          "unknown": "unknown",
+          "title": "Customer Service/Retail",
+          "GLOBAL_CS_MANAGER": "Global CS Manager",
+          "RETAIL_MD": "Retail MD",
+          "CUSTOMER_SUPPORT": "Customer Support",
+          "FASHION_MD": "Fashion MD",
+          "CRM_SPECIALIST": "CRM Specialist",
+          "RECEPTIONIST": "Receptionist",
+          "TRAVEL_AGENT": "Travel Agent",
+          "FLIGHT_ATTENDANT": "Flight Attendant",
+          "STORE_CLERK": "Store Clerk",
+          "TOURISM_WORKER": "Tourism/Accommodation Worker"
+        },
+        "JOB_7": {
+          "unknown": "unknown",
+          "title": "Translation/Interpretation",
+          "INTERPRETER": "Interpreter",
+          "TRANSLATOR": "Translator",
+          "LOCALIZATION_SPECIALIST": "Localization Specialist"
+        },
+        "JOB_8": {
+          "unknown": "unknown",
+          "title": "Media",
+          "CONTENT_CREATOR": "Content Creator",
+          "VIDEO_EDITOR": "Video Editor",
+          "VIDEO_PRODUCER": "Video Producer",
+          "WRITER": "Writer",
+          "PHOTOGRAPHER": "Photographer",
+          "JOURNALIST": "Journalist",
+          "CURATOR": "Curator"
+        },
+        "JOB_9": {
+          "unknown": "unknown",
+          "title": "Engineering/Design",
+          "ELECTRICAL_ENGINEER": "Electrical Engineer",
+          "ROBOTICS_AUTOMATION_ENGINEER": "Robotics/Automation Engineer",
+          "MECHANICAL_ENGINEER": "Mechanical Engineer",
+          "CAD_3D_DESIGNER": "CAD/3D Designer",
+          "ELECTRIC_ENGINEER": "Electric Engineer",
+          "CONTROL_ENGINEER": "Control Engineer",
+          "PRODUCT_ENGINEER": "Product Engineer",
+          "ELECTROMECHANICAL_ENGINEER": "Electromechanical Engineer",
+          "EQUIPMENT_ENGINEER": "Equipment Engineer",
+          "QA_ENGINEER": "QA Engineer",
+          "INDUSTRIAL_ENGINEER": "Industrial Engineer",
+          "RF_ENGINEER": "RF Engineer",
+          "CHEMICAL_ENGINEER": "Chemical Engineer",
+          "AEROSPACE_ENGINEER": "Aerospace Engineer",
+          "IC_ENGINEER": "I&C Engineer",
+          "MATERIAL_ENGINEER": "Materials Engineer",
+          "PLANT_ENGINEER": "Plant Engineer",
+          "PLASTIC_ENGINEER": "Plastic Engineer",
+          "QC_ENGINEER": "QC Engineer",
+          "STRUCTURAL_ENGINEER": "Structural Engineer",
+          "CONSTRUCTION_ENGINEER": "Construction Engineer",
+          "CIVIL_ENGINEER": "Civil Engineer",
+          "ENVIRONMENTAL_ENGINEER": "Environmental Engineer",
+          "PRODUCTION_ENGINEER": "Production Engineer",
+          "RND_RESEARCHER": "R&D / Researcher"
+        },
+        "JOB_10": {
+          "unknown": "unknown",
+          "title": "HR",
+          "GLOBAL_HR_MANAGER": "Global HR Manager",
+          "RECRUITER": "Recruiter",
+          "HR_CONSULTANT": "HR Consultant",
+          "TECH_TRAINER": "Technical Trainer",
+          "INHOUSE_TRAINER": "In-house Trainer"
+        },
+        "JOB_11": {
+          "unknown": "unknown",
+          "title": "Game Production",
+          "GAME_PLANNER": "Game Planner",
+          "GAME_ARTIST": "Game Artist",
+          "GAME_CLIENT_DEVELOPER": "Game Client Developer",
+          "UNITY_DEVELOPER": "Unity Developer",
+          "GAME_GRAPHIC_DESIGNER": "Game Graphic Designer",
+          "GAME_SERVER_DEVELOPER": "Game Server Developer",
+          "MOBILE_GAME_DEVELOPER": "Mobile Game Developer",
+          "UNREAL_DEVELOPER": "Unreal Developer"
+        },
+        "JOB_12": {
+          "unknown": "unknown",
+          "title": "Finance",
+          "INVESTMENT_BANKER": "Investment Banker",
+          "ASSET_MANAGER": "Asset Manager",
+          "FINANCIAL_ENGINEER": "Financial Engineer"
+        },
+        "JOB_13": {
+          "unknown": "unknown",
+          "title": "Manufacturing/Production",
+          "MACHINE_TECHNICIAN": "Machine Technician",
+          "MANUFACTURING_TEST_ENGINEER": "Manufacturing Test Engineer",
+          "MANUFACTURING_ENGINEER": "Manufacturing Engineer",
+          "MANUFACTURING_CHEMIST": "Manufacturing Chemist",
+          "SEMICONDUCTOR_DISPLAY_ENGINEER": "Semiconductor/Display Engineer",
+          "PRODUCTION_WORKER": "Production Worker"
+        },
+        "JOB_14": {
+          "unknown": "unknown",
+          "title": "Education",
+          "INSTRUCTOR": "Instructor",
+          "LANGUAGE_EDUCATOR": "Language Educator"
+        },
+        "JOB_15": {
+          "unknown": "unknown",
+          "title": "Healthcare/Pharma/Bio",
+          "BIOTECH_RESEARCHER": "Biotech Researcher",
+          "CLINICAL_RESEARCHER": "Clinical Researcher",
+          "MICROBIOLOGIST": "Microbiologist",
+          "HOSPITAL_COORDINATOR": "Hospital Coordinator",
+          "PHARMACEUTICAL_CHEMIST": "Pharmaceutical Chemist",
+          "GENETIC_ENGINEER": "Genetic Engineer",
+          "CAREGIVER": "Caregiver"
+        },
+        "JOB_16": {
+          "unknown": "unknown",
+          "title": "Logistics/Trade",
+          "LOGISTICS_MANAGER": "Logistics Manager",
+          "LOGISTICS_ANALYST": "Logistics Analyst",
+          "EXPORT_IMPORT_OFFICER": "Export/Import Officer",
+          "TRADE_OFFICER": "Trade Officer",
+          "BUYER_MANAGER": "Buyer Manager",
+          "AIR_TRANSPORT_AGENT": "Air Transport Agent",
+          "MARINE_TRANSPORT_AGENT": "Marine Transport Agent",
+          "LOGISTICS_FIELD_WORKER": "Logistics Field Worker"
+        },
+        "JOB_17": {
+          "unknown": "unknown",
+          "title": "Food Service",
+          "FOOD_SERVICE_WORKER": "Food Service Worker",
+          "CHEF": "Chef",
+          "MENU_DEVELOPER": "Menu Developer",
+          "BARTENDER": "Bartender",
+          "SOMMELIER": "Sommelier",
+          "FOOD_STYLIST": "Food Stylist"
+        },
+        "JOB_18": {
+          "unknown": "unknown",
+          "title": "Construction/Facilities",
+          "ARCHITECT": "Architect",
+          "CONSTRUCTION_SUPERVISOR": "Construction Supervisor",
+          "MAINTENANCE_MANAGER": "Maintenance Manager",
+          "CONSTRUCTION_WORKER": "Construction Worker",
+          "WELDER": "Welder",
+          "CARPENTER": "Carpenter",
+          "HEAVY_EQUIPMENT_TECHNICIAN": "Heavy Equipment Technician"
+        },
+        "JOB_19": {
+          "unknown": "unknown",
+          "title": "Entertainment",
+          "MODEL": "Model",
+          "ACTOR": "Actor",
+          "SHOW_HOST": "Show Host"
+        }
+      }
+    },
+
+    "visaFilter": {
+      "title": "Select Visa",
+      "content": {
+        "A1": "A-1 Diplomat",
+        "A2": "A-2 Official",
+        "A3": "A-3 Treaty",
+        "B1": "B-1 Exempt",
+        "B2": "B-2 Tourist",
+        "C1": "C-1 Journalism",
+        "C3": "C-3 Short Visit",
+        "C4": "C-4 Short Work",
+        "D2": "D-2 Student",
+        "D3": "D-3 Trainee",
+        "D4": "D-4 Training",
+        "D5": "D-5 Press",
+        "D6": "D-6 Religion",
+        "D7": "D-7 Transfer",
+        "D8": "D-8 Investment",
+        "D9": "D-9 Trade",
+        "D10": "D-10 Job Seeking",
+        "E1": "E-1 Professor",
+        "E2": "E-2 Instructor",
+        "E3": "E-3 Research",
+        "E4": "E-4 Tech Lead",
+        "E5": "E-5 Professional",
+        "E6": "E-6 Performance",
+        "E7": "E-7 Specialist",
+        "E8": "E-8 Seasonal",
+        "E9": "E-9 Worker",
+        "E10": "E-10 Seafarer",
+        "F1": "F-1 Family",
+        "F2": "F-2 Resident",
+        "F3": "F-3 Dependent",
+        "F4": "F-4 Korean",
+        "F5": "F-5 Permanent",
+        "F6": "F-6 Marriage",
+        "G1": "G-1 Other",
+        "H1": "H-1 Working Holiday",
+        "H2": "H-2 Visitor Work",
+        "F27": "F-2-7 Points",
+        "unknown": "Unknown"
+      }
+    }
+  }
+
+}
