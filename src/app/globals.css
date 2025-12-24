@@ -43,7 +43,7 @@
 /* 전역 폰트 스타일 */
 body {
   font-family: var(--font-pretendard), sans-serif; /* Pretendard를 기본 폰트로 */
-  background-color: #E9EBEF;
+  background-color: #ffffff;
   color: #1e1e1e;
 }
 
