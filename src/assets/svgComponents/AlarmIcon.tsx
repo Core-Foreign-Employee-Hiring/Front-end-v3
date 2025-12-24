@@ -1,0 +1,6 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgAlarmIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 32 32" {...props}><mask id="alarm-icon_svg__a" width={32} height={32} x={0} y={0} maskUnits="userSpaceOnUse" style={{
+    maskType: "alpha"
+  }}><path fill="#D9D9D9" d="M0 0h32v32H0z" /></mask><g mask="url(#alarm-icon_svg__a)"><path fill="#1E1E1E" d="M6.838 24.489a.84.84 0 0 1-.597-.227.74.74 0 0 1-.241-.563q0-.335.241-.558a.85.85 0 0 1 .597-.223H8.41v-9.695q0-2.533 1.65-4.506t4.273-2.472v-.682q0-.651.486-1.107A1.66 1.66 0 0 1 15.999 4q.694 0 1.18.456.488.456.488 1.107v.686q2.624.495 4.274 2.468t1.649 4.506v9.695h1.572q.357 0 .597.227t.241.563q0 .336-.241.558a.85.85 0 0 1-.597.223zM15.998 28q-.995 0-1.702-.664-.706-.664-.706-1.597h4.82q0 .936-.708 1.598a2.4 2.4 0 0 1-1.704.663m-5.913-5.082h11.83v-9.695q0-2.302-1.73-3.925T16 7.676q-2.456 0-4.185 1.622-1.73 1.623-1.73 3.925z" /></g></svg>;
+export default SvgAlarmIcon;

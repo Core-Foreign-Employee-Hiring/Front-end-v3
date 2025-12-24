@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgSearchIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 32 32" {...props}><g clipPath="url(#search-icon_svg__a)"><path fill="#1E1E1E" d="m27.57 25.505-4.9-4.91c-.36-.36-.86-.47-1.33-.37l-1.26-1.26a9.2 9.2 0 0 0 1.47-2.66.773.773 0 0 0-.48-.99c-.4-.14-.85.07-.99.48-1.06 3.03-3.89 5.06-7.04 5.06-4.13 0-7.48-3.43-7.48-7.65s3.35-7.64 7.48-7.64c3.88 0 7.15 3.09 7.46 7.04.03.43.41.74.84.72.43-.03.75-.41.72-.84-.38-4.76-4.34-8.48-9.02-8.48-4.99 0-9.04 4.13-9.04 9.2s4.05 9.2 9.04 9.2c2.25 0 4.35-.86 5.97-2.31l1.23 1.23c-.1.47 0 .97.37 1.33l4.9 4.91c.28.28.66.43 1.03.43s.75-.14 1.03-.43c.57-.57.57-1.49 0-2.06" /></g><defs><clipPath id="search-icon_svg__a"><path fill="#fff" d="M4 4.005h24v23.99H4z" /></clipPath></defs></svg>;
+export default SvgSearchIcon;

@@ -1,13 +1,14 @@
 {
   "navigation": {
     "home": "Home",
-    "archive": "Acceptance Archive",
-    "study": "Study",
+    "recruit": "Jobs",
+    "spec": "Career Assessment",
+    "interview": "AI Interview",
+    "content": "Content",
+    "program": "Programs",
     "login": "Log In",
     "signup": "Sign Up",
-    "loginRequiredMessage": "Login is required",
-    "logout": "Log Out",
-    "nameSuffix": ""
+    "logout": "Log Out"
   },
 
   "login": {
