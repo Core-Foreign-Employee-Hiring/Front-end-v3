@@ -1,6 +1,7 @@
 import { Button } from '@/components/common'
 
 interface BottomButtonProps {
+  step?: '1' | '2' | '3' | '4' | '5'
   handlePrev?: () => void
   isPrevButtonActive?: boolean
   handleNext?: () => void
@@ -11,10 +12,11 @@ export default function BottomButton({
   handlePrev,
   handleNext,
   isNextButtonActive,
-  isPrevButtonActive,
+  isPrevButtonActive = true,
+  step = '1',
 }: BottomButtonProps) {
   return (
-    <div className="fixed bottom-0 left-0 flex w-full justify-between px-5 py-5">
+    <div className="fixed bottom-0 left-0 flex w-full justify-between bg-white px-5 py-5">
       {handlePrev ? (
         <Button
           state={isPrevButtonActive ? 'default' : 'disable'}
@@ -36,7 +38,7 @@ export default function BottomButton({
           customClassName={'w-[180px]'}
           variant={'primary'}
         >
-          다음
+          {step === '5' ? '제출' : '다음'}
         </Button>
       ) : (
         <div className="w-[180px]" />
