@@ -1,12 +1,10 @@
-import Label from '@/components/common/Label'
-import Button from '@/components/common/Button'
+'use client'
+
+import { Dispatch, SetStateAction, useEffect } from 'react'
 import { DeleteIcon } from '@/assets/svgComponents'
-import Spacing from '@/components/common/Spacing'
-import EduSchool from '@/components/Spec/education/EduSchool'
-import EduDuration from '@/components/Spec/education/EduDuration'
-import EduMajor from '@/components/Spec/education/EduMajor'
-import EduGrades from '@/components/Spec/education/EduGrades'
-import { Dispatch } from 'react'
+import { Button, Label, Spacing } from '@/components/common'
+import { EduDuration, EduGrades, EduMajor, EduSchool } from '@/components/spec'
+import { useSpecStore } from '@/store/specStore'
 
 interface AddEduFormProps {
   isOpen: boolean
@@ -14,6 +12,12 @@ interface AddEduFormProps {
 }
 
 export default function AddEduForm({ isOpen, setIsOpen }: AddEduFormProps) {
+  const education = useSpecStore((state) => state.spec.education)
+
+  useEffect(() => {
+    console.log('education', education)
+  }, [education])
+
   return (
     <>
       <Label

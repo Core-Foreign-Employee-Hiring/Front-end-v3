@@ -1,3 +1,5 @@
+'use client'
+
 import { FocusEvent } from 'react'
 import Label from '@/components/common/Label'
 import Spacing from '@/components/common/Spacing'
@@ -8,33 +10,44 @@ export default function EduGrades() {
   const education = useSpecStore((state) => state.spec.education)
   const setEducation = useSpecStore((state) => state.setEducation)
 
-  const updateField = (value: string, fieldName: keyof typeof education) => {
+  // 1. education이 null이면 렌더링하지 않음 (타입 가드)
+  if (!education) return null
+
+  // 2. 숫자로 변환하여 업데이트하는 로직
+  const updateField = (value: string, fieldName: 'earnedScore' | 'maxScore') => {
+    // 입력값이 빈 문자열이면 0으로 처리하거나, 숫자 타입으로 변환
+    const numValue = value === '' ? 0 : Number(value)
+
     setEducation({
       ...education,
-      [fieldName]: value,
+      [fieldName]: numValue,
     })
   }
 
-  // 1. 포커스 시 0 제거 로직
-  const handleFocus = (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>, fieldName: keyof typeof education) => {
-    // 값이 '0'이면 빈 값으로 변경 (사용자가 바로 입력할 수 있게)
+  const handleFocus = (
+    e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+    fieldName: 'earnedScore' | 'maxScore'
+  ) => {
     if (e.target.value === '0') {
       updateField('', fieldName)
     }
   }
 
-  // 2. 포커스 아웃 시 빈 값이면 다시 0으로 채우는 로직 (선택 사항)
-  const handleBlur = (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>, fieldName: keyof typeof education) => {
+  const handleBlur = (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>, fieldName: 'earnedScore' | 'maxScore') => {
     if (e.target.value === '') {
       updateField('0', fieldName)
     }
   }
 
-  const getStatus = () => (education.earnedScore > education.maxScore ? 'error' : 'default')
+  // score가 undefined나 null일 경우를 대비한 안전한 비교
+  const getStatus = () => {
+    const { earnedScore, maxScore } = education
+    return Number(earnedScore) > Number(maxScore) ? 'error' : 'default'
+  }
 
   return (
     <div className="w-full">
-      <Label label={'학점'} className="kr-subtitle-lg text-gray5" isRequired={true}></Label>
+      <Label label={'학점'} className="kr-subtitle-lg text-gray5" isRequired={true} />
       <Spacing height={8} />
       <div className="flex w-full gap-x-4">
         <TextInput
@@ -44,7 +57,7 @@ export default function EduGrades() {
           onBlur={(e) => handleBlur(e, 'earnedScore')}
           onChange={(e) => updateField(e.target.value, 'earnedScore')}
           inputType={'number'}
-          value={education.earnedScore}
+          value={education.earnedScore ?? 0} // nullish 대비
           placeholder={'학점'}
         />
         <TextInput
@@ -53,7 +66,7 @@ export default function EduGrades() {
           onBlur={(e) => handleBlur(e, 'maxScore')}
           onChange={(e) => updateField(e.target.value, 'maxScore')}
           inputType={'number'}
-          value={education.maxScore}
+          value={education.maxScore ?? 0} // nullish 대비
           placeholder={'총점'}
         />
       </div>

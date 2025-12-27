@@ -19,13 +19,14 @@ export default function EduSchool() {
     return universityList.filter((university) => university.toLowerCase().includes(searchTerm.toLowerCase()))
   }, [education?.schoolName])
 
+  if (!education) return null
+
   const updateField = (fieldName: keyof typeof education, value: string) => {
     setEducation({
       ...education,
       [fieldName]: value,
     })
   }
-
   /**
    * 직접 대학교 입력시
    */
