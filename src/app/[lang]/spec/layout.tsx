@@ -1,5 +1,4 @@
-import PageLayout from '@/components/common/PageLayout'
-import Header from '@/components/common/Header'
+import { Header, PageLayout } from '@/components/common'
 
 export default async function SpecLayout({
   children,
@@ -11,7 +10,12 @@ export default async function SpecLayout({
   const { lang } = await params
   return (
     <div>
-      <Header headerType={'default'} currentLng={lang} />
+      <div className="desktop:block hidden">
+        <Header headerType={'default'} currentLng={lang} />
+      </div>
+      <div className="desktop:hidden block">
+        <Header headerType={'dynamic'} currentLng={lang} title={'스펙입력'} />
+      </div>
       <PageLayout>{children}</PageLayout>
     </div>
   )
