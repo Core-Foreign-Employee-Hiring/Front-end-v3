@@ -1,0 +1,6 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgUploadIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 20 20" {...props}><mask id="upload-icon_svg__a" width={20} height={20} x={0} y={0} maskUnits="userSpaceOnUse" style={{
+    maskType: "alpha"
+  }}><path fill="#D9D9D9" d="M0 0h20v20H0z" /></mask><g mask="url(#upload-icon_svg__a)"><path fill="#6F717C" d="M5.256 16.25q-.63 0-1.069-.437a1.45 1.45 0 0 1-.437-1.07V13.11q0-.266.18-.445.18-.18.445-.18.266 0 .445.18.18.18.18.445v1.635q0 .096.08.176t.176.08h9.488a.25.25 0 0 0 .176-.08.25.25 0 0 0 .08-.176v-1.635q0-.266.18-.445.18-.18.445-.18.266 0 .445.18.18.18.18.445v1.635q0 .63-.437 1.069a1.45 1.45 0 0 1-1.07.437zM9.375 6.157 7.773 7.76a.6.6 0 0 1-.442.183.63.63 0 0 1-.45-.196.65.65 0 0 1-.187-.439.58.58 0 0 1 .187-.44l2.592-2.59A.7.7 0 0 1 10 4.064a.69.69 0 0 1 .527.213L13.12 6.87a.59.59 0 0 1 .183.435.64.64 0 0 1-.184.443.64.64 0 0 1-.445.2.6.6 0 0 1-.446-.187l-1.602-1.603v6.375q0 .267-.18.446a.6.6 0 0 1-.445.18.6.6 0 0 1-.445-.18.6.6 0 0 1-.18-.446z" /></g></svg>;
+export default SvgUploadIcon;
