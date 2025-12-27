@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge'
 
 interface DropDownProps {
   isDropDownOpen: boolean
-  dropDownHandler: () => void
+  dropDownOpenHandler: () => void
   children: ReactNode
   defaultValue: string
   selectedValue: string | undefined
@@ -14,7 +14,7 @@ interface DropDownProps {
 export default function DropDown({
   children,
   isDropDownOpen,
-  dropDownHandler,
+  dropDownOpenHandler,
   defaultValue,
   selectedValue,
   className,
@@ -22,7 +22,7 @@ export default function DropDown({
   return (
     <div className={twMerge('relative w-full', className)}>
       <SelectedDropBoxContentBox
-        dropDownHandler={dropDownHandler}
+        dropDownHandler={dropDownOpenHandler}
         isDropDownOpen={isDropDownOpen}
         selectedValue={selectedValue}
         defaultValue={defaultValue}
