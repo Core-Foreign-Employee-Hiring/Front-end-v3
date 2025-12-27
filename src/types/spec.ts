@@ -1,39 +1,33 @@
 export interface SpecType {
-  education: SpecEducationType
-  languageSkill: SpecLanguageSkillType
-  certifications: SpecCertificationType[]
-  careers: SpecCareerType[]
-  awards: SpecAwardType[]
-  experiences: SpecExperienceType[]
+  education: SpecEducationType | null
+  languageSkills: SpecLanguageSkillType[] | null
+  certifications: SpecCertificationType[] | null
+  careers: SpecCareerType[] | null
+  awards: SpecAwardType[] | null
+  experiences: SpecExperienceType[] | null
 }
 export interface SpecEducationType {
   schoolName: string
   majors: string[]
   admissionDate: string // 2025-03
-  graduationDate: string // 2025-03
+  graduationDate: string | null // 2025-03
   earnedScore: number
   maxScore: number
 }
 export interface SpecLanguageSkillType {
-  klptScore: number
-  englishSkills: {
-    type: string
-    score: string
-  }[]
+  title: string
+  score: string
 }
 export interface SpecCertificationType {
   certificationName: string
-  acquiredYear: number
-  acquiredMonth: number
-  documentUrl: string
+  acquiredDate: string
+  documentUrl: string | null | File
 }
 export interface SpecCareerType {
   companyName: string
   position: string
-  startYear: number
-  startMonth: number
-  endYear: number
-  endMonth: number
+  startDate: string
+  endDate: string | null
   contractType: ContractEnumType
   highlight: string
 }
@@ -42,8 +36,7 @@ export type ContractEnumType = 'INTERN' | 'REGULAR' | 'NEWCOMER' | 'EXPERIENCED'
 export interface SpecAwardType {
   awardName: string
   host: string
-  acquiredYear: number
-  acquiredMonth: number
+  acquiredDate: string
   description: string
   documentUrl: string
 }
@@ -53,5 +46,6 @@ export interface SpecExperienceType {
   beforeImprovementRate: number
   afterImprovementRate: number
   description: string
-  insight: string
+  startDate: string
+  endDate: string | null
 }
