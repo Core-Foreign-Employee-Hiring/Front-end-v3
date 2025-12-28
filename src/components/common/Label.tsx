@@ -1,16 +1,16 @@
 import { ReactNode } from 'react'
 
 interface LabelProps {
-  type?: 'h1' | 'h2' | 'h3' | 'inputLabel'
+  type?: 'titleLg' | 'titleMd' | 'subtitleLg' | 'inputLabel'
   className?: string
   isRequired?: boolean
   rightElement?: ReactNode
   label: string
 }
 const labelType = {
-  h1: 'kr-title-lg text-black',
-  h2: 'kr-title-md text-black',
-  h3: 'kr-subtitle-lg text-black',
+  titleLg: 'kr-title-lg text-black',
+  titleMd: 'kr-title-md text-black',
+  subtitleLg: 'kr-subtitle-lg text-black',
   inputLabel: 'kr-title-sm text-gray5',
 }
 export default function Label({

@@ -9,8 +9,9 @@ import {
   SpecLanguage,
 } from '@/components/spec'
 import { Label, Spacing } from '@/components/common'
+import SpecResult from '@/components/spec/SpecResult'
 
-export type StepType = '1' | '2' | '3' | '4' | '5'
+export type StepType = '1' | '2' | '3' | '4' | '5' | '6'
 
 /**
  * 'step' 에 따라 올바른 컴포넌트를 반환하는 스위처 컴포넌트
@@ -21,6 +22,7 @@ function FindSpecProcessStepSwitcher({ step }: { step: StepType }) {
   if (step === '3') return <SpecCertification />
   if (step === '4') return <SpecCareer />
   if (step === '5') return <SpecExperience />
+  if (step === '6') return <SpecResult />
   return <SpecEducation />
 }
 
@@ -42,10 +44,10 @@ export default async function SpecPage({ searchParams }: { params: Promise<I18nP
 
   return (
     <main className="w-full">
-      <Label label={'스펙입력'} className="kr-title-lg desktop:block hidden" />
+      <Label label={step === '6' ? '스펙결과' : '스펙입력'} type={'titleLg'} />
       <Spacing height={20} className="desktop:block hidden" />
 
-      <ProgressBar currentStep={step} currentLabel={getCurrentLabel(step, steps)} steps={steps} />
+      {step !== '6' && <ProgressBar currentStep={step} currentLabel={getCurrentLabel(step, steps)} steps={steps} />}
       <Spacing height={20} />
 
       <FindSpecProcessStepSwitcher step={step} />
