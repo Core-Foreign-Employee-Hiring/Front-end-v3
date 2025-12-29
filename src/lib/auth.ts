@@ -1,5 +1,5 @@
 import { ApiResponse } from '@/types/common'
-import { EmployeeLoginType, ResponseLoginType } from '@/types/auth'
+import { LoginType, ResponseLoginType } from '@/types/auth'
 
 interface AuthCallResult {
   success: boolean
@@ -18,7 +18,7 @@ interface AuthCallResult {
  * 주의: 이 함수는 API 응답만 처리합니다.
  * 쿠키 설정은 백엔드의 Set-Cookie 헤더로 자동 처리됩니다.
  */
-export const postAuth = async (loginData: EmployeeLoginType): Promise<AuthCallResult> => {
+export const postAuth = async (loginData: LoginType): Promise<AuthCallResult> => {
   try {
     const jwtResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v2/member/login`, {
       method: 'POST',

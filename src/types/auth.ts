@@ -1,7 +1,6 @@
-
-export interface EmployeeLoginType {
-  userId?: string
-  password?: string
+export interface LoginType {
+  userId?: string | undefined | null
+  password?: string | undefined | null
 }
 
 export interface ResponseLoginType {
