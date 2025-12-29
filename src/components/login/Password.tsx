@@ -1,14 +1,25 @@
 'use client'
 
+import { ChangeEvent } from 'react'
 import { useAuthStore } from '@/store/authStore'
 
 import { usePasswordVisible } from '@/hooks'
 import { Label, Spacing, TextInput } from '@/components/common'
 
 export default function Password() {
-  const { login, error } = useAuthStore((state) => state)
+  const { login, error, setLogin, resetAuthStatus } = useAuthStore((state) => state)
 
-  const { handlePasswordChange, handleToggleClick, VisibilityIcon, inputType } = usePasswordVisible()
+  const { toggleVisibility, VisibilityIcon, inputType } = usePasswordVisible()
+
+  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setLogin({ password: e.target.value })
+    if (error) resetAuthStatus()
+  }
+
+  const handleToggleClick = (e: MouseEvent) => {
+    e.preventDefault()
+    toggleVisibility()
+  }
 
   return (
     <div className="w-full">
