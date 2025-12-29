@@ -1,7 +1,7 @@
 import { ContractEnumType } from '@/types/spec'
 import { DropDown, Label, Spacing } from '@/components/common'
-import useDropDown from '@/hooks/useDropDown'
 import { CONTRACT_TYPES } from '@/text/spec'
+import { useDropDown } from '@/hooks'
 
 interface CareerContractTypeProps {
   index: number
