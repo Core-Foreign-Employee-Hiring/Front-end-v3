@@ -15,7 +15,11 @@ export default function useRememberMe() {
   }
 
   const saveIdFromStorage = () => {
-    localStorage.setItem('savedUserId', login.userId)
+    const userId = login.userId
+
+    if (userId) {
+      localStorage.setItem('savedUserId', userId)
+    }
   }
 
   useEffect(() => {
@@ -31,6 +35,9 @@ export default function useRememberMe() {
     }
   }, [setLogin])
 
+  /**
+   * localStorage 에 id를 저장/삭제, 체크 아이콘 toggle 역할을 담당합니다.
+   */
   const handleToggle = () => {
     const nextState = !isRemembered
     toggleState()
