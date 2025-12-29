@@ -41,6 +41,7 @@ interface ButtonProps {
   rightIcon?: ReactNode
   disabled?: boolean
   buttonType?: 'button' | 'submit'
+  isLoading?: boolean
 }
 
 export default function Button({
@@ -54,11 +55,16 @@ export default function Button({
   rightIcon,
   leftIcon,
   customClassName,
+  isLoading,
 }: ButtonProps) {
+  const isDisabled = disabled || isLoading
+  const currentState = isDisabled ? 'disable' : state
+
   const base = 'flex items-center justify-center w-full rounded'
-  const variantClass = variantStyles[variant][state]
+  const variantClass = variantStyles[variant][currentState]
   const sizeClass = sizeStyles[size]
   const className = [base, variantClass, sizeClass].join(' ')
+
   return (
     <button
       disabled={disabled}
@@ -66,9 +72,20 @@ export default function Button({
       onClick={onClick}
       className={twMerge(`${className}`, customClassName)}
     >
-      {leftIcon ? leftIcon : null}
-      {children}
-      {rightIcon ? rightIcon : null}
+      <div className={twMerge('flex items-center gap-x-2', isLoading ? 'opacity-0' : 'opacity-100')}>
+        {leftIcon && leftIcon}
+        {isLoading ? <LoadingSpinner /> : children}
+        {rightIcon && rightIcon}
+      </div>
     </button>
+  )
+}
+
+function LoadingSpinner() {
+  return (
+    <div className="flex items-center gap-x-2">
+      <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+      <span>로딩중...</span>
+    </div>
   )
 }
