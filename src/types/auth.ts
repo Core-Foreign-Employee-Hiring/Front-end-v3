@@ -1,6 +1,6 @@
 export interface LoginType {
-  userId?: string | undefined | null
-  password?: string | undefined | null
+  userId?: string | undefined
+  password?: string | undefined
 }
 
 export interface ResponseLoginType {
