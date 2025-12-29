@@ -30,9 +30,9 @@ export const postAuth = async (loginData: LoginType): Promise<AuthCallResult> =>
     })
 
     if (!jwtResponse.ok) {
-      const errorData = await jwtResponse.text()
+      const errorData = await jwtResponse.json()
       console.error('auth error:', errorData)
-      throw new Error(`Failed to authenticate: ${jwtResponse.status}`)
+      throw new Error(errorData.message)
     }
 
     const jwtResponseData: ApiResponse<ResponseLoginType> = await jwtResponse.json()

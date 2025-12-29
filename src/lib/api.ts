@@ -23,7 +23,7 @@ export const parseJsonResponse = async <T = never>(response: Response): Promise<
     return {
       success: false,
       status: data.status,
-      error: data.message || `Error: ${data.status}: ${data.message}`,
+      error: data.message,
     }
   } catch (error) {
     // JSON 파싱 실패 또는 네트워크 에러
