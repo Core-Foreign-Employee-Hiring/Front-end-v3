@@ -22,8 +22,8 @@ export default function Label({
 }: LabelProps) {
   return (
     <div className="flex items-center justify-between">
-      <div className={`${labelType[type]} ${className} flex gap-x-1`}>
-        <h1>{label}</h1>
+      <div className={`${className} flex gap-x-1`}>
+        <h1 className={`${labelType[type]}`}>{label}</h1>
         {isRequired && <p className="text-main-500">*</p>}
       </div>
 
