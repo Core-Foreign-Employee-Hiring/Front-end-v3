@@ -2,19 +2,20 @@
 
 import { useEffect } from 'react'
 import { useAuthStore } from '@/store/authStore'
-import { useToggle } from '@/hooks'
 
-export default function useRememberMe() {
-  const setLogin = useAuthStore((state) => state.setLogin)
-  const login = useAuthStore((state) => state.login)
-
-  const [isRemembered, toggleState, setIsRemembered] = useToggle(false)
+export default function useSaveId() {
+  const { setLogin, login, isIdSaved, setIsIdSaved } = useAuthStore((state) => state)
 
   const removeIdFromStorage = () => {
     localStorage.removeItem('savedUserId')
   }
 
-  const saveIdFromStorage = () => {
+  const toggleSaveIdStatus = () => {
+    const nextState = !isIdSaved
+    setIsIdSaved(nextState)
+  }
+
+  const persistSavedId = () => {
     const userId = login.userId
 
     if (userId) {
@@ -28,7 +29,7 @@ export default function useRememberMe() {
     if (savedUserId) {
       const timer = setTimeout(() => {
         setLogin({ userId: savedUserId })
-        setIsRemembered(true)
+        setIsIdSaved(true)
       }, 0)
 
       return () => clearTimeout(timer)
@@ -39,18 +40,15 @@ export default function useRememberMe() {
    * localStorage 에 id를 저장/삭제, 체크 아이콘 toggle 역할을 담당합니다.
    */
   const handleToggle = () => {
-    const nextState = !isRemembered
-    toggleState()
+    const nextState = !isIdSaved
+    toggleSaveIdStatus()
 
     if (!nextState) {
       removeIdFromStorage()
     } else {
-      saveIdFromStorage()
+      persistSavedId()
     }
   }
 
-  return {
-    isRemembered,
-    handleToggle,
-  }
+  return { isIdSaved, handleToggle, persistSavedId }
 }
