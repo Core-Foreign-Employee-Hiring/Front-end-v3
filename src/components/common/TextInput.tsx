@@ -3,7 +3,7 @@
 import { ChangeEvent, FocusEvent, ReactNode } from 'react'
 
 const statusStyleType = {
-  default: 'border-gray2 hover:border-main-300 focus:border-main-500 placeholder:text-gray4 text-black',
+  default: 'border-gray2 hover:border-main-300 focus-within:border-main-500 placeholder:text-gray4 text-black',
   filled: 'border-gray3 text-black',
   error: 'border-error text-black',
 }
@@ -12,7 +12,7 @@ interface TextInputProps {
   value: string | number
   onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
   textType?: 'textField' | 'textArea'
-  inputType?: 'number' | 'text'
+  inputType?: 'number' | 'text' | 'password'
   placeholder?: string
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void
   onClick?: () => void
@@ -49,20 +49,25 @@ export default function TextInput({
 
   return textType === 'textField' ? (
     <div className="flex w-full flex-col gap-y-2">
-      <div className="flex w-full gap-x-2">
-        <input
-          onFocus={onFocus}
-          onBlur={onBlur}
-          onKeyDown={onKeyDown}
-          onClick={onClick}
-          type={inputType}
-          value={value}
-          onChange={onChange}
-          placeholder={placeholder}
-          className={textFieldClassName}
-        />
+      <div className="flex w-full items-center gap-x-2">
+        <div className={`${textFieldClassName} flex w-full items-center gap-x-2`}>
+          {leftElement && leftElement}
+          <input
+            onFocus={onFocus}
+            onBlur={onBlur}
+            onKeyDown={onKeyDown}
+            onClick={onClick}
+            type={inputType}
+            value={value}
+            onChange={onChange}
+            placeholder={placeholder}
+            className={'w-full outline-none'}
+          />
+          {rightElement && rightElement}
+        </div>
         {buttonElement && buttonElement}
       </div>
+
       {helperText && status === 'error' ? <p className="kr-badge-md text-error">{helperText}</p> : null}
     </div>
   ) : (
