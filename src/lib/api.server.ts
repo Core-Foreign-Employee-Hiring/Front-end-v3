@@ -38,16 +38,17 @@ export const apiFetchServer = async (url: string, options: RequestInit = {}): Pr
     headers.set('Authorization', `Bearer ${accessToken}`)
   }
 
-  // Content-Type 기본값 설정
   if (!headers.has('Content-Type') && fetchOptions.body) {
-    headers.set('Content-Type', 'application/json')
+    if (!(fetchOptions.body instanceof FormData)) {
+      headers.set('Content-Type', 'application/json')
+    }
   }
 
   let response = await fetch(requestUrl, {
     ...fetchOptions,
     headers,
     cache: 'no-store',
-    credentials: 'include' as const,
+    ...(typeof window === 'undefined' ? {} : { credentials: 'include' as const }),
   })
 
   console.log('fetchResponse', response)
