@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation'
 import { useAuthStore } from '@/store/authStore'
 import { postAuth } from '@/lib/auth'
 import { useSaveId } from '@/hooks'
+import { UserInfoType } from '@/types/auth'
+import Cookies from 'js-cookie'
 
 export default function useLoginAction(lang: string) {
   const router = useRouter()
@@ -18,9 +20,26 @@ export default function useLoginAction(lang: string) {
     return true
   }
 
-  const handleSuccess = () => {
+  const applyIdPersistence = () => {
     if (isIdSaved) persistSavedId()
-    router.push(`/${lang}`)
+  }
+
+  const navigateTo = (path: string) => {
+    router.push(path)
+  }
+
+  const persistUserInfo = ({ email, name, role, userId }: UserInfoType) => {
+    const userInfo = { email, name, role, userId }
+    localStorage.setItem('userInfo', JSON.stringify(userInfo))
+  }
+
+  const persistCookie = (accessToken: string | undefined, refreshToken: string | undefined) => {
+    if (accessToken) {
+      Cookies.set('accessToken', accessToken)
+    }
+    if (refreshToken) {
+      Cookies.set('refreshToken', refreshToken)
+    }
   }
 
   const loginProcess = async () => {
@@ -32,8 +51,11 @@ export default function useLoginAction(lang: string) {
     try {
       const result = await postAuth(login)
 
-      if (result.success) {
-        handleSuccess()
+      if (result.success && result) {
+        applyIdPersistence()
+        navigateTo(`/${lang}`)
+        persistCookie(result.accessToken, result.refreshToken)
+        persistUserInfo({ email: result.email, name: result.name, role: result.role, userId: result.userId })
       } else {
         setError(result.error || '로그인 정보를 확인해주세요.')
       }

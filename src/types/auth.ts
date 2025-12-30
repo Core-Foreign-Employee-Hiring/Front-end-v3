@@ -11,3 +11,10 @@ export interface ResponseLoginType {
   refreshToken: string
   role: 'EMPLOYER' | 'EMPLOYEE'
 }
+
+export interface UserInfoType {
+  email: string | undefined
+  name: string | undefined
+  role: string | undefined
+  userId: string | undefined
+}
