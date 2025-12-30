@@ -38,7 +38,7 @@ export interface SpecAwardType {
   host: string
   acquiredDate: string
   description: string
-  documentUrl: string
+  documentUrl: string | null | File
 }
 
 export interface SpecExperienceType {
@@ -48,4 +48,15 @@ export interface SpecExperienceType {
   description: string
   startDate: string
   endDate: string | null
+}
+
+export interface SpecResultType {
+  specEvaluationId: number
+  experience: number
+  certificate: number
+  language: number
+  career: number
+  education: number
+  topPercent: number
+  analysis: string
 }
