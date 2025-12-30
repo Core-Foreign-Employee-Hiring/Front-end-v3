@@ -1,22 +1,12 @@
 'use client'
 
-import { Dispatch, SetStateAction, useEffect } from 'react'
 import { DeleteIcon } from '@/assets/svgComponents'
 import { Button, Label, Spacing } from '@/components/common'
 import { EduDuration, EduGrades, EduMajor, EduSchool } from '@/components/spec'
 import { useSpecStore } from '@/store/specStore'
 
-interface AddEduFormProps {
-  isOpen: boolean
-  setIsOpen: Dispatch<SetStateAction<boolean>>
-}
-
-export default function AddEduForm({ isOpen, setIsOpen }: AddEduFormProps) {
-  const education = useSpecStore((state) => state.spec.education)
-
-  useEffect(() => {
-    console.log('education', education)
-  }, [education])
+export default function AddEduForm() {
+  const { removeEducation } = useSpecStore((state) => state)
 
   return (
     <>
@@ -26,7 +16,7 @@ export default function AddEduForm({ isOpen, setIsOpen }: AddEduFormProps) {
         rightElement={
           <Button
             onClick={() => {
-              setIsOpen(false)
+              removeEducation()
             }}
             leftIcon={<DeleteIcon width={20} height={20} />}
             customClassName={'w-fit'}

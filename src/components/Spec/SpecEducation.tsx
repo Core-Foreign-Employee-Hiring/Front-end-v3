@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { Main5000PlusIcon } from '@/assets/svgComponents'
 import { Button, Label, Spacing } from '../common'
@@ -16,13 +16,10 @@ export default function SpecEducation() {
     router.push(`${pathname}?step=${encodeURIComponent(step)}`)
   }
 
-  const [isOpen, setIsOpen] = useState<boolean>(false)
-
   const education = useSpecStore((state) => state.spec.education)
   const setEducation = useSpecStore((state) => state.setEducation)
 
   const isActive = useMemo(() => {
-    if (!isOpen) return true
     if (!education) return true
 
     const { admissionDate, graduationDate, earnedScore, maxScore, schoolName, majors } = education
@@ -53,7 +50,7 @@ export default function SpecEducation() {
     }
 
     return true
-  }, [education, isOpen]) // education과 isOpen이 변경될 때마다 다시 계산합니다.
+  }, [education]) // education과 isOpen이 변경될 때마다 다시 계산합니다.
 
   return (
     <div>
@@ -63,7 +60,6 @@ export default function SpecEducation() {
         rightElement={
           <Button
             onClick={() => {
-              setIsOpen(true)
               setEducation({
                 schoolName: '',
                 admissionDate: '',
@@ -84,7 +80,7 @@ export default function SpecEducation() {
       />
       <Spacing height={16} />
 
-      {isOpen && <AddEduForm setIsOpen={setIsOpen} isOpen={isOpen} />}
+      {education && <AddEduForm />}
 
       <Spacing height={80} />
       <BottomButton isNextButtonActive={isActive} handleNext={() => handleStepClick('2')} />

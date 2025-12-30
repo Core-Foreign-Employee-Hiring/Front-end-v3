@@ -15,13 +15,22 @@ import {
 
 interface SpecState {
   spec: SpecType
+  specEvaluationId: number
+  specActivities: (SpecAwardType | SpecExperienceType)[]
+
+  // 활동
+  addActivities: (activity: SpecAwardType | SpecExperienceType) => void
+  removeActivities: (index: number) => void
+  updateActivities: (index: number, updatedActivity: SpecAwardType | SpecExperienceType) => void
 
   // 전체 초기화 또는 데이터 로드
   setSpec: (spec: SpecType) => void
+  setSpecEvaluationId: (specEvaluationId: number) => void
   resetSpec: () => void
 
   // 단일 객체 업데이트
   setEducation: (education: SpecEducationType) => void
+  removeEducation: () => void
 
   // 언어 (추가, 삭제 수정)
   addLanguageSkills: (languageSkill: SpecLanguageSkillType) => void
@@ -46,9 +55,18 @@ interface SpecState {
   updateExperience: (index: number, updatedExperience: SpecExperienceType) => void
   // 나머지 awards, experiences 등도 유사한 패턴으로 추가 가능합니다.
 }
+// 1. 초기값 상수로 정의
+const INITIAL_EDUCATION = {
+  schoolName: '',
+  admissionDate: '',
+  graduationDate: '',
+  majors: [''],
+  earnedScore: 0,
+  maxScore: 0,
+}
 
 const initialSpec: SpecType = {
-  education: { schoolName: '', admissionDate: '', graduationDate: '', majors: [''], earnedScore: 0, maxScore: 0 },
+  education: null,
   languageSkills: [],
   certifications: [],
   careers: [],
@@ -56,16 +74,33 @@ const initialSpec: SpecType = {
   experiences: [],
 }
 
+const initialSpecEvaluationId = 0
+
+const initialActivities: (SpecAwardType | SpecExperienceType)[] = []
+
 export const useSpecStore = create<SpecState>()(
   devtools((set) => ({
     spec: initialSpec,
+    specEvaluationId: initialSpecEvaluationId,
+    specActivities: initialActivities,
 
     setSpec: (spec) => set({ spec }),
+    setSpecEvaluationId: (specEvaluationId: number) => set(() => ({ specEvaluationId: specEvaluationId })),
     resetSpec: () => set({ spec: initialSpec }),
 
     setEducation: (education) =>
       set((state) => ({
         spec: { ...state.spec, education },
+      })),
+
+    // 2. 스토어 내 함수 정의
+    // 만약 education이 단일 객체라면:
+    removeEducation: () =>
+      set((state) => ({
+        spec: {
+          ...state.spec,
+          education: null,
+        },
       })),
 
     // 언어
@@ -197,6 +232,25 @@ export const useSpecStore = create<SpecState>()(
               i === index ? { ...experience, ...updatedExperience } : experience
             ) || [],
         },
+      })),
+
+    // 1. 활동 추가 (배열의 가장 앞에 추가)
+    addActivities: (activity) =>
+      set((state) => ({
+        // activity를 앞에 두고, 기존 배열(...state.specActivities)을 뒤로 보냅니다.
+        specActivities: [activity, ...state.specActivities],
+      })),
+
+    // 2. 활동 삭제
+    removeActivities: (index: number) =>
+      set((state) => ({
+        specActivities: state.specActivities.filter((_, i) => i !== index),
+      })),
+
+    // 3. 활동 수정
+    updateActivities: (index: number, updatedActivity: SpecAwardType | SpecExperienceType) =>
+      set((state) => ({
+        specActivities: state.specActivities.map((item, i) => (i === index ? { ...item, ...updatedActivity } : item)),
       })),
   }))
 )
