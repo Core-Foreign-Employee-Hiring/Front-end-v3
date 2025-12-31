@@ -1,10 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { Button, Label, Spacing } from '@/components/common'
+import { Button, Label, Spacing, SwitchButton } from '@/components/common'
 import { DeleteIcon } from '@/assets/svgComponents'
 import { AddAwardForm, AddExperienceForm } from '@/components/spec'
-import SwitchButton from '@/components/spec/activity/SwitchButton'
 import { SpecAwardType, SpecExperienceType } from '@/types/spec'
 
 interface AddExperienceFormProps {

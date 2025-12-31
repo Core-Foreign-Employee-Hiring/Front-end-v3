@@ -1,9 +1,9 @@
-interface SwitchButtonProps {
-  contentList: { content: string; type: 'award' | 'experience' }[]
-  type: 'experience' | 'award'
-  onClick: (type: 'award' | 'experience') => void
+interface SwitchButtonProps<T extends string> {
+  contentList: { content: string; type: T }[]
+  type: T
+  onClick: (type: T) => void
 }
-export default function SwitchButton({ contentList, type, onClick }: SwitchButtonProps) {
+export default function SwitchButton<T extends string>({ contentList, type, onClick }: SwitchButtonProps<T>) {
   return (
     <div className="bg-gray1 flex w-fit gap-x-2 rounded-[10px] p-1">
       {contentList.map((content) => (

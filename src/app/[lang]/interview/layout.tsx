@@ -1,4 +1,4 @@
-import { Header, PageLayout } from '@/components/common'
+import { Header } from '@/components/common'
 
 export default async function InterviewLayout({
   children,
@@ -16,7 +16,7 @@ export default async function InterviewLayout({
       <div className="desktop:hidden block">
         <Header headerType={'dynamic'} currentLng={lang} title={'스펙입력'} />
       </div>
-      <PageLayout>{children}</PageLayout>
+      {children}
     </div>
   )
 }
