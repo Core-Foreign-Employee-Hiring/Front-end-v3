@@ -86,7 +86,7 @@ export default function SpecEducation() {
 
       {education && <AddEduForm />}
 
-      <Spacing height={80} />
+      <Spacing height={100} />
       <BottomButton isNextButtonActive={isActive} handleNext={() => handleStepClick('2')} />
     </div>
   )

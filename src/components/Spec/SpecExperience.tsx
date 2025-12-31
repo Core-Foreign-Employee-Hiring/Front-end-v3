@@ -210,7 +210,7 @@ export default function SpecExperience() {
         />
       ))}
 
-      <Spacing height={80} />
+      <Spacing height={100} />
       <BottomButton
         step={'5'}
         handlePrev={() => handleStepClick('4')}

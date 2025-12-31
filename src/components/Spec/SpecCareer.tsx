@@ -73,7 +73,7 @@ export default function SpecCareer() {
         />
       ))}
 
-      <Spacing height={80} />
+      <Spacing height={100} />
       <BottomButton
         handlePrev={() => handleStepClick('3')}
         isNextButtonActive={isActive}

@@ -62,7 +62,7 @@ export default function SpecLanguage() {
         <AddLangForm key={index} index={index} title={languageSkill.title} score={languageSkill.score} />
       ))}
 
-      <Spacing height={80} />
+      <Spacing height={100} />
       <BottomButton
         handlePrev={() => handleStepClick('1')}
         isNextButtonActive={isActive}

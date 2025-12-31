@@ -65,7 +65,7 @@ export default function SpecCertification() {
         />
       ))}
 
-      <Spacing height={80} />
+      <Spacing height={100} />
       <BottomButton
         handlePrev={() => handleStepClick('2')}
         isNextButtonActive={isActive}
