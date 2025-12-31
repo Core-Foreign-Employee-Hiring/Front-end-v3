@@ -2,7 +2,6 @@
 
 import { ChangeEvent, useState } from 'react'
 import { Label, Spacing, TextInput } from '@/components/common'
-import { CheckIcon, UncheckIcon } from '@/assets/svgComponents'
 import { useSpecStore } from '@/store/specStore'
 import { formatYYYYMM, padMonth } from '@/utils/spec'
 import { SpecEducationType } from '@/types/spec' // 타입 경로에 맞춰 수정하세요
@@ -44,7 +43,6 @@ export default function EduDuration() {
       <Spacing height={8} />
 
       <div className="flex w-full gap-x-4">
-        {/* 시작일 입력 */}
         <TextInput
           value={education?.admissionDate ?? ''}
           onChange={(e) => handleChange(e, 'admissionDate')}
@@ -68,19 +66,6 @@ export default function EduDuration() {
       </div>
 
       <Spacing height={8} />
-      <button
-        type="button"
-        onClick={() => {
-          const nextState = !isInProgress
-          setIsInProgress(nextState)
-          // 재학중 체크 시 graduationDate를 null로 변경
-          updateField('graduationDate', nextState ? null : '')
-        }}
-        className="flex items-center gap-x-2"
-      >
-        {isInProgress ? <CheckIcon width={24} height={24} /> : <UncheckIcon width={24} height={24} />}
-        <p className="kr-subtitle-md text-gray5">재학중</p>
-      </button>
     </div>
   )
 }
