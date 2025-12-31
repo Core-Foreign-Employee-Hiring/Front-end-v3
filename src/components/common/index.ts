@@ -11,3 +11,8 @@ export { default as Loading } from './Loading'
 export { default as Tab } from './Tab'
 export { default as ErrorHelperText } from './ErrorHelperText'
 export { default as Badge } from './Badge'
+export { default as ResultContent } from './ResultContent'
+export { default as Modal } from './Modal'
+
+//modal
+export { default as AIInterviewTestSettingModal } from './modal/AIInterviewTestSettingModal'

@@ -1,9 +1,21 @@
-import { Button, Label, Spacing } from '@/components/common'
+'use client'
+
+import { useState } from 'react'
+import { AIInterviewTestSettingModal, Button, Label, Spacing } from '@/components/common'
 import { ArrowFowardGray3Icon } from '@/assets/svgComponents'
 
 export default function InterviewIntro() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
   return (
     <div>
+      {isModalOpen && (
+        <AIInterviewTestSettingModal
+          onClose={() => {
+            setIsModalOpen(false)
+          }}
+          isOpen={isModalOpen}
+        />
+      )}
       <Label label={'KORFIT과 함께하는 실전 면접 준비'} type={'subtitleLg'} />
       <Spacing height={8} />
 
@@ -14,6 +26,9 @@ export default function InterviewIntro() {
 
       <div className="flex gap-x-2">
         <Button
+          onClick={() => {
+            setIsModalOpen(true)
+          }}
           size={'md'}
           variant={'primary'}
           customClassName={'w-[126px]'}
