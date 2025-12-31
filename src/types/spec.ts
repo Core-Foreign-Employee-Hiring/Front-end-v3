@@ -10,9 +10,9 @@ export interface SpecEducationType {
   schoolName: string
   majors: string[]
   admissionDate: string // 2025-03
-  graduationDate: string | null // 2025-03
-  earnedScore: number
-  maxScore: number
+  graduationDate: string
+  earnedScore: number | string
+  maxScore: number | string
 }
 export interface SpecLanguageSkillType {
   title: string
