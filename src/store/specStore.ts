@@ -55,15 +55,6 @@ interface SpecState {
   updateExperience: (index: number, updatedExperience: SpecExperienceType) => void
   // 나머지 awards, experiences 등도 유사한 패턴으로 추가 가능합니다.
 }
-// 1. 초기값 상수로 정의
-const INITIAL_EDUCATION = {
-  schoolName: '',
-  admissionDate: '',
-  graduationDate: '',
-  majors: [''],
-  earnedScore: 0,
-  maxScore: 0,
-}
 
 const initialSpec: SpecType = {
   education: null,
