@@ -1,7 +1,7 @@
 export { default as SpecEducation } from './SpecEducation'
 export { default as SpecCareer } from './SpecCareer'
 export { default as SpecCertification } from './SpecCertification'
-export { default as SpecExperience } from './SpecExperience'
+export { default as SpecActivity } from './SpecActivity'
 export { default as SpecLanguage } from './SpecLanguage'
 export { default as ProgressBar } from './ProgressBar'
 export { default as BottomButton } from './BottomButton'
