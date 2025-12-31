@@ -78,7 +78,7 @@ export default function EduMajor() {
       ))}
 
       <Button
-        customClassName="w-[80px]"
+        customClassName="w-[85px]"
         onClick={handleAddMajor}
         size={'sm'}
         variant="ghost"
