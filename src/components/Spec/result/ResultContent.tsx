@@ -1,4 +1,5 @@
 import { Spacing } from '@/components/common'
+import { DiamondIcon } from '@/assets/svgComponents'
 
 interface ResultContentProps {
   topPercent: number | undefined
@@ -7,13 +8,20 @@ interface ResultContentProps {
 
 export default function ResultContent({ topPercent, analysis }: ResultContentProps) {
   return (
-    <div className="flex flex-col">
-      <div className="kr-title-md">
-        황유림님은 상위
+    <div className="bg-main-50 flex flex-col rounded-[12px] p-5">
+      <div className="flex gap-x-1">
+        <DiamondIcon height={24} width={24} />
+        <p className="kr-title-sm">KORFIT 총평</p>
+      </div>
+      <Spacing height={20} />
+
+      <div className="kr-title-md flex gap-x-1">
+        <p>황유림님은 상위</p>
         <p className="text-main-500">{topPercent}%</p>
       </div>
       <Spacing height={16} />
-      <p>{analysis}</p>
+
+      <p className="text-main-800 kr-body-md">{analysis}</p>
     </div>
   )
 }

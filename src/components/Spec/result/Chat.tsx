@@ -16,7 +16,7 @@ export default function Chat({ specResult }: ChatProps) {
     { label: '학력', value: specResult?.education },
   ]
   return (
-    <div className="flex h-[433px] w-[486px] flex-shrink-0 whitespace-nowrap">
+    <div className="desktop:w-[486px] desktop:h-[433px] h-[286px] w-[321px] flex-shrink-0 whitespace-nowrap">
       <ResponsiveRadar
         data={data}
         keys={['value']}

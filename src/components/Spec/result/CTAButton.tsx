@@ -15,7 +15,7 @@ export default function CTAButton({ step, stepContent, path }: CTAButtonProps) {
       onClick={() => {
         router.push(`${path}`)
       }}
-      className="bg-main-50 flex w-full flex-col gap-y-2 rounded-[12px] p-5"
+      className="bg-gray1 flex w-full flex-col gap-y-2 rounded-[12px] p-5"
     >
       <p className="kr-title-md text-main-500">Step {step}</p>
       <div className="flex flex-col">
