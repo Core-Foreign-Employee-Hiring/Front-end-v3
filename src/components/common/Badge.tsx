@@ -3,8 +3,8 @@ import { twMerge } from 'tailwind-merge'
 
 interface BadgeProps {
   children: ReactNode
-  bgColor: string // bg-[] 형태여야함
-  textColor: string // text-[] 형태여야함
+  bgColor?: string // bg-[] 형태여야함
+  textColor?: string // text-[] 형태여야함
 }
 export default function Badge({ children, bgColor, textColor }: BadgeProps) {
   return (
