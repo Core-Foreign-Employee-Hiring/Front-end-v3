@@ -43,8 +43,8 @@ export interface SpecAwardType {
 
 export interface SpecExperienceType {
   experience: string
-  beforeImprovementRate: number
-  afterImprovementRate: number
+  beforeImprovementRate: number | string
+  afterImprovementRate: number | string
   description: string
   startDate: string
   endDate: string | null

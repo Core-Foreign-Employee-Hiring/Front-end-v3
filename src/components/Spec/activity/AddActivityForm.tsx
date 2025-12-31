@@ -24,8 +24,8 @@ const DEFAULT_AWARD: SpecAwardType = {
 
 const DEFAULT_EXPERIENCE: SpecExperienceType = {
   experience: '',
-  beforeImprovementRate: 0,
-  afterImprovementRate: 0,
+  beforeImprovementRate: '',
+  afterImprovementRate: '',
   description: '',
   startDate: '',
   endDate: '',
