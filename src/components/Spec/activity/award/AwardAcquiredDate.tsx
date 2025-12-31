@@ -1,6 +1,6 @@
 import { ChangeEvent, JSX } from 'react'
 import { formatYYYYMM, padMonth } from '@/utils/spec'
-import { Label, Spacing, TextInput } from '@/components/common'
+import { ErrorHelperText, Label, Spacing, TextInput } from '@/components/common'
 import { SpecAwardType } from '@/types/spec'
 
 interface AwardAcquiredDateProps {
@@ -16,7 +16,6 @@ export default function AwardAcquiredDate({
   activity,
   onUpdate,
 }: AwardAcquiredDateProps): JSX.Element {
-  // 공통 변경 핸들러: 기존 activity를 복사하고 특정 필드만 업데이트
   const handleAwardChange = (index: number, fieldName: keyof SpecAwardType, value: string | number) => {
     onUpdate(index, {
       ...activity,
@@ -38,14 +37,18 @@ export default function AwardAcquiredDate({
     <div>
       <Label type={'inputLabel'} label={'취득 날짜'} isRequired={true} className={'kr-title-sm text-gray5'} />
       <Spacing height={8} />
-      <TextInput
-        placeholder={'YYYY-MM'}
-        value={acquiredDate ?? ''}
-        status={getStatus(acquiredDate ?? '')}
-        helperText="YYYY-MM 형태로 입력해주세요."
-        onChange={(e) => handleChange(e)}
-        onBlur={() => handleBlur(acquiredDate)}
-      />
+      <div className="flex flex-col gap-y-2">
+        <TextInput
+          placeholder={'YYYY-MM'}
+          value={acquiredDate ?? ''}
+          status={getStatus(acquiredDate ?? '')}
+          onChange={(e) => handleChange(e)}
+          onBlur={() => handleBlur(acquiredDate)}
+        />
+        {getStatus(acquiredDate ?? '') === 'error' ? (
+          <ErrorHelperText>취득 날짜를 YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
+        ) : null}
+      </div>
     </div>
   )
 }

@@ -1,6 +1,6 @@
 'use client'
 
-import { Label, Spacing, TextInput } from '@/components/common'
+import { ErrorHelperText, Label, Spacing, TextInput } from '@/components/common'
 import { ChangeEvent, useState } from 'react'
 import { formatYYYYMM, padMonth } from '@/utils/spec'
 import { CheckIcon, UncheckIcon } from '@/assets/svgComponents'
@@ -30,28 +30,34 @@ export default function CareerDuration({ handleCareerChange, index, startDate, e
       <Label label="기간" className="kr-subtitle-lg text-gray5" isRequired />
       <Spacing height={8} />
 
-      <div className="flex w-full gap-x-4">
-        {/* 시작일 입력 */}
-        <TextInput
-          value={startDate ?? ''}
-          onChange={(e) => handleChange(e, 'startDate')}
-          onBlur={() => handleBlur(startDate, 'startDate')}
-          status={getStatus(startDate ?? '')}
-          helperText="YYYY-MM 형태로 입력해주세요."
-          placeholder="YYYY-MM"
-        />
-
-        {/* 종료일 입력 */}
-        {!isInProgress && (
+      <div className="flex flex-col gap-y-2">
+        <div className="flex w-full gap-x-4">
+          {/* 시작일 입력 */}
           <TextInput
-            value={endDate ?? ''}
-            onChange={(e) => handleChange(e, 'endDate')}
-            onBlur={() => handleBlur(endDate, 'endDate')}
-            status={getStatus(endDate ?? '')}
-            helperText="YYYY-MM 형태로 입력해주세요."
+            value={startDate ?? ''}
+            onChange={(e) => handleChange(e, 'startDate')}
+            onBlur={() => handleBlur(startDate, 'startDate')}
+            status={getStatus(startDate ?? '')}
+            helperText=""
             placeholder="YYYY-MM"
           />
-        )}
+
+          {/* 종료일 입력 */}
+          {!isInProgress && (
+            <TextInput
+              value={endDate ?? ''}
+              onChange={(e) => handleChange(e, 'endDate')}
+              onBlur={() => handleBlur(endDate, 'endDate')}
+              status={getStatus(endDate ?? '')}
+              placeholder="YYYY-MM"
+            />
+          )}
+        </div>
+        {getStatus(startDate ?? '') === 'error' ? (
+          <ErrorHelperText>시작일을 YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
+        ) : getStatus(endDate ?? '') === 'error' ? (
+          <ErrorHelperText>종료일을 YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
+        ) : null}
       </div>
 
       <Spacing height={8} />

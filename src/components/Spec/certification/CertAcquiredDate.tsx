@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react'
 import { formatYYYYMM, padMonth } from '@/utils/spec'
-import { Label, Spacing, TextInput } from '@/components/common'
+import { ErrorHelperText, Label, Spacing, TextInput } from '@/components/common'
 
 interface CertAcquiredDateProps {
   index: number
@@ -27,14 +27,18 @@ export default function CertAcquiredDate({ index, acquiredDate, handleCertificat
     <div>
       <Label type={'inputLabel'} label={'취득 날짜'} isRequired={true} className={'kr-title-sm text-gray5'} />
       <Spacing height={8} />
-      <TextInput
-        placeholder={'YYYY-MM'}
-        value={acquiredDate ?? ''}
-        status={getStatus(acquiredDate ?? '')}
-        helperText="YYYY-MM 형태로 입력해주세요."
-        onChange={(e) => handleChange(e)}
-        onBlur={() => handleBlur(acquiredDate)}
-      />
+      <div className="flex flex-col gap-y-2">
+        <TextInput
+          placeholder={'YYYY-MM'}
+          value={acquiredDate ?? ''}
+          status={getStatus(acquiredDate ?? '')}
+          onChange={(e) => handleChange(e)}
+          onBlur={() => handleBlur(acquiredDate)}
+        />
+        {getStatus(acquiredDate ?? '') === 'error' ? (
+          <ErrorHelperText>YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
+        ) : null}
+      </div>
     </div>
   )
 }

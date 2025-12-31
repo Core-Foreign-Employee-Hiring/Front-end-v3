@@ -16,7 +16,7 @@ export default function BottomButton({
   step = '1',
 }: BottomButtonProps) {
   return (
-    <div className="fixed bottom-0 left-0 flex w-full justify-between bg-white px-5 py-5">
+    <div className="fixed bottom-0 left-0 flex w-full justify-between gap-x-3 bg-white px-5 py-5">
       {handlePrev ? (
         <Button
           state={isPrevButtonActive ? 'default' : 'disable'}

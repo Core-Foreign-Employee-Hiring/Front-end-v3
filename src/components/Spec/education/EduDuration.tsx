@@ -1,7 +1,7 @@
 'use client'
 
-import { ChangeEvent, useState } from 'react'
-import { Label, Spacing, TextInput } from '@/components/common'
+import { ChangeEvent } from 'react'
+import { ErrorHelperText, Label, Spacing, TextInput } from '@/components/common'
 import { useSpecStore } from '@/store/specStore'
 import { formatYYYYMM, padMonth } from '@/utils/spec'
 import { SpecEducationType } from '@/types/spec' // 타입 경로에 맞춰 수정하세요
@@ -9,9 +9,6 @@ import { SpecEducationType } from '@/types/spec' // 타입 경로에 맞춰 수�
 export default function EduDuration() {
   const education = useSpecStore((state) => state.spec.education)
   const setEducation = useSpecStore((state) => state.setEducation)
-
-  // 초기 상태: graduationDate가 null이면 재학 중으로 간주
-  const [isInProgress, setIsInProgress] = useState<boolean>(education?.graduationDate === null)
 
   // 1. value 타입을 string | null로 확장
   const updateField = (fieldName: keyof SpecEducationType, value: string | null) => {
@@ -34,7 +31,7 @@ export default function EduDuration() {
 
   const getStatus = (value: string | null) => {
     if (!value) return 'default'
-    return value.length > 0 && value.length < 7 ? 'error' : 'default' // YYYY-MM은 7자이므로 기준 수정 제안
+    return value.length > 0 && value.length < 5 ? 'error' : 'default'
   }
 
   return (
@@ -42,27 +39,29 @@ export default function EduDuration() {
       <Label label="기간" className="kr-subtitle-lg text-gray5" isRequired />
       <Spacing height={8} />
 
-      <div className="flex w-full gap-x-4">
-        <TextInput
-          value={education?.admissionDate ?? ''}
-          onChange={(e) => handleChange(e, 'admissionDate')}
-          onBlur={() => handleBlur(education?.admissionDate, 'admissionDate')}
-          status={getStatus(education?.admissionDate ?? '')}
-          helperText="YYYY-MM 형태로 입력해주세요."
-          placeholder="YYYY-MM"
-        />
+      <div className="flex flex-col gap-y-2">
+        <div className="flex w-full gap-x-4">
+          <TextInput
+            value={education?.admissionDate ?? ''}
+            onChange={(e) => handleChange(e, 'admissionDate')}
+            onBlur={() => handleBlur(education?.admissionDate, 'admissionDate')}
+            status={getStatus(education?.admissionDate ?? '')}
+            placeholder="YYYY-MM"
+          />
 
-        {/* 종료일 입력: 재학 중이 아닐 때만 렌더링 */}
-        {!isInProgress && (
           <TextInput
             value={education?.graduationDate ?? ''}
             onChange={(e) => handleChange(e, 'graduationDate')}
             onBlur={() => handleBlur(education?.graduationDate, 'graduationDate')}
             status={getStatus(education?.graduationDate ?? '')}
-            helperText="YYYY-MM 형태로 입력해주세요."
             placeholder="YYYY-MM"
           />
-        )}
+        </div>
+        {getStatus(education?.admissionDate ?? '') === 'error' ? (
+          <ErrorHelperText>입학일을 YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
+        ) : getStatus(education?.graduationDate ?? '') === 'error' ? (
+          <ErrorHelperText>졸업(예정)일을 YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
+        ) : null}
       </div>
 
       <Spacing height={8} />

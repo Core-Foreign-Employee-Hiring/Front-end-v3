@@ -5,6 +5,7 @@ import Label from '@/components/common/Label'
 import Spacing from '@/components/common/Spacing'
 import TextInput from '@/components/common/TextInput'
 import { useSpecStore } from '@/store/specStore'
+import ErrorHelperText from '@/components/common/ErrorHelperText'
 
 export default function EduGrades() {
   const education = useSpecStore((state) => state.spec.education)
@@ -64,26 +65,28 @@ export default function EduGrades() {
     <div className="w-full">
       <Label label={'학점'} className="kr-subtitle-lg text-gray5" isRequired={true} />
       <Spacing height={8} />
-      <div className="flex w-full gap-x-4">
-        <TextInput
-          status={getStatus()}
-          helperText={getHelperText()}
-          onFocus={(e) => handleFocus(e, 'earnedScore')}
-          onBlur={(e) => handleBlur(e, 'earnedScore')}
-          onChange={(e) => updateField(e.target.value, 'earnedScore')}
-          inputType={'number'}
-          value={education.earnedScore ?? 0}
-          placeholder={'학점'}
-        />
-        <TextInput
-          status={getStatus()}
-          onFocus={(e) => handleFocus(e, 'maxScore')}
-          onBlur={(e) => handleBlur(e, 'maxScore')}
-          onChange={(e) => updateField(e.target.value, 'maxScore')}
-          inputType={'number'}
-          value={education.maxScore ?? 0}
-          placeholder={'총점'}
-        />
+      <div className="flex flex-col gap-y-2">
+        <div className="flex w-full gap-x-4">
+          <TextInput
+            status={getStatus()}
+            onFocus={(e) => handleFocus(e, 'earnedScore')}
+            onBlur={(e) => handleBlur(e, 'earnedScore')}
+            onChange={(e) => updateField(e.target.value, 'earnedScore')}
+            inputType={'number'}
+            value={education.earnedScore ?? 0}
+            placeholder={'학점'}
+          />
+          <TextInput
+            status={getStatus()}
+            onFocus={(e) => handleFocus(e, 'maxScore')}
+            onBlur={(e) => handleBlur(e, 'maxScore')}
+            onChange={(e) => updateField(e.target.value, 'maxScore')}
+            inputType={'number'}
+            value={education.maxScore ?? 0}
+            placeholder={'총점'}
+          />
+        </div>
+        {getStatus() === 'error' ? <ErrorHelperText>{getHelperText()}</ErrorHelperText> : null}
       </div>
     </div>
   )

@@ -46,7 +46,12 @@ export default function SpecEducation() {
 
     // 6. 취득 점수나 만점이 입력되지 않은 경우 (0도 허용한다면 체크 방식 주의)
     const isScoreEmpty =
-      earnedScore === null || maxScore === null || earnedScore === undefined || maxScore === undefined
+      earnedScore === null ||
+      maxScore === null ||
+      earnedScore === '' ||
+      maxScore === '' ||
+      earnedScore === undefined ||
+      maxScore === undefined
 
     // 모든 조건이 정상일 때만 true 반환
     if (isDateInvalid || isScoreInvalid || isSchoolEmpty || isMajorEmpty || isScoreEmpty || isRangeInvalid) {
