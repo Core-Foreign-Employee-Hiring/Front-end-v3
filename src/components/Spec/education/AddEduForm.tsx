@@ -12,7 +12,7 @@ export default function AddEduForm() {
     <>
       <Label
         label={'학력 내용'}
-        className="kr-subtitle-lg"
+        type={'subtitleLg'}
         rightElement={
           <Button
             onClick={() => {

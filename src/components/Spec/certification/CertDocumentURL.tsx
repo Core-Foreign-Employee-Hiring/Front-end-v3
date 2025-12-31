@@ -45,7 +45,7 @@ export default function CertDocumentURL({ index, documentURL, handleCertificatio
         variant={'ghost'}
         size={'sm'}
         state={'default'}
-        customClassName={'w-[92px]'}
+        customClassName={'w-[96px]'}
       >
         업로드
       </Button>

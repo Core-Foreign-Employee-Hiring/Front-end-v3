@@ -44,7 +44,7 @@ export default function AddCertForm({ index, certificationName, documentUrl, acq
 
       <Label
         label={'자격 내용'}
-        className="kr-subtitle-lg"
+        type={'subtitleLg'}
         rightElement={
           <Button
             onClick={() => removeCertification(index)}

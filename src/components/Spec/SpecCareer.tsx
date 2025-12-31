@@ -46,7 +46,7 @@ export default function SpecCareer() {
     <div>
       <Label
         label={'경력'}
-        className="kr-title-md"
+        type={'titleMd'}
         rightElement={
           <Button
             onClick={handleAddCareers}

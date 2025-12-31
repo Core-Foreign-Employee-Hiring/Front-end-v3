@@ -27,8 +27,8 @@ export default function AddLangForm({ index, title, score }: AddLangFormProps) {
       <Spacing height={16} />
 
       <Label
-        label={'외국어'}
-        className="kr-subtitle-lg"
+        label={'외국어 능력'}
+        type={'subtitleLg'}
         rightElement={
           <Button
             onClick={() => removeLanguageSkills(index)}

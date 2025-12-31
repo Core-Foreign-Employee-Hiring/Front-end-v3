@@ -41,7 +41,7 @@ export default function SpecCertification() {
     <div>
       <Label
         label={'자격증'}
-        className="kr-title-md"
+        type={'titleMd'}
         rightElement={
           <Button
             onClick={handleAddLanguageSkills}

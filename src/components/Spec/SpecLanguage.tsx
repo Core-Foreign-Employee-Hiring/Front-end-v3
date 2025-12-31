@@ -44,7 +44,7 @@ export default function SpecLanguage() {
     <div>
       <Label
         label={'어학 능력'}
-        className="kr-title-md"
+        type={'titleMd'}
         rightElement={
           <Button
             onClick={handleAddLanguageSkills}

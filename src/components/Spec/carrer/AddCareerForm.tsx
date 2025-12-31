@@ -57,7 +57,7 @@ export default function AddCareerForm({
 
       <Label
         label={'경력 내용'}
-        className="kr-subtitle-lg"
+        type={'subtitleLg'}
         rightElement={
           <Button
             onClick={() => removeCareer(index)}

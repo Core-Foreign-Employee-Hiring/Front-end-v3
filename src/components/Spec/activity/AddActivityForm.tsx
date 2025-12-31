@@ -49,7 +49,7 @@ export default function AddActivityForm({ index, activity, onUpdate, onRemove }:
 
       <Label
         label={'활동 내용'}
-        className="kr-subtitle-lg"
+        type={'subtitleLg'}
         rightElement={
           <Button
             onClick={() => onRemove(index)}

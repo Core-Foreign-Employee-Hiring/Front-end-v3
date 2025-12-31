@@ -60,7 +60,7 @@ export default function SpecEducation() {
     <div>
       <Label
         label={'학력 정보'}
-        className="kr-title-md"
+        type={'titleMd'}
         rightElement={
           <Button
             onClick={() => {

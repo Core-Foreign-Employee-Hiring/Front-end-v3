@@ -185,7 +185,7 @@ export default function SpecExperience() {
     <>
       <Label
         label={'수상 및 기타 경험'}
-        className="kr-title-md"
+        type={'titleMd'}
         rightElement={
           <Button
             onClick={handleAddActivities}
