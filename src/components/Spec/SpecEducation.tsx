@@ -69,8 +69,8 @@ export default function SpecEducation() {
                 admissionDate: '',
                 graduationDate: '',
                 majors: [''],
-                earnedScore: 0,
-                maxScore: 0,
+                earnedScore: '',
+                maxScore: '',
               })
             }}
             variant={'secondary'}
