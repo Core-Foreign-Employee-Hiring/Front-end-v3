@@ -2,25 +2,22 @@ import { I18nParams } from '@/lib/i18n.types'
 import { SearchParams } from 'next/dist/server/request/search-params'
 import {
   ProgressBar,
+  SpecActivity,
   SpecCareer,
   SpecCertification,
   SpecEducation,
-  SpecExperience,
   SpecLanguage,
 } from '@/components/spec'
 import { Label, Spacing } from '@/components/common'
 
 export type StepType = '1' | '2' | '3' | '4' | '5'
 
-/**
- * 'step' 에 따라 올바른 컴포넌트를 반환하는 스위처 컴포넌트
- */
 function FindSpecProcessStepSwitcher({ step }: { step: StepType }) {
   if (step === '1') return <SpecEducation />
   if (step === '2') return <SpecLanguage />
   if (step === '3') return <SpecCertification />
   if (step === '4') return <SpecCareer />
-  if (step === '5') return <SpecExperience />
+  if (step === '5') return <SpecActivity />
   return <SpecEducation />
 }
 
@@ -42,7 +39,7 @@ export default async function SpecPage({ searchParams }: { params: Promise<I18nP
 
   return (
     <main className="w-full">
-      <Label label={'스펙입력'} type={'titleLg'} />
+      <Label label={'스펙입력'} className={'desktop:block tablet:hidden hidden'} type={'titleLg'} />
       <Spacing height={20} className="desktop:block hidden" />
 
       <ProgressBar currentStep={step} currentLabel={getCurrentLabel(step, steps)} steps={steps} />
