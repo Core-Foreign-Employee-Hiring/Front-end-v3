@@ -24,17 +24,19 @@ export default async function SpecResult({ params }: SpecResultProps) {
     <main>
       <Label label={'스펙 결과'} type={'titleLg'} />
 
-      <div className="flex gap-x-[24px]">
+      <div className="tablet:flex-row tablet:gap-y-0 tablet:gap-x-[24px] desktop:gap-x-[24px] tablet:items-start flex flex-col items-center gap-y-[24px]">
         <Chat specResult={specResult} />
         <ResultContent analysis={specResult?.analysis} topPercent={specResult?.topPercent} />
       </div>
 
       <Spacing height={37} />
-      <div className="flex gap-x-6">
+      <div className="desktop:flex-row desktop:gap-x-6 flex flex-col gap-y-5">
         {ctaButtons.map((ctaButton) => (
           <CTAButton key={ctaButton.step} step={ctaButton.step} path={ctaButton.path} stepContent={ctaButton.content} />
         ))}
       </div>
+
+      <Spacing height={40} />
     </main>
   )
 }
