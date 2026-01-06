@@ -25,12 +25,20 @@ import { ApiCallResult } from '@/types/common'
  *
  * @param url - API 엔드포인트 (상대 경로)
  * @param options - fetch 옵션
+ * @param baseURL - 백엔드 API 요청 BASEURL
  */
-export const apiFetchServer = async (url: string, options: RequestInit = {}): Promise<Response> => {
+export const apiFetchServer = async (
+  url: string,
+  options: RequestInit = {},
+  baseURL: 'BASE_URL' | 'AI_INTERVIEW_BASE_URL' = 'BASE_URL'
+): Promise<Response> => {
   const { ...fetchOptions } = options
 
+  const BASE_URL = `${process.env.NEXT_PUBLIC_BASE_URL}`
+  const AI_INTERVIEW_BASE_URL = `${process.env.NEXT_PUBLIC_AI_INTERVIEW_BASE_URL}`
+
   // 기본 설정
-  const requestUrl = `${process.env.NEXT_PUBLIC_BASE_URL}${url}`
+  const requestUrl = `${baseURL === 'BASE_URL' ? BASE_URL : AI_INTERVIEW_BASE_URL}${url}`
   const headers = new Headers(fetchOptions.headers || {})
 
   const accessToken = await getAccessTokenServer()
@@ -94,10 +102,14 @@ export const apiFetchServer = async (url: string, options: RequestInit = {}): Pr
  * client 에서 fetch 함수 => next 서버 apiCallServer()함수 호출 => 이 함수에서 apiFetchServer()함수 호출
  * 자동 JSON 파싱 + 토큰 갱신 처리
  */
-export const apiCallServer = async <T = never>(url: string, options: RequestInit = {}): Promise<ApiCallResult<T>> => {
+export const apiCallServer = async <T = never>(
+  url: string,
+  options: RequestInit = {},
+  baseURL: 'BASE_URL' | 'AI_INTERVIEW_BASE_URL' = 'BASE_URL'
+): Promise<ApiCallResult<T>> => {
   try {
-    const response = await apiFetchServer(url, options)
-    return await parseJsonResponse<T>(response)
+    const response = await apiFetchServer(url, options, baseURL)
+    return await parseJsonResponse<T>(response, baseURL)
   } catch (error) {
     return {
       success: false,

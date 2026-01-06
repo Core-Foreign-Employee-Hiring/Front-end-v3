@@ -1,16 +1,17 @@
 'use client'
 
-import React, { KeyboardEvent, useEffect, useRef, useState } from 'react'
+import React, { KeyboardEvent, useEffect, useRef } from 'react'
 import { cn } from '@/lib/utils'
-import { ArrowUpIcon } from 'lucide-react' // 전송 아이콘용
+import { ArrowUpIcon } from 'lucide-react'
 
 interface ChatInputFieldProps {
-  onSend: (message: string) => void
+  value: string
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
   placeholder?: string
+  handleMessageSubmit: () => void
 }
 
-export default function ChatInputField({ onSend, placeholder }: ChatInputFieldProps) {
-  const [value, setValue] = useState('')
+export default function ChatInputField({ placeholder, value, onChange, handleMessageSubmit }: ChatInputFieldProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   // 1. 입력창 높이 자동 조절 로직
@@ -26,13 +27,6 @@ export default function ChatInputField({ onSend, placeholder }: ChatInputFieldPr
   useEffect(() => {
     handleResizeHeight()
   }, [value])
-
-  // 2. 메시지 전송 핸들러
-  const handleMessageSubmit = () => {
-    if (value.trim() === '') return
-    onSend(value)
-    setValue('') // 입력창 초기화
-  }
 
   // 3. 키다운 이벤트 핸들러 (Enter vs Shift+Enter)
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -58,7 +52,7 @@ export default function ChatInputField({ onSend, placeholder }: ChatInputFieldPr
           ref={textareaRef}
           rows={1}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={onChange}
           onKeyDown={handleKeyDown}
           placeholder={placeholder || '메시지를 입력하세요...'}
           className={cn(

@@ -6,25 +6,38 @@ import { ApiCallResult, ApiResponse } from '@/types/common'
  *
  * 클라이언트 & 서버 양쪽에서 사용 가능
  */
-export const parseJsonResponse = async <T = never>(response: Response): Promise<ApiCallResult<T>> => {
+export const parseJsonResponse = async <T = never>(
+  response: Response,
+  baseURL: 'BASE_URL' | 'AI_INTERVIEW_BASE_URL' = 'BASE_URL'
+): Promise<ApiCallResult<T>> => {
   try {
-    const data: ApiResponse<T> = await response.json()
+    const rawData = await response.json()
 
     // 성공 응답: isSuccess = true
-    if (data.success) {
+    if (baseURL === 'BASE_URL') {
+      const data = rawData as ApiResponse<T>
+      if (data.success) {
+        return {
+          success: true,
+          data: data.data,
+          status: data.status,
+        }
+      }
+      return {
+        success: false,
+        status: data.status,
+        error: data.message,
+      }
+    } else {
+      const data = rawData as T
+      console.log('추출:', data)
       return {
         success: true,
-        data: data.data,
-        status: data.status,
+        data: data,
       }
     }
 
     // 실패 응답: isSuccess = false
-    return {
-      success: false,
-      status: data.status,
-      error: data.message,
-    }
   } catch (error) {
     // JSON 파싱 실패 또는 네트워크 에러
     let errorMessage = `HTTP Error: ${response.status}`

@@ -1,6 +1,7 @@
-import { Label, Spacing, Tab } from '@/components/common'
-import { InterviewHistory, InterviewHome, InterviewNote } from '@/components/interview'
+import { Label, PageLayout, Spacing, Tab } from '@/components/common'
+import { InterviewHome, InterviewNote } from '@/components/interview'
 import { SearchParams } from 'next/dist/server/request/search-params'
+import InterviewHistory from '@/components/interview/InterviewHistory' //서버 컴포넌트는 따로 지정
 
 interface InterViewPageProps {
   params: Promise<{ lang: string }>
@@ -28,14 +29,16 @@ export default async function InterviewPage({ params, searchParams }: InterViewP
     { content: '답변 노트', path: `/${lang}/interview?tab=note`, key: 'note' },
   ]
   return (
-    <main className="w-full">
-      <Label label={'AI 면접'} type={'titleLg'} />
-      <Spacing height={20} />
+    <PageLayout>
+      <main className="w-full">
+        <Label label={'AI 면접'} type={'titleLg'} />
+        <Spacing height={20} />
 
-      <Tab tabList={tabList} />
-      <Spacing height={20} />
+        <Tab tabList={tabList} />
+        <Spacing height={20} />
 
-      <FindInterviewProcessStepSwitcher tab={tab} />
-    </main>
+        <FindInterviewProcessStepSwitcher tab={tab} />
+      </main>
+    </PageLayout>
   )
 }
