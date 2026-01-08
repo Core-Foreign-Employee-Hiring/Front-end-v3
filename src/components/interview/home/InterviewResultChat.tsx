@@ -25,13 +25,13 @@ export default function InterviewResultChat({
     { label: '완성도', value: completeness },
   ]
   return (
-    <div className="desktop:w-[446px] desktop:h-[390px] h-[286px] w-[321px] flex-shrink-0 whitespace-nowrap">
+    <div className="desktop:w-[319px] desktop:h-[280px] tablet:w-[319px] tablet:h-[280px] h-[294px] w-[335px] flex-shrink-0 whitespace-nowrap">
       <ResponsiveRadar
         data={data}
         keys={['value']}
         colors={['#3B3DFF']}
         indexBy="label"
-        maxValue="auto"
+        maxValue={100}
         gridShape="linear"
         dotBorderColor={{ theme: 'background' }}
         dotColor={{ theme: 'background' }}

@@ -2,6 +2,7 @@ export interface InterviewSettingOptionType {
   job_type: JobType | null
   level: LevelType | null
   question_count: number | null
+  title: string | null
 }
 export interface InterviewQuestionType {
   set_id: string
@@ -46,9 +47,11 @@ export interface FollowUpAnswerType {
 }
 
 export interface InterviewResultType {
+  questions: QuestionType[]
   set: InterviewSetType
   answers: InterviewResultAnswerType[]
   evaluation: InterviewResultEvaluationType
+  next_question_order: number
 }
 
 export interface InterviewResultAnswerType {
@@ -90,6 +93,11 @@ export interface InterviewResultEvaluationType {
 
 export interface DetailedFeedBackType {
   question_order: number
+  question_id: string
+  question: string
+  user_answer: string
+  follow_up_question: string
+  follow_up_answer: string
   feedback: string
   improvements: string
 }
@@ -97,6 +105,7 @@ export interface DetailedFeedBackType {
 export interface InterviewSetType {
   id: string
   user_id: string
+  title: string
   job_type: JobType
   level: LevelType
   status: InterviewStatusType

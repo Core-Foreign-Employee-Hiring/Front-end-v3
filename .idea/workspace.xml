@@ -5,13 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bd33022-d98e-4c79-8c97-3afe8a1cce06" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Spec/SpecResult.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Spec/result/CTAButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Spec/result/Chat.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Spec/result/ResultContent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/interview/sets/[setId]/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/interview/StartInterviewButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/interview/result/DetailedFeedbackBody.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/interview/result/DetailedFeedbackHeader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/interview/result/DetailedFeedbackMyAnswer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/spec/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/spec/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Label.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Label.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/interview/[setId]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/interview/[setId]/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/interview/[setId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/interview/[setId]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/interview/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/interview/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/interview/test/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/interview/test/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/interview/test/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/interview/test/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/interview/sets/[setId]/complete/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/interview/sets/[setId]/complete/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/DropDown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/DropDown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/ResultContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/ResultContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/modal/AIInterviewTestSettingModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/modal/AIInterviewTestSettingModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/InterviewHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/InterviewHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/InterviewHistory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/InterviewHistory.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/InterviewResult.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/InterviewResult.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/StatIconItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/StatIconItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/history/HistoryItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/history/HistoryItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/history/HistoryItemBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/history/HistoryItemBody.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/history/HistoryItemHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/history/HistoryItemHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/home/InterviewIntro.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/home/InterviewIntro.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/home/InterviewResultChat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/home/InterviewResultChat.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/home/InterviewResultHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/home/InterviewResultHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/test/BottomField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/test/BottomField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/test/Chat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/test/Chat.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/test/ChatInputField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/test/ChatInputField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/test/HeaderOption.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/test/HeaderOption.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/test/HeaderTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/test/HeaderTitle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/test/InterviewTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/test/InterviewTitle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/test/Question.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/test/Question.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/interview/useTest.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/interview/useTest.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/client/interview.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/client/interview.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/interview/interviewStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/interview/interviewStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/interview.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/interview.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +81,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/hwang-yulim/Documents/korfit/src&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hwang-yulim/Documents/korfit&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -63,14 +95,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/common" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/lib" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/app/[lang]" />
-      <recent name="$PROJECT_DIR$/public/fonts" />
+      <recent name="$PROJECT_DIR$/src/store/interview" />
+      <recent name="$PROJECT_DIR$/src/app/api/interview" />
+      <recent name="$PROJECT_DIR$/src/components/interview" />
+      <recent name="$PROJECT_DIR$/src/components/common" />
+      <recent name="$PROJECT_DIR$/public/common" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -89,6 +125,16 @@
       <option name="presentableId" value="Default" />
       <updated>1766573028827</updated>
       <workItem from="1766573029884" duration="1652000" />
+      <workItem from="1767011972202" duration="5314000" />
+      <workItem from="1767053048915" duration="1897000" />
+      <workItem from="1767075389904" duration="36079000" />
+      <workItem from="1767318919054" duration="605000" />
+      <workItem from="1767322184956" duration="1734000" />
+      <workItem from="1767492119131" duration="15310000" />
+      <workItem from="1767594134375" duration="2464000" />
+      <workItem from="1767658405781" duration="13816000" />
+      <workItem from="1767754765174" duration="15826000" />
+      <workItem from="1767838231689" duration="7788000" />
     </task>
     <servers />
   </component>

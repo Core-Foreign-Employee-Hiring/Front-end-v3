@@ -1,7 +1,8 @@
 import { Label, PageLayout, Spacing, Tab } from '@/components/common'
 import { InterviewHome, InterviewNote } from '@/components/interview'
 import { SearchParams } from 'next/dist/server/request/search-params'
-import InterviewHistory from '@/components/interview/InterviewHistory' //서버 컴포넌트는 따로 지정
+import InterviewHistory from '@/components/interview/InterviewHistory'
+import StartInterviewButton from '@/components/interview/StartInterviewButton'
 
 interface InterViewPageProps {
   params: Promise<{ lang: string }>
@@ -31,7 +32,7 @@ export default async function InterviewPage({ params, searchParams }: InterViewP
   return (
     <PageLayout>
       <main className="w-full">
-        <Label label={'AI 면접'} type={'titleLg'} />
+        <Label label={'AI 면접'} type={'titleLg'} rightElement={<StartInterviewButton />} />
         <Spacing height={20} />
 
         <Tab tabList={tabList} />

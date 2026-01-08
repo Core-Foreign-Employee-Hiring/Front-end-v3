@@ -1,27 +1,28 @@
 'use client'
 
 import { Answer, Question } from '@/components/interview'
-import { Spacing } from '@/components/common'
+import { Badge, Spacing } from '@/components/common'
 import { useEffect, useRef } from 'react'
 import { useInterviewStore } from '@/store/interview/interviewStore'
 
-interface ChatProps {}
+export default function Chat() {
+  const {
+    interviewQuestion,
+    setCommonAnswer,
+    chatList,
+    addChatMessage,
+    isNextLoading,
+    isFollowUpLoading,
+    isResultLoading,
+  } = useInterviewStore((state) => state)
 
-export default function Chat({}: ChatProps) {
-  const { interviewQuestion, setCommonAnswer, chatList, addChatMessage, currentIndex } = useInterviewStore(
-    (state) => state
-  )
-
-  // 1. 초기화 여부를 추적할 Ref 생성
   const isInitialized = useRef(false)
 
   useEffect(() => {
-    // 2. 이미 초기화되었거나 데이터가 없으면 중단
     if (isInitialized.current || !interviewQuestion || interviewQuestion.questions.length === 0) {
       return
     }
 
-    // 3. chatList가 비어있을 때만 첫 질문 추가
     if (chatList.length === 0) {
       const firstQ = interviewQuestion.questions[0]
 
@@ -39,17 +40,26 @@ export default function Chat({}: ChatProps) {
         user_answer: '',
       })
 
-      // 4. 초기화 완료 표시
       isInitialized.current = true
     }
   }, [interviewQuestion, chatList.length, addChatMessage, setCommonAnswer])
 
+  // 로딩 상태에 따른 뱃지 텍스트 결정 함수
+  const getLoadingText = () => {
+    if (isNextLoading) return '질문 생성중...'
+    if (isFollowUpLoading) return '압박 질문 생성중...'
+    if (isResultLoading) return '결과 생성중...'
+    return null
+  }
+
+  const loadingText = getLoadingText()
+
   return (
-    <div className="flex flex-col">
+    <div className="flex w-full flex-col items-center justify-center">
       {chatList.map((chat, index) => {
         const isQuestion = chat.type === 'COMMON_QUESTION' || chat.type === 'FOLLOW_UP_QUESTION'
         return (
-          <div key={`${chat.id}-${index}`}>
+          <div className="w-full" key={`${chat.id}-${index}`}>
             <Spacing height={20} />
             {isQuestion ? (
               <Question
@@ -63,6 +73,17 @@ export default function Chat({}: ChatProps) {
           </div>
         )
       })}
+
+      <Spacing height={20} />
+
+      {/* 로딩 뱃지 중앙 정렬 처리 */}
+      {loadingText && (
+        <div className="flex w-full animate-pulse justify-center py-2">
+          <Badge bgColor={'bg-gray1 border border-gray2'} textColor={'text-gray4'}>
+            {loadingText}
+          </Badge>
+        </div>
+      )}
     </div>
   )
 }

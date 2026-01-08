@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { AIInterviewTestSettingModal, Button, Label, Spacing } from '@/components/common'
-import { ArrowFowardGray3Icon } from '@/assets/svgComponents'
 
 export default function InterviewIntro() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -25,18 +24,6 @@ export default function InterviewIntro() {
       <Spacing height={16} />
 
       <div className="flex gap-x-2">
-        <Button
-          onClick={() => {
-            setIsModalOpen(true)
-          }}
-          size={'md'}
-          variant={'primary'}
-          customClassName={'w-[126px]'}
-          rightIcon={<ArrowFowardGray3Icon width={20} height={20} />}
-        >
-          새 면접 시작
-        </Button>
-
         <Button customClassName={'w-[96px]'} variant={'secondary'} size={'md'}>
           이용가이드
         </Button>

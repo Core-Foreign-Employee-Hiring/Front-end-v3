@@ -55,7 +55,7 @@ function SelectedDropBoxContentBox({
 
 function DropBoxOptionBox({ children }: { children: ReactNode }) {
   return (
-    <div className="border-gray2 absolute top-17 z-20 max-h-[400px] w-full overflow-y-scroll rounded-[12px] border bg-white p-2 drop-shadow-md">
+    <div className="border-gray2 absolute top-17 z-30 max-h-[400px] w-full overflow-y-scroll rounded-[12px] border bg-white p-2 drop-shadow-md">
       {children}
     </div>
   )

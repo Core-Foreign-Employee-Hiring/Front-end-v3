@@ -1,19 +1,9 @@
 'use client'
 
-import { useDropDown } from '@/hooks'
-import { DropDown } from '@/components/common'
 import { Switch } from '@/components/ui/switch'
 import { useInterviewStore } from '@/store/interview/interviewStore'
 
 export default function HeaderOption() {
-  const {
-    initialValue,
-    selectedDropDownContent,
-    isDropDownOpen,
-    setIsDropDownOpen,
-    selectedDropDownHandler,
-    dropDownOpenHandler,
-  } = useDropDown({ initialValue: 'Gemini 2.5 flas' })
   const { commonAnswer, setCommonAnswer } = useInterviewStore((state) => state)
 
   const handleToggle = (checked: boolean) => {
@@ -34,14 +24,6 @@ export default function HeaderOption() {
           onCheckedChange={handleToggle} // 클릭 시 상태 반전 로직 실행
         />
       </div>
-      <DropDown
-        selectedValue={selectedDropDownContent}
-        defaultValue={initialValue}
-        isDropDownOpen={isDropDownOpen}
-        dropDownOpenHandler={dropDownOpenHandler}
-      >
-        <DropDown.DropBoxOptionItem onClick={() => {}}>우아 졸려</DropDown.DropBoxOptionItem>
-      </DropDown>
     </div>
   )
 }

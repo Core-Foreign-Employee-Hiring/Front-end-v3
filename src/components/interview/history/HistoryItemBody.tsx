@@ -1,31 +1,26 @@
-import { JSX } from 'react'
+import { StatIconItem } from '@/components/interview'
+import { getJobContent } from '@/utils/interview'
+import { InterviewStatusType, JobType } from '@/types/interview'
 
 interface Props {
-  date: string
-  count: string
-  duration: string
-  job: string
+  progress: InterviewStatusType
+  createdAt: string | null
+  completedAt?: string | null
+  job: JobType
+  level: string
 }
 
-export default function HistoryItemBody({ job, date, count, duration }: Props) {
+export default function HistoryItemBody({ job, completedAt, createdAt, level }: Props) {
   return (
     <section className="flex flex-col gap-y-2">
-      <p className="kr-subtitle-md">{job}</p>
+      <p className="kr-subtitle-md">{getJobContent(job)}</p>
 
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-x-3">
-          <StatIconItem label={count} Icon={<div className="h-[20px] w-[20px] rounded-full bg-gray-100" />} />
-          <StatIconItem label={duration} Icon={<div className="h-[20px] w-[20px] rounded-full bg-gray-100" />} />
+          <StatIconItem label={level} Icon={<div className="h-[20px] w-[20px] rounded-full bg-gray-100" />} />
         </div>
-        <p className="kr-body-sm text-gray5">{date}</p>
+        <p className="kr-body-sm text-gray5">{completedAt ? completedAt : createdAt}</p>
       </div>
     </section>
   )
 }
-
-const StatIconItem = ({ label, Icon }: { label: string; Icon: JSX.Element }) => (
-  <div className="flex items-center gap-x-1">
-    {Icon && Icon}
-    <p className="kr-body-sm text-gray5">{label}</p>
-  </div>
-)

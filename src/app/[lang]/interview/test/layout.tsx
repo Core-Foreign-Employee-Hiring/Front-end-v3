@@ -11,10 +11,7 @@ export default async function InterviewLayout({
   const { lang } = await params
   return (
     <div>
-      <InterviewHeader
-        rightElement={<TestHeaderOption />}
-        leftElement={<TestHeaderTitle title={'면접 타이틀'} description={'1/3번째 질문'} />}
-      />
+      <InterviewHeader leftElement={<TestHeaderTitle />} rightElement={<TestHeaderOption />} />
       <PageLayout>{children}</PageLayout>
     </div>
   )

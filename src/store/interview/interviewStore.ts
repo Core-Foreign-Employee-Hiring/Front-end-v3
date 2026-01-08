@@ -16,7 +16,16 @@ interface ChatMessageType {
 }
 
 interface InterviewState {
+  isFollowUpLoading: boolean
+  isNextLoading: boolean
+  isResultLoading: boolean
+
+  setIsFollowUpLoading: (status: boolean) => void
+  setIsNextLoading: (status: boolean) => void
+  setIsResultLoading: (status: boolean) => void
+
   chatList: ChatMessageType[] // 일반 질문, 압박 질문, 답변이 다 있는 리스트
+  clearChatList: () => void
   addChatMessage: (message: ChatMessageType) => void
   currentIndex: number
 
@@ -49,6 +58,7 @@ const initialSettingInterviewOption: InterviewSettingOptionType = {
   job_type: null,
   level: null,
   question_count: null,
+  title: '',
 }
 
 const initialAnswer: CommonAnswerType = {
@@ -76,6 +86,24 @@ export const useInterviewStore = create<InterviewState>()(
     followUpAnswer: initialFollowUpAnswer,
     chatList: [],
     currentIndex: 0,
+    isNextLoading: false,
+    isResultLoading: false,
+    isFollowUpLoading: false,
+
+    setIsFollowUpLoading: (status: boolean) =>
+      set((state) => ({
+        isFollowUpLoading: status,
+      })),
+
+    setIsNextLoading: (status: boolean) =>
+      set((state) => ({
+        isNextLoading: status,
+      })),
+
+    setIsResultLoading: (status: boolean) =>
+      set((state) => ({
+        isResultLoading: status,
+      })),
 
     setCurrentIndex: (index: number) =>
       set((state) => ({
@@ -109,6 +137,11 @@ export const useInterviewStore = create<InterviewState>()(
       set(() => ({
         settingInterviewOption: initialSettingInterviewOption,
         interviewResult: null,
+      })),
+
+    clearChatList: () =>
+      set((state) => ({
+        chatList: [],
       })),
 
     setCommonAnswer: (answer) =>

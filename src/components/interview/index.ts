@@ -35,5 +35,5 @@ export { default as ChatInputField } from './test/ChatInputField'
 //result
 export { default as ResultHeaderOption } from './result/HeaderOption'
 export { default as ResultHeaderTitle } from './result/HeaderTitle'
-export { default as QuestionEvaluationItem } from './result/QuestionEvaluationItem'
+export { default as DetailedFeedbackItem } from './result/DetailedFeedbackItem'
 export { default as MyAnswerHistory } from './result/MyAnswerHistory'

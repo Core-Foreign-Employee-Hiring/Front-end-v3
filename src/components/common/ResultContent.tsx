@@ -11,7 +11,7 @@ interface ResultContentProps {
 
 export default function ResultContent({ topPercent, analysis, name, bottomElement }: ResultContentProps) {
   return (
-    <div className="bg-main-50 flex flex-col rounded-[12px] p-5">
+    <div className="bg-main-50 flex w-full flex-col rounded-[12px] p-5">
       <div className="flex gap-x-1">
         <DiamondIcon height={24} width={24} />
         <p className="kr-title-sm">KORFIT 총평</p>

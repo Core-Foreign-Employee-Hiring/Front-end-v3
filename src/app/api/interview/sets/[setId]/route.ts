@@ -5,7 +5,7 @@ import { NextResponse } from 'next/server'
 import { ApiCallResult } from '@/types/common'
 
 // context 타입을 Promise를 포함하도록 설정합니다.
-export async function POST(request: Request, context: { params: Promise<{ setId: string }> }) {
+export async function GET(request: Request, context: { params: Promise<{ setId: string }> }) {
   try {
     // Next.js 15에서는 params를 반드시 await 해야 합니다.
     const { setId } = await context.params
@@ -16,13 +16,13 @@ export async function POST(request: Request, context: { params: Promise<{ setId:
       return NextResponse.json({ error: 'setId is required' }, { status: 400 })
     }
 
-    const endpoint = `/interview/sets/${setId}/complete`
+    const endpoint = `/interview/sets/${setId}`
     console.log('최종 호출 API 경로:', endpoint)
 
     const result = await apiCallServer<ApiCallResult<InterviewResultType>>(
       endpoint,
       {
-        method: 'POST',
+        method: 'GET',
       },
       'AI_INTERVIEW_BASE_URL'
     )
