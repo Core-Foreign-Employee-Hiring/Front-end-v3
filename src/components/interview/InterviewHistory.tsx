@@ -1,5 +1,5 @@
 import { fetchInterviewSets } from '@/lib/server/interview'
-import { HistoryItem } from '@/components/interview/index'
+import HistoryItem from '@/components/interview/history/HistoryItem'
 
 export default async function InterviewHistory() {
   const result = await fetchInterviewSets()

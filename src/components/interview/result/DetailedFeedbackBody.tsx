@@ -1,12 +1,17 @@
 import { Badge, ResultContent, Spacing } from '@/components/common'
 import DetailedFeedbackMyAnswer from '@/components/interview/result/DetailedFeedbackMyAnswer'
+import FinalAnswer from '@/components/interview/note/FinalAnswer'
 
 interface DetailedFeedbackBodyProps {
   userAnswer: string
   followUpQuestion: string | null
   followUpAnswer: string | null
   feedback: string
+  noteId?: string
+  entryId?: string
+  finalAnswer?: string
   improvements: string
+  isFinalElement?: boolean
 }
 
 export default function DetailedFeedbackBody({
@@ -14,10 +19,14 @@ export default function DetailedFeedbackBody({
   followUpAnswer,
   followUpQuestion,
   feedback,
+  noteId,
+  entryId,
+  finalAnswer,
   improvements,
+  isFinalElement = false,
 }: DetailedFeedbackBodyProps) {
   return (
-    <>
+    <div>
       <Spacing height={20} />
       <section className="flex gap-x-[20px]">
         <DetailedFeedbackMyAnswer
@@ -37,6 +46,12 @@ export default function DetailedFeedbackBody({
           }
         />
       </section>
-    </>
+      {isFinalElement ? (
+        <>
+          <Spacing height={20} />
+          <FinalAnswer finalAnswer={finalAnswer} noteId={noteId} entryId={entryId} />
+        </>
+      ) : null}
+    </div>
   )
 }

@@ -33,7 +33,7 @@ export default function AIInterviewTestSettingModal({ isOpen, onClose }: AIInter
     },
   }
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal customClassName={'max-w-[860px]'} isOpen={isOpen} onClose={onClose}>
       <Modal.Header>
         <div className="flex flex-col gap-y-2">
           <Label label={'면접 설정'} type={'titleMd'} />
@@ -60,7 +60,7 @@ export default function AIInterviewTestSettingModal({ isOpen, onClose }: AIInter
       </Modal.Body>
 
       <Modal.Footer>
-        <div className="flex w-full gap-x-3">
+        <>
           <Button onClick={onClose} customClassName={'w-[200px]'} variant={'outline'} size={'lg'}>
             닫기
           </Button>
@@ -81,7 +81,7 @@ export default function AIInterviewTestSettingModal({ isOpen, onClose }: AIInter
           >
             면접 시작
           </Button>
-        </div>
+        </>
       </Modal.Footer>
     </Modal>
   )

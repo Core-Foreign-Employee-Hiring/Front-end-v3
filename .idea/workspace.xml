@@ -5,45 +5,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bd33022-d98e-4c79-8c97-3afe8a1cce06" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/api/interview/sets/[setId]/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/interview/StartInterviewButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/interview/result/DetailedFeedbackBody.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/interview/result/DetailedFeedbackHeader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/interview/result/DetailedFeedbackMyAnswer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/option-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/plus-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/white-right-arrow-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/[lang]/interview/note/[noteId]/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/[lang]/interview/note/[noteId]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/answer-notes/[noteId]/entries/[entryId]/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/answer-notes/[noteId]/entries/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/answer-notes/[noteId]/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/answer-notes/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/Options.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/modal/CreateNewAnswerNoteModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/modal/DeleteNoteModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/modal/EditNoteTitleModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/modal/SaveAnswerNoteModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/interview/note/DeleteEntryButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/interview/note/FinalAnswer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/interview/note/NoteHeaderOption.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/interview/note/NoteListDropDown.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/interview/result/SaveNoteButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/providers/ReactQueryProvider.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/interview/noteStore.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/modalStore.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/interview/note.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/interview/[setId]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/interview/[setId]/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/[lang]/interview/[setId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/interview/[setId]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/[lang]/interview/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/interview/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/interview/test/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/interview/test/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/interview/test/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/interview/test/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/interview/sets/[setId]/complete/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/interview/sets/[setId]/complete/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/DropDown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/DropDown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/svgComponents/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/svgComponents/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Label.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Label.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/common/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/ResultContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/ResultContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/TextInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/TextInput.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/common/modal/AIInterviewTestSettingModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/modal/AIInterviewTestSettingModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/interview/InterviewHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/InterviewHeader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/interview/InterviewHistory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/InterviewHistory.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/interview/InterviewResult.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/InterviewResult.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/interview/StatIconItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/StatIconItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/interview/history/HistoryItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/history/HistoryItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/interview/history/HistoryItemBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/history/HistoryItemBody.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/interview/history/HistoryItemHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/history/HistoryItemHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/interview/home/InterviewIntro.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/home/InterviewIntro.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/interview/home/InterviewResultChat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/home/InterviewResultChat.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/interview/home/InterviewResultHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/home/InterviewResultHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/InterviewNote.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/InterviewNote.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/StartInterviewButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/StartInterviewButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/interview/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/interview/test/BottomField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/test/BottomField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/interview/test/Chat.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/test/Chat.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/interview/test/ChatInputField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/test/ChatInputField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/interview/test/HeaderOption.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/test/HeaderOption.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/interview/test/HeaderTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/test/HeaderTitle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/interview/test/InterviewTitle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/test/InterviewTitle.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/interview/test/Question.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/test/Question.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/interview/useTest.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/interview/useTest.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/note/NoteItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/note/NoteItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/note/NoteItemHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/note/NoteItemHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/result/DetailedFeedbackBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/result/DetailedFeedbackBody.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/result/DetailedFeedbackHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/result/DetailedFeedbackHeader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/interview/result/DetailedFeedbackItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/interview/result/DetailedFeedbackItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/common/useToggle.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/common/useToggle.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/client/interview.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/client/interview.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/interview/interviewStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/interview/interviewStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/interview.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/interview.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/server/interview.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/server/interview.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,6 +87,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;JavaScript 디버그.localhost:3001.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
@@ -102,12 +112,22 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/common" />
       <recent name="$PROJECT_DIR$/src/store/interview" />
       <recent name="$PROJECT_DIR$/src/app/api/interview" />
       <recent name="$PROJECT_DIR$/src/components/interview" />
       <recent name="$PROJECT_DIR$/src/components/common" />
-      <recent name="$PROJECT_DIR$/public/common" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="localhost:3001" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:3001">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript 디버그.localhost:3001" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -134,7 +154,15 @@
       <workItem from="1767594134375" duration="2464000" />
       <workItem from="1767658405781" duration="13816000" />
       <workItem from="1767754765174" duration="15826000" />
-      <workItem from="1767838231689" duration="7788000" />
+      <workItem from="1767838231689" duration="8393000" />
+      <workItem from="1767852691769" duration="604000" />
+      <workItem from="1767860073071" duration="2038000" />
+      <workItem from="1767925838167" duration="1873000" />
+      <workItem from="1768725108268" duration="1765000" />
+      <workItem from="1768966387628" duration="631000" />
+      <workItem from="1768971671465" duration="4451000" />
+      <workItem from="1769061932018" duration="887000" />
+      <workItem from="1769062973795" duration="22891000" />
     </task>
     <servers />
   </component>

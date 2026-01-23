@@ -1,0 +1,6 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgOptionIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 32 32" {...props}><mask id="option-icon_svg__a" width={32} height={32} x={0} y={0} maskUnits="userSpaceOnUse" style={{
+    maskType: "alpha"
+  }}><path fill="#D9D9D9" d="M0 0h32v32H0z" /></mask><g mask="url(#option-icon_svg__a)"><path fill="#1C1B1F" d="M8.308 18q-.825 0-1.413-.588A1.93 1.93 0 0 1 6.308 16q0-.825.587-1.412A1.93 1.93 0 0 1 8.308 14q.825 0 1.412.588.588.587.588 1.412t-.588 1.412A1.93 1.93 0 0 1 8.308 18M16 18q-.825 0-1.412-.588A1.93 1.93 0 0 1 14 16q0-.825.588-1.412A1.93 1.93 0 0 1 16 14q.825 0 1.412.588Q18 15.175 18 16t-.588 1.412A1.93 1.93 0 0 1 16 18m7.692 0q-.825 0-1.412-.588A1.93 1.93 0 0 1 21.692 16q0-.825.588-1.412A1.93 1.93 0 0 1 23.692 14q.825 0 1.413.588.587.587.587 1.412t-.587 1.412a1.93 1.93 0 0 1-1.413.588" /></g></svg>;
+export default SvgOptionIcon;

@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface LabelProps {
-  type?: 'titleLg' | 'titleMd' | 'titleSm' | 'subtitleLg' | 'inputLabel' | 'button'
+  type?: 'titleLg' | 'titleMd' | 'titleSm' | 'subtitleLg' | 'subtitleMd' | 'inputLabel' | 'button'
   className?: string
   isRequired?: boolean
   rightElement?: ReactNode
@@ -14,6 +14,7 @@ const labelType = {
   titleMd: 'kr-title-md text-black',
   titleSm: 'kr-title-sm text-gray5',
   subtitleLg: 'kr-subtitle-lg text-black',
+  subtitleMd: 'kr-subtitle-Md text-black',
   inputLabel: 'kr-title-sm text-gray5',
   button: 'kr-button text-gray5',
 }

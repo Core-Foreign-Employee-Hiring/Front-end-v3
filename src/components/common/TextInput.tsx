@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent, FocusEvent, ReactNode } from 'react'
+import { ChangeEvent, FocusEvent, MouseEvent, ReactNode } from 'react'
 
 const statusStyleType = {
   default: 'border-gray2 hover:border-main-300 focus-within:border-main-500 placeholder:text-gray4 text-black',
@@ -15,7 +15,7 @@ interface TextInputProps {
   inputType?: 'number' | 'text' | 'password'
   placeholder?: string
   onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void
-  onClick?: () => void
+  onClick?: (e: MouseEvent<HTMLElement>) => void
   status?: 'default' | 'filled' | 'error'
   helperText?: string
   buttonElement?: ReactNode

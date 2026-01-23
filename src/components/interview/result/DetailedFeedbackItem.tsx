@@ -1,29 +1,42 @@
 'use client'
 
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 import DetailedFeedbackHeader from '@/components/interview/result/DetailedFeedbackHeader'
 import DetailedFeedbackBody from '@/components/interview/result/DetailedFeedbackBody'
 
 interface DetailedFeedbackItemProps {
   question: string
+  questionId: string
   questionOrder: number
   userAnswer: string
   followUpQuestion: string | null
   followUpAnswer: string | null
   feedback: string
   improvements: string
+  noteId?: string
+  entryId?: string
+  finalAnswer?: string
+  isFinalElement?: boolean
+  headerRightElement?: ReactNode
 }
 
 export default function DetailedFeedbackItem({
   question,
+  questionId,
   questionOrder,
   feedback,
   followUpQuestion,
   followUpAnswer,
   userAnswer,
   improvements,
+  noteId,
+  entryId,
+  finalAnswer,
+  isFinalElement = false,
+  headerRightElement,
 }: DetailedFeedbackItemProps) {
   const [isOpen, setIsOpen] = useState(false)
+
   return (
     <div
       onClick={() => {
@@ -31,7 +44,16 @@ export default function DetailedFeedbackItem({
       }}
       className="border-gray2 rounded-[16px] border p-4"
     >
-      <DetailedFeedbackHeader question={question} questionOrder={questionOrder} isOpen={isOpen} />
+      <DetailedFeedbackHeader
+        questionId={questionId}
+        userAnswer={userAnswer}
+        feedback={feedback}
+        improvements={improvements}
+        question={question}
+        questionOrder={questionOrder}
+        isOpen={isOpen}
+        rightButton={headerRightElement}
+      />
 
       {isOpen && (
         <DetailedFeedbackBody
@@ -40,6 +62,10 @@ export default function DetailedFeedbackItem({
           followUpAnswer={followUpAnswer}
           feedback={feedback}
           improvements={improvements}
+          noteId={noteId}
+          entryId={entryId}
+          finalAnswer={finalAnswer}
+          isFinalElement={isFinalElement}
         />
       )}
     </div>

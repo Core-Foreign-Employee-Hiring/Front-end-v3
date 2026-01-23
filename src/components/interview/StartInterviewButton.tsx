@@ -1,6 +1,7 @@
 'use client'
 
-import { AIInterviewTestSettingModal, Button } from '@/components/common'
+import { Button } from '@/components/common'
+import AIInterviewTestSettingModal from '@/components/common/modal/AIInterviewTestSettingModal'
 import { ArrowFowardGray3Icon } from '@/assets/svgComponents'
 import { useState } from 'react'
 

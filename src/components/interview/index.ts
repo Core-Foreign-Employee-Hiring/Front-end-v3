@@ -1,5 +1,3 @@
-export { default as InterviewNote } from './InterviewNote'
-export { default as InterviewHome } from './InterviewHome'
 export { default as InterviewGuide } from './InterviewGuide'
 export { default as InterviewHeader } from './InterviewHeader'
 export { default as StatIconItem } from './StatIconItem'
@@ -12,12 +10,10 @@ export { default as InterviewResultHeader } from './home/InterviewResultHeader'
 export { default as InterviewResultChat } from './home/InterviewResultChat'
 
 //history
-export { default as HistoryItem } from './history/HistoryItem'
 export { default as HistoryItemHeader } from './history/HistoryItemHeader'
 export { default as HistoryItemBody } from './history/HistoryItemBody'
 
 //note
-export { default as NoteItem } from './note/NoteItem'
 export { default as NoteItemHeader } from './note/NoteItemHeader'
 export { default as NoteItemBody } from './note/NoteItemBody'
 

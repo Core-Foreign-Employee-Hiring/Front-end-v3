@@ -12,5 +12,5 @@ export default function useToggle(initialValue: boolean = false) {
     setState((prev) => !prev)
   }, [])
 
-  return [state, toggle, setState] as const
+  return { isStatusTrue: state, toggle }
 }

@@ -3,6 +3,9 @@
 import { BackIcon } from '@/assets/svgComponents'
 import { ReactNode } from 'react'
 import { useRouter } from 'next/navigation'
+import { useModalStore } from '@/store/modalStore'
+import SaveAnswerNoteModal from '@/components/common/modal/SaveAnswerNoteModal'
+import CreateNewAnswerNoteModal from '@/components/common/modal/CreateNewAnswerNoteModal'
 
 interface InterviewHeaderProps {
   leftElement: ReactNode
@@ -11,9 +14,12 @@ interface InterviewHeaderProps {
 
 export default function InterviewHeader({ leftElement, rightElement }: InterviewHeaderProps) {
   const router = useRouter()
+  const { isSaveAnswerNoteModalOpen, isCreateNewAnswerNoteModalOpen } = useModalStore((state) => state)
 
   return (
     <header className="border-gray2 flex w-full items-center gap-x-5 border-b px-[40px] py-[20px]">
+      {isSaveAnswerNoteModalOpen && <SaveAnswerNoteModal />}
+      {isCreateNewAnswerNoteModalOpen && <CreateNewAnswerNoteModal />}
       <BackIcon
         onClick={() => {
           router.back()

@@ -7,6 +7,7 @@ import {
   ResultHeaderTitle,
 } from '@/components/interview'
 import { fetchInterviewResult } from '@/lib/server/interview'
+import SaveNoteButton from '@/components/interview/result/SaveNoteButton'
 
 interface InterviewResultPageProps {
   params: Promise<{ setId: string }>
@@ -49,6 +50,7 @@ export default async function InterviewResultPage({ params }: InterviewResultPag
           {evaluation?.detailed_feedback.map((feedback) => (
             <DetailedFeedbackItem
               key={feedback.question_order}
+              questionId={feedback.question_id}
               followUpQuestion={feedback.follow_up_question}
               followUpAnswer={feedback.follow_up_answer}
               feedback={feedback.feedback}
@@ -56,6 +58,15 @@ export default async function InterviewResultPage({ params }: InterviewResultPag
               question={feedback.question}
               userAnswer={feedback.user_answer}
               improvements={feedback.improvements}
+              isFinalElement={false}
+              headerRightElement={
+                <SaveNoteButton
+                  feedback={feedback.feedback}
+                  improvements={feedback.improvements}
+                  questionId={feedback.question_id}
+                  userAnswer={feedback.user_answer}
+                />
+              }
             />
           ))}
         </div>

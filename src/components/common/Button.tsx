@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { MouseEvent, ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const variantStyles = {
@@ -36,7 +36,7 @@ interface ButtonProps {
   size?: 'lg' | 'md' | 'sm'
   customClassName?: string
   children?: ReactNode
-  onClick?: () => void
+  onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   leftIcon?: ReactNode
   rightIcon?: ReactNode
   disabled?: boolean

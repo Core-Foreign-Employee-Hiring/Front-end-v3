@@ -1,7 +1,8 @@
 import { Label, PageLayout, Spacing, Tab } from '@/components/common'
-import { InterviewHome, InterviewNote } from '@/components/interview'
 import { SearchParams } from 'next/dist/server/request/search-params'
 import InterviewHistory from '@/components/interview/InterviewHistory'
+import InterviewNote from '@/components/interview/InterviewNote'
+import InterviewHome from '@/components/interview/InterviewHome'
 import StartInterviewButton from '@/components/interview/StartInterviewButton'
 
 interface InterViewPageProps {
