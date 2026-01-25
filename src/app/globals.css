@@ -69,6 +69,31 @@ body {
 }
 
 /* 폰트 */
+@utility kr-resume-lg {
+  font-family: Pretendard, sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 132%;
+  letter-spacing: -0.512px;
+}
+
+@utility kr-resume-lg-light {
+  font-family: Pretendard, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 132%;
+  letter-spacing: -0.384px;
+}
+
+@utility kr-resume-md-light {
+  font-family: Pretendard, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 132%;
+  letter-spacing: -0.32px;
+}
+
 @utility kr-title-lg {
   font-family: Pretendard, serif;
   font-size: 24px;

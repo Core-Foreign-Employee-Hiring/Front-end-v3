@@ -1,5 +1,5 @@
 import { SearchParams } from 'next/dist/server/request/search-params'
-import { Label, Spacing, Tab } from '@/components/common'
+import { Label, PageLayout, Spacing, Tab } from '@/components/common'
 import Spec from '@/components/spec/Spec'
 import Resume from '@/components/spec/Resume'
 
@@ -32,14 +32,16 @@ export default async function SpecPage({
   ]
 
   return (
-    <main className="w-full">
-      <Label label={'커리어 진단'} className={'desktop:block tablet:hidden hidden'} type={'titleLg'} />
-      <Spacing height={20} className="desktop:block hidden" />
+    <PageLayout>
+      <main className="w-full">
+        <Label label={'커리어 진단'} className={'desktop:block tablet:hidden hidden'} type={'titleLg'} />
+        <Spacing height={20} className="desktop:block hidden" />
 
-      <Tab tabList={tabList} />
-      <Spacing height={20} />
+        <Tab tabList={tabList} />
+        <Spacing height={20} />
 
-      <FindCarrerStepSwitcher tab={tab} step={step} />
-    </main>
+        <FindCarrerStepSwitcher tab={tab} step={step} />
+      </main>
+    </PageLayout>
   )
 }

@@ -33,7 +33,13 @@ export default function InfoPickerModal() {
           <Button onClick={onClose} variant={'outline'} size={'lg'} customClassName={'w-[200px]'}>
             닫기
           </Button>
-          <Button variant={'primary'} size={'lg'}>
+          <Button
+            onClick={() => {
+              onClose()
+            }}
+            variant={'primary'}
+            size={'lg'}
+          >
             내보내기
           </Button>
         </>
