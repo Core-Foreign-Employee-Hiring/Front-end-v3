@@ -4,7 +4,7 @@
 import { useMemo } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { useSpecStore } from '@/store/specStore'
-import { StepType } from '@/app/[lang]/spec/page'
+import { StepType } from '@/app/[lang]/carrer/page'
 
 export default function useSpecEducation() {
   const router = useRouter()

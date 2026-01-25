@@ -1,6 +1,7 @@
 'use client'
 
 import { ChangeEvent, FocusEvent, MouseEvent, ReactNode } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 const statusStyleType = {
   default: 'border-gray2 hover:border-main-300 focus-within:border-main-500 placeholder:text-gray4 text-black',
@@ -23,6 +24,7 @@ interface TextInputProps {
   rightElement?: ReactNode
   onBlur?: (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void
   onFocus?: (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void
+  customClassName?: string
 }
 
 export default function TextInput({
@@ -40,6 +42,7 @@ export default function TextInput({
   onKeyDown,
   onBlur,
   onFocus,
+  customClassName,
 }: TextInputProps) {
   const textFieldBase = 'border p-4 bg-white rounded-[12px] kr-body-md outline-none w-full transition'
   const textAreaBase = 'border py-3 px-4 bg-white rounded-[16px] kr-body-md h-[147px] w-full outline-none transition'
@@ -48,7 +51,7 @@ export default function TextInput({
   const textAreaClassName = [textAreaBase, statusStyle].join(' ')
 
   return textType === 'textField' ? (
-    <div className="flex w-full flex-col gap-y-2">
+    <div className={twMerge('flex w-full flex-col gap-y-2 whitespace-nowrap', customClassName)}>
       <div className="flex w-full items-center gap-x-2">
         <div className={`${textFieldClassName} flex w-full items-center gap-x-2`}>
           {leftElement && leftElement}

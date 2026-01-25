@@ -2,7 +2,7 @@ import { SpecType } from '@/types/spec'
 import { ApiCallResult } from '@/types/common'
 
 /**
- * spec 데이터 전송 API
+ * carrer 데이터 전송 API
  * @param spec
  */
 export const postSpecData = async (spec: SpecType): Promise<ApiCallResult<ApiCallResult<void>>> => {

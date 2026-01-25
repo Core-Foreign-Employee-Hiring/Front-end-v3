@@ -4,7 +4,7 @@
 import { useMemo } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { useSpecStore } from '@/store/specStore'
-import { StepType } from '@/app/[lang]/spec/page'
+import { StepType } from '@/app/[lang]/carrer/page'
 import { SpecAwardType, SpecExperienceType, SpecType } from '@/types/spec'
 import { uploadFile } from '@/lib/client/common'
 import { postSpecData, postSpecResult } from '@/lib/client/spec'

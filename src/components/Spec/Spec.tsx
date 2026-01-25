@@ -1,5 +1,3 @@
-import { I18nParams } from '@/lib/i18n.types'
-import { SearchParams } from 'next/dist/server/request/search-params'
 import {
   ProgressBar,
   SpecActivity,
@@ -7,10 +5,9 @@ import {
   SpecCertification,
   SpecEducation,
   SpecLanguage,
-} from '@/components/spec'
-import { Label, Spacing } from '@/components/common'
-
-export type StepType = '1' | '2' | '3' | '4' | '5'
+} from '@/components/spec/index'
+import { Spacing } from '@/components/common'
+import { StepType } from '@/app/[lang]/carrer/page'
 
 function FindSpecProcessStepSwitcher({ step }: { step: StepType }) {
   if (step === '1') return <SpecEducation />
@@ -21,10 +18,11 @@ function FindSpecProcessStepSwitcher({ step }: { step: StepType }) {
   return <SpecEducation />
 }
 
-export default async function SpecPage({ searchParams }: { params: Promise<I18nParams>; searchParams: SearchParams }) {
-  const resolvedSearchParams = await searchParams
-  const step = (resolvedSearchParams.step as StepType) || '1'
+interface SpecProps {
+  step: StepType
+}
 
+export default function Spec({ step }: SpecProps) {
   const steps = [
     { stepNumber: '1', stepLabel: '학력' },
     { stepNumber: '2', stepLabel: '어학 능력' },
@@ -38,14 +36,11 @@ export default async function SpecPage({ searchParams }: { params: Promise<I18nP
   }
 
   return (
-    <main className="w-full">
-      <Label label={'스펙입력'} className={'desktop:block tablet:hidden hidden'} type={'titleLg'} />
-      <Spacing height={20} className="desktop:block hidden" />
-
+    <div>
       <ProgressBar currentStep={step} currentLabel={getCurrentLabel(step, steps)} steps={steps} />
       <Spacing height={20} />
 
       <FindSpecProcessStepSwitcher step={step} />
-    </main>
+    </div>
   )
 }
