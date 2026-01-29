@@ -10,6 +10,7 @@ import {
   SignUpCTAButton,
   SignUpPromotion,
 } from '@/components/login'
+import { LogoIcon } from '@/assets/svgComponents'
 
 interface LoginProps {
   params: Promise<{ lang: string }>
@@ -18,32 +19,32 @@ export default async function LoginPage({ params }: LoginProps) {
   const { lang } = await params
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center">
-      <div className="flex w-[508px] flex-col items-center justify-center">
-        <Label type={'titleLg'} label="로그인" />
+    <main className="desktop:justify-center desktop:items-center flex min-h-screen w-full flex-col">
+      <div className="desktop:px-0 desktop:py-0 desktop:w-[508px] tablet:px-[32px] tablet:py-[40px] flex w-full flex-col items-center justify-center px-[20px] py-[32px]">
+        <div className="desktop:flex hidden flex-col items-center gap-y-[80px]">
+          <LogoIcon width={193} height={60} />
+          <Label type={'titleLg'} label="로그인" className={'mb-[40px]'} />
+        </div>
 
-        <Spacing height={40} />
-        <Id />
-
-        <Spacing height={32} />
-        <Password />
-
-        <Spacing height={20} />
-        <LoginOptions>
-          <SaveIdButton />
-          <AccountRecoveryLinks>
-            <AccountRecoveryLinks.FindIdLink findIdHref={'/login/find?type=id&step=1'} />
-            <AccountRecoveryLinks.FindPwLink findPwHref={'/login/find?type=pw&step=1'} />
-          </AccountRecoveryLinks>
-        </LoginOptions>
+        <div className="flex w-full flex-col gap-y-5">
+          <Id />
+          <Password />
+          <LoginOptions>
+            <SaveIdButton />
+            <AccountRecoveryLinks>
+              <AccountRecoveryLinks.FindIdLink findIdHref={'/login/find?type=id&step=1'} />
+              <AccountRecoveryLinks.FindPwLink findPwHref={'/login/find?type=pw&step=1'} />
+            </AccountRecoveryLinks>
+          </LoginOptions>
+        </div>
 
         <Spacing height={24} />
         <LoginButton lang={lang} />
 
         <Spacing height={32} />
         <BottomBorder color={'gray2'} />
-
         <Spacing height={32} />
+
         <SignUpPromotion>
           <PromotionDescription description={'Korfit 회원이 되어 더 많은 서비스를 즐겨보세요!'} />
           <SignUpCTAButton href={`/${lang}/sign-up`} />
