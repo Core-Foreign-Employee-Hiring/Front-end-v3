@@ -3,16 +3,22 @@
 import { Button, Label, Loading, TextInput } from '@/components/common'
 import { useFindAuthStore } from '@/store/findAuthStore'
 import { postFindId } from '@/lib/client/find-auth'
-import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react'
+import { ChangeEvent } from 'react'
+import ErrorMessage from '@/components/common/ErrorMessage'
 
-interface PhoneNumberFieldProps {
-  verifyCode: string
-  setVerifyCode: Dispatch<SetStateAction<string>>
-}
-
-export default function PhoneNumberField({ verifyCode, setVerifyCode }: PhoneNumberFieldProps) {
-  const { findIdData, updateFindIdData, isLoading, setIsLoading } = useFindAuthStore((state) => state)
-  const [isVerifyCodeFieldOpen, setIsVerifyCodeFieldOpen] = useState(false)
+export default function PhoneNumberField() {
+  const {
+    findIdData,
+    updateFindIdData,
+    isSendPhoneNumberCodeLoading,
+    setIsSendPhoneNumberCodeLoading,
+    setErrorMessage,
+    errorMessage,
+    isIDVerifyCodeFieldOpen,
+    setIsIDVerifyCodeFieldOpen,
+    idVerifyCode,
+    setIDVerifyCode,
+  } = useFindAuthStore((state) => state)
 
   /**
    * 휴대폰 번호 변경 event handler
@@ -24,12 +30,13 @@ export default function PhoneNumberField({ verifyCode, setVerifyCode }: PhoneNum
     const onlyNumbers = rawValue.replace(/[^\d]/g, '').slice(0, 11)
 
     updateFindIdData('phoneNumber', onlyNumbers)
-    setVerifyCode('')
-    setIsVerifyCodeFieldOpen(false)
+    setIDVerifyCode('')
+    setIsIDVerifyCodeFieldOpen(false)
+    setErrorMessage(undefined)
   }
 
   const verifyCodeChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setVerifyCode(e.target.value)
+    setIDVerifyCode(e.target.value)
   }
 
   return (
@@ -37,35 +44,45 @@ export default function PhoneNumberField({ verifyCode, setVerifyCode }: PhoneNum
       <Label label={'연락처'} />
       <div className="flex items-center gap-x-2">
         <TextInput
+          status={errorMessage ? 'error' : 'default'}
           value={findIdData.phoneNumber}
           onChange={handlePhoneNumberChange}
           placeholder={'`-`없이 번호를 입력해주세요.'}
         />
         <Button
           state={findIdData.phoneNumber.length !== 11 ? 'disable' : 'default'}
-          leftIcon={isLoading ? <Loading size={'sm'} /> : null}
+          leftIcon={isSendPhoneNumberCodeLoading ? <Loading size={'sm'} /> : null}
           onClick={async () => {
-            setIsLoading(true)
+            setIsSendPhoneNumberCodeLoading(true)
+            setErrorMessage(undefined)
             const result = await postFindId(findIdData)
             console.log('result', result)
             if (result.success) {
-              setIsVerifyCodeFieldOpen(true)
-              setIsLoading(false)
+              setIsIDVerifyCodeFieldOpen(true)
+              setIsSendPhoneNumberCodeLoading(false)
+            } else {
+              setIsSendPhoneNumberCodeLoading(false)
+              setErrorMessage(result.error)
             }
           }}
           size={'sm'}
           variant={'primary'}
-          customClassName={`${isLoading ? 'w-[150px]' : 'w-[150px]'} h-[52px]`}
+          customClassName={`${isSendPhoneNumberCodeLoading ? 'w-[150px]' : 'w-[150px]'} h-[52px]`}
         >
           인증번호 전송
         </Button>
       </div>
 
-      {isVerifyCodeFieldOpen ? (
-        <div className="flex gap-x-2">
-          <TextInput value={verifyCode} onChange={verifyCodeChange} placeholder={'인증번호 입력'} />
-        </div>
+      {isIDVerifyCodeFieldOpen ? (
+        <TextInput
+          status={errorMessage ? 'error' : 'default'}
+          value={idVerifyCode}
+          onChange={verifyCodeChange}
+          placeholder={'인증번호 입력'}
+        />
       ) : null}
+
+      {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </div>
   )
 }

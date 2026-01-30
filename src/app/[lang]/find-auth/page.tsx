@@ -22,8 +22,8 @@ function FindAccountProcessStepSwitcher({ type, step }: { step: StepType; type: 
     if (step === '2') return <IdResult step={step} />
   }
   if (type === 'pw') {
-    if (step === '1') return <PassWordProcess />
-    if (step === '2') return <PassWordResult />
+    if (step === '1') return <PassWordProcess step={step} />
+    if (step === '2') return <PassWordResult step={step} />
   }
 
   return <IdProcess step={step} />

@@ -1,19 +1,23 @@
 'use client'
 
-import { Button } from '@/components/common'
+import { Button, Loading } from '@/components/common'
 import { usePathname, useRouter } from 'next/navigation'
 import { postFindIdVerifyCode } from '@/lib/client/find-auth'
 import { useFindAuthStore } from '@/store/findAuthStore'
 
 interface IdBottomButtonProps {
   step: '1' | '2'
-  verifyCode?: string
 }
-export default function IdBottomButton({ step, verifyCode }: IdBottomButtonProps) {
+export default function IdBottomButton({ step }: IdBottomButtonProps) {
   const router = useRouter()
   const pathname = usePathname()
 
-  const { setIsLoading, setFindVerifyCodeResponseData } = useFindAuthStore((state) => state)
+  const {
+    isVerifyPhoneNumberCodeLoading,
+    setIsVerifyPhoneNumberCodeLoading,
+    setFindVerifyCodeResponseData,
+    idVerifyCode,
+  } = useFindAuthStore((state) => state)
   const handleStepClick = (step: '1' | '2', tyoe: 'id' | 'pw') => {
     router.push(`${pathname}?type=${encodeURIComponent(tyoe)}&step=${encodeURIComponent(step)}`)
   }
@@ -26,12 +30,13 @@ export default function IdBottomButton({ step, verifyCode }: IdBottomButtonProps
     <div className="desktop:relative desktop:bottom-auto desktop:left-auto desktop:w-auto desktop:px-0 desktop:py-0 fixed bottom-0 left-0 w-full bg-white px-8 py-3">
       {step === '1' ? (
         <Button
-          state={verifyCode?.length !== 6 ? 'disable' : 'default'}
+          leftIcon={isVerifyPhoneNumberCodeLoading ? <Loading /> : null}
+          state={idVerifyCode?.length !== 6 ? 'disable' : 'default'}
           onClick={async () => {
-            setIsLoading(true)
-            const result = await postFindIdVerifyCode(verifyCode)
+            setIsVerifyPhoneNumberCodeLoading(true)
+            const result = await postFindIdVerifyCode(idVerifyCode)
             if (result.success && result.data) {
-              setIsLoading(false)
+              setIsVerifyPhoneNumberCodeLoading(false)
               handleStepClick('2', 'id')
               setFindVerifyCodeResponseData(result.data)
             }
@@ -44,6 +49,7 @@ export default function IdBottomButton({ step, verifyCode }: IdBottomButtonProps
       ) : (
         <div className="flex gap-x-3">
           <Button
+            leftIcon={isVerifyPhoneNumberCodeLoading ? <Loading /> : null}
             onClick={() => {
               handleStepClick('1', 'pw')
             }}
