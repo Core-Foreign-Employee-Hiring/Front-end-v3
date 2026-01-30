@@ -1,0 +1,34 @@
+'use client'
+
+import { usePathname, useRouter } from 'next/navigation'
+
+type SearchType = 'id' | 'pw'
+interface FindAuthSwitchButtonProps {
+  type: SearchType
+}
+
+export default function FindAuthSwitchButton({ type }: FindAuthSwitchButtonProps) {
+  const router = useRouter()
+  const pathname = usePathname()
+  const contentList: { content: string; type: SearchType }[] = [
+    { content: '아이디 찾기', type: 'id' },
+    { content: '비밀번호 찾기', type: 'pw' },
+  ]
+  const handleStepClick = (type: SearchType) => {
+    router.push(`${pathname}?type=${encodeURIComponent(type)}&step=1`)
+  }
+
+  return (
+    <div className="bg-gray1 flex w-fit gap-x-2 rounded-[10px] p-1">
+      {contentList.map((content) => (
+        <button
+          onClick={() => handleStepClick(content.type)}
+          key={content.type}
+          className={`${type == content.type ? 'bg-main-500 kr-badge-md text-white' : 'kr-button text-gray5 bg-transparent'} flex w-[120px] cursor-pointer items-center justify-center rounded-[8px] py-3`}
+        >
+          {content.content}
+        </button>
+      ))}
+    </div>
+  )
+}
