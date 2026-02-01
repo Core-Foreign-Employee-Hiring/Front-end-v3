@@ -22,6 +22,7 @@ interface TextInputProps {
   buttonElement?: ReactNode
   leftElement?: ReactNode
   rightElement?: ReactNode
+  maxLength?: number
   onBlur?: (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void
   onFocus?: (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void
   customClassName?: string
@@ -43,6 +44,7 @@ export default function TextInput({
   onBlur,
   onFocus,
   customClassName,
+  maxLength,
 }: TextInputProps) {
   const textFieldBase = 'border p-4 bg-white rounded-[12px] kr-body-md outline-none w-full transition'
   const textAreaBase = 'border py-3 px-4 bg-white rounded-[16px] kr-body-md h-[147px] w-full outline-none transition'
@@ -64,6 +66,7 @@ export default function TextInput({
             value={value}
             onChange={onChange}
             placeholder={placeholder}
+            maxLength={maxLength}
             className={'w-full outline-none'}
           />
           {rightElement && rightElement}

@@ -1,7 +1,16 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'coreforwork.s3.ap-northeast-2.amazonaws.com',
+        port: '',
+        pathname: '/**', // 버킷 내의 모든 경로 허용
+      },
+    ],
+  },
+}
 
-export default nextConfig;
+export default nextConfig

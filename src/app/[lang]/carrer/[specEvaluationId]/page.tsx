@@ -1,6 +1,5 @@
-import { Label, Spacing } from '@/components/common'
+import { Label, ResultContent, Spacing } from '@/components/common'
 import Chat from '@/components/spec/result/Chat'
-import ResultContent from '@/components/spec/result/ResultContent'
 import CTAButton from '@/components/spec/result/CTAButton'
 import { fetchSpecResult } from '@/lib/server/spec'
 

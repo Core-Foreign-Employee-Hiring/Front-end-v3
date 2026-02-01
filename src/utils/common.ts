@@ -44,7 +44,8 @@ export const formatPhoneNumber = (value: string) => {
  * @param email - 검사할 이메일 문자열
  * @returns 유효하면 true, 아니면 false
  */
-export const validateEmail = (email: string): boolean => {
+export const validateEmail = (email: string | undefined): boolean => {
+  if (!email) return false
   // RFC 5322 표준에 근접한 일반적인 이메일 정규식
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 

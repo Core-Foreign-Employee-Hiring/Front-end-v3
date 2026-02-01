@@ -10,7 +10,7 @@ export default function ProgressBar({ currentStep, currentLabel, steps }: Progre
   return (
     <>
       {/* Desktop & Tablet Layout */}
-      <div className="desktop:flex tablet:flex hidden gap-x-2">
+      <div className="desktop:flex tablet:flex hidden w-full gap-x-2">
         {steps.map((step) => {
           const stepNum = Number(step.stepNumber)
           const isActive = stepNum <= currentNum

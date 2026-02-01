@@ -3,8 +3,17 @@
 import { Button, Label, Modal } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
 import InfoPicker from '@/components/resume/info-picker/InfoPicker'
+import { patchResume } from '@/lib/client/resume'
+import { useResumeStore } from '@/store/resumeStore'
+import { useRouter } from 'next/navigation'
 
 export default function InfoPickerModal() {
+  const router = useRouter()
+
+  const { createResumeResponse, resumeSelection, selectedType } = useResumeStore((state) => state)
+  const onNavigate = (resumeId: number) => {
+    router.push(`/carrer/resume/${resumeId}?type=${selectedType}`)
+  }
   const { isInfoPickerModalOpen, setIsInfoPickerModalOpen } = useModalStore((state) => state)
   const onClose = () => {
     setIsInfoPickerModalOpen(isInfoPickerModalOpen)
@@ -34,8 +43,11 @@ export default function InfoPickerModal() {
             닫기
           </Button>
           <Button
-            onClick={() => {
+            onClick={async () => {
+              const result = await patchResume(createResumeResponse.resumeId, resumeSelection)
+              console.log('result', result)
               onClose()
+              onNavigate(createResumeResponse.resumeId)
             }}
             variant={'primary'}
             size={'lg'}

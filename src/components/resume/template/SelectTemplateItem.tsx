@@ -1,11 +1,10 @@
 import { Button, Spacing } from '@/components/common'
-import { Dispatch, SetStateAction } from 'react'
 import Image from 'next/image'
 
 interface SelectTemplateItemProps {
   type: 'ver1' | 'ver2'
   selectedType: 'ver1' | 'ver2'
-  setSelectedType: Dispatch<SetStateAction<'ver1' | 'ver2'>>
+  setSelectedType: (type: 'ver1' | 'ver2') => void
   imageUrl: string
 }
 

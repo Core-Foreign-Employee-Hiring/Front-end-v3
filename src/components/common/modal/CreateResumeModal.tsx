@@ -6,11 +6,16 @@ import { ProgressBar } from '@/components/spec'
 import { useState } from 'react'
 import Info from '@/components/resume/Info'
 import Template from '@/components/resume/Template'
+import { useResumeStore } from '@/store/resumeStore'
+import { postResume } from '@/lib/client/resume'
 
 export default function CreateResumeModal() {
   const { isCreateResumeModalOpen, setIsCreateResumeModalOpen, isInfoPickerModalOpen, setIsInfoPickerModalOpen } =
     useModalStore((state) => state)
+  const { createResume, resumeProfileFile, selectedType, setCreateResumeResponse } = useResumeStore((state) => state)
+
   const [currentStep, setCurrentStep] = useState<'1' | '2'>('1')
+
   const onClose = () => {
     setIsCreateResumeModalOpen(isCreateResumeModalOpen)
   }
@@ -47,10 +52,14 @@ export default function CreateResumeModal() {
             닫기
           </Button>
           <Button
-            onClick={() => {
+            onClick={async () => {
               if (currentStep === '2') {
-                onClose()
-                setIsInfoPickerModalOpen(isInfoPickerModalOpen)
+                const result = await postResume(createResume, resumeProfileFile)
+                if (result) {
+                  onClose()
+                  setIsInfoPickerModalOpen(isInfoPickerModalOpen)
+                  setCreateResumeResponse(result)
+                }
               } else {
                 setCurrentStep('2')
               }

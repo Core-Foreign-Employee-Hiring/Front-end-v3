@@ -1,14 +1,19 @@
 import { Label, Spacing, TextInput } from '@/components/common'
+import { useResumeStore } from '@/store/resumeStore'
 
 export default function SelfIntroField() {
+  const { updateCreateResumeField, createResume } = useResumeStore((state) => state)
+
   return (
     <div>
       <Label label={'자기소개'} type={'titleSm'} />
       <Spacing height={8} />
       <TextInput
         textType={'textArea'}
-        value={''}
-        onChange={(e) => {}}
+        value={createResume.introduction}
+        onChange={(e) => {
+          updateCreateResumeField('introduction', e.target.value)
+        }}
         placeholder={'예. 00직무 이력서, 00회사 지원용 이력서'}
       />
       <Spacing height={8} />

@@ -5,28 +5,82 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bd33022-d98e-4c79-8c97-3afe8a1cce06" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/[lang]/carrer/resume/ver1/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/[lang]/carrer/resume/ver1/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/[lang]/carrer/resume/ver2/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/[lang]/carrer/resume/ver2/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/AchievementItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/AchievementsVer1.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/CertificationItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/CertificationsVer1.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/EducationItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/EducationVer1.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/IntroVer1.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/LanguageSkillItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/LanguageSkillsVer1.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/URLsVer1.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/UrlItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/WorkExperienceItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/WorkExperienceVer1.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/gray5-x-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/member/register/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/member/verification-email-code/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/member/verification-phone-code/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/member/verify-email/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/member/verify-phone/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/member/verify-userid/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/SuccessMessage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/modal/JobRoleModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/modal/SearchAddressModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/AddressField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/BirthDateField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/CheckPasswordField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/EducationField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/EmailField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/GenderField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/IdField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/JobRoleField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/NameField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/NationalityField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/PasswordField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/PhoneNumberField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/RegisterStep1.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/RegisterStep2.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/Step1BottomButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/Step2BottomButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/TermsOfService.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/sign-up/VisaField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/client/register.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/registerStore.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/auth/register.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/filterList.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/carrer/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/carrer/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/carrer/[specEvaluationId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/carrer/[specEvaluationId]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/[lang]/carrer/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/carrer/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/carrer/resume/ver1/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/carrer/resume/ver1/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/carrer/resume/ver2/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/carrer/resume/ver2/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/sign-up/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/sign-up/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/svgComponents/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/svgComponents/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Spec/ProgressBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Spec/ProgressBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Spec/Resume.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Spec/Resume.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/ErrorMessage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/ErrorMessage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Modal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/TextInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/TextInput.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/modal/CreateResumeModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/modal/CreateResumeModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/common/modal/InfoPickerModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/modal/InfoPickerModal.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/ProfileImageUploader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/ProfileImageUploader.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/ResumeButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/ResumeButtons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/ResumeItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/ResumeItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/ResumeItemContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/ResumeItemContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/Template.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/Template.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/info-form/SelfIntroField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/info-form/SelfIntroField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/info-form/TitleField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/info-form/TitleField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/info-form/UrlField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/info-form/UrlField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/info-form/UrlList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/info-form/UrlList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/info-picker/InfoPicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/info-picker/InfoPicker.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/info-picker/InfoPickerItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/info-picker/InfoPickerItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/template/SelectTemplateItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/SelectTemplateItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/AchievementItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/AchievementItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/AchievementsVer1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/AchievementsVer1.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/CertificationsVer1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/CertificationsVer1.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/EducationItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/EducationItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/EducationVer1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/EducationVer1.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/IntroVer1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/IntroVer1.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/LanguageSkillsVer1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/LanguageSkillsVer1.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/URLsVer1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/URLsVer1.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/WorkExperienceItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/WorkExperienceItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/WorkExperienceVer1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/WorkExperienceVer1.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/modalStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/modalStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/common.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,38 +113,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JavaScript 디버그.localhost:3001.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/hwang-yulim/Documents/korfit&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/hwang-yulim/Documents/korfit/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript 디버그.localhost:3001.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/hwang-yulim/Documents/korfit/src/app/api/member/verify-email",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "ts.external.directory.path": "/Users/hwang-yulim/Documents/korfit/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/app/api/member/verify-email" />
+      <recent name="$PROJECT_DIR$/src/app/api/member/verification-email-code" />
       <recent name="$PROJECT_DIR$/public/common" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/lib" />
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/app/[lang]/carrer" />
       <recent name="$PROJECT_DIR$/public/common" />
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/src/store/interview" />
-      <recent name="$PROJECT_DIR$/src/app/api/interview" />
+      <recent name="$PROJECT_DIR$/src/components/auth/find-auth/id" />
+      <recent name="$PROJECT_DIR$/src/components/auth/find-auth/password" />
+      <recent name="$PROJECT_DIR$/src/components/auth" />
+      <recent name="$PROJECT_DIR$/src/app/[lang]" />
     </key>
   </component>
   <component name="RunManager">
@@ -137,7 +191,10 @@
       <workItem from="1768971671465" duration="4451000" />
       <workItem from="1769061932018" duration="887000" />
       <workItem from="1769062973795" duration="30223000" />
-      <workItem from="1769337977492" duration="11590000" />
+      <workItem from="1769337977492" duration="13881000" />
+      <workItem from="1769587036246" duration="2515000" />
+      <workItem from="1769667060592" duration="36038000" />
+      <workItem from="1769790802159" duration="22521000" />
     </task>
     <servers />
   </component>

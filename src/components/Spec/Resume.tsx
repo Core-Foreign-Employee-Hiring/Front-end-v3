@@ -6,8 +6,13 @@ import ResumeItem from '@/components/resume/ResumeItem'
 import { useModalStore } from '@/store/modalStore'
 import CreateResumeModal from '@/components/common/modal/CreateResumeModal'
 import InfoPickerModal from '@/components/common/modal/InfoPickerModal'
+import { ResumeListType } from '@/types/resume'
 
-export default function Resume() {
+interface ResumeProps {
+  resumeList: ResumeListType[] | undefined
+}
+
+export default function Resume({ resumeList }: ResumeProps) {
   const { isCreateResumeModalOpen, isInfoPickerModalOpen } = useModalStore((state) => state)
   return (
     <div>
@@ -15,7 +20,17 @@ export default function Resume() {
       {isInfoPickerModalOpen && <InfoPickerModal />}
       <Label label={'이력서'} type={'titleMd'} rightElement={<AddResumeButton />}></Label>
       <Spacing height={12} />
-      <ResumeItem />
+      <div className="flex flex-col gap-y-3">
+        {resumeList?.map((resume) => (
+          <ResumeItem
+            key={resume.resumeId}
+            createdAt={resume.createdAt}
+            modifiedAt={resume.updatedAt}
+            title={resume.resumeName}
+            id={resume.resumeId}
+          />
+        ))}
+      </div>
     </div>
   )
 }

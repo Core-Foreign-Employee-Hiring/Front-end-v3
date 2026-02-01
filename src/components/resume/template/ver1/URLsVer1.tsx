@@ -1,12 +1,18 @@
 import UrlItem from '@/components/resume/template/ver1/UrlItem'
+import { UrlType } from '@/types/resume'
 
-export default function URLsVer1() {
+interface URLsVer1Props {
+  urls: UrlType[] | undefined
+}
+
+export default function URLsVer1({ urls }: URLsVer1Props) {
   return (
     <div className="flex w-full gap-x-[20px] border-b-[2px] border-black py-[40px]">
       <div className="kr-title-md w-[200px] shrink-0 whitespace-nowrap">URL</div>
       <div className="flex flex-col gap-y-[24px]">
-        <UrlItem title={'GitHub'} url={'https://github.com/rusia9217'} />
-        <UrlItem title={'Portfolio'} url={'https://github.com/rusia9217'} />
+        {urls?.map((url, index) => (
+          <UrlItem key={url.urlLink} title={url.urlTitle} url={url.urlLink} />
+        ))}
       </div>
     </div>
   )

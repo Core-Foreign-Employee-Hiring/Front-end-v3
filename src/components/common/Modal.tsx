@@ -46,10 +46,13 @@ export default function Modal({ isOpen, onClose, children, customClassName }: Mo
   )
 }
 
-Modal.Header = function ModalHeader({ children }: { children: ReactNode }) {
+Modal.Header = function ModalHeader({ children, rightElement }: { children: ReactNode; rightElement?: ReactNode }) {
   return (
     <div>
-      {children}
+      <div className="flex items-center justify-between">
+        {children}
+        {rightElement}
+      </div>
       <Spacing height={32} />
     </div>
   )

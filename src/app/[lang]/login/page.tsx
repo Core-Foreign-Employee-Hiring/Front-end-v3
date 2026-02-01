@@ -9,7 +9,7 @@ import {
   SaveIdButton,
   SignUpCTAButton,
   SignUpPromotion,
-} from '@/components/login'
+} from '@/components/auth/login'
 import { LogoIcon } from '@/assets/svgComponents'
 
 interface LoginProps {
@@ -31,10 +31,10 @@ export default async function LoginPage({ params }: LoginProps) {
           <Password />
           <LoginOptions>
             <SaveIdButton />
-            <AccountRecoveryLinks>
-              <AccountRecoveryLinks.FindIdLink findIdHref={'/login/find?type=id&step=1'} />
-              <AccountRecoveryLinks.FindPwLink findPwHref={'/login/find?type=pw&step=1'} />
-            </AccountRecoveryLinks>
+            <AccountRecoveryLinks
+              findIdHref={`/${lang}/find-auth?type=id&step=1`}
+              findPwHref={`/${lang}/find-auth?type=pw&step=1`}
+            />
           </LoginOptions>
         </div>
 

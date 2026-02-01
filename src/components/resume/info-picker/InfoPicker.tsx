@@ -1,35 +1,33 @@
 'use client'
 
-import { useState } from 'react'
 import InfoPickerItem from '@/components/resume/info-picker/InfoPickerItem'
-import { CheckIcon, UncheckIcon } from '@/assets/svgComponents' // UnCheckIcon 추가 가정
+import { CheckIcon, UncheckIcon } from '@/assets/svgComponents'
+import { useResumeStore } from '@/store/resumeStore'
+import { ResumeSelectionType } from '@/types/resume'
 
 export default function InfoPicker() {
-  const infoList = ['자기소개', '학력', '자격증', '어학 능력', '경력', '수상', '기타 활동', '사진', 'URL']
+  const infoList: { key: keyof ResumeSelectionType; content: string }[] = [
+    { key: 'includeIntroduction', content: '자기소개' },
+    { key: 'includeEducation', content: '학력' },
+    { key: 'includeCertificate', content: '자격증' },
+    { key: 'includeLanguage', content: '어학 능력' },
+    { key: 'includeCareer', content: '경력' },
+    { key: 'includeAward', content: '수상' },
+    { key: 'includeActivity', content: '기타 활동' },
+    { key: 'includeUrls', content: 'URL' },
+  ]
 
-  // 1. 선택된 항목들을 담는 리스트 상태
-  const [selectedList, setSelectedList] = useState<string[]>([])
+  // Zustand 스토어 연결
+  const resumeSelection = useResumeStore((state) => state.resumeSelection)
+  const updateResumeSelection = useResumeStore((state) => state.updateResumeSelection)
+  const setAllResumeSelection = useResumeStore((state) => state.setAllResumeSelection)
 
-  // 2. 전체 선택 여부 확인
-  const isAllSelected = selectedList.length === infoList.length
+  // 모든 항목이 true인지 확인
+  const isAllSelected = Object.values(resumeSelection).every((value) => value === true)
 
-  // 3. 전체 선택/해제 핸들러
+  // 전체 선택/해제 핸들러
   const handleSelectAll = () => {
-    if (isAllSelected) {
-      setSelectedList([]) // 이미 모두 선택되었다면 전체 해제
-    } else {
-      setSelectedList([...infoList]) // 아니라면 전체 추가
-    }
-  }
-
-  // 4. 개별 항목 토글 핸들러
-  const handleToggle = (item: string) => {
-    setSelectedList(
-      (prev) =>
-        prev.includes(item)
-          ? prev.filter((i) => i !== item) // 이미 있으면 제거
-          : [...prev, item] // 없으면 추가
-    )
+    setAllResumeSelection(!isAllSelected)
   }
 
   return (
@@ -46,14 +44,12 @@ export default function InfoPicker() {
 
       {/* 항목 그리드 */}
       <div className="grid grid-cols-3 gap-3">
-        {' '}
-        {/* gap 추가 추천 */}
         {infoList.map((info) => (
           <InfoPickerItem
-            key={info}
-            content={info}
-            isSelected={selectedList.includes(info)} // 선택 여부 전달
-            onClick={() => handleToggle(info)} // 클릭 함수 전달
+            key={info.key}
+            content={info.content}
+            isSelected={resumeSelection[info.key]} // 스토어의 boolean 값 전달
+            onClick={() => updateResumeSelection(info.key, !resumeSelection[info.key])} // 값 반전
           />
         ))}
       </div>
