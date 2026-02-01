@@ -19,6 +19,29 @@ export const formatDate = (dateString: string | undefined): string => {
 }
 
 /**
+ * @param dateString - "2026-12-12" 형식의 문자열
+ * @returns "~12/12(토)" 형식의 문자열
+ */
+export const formatToShortDateWithDay = (dateString: string | undefined): string => {
+  if (!dateString) return ''
+  const date = new Date(dateString)
+
+  // 날짜가 유효하지 않을 경우 빈 문자열 반환
+  if (isNaN(date.getTime())) return ''
+
+  const month = date.getMonth() + 1 // getMonth는 0부터 시작하므로 1을 더함
+  const day = date.getDate()
+
+  // 요일 배열 (한국어)
+  const dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'][date.getDay()]
+
+  return `~${month}/${day}(${dayOfWeek})`
+}
+
+// 사용 예시
+console.log(formatToShortDateWithDay('2026-12-12')) // 결과: ~12/12(토)
+
+/**
  * 휴대폰 전화 추출
  * @param value
  */
@@ -51,3 +74,25 @@ export const validateEmail = (email: string | undefined): boolean => {
 
   return emailRegex.test(email)
 }
+
+/**
+ * @param address - "서울 성동구 성수동2가 284-55" 형식의 문자열
+ * @returns "서울 성동구" 형식의 문자열
+ */
+export const getShortAddress = (address: string | undefined): string => {
+  if (!address) return ''
+
+  // 공백을 기준으로 문자열을 배열로 나눕니다.
+  const addressParts = address.split(' ')
+
+  // 앞의 두 요소(시/도, 구/군)가 존재할 경우 합쳐서 반환합니다.
+  if (addressParts.length >= 2) {
+    return `${addressParts[0]} ${addressParts[1]}`
+  }
+
+  return address // 형식이 짧을 경우 그대로 반환
+}
+
+// 사용 예시
+console.log(getShortAddress('서울 성동구 성수동2가 284-55')) // 결과: 서울 성동구
+console.log(getShortAddress('경기도 이천시 경충대로 2700')) // 결과: 경기도 이천시

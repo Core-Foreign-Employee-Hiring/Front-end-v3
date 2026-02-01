@@ -917,3 +917,8 @@ export const getSelectedCategoriesFromRoles = (selectedJobRoles: JobRoleType[] |
 
   return Array.from(selectedCategories)
 }
+
+export const getJobCategoryLabel = (code: string): string => {
+  const category = JOB_CATEGORY_LIST.find((cat) => cat.code === code)
+  return category?.label || 'filter.unknown'
+}

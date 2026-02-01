@@ -1,0 +1,29 @@
+'use client'
+
+import { ReactNode } from 'react'
+import { Button } from '@/components/common'
+import { useRouter } from 'next/navigation'
+
+interface CTACardProps {
+  Icon: ReactNode
+  title: string
+  description: string
+  path: string
+}
+export default function CTACard({ Icon, title, description, path }: CTACardProps) {
+  const router = useRouter()
+
+  const onNavigate = () => {
+    router.push(path)
+  }
+  return (
+    <div className="flex flex-col gap-y-3 rounded-[12px] bg-white p-5">
+      <div className="bg-main-300 flex h-[40px] w-[40px] items-center justify-center rounded-[6px]">{Icon}</div>
+      <p className="kr-subtitle-lg">{title}</p>
+      <p className="body-sm text-gray5">{description}</p>
+      <Button onClick={onNavigate} variant={'secondary'} size={'md'}>
+        시작하기
+      </Button>
+    </div>
+  )
+}

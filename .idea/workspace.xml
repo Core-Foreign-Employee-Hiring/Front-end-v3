@@ -5,82 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bd33022-d98e-4c79-8c97-3afe8a1cce06" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/public/common/gray5-x-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/api/member/register/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/api/member/verification-email-code/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/api/member/verification-phone-code/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/api/member/verify-email/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/api/member/verify-phone/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/api/member/verify-userid/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/SuccessMessage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/modal/JobRoleModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/modal/SearchAddressModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/AddressField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/BirthDateField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/CheckPasswordField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/EducationField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/EmailField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/GenderField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/IdField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/JobRoleField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/NameField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/NationalityField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/PasswordField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/PhoneNumberField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/RegisterStep1.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/RegisterStep2.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/Step1BottomButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/Step2BottomButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/TermsOfService.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/sign-up/VisaField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/client/register.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/registerStore.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/auth/register.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/filterList.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/banner-img.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/arrow-foward-main-500-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/calendar-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/instagram-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/kakao-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/location-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/person-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/star-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/white-clopboard-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/white-edit_document-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/white-voice-chat-outline-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/Footer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/content/ContentCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/AICareerVerifyCTA.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/Banner.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/CTACard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/ContentPost.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/JobPost.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/ProgramPost.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/job-post/JobPostCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/program/ProgramCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/server/content.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/server/job-post.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/content.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/job-post.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/job-post.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/carrer/[specEvaluationId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/carrer/[specEvaluationId]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/carrer/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/carrer/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/carrer/resume/ver1/layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/carrer/resume/ver1/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/carrer/resume/ver2/layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/carrer/resume/ver2/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/sign-up/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/sign-up/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/svgComponents/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/svgComponents/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Spec/ProgressBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Spec/ProgressBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Spec/Resume.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Spec/Resume.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/ErrorMessage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/ErrorMessage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Modal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Modal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/TextInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/TextInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/modal/CreateResumeModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/modal/CreateResumeModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/modal/InfoPickerModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/modal/InfoPickerModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/ProfileImageUploader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/ProfileImageUploader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/ResumeButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/ResumeButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/ResumeItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/ResumeItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/ResumeItemContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/ResumeItemContent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/Template.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/Template.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/info-form/SelfIntroField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/info-form/SelfIntroField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/info-form/TitleField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/info-form/TitleField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/info-form/UrlField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/info-form/UrlField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/info-form/UrlList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/info-form/UrlList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/info-picker/InfoPicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/info-picker/InfoPicker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/info-picker/InfoPickerItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/info-picker/InfoPickerItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/template/SelectTemplateItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/SelectTemplateItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/AchievementItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/AchievementItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/AchievementsVer1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/AchievementsVer1.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/CertificationsVer1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/CertificationsVer1.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/EducationItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/EducationItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/EducationVer1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/EducationVer1.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/IntroVer1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/IntroVer1.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/LanguageSkillsVer1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/LanguageSkillsVer1.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/URLsVer1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/URLsVer1.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/WorkExperienceItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/WorkExperienceItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/template/ver1/WorkExperienceVer1.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/template/ver1/WorkExperienceVer1.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/modalStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/modalStore.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/common.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/filterList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/filterList.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,10 +96,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/common" />
+      <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/components/auth/find-auth/id" />
       <recent name="$PROJECT_DIR$/src/components/auth/find-auth/password" />
       <recent name="$PROJECT_DIR$/src/components/auth" />
-      <recent name="$PROJECT_DIR$/src/app/[lang]" />
     </key>
   </component>
   <component name="RunManager">
@@ -194,7 +149,7 @@
       <workItem from="1769337977492" duration="13881000" />
       <workItem from="1769587036246" duration="2515000" />
       <workItem from="1769667060592" duration="36038000" />
-      <workItem from="1769790802159" duration="22521000" />
+      <workItem from="1769790802159" duration="30886000" />
     </task>
     <servers />
   </component>

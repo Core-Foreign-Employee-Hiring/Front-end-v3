@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgWhiteClopboardIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 29" {...props}><path stroke="#fff" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.867} d="M16.691 3.358h3.152a2.91 2.91 0 0 1 2.909 2.909V24.69a2.91 2.91 0 0 1-2.91 2.91h-16a2.91 2.91 0 0 1-2.908-2.91V6.267a2.91 2.91 0 0 1 2.909-2.91h3.151m0 13.334 3.637 3.637 6.06-8.485M7.964.933h7.758a.97.97 0 0 1 .97.97v2.91a.97.97 0 0 1-.97.97H7.964a.97.97 0 0 1-.97-.97v-2.91a.97.97 0 0 1 .97-.97" /></svg>;
+export default SvgWhiteClopboardIcon;
