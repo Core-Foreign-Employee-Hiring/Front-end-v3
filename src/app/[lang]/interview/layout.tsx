@@ -1,4 +1,5 @@
-import { Header } from '@/components/common'
+import { Header, Spacing } from '@/components/common'
+import NavBar from '@/components/common/NavBar'
 
 export default async function InterviewLayout({
   children,
@@ -17,6 +18,8 @@ export default async function InterviewLayout({
         <Header headerType={'dynamic'} currentLng={lang} title={'스펙입력'} />
       </div>
       {children}
+      <Spacing height={80} />
+      <NavBar path={`/${lang}/interview`} lang={lang} />
     </div>
   )
 }

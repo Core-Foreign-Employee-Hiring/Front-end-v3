@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgSelectedCarrerIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" {...props}><path stroke="#5551F5" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.4} d="M14.909 2H9.09a.727.727 0 0 0-.728.727V4.91a.727.727 0 0 0 .728.727h5.818a.727.727 0 0 0 .727-.727V2.727A.727.727 0 0 0 14.909 2" /><path fill="#5551F5" d="M18 3.818A2.183 2.183 0 0 1 20.182 6v13.818A2.18 2.18 0 0 1 18 22H6a2.183 2.183 0 0 1-2.182-2.182V6A2.183 2.183 0 0 1 6 3.818h2.363V4.91a.73.73 0 0 0 .728.728h5.818a.73.73 0 0 0 .727-.728V3.82zm-2.742 5.794c-.254-.224-.606-.152-.787.162l-3.276 5.692-1.725-2.143c-.22-.273-.578-.273-.798 0a.824.824 0 0 0 0 .99l2.197 2.727c.117.145.28.22.446.203a.55.55 0 0 0 .412-.29l3.663-6.364c.18-.315.121-.752-.132-.977" /></svg>;
+export default SvgSelectedCarrerIcon;

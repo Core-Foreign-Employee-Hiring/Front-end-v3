@@ -5,36 +5,50 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bd33022-d98e-4c79-8c97-3afe8a1cce06" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/public/banner-img.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/common/arrow-foward-main-500-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/common/calendar-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/common/instagram-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/common/kakao-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/common/location-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/common/person-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/common/star-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/common/white-clopboard-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/common/white-edit_document-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/common/white-voice-chat-outline-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/Footer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/content/ContentCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home/AICareerVerifyCTA.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home/Banner.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home/CTACard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home/ContentPost.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home/JobPost.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home/ProgramPost.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/job-post/JobPostCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/program/ProgramCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/server/content.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/server/job-post.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/content.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/job-post.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/job-post.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/gray5-location_icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/selected-ai-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/selected-carrer-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/selected-content-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/selected-home-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/selected-more-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/selected-program-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/selected-recruit-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/unselected-ai-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/unselected-carrer-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/unselected-content-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/unselected-home-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/unselected-more-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/unselected-program-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/unselected-recruit-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/[lang]/job-post/[id]/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/[lang]/job-post/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/[lang]/job-post/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/[lang]/job-post/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/LayoutContent.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/MoreOptionsMenu.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/NavBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/SalaryTypeBadge.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/modal/GlobalModals.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/job-post/ActionButtons.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/job-post/CompanyInfo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/job-post/JobDetail.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/job-post/JobPostSummary.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/job-post/WorkConditions.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/job-post/WorkplaceInfo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/i18n/i18n.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/providers/TranslationsProvider.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/interview/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/interview/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[lang]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/[lang]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/svgComponents/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/svgComponents/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/common.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/BottomBorder.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/BottomBorder.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Label.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Label.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/server/job-post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/server/job-post.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/modalStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/modalStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/auth/register.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/auth/register.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/job-post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/job-post.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/filterList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/filterList.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +88,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/hwang-yulim/Documents/korfit/src/app/api/member/verify-email",
+    "last_opened_file_path": "/Users/hwang-yulim/Documents/korfit/src/i18n",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -88,11 +102,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/i18n" />
+      <recent name="$PROJECT_DIR$/src/app/[lang]/job-post/[id]" />
       <recent name="$PROJECT_DIR$/src/app/api/member/verify-email" />
       <recent name="$PROJECT_DIR$/src/app/api/member/verification-email-code" />
       <recent name="$PROJECT_DIR$/public/common" />
-      <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/src/lib" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/common" />
@@ -149,7 +163,8 @@
       <workItem from="1769337977492" duration="13881000" />
       <workItem from="1769587036246" duration="2515000" />
       <workItem from="1769667060592" duration="36038000" />
-      <workItem from="1769790802159" duration="30886000" />
+      <workItem from="1769790802159" duration="32386000" />
+      <workItem from="1769992875162" duration="17022000" />
     </task>
     <servers />
   </component>

@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgGray5LocationIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 14 16" {...props}><path fill="#6F717C" d="M6.7 16q-.277 0-.526-.097a1.8 1.8 0 0 1-.483-.29 36 36 0 0 1-1.857-1.76 20 20 0 0 1-1.858-2.17A12.8 12.8 0 0 1 .558 9.267Q0 8.012 0 6.765q0-2.878 1.911-4.821Q3.823 0 6.701 0q2.856 0 4.778 1.944t1.922 4.821q0 1.245-.569 2.513-.57 1.267-1.417 2.427a18.5 18.5 0 0 1-1.847 2.158 39 39 0 0 1-1.858 1.75 1.8 1.8 0 0 1-.483.29Q6.98 16 6.7 16m0-7.753q.645 0 1.096-.451.45-.45.451-1.095 0-.645-.451-1.096-.45-.45-1.095-.45t-1.096.45q-.45.451-.45 1.096 0 .644.45 1.095.451.45 1.096.451" /></svg>;
+export default SvgGray5LocationIcon;

@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgSelectedRecruitIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" {...props}><rect width={18.6} height={14.6} x={2.7} y={6.227} stroke="#5551F5" strokeWidth={1.4} rx={1.3} /><path stroke="#5551F5" strokeWidth={1.4} d="M16.143 6.224V3.473a1 1 0 0 0-1-1H8.855a1 1 0 0 0-1 1v2.75" /><path fill="#5551F5" d="M7.66 14.31 3.631 11.79a2 2 0 0 1-.939-1.696V8.641a2 2 0 0 1 2-2h14.616a2 2 0 0 1 2 2v1.472a2 2 0 0 1-.916 1.68l-3.875 2.503a2 2 0 0 1-1.085.32h-6.71a2 2 0 0 1-1.062-.305" /></svg>;
+export default SvgSelectedRecruitIcon;

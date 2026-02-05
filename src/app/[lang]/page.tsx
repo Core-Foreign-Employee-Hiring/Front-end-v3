@@ -8,6 +8,7 @@ import ProgramPost from '@/components/home/ProgramPost'
 import Footer from '@/components/common/Footer'
 import { serverFetchAllJobPosts } from '@/lib/server/job-post'
 import { serverFetchAllContentPosts } from '@/lib/server/content'
+import NavBar from '@/components/common/NavBar'
 
 interface HomeProps {
   params: Promise<{ lang: string }>
@@ -36,6 +37,9 @@ export default async function Home({ params }: HomeProps) {
       <Spacing height={100} />
 
       <Footer />
+      <Spacing height={80} />
+
+      <NavBar path={`/${lang}`} lang={lang} />
     </main>
   )
 }

@@ -1,8 +1,7 @@
 import { ContractEnumType } from '@/types/spec'
-import { JobRoleType, LanguageType, RegionType, VisaType } from '@/types/auth/register'
-import { ApiResponse, PageNation } from '@/types/common'
-import { JobPostType } from '@/types/job-post'
-import { apiFetchServer } from '@/lib/api.server'
+import { ApiCallResult, ApiResponse, PageNation } from '@/types/common'
+import { JobPostDetailType, JobPostType, JobRoleType, LanguageType, RegionType, VisaType } from '@/types/job-post'
+import { apiCallServer, apiFetchServer } from '@/lib/api.server'
 
 /**
  * 공고 전체 보기
@@ -63,4 +62,27 @@ export const serverFetchAllJobPosts = async (params: {
   })
 
   return await response.json()
+}
+
+/**
+ * 이력서 상세 조회
+ */
+export const fetchJobPostDetail = async (recruitId: number): Promise<ApiCallResult<JobPostDetailType>> => {
+  try {
+    const { data, error } = await apiCallServer(`/api/v2/recruit/${recruitId}`, {
+      method: 'GET',
+    })
+
+    if (error) {
+      return { success: false, error }
+    }
+
+    return { success: true, data }
+  } catch (error) {
+    console.error('이력서 상세 조회 불러오기 실패:', error)
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    }
+  }
 }

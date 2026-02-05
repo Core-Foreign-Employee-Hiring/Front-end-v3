@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import '../globals.css'
 import localFont from 'next/font/local'
 import ReactQueryProvider from '@/providers/ReactQueryProvider'
+import LayoutContent from '@/components/common/LayoutContent'
 
 const inter = localFont({
   src: '../../../public/fonts/Inter-VariableFont_opsz,wght.ttf',
@@ -28,7 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${pretendard.variable} font-sans antialiased`}>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          <LayoutContent>{children}</LayoutContent>
+        </ReactQueryProvider>
       </body>
     </html>
   )

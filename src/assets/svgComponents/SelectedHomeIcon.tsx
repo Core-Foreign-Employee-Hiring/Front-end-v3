@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgSelectedHomeIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" {...props}><path fill="#5551F5" fillRule="evenodd" d="M11.377 3.94a1 1 0 0 1 1.236 0l7.006 5.505a1 1 0 0 1 .381.787V20.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V10.23a1 1 0 0 1 .382-.785zm-1.246 9.443a.6.6 0 0 0-.6.6v5.554a.6.6 0 0 0 .6.6h3.739a.6.6 0 0 0 .6-.6v-5.554a.6.6 0 0 0-.6-.6z" clipRule="evenodd" /><path fill="#5551F5" d="M11.615 2.6a.785.785 0 0 1 .885.079l10 8.193a.833.833 0 0 1 .125 1.152.79.79 0 0 1-1.125.128L12 4.368l-9.5 7.784a.79.79 0 0 1-1.125-.128.833.833 0 0 1 .125-1.152l10-8.193z" /></svg>;
+export default SvgSelectedHomeIcon;

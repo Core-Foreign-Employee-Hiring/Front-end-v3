@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgUnselectedCarrerIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" {...props}><path stroke="#C5C6CD" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.4} d="M15.636 3.818H18A2.18 2.18 0 0 1 20.182 6v13.818A2.18 2.18 0 0 1 18 22H6a2.18 2.18 0 0 1-2.182-2.182V6A2.18 2.18 0 0 1 6 3.818h2.364m0 10 2.727 2.728 4.545-6.364M9.091 2h5.818a.727.727 0 0 1 .727.727V4.91a.727.727 0 0 1-.727.727H9.091a.727.727 0 0 1-.727-.727V2.727A.727.727 0 0 1 9.09 2" /></svg>;
+export default SvgUnselectedCarrerIcon;

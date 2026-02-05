@@ -1,45 +1,24 @@
-import { JobCategoryType, JobRoleType, NationalityType, VisaType } from '@/types/auth/register'
+import { ContractEnumType } from '@/types/spec'
+import {
+  ApplicationMethodType,
+  CompanyType,
+  JobCategoryType,
+  JobRoleType,
+  LanguageType,
+  NationalityType,
+  SalaryEnumType,
+  VisaType,
+  WorkDaysType,
+  WorkType,
+} from '@/types/job-post'
 
-export const VISA_LIST: { code: VisaType; i18nKey: string }[] = [
-  { code: 'A1', i18nKey: 'A-1 외교' },
-  { code: 'A2', i18nKey: 'A-2 공무' },
-  { code: 'A3', i18nKey: 'A-3 협정' },
-  { code: 'B1', i18nKey: 'B-1 사증면제' },
-  { code: 'B2', i18nKey: 'B-2 관광통과' },
-  { code: 'C1', i18nKey: 'C-1 일시취재' },
-  { code: 'C3', i18nKey: 'C-3 단기방문' },
-  { code: 'C4', i18nKey: 'C-4 문화예술' },
-  { code: 'D2', i18nKey: 'D-2 유학' },
-  { code: 'D3', i18nKey: 'D-3 기술연수' },
-  { code: 'D4', i18nKey: 'D-4 일반연수' },
-  { code: 'D5', i18nKey: 'D-5 취재' },
-  { code: 'D6', i18nKey: 'D-6 종교' },
-  { code: 'D7', i18nKey: 'D-7 주재' },
-  { code: 'D8', i18nKey: 'D-8 기업투자' },
-  { code: 'D9', i18nKey: 'D-9 무역경영' },
-  { code: 'D10', i18nKey: 'D-10 구직' },
-  { code: 'E1', i18nKey: 'E-1 교수' },
-  { code: 'E2', i18nKey: 'E-2 회화지도' },
-  { code: 'E3', i18nKey: 'E-3 연구' },
-  { code: 'E4', i18nKey: 'E-4 기술지도' },
-  { code: 'E5', i18nKey: 'E-5 전문직업' },
-  { code: 'E6', i18nKey: 'E-6 예술흥행' },
-  { code: 'E7', i18nKey: 'E-7 특정활동' },
-  { code: 'E8', i18nKey: 'E-8 계절근로' },
-  { code: 'E9', i18nKey: 'E-9 비전문취업' },
-  { code: 'E10', i18nKey: 'E-10 선원취업' },
-  { code: 'F1', i18nKey: 'F-1 방문동거' },
-  { code: 'F2', i18nKey: 'F-2 거주' },
-  { code: 'F3', i18nKey: 'F-3 동반' },
-  { code: 'F4', i18nKey: 'F-4 재외동포' },
-  { code: 'F5', i18nKey: 'F-5 영주' },
-  { code: 'F6', i18nKey: 'F-6 결혼이민' },
-  { code: 'G1', i18nKey: 'G-1 기타' },
-  { code: 'H1', i18nKey: 'H-1 관광취업' },
-  { code: 'H2', i18nKey: 'H-2 방문취업' },
-  { code: 'F27', i18nKey: 'F-2-7 점수제 우수인재' },
-] as const
-
+export const CONTRACT_LIST: { code: ContractEnumType; label: string }[] = [
+  { code: 'INTERN', label: 'filter.contractTypeFilter.content.INTERN' },
+  { code: 'NEWCOMER', label: 'filter.contractTypeFilter.content.NEWCOMER' },
+  { code: 'EXPERIENCED', label: 'filter.contractTypeFilter.content.EXPERIENCED' },
+  { code: 'CONTRACT', label: 'filter.contractTypeFilter.content.CONTRACT' },
+  { code: 'REGULAR', label: 'filter.contractTypeFilter.content.REGULAR' },
+]
 export const NATIONALITY_LIST: { code: NationalityType; label: string }[] = [
   { code: 'GHANA', label: 'signUp.nationality.content.GHANA' },
   { code: 'GABON', label: 'signUp.nationality.content.GABON' },
@@ -248,6 +227,94 @@ export const NATIONALITY_LIST: { code: NationalityType; label: string }[] = [
   { code: 'HONG_KONG', label: 'signUp.nationality.content.HONG_KONG' },
   { code: 'MACAU', label: 'signUp.nationality.content.MACAU' },
 ]
+
+export const VISA_LIST: { code: VisaType; i18nKey: string }[] = [
+  { code: 'A1', i18nKey: 'filter.visaFilter.content.A1' },
+  { code: 'A2', i18nKey: 'filter.visaFilter.content.A2' },
+  { code: 'A3', i18nKey: 'filter.visaFilter.content.A3' },
+  { code: 'B1', i18nKey: 'filter.visaFilter.content.B1' },
+  { code: 'B2', i18nKey: 'filter.visaFilter.content.B2' },
+  { code: 'C1', i18nKey: 'filter.visaFilter.content.C1' },
+  { code: 'C3', i18nKey: 'filter.visaFilter.content.C3' },
+  { code: 'C4', i18nKey: 'filter.visaFilter.content.C4' },
+  { code: 'D2', i18nKey: 'filter.visaFilter.content.D2' },
+  { code: 'D3', i18nKey: 'filter.visaFilter.content.D3' },
+  { code: 'D4', i18nKey: 'filter.visaFilter.content.D4' },
+  { code: 'D5', i18nKey: 'filter.visaFilter.content.D5' },
+  { code: 'D6', i18nKey: 'filter.visaFilter.content.D6' },
+  { code: 'D7', i18nKey: 'filter.visaFilter.content.D7' },
+  { code: 'D8', i18nKey: 'filter.visaFilter.content.D8' },
+  { code: 'D9', i18nKey: 'filter.visaFilter.content.D9' },
+  { code: 'D10', i18nKey: 'filter.visaFilter.content.D10' },
+  { code: 'E1', i18nKey: 'filter.visaFilter.content.E1' },
+  { code: 'E2', i18nKey: 'filter.visaFilter.content.E2' },
+  { code: 'E3', i18nKey: 'filter.visaFilter.content.E3' },
+  { code: 'E4', i18nKey: 'filter.visaFilter.content.E4' },
+  { code: 'E5', i18nKey: 'filter.visaFilter.content.E5' },
+  { code: 'E6', i18nKey: 'filter.visaFilter.content.E6' },
+  { code: 'E7', i18nKey: 'filter.visaFilter.content.E7' },
+  { code: 'E8', i18nKey: 'filter.visaFilter.content.E8' },
+  { code: 'E9', i18nKey: 'filter.visaFilter.content.E9' },
+  { code: 'E10', i18nKey: 'filter.visaFilter.content.E10' },
+  { code: 'F1', i18nKey: 'filter.visaFilter.content.F1' },
+  { code: 'F2', i18nKey: 'filter.visaFilter.content.F2' },
+  { code: 'F3', i18nKey: 'filter.visaFilter.content.F3' },
+  { code: 'F4', i18nKey: 'filter.visaFilter.content.F4' },
+  { code: 'F5', i18nKey: 'filter.visaFilter.content.F5' },
+  { code: 'F6', i18nKey: 'filter.visaFilter.content.F6' },
+  { code: 'G1', i18nKey: 'filter.visaFilter.content.G1' },
+  { code: 'H1', i18nKey: 'filter.visaFilter.content.H1' },
+  { code: 'H2', i18nKey: 'filter.visaFilter.content.H2' },
+  { code: 'F27', i18nKey: 'filter.visaFilter.content.F27' },
+] as const
+
+export const WORK_REGIONS = [
+  { code: 'SEOUL', label: 'filter.regionFilter.content.SEOUL', short: '서울' },
+  { code: 'GYEONGGI', label: 'filter.regionFilter.content.GYEONGGI', short: '경기' },
+  { code: 'INCHEON', label: 'filter.regionFilter.content.INCHEON', short: '인천' },
+  { code: 'BUSAN', label: 'filter.regionFilter.content.BUSAN', short: '부산' },
+  { code: 'DAEJEON', label: 'filter.regionFilter.content.DAEJEON', short: '대전' },
+  { code: 'DAEGU', label: 'filter.regionFilter.content.DAEGU', short: '대꾸' },
+  { code: 'ULSAN', label: 'filter.regionFilter.content.ULSAN', short: '울산' },
+  { code: 'GWANGJU', label: 'filter.regionFilter.content.GWANGJU', short: '광주' },
+  { code: 'GANGWON', label: 'filter.regionFilter.content.GANGWON', short: '강원특별자치도' },
+  { code: 'SEJONG', label: 'filter.regionFilter.content.SEJONG', short: '세종특별자치도' },
+  { code: 'CHUNGBUK', label: 'filter.regionFilter.content.CHUNGBUK', short: '충북' },
+  { code: 'CHUNGNAM', label: 'filter.regionFilter.content.CHUNGNAM', short: '충남' },
+  { code: 'GYEONGBUK', label: 'filter.regionFilter.content.GYEONGBUK', short: '경북' },
+  { code: 'GYEONGNAM', label: 'filter.regionFilter.content.GYEONGNAM', short: '경남' },
+  { code: 'JEJU', label: 'filter.regionFilter.content.JEJU', short: '제주특별자치도' },
+  { code: 'JEONBUK', label: 'filter.regionFilter.content.JEONBUK', short: '전북특별자치도' },
+  { code: 'JEONNAM', label: 'filter.regionFilter.content.JEONNAM', short: '전남' },
+] as const
+
+export const LANGUAGE_LIST = [
+  { code: 'ENGLISH', label: 'filter.requiredLanguageFilter.content.ENGLISH' },
+  { code: 'CHINESE', label: 'filter.requiredLanguageFilter.content.CHINESE' },
+  { code: 'HINDI', label: 'filter.requiredLanguageFilter.content.HINDI' },
+  { code: 'SPANISH', label: 'filter.requiredLanguageFilter.content.SPANISH' },
+  { code: 'FRENCH', label: 'filter.requiredLanguageFilter.content.FRENCH' },
+  { code: 'ARABIC', label: 'filter.requiredLanguageFilter.content.ARABIC' },
+  { code: 'BENGALI', label: 'filter.requiredLanguageFilter.content.BENGALI' },
+  { code: 'PORTUGUESE', label: 'filter.requiredLanguageFilter.content.PORTUGUESE' },
+  { code: 'RUSSIAN', label: 'filter.requiredLanguageFilter.content.RUSSIAN' },
+  { code: 'URDU', label: 'filter.requiredLanguageFilter.content.URDU' },
+  { code: 'INDONESIAN', label: 'filter.requiredLanguageFilter.content.INDONESIAN' },
+  { code: 'GERMAN', label: 'filter.requiredLanguageFilter.content.GERMAN' },
+  { code: 'JAPANESE', label: 'filter.requiredLanguageFilter.content.JAPANESE' },
+  { code: 'SWAHILI', label: 'filter.requiredLanguageFilter.content.SWAHILI' },
+  { code: 'MARATHI', label: 'filter.requiredLanguageFilter.content.MARATHI' },
+  { code: 'TELUGU', label: 'filter.requiredLanguageFilter.content.TELUGU' },
+  { code: 'TURKISH', label: 'filter.requiredLanguageFilter.content.TURKISH' },
+  { code: 'TAMIL', label: 'filter.requiredLanguageFilter.content.TAMIL' },
+  { code: 'VIETNAMESE', label: 'filter.requiredLanguageFilter.content.VIETNAMESE' },
+  { code: 'KOREAN', label: 'filter.requiredLanguageFilter.content.KOREAN' },
+  { code: 'ITALIAN', label: 'filter.requiredLanguageFilter.content.ITALIAN' },
+  { code: 'PERSIAN', label: 'filter.requiredLanguageFilter.content.PERSIAN' },
+  { code: 'POLISH', label: 'filter.requiredLanguageFilter.content.POLISH' },
+  { code: 'UKRAINIAN', label: 'filter.requiredLanguageFilter.content.UKRAINIAN' },
+] as const
+
 export const JOB_CATEGORY_LIST: { code: JobCategoryType; label: string }[] = [
   { code: 'IT_DEVELOPMENT', label: 'filter.jobRoleFilter.category.JOB_1.title' },
   { code: 'BUSINESS_MANAGEMENT', label: 'filter.jobRoleFilter.category.JOB_2.title' },
@@ -902,6 +969,169 @@ export const getJobRoleLabel = (jobRole: JobRoleType) => {
       return 'filter.jobRoleFilter.category.JOB_19.unknown'
   }
 }
+export function getLanguageLabel(lang: LanguageType): string {
+  switch (lang) {
+    case 'ENGLISH':
+      return 'filter.requiredLanguageFilter.content.ENGLISH'
+    case 'CHINESE':
+      return 'filter.requiredLanguageFilter.content.CHINESE'
+    case 'HINDI':
+      return 'filter.requiredLanguageFilter.content.HINDI'
+    case 'SPANISH':
+      return 'filter.requiredLanguageFilter.content.SPANISH'
+    case 'FRENCH':
+      return 'filter.requiredLanguageFilter.content.FRENCH'
+    case 'ARABIC':
+      return 'filter.requiredLanguageFilter.content.ARABIC'
+    case 'BENGALI':
+      return 'filter.requiredLanguageFilter.content.BENGALI'
+    case 'PORTUGUESE':
+      return 'filter.requiredLanguageFilter.content.PORTUGUESE'
+    case 'RUSSIAN':
+      return 'filter.requiredLanguageFilter.content.RUSSIAN'
+    case 'URDU':
+      return 'filter.requiredLanguageFilter.content.URDU'
+    case 'INDONESIAN':
+      return 'filter.requiredLanguageFilter.content.INDONESIAN'
+    case 'GERMAN':
+      return 'filter.requiredLanguageFilter.content.GERMAN'
+    case 'JAPANESE':
+      return 'filter.requiredLanguageFilter.content.JAPANESE'
+    case 'SWAHILI':
+      return 'filter.requiredLanguageFilter.content.SWAHILI'
+    case 'MARATHI':
+      return 'filter.requiredLanguageFilter.content.MARATHI'
+    case 'TELUGU':
+      return 'filter.requiredLanguageFilter.content.TELUGU'
+    case 'TURKISH':
+      return 'filter.requiredLanguageFilter.content.TURKISH'
+    case 'TAMIL':
+      return 'filter.requiredLanguageFilter.content.TAMIL'
+    case 'VIETNAMESE':
+      return 'filter.requiredLanguageFilter.content.VIETNAMESE'
+    case 'KOREAN':
+      return 'filter.requiredLanguageFilter.content.KOREAN'
+    case 'ITALIAN':
+      return 'filter.requiredLanguageFilter.content.ITALIAN'
+    case 'PERSIAN':
+      return 'filter.requiredLanguageFilter.content.PERSIAN'
+    case 'POLISH':
+      return 'filter.requiredLanguageFilter.content.POLISH'
+    case 'UKRAINIAN':
+      return 'filter.requiredLanguageFilter.content.UKRAINIAN'
+    default:
+      return ''
+  }
+}
+
+export const getApplicationMethodLabel = (applicationMethod: ApplicationMethodType | undefined | null) => {
+  switch (applicationMethod) {
+    case 'EMAIL':
+      return 'recruitDetail.apply.applicationMethod.EMAIL'
+    case 'PHONE_SMS':
+      return 'recruitDetail.apply.applicationMethod.PHONE_SMS'
+    default:
+      return 'recruitDetail.apply.applicationMethod.WEBSITE'
+  }
+}
+
+export const changeCompanyTypeEnumToKor = (companyEnumType: CompanyType | null | undefined) => {
+  switch (companyEnumType) {
+    case 'LARGE_CORPORATION':
+      return '대기업'
+    case 'MIDSIZE_COMPANY':
+      return '중견기업'
+    case 'SMALL_MEDIUM_ENTERPRISE':
+      return '중소기업'
+    case 'MICRO_BUSINESS':
+      return '소상공인'
+    case 'SOLE_PROPRIETOR':
+      return '개인사업자'
+    case 'CORPORATION':
+      return '법인기업'
+    case 'SOCIAL_ENTERPRISE':
+      return '사회적기업'
+    case 'COOPERATIVE':
+      return '협동조합'
+    default:
+      return '기타'
+  }
+}
+
+export const changeEnumToKorWorkTypeLabel = (workType: WorkType | undefined | null) => {
+  switch (workType) {
+    case 'ONSITE':
+      return 'recruitDetail.recruitInfo.workType.ONSITE'
+    case 'HYBRID':
+      return 'recruitDetail.recruitInfo.workType.HYBRID'
+    case 'REMOTE':
+      return 'recruitDetail.recruitInfo.workType.REMOTE'
+    default:
+      return 'recruitDetail.recruitInfo.workType.ETC'
+  }
+}
+
+export const changeEnumToKorWorkDaysTypeLabel = (workDaysType: WorkDaysType | undefined | null) => {
+  switch (workDaysType) {
+    case 'WEEKDAYS':
+      return 'recruitDetail.recruitInfo.workDaysType.WEEKDAYS'
+    case 'WEEKENDS':
+      return 'recruitDetail.recruitInfo.workDaysType.WEEKENDS'
+    case 'FULL_WEEK':
+      return 'recruitDetail.recruitInfo.workDaysType.FULL_WEEK'
+    case 'SIX_DAYS':
+      return 'recruitDetail.recruitInfo.workDaysType.SIX_DAYS'
+    case 'MONDAY':
+      return 'recruitDetail.recruitInfo.workDaysType.MONDAY'
+    case 'TUESDAY':
+      return 'recruitDetail.recruitInfo.workDaysType.TUESDAY'
+    case 'WEDNESDAY':
+      return 'recruitDetail.recruitInfo.workDaysType.WEDNESDAY'
+    case 'THURSDAY':
+      return 'recruitDetail.recruitInfo.workDaysType.THURSDAY'
+    case 'FRIDAY':
+      return 'recruitDetail.recruitInfo.workDaysType.FRIDAY'
+    case 'SATURDAY':
+      return 'recruitDetail.recruitInfo.workDaysType.SATURDAY'
+    case 'SUNDAY':
+      return 'recruitDetail.recruitInfo.workDaysType.SUNDAY'
+    default:
+      return 'recruitDetail.recruitInfo.workDaysType.ETC'
+  }
+}
+
+export const convertEnumToKorSalaryTypeLabel = (category: SalaryEnumType): string => {
+  switch (category) {
+    case 'ANNUAL':
+      return 'recruitDetail.recruitInfo.salaryType.ANNUAL'
+    case 'DAILY':
+      return 'recruitDetail.recruitInfo.salaryType.DAILY'
+    case 'WEEKLY':
+      return 'recruitDetail.recruitInfo.salaryType.WEEKLY'
+    case 'HOURLY':
+      return 'recruitDetail.recruitInfo.salaryType.HOURLY'
+    case 'MONTHLY':
+      return 'recruitDetail.recruitInfo.salaryType.MONTHLY'
+    default:
+      return 'recruitDetail.recruitInfo.salaryType.ETC'
+  }
+}
+
+export const getJobCategoryLabel = (code: string): string => {
+  const category = JOB_CATEGORY_LIST.find((cat) => cat.code === code)
+  return category?.label || 'filter.unknown'
+}
+
+export const getVisaLabel = (code: string): string => {
+  const visa = VISA_LIST.find((v) => v.code === code)
+  return visa?.i18nKey || 'filter.unknown'
+}
+
+export const getRegionLabel = (code: string): string => {
+  const visa = WORK_REGIONS.find((v) => v.code === code)
+  return visa?.label || '알 수 없음'
+}
+
 export const getSelectedCategoriesFromRoles = (selectedJobRoles: JobRoleType[] | undefined): JobCategoryType[] => {
   if (!selectedJobRoles || selectedJobRoles.length === 0) return []
 
@@ -916,9 +1146,4 @@ export const getSelectedCategoriesFromRoles = (selectedJobRoles: JobRoleType[] |
   })
 
   return Array.from(selectedCategories)
-}
-
-export const getJobCategoryLabel = (code: string): string => {
-  const category = JOB_CATEGORY_LIST.find((cat) => cat.code === code)
-  return category?.label || 'filter.unknown'
 }

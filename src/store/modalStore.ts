@@ -10,6 +10,7 @@ interface ModalState {
   isInfoPickerModalOpen: boolean
   isSearchAddressModalOpen: boolean
   isJobRoleModalOpen: boolean
+  isMoreOptionsMenuOpen: boolean
 
   setIsSaveAnswerNoteModalOpen: (isSaveAnswerNoteModalOpen: boolean) => void
   setIsCreateNewAnswerNoteModalOpen: (isCreateNewAnswerNoteModalOpen: boolean) => void
@@ -19,6 +20,7 @@ interface ModalState {
   setIsInfoPickerModalOpen: (isInfoPickerModalOpen: boolean) => void
   setIsSearchAddressModalOpen: (isSearchAddressModalOpen: boolean) => void
   setIsJobRoleModalOpen: (isJobRoleModalOpen: boolean) => void
+  setIsMoreOptionsMenuOpen: (isMoreOptionsMenuOpen: boolean) => void
 }
 
 export const useModalStore = create<ModalState>()(
@@ -31,6 +33,7 @@ export const useModalStore = create<ModalState>()(
     isInfoPickerModalOpen: false,
     isSearchAddressModalOpen: false,
     isJobRoleModalOpen: false,
+    isMoreOptionsMenuOpen: false,
 
     setIsSaveAnswerNoteModalOpen: (isSaveAnswerNoteModalOpen) =>
       set(() => ({
@@ -65,6 +68,10 @@ export const useModalStore = create<ModalState>()(
     setIsJobRoleModalOpen: (isJobRoleModalOpen) =>
       set(() => ({
         isJobRoleModalOpen: !isJobRoleModalOpen,
+      })),
+    setIsMoreOptionsMenuOpen: (isMoreOptionsMenuOpen) =>
+      set(() => ({
+        isMoreOptionsMenuOpen: !isMoreOptionsMenuOpen,
       })),
   }))
 )
