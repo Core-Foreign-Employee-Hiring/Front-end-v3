@@ -5,6 +5,7 @@ interface LabelProps {
   type?: 'titleLg' | 'titleMd' | 'titleSm' | 'subtitleLg' | 'subtitleMd' | 'subtitleSm' | 'inputLabel' | 'button'
   className?: string
   isRequired?: boolean
+  isOption?: boolean
   rightElement?: ReactNode
   label: string
   labelColor?: string // text-[]
@@ -27,12 +28,14 @@ export default function Label({
   label,
   type = 'inputLabel',
   labelColor,
+  isOption = false,
 }: LabelProps) {
   return (
     <div className="flex items-center justify-between">
       <div className={`${className} flex gap-x-1`}>
         <h1 className={twMerge(labelType[type], labelColor)}>{label}</h1>
         {isRequired && <p className="text-main-500">*</p>}
+        {isOption && <p className="kr-title-sm text-gray4">(선택)</p>}
       </div>
 
       {rightElement && rightElement}

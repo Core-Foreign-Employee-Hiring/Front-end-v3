@@ -37,6 +37,8 @@ export default async function CreateJobPost({ params, searchParams }: CreateJobP
       <Spacing height={20} />
 
       <ProgressBar steps={steps} currentStep={step} currentLabel={getCurrentLabel(step, steps)}></ProgressBar>
+      <Spacing height={20} />
+
       <FindCreateJobPostProcessStepSwitcher step={step} />
 
       <Spacing height={80} />
