@@ -1,35 +1,34 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import { NATIONALITY_LIST } from '@/utils/filterList'
+import { VISA_LIST } from '@/utils/filterList'
 import { DropDownGray3Icon, SearchIcon } from '@/assets/svgComponents'
 import { useTranslation } from 'react-i18next'
-import { useRegisterStore } from '@/store/registerStore'
-import DropDown from '../common/DropDown'
-import { Label } from '@/components/common'
-import { NationalityType } from '@/types/job-post'
+import { DropDown, Label } from '@/components/common'
+import { VisaType } from '@/types/job-post'
+import { useModifyProfileStore } from '@/store/modifyProfileStore'
 
-export default function NationalityField() {
+export default function VisaField() {
   const [isDropBoxOpen, setIsDropBoxOpen] = useState(false)
   const [searchValue, setSearchValue] = useState('')
-  const { registerData, updateRegister } = useRegisterStore((state) => state)
+  const { modifyProfileData, updateProfile } = useModifyProfileStore((state) => state)
   const { t } = useTranslation()
 
   // 검색어에 따라 필터링된 비자 리스트
   const filteredList = useMemo(() => {
-    if (!searchValue) return NATIONALITY_LIST
-    return NATIONALITY_LIST.filter((nationality) => nationality.label.toLowerCase().includes(searchValue.toLowerCase()))
+    if (!searchValue) return VISA_LIST
+    return VISA_LIST.filter((visa) => visa.i18nKey.toLowerCase().includes(searchValue.toLowerCase()))
   }, [searchValue])
 
   // 현재 선택된 비자의 라벨을 찾는 함수
   const getSelectedLabel = () => {
-    if (!registerData?.nationality) return t('signUp.nationality.placeholder')
-    const found = NATIONALITY_LIST.find((nationality) => nationality.code === registerData.nationality)
-    return found?.label || registerData.nationality
+    if (!modifyProfileData?.visa) return t('signUp.visa.placeholder')
+    const found = VISA_LIST.find((visa) => visa.code === modifyProfileData.visa)
+    return found?.i18nKey || modifyProfileData.visa
   }
 
-  const handleSelectNationality = (code: NationalityType) => {
-    updateRegister('nationality', code)
+  const handleSelectVisa = (visaCode: VisaType) => {
+    updateProfile('visa', visaCode)
     setIsDropBoxOpen(false)
     setSearchValue('')
   }
@@ -41,7 +40,7 @@ export default function NationalityField() {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'국적'} isRequired={true} type={'titleSm'} />
+      <Label label={'비자'} isRequired={true} type={'titleSm'} />
       <div onClick={handleInputContainerClick} className="relative">
         {isDropBoxOpen ? (
           <div
@@ -52,7 +51,7 @@ export default function NationalityField() {
             <input
               className="w-full outline-none"
               value={searchValue}
-              placeholder={'국적을 선택해주세요.'}
+              placeholder={'비자를 선택해주세요.'}
               onChange={(e) => {
                 setSearchValue(e.target.value)
               }}
@@ -64,7 +63,7 @@ export default function NationalityField() {
             onClick={() => setIsDropBoxOpen(true)}
             className="border-gray2 flex h-[52px] items-center justify-between rounded-[12px] border px-4 py-3"
           >
-            <p className={`${registerData?.visa ? 'text-black' : 'text-gray4'} button`}>{t(getSelectedLabel())}</p>
+            <p className={`${modifyProfileData?.visa ? 'text-black' : 'text-gray4'} button`}>{t(getSelectedLabel())}</p>
             <DropDownGray3Icon width={20} height={20} />
           </section>
         )}
@@ -73,12 +72,9 @@ export default function NationalityField() {
         {isDropBoxOpen && (
           <DropDown.DropBoxOptionBox>
             {filteredList.length > 0 ? (
-              filteredList.map((nationality) => (
-                <DropDown.DropBoxOptionItem
-                  key={nationality.code}
-                  onClick={() => handleSelectNationality(nationality.code)}
-                >
-                  {nationality.label}
+              filteredList.map((visa) => (
+                <DropDown.DropBoxOptionItem key={visa.code} onClick={() => handleSelectVisa(visa.code)}>
+                  {t(visa.i18nKey)}
                 </DropDown.DropBoxOptionItem>
               ))
             ) : (

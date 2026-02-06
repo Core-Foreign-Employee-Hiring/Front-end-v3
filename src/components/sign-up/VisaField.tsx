@@ -5,9 +5,9 @@ import { VISA_LIST } from '@/utils/filterList'
 import { DropDownGray3Icon, SearchIcon } from '@/assets/svgComponents'
 import { useTranslation } from 'react-i18next'
 import { useRegisterStore } from '@/store/registerStore'
-import { VisaType } from '@/types/auth/register'
 import DropDown from '../common/DropDown'
 import { Label } from '@/components/common'
+import { VisaType } from '@/types/job-post'
 
 export default function VisaField() {
   const [isDropBoxOpen, setIsDropBoxOpen] = useState(false)

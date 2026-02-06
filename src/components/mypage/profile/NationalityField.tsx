@@ -4,15 +4,14 @@ import { useMemo, useState } from 'react'
 import { NATIONALITY_LIST } from '@/utils/filterList'
 import { DropDownGray3Icon, SearchIcon } from '@/assets/svgComponents'
 import { useTranslation } from 'react-i18next'
-import { useRegisterStore } from '@/store/registerStore'
-import DropDown from '../common/DropDown'
-import { Label } from '@/components/common'
+import { DropDown, Label } from '@/components/common'
 import { NationalityType } from '@/types/job-post'
+import { useModifyProfileStore } from '@/store/modifyProfileStore'
 
 export default function NationalityField() {
   const [isDropBoxOpen, setIsDropBoxOpen] = useState(false)
   const [searchValue, setSearchValue] = useState('')
-  const { registerData, updateRegister } = useRegisterStore((state) => state)
+  const { modifyProfileData, updateProfile } = useModifyProfileStore((state) => state)
   const { t } = useTranslation()
 
   // 검색어에 따라 필터링된 비자 리스트
@@ -23,13 +22,13 @@ export default function NationalityField() {
 
   // 현재 선택된 비자의 라벨을 찾는 함수
   const getSelectedLabel = () => {
-    if (!registerData?.nationality) return t('signUp.nationality.placeholder')
-    const found = NATIONALITY_LIST.find((nationality) => nationality.code === registerData.nationality)
-    return found?.label || registerData.nationality
+    if (!modifyProfileData?.nationality) return t('signUp.nationality.placeholder')
+    const found = NATIONALITY_LIST.find((nationality) => nationality.code === modifyProfileData.nationality)
+    return found?.label || modifyProfileData.nationality
   }
 
   const handleSelectNationality = (code: NationalityType) => {
-    updateRegister('nationality', code)
+    updateProfile('nationality', code)
     setIsDropBoxOpen(false)
     setSearchValue('')
   }
@@ -64,7 +63,7 @@ export default function NationalityField() {
             onClick={() => setIsDropBoxOpen(true)}
             className="border-gray2 flex h-[52px] items-center justify-between rounded-[12px] border px-4 py-3"
           >
-            <p className={`${registerData?.visa ? 'text-black' : 'text-gray4'} button`}>{t(getSelectedLabel())}</p>
+            <p className={`${modifyProfileData?.visa ? 'text-black' : 'text-gray4'} button`}>{t(getSelectedLabel())}</p>
             <DropDownGray3Icon width={20} height={20} />
           </section>
         )}
@@ -78,7 +77,7 @@ export default function NationalityField() {
                   key={nationality.code}
                   onClick={() => handleSelectNationality(nationality.code)}
                 >
-                  {nationality.label}
+                  {t(nationality.label)}
                 </DropDown.DropBoxOptionItem>
               ))
             ) : (

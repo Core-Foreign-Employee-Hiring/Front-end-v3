@@ -5,46 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bd33022-d98e-4c79-8c97-3afe8a1cce06" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/public/common/gray4-calendar-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/ToggleButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/DirectInputContractType.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/DirectInputRecruitDate.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/DirectInputSalaryType.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/RecruitEndDate.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/RecruitStartDate.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/SalaryType.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkDayTypeDirect.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkDayTypeETC.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkDayTypeList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkEndTime.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkStartTime.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/createJobPostStore.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/create-job-post.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/sidebar-selected-home-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/sidebar-unselected-home-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/[lang]/mypage/home/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/[lang]/mypage/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/[lang]/mypage/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/[lang]/mypage/profile/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/member/modify-profile/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/MyPageItem.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/SideBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/home/UserInfo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/profile/AddressField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/profile/BirthDateField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/profile/BottomButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/profile/EducationField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/profile/EmailField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/profile/GenderField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/profile/JobRoleField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/profile/NameField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/profile/NationalityField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/profile/PhoneNumberField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/profile/ProfileStoreInitializer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/profile/TermsOfService.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/profile/VisaField.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/client/mypage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/server/mypage.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/modifyProfileStore.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/auth/modify-profile.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/mypage.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/create-job-post/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/create-job-post/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/svgComponents/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/svgComponents/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/TextInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/TextInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/BottomButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/BottomButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/RecruitDetailForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/RecruitDetailForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/company-info/CompanyName.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/company-info/CompanyName.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/ApplicationDocument.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/ApplicationDocument.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/ApplicationMethod.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/ApplicationMethod.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/Language.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/Language.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/MainTask.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/MainTask.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/Other.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/Other.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/Preference.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/Preference.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/Qualification.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/Qualification.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/Visa.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/Visa.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/ContractType.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/ContractType.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/RecruitDate.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/RecruitDate.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/Salary.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/Salary.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/Title.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/Title.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkDayType.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkDayType.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkTime.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkTime.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/job-post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/job-post.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sign-up/JobRoleField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sign-up/JobRoleField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sign-up/NationalityField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sign-up/NationalityField.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sign-up/VisaField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sign-up/VisaField.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +152,7 @@
       <workItem from="1769587036246" duration="2515000" />
       <workItem from="1769667060592" duration="36038000" />
       <workItem from="1769790802159" duration="32386000" />
-      <workItem from="1769992875162" duration="39248000" />
+      <workItem from="1769992875162" duration="48173000" />
     </task>
     <servers />
   </component>

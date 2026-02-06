@@ -4,14 +4,14 @@ import { Button, Label } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
 import JobRoleModal from '@/components/common/modal/JobRoleModal'
 import { useState } from 'react'
-import { useRegisterStore } from '@/store/registerStore'
 import { getJobRoleLabel } from '@/utils/filterList'
 import { useTranslation } from 'react-i18next'
 import { JobCategoryType, JobRoleType } from '@/types/job-post'
+import { useModifyProfileStore } from '@/store/modifyProfileStore'
 
 export default function JobRoleField() {
   const { isJobRoleModalOpen, setIsJobRoleModalOpen } = useModalStore((state) => state)
-  const { registerData, updateRegister } = useRegisterStore((state) => state)
+  const { modifyProfileData, updateProfile } = useModifyProfileStore((state) => state)
   const [selectedJobCategory, setSelectedJobCategory] = useState<JobCategoryType | undefined>(undefined)
   const [selectedJobRoles, setSelectedJobRoles] = useState<JobRoleType[]>()
 
@@ -36,7 +36,7 @@ export default function JobRoleField() {
   }
 
   const onApply = () => {
-    updateRegister('jobRoles', selectedJobRoles)
+    updateProfile('jobRoles', selectedJobRoles)
 
     onClose()
   }
@@ -44,7 +44,7 @@ export default function JobRoleField() {
   const onReset = () => {
     setSelectedJobCategory(undefined)
     setSelectedJobRoles(undefined)
-    updateRegister('jobRoles', undefined)
+    updateProfile('jobRoles', undefined)
   }
 
   const onClose = () => {
@@ -66,9 +66,9 @@ export default function JobRoleField() {
       <div className="flex flex-col gap-y-2">
         <Label isRequired={true} label={'관심 직무'} type={'titleSm'} />
         <div className="flex flex-col gap-y-3">
-          {registerData.jobRoles ? (
+          {modifyProfileData.jobRoles ? (
             <div className="flex gap-x-2">
-              {registerData.jobRoles?.map((jobRole) => (
+              {modifyProfileData.jobRoles?.map((jobRole) => (
                 <button
                   type="button"
                   key={jobRole}
