@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bd33022-d98e-4c79-8c97-3afe8a1cce06" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/[lang]/mypage/change-auth/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/member/modify-password/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/member/modify-userid/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/change-auth/BottomButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/change-auth/ChangeAuthSwitchButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/change-auth/ModifyId.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mypage/change-auth/ModifyPW.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/modifyAuthStore.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/mypage/home/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/mypage/home/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/mypage/home/UserInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/mypage/home/UserInfo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/filterList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/filterList.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/client/mypage.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/client/mypage.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,11 +74,11 @@
       <recent name="$PROJECT_DIR$/public/common" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/store" />
       <recent name="$PROJECT_DIR$/public/common" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/components/auth/find-auth/id" />
       <recent name="$PROJECT_DIR$/src/components/auth/find-auth/password" />
-      <recent name="$PROJECT_DIR$/src/components/auth" />
     </key>
   </component>
   <component name="RunManager">
@@ -123,7 +129,7 @@
       <workItem from="1769587036246" duration="2515000" />
       <workItem from="1769667060592" duration="36038000" />
       <workItem from="1769790802159" duration="32386000" />
-      <workItem from="1769992875162" duration="48688000" />
+      <workItem from="1769992875162" duration="50902000" />
     </task>
     <servers />
   </component>
