@@ -19,6 +19,7 @@ export const CONTRACT_LIST: { code: ContractEnumType; label: string }[] = [
   { code: 'CONTRACT', label: 'filter.contractTypeFilter.content.CONTRACT' },
   { code: 'REGULAR', label: 'filter.contractTypeFilter.content.REGULAR' },
 ]
+
 export const NATIONALITY_LIST: { code: NationalityType; label: string }[] = [
   { code: 'GHANA', label: 'signUp.nationality.content.GHANA' },
   { code: 'GABON', label: 'signUp.nationality.content.GABON' },
@@ -1122,11 +1123,15 @@ export const getJobCategoryLabel = (code: string): string => {
   return category?.label || 'filter.unknown'
 }
 
-export const getVisaLabel = (code: string): string => {
+export const getVisaLabel = (code: string | undefined): string => {
   const visa = VISA_LIST.find((v) => v.code === code)
   return visa?.i18nKey || 'filter.unknown'
 }
 
+export const getNationality = (code: string | undefined): string => {
+  const nationality = NATIONALITY_LIST.find((v) => v.code === code)
+  return nationality?.label || 'filter.unknown'
+}
 export const getRegionLabel = (code: string): string => {
   const visa = WORK_REGIONS.find((v) => v.code === code)
   return visa?.label || '알 수 없음'
