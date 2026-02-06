@@ -1,29 +1,60 @@
 'use client'
 
-import { Button, Label, TextInput } from '@/components/common'
+import { Button, Label } from '@/components/common'
+import { useCreateJobPostStore } from '@/store/createJobPostStore'
+import { useState } from 'react'
+import DirectInputContractType from '@/components/create-job-post/recruit-info/DirectInputContractType'
 
 export default function ContractType() {
+  const { updateCreateJobPost, createJobPost } = useCreateJobPostStore((state) => state)
+  const [isDirectInputContractTypeOpen, setIsDirectInputContractType] = useState(false)
+
   return (
     <div className="flex flex-col gap-y-2">
       <Label label={'고용형태'} isRequired={true} type={'titleSm'} />
       <div className="flex gap-x-3">
-        <Button variant={'outline'} size={'md'}>
+        <Button
+          onClick={() => {
+            updateCreateJobPost('contractType', createJobPost.contractType === 'REGULAR' ? null : 'REGULAR')
+            setIsDirectInputContractType(false)
+          }}
+          variant={createJobPost.contractType === 'REGULAR' ? 'primary' : 'outline'}
+          size={'md'}
+        >
           정규직
         </Button>
-        <Button variant={'outline'} size={'md'}>
+        <Button
+          onClick={() => {
+            updateCreateJobPost('contractType', createJobPost.contractType === 'INTERN' ? null : 'INTERN')
+            setIsDirectInputContractType(false)
+          }}
+          variant={createJobPost.contractType === 'INTERN' ? 'primary' : 'outline'}
+          size={'md'}
+        >
           인턴
         </Button>
-        <Button variant={'outline'} size={'md'}>
+        <Button
+          onClick={() => {
+            updateCreateJobPost('contractType', createJobPost.contractType === 'CONTRACT' ? null : 'CONTRACT')
+            setIsDirectInputContractType(false)
+          }}
+          variant={createJobPost.contractType === 'CONTRACT' ? 'primary' : 'outline'}
+          size={'md'}
+        >
           계약직
         </Button>
-        <Button variant={'outline'} size={'md'}>
+        <Button
+          onClick={() => {
+            setIsDirectInputContractType(!isDirectInputContractTypeOpen)
+            updateCreateJobPost('contractType', null)
+          }}
+          variant={isDirectInputContractTypeOpen ? 'primary' : 'outline'}
+          size={'md'}
+        >
           기타
         </Button>
       </div>
-      <div className="flex items-center gap-x-3">
-        <div className="kr-subtitle-sm text-gray5 shrink-0">기타사항</div>
-        <TextInput placeholder={'기타 고용형태를 입력해주세요.'} onChange={() => {}} value={''} />
-      </div>
+      {isDirectInputContractTypeOpen && <DirectInputContractType />}
     </div>
   )
 }

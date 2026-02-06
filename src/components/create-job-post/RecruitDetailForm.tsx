@@ -10,7 +10,7 @@ import ApplicationDocument from '@/components/create-job-post/recruit-detail/App
 
 export default function RecruitDetailForm() {
   return (
-    <div>
+    <div className="flex flex-col gap-y-[32px]">
       <MainTask />
       <Qualification />
       <Visa />

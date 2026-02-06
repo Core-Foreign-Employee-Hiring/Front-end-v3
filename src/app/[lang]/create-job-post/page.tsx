@@ -5,7 +5,7 @@ import RecruitDetailForm from '@/components/create-job-post/RecruitDetailForm'
 import CompanyInfoForm from '@/components/create-job-post/CompanyInfoForm'
 import BottomButtons from '@/components/create-job-post/BottomButtons'
 
-type CreateJobPostStepType = '1' | '2' | '3'
+export type CreateJobPostStepType = '1' | '2' | '3'
 
 function FindCreateJobPostProcessStepSwitcher({ step }: { step: CreateJobPostStepType }) {
   if (step === '1') return <RecruitInfoForm />
@@ -19,6 +19,7 @@ interface CreateJobPostProps {
 }
 
 export default async function CreateJobPost({ params, searchParams }: CreateJobPostProps) {
+  const { lang } = await params
   const sParams = await searchParams
   const step = (sParams.step as CreateJobPostStepType) || '1'
   const steps = [
@@ -42,7 +43,7 @@ export default async function CreateJobPost({ params, searchParams }: CreateJobP
       <FindCreateJobPostProcessStepSwitcher step={step} />
 
       <Spacing height={80} />
-      <BottomButtons />
+      <BottomButtons currentStep={step} lang={lang} />
     </main>
   )
 }

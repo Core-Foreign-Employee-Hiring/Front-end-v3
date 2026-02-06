@@ -72,6 +72,7 @@ export type WorkDaysType =
   | 'SATURDAY'
   | 'SUNDAY'
   | 'ETC'
+  | null
 
 export type CompanyType =
   | 'LARGE_CORPORATION'

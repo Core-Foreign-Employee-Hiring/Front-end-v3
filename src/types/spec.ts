@@ -31,7 +31,7 @@ export interface SpecCareerType {
   contractType: ContractEnumType
   highlight: string
 }
-export type ContractEnumType = 'INTERN' | 'REGULAR' | 'NEWCOMER' | 'EXPERIENCED' | 'CONTRACT'
+export type ContractEnumType = 'INTERN' | 'REGULAR' | 'NEWCOMER' | 'EXPERIENCED' | 'CONTRACT' | null
 
 export interface SpecAwardType {
   awardName: string

@@ -24,7 +24,7 @@ export default function ApplicationDocument() {
         </Button>
       </div>
       <div className="flex items-center gap-x-3">
-        <div className="kr-subtitle-sm text-gray5">기타사항</div>
+        <div className="kr-subtitle-sm text-gray5 shrink-0">기타사항</div>
         <TextInput value={''} onChange={(e) => {}} placeholder={'기타 제출서류를 입력해주세요.'}></TextInput>
       </div>
     </div>

@@ -26,6 +26,7 @@ interface TextInputProps {
   onBlur?: (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void
   onFocus?: (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void
   customClassName?: string
+  readOnly?: boolean
 }
 
 export default function TextInput({
@@ -45,6 +46,7 @@ export default function TextInput({
   onFocus,
   customClassName,
   maxLength,
+  readOnly = false,
 }: TextInputProps) {
   const textFieldBase = 'border p-4 bg-white rounded-[12px] kr-body-md outline-none w-full transition'
   const textAreaBase = 'border py-3 px-4 bg-white rounded-[16px] kr-body-md h-[147px] w-full outline-none transition'
@@ -58,6 +60,7 @@ export default function TextInput({
         <div className={`${textFieldClassName} flex w-full items-center gap-x-2`}>
           {leftElement && leftElement}
           <input
+            readOnly={readOnly}
             onFocus={onFocus}
             onBlur={onBlur}
             onKeyDown={onKeyDown}
