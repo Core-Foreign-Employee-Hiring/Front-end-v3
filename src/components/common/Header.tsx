@@ -20,8 +20,8 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
 
   const navItems = [
     { label: t('navigation.home'), href: `/${currentLng}` },
-    { label: t('navigation.job-post'), href: `/${currentLng}/recruit` },
-    { label: t('navigation.carrer'), href: `/${currentLng}/spec` },
+    { label: t('navigation.recruit'), href: `/${currentLng}/job-post` },
+    { label: t('navigation.spec'), href: `/${currentLng}/carrer` },
     { label: t('navigation.interview'), href: `/${currentLng}/interview` },
     { label: t('navigation.content'), href: `/${currentLng}/content` },
     { label: t('navigation.program'), href: `/${currentLng}/program` },

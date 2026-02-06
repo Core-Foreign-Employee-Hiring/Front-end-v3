@@ -14,6 +14,7 @@ export default async function FindAuthLayout({
     <div>
       <Header currentLng={lang} headerType={'default'} />
       {children}
+
       <Footer />
       <Spacing height={80} />
       <NavBar path={`/${lang}/job-post`} lang={lang} />

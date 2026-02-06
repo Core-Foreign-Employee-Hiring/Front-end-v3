@@ -1,3 +1,5 @@
+'use client'
+
 import { Badge } from '@/components/common'
 import Image from 'next/image'
 import { LocationIcon } from '@/assets/svgComponents'

@@ -19,7 +19,7 @@ export default function SideBar({ lang }: SideBarProps) {
       {/* tab 값에 따라 하이라이트 처리 */}
       <div
         onClick={() => {
-          router.push(`/${lang}/mypage?tab=home`)
+          router.push(`/${lang}/mypage/home`)
         }}
         className={`${tab === 'home' ? 'bg-main-50 text-main-500 kr-subtitle-md' : 'kr-body-md text-gray3'} flex w-full items-center gap-x-2 rounded-[8px] p-3`}
       >
