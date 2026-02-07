@@ -10,6 +10,8 @@ interface ModalState {
   isInfoPickerModalOpen: boolean
   isSearchAddressModalOpen: boolean
   isJobRoleModalOpen: boolean
+  isVisaModalOpen: boolean
+  isLanguageModalOpen: boolean
   isMoreOptionsMenuOpen: boolean
 
   setIsSaveAnswerNoteModalOpen: (isSaveAnswerNoteModalOpen: boolean) => void
@@ -20,6 +22,8 @@ interface ModalState {
   setIsInfoPickerModalOpen: (isInfoPickerModalOpen: boolean) => void
   setIsSearchAddressModalOpen: (isSearchAddressModalOpen: boolean) => void
   setIsJobRoleModalOpen: (isJobRoleModalOpen: boolean) => void
+  setIsVisaModalOpen: (isVisaModalOpen: boolean) => void
+  setIsLanguageModalOpen: (isLanguageModalOpen: boolean) => void
   setIsMoreOptionsMenuOpen: (isMoreOptionsMenuOpen: boolean) => void
 }
 
@@ -68,6 +72,15 @@ export const useModalStore = create<ModalState>()(
     setIsJobRoleModalOpen: (isJobRoleModalOpen) =>
       set(() => ({
         isJobRoleModalOpen: !isJobRoleModalOpen,
+      })),
+
+    setIsVisaModalOpen: (isVisaModalOpen) =>
+      set(() => ({
+        isVisaModalOpen: !isVisaModalOpen,
+      })),
+    setIsLanguageModalOpen: (isLanguageModalOpen) =>
+      set(() => ({
+        isLanguageModalOpen: !isLanguageModalOpen,
       })),
     setIsMoreOptionsMenuOpen: (isMoreOptionsMenuOpen) =>
       set(() => ({

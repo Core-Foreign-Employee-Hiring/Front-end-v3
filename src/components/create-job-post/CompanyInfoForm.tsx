@@ -7,7 +7,7 @@ import Introduce from '@/components/create-job-post/company-info/Introduce'
 
 export default function CompanyInfoForm() {
   return (
-    <div>
+    <div className="flex flex-col gap-y-[32px]">
       <CompanyName />
       <UploadCompanyLogoImage />
       <CompanyAddress />

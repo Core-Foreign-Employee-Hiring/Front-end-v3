@@ -28,7 +28,7 @@ export interface JobPostDetailType {
   workRegion: RegionType
   workType: WorkType
   directInputWorkType: string
-  workDayType: WorkDaysType
+  workDayType: WorkDayPatternType
   directInputWorkDayType: string
   workStartTime: string
   workEndTime: string
@@ -59,21 +59,10 @@ export type ApplicationMethodType = 'WEBSITE' | 'PHONE_SMS' | 'EMAIL'
 export type ContractEnumType = 'INTERN' | 'REGULAR' | 'NEWCOMER' | 'EXPERIENCED' | 'CONTRACT'
 export type SalaryEnumType = 'ANNUAL' | 'MONTHLY' | 'WEEKLY' | 'DAILY' | 'HOURLY' | 'ETC'
 
-export type WorkDaysType =
-  | 'WEEKDAYS'
-  | 'WEEKENDS'
-  | 'FULL_WEEK'
-  | 'SIX_DAYS'
-  | 'MONDAY'
-  | 'TUESDAY'
-  | 'WEDNESDAY'
-  | 'THURSDAY'
-  | 'FRIDAY'
-  | 'SATURDAY'
-  | 'SUNDAY'
-  | 'ETC'
-  | null
-
+export type WorkDayPatternType = 'WEEKDAYS' | 'WEEKENDS' | 'FULL_WEEK' | 'SIX_DAYS' | 'ETC' | null
+export type WorkingDaysType = 'MONDAY' | 'TUESDAY' | 'WEDNESDAY' | 'THURSDAY' | 'FRIDAY' | 'SATURDAY' | 'SUNDAY'
+export type CarrerType = 'NEWCOMER' | 'EXPERIENCED' | 'NOT_SPECIFIED'
+export type SubmissionDocumentType = 'RESUME' | 'COVER_LETTER' | 'PORTFOLIO' | 'CAREER_DESCRIPTION' | 'ETC'
 export type CompanyType =
   | 'LARGE_CORPORATION'
   | 'MIDSIZE_COMPANY'

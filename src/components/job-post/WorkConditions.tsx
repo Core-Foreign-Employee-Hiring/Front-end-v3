@@ -1,6 +1,6 @@
 'use client'
 import { Label } from '@/components/common'
-import { SalaryEnumType, WorkDaysType, WorkType } from '@/types/job-post'
+import { SalaryEnumType, WorkDayPatternType, WorkType } from '@/types/job-post'
 import { changeEnumToKorWorkDaysTypeLabel, changeEnumToKorWorkTypeLabel } from '@/utils/filterList'
 import { useTranslation } from 'react-i18next'
 import SalaryTypeBadge from '@/components/common/SalaryTypeBadge'
@@ -8,7 +8,7 @@ import SalaryTypeBadge from '@/components/common/SalaryTypeBadge'
 interface WorkConditionsProps {
   workType: WorkType
   directInputWorkType: string
-  workDayType: WorkDaysType
+  workDayType: WorkDayPatternType
   directInputWorkDayType: string
   workStartTime: string
   workEndTime: string

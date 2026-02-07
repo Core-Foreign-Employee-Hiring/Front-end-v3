@@ -6,6 +6,8 @@ import Career from '@/components/create-job-post/recruit-info/Career'
 import WorkDayType from '@/components/create-job-post/recruit-info/WorkDayType'
 import Salary from '@/components/create-job-post/recruit-info/Salary'
 import WorkTime from '@/components/create-job-post/recruit-info/WorkTime'
+import WorkType from '@/components/create-job-post/recruit-info/WorkType'
+import WorkPlace from '@/components/create-job-post/recruit-info/WorkPlace'
 
 export default function RecruitInfoForm() {
   return (
@@ -15,8 +17,10 @@ export default function RecruitInfoForm() {
       <JobRole />
       <Career />
       <ContractType />
+      <WorkType />
       <WorkDayType />
       <WorkTime />
+      <WorkPlace />
       <Salary />
     </div>
   )

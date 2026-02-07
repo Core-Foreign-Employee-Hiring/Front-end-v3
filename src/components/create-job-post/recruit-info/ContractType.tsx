@@ -46,7 +46,7 @@ export default function ContractType() {
         <Button
           onClick={() => {
             setIsDirectInputContractType(!isDirectInputContractTypeOpen)
-            updateCreateJobPost('contractType', null)
+            updateCreateJobPost('contractType', createJobPost.contractType === 'ETC' ? null : 'ETC')
           }}
           variant={isDirectInputContractTypeOpen ? 'primary' : 'outline'}
           size={'md'}

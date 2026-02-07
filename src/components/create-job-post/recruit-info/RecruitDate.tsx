@@ -4,6 +4,7 @@ import 'react-day-picker/dist/style.css' // 기본 스타일 필수
 import { Label } from '@/components/common'
 import RecruitStartDate from '@/components/create-job-post/recruit-info/RecruitStartDate'
 import RecruitEndDate from '@/components/create-job-post/recruit-info/RecruitEndDate'
+import DirectInputRecruitDate from '@/components/create-job-post/recruit-info/DirectInputRecruitDate'
 
 export default function RecruitDate() {
   return (
@@ -15,7 +16,7 @@ export default function RecruitDate() {
         <p className="kr-body-md text-gray4">~</p>
         <RecruitEndDate />
       </div>
-      {/*<DirectInputRecruitDate />*/}
+      <DirectInputRecruitDate />
     </div>
   )
 }

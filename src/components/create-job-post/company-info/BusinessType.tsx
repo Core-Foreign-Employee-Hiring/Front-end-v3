@@ -1,12 +1,20 @@
 'use client'
 
-import { Label } from '@/components/common'
+import { Label, TextInput } from '@/components/common'
+import { useCreateJobPostStore } from '@/store/createJobPostStore'
 
 export default function BusinessType() {
+  const { createJobPost, updateCreateJobPost } = useCreateJobPostStore((state) => state)
   return (
     <div className="flex flex-col gap-y-2">
-      <Label isOption={true} label={'업종 선택'} />
-      {/*<TextInput placeholder={'회사 소개를 입력해주세요.'} onChange={() => {}} value={''} textType={'textArea'} />*/}
+      <Label isOption={true} label={'업종'} />
+      <TextInput
+        placeholder={'업종을 입력해주세요.'}
+        onChange={(e) => {
+          updateCreateJobPost('businessType', e.target.value)
+        }}
+        value={createJobPost.businessType ?? ''}
+      />
     </div>
   )
 }

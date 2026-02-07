@@ -1,6 +1,7 @@
 import { ContractEnumType } from '@/types/spec'
 import {
   ApplicationMethodType,
+  CarrerType,
   CompanyType,
   JobCategoryType,
   JobRoleType,
@@ -8,11 +9,12 @@ import {
   NationalityType,
   SalaryEnumType,
   VisaType,
-  WorkDaysType,
+  WorkDayPatternType,
+  WorkingDaysType,
   WorkType,
 } from '@/types/job-post'
 
-export const CONTRACT_LIST: { code: ContractEnumType; label: string }[] = [
+export const CONTRACT_LIST: { code: ContractEnumType | CarrerType; label: string }[] = [
   { code: 'INTERN', label: 'filter.contractTypeFilter.content.INTERN' },
   { code: 'NEWCOMER', label: 'filter.contractTypeFilter.content.NEWCOMER' },
   { code: 'EXPERIENCED', label: 'filter.contractTypeFilter.content.EXPERIENCED' },
@@ -1072,7 +1074,9 @@ export const changeEnumToKorWorkTypeLabel = (workType: WorkType | undefined | nu
   }
 }
 
-export const changeEnumToKorWorkDaysTypeLabel = (workDaysType: WorkDaysType | undefined | null) => {
+export const changeEnumToKorWorkDaysTypeLabel = (
+  workDaysType: WorkDayPatternType | undefined | null | WorkingDaysType
+) => {
   switch (workDaysType) {
     case 'WEEKDAYS':
       return 'recruitDetail.recruitInfo.workDaysType.WEEKDAYS'

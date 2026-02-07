@@ -1,34 +1,34 @@
 'use client'
 
-import { Button, Label, TextInput } from '@/components/common'
-import { useCreateJobPostStore } from '@/store/createJobPostStore'
 import { useModalStore } from '@/store/modalStore'
 import SearchAddressModal from '@/components/common/modal/SearchAddressModal'
+import { Button, Label, TextInput } from '@/components/common'
+import { useCreateJobPostStore } from '@/store/createJobPostStore'
 
-export default function CompanyAddress() {
+export default function WorkPlace() {
   const { createJobPost, updateCreateJobPost } = useCreateJobPostStore((state) => state)
   const { isSearchAddressModalOpen, setIsSearchAddressModalOpen } = useModalStore((state) => state)
 
   const handleChangeAddress = (zipcode: string, address1: string, latitude?: number, longitude?: number) => {
     console.log(latitude, longitude)
-    updateCreateJobPost('companyZipcode', zipcode)
-    updateCreateJobPost('companyAddress1', address1)
-    updateCreateJobPost('companyLatitude', latitude)
-    updateCreateJobPost('companyLongitude', longitude)
+    updateCreateJobPost('workZipcode', zipcode)
+    updateCreateJobPost('workAddress1', address1)
+    updateCreateJobPost('workLatitude', latitude)
+    updateCreateJobPost('workLongitude', longitude)
   }
 
   return (
     <div>
       {isSearchAddressModalOpen && <SearchAddressModal handleChangeAddress={handleChangeAddress} />}
       <div className="flex flex-col gap-y-2">
-        <Label label={'회사 주소'} isRequired={true} type={'titleSm'} />
+        <Label label={'근무 주소'} isRequired={true} type={'titleSm'} />
         {/* 우편 번호 입력 */}
         <div className="flex gap-x-2">
           <TextInput
             onClick={() => {
               setIsSearchAddressModalOpen(isSearchAddressModalOpen)
             }}
-            value={createJobPost.companyZipcode || ''}
+            value={createJobPost.workZipcode || ''}
             onChange={() => {}}
             placeholder={'우편번호'}
           />
@@ -49,16 +49,16 @@ export default function CompanyAddress() {
           onClick={() => {
             setIsSearchAddressModalOpen(isSearchAddressModalOpen)
           }}
-          value={createJobPost.companyAddress1 || ''}
+          value={createJobPost.workAddress1 || ''}
           onChange={() => {}}
           placeholder={'주소'}
         />
 
         {/* 상세 주소 입력 */}
         <TextInput
-          value={createJobPost.companyAddress2 || ''}
+          value={createJobPost.workAddress2 || ''}
           onChange={(e) => {
-            updateCreateJobPost('companyAddress2', e.target.value)
+            updateCreateJobPost('workAddress2', e.target.value)
           }}
           placeholder={'상세주소를 입력해주세요.'}
         />

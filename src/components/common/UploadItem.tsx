@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { DeleteIcon } from '@/assets/svgComponents'
 
 interface UploadItemProps {
-  file: string | File | null
+  file: string | File | null | undefined
   onRemove: () => void
 }
 

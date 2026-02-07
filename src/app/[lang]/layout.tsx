@@ -3,6 +3,7 @@ import '../globals.css'
 import localFont from 'next/font/local'
 import ReactQueryProvider from '@/providers/ReactQueryProvider'
 import LayoutContent from '@/components/common/LayoutContent'
+import Script from 'next/script'
 
 const inter = localFont({
   src: '../../../public/fonts/Inter-VariableFont_opsz,wght.ttf',
@@ -32,6 +33,10 @@ export default function RootLayout({
         <ReactQueryProvider>
           <LayoutContent>{children}</LayoutContent>
         </ReactQueryProvider>
+        <Script
+          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_KEY}&libraries=services&autoload=false`}
+          strategy="beforeInteractive"
+        />
       </body>
     </html>
   )

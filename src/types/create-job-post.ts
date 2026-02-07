@@ -1,39 +1,53 @@
 import {
   ApplicationMethodType,
+  CarrerType,
   CompanyType,
   JobCategoryType,
   JobRoleType,
   LanguageType,
   SalaryEnumType,
+  SubmissionDocumentType,
   VisaType,
-  WorkDaysType,
+  WorkDayPatternType,
+  WorkingDaysType,
   WorkType,
 } from '@/types/job-post'
 import { ContractEnumType } from '@/types/spec'
 
 export interface CreateJobPostType {
   title: string
-  companyImageUrl: string
+  companyImageUrl: string | File | null
   companyName: string
-  zipcode: string
-  address1: string
-  address2: string
+  companyZipcode: string
+  companyAddress1: string
+  companyAddress2: string
+  companyLatitude: number | undefined
+  companyLongitude: number | undefined
+  workZipcode: string
+  workAddress1: string
+  workAddress2: string
+  workLatitude: number | undefined
+  workLongitude: number | undefined
   companyType: CompanyType
   representativeName: string
   establishedDate: string
   businessType: string
   jobRoles: JobRoleType[]
-  languageTypes: LanguageType[]
-  visas: VisaType[]
+  languageTypes: LanguageType[] | undefined
+  visas: VisaType[] | undefined
   isAlwaysRecruiting: true
   recruitStartDate: string
   recruitEndDate: string
-  contractType: ContractEnumType
   directInputContractType: string
+  contractType: ContractEnumType
+  directInputRecruitDate: string | null
   jobCategories: JobCategoryType[]
-  workType: WorkType
+  carrerType: CarrerType | null
+  directInputCarrerType: string
+  workType: WorkType | null
   directInputWorkType: string
-  workDayType: WorkDaysType
+  workDayPatternType: WorkDayPatternType
+  workingDays: WorkingDaysType[]
   directInputWorkDayType: string
   workStartTime: string
   workEndTime: string
@@ -41,12 +55,16 @@ export interface CreateJobPostType {
   salaryType: SalaryEnumType
   salary: number
   directInputSalaryType: string
-  posterImageUrl: string
+  posterImageUrl: string | File | null
   mainTasks: string
   qualifications: string
   preferences: string
   others: string
-  applicationMethod: ApplicationMethodType
+  applicationMethod: ApplicationMethodType | null
   directInputApplicationMethod: string
   recruitPublishStatus: 'DRAFT' | 'PUBLISHED'
+  websiteUrl: string
+  companyIntroduction: string
+  submissionDocuments: SubmissionDocumentType[]
+  directInputSubmissionDocument: string
 }

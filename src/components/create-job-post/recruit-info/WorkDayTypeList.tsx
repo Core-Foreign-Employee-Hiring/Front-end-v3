@@ -26,37 +26,49 @@ export default function WorkDayTypeList({ type, setType }: WorkDayTypeListProps)
         <div className="flex gap-x-3">
           <Button
             onClick={() => {
-              updateCreateJobPost('workDayType', createJobPost.workDayType === 'WEEKDAYS' ? null : 'WEEKDAYS')
+              updateCreateJobPost(
+                'workDayPatternType',
+                createJobPost.workDayPatternType === 'WEEKDAYS' ? null : 'WEEKDAYS'
+              )
             }}
             size={'md'}
-            variant={createJobPost.workDayType === 'WEEKDAYS' ? 'primary' : 'outline'}
+            variant={createJobPost.workDayPatternType === 'WEEKDAYS' ? 'primary' : 'outline'}
           >
             평일 (월, 화, 수, 목, 금)
           </Button>
           <Button
             onClick={() => {
-              updateCreateJobPost('workDayType', createJobPost.workDayType === 'WEEKENDS' ? null : 'WEEKENDS')
+              updateCreateJobPost(
+                'workDayPatternType',
+                createJobPost.workDayPatternType === 'WEEKENDS' ? null : 'WEEKENDS'
+              )
             }}
             size={'md'}
-            variant={createJobPost.workDayType === 'WEEKENDS' ? 'primary' : 'outline'}
+            variant={createJobPost.workDayPatternType === 'WEEKENDS' ? 'primary' : 'outline'}
           >
             주말 (토, 일)
           </Button>
           <Button
             onClick={() => {
-              updateCreateJobPost('workDayType', createJobPost.workDayType === 'FULL_WEEK' ? null : 'FULL_WEEK')
+              updateCreateJobPost(
+                'workDayPatternType',
+                createJobPost.workDayPatternType === 'FULL_WEEK' ? null : 'FULL_WEEK'
+              )
             }}
             size={'md'}
-            variant={createJobPost.workDayType === 'FULL_WEEK' ? 'primary' : 'outline'}
+            variant={createJobPost.workDayPatternType === 'FULL_WEEK' ? 'primary' : 'outline'}
           >
             주7일 (월~일)
           </Button>
           <Button
             onClick={() => {
-              updateCreateJobPost('workDayType', createJobPost.workDayType === 'SIX_DAYS' ? null : 'SIX_DAYS')
+              updateCreateJobPost(
+                'workDayPatternType',
+                createJobPost.workDayPatternType === 'SIX_DAYS' ? null : 'SIX_DAYS'
+              )
             }}
             size={'md'}
-            variant={createJobPost.workDayType === 'SIX_DAYS' ? 'primary' : 'outline'}
+            variant={createJobPost.workDayPatternType === 'SIX_DAYS' ? 'primary' : 'outline'}
           >
             주6일
           </Button>

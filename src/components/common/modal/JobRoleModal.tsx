@@ -3,9 +3,9 @@ import { Button, Label, Modal, TextInput } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
 import { getJobRoleLabel, getJobRoleList, getSelectedCategoriesFromRoles, JOB_CATEGORY_LIST } from '@/utils/filterList'
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react'
-import { JobCategoryType, JobRoleType } from '@/types/auth/register'
 import { useTranslation } from 'react-i18next'
 import { CheckIcon, Gray5XIcon, UncheckIcon } from '@/assets/svgComponents'
+import { JobCategoryType, JobRoleType } from '@/types/job-post'
 
 interface JobRoleModalProps {
   selectedCategory: JobCategoryType | undefined
@@ -79,6 +79,7 @@ export default function JobRoleModal({
   const onClose = () => {
     setIsJobRoleModalOpen(isJobRoleModalOpen)
   }
+
   return (
     <Modal customClassName={'desktop:w-[860px] tablet:w-[680px]'} isOpen={isJobRoleModalOpen} onClose={onClose}>
       <Modal.Header
