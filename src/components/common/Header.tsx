@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { BackIcon, DropDownGray3Icon, DropDownGray4Icon, LanguageIcon, LogoIcon } from '@/assets/svgComponents'
 import '@/lib/i18n-client'
 import PopUp from '@/components/common/PopUp'
+import { Locale } from '@/lib/i18n.types'
 
 interface HeaderProps {
   headerType?: 'default' | 'dynamic'
@@ -17,10 +18,15 @@ interface HeaderProps {
 
 export default function Header({ headerType = 'default', currentLng = 'ko', path, title }: HeaderProps) {
   const { t } = useTranslation('common', { lng: currentLng })
+  const { i18n } = useTranslation()
   const currentPath = usePathname()
   const router = useRouter()
 
   const [isPopUpOpen, setIsPopUpOpen] = useState(false)
+  const [lng, setLng] = useState(currentLng)
+  const pathname = usePathname()
+
+  const [isLanguageSelectModalOpen, setIsLanguageSelectModalOpen] = useState(false)
 
   // 1. 원시 문자열(String)만 구독합니다. (문자열은 값이 같으면 참조가 같다고 간주됨)
   const rawUserInfo = useSyncExternalStore(
@@ -59,7 +65,39 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
     router.push(`/${currentLng}/login`)
   }
 
-  const popupList = [
+  // 언어 변경 시 페이지 새로고침 (선택사항)
+  const handleLanguageChange = (langCode: string) => {
+    localStorage.setItem('language', langCode)
+    setLng(langCode)
+    i18n.changeLanguage(langCode)
+    setIsLanguageSelectModalOpen(false)
+    // 필요시 페이지 전체 새로고침
+    // window.location.reload()
+  }
+
+  const changeLanguage = async (langCode: Locale) => {
+    try {
+      // i18n 언어 변경
+      await i18n.changeLanguage(langCode)
+
+      // localStorage에 저장 (선택사항)
+      localStorage.setItem('i18nextLng', langCode)
+
+      // 경로 변경 (언어 코드 포함)
+      const newPathname = pathname.replace(/^\/[a-z]{2}/, `/${langCode}`)
+      router.push(newPathname)
+
+      // 모달 닫기
+      setIsLanguageSelectModalOpen(false)
+
+      // 콜백 실행
+      handleLanguageChange?.(langCode)
+    } catch (error) {
+      console.error('언어 변경 실패:', error)
+    }
+  }
+
+  const loginPopupList = [
     {
       content: '마이페이지',
       textColor: 'text-black',
@@ -69,6 +107,19 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
       content: '로그아웃',
       textColor: 'text-gray4',
       onClick: handleLogout,
+    },
+  ]
+
+  const languagePopupList = [
+    {
+      content: '한국어',
+      textColor: 'text-black',
+      onClick: () => changeLanguage('ko'),
+    },
+    {
+      content: '영어',
+      textColor: 'text-black',
+      onClick: () => changeLanguage('en'),
     },
   ]
 
@@ -107,9 +158,32 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
         </nav>
       </section>
 
-      <section className="desktop:gap-x-5 flex items-center gap-x-3">
+      <section className="desktop:gap-x-5 relative flex items-center gap-x-3">
+        {isLanguageSelectModalOpen && (
+          <PopUp className={'right-0'}>
+            {languagePopupList.map((language) => (
+              <PopUp.PopUpItem key={language.content} onClick={language.onClick} textColor={language.textColor}>
+                {language.content}
+              </PopUp.PopUpItem>
+            ))}
+          </PopUp>
+        )}
+        {isPopUpOpen && (
+          <PopUp>
+            {loginPopupList.map((popupItem) => (
+              <PopUp.PopUpItem key={popupItem.content} onClick={popupItem.onClick} textColor={popupItem.textColor}>
+                {popupItem.content}
+              </PopUp.PopUpItem>
+            ))}
+          </PopUp>
+        )}
         <div className="flex items-center gap-x-3">
-          <LanguageIcon className={iconClass} />
+          <LanguageIcon
+            onClick={() => {
+              setIsLanguageSelectModalOpen(!isLanguageSelectModalOpen)
+            }}
+            className={iconClass}
+          />
         </div>
 
         <div className="kr-button text-gray4 tablet:flex hidden items-center gap-x-2">
@@ -118,27 +192,13 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
               onClick={() => {
                 setIsPopUpOpen(!isPopUpOpen)
               }}
-              className="relative flex cursor-pointer items-center gap-x-2"
+              className="flex cursor-pointer items-center gap-x-2"
             >
               <span className="kr-button text-gray5">{userInfo.name}</span>
               {isPopUpOpen ? (
                 <DropDownGray3Icon width={20} height={20} />
               ) : (
                 <DropDownGray4Icon width={20} height={20} />
-              )}
-
-              {isPopUpOpen && (
-                <PopUp>
-                  {popupList.map((popupItem) => (
-                    <PopUp.PopUpItem
-                      key={popupItem.content}
-                      onClick={popupItem.onClick}
-                      textColor={popupItem.textColor}
-                    >
-                      {popupItem.content}
-                    </PopUp.PopUpItem>
-                  ))}
-                </PopUp>
               )}
             </div>
           ) : (
