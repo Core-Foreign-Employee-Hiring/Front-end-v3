@@ -77,7 +77,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
 
       <div className="p-5">
         {userInfo?.name ? (
-          <section className="border-gray2 border-gray2 flex flex-col gap-y-4 rounded-[12px] border bg-white p-[20px]">
+          <section className="border-gray2 flex flex-col gap-y-4 rounded-[12px] border bg-white p-[20px]">
             <div className="flex flex-col gap-y-1">
               <Label label={`${userInfo.name}님`} type={'subtitleMd'} />
               <p className="kr-body-sm text-gray4">{userInfo.email}</p>

@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**', // 버킷 내의 모든 경로 허용
       },
+      {
+        protocol: 'https',
+        hostname: 'imgs.jobkorea.co.kr',
+        pathname: '**',
+      },
     ],
   },
 }

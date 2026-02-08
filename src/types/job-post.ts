@@ -1,18 +1,16 @@
 export interface JobPostType {
   recruitId: number
+  title: string
+  jobRoles: JobRoleType[]
+  carrerType: CarrerType
+  directInputCarrerType: string
+  visas: VisaType[]
+  languageTypes: LanguageType[]
+  workAddress1: string
+  recruitEndDate: string
   companyImageUrl: string
   companyName: string
-  recruitEndDate: string
-  title: string
-  jobCategories: JobCategoryType[]
-  salaryType: SalaryEnumType
-  salary: number
-  contractType: ContractEnumType
-  zipcode: string
-  address1: string
-  address2: string
 }
-
 export interface JobPostDetailType {
   recruitId: number
   title: string
