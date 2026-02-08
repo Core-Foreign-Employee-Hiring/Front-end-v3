@@ -45,9 +45,20 @@ export default function JobPostSummary({
       <section className="flex flex-col gap-y-2">
         <div className="flex items-center justify-between">
           <div className="flex gap-x-2">
-            {visas.length > 0 ? <Badge>{`${visas[0]} 외 ${visas.length - 1} 가능`}</Badge> : null}
+            {visas.length > 0 ? (
+              visas.length === 1 ? (
+                <Badge>{visas[0]}</Badge>
+              ) : visas.length > 1 ? (
+                <Badge>{`${visas[0]} 외 ${visas.length - 1} 가능`}</Badge>
+              ) : null
+            ) : null}
+
             {languageTypes.length > 0 ? (
-              <Badge>{`업무: ${t(getLanguageLabel(languageTypes[0]))} 외 ${languageTypes.length - 1}`}</Badge>
+              languageTypes.length === 1 ? (
+                <Badge>{t(getLanguageLabel(languageTypes[0]))}</Badge>
+              ) : languageTypes.length > 1 ? (
+                <Badge>{`${t(getLanguageLabel(languageTypes[0]))} 외 ${languageTypes.length - 1}`}</Badge>
+              ) : null
             ) : null}
           </div>
           <p className="kr-button text-gray4">{formatToShortDateWithDay(recruitEndDate)}</p>

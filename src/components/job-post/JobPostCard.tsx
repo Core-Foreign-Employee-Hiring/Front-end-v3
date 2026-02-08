@@ -6,7 +6,7 @@ import { LocationIcon } from '@/assets/svgComponents'
 import { JobPostType } from '@/types/job-post'
 import { useRouter } from 'next/navigation'
 import { formatToShortDateWithDay, getShortAddress } from '@/utils/common'
-import { getJobRoleLabel } from '@/utils/filterList'
+import { getJobRoleLabel, getLanguageLabel } from '@/utils/filterList'
 import { useTranslation } from 'react-i18next'
 
 export default function JobPostCard({
@@ -32,19 +32,46 @@ export default function JobPostCard({
       className="border-gray2 hover:border-gray3 flex cursor-pointer flex-col gap-y-3 rounded-[12px] border p-4 transition active:scale-95"
     >
       <section className="flex gap-x-2">
-        <Badge>비자</Badge>
-        <Badge>언어 숙련도</Badge>
+        <div className="flex gap-x-2">
+          {visas.length > 0 ? (
+            visas.length === 1 ? (
+              <Badge>{visas[0]}</Badge>
+            ) : visas.length > 1 ? (
+              <Badge>{`${visas[0]} 외 ${visas.length - 1} 가능`}</Badge>
+            ) : null
+          ) : null}
+
+          {languageTypes.length > 0 ? (
+            languageTypes.length === 1 ? (
+              <Badge>{t(getLanguageLabel(languageTypes[0]))}</Badge>
+            ) : languageTypes.length > 1 ? (
+              <Badge>{`${t(getLanguageLabel(languageTypes[0]))} 외 ${languageTypes.length - 1}`}</Badge>
+            ) : null
+          ) : null}
+        </div>
       </section>
       <section>
         <h2 className="kr-subtitle-md line-clamp-2 h-[52px] overflow-hidden">{title}</h2>
         <div className="kr-body-sm text-gray5 mt-1 flex gap-x-2">
-          {jobRoles?.map((jobRole) => (
-            <p key={jobRole}>{t(getJobRoleLabel(jobRole))}</p>
-          ))}
-          <p>・</p>
-          <p>{directInputCarrerType}</p>
-          <p>・</p>
-          <p>{carrerType}</p>
+          {jobRoles.length > 0 ? (
+            jobRoles.length === 1 ? (
+              <p>{t(getJobRoleLabel(jobRoles[0]))}</p>
+            ) : jobRoles.length > 1 ? (
+              <p>{`${t(getJobRoleLabel(jobRoles[0]))} 외 ${jobRoles.length - 1} 가능`}</p>
+            ) : null
+          ) : null}
+          {directInputCarrerType ? (
+            <>
+              <p>・</p>
+              <p>{directInputCarrerType}</p>
+            </>
+          ) : null}
+          {carrerType ? (
+            <>
+              <p>・</p>
+              <p>{carrerType}</p>
+            </>
+          ) : null}
         </div>
         <div className="mt-2 flex items-center gap-x-2">
           <div className="relative h-[28px] w-[28px]">
