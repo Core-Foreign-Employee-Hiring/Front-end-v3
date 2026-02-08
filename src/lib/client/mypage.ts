@@ -1,5 +1,6 @@
-import { ApiCallResult } from '@/types/common'
+import { ApiCallResult, PageNation } from '@/types/common'
 import { ModifyProfileType } from '@/types/auth/modify-profile'
+import { PurchaseArchiveType, SoldArchiveType, WriteArchiveType } from '@/types/mypage'
 
 export const patchModifyProfile = async (
   registerData: Partial<ModifyProfileType>
@@ -80,6 +81,108 @@ export const patchModifyPassword = async (password: string): Promise<ApiCallResu
 
     const data = await response.json()
     console.log('비밀번호 수정 데이터', data)
+    return data
+  } catch (error) {
+    console.error('Fetch 에러:', error)
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    }
+  }
+}
+
+export const fetchSoldArchiveList = async ({
+  page,
+  size,
+}: {
+  page: number
+  size: number
+}): Promise<ApiCallResult<PageNation<SoldArchiveType>>> => {
+  try {
+    const response = await fetch(`/api/my/archives/sold?page=${page}&size=${size}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+
+    if (!response.ok) {
+      const error = await response.json()
+      console.error('API 응답 에러:', error)
+      return { success: false, error: error.error || `HTTP ${response.status}` }
+    }
+
+    const data = await response.json()
+    console.log('판매 아카이브 데이터', data)
+    return data
+  } catch (error) {
+    console.error('Fetch 에러:', error)
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    }
+  }
+}
+
+export const fetchPurchasedArchiveList = async ({
+  page,
+  size,
+}: {
+  page: number
+  size: number
+}): Promise<ApiCallResult<PageNation<PurchaseArchiveType>>> => {
+  try {
+    const response = await fetch(`/api/my/purchased-archives?page=${page}&size=${size}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+
+    if (!response.ok) {
+      const error = await response.json()
+      console.error('API 응답 에러:', error)
+      return { success: false, error: error.error || `HTTP ${response.status}` }
+    }
+
+    const data = await response.json()
+    console.log('판매 아카이브 데이터', data)
+    return data
+  } catch (error) {
+    console.error('Fetch 에러:', error)
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    }
+  }
+}
+
+export const fetchWriteArchiveList = async ({
+  page,
+  size,
+}: {
+  page: number
+  size: number
+}): Promise<ApiCallResult<PageNation<WriteArchiveType>>> => {
+  try {
+    const response = await fetch(`/api/my/archives?page=${page}&size=${size}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+
+    if (!response.ok) {
+      const error = await response.json()
+      console.error('API 응답 에러:', error)
+      return { success: false, error: error.error || `HTTP ${response.status}` }
+    }
+
+    const data = await response.json()
+    console.log('판매 아카이브 데이터', data)
     return data
   } catch (error) {
     console.error('Fetch 에러:', error)

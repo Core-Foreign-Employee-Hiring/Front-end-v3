@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgSidebarUnselectedContentIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" {...props}><path stroke="#C5C6CD" strokeLinecap="round" strokeWidth={1.4} d="M4 19V5a2 2 0 0 1 2-2h13.4a.6.6 0 0 1 .6.6v13.114M6 17h14M6 21h14" /><path stroke="#C5C6CD" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.4} d="M6 21a2 2 0 1 1 0-4" /><path stroke="#C5C6CD" strokeLinecap="round" strokeWidth={1.4} d="M7.588 7h8.823M7.636 10.387h4.847" /></svg>;
+export default SvgSidebarUnselectedContentIcon;

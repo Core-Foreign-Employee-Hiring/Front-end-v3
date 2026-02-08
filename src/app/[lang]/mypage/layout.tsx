@@ -8,7 +8,6 @@ export default async function MyPageLayout({
 }: Readonly<{
   children: React.ReactNode
   params: Promise<{ lang: string }>
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }>) {
   const { lang } = await params
 
