@@ -5,16 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bd33022-d98e-4c79-8c97-3afe8a1cce06" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/common/Pagination.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/job-post/JobPostList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/client/job-post.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/filter/ContractFilter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/filter/JobRoleFilter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/filter/LanguageFilter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/filter/RegionFilter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/filter/VisaFilter.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/modal/ContractModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/modal/RegionModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/job-post/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/job-post/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/recruit/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/recruit/route.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/MoreOptionsMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/MoreOptionsMenu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/job-post/JobPostCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/job-post/JobPostCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/job-post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/job-post.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Loading.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/job-post/Filters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/job-post/Filters.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/job-post/JobPostList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/job-post/JobPostList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/client/job-post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/client/job-post.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/filterStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/filterStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/modalStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/modalStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/job-post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/job-post.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +134,7 @@
       <workItem from="1769587036246" duration="2515000" />
       <workItem from="1769667060592" duration="36038000" />
       <workItem from="1769790802159" duration="32386000" />
-      <workItem from="1769992875162" duration="74727000" />
+      <workItem from="1769992875162" duration="79287000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,7 @@
 import { ContractEnumType } from '@/types/spec'
+import { CarrerType } from '@/types/job-post'
 
-export const convertEnumToKorContractTypeLabel = (category: ContractEnumType): string => {
+export const convertEnumToKorContractTypeLabel = (category: ContractEnumType | CarrerType): string => {
   switch (category) {
     case 'INTERN':
       return 'filter.contractTypeFilter.content.INTERN'
@@ -11,6 +12,8 @@ export const convertEnumToKorContractTypeLabel = (category: ContractEnumType): s
     case 'NEWCOMER':
       return 'filter.contractTypeFilter.content.NEWCOMER'
     case 'REGULAR':
+      return 'filter.contractTypeFilter.content.REGULAR'
+    default:
       return 'filter.contractTypeFilter.content.REGULAR'
   }
 }

@@ -7,7 +7,7 @@ export default function Loading({ size = 'md' }: LoadingProps) {
   const sizeStyles = {
     sm: 'h-4 w-4 border-2',
     md: 'h-8 w-8 border-4',
-    lg: 'h-12 w-12 border-14', // 크기가 커지면 두께도 약간 두꺼워지는게 보기 좋습니다.
+    lg: 'h-12 w-12 border-4', // 크기가 커지면 두께도 약간 두꺼워지는게 보기 좋습니다.
   }
 
   // 2. 숫자가 들어올 경우를 위한 인라인 스타일 처리

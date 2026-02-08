@@ -1,5 +1,5 @@
 import { ContractEnumType } from '@/types/spec'
-import { JobPostType, JobRoleType, LanguageType, RegionType, VisaType } from '@/types/job-post'
+import { CarrerType, JobPostType, JobRoleType, LanguageType, RegionType, VisaType } from '@/types/job-post'
 import { ApiResponse, PageNation } from '@/types/common'
 
 /**
@@ -9,7 +9,7 @@ export const clientFetchAllPosts = async (params: {
   page: number
   size: number
   searchValue?: string
-  contract?: ContractEnumType
+  contract?: ContractEnumType | CarrerType
   jobRoles?: JobRoleType[]
   languages?: LanguageType[]
   regions?: RegionType[]
