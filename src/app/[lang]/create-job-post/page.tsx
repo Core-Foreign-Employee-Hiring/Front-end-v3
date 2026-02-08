@@ -37,7 +37,7 @@ export default async function CreateJobPost({ params, searchParams }: CreateJobP
       <Label label={'공고등록'} type={'titleLg'} />
       <Spacing height={20} />
 
-      <ProgressBar steps={steps} currentStep={step} currentLabel={getCurrentLabel(step, steps)}></ProgressBar>
+      <ProgressBar steps={steps} currentStep={step} currentLabel={getCurrentLabel(step, steps)} />
       <Spacing height={20} />
 
       <FindCreateJobPostProcessStepSwitcher step={step} />
