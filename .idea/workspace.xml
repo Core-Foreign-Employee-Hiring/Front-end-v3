@@ -5,52 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bd33022-d98e-4c79-8c97-3afe8a1cce06" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/api/recruit/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/modal/LanguageModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/common/modal/VisaModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/DirectInputApplicationMethod.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/DirectInputSubmissionDocument.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/DirectInputWorkType.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkPlace.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkType.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/job-post/KakaoMap.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/client/create-job-post.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/kakao.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/common/nav-close-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/common/PopUp.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[lang]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[lang]/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/UploadItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/UploadItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/modal/JobRoleModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/modal/JobRoleModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/modal/SearchAddressModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/modal/SearchAddressModal.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/BottomButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/BottomButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/CompanyInfoForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/CompanyInfoForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/RecruitInfoForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/RecruitInfoForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/company-info/BusinessType.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/company-info/BusinessType.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/company-info/CompanyAddress.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/company-info/CompanyAddress.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/company-info/Introduce.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/company-info/Introduce.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/company-info/UploadCompanyLogoImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/company-info/UploadCompanyLogoImage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/company-info/WebSite.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/company-info/WebSite.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/ApplicationDocument.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/ApplicationDocument.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/ApplicationMethod.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/ApplicationMethod.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/Language.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/Language.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/UploadPosterImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/UploadPosterImage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/Visa.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-detail/Visa.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/Career.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/Career.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/ContractType.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/ContractType.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/DirectInputRecruitDate.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/DirectInputRecruitDate.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/JobRole.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/JobRole.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/RecruitDate.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/RecruitDate.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/SalaryType.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/SalaryType.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkDayTypeDirect.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkDayTypeDirect.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkDayTypeList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkDayTypeList.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkEndTime.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkEndTime.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkStartTime.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-job-post/recruit-info/WorkStartTime.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/job-post/WorkConditions.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/job-post/WorkConditions.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/createJobPostStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/createJobPostStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/modalStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/modalStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/create-job-post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/create-job-post.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/job-post.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/job-post.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/filterList.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/filterList.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/svgComponents/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/svgComponents/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/MoreOptionsMenu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/MoreOptionsMenu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/common/NavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/NavBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/common.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,11 +72,11 @@
       <recent name="$PROJECT_DIR$/public/common" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/store" />
       <recent name="$PROJECT_DIR$/public/common" />
+      <recent name="$PROJECT_DIR$/src/components/common" />
+      <recent name="$PROJECT_DIR$/src/store" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/src/components/auth/find-auth/id" />
-      <recent name="$PROJECT_DIR$/src/components/auth/find-auth/password" />
     </key>
   </component>
   <component name="RunManager">
@@ -165,7 +127,7 @@
       <workItem from="1769587036246" duration="2515000" />
       <workItem from="1769667060592" duration="36038000" />
       <workItem from="1769790802159" duration="32386000" />
-      <workItem from="1769992875162" duration="66058000" />
+      <workItem from="1769992875162" duration="72781000" />
     </task>
     <servers />
   </component>

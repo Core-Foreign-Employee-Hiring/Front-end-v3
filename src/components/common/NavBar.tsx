@@ -1,6 +1,7 @@
 'use client'
 
 import {
+  NavCloseIcon,
   SelectedAiIcon,
   SelectedCarrerIcon,
   SelectedHomeIcon,
@@ -22,8 +23,8 @@ interface NavBarProps {
 export default function NavBar({ path, lang }: NavBarProps) {
   const { setIsMoreOptionsMenuOpen, isMoreOptionsMenuOpen } = useModalStore((state) => state)
   return (
-    <div className="border-gray2 desktop:hidden tablet:px-[32px] bg-gray1 fixed bottom-0 z-10 flex w-full justify-between border-t-[1px] px-[20px] pt-[12px] pb-[32px]">
-      {path === `/${lang}` ? (
+    <div className="border-gray2 desktop:hidden tablet:px-[32px] bg-gray1 fixed bottom-0 z-60 flex w-full justify-between border-t-[1px] px-[20px] pt-[12px] pb-[32px]">
+      {path === `/${lang}` && !isMoreOptionsMenuOpen ? (
         <Link href={`/${lang}`} className="flex w-[63px] flex-col items-center gap-y-[6px]">
           <SelectedHomeIcon width={24} height={24} />
           <p className="kr-badge-sm text-main-500">홈</p>
@@ -35,7 +36,7 @@ export default function NavBar({ path, lang }: NavBarProps) {
         </Link>
       )}
 
-      {path === `/${lang}/job-post` ? (
+      {path === `/${lang}/job-post` && !isMoreOptionsMenuOpen ? (
         <Link href={`/${lang}/job-post`} className="flex w-[63px] flex-col items-center gap-y-[6px]">
           <SelectedRecruitIcon width={24} height={24} />
           <p className="kr-badge-sm text-main-500">채용</p>
@@ -47,7 +48,7 @@ export default function NavBar({ path, lang }: NavBarProps) {
         </Link>
       )}
 
-      {path === `/${lang}/carrer` ? (
+      {path === `/${lang}/carrer` && !isMoreOptionsMenuOpen ? (
         <Link href={`/${lang}/carrer`} className="flex w-[63px] flex-col items-center gap-y-[6px]">
           <SelectedCarrerIcon width={24} height={24} />
           <p className="kr-badge-sm text-main-500">커리어 진단</p>
@@ -59,7 +60,7 @@ export default function NavBar({ path, lang }: NavBarProps) {
         </Link>
       )}
 
-      {path === `/${lang}/interview` ? (
+      {path === `/${lang}/interview` && !isMoreOptionsMenuOpen ? (
         <Link href={`/${lang}/interview`} className="flex w-[63px] flex-col items-center gap-y-[6px]">
           <SelectedAiIcon width={24} height={24} />
           <p className="kr-badge-sm text-main-500">AI 면접</p>
@@ -77,8 +78,17 @@ export default function NavBar({ path, lang }: NavBarProps) {
         }}
         className="flex w-[63px] flex-col items-center gap-y-[6px]"
       >
-        <UnselectedMoreIcon width={24} height={24} />
-        <p className="kr-badge-sm text-gray3">더보기</p>
+        {isMoreOptionsMenuOpen ? (
+          <NavCloseIcon width={24} height={24} />
+        ) : (
+          <UnselectedMoreIcon width={24} height={24} />
+        )}
+
+        {isMoreOptionsMenuOpen ? (
+          <p className="kr-badge-sm text-main-500">닫기</p>
+        ) : (
+          <p className="kr-badge-sm text-gray3">더보기</p>
+        )}
       </button>
     </div>
   )

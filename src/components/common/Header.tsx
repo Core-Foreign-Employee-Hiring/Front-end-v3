@@ -1,10 +1,12 @@
 'use client'
 
+import { useMemo, useState, useSyncExternalStore } from 'react' // useMemo 추가
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
-import { AlarmIcon, BackIcon, LanguageIcon, LogoIcon, SearchIcon } from '@/assets/svgComponents'
+import { BackIcon, DropDownGray3Icon, DropDownGray4Icon, LanguageIcon, LogoIcon } from '@/assets/svgComponents'
 import '@/lib/i18n-client'
+import PopUp from '@/components/common/PopUp'
 
 interface HeaderProps {
   headerType?: 'default' | 'dynamic'
@@ -17,6 +19,58 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
   const { t } = useTranslation('common', { lng: currentLng })
   const currentPath = usePathname()
   const router = useRouter()
+
+  const [isPopUpOpen, setIsPopUpOpen] = useState(false)
+
+  // 1. 원시 문자열(String)만 구독합니다. (문자열은 값이 같으면 참조가 같다고 간주됨)
+  const rawUserInfo = useSyncExternalStore(
+    (callback) => {
+      window.addEventListener('storage', callback)
+      return () => window.removeEventListener('storage', callback)
+    },
+    () => localStorage.getItem('userInfo'), // JSON.parse 제거
+    () => null
+  )
+
+  // 2. 가져온 문자열을 메모이제이션하여 객체로 변환합니다.
+  const userInfo = useMemo(() => {
+    try {
+      return rawUserInfo ? JSON.parse(rawUserInfo) : null
+    } catch (e) {
+      console.error('Failed to parse userInfo:', e)
+      return null
+    }
+  }, [rawUserInfo])
+
+  const handleLogout = () => {
+    // 1. localStorage 삭제
+    localStorage.removeItem('userInfo')
+
+    // 2. 쿠키 삭제 (accessToken, refreshToken)
+    // path=/ 설정이 있어야 모든 경로에서 생성된 쿠키를 확실히 지울 수 있습니다.
+    document.cookie = 'accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+    document.cookie = 'refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+
+    // 3. (선택사항) 만약 페이지 이동 전 상태를 즉시 반영하고 싶다면
+    // storage 이벤트를 수동으로 발생시켜 useSyncExternalStore를 깨울 수 있습니다.
+    window.dispatchEvent(new Event('storage'))
+
+    // 4. 로그인 페이지로 이동
+    router.push(`/${currentLng}/login`)
+  }
+
+  const popupList = [
+    {
+      content: '마이페이지',
+      textColor: 'text-black',
+      onClick: () => router.push(`/${currentLng}/mypage/home`),
+    },
+    {
+      content: '로그아웃',
+      textColor: 'text-gray4',
+      onClick: handleLogout,
+    },
+  ]
 
   const navItems = [
     { label: t('navigation.home'), href: `/${currentLng}` },
@@ -55,19 +109,49 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
 
       <section className="desktop:gap-x-5 flex items-center gap-x-3">
         <div className="flex items-center gap-x-3">
-          <SearchIcon className={iconClass} />
           <LanguageIcon className={iconClass} />
-          <AlarmIcon className={iconClass} />
         </div>
 
         <div className="kr-button text-gray4 tablet:flex hidden items-center gap-x-2">
-          <Link href={`/${currentLng}/login`} className="hover:text-black">
-            {t('navigation.login')}
-          </Link>
-          <span className="text-gray-300">|</span>
-          <Link href={`/${currentLng}/sign-up`} className="hover:text-black">
-            {t('navigation.signup')}
-          </Link>
+          {userInfo?.name ? (
+            <div
+              onClick={() => {
+                setIsPopUpOpen(!isPopUpOpen)
+              }}
+              className="relative flex cursor-pointer items-center gap-x-2"
+            >
+              <span className="kr-button text-gray5">{userInfo.name}</span>
+              {isPopUpOpen ? (
+                <DropDownGray3Icon width={20} height={20} />
+              ) : (
+                <DropDownGray4Icon width={20} height={20} />
+              )}
+
+              {isPopUpOpen && (
+                <PopUp>
+                  {popupList.map((popupItem) => (
+                    <PopUp.PopUpItem
+                      key={popupItem.content}
+                      onClick={popupItem.onClick}
+                      textColor={popupItem.textColor}
+                    >
+                      {popupItem.content}
+                    </PopUp.PopUpItem>
+                  ))}
+                </PopUp>
+              )}
+            </div>
+          ) : (
+            <>
+              <Link href={`/${currentLng}/login`} className="hover:text-black">
+                {t('navigation.login')}
+              </Link>
+              <span className="text-gray-300">|</span>
+              <Link href={`/${currentLng}/sign-up`} className="hover:text-black">
+                {t('navigation.signup')}
+              </Link>
+            </>
+          )}
         </div>
       </section>
     </div>

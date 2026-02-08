@@ -92,7 +92,3 @@ export const getShortAddress = (address: string | undefined): string => {
 
   return address // 형식이 짧을 경우 그대로 반환
 }
-
-// 사용 예시
-console.log(getShortAddress('서울 성동구 성수동2가 284-55')) // 결과: 서울 성동구
-console.log(getShortAddress('경기도 이천시 경충대로 2700')) // 결과: 경기도 이천시
