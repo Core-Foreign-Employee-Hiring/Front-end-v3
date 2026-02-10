@@ -595,7 +595,7 @@ export const getJobRoleList = (category: JobCategoryType | undefined) => {
   return SUB_CATEGORY_MAP[category] || []
 }
 
-export const getJobRoleLabel = (jobRole: JobRoleType) => {
+export const getJobRoleLabel = (jobRole: JobRoleType | undefined | string) => {
   switch (jobRole) {
     // IT / 개발
     case 'SOFTWARE_ENGINEER':

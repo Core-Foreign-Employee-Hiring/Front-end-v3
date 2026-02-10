@@ -7,8 +7,8 @@ interface UrlItemProps {
 export default function UrlItem({ title, url }: UrlItemProps) {
   return (
     <div className="flex flex-col gap-y-2">
-      <p className="kr-title-md">{title}</p>
-      <Link href={url} className="kr-body-md underline">
+      <p className="desktop:kr-title-md tablet:kr-title-md kr-subtitle-lg">{title}</p>
+      <Link href={url} className="desktop:kr-body-md tablet:kr-body-md kr-body-sm underline">
         {url}
       </Link>
     </div>

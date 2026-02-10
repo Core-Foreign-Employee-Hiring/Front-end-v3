@@ -4,9 +4,9 @@ interface CertificationItemProps {
 }
 export default function CertificationItem({ title, date }: CertificationItemProps) {
   return (
-    <div className="flex items-center justify-between">
-      <p className="kr-title-md">{title}</p>
-      <p className="kr-body-sm">{date}</p>
+    <div className="desktop:justify-between tablet:justify-between desktop:flex-row tablet:flex-row flex flex-col items-center gap-y-2">
+      <p className="desktop:kr-title-md tablet:kr-title-md kr-subtitle-lg">{title}</p>
+      <p className="desktop:kr-body-sm tablet:kr-body-sm kr-small text-gray5">{date}</p>
     </div>
   )
 }

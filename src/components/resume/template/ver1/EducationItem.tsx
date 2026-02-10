@@ -6,17 +6,19 @@ interface EducationItemProps {
 
 export default function EducationItem({ education }: EducationItemProps) {
   return (
-    <div className="flex w-full flex-col gap-y-2">
-      <div className="flex items-center justify-between">
-        <p className="kr-title-md">{education?.schoolName}</p>
-        <p className="kr-body-sm">
+    <div className="flex w-full flex-col items-start gap-y-2">
+      <div className="desktop:flex-row tablet:flex-row tablet:justify-between desktop:justify-between desktop:items-start tablet:items-start flex w-full flex-col gap-y-2">
+        <div className="flex flex-col gap-y-2">
+          <p className="desktop:kr-title-md tablet:kr-title-md kr-subtitle-lg">{education?.schoolName}</p>
+          <p className="desktop:kr-subtitle-lg tablet:kr-subtitle-lg kr-subtitle-md">전공명 및 학과</p>
+        </div>
+
+        <p className="desktop:kr-body-sm tablet:kr-body-sm kr-small">
           {education?.admissionDate} - {education?.graduationDate}
         </p>
       </div>
 
-      {/*<p className="kr-subtitle-lg">{education.}</p>*/}
-
-      <p className="kr-body-md">
+      <p className="desktop:kr-body-md tablet:kr-body-md kr-body-sm">
         {education?.earnedScore}/{education?.maxScore}
       </p>
     </div>

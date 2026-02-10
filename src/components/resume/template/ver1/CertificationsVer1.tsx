@@ -8,7 +8,7 @@ interface CertificationsVer1Props {
 
 export default function CertificationsVer1({ certifications }: CertificationsVer1Props) {
   return (
-    <div className="flex w-full gap-x-[20px] border-b-[2px] border-black py-[40px]">
+    <div className="desktop:flex-row tablet:flex-row flex w-full flex-col gap-x-[20px] gap-y-[20px] border-b-[2px] border-black py-[40px]">
       <div className="kr-title-md w-[200px] shrink-0 whitespace-nowrap">자격증</div>
       <div className="flex w-full flex-col gap-y-[24px]">
         {certifications?.map((certification, index) => {
