@@ -1,7 +1,7 @@
 import { Label, ResultContent, Spacing } from '@/components/common'
-import Chat from '@/components/spec/result/Chat'
 import CTAButton from '@/components/spec/result/CTAButton'
 import { fetchSpecResult } from '@/lib/server/spec'
+import Chat from '@/components/spec/result/Chat'
 
 interface SpecResultProps {
   params: Promise<{ specEvaluationId: string }>
