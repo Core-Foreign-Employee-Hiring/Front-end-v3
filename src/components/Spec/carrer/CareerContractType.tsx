@@ -9,7 +9,7 @@ interface CareerContractTypeProps {
   handleCareerChange: (
     index: number,
     fieldName: 'endDate' | 'startDate' | 'highlight' | 'position' | 'companyName' | 'contactType',
-    value: string
+    value: string | null
   ) => void
 }
 export default function CareerContractType({ index, contractType, handleCareerChange }: CareerContractTypeProps) {
