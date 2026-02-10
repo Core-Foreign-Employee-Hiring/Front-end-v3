@@ -27,13 +27,13 @@ export default async function Home({ params }: HomeProps) {
       <AICareerVerifyCTA lang={lang} />
       <Spacing height={100} />
 
-      <JobPost recruitData={recruitData} />
+      <JobPost recruitData={recruitData} lang={lang} />
       <Spacing height={100} />
 
-      <ContentPost contents={contents} />
+      <ContentPost contents={contents} lang={lang} />
       <Spacing height={100} />
 
-      <ProgramPost />
+      <ProgramPost lang={lang} />
       <Spacing height={100} />
 
       <Footer />
