@@ -37,7 +37,7 @@ export default function Step2BottomButton({ lang }: Step2BottomButtonProps) {
       console.log('서버로 보낼 데이터:', finalPayload)
       const result = await postRegister(finalPayload as RegisterType)
       if (result.success) {
-        router.push(`/${lang}/home`)
+        router.push(`/${lang}`)
       } else {
         setErrorMessage(result.error)
       }
