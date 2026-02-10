@@ -42,7 +42,7 @@ export default function ProgressBar({ currentStep, currentLabel, steps }: Progre
       </div>
 
       {/* Mobile Layout */}
-      <div className="desktop:hidden tablet:hidden flex flex-col gap-y-2">
+      <div className="desktop:hidden tablet:hidden flex w-full flex-col gap-y-2">
         <div className="flex items-center gap-x-2">
           <div className="bg-main-500 kr-badge-md flex h-[24px] w-[24px] items-center justify-center rounded-full text-white">
             {currentStep}

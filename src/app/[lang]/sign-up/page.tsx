@@ -33,7 +33,7 @@ export default async function SignUpPage({
     return steps.find((item) => item.stepNumber === step)?.stepLabel || ''
   }
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center border py-[70px]">
+    <main className="flex min-h-screen w-full flex-col items-center justify-center">
       <div className="desktop:w-[600px] flex w-full flex-col items-center justify-center">
         <div className="desktop:flex hidden flex-col items-center justify-center">
           <LogoIcon width={200} height={60} />
