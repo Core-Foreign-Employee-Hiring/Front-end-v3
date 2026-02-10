@@ -13,7 +13,7 @@ interface ContentPostProps {
 export default function ContentPost({ lang, contents }: ContentPostProps) {
   const router = useRouter()
   return (
-    <div className="flex flex-col gap-y-3 px-[40px]">
+    <div className="desktop:px-[40px] tablet:px-[32px] flex flex-col gap-y-3 px-[20px]">
       <section className="flex items-end justify-between">
         <div className="flex flex-col gap-y-2">
           <Label type={'titleLg'} label={'콘텐츠'} />
@@ -25,13 +25,13 @@ export default function ContentPost({ lang, contents }: ContentPostProps) {
             router.push(`/${lang}/content`)
           }}
           size={'sm'}
-          customClassName={'w-[70px]'}
+          customClassName={'w-[70px] shrink-0'}
         >
           더보기
         </Button>
       </section>
 
-      <section className="scrollbar-hide flex gap-[24px] overflow-x-auto pb-4">
+      <section className="scrollbar-hide desktop:gap-[24px] flex gap-[20px] overflow-x-auto pb-4">
         {contents?.map((content) => (
           // ContentCard 내부나 감싸는 div에 너비 고정 및 flex-shrink-0 추가
           <div key={content.passArchiveId} className="w-[300px] flex-shrink-0">

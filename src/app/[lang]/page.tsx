@@ -23,20 +23,15 @@ export default async function Home({ params }: HomeProps) {
     <main>
       <Header headerType={'default'} currentLng={lang}></Header>
       <Banner />
-      <AICareerVerifyCTA lang={lang} />
-      <Spacing height={100} />
+      <div className="desktop:gap-y-[100px] flex flex-col gap-y-[60px]">
+        <AICareerVerifyCTA lang={lang} />
+        <JobPost recruitData={recruitData} lang={lang} />
+        <ContentPost contents={contents} lang={lang} />
+        {/*<ProgramPost lang={lang} />*/}
+        <Footer />
+      </div>
 
-      <JobPost recruitData={recruitData} lang={lang} />
-      <Spacing height={100} />
-
-      <ContentPost contents={contents} lang={lang} />
-      <Spacing height={100} />
-
-      {/*<ProgramPost lang={lang} />*/}
-      {/*<Spacing height={100} />*/}
-
-      <Footer />
-      <Spacing height={80} />
+      <Spacing height={80} className={'desktop:hidden'} />
 
       <NavBar path={`/${lang}`} lang={lang} />
     </main>
