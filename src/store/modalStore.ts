@@ -15,6 +15,7 @@ interface ModalState {
   isRegionModalOpen: boolean
   isContractModalOpen: boolean
   isMoreOptionsMenuOpen: boolean
+  isNotUseResumeService: boolean
 
   setIsSaveAnswerNoteModalOpen: (isSaveAnswerNoteModalOpen: boolean) => void
   setIsCreateNewAnswerNoteModalOpen: (isCreateNewAnswerNoteModalOpen: boolean) => void
@@ -28,8 +29,8 @@ interface ModalState {
   setIsLanguageModalOpen: (isLanguageModalOpen: boolean) => void
   setIsRegionModalOpen: (isRegionModalOpen: boolean) => void
   setIsContractModalOpen: (isContractModalOpen: boolean) => void
-
   setIsMoreOptionsMenuOpen: (isMoreOptionsMenuOpen: boolean) => void
+  setIsNotUseResumeService: (isNotUseResumeService: boolean) => void
 }
 
 export const useModalStore = create<ModalState>()(
@@ -43,6 +44,7 @@ export const useModalStore = create<ModalState>()(
     isSearchAddressModalOpen: false,
     isJobRoleModalOpen: false,
     isMoreOptionsMenuOpen: false,
+    isNotUseResumeService: false,
 
     setIsSaveAnswerNoteModalOpen: (isSaveAnswerNoteModalOpen) =>
       set(() => ({
@@ -99,6 +101,10 @@ export const useModalStore = create<ModalState>()(
     setIsMoreOptionsMenuOpen: (isMoreOptionsMenuOpen) =>
       set(() => ({
         isMoreOptionsMenuOpen: !isMoreOptionsMenuOpen,
+      })),
+    setIsNotUseResumeService: (isNotUseResumeService) =>
+      set(() => ({
+        isNotUseResumeService: !isNotUseResumeService,
       })),
   }))
 )

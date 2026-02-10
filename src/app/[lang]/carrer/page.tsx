@@ -1,5 +1,5 @@
 import { SearchParams } from 'next/dist/server/request/search-params'
-import { Label, PageLayout, Spacing, Tab } from '@/components/common'
+import { Header, Label, PageLayout, Spacing, Tab } from '@/components/common'
 import Spec from '@/components/spec/Spec'
 import Resume from '@/components/spec/Resume'
 import { fetchResumeList } from '@/lib/server/resume'
@@ -11,14 +11,16 @@ export type TabType = 'spec' | 'resume'
 function FindCarrerStepSwitcher({
   tab,
   step,
+  lang,
   resumeList,
 }: {
   tab: TabType
   step: StepType
+  lang: string
   resumeList: ResumeListType[] | undefined
 }) {
   if (tab === 'spec') return <Spec step={step} />
-  if (tab === 'resume') return <Resume resumeList={resumeList} />
+  if (tab === 'resume') return <Resume resumeList={resumeList} lang={lang} />
   return <Spec step={step} />
 }
 
@@ -45,16 +47,24 @@ export default async function SpecPage({
   console.log('resumeResult', resumeResult)
 
   return (
-    <PageLayout>
-      <main className="w-full">
-        <Label label={'커리어 진단'} className={'desktop:block tablet:hidden hidden'} type={'titleLg'} />
-        <Spacing height={20} className="desktop:block hidden" />
+    <main>
+      <div className="desktop:block hidden">
+        <Header headerType={'default'} currentLng={lang} />
+      </div>
+      <div className="desktop:hidden block">
+        <Header headerType={'dynamic'} currentLng={lang} title={'스펙입력'} />
+      </div>
+      <PageLayout>
+        <div className="w-full">
+          <Label label={'커리어 진단'} className={'desktop:block tablet:hidden hidden'} type={'titleLg'} />
+          <Spacing height={20} className="desktop:block hidden" />
 
-        <Tab tabList={tabList} />
-        <Spacing height={20} />
+          <Tab tabList={tabList} />
+          <Spacing height={20} />
 
-        <FindCarrerStepSwitcher resumeList={resumeResult.data?.content} tab={tab} step={step} />
-      </main>
-    </PageLayout>
+          <FindCarrerStepSwitcher resumeList={resumeResult.data?.content} tab={tab} step={step} lang={lang} />
+        </div>
+      </PageLayout>
+    </main>
   )
 }

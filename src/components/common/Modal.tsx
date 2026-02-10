@@ -8,24 +8,27 @@ import { twMerge } from 'tailwind-merge'
 
 interface ModalProps {
   isOpen: boolean
-  onClose: () => void
+  onClose?: () => void
   children: ReactNode
   customClassName?: string // 넓이 같은 경우는 매번 달라져서 props로 받음
+  mobileHidden?: boolean
 }
 
-export default function Modal({ isOpen, onClose, children, customClassName }: ModalProps) {
+export default function Modal({ isOpen, onClose, children, customClassName, mobileHidden = true }: ModalProps) {
   if (typeof window === 'undefined') return null
 
   return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-60 flex items-center justify-center p-4">
+        <div
+          className={`${mobileHidden ? 'hidden' : ''} desktop:flex tablet:flex fixed inset-0 z-60 flex items-center justify-center p-4`}
+        >
           {/* 배경 오버레이 */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={onClose}
+            onClick={onClose && onClose}
             className="fixed inset-0 bg-[rgba(0,0,0,0.3)]"
           />
 

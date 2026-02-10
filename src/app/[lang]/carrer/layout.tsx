@@ -1,5 +1,3 @@
-import { Header } from '@/components/common'
-
 export default async function SpecLayout({
   children,
   params,
@@ -8,15 +6,5 @@ export default async function SpecLayout({
   params: Promise<{ lang: string }>
 }>) {
   const { lang } = await params
-  return (
-    <div>
-      <div className="desktop:block hidden">
-        <Header headerType={'default'} currentLng={lang} />
-      </div>
-      <div className="desktop:hidden block">
-        <Header headerType={'dynamic'} currentLng={lang} title={'스펙입력'} />
-      </div>
-      {children}
-    </div>
-  )
+  return <div>{children}</div>
 }

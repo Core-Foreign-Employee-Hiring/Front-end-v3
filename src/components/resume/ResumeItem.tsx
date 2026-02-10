@@ -1,18 +1,29 @@
+'use client'
+
 import ResumeButtons from '@/components/resume/ResumeButtons'
 import ResumeItemContent from '@/components/resume/ResumeItemContent'
+import { useRouter } from 'next/navigation'
 
 interface ResumeItemProps {
-  id: number
+  lang: string
+  resumeId: number
   title: string
   createdAt?: string
   modifiedAt?: string
 }
 
-export default function ResumeItem({ title, createdAt, modifiedAt, id }: ResumeItemProps) {
+export default function ResumeItem({ lang, title, createdAt, modifiedAt, resumeId }: ResumeItemProps) {
+  const router = useRouter()
+
   return (
-    <div className="border-gray2 flex items-center justify-between rounded-[12px] border p-5">
-      <ResumeItemContent title={title} createdAt={createdAt} modifiedAt={modifiedAt} id={id} />
-      <ResumeButtons resumeId={id} />
+    <div
+      onClick={() => {
+        router.push(`/${lang}/carrer/resume/${resumeId}/ver1`)
+      }}
+      className="border-gray2 flex items-center justify-between rounded-[12px] border p-5"
+    >
+      <ResumeItemContent title={title} createdAt={createdAt} modifiedAt={modifiedAt} id={resumeId} />
+      <ResumeButtons resumeId={resumeId} />
     </div>
   )
 }

@@ -1,5 +1,6 @@
 import { Button, Spacing } from '@/components/common'
 import Image from 'next/image'
+import { useResumeStore } from '@/store/resumeStore'
 
 interface SelectTemplateItemProps {
   type: 'ver1' | 'ver2'
@@ -9,10 +10,12 @@ interface SelectTemplateItemProps {
 }
 
 export default function SelectTemplateItem({ type, selectedType, setSelectedType, imageUrl }: SelectTemplateItemProps) {
+  const { updateCreateResumeField } = useResumeStore((state) => state)
   return (
     <div
       onClick={() => {
         setSelectedType(type)
+        updateCreateResumeField('template', type)
       }}
       className="w-full"
     >
@@ -27,6 +30,7 @@ export default function SelectTemplateItem({ type, selectedType, setSelectedType
 
         <p className="kr-button text-gray5">{type}</p>
       </div>
+
       <Spacing height={8} />
 
       <div

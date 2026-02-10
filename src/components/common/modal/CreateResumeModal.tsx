@@ -65,6 +65,8 @@ export default function CreateResumeModal() {
               }
             }}
             variant={'primary'}
+            state={resumeProfileFile && createResume.resumeName ? 'default' : 'disable'}
+            disabled={!(resumeProfileFile && createResume.resumeName)}
             size={'lg'}
           >
             {currentStep === '1' ? '다음' : '작성완료'}

@@ -43,7 +43,7 @@ export default function InfoPicker() {
       </div>
 
       {/* 항목 그리드 */}
-      <div className="grid grid-cols-3 gap-3">
+      <div className="tablet:grid-cols-3 desktop:grid-cols-3 grid grid-cols-2 gap-3">
         {infoList.map((info) => (
           <InfoPickerItem
             key={info.key}

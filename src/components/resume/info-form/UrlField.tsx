@@ -15,7 +15,7 @@ export default function UrlField({ index, urlTitle, urlLink }: UrlFieldProps) {
   const removeUrl = useResumeStore((state) => state.removeUrl)
 
   return (
-    <div className="flex gap-x-3">
+    <div className="flex items-center gap-x-3">
       {/* 제목 입력 */}
       <TextInput
         placeholder={'제목입력'}

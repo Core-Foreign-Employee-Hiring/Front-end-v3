@@ -172,7 +172,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
         {path === `/${lang}/carrer` ? (
           <div
             onClick={() => {
-              router.push(`/${lang}/carrer`)
+              router.push(`/${lang}/carrer?tab=resume`)
               setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
@@ -183,7 +183,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
         ) : (
           <div
             onClick={() => {
-              router.push(`/${lang}/carrer`)
+              router.push(`/${lang}/carrer?tab=resume`)
               setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"

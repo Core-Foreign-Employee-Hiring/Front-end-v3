@@ -1,5 +1,6 @@
 export interface CreateResumeType {
   resumeName: string
+  template: string
   introduction: string
   urls: UrlType[]
 }
@@ -31,6 +32,7 @@ export interface ResumeSelectionType {
   includeActivity: boolean
   includeUrls: boolean
 }
+
 export interface ResumeType {
   resumeId: number
   resumeName: string

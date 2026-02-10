@@ -7,27 +7,46 @@ import { useModalStore } from '@/store/modalStore'
 import CreateResumeModal from '@/components/common/modal/CreateResumeModal'
 import InfoPickerModal from '@/components/common/modal/InfoPickerModal'
 import { ResumeListType } from '@/types/resume'
+import MobileCreateResumeModal from '@/components/common/modal/mobile/MobileCreateResumeModal'
+import { clientFetchSpecData } from '@/lib/client/spec'
+import { useEffect } from 'react'
+import NotUseResumeServiceModal from '@/components/common/modal/NotUseResumeServiceModal'
 
 interface ResumeProps {
   resumeList: ResumeListType[] | undefined
+  lang: string
 }
 
-export default function Resume({ resumeList }: ResumeProps) {
-  const { isCreateResumeModalOpen, isInfoPickerModalOpen } = useModalStore((state) => state)
+export default function Resume({ lang, resumeList }: ResumeProps) {
+  const { isCreateResumeModalOpen, isInfoPickerModalOpen, isNotUseResumeService, setIsNotUseResumeService } =
+    useModalStore((state) => state)
+
+  useEffect(() => {
+    clientFetchSpecData().then((res) => {
+      if (!res.success) {
+        setIsNotUseResumeService(isNotUseResumeService)
+      }
+    })
+  }, [])
+
   return (
     <div>
+      {isNotUseResumeService && <NotUseResumeServiceModal lang={lang} />}
       {isCreateResumeModalOpen && <CreateResumeModal />}
+      {isCreateResumeModalOpen && <MobileCreateResumeModal lang={lang} />}
+
       {isInfoPickerModalOpen && <InfoPickerModal />}
-      <Label label={'이력서'} type={'titleMd'} rightElement={<AddResumeButton />}></Label>
+      <Label label={'이력서'} type={'titleMd'} rightElement={<AddResumeButton />} />
       <Spacing height={12} />
       <div className="flex flex-col gap-y-3">
         {resumeList?.map((resume) => (
           <ResumeItem
+            lang={lang}
             key={resume.resumeId}
             createdAt={resume.createdAt}
             modifiedAt={resume.updatedAt}
             title={resume.resumeName}
-            id={resume.resumeId}
+            resumeId={resume.resumeId}
           />
         ))}
       </div>

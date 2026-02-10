@@ -23,6 +23,7 @@ interface ResumeState {
 const initialResumeData: CreateResumeType = {
   resumeName: '',
   introduction: '',
+  template: 'ver1',
   urls: [{ urlTitle: '', urlLink: '' }], // 기본적으로 하나의 입력칸은 제공하는 편이 좋습니다.
 }
 const initialSelection: ResumeSelectionType = {
