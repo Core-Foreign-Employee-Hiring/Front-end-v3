@@ -1,11 +1,11 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { useRegisterStore } from '@/store/registerStore'
 import { Button } from '@/components/common'
 import { postRegister } from '@/lib/client/register'
 import { RegisterType } from '@/types/auth/register'
 import { useState } from 'react'
-import { router } from 'next/client'
 import ErrorMessage from '@/components/common/ErrorMessage'
 
 interface Step2BottomButtonProps {
@@ -13,6 +13,8 @@ interface Step2BottomButtonProps {
 }
 
 export default function Step2BottomButton({ lang }: Step2BottomButtonProps) {
+  const router = useRouter()
+
   const { registerData, isStep2FormValid } = useRegisterStore()
 
   const isValid = isStep2FormValid()

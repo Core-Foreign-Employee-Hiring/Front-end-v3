@@ -21,7 +21,7 @@ export default function RegisterStep1({ lang }: RegisterStep1Props) {
       <PhoneNumberField />
       <EmailField />
       <AddressField />
-      <Step1BottomButton />
+      <Step1BottomButton lang={lang} />
     </div>
   )
 }

@@ -75,7 +75,7 @@ export default function VisaField() {
             {filteredList.length > 0 ? (
               filteredList.map((visa) => (
                 <DropDown.DropBoxOptionItem key={visa.code} onClick={() => handleSelectVisa(visa.code)}>
-                  {visa.i18nKey}
+                  {t(visa.i18nKey)}
                 </DropDown.DropBoxOptionItem>
               ))
             ) : (

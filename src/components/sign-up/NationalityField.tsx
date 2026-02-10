@@ -78,7 +78,7 @@ export default function NationalityField() {
                   key={nationality.code}
                   onClick={() => handleSelectNationality(nationality.code)}
                 >
-                  {nationality.label}
+                  {t(nationality.label)}
                 </DropDown.DropBoxOptionItem>
               ))
             ) : (
