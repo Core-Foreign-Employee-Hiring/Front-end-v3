@@ -1,6 +1,7 @@
 import { Header, Label, PageLayout, Spacing } from '@/components/common'
 import Footer from '@/components/common/Footer'
 import SideBar from '@/components/mypage/SideBar'
+import NavBar from '@/components/common/NavBar'
 
 export default async function MyPageLayout({
   children,
@@ -23,6 +24,8 @@ export default async function MyPageLayout({
         </div>
       </PageLayout>
       <Footer />
+      <Spacing height={80} />
+      <NavBar path={`/${lang}/mypage`} lang={lang} />
     </div>
   )
 }

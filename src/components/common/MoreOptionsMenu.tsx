@@ -82,7 +82,15 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
               <Label label={`${userInfo.name}님`} type={'subtitleMd'} />
               <p className="kr-body-sm text-gray4">{userInfo.email}</p>
             </div>
-            <Button variant={'secondary'}>마이페이지</Button>
+            <Button
+              onClick={() => {
+                router.push(`/${lang}/mypage/home`)
+                setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+              }}
+              variant={'secondary'}
+            >
+              마이페이지
+            </Button>
           </section>
         ) : (
           <section className="border-gray2 bg-gray1 flex flex-col gap-y-4 rounded-[12px] p-[20px]">
