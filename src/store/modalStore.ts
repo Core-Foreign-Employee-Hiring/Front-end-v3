@@ -16,6 +16,7 @@ interface ModalState {
   isContractModalOpen: boolean
   isMoreOptionsMenuOpen: boolean
   isNotUseResumeService: boolean
+  isRequiredLoginModalOpen: boolean
 
   setIsSaveAnswerNoteModalOpen: (isSaveAnswerNoteModalOpen: boolean) => void
   setIsCreateNewAnswerNoteModalOpen: (isCreateNewAnswerNoteModalOpen: boolean) => void
@@ -31,6 +32,7 @@ interface ModalState {
   setIsContractModalOpen: (isContractModalOpen: boolean) => void
   setIsMoreOptionsMenuOpen: (isMoreOptionsMenuOpen: boolean) => void
   setIsNotUseResumeService: (isNotUseResumeService: boolean) => void
+  setIsRequiredLoginModalOpen: (isRequiredLoginModalOpen: boolean) => void
 }
 
 export const useModalStore = create<ModalState>()(
@@ -45,6 +47,7 @@ export const useModalStore = create<ModalState>()(
     isJobRoleModalOpen: false,
     isMoreOptionsMenuOpen: false,
     isNotUseResumeService: false,
+    isRequiredLoginModalOpen: false,
 
     setIsSaveAnswerNoteModalOpen: (isSaveAnswerNoteModalOpen) =>
       set(() => ({
@@ -105,6 +108,11 @@ export const useModalStore = create<ModalState>()(
     setIsNotUseResumeService: (isNotUseResumeService) =>
       set(() => ({
         isNotUseResumeService: !isNotUseResumeService,
+      })),
+    setIsRequiredLoginModalOpen: (isRequiredLoginModalOpen) =>
+      set(() => ({
+        // !isRequiredLoginModalOpen 대신 매개변수를 그대로 사용하세요
+        isRequiredLoginModalOpen: isRequiredLoginModalOpen,
       })),
   }))
 )

@@ -59,7 +59,7 @@ export const apiFetchServer = async (
     ...(typeof window === 'undefined' ? {} : { credentials: 'include' as const }),
   })
 
-  console.log('fetchResponse', response)
+  console.log('fetchResponse', response.status)
 
   // 401 또는 403 에러인 경우 토큰 갱신 시도
   if (response.status === 401 || response.status === 403) {
@@ -81,9 +81,11 @@ export const apiFetchServer = async (
         credentials: 'include' as const,
       })
       // ⭐ 재시도 후에도 실패하면 그냥 반환 (무한 루프 방지)
-      console.log('Retry response status:', response.status)
+      console.log('😝Retry response status:', response.status)
     } else {
       // 토큰 갱신 실패 - Route Handler로 쿠키 삭제
+      // 여기
+
       try {
         await fetch(`${process.env.NEXT_PUBLIC_URL}/api/auth/cookies`, {
           method: 'DELETE',
