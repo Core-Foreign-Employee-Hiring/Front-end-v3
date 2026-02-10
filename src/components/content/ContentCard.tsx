@@ -14,7 +14,7 @@ export default function ContentCard({
   starCount,
 }: ContentCardProps) {
   return (
-    <div className="flex flex-col gap-y-3">
+    <div className="flex shrink-0 flex-col gap-y-3">
       <div className="relative h-[164px] w-full">
         <Image alt={'콘텐츠 사진'} src={thumbnailUrl} fill className="rounded-[16px] object-cover" />
       </div>

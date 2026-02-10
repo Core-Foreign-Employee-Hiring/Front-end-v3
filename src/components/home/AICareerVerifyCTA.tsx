@@ -34,7 +34,7 @@ export default function AICareerVerifyCTA({ lang }: AICareerVerifyCTAProps) {
         <p className="kr-body-md">체계적인 프로세스로 커리어를 준비해보세요.</p>
       </div>
 
-      <div className="flex gap-x-6">
+      <div className="desktop:flex-row tablet:flex-row flex flex-col gap-x-6 gap-y-4">
         {ctaCardList.map((cta) => (
           <CTACard path={cta.path} key={cta.title} title={cta.title} description={cta.description} Icon={cta.icon} />
         ))}

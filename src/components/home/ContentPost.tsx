@@ -31,9 +31,12 @@ export default function ContentPost({ lang, contents }: ContentPostProps) {
         </Button>
       </section>
 
-      <section className="grid grid-cols-4 gap-[24px]">
+      <section className="scrollbar-hide flex gap-[24px] overflow-x-auto pb-4">
         {contents?.map((content) => (
-          <ContentCard key={content.passArchiveId} {...content} />
+          // ContentCard 내부나 감싸는 div에 너비 고정 및 flex-shrink-0 추가
+          <div key={content.passArchiveId} className="w-[300px] flex-shrink-0">
+            <ContentCard {...content} />
+          </div>
         ))}
       </section>
     </div>

@@ -31,7 +31,7 @@ export default function JobPost({ lang, recruitData }: JobPostProps) {
         </Button>
       </section>
 
-      <section className="grid grid-cols-3 gap-[24px]">
+      <section className="tablet:grid-cols-2 desktop:grid-cols-3 grid grid-cols-1 gap-[24px]">
         {recruitData?.map((job) => (
           <JobPostCard key={job.recruitId} {...job} />
         ))}

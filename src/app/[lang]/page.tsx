@@ -4,7 +4,6 @@ import AICareerVerifyCTA from '@/components/home/AICareerVerifyCTA'
 import { Spacing } from '@/components/common'
 import JobPost from '@/components/home/JobPost'
 import ContentPost from '@/components/home/ContentPost'
-import ProgramPost from '@/components/home/ProgramPost'
 import Footer from '@/components/common/Footer'
 import { serverFetchAllJobPosts } from '@/lib/server/job-post'
 import { serverFetchAllContentPosts } from '@/lib/server/content'
@@ -33,8 +32,8 @@ export default async function Home({ params }: HomeProps) {
       <ContentPost contents={contents} lang={lang} />
       <Spacing height={100} />
 
-      <ProgramPost lang={lang} />
-      <Spacing height={100} />
+      {/*<ProgramPost lang={lang} />*/}
+      {/*<Spacing height={100} />*/}
 
       <Footer />
       <Spacing height={80} />
