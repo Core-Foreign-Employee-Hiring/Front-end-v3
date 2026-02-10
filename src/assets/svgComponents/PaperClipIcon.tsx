@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgPaperClipIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 26 34" {...props}><path stroke="#6F717C" strokeWidth={2.4} d="M1.2 29.935V8.258c0-1.14.925-2.065 2.065-2.065h18.58c1.14 0 2.065.925 2.065 2.065v21.677c0 1.14-.924 2.065-2.065 2.065H3.265A2.064 2.064 0 0 1 1.2 29.935Z" /><path fill="#6F717C" d="M12.969 0a3.72 3.72 0 0 1 3.504 2.478h3.926c.684 0 1.24.555 1.24 1.239V8.67a1.24 1.24 0 0 1-1.24 1.24H5.535a1.24 1.24 0 0 1-1.238-1.24V3.717c0-.684.554-1.24 1.238-1.24h3.929A3.72 3.72 0 0 1 12.969 0m-.001 2.478a1.239 1.239 0 1 0 0 2.477 1.239 1.239 0 0 0 0-2.477" /><path stroke="#6F717C" strokeLinecap="round" strokeWidth={2.4} d="M5.527 13.11h14.254M5.555 26.5h12M5.33 17.5h7.126M16.019 17.5h3.563" /></svg>;
+export default SvgPaperClipIcon;

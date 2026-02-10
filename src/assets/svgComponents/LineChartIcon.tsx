@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgLineChartIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 35 26" {...props}><path stroke="#6F717C" strokeWidth={2.4} d="M1.2 22.136V3.265c0-1.14.925-2.065 2.065-2.065h27.87c1.14 0 2.065.925 2.065 2.065v18.87c0 1.14-.924 2.065-2.064 2.065H3.265A2.064 2.064 0 0 1 1.2 22.136Z" /><path stroke="#6F717C" strokeLinecap="round" strokeWidth={2.4} d="m5.2 20.2 4.57-4.865a.2.2 0 0 1 .27-.02l2.763 2.207a.2.2 0 0 0 .314-.093l2.906-8.697a.2.2 0 0 1 .376-.007l1.86 4.904a.2.2 0 0 0 .096.106l2.69 1.385a.2.2 0 0 0 .255-.064L25.026 9.7l1.916-3.212a.2.2 0 0 1 .343 0L29.2 9.7" /></svg>;
+export default SvgLineChartIcon;

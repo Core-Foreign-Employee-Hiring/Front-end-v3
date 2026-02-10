@@ -1,0 +1,4 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgAudioIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 30 35" {...props}><path stroke="#6F717C" strokeLinecap="round" strokeWidth={2.4} d="M1.218 16.887V27.93c0 .138.113.25.251.25h5.773a.25.25 0 0 0 .25-.25V17.138a.25.25 0 0 0-.25-.252zm0 0C1.01 11.657 2.455 1.2 14.395 1.2c12.536 0 13.803 10.458 13.803 15.687m0 0h-6.04a.25.25 0 0 0-.252.25V27.93c0 .138.113.25.251.25h6.041m0-11.293V28.18M15.022 33.2h8.157a5.02 5.02 0 0 0 5.02-5.02" /></svg>;
+export default SvgAudioIcon;
