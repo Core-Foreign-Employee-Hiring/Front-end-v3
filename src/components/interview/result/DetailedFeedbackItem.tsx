@@ -57,7 +57,7 @@ export default function DetailedFeedbackItem({
 
       {isOpen && (
         <DetailedFeedbackBody
-          questionId={questionId}
+          question={question}
           userAnswer={userAnswer}
           followUpQuestion={followUpQuestion}
           followUpAnswer={followUpAnswer}

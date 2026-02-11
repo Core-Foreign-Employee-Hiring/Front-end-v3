@@ -13,11 +13,11 @@ interface DetailedFeedbackBodyProps {
   finalAnswer?: string
   improvements: string
   isFinalElement?: boolean
-  questionId: string
+  question: string
 }
 
 export default function DetailedFeedbackBody({
-  questionId,
+  question,
   userAnswer,
   followUpAnswer,
   followUpQuestion,
@@ -55,7 +55,7 @@ export default function DetailedFeedbackBody({
             <SaveNoteButton
               feedback={feedback}
               improvements={improvements}
-              questionId={questionId}
+              question={question}
               userAnswer={userAnswer}
               followUpAnswer={followUpAnswer}
               followUpQuestion={followUpQuestion}

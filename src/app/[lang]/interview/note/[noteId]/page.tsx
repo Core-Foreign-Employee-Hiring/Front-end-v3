@@ -22,13 +22,13 @@ export default async function InterviewNoteDetailPage({ params }: InterviewNoteD
         <div className="flex w-full flex-col gap-y-[20px]">
           {noteData?.entries.map((entry, index) => (
             <DetailedFeedbackItem
-              key={entry.question_id}
-              questionId={entry.question_id}
+              key={entry.id}
+              questionId={entry.question}
               followUpQuestion={entry.follow_up_question}
               followUpAnswer={entry.follow_up_answer}
               feedback={entry.feedback}
               questionOrder={index + 1}
-              question={'질문이 들어가야하는데 현호오빠가 추가해줘야 해요'}
+              question={entry.question}
               userAnswer={entry.initial_answer}
               improvements={entry.improvements}
               noteId={noteId}

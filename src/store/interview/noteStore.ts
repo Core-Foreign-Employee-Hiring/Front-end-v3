@@ -29,7 +29,7 @@ const initCreateNoteData = {
 }
 
 const initAnswerEntry = {
-  question_id: '',
+  question: '',
   initial_answer: '',
   follow_up_question: '',
   follow_up_answer: '',

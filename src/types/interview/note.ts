@@ -13,7 +13,7 @@ export interface CreateNoteDataType {
 }
 
 export interface CreateEntryType {
-  question_id: string
+  question: string
   initial_answer: string
   feedback: string | null
   follow_up_question: string | null
@@ -33,7 +33,7 @@ export interface ResponseCreateNewNoteType {
 export interface EntryType {
   id: string
   note_id: string
-  question_id: string
+  question: string
   initial_answer: string
   follow_up_question: string
   follow_up_answer: string
@@ -46,8 +46,10 @@ export interface EntryType {
 
 //기존 노트에 새로운 Entry 추가할 때 쓰는 Type
 export interface AnswerEntryType {
-  question_id: string
+  question: string
   initial_answer: string
+  follow_up_question: string | null
+  follow_up_answer: string | null
   feedback: string | null
   improvements: string | null
   final_answer: string | null

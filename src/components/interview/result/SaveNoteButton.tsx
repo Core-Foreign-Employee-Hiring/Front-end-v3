@@ -5,7 +5,7 @@ import { useModalStore } from '@/store/modalStore'
 import { useNoteStore } from '@/store/interview/noteStore'
 
 interface SaveNoteButtonProps {
-  questionId: string
+  question: string
   userAnswer: string
   feedback: string
   improvements: string
@@ -15,7 +15,7 @@ interface SaveNoteButtonProps {
 }
 
 export default function SaveNoteButton({
-  questionId,
+  question,
   userAnswer,
   feedback,
   improvements,
@@ -34,7 +34,7 @@ export default function SaveNoteButton({
         setCreateNoteData({
           entries: [
             {
-              question_id: questionId,
+              question: question,
               initial_answer: userAnswer,
               feedback: feedback,
               follow_up_question: followUpQuestion,
@@ -47,9 +47,11 @@ export default function SaveNoteButton({
 
         //기존 노트에 데이터 추가
         setAnswerEntry({
-          question_id: questionId,
+          question: question,
           initial_answer: userAnswer,
           feedback: feedback,
+          follow_up_question: followUpQuestion,
+          follow_up_answer: followUpAnswer,
           improvements: improvements,
           final_answer: null,
         })

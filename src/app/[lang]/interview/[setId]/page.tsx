@@ -65,7 +65,7 @@ export default async function InterviewResultPage({ params }: InterviewResultPag
                 <SaveNoteButton
                   feedback={feedback.feedback}
                   improvements={feedback.improvements}
-                  questionId={feedback.question_id}
+                  question={feedback.question}
                   userAnswer={feedback.user_answer}
                   followUpAnswer={feedback.follow_up_answer}
                   followUpQuestion={feedback.follow_up_question}
