@@ -1,8 +1,9 @@
+'use client'
+
 import { StarIcon } from '@/assets/svgComponents'
 import Image from 'next/image'
 import { ContentType } from '@/types/content'
-
-interface ContentCardProps extends ContentType {}
+import { useRouter } from 'next/navigation'
 
 export default function ContentCard({
   passArchiveId,
@@ -12,9 +13,15 @@ export default function ContentCard({
   price,
   star,
   starCount,
-}: ContentCardProps) {
+}: ContentType) {
+  const router = useRouter()
   return (
-    <div className="flex shrink-0 flex-col gap-y-3">
+    <div
+      onClick={() => {
+        router.push(`/content/${passArchiveId}`)
+      }}
+      className="flex shrink-0 flex-col gap-y-3"
+    >
       <div className="relative h-[164px] w-full">
         <Image alt={'콘텐츠 사진'} src={thumbnailUrl} fill className="rounded-[16px] object-cover" />
       </div>

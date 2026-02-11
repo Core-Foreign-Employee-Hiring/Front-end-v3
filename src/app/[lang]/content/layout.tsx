@@ -1,5 +1,4 @@
-import { Header, Spacing } from '@/components/common'
-import NavBar from '@/components/common/NavBar'
+import { Header } from '@/components/common'
 
 export default async function ContentLayout({
   children,
@@ -15,11 +14,9 @@ export default async function ContentLayout({
         <Header headerType={'default'} currentLng={lang} />
       </div>
       <div className="desktop:hidden block">
-        <Header headerType={'dynamic'} currentLng={lang} title={'스펙입력'} />
+        <Header headerType={'dynamic'} currentLng={lang} title={'콘텐츠'} />
       </div>
       {children}
-      <Spacing height={80} />
-      <NavBar path={`/${lang}/interview`} lang={lang} />
     </div>
   )
 }

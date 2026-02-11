@@ -1,9 +1,9 @@
 import { ApiResponse, PageNation } from '@/types/common'
 import { apiFetchServer } from '@/lib/api.server'
-import { ContentType } from '@/types/content'
+import { ContentDetailType, ContentType } from '@/types/content'
 
 /**
- * 공고 전체 보기
+ * 콘텐츠 전체 보기
  */
 export const serverFetchAllContentPosts = async (params: {
   page: number
@@ -21,6 +21,23 @@ export const serverFetchAllContentPosts = async (params: {
   }
 
   const response = await apiFetchServer(`/api/v1/pass-archives?${searchParams.toString()}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+
+  return await response.json()
+}
+
+/**
+ * 콘텐츠 상세 보기
+ */
+export const serverFetchContentDetail = async (id: number): Promise<ApiResponse<ContentDetailType>> => {
+  const searchParams = new URLSearchParams()
+  searchParams.append('id', id.toString())
+
+  const response = await apiFetchServer(`/api/v1/pass-archives/detail?${searchParams.toString()}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
