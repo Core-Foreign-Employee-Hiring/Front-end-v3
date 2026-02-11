@@ -8,7 +8,7 @@ import { useQuery } from '@tanstack/react-query'
 import { clientFetchAllContents } from '@/lib/client/content'
 
 interface ContentReviewListProps {
-  archiveId: number
+  archiveId: string
 }
 
 export default function ContentReviewList({ archiveId }: ContentReviewListProps) {

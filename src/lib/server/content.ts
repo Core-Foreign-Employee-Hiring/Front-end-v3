@@ -33,7 +33,7 @@ export const serverFetchAllContentPosts = async (params: {
 /**
  * 콘텐츠 상세 보기
  */
-export const serverFetchContentDetail = async (id: number): Promise<ApiResponse<ContentDetailType>> => {
+export const serverFetchContentDetail = async (id: string): Promise<ApiResponse<ContentDetailType>> => {
   const searchParams = new URLSearchParams()
   searchParams.append('id', id.toString())
 

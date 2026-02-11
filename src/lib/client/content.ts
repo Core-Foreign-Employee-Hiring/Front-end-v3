@@ -7,7 +7,7 @@ import { ReviewType } from '@/types/content'
 export const clientFetchAllContents = async (params: {
   page: number
   size: number
-  archiveId: number
+  archiveId: string
 }): Promise<ApiResponse<PageNation<ReviewType>>> => {
   const { page = 0, size = 20, archiveId } = params
 
@@ -24,4 +24,34 @@ export const clientFetchAllContents = async (params: {
   })
 
   return await response.json()
+}
+
+/**
+ * 콘텐츠 결제
+ */
+export const postPaymentContent = async (archiveId: string): Promise<void> => {
+  const searchParams = new URLSearchParams()
+  searchParams.append('archiveId', archiveId.toString())
+  const response = await fetch(`/api/payment/test/confirm?${searchParams.toString()}`, {
+    method: 'POST',
+  })
+
+  if (!response.ok) throw new Error('Upload failed')
+
+  const result = await response.json()
+  return result.data
+}
+
+/**
+ * 문의하기 링크 조회
+ */
+export const getInquiryUrl = async (archiveId: string): Promise<string> => {
+  const response = await fetch(`/api/pass-archives/${archiveId}/inquiry-url`, {
+    method: 'GET',
+  })
+
+  if (!response.ok) throw new Error('Upload failed')
+
+  const result = await response.json()
+  return result.data
 }

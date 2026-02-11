@@ -9,7 +9,7 @@ import ContentImages from '@/components/content/ContentImages'
 export default async function ContentDetailPage({
   params,
 }: Readonly<{
-  params: Promise<{ lang: string; id: number }>
+  params: Promise<{ lang: string; id: string }>
 }>) {
   const { id, lang } = await params
   const result = await serverFetchContentDetail(id)
@@ -24,6 +24,7 @@ export default async function ContentDetailPage({
   return (
     <main className="flex flex-col gap-y-[32px]">
       <ContentSummary
+        archiveId={id}
         price={contentData.price}
         oneLineReview={contentData.oneLineReview}
         title={contentData.title}

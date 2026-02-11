@@ -3,7 +3,7 @@ import ContentReviewList from '@/components/content/ContentReviewList'
 import Rating from '@/components/content/Rating'
 
 interface ContentReviewProps {
-  archiveId: number
+  archiveId: string
   star: number
   starCount: number
 }

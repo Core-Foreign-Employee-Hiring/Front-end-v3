@@ -18,6 +18,8 @@ interface ModalState {
   isNotUseResumeService: boolean
   isRequiredLoginModalOpen: boolean
   isServicePrepareModalOpen: boolean
+  isPurchaseCompletionModalOpen: boolean
+  isInquiryModalOpen: boolean
 
   setIsSaveAnswerNoteModalOpen: (isSaveAnswerNoteModalOpen: boolean) => void
   setIsCreateNewAnswerNoteModalOpen: (isCreateNewAnswerNoteModalOpen: boolean) => void
@@ -35,6 +37,8 @@ interface ModalState {
   setIsNotUseResumeService: (isNotUseResumeService: boolean) => void
   setIsRequiredLoginModalOpen: (isRequiredLoginModalOpen: boolean) => void
   setIsServicePrepareModalOpen: (isServicePrepareModalOpen: boolean) => void
+  setIsPurchaseCompletionModalOpen: (isPurchaseCompletionModalOpen: boolean) => void
+  setIsInquiryModalOpen: (isInquiryModalOpen: boolean) => void
 }
 
 export const useModalStore = create<ModalState>()(
@@ -119,6 +123,14 @@ export const useModalStore = create<ModalState>()(
     setIsServicePrepareModalOpen: (isServicePrepareModalOpen) =>
       set(() => ({
         isServicePrepareModalOpen: !isServicePrepareModalOpen,
+      })),
+    setIsPurchaseCompletionModalOpen: (isPurchaseCompletionModalOpen) =>
+      set(() => ({
+        isPurchaseCompletionModalOpen: !isPurchaseCompletionModalOpen,
+      })),
+    setIsInquiryModalOpen: (isInquiryModalOpen) =>
+      set(() => ({
+        isInquiryModalOpen: !isInquiryModalOpen,
       })),
   }))
 )
