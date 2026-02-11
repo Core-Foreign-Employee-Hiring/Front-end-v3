@@ -17,76 +17,124 @@ export default function FinalAnswer({ finalAnswer, noteId, entryId }: FinalAnswe
   const { setFinalAnswerEntry, finalAnswerEntry } = useNoteStore((state) => state)
   const router = useRouter()
   return (
-    <div className="bg-gray1 flex flex-col gap-y-3 rounded-[8px] p-4">
-      <Badge bgColor={'bg-main-500'} textColor={'text-white'}>
-        최종 답변
-      </Badge>
-      {isTextFieldOpen ? (
-        <div className="flex flex-col items-end gap-y-3">
-          <TextInput
-            onClick={(e) => {
-              e.stopPropagation()
-            }}
-            placeholder={'개선한 최종 답변을 작성해주세요.'}
-            value={finalAnswerEntry.final_answer ?? ''}
-            onChange={(e) => {
-              setFinalAnswerEntry({ final_answer: e.target.value })
-            }}
-          />
-          <Button
-            onClick={async () => {
-              const result = await putNoteEntry(noteId, entryId, { final_answer: finalAnswerEntry.final_answer })
-              if (result.success) {
-                router.refresh()
-                setFinalAnswerEntry({ final_answer: '', entryId: '' })
-              }
-              console.log('답변 수정 성공', result)
-            }}
-            variant={'primary'}
-            customClassName={'w-[117px]'}
-            size={'sm'}
-          >
-            {finalAnswer ? '답변 수정완료' : '답변 작성완료'}
-          </Button>
-        </div>
-      ) : (
-        <div className="flex w-full items-center justify-between">
-          {finalAnswer ? (
-            <p className="kr-body-md">{finalAnswer}</p>
-          ) : (
-            <p className="kr-body-md">아직 답변이 작성되지 않았습니다.</p>
-          )}
+    <div className="flex flex-col items-end gap-y-[20px]">
+      <div className="bg-gray1 flex w-full flex-col gap-y-3 rounded-[8px] p-4">
+        <Badge bgColor={'bg-main-500'} textColor={'text-white'}>
+          최종 답변
+        </Badge>
+        {isTextFieldOpen ? (
+          <div className="flex flex-col items-end gap-y-3">
+            <TextInput
+              onClick={(e) => {
+                e.stopPropagation()
+              }}
+              placeholder={'개선한 최종 답변을 작성해주세요.'}
+              value={finalAnswerEntry.final_answer ?? ''}
+              onChange={(e) => {
+                setFinalAnswerEntry({ final_answer: e.target.value })
+              }}
+            />
+            <Button
+              onClick={async () => {
+                const result = await putNoteEntry(noteId, entryId, { final_answer: finalAnswerEntry.final_answer })
+                if (result.success) {
+                  router.refresh()
+                  setFinalAnswerEntry({ final_answer: '', entryId: '' })
+                }
+                console.log('답변 수정 성공', result)
+              }}
+              variant={'primary'}
+              customClassName={'desktop:block tablet:block hidden w-[110px]'}
+              size={'sm'}
+            >
+              {finalAnswer ? '답변 수정완료' : '답변 작성완료'}
+            </Button>
+          </div>
+        ) : (
+          <div className="flex w-full items-center justify-between">
+            {finalAnswer ? (
+              <p className="kr-body-md">{finalAnswer}</p>
+            ) : (
+              <p className="kr-body-md">아직 답변이 작성되지 않았습니다.</p>
+            )}
 
-          {finalAnswer ? (
-            <Button
-              customClassName={'w-[136px]'}
-              onClick={(e) => {
-                e.stopPropagation()
-                setFinalAnswerEntry({ entryId: entryId, noteId: noteId, final_answer: finalAnswer })
-                setIsTextFieldOpen(true)
-              }}
-              size={'sm'}
-              variant={'primary'}
-              rightIcon={<WhiteRightArrowIcon width={20} height={20} />}
-            >
-              답변 수정하기
-            </Button>
-          ) : (
-            <Button
-              customClassName={'w-[136px]'}
-              onClick={(e) => {
-                e.stopPropagation()
-                setFinalAnswerEntry({ entryId: entryId, noteId: noteId })
-                setIsTextFieldOpen(true)
-              }}
-              size={'sm'}
-              variant={'primary'}
-              rightIcon={<WhiteRightArrowIcon width={20} height={20} />}
-            >
-              답변 작성하기
-            </Button>
-          )}
-        </div>
+            {finalAnswer ? (
+              <Button
+                customClassName={'desktop:block tablet:block hidden w-[136px]'}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setFinalAnswerEntry({ entryId: entryId, noteId: noteId, final_answer: finalAnswer })
+                  setIsTextFieldOpen(true)
+                }}
+                size={'sm'}
+                variant={'primary'}
+                rightIcon={<WhiteRightArrowIcon width={20} height={20} />}
+              >
+                답변 수정하기
+              </Button>
+            ) : (
+              <Button
+                customClassName={'desktop:block tablet:block hidden w-[136px]'}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setFinalAnswerEntry({ entryId: entryId, noteId: noteId })
+                  setIsTextFieldOpen(true)
+                }}
+                size={'sm'}
+                variant={'primary'}
+                rightIcon={<WhiteRightArrowIcon width={20} height={20} />}
+              >
+                답변 작성하기
+              </Button>
+            )}
+          </div>
+        )}
+      </div>
+
+      {isTextFieldOpen ? (
+        <Button
+          onClick={async () => {
+            const result = await putNoteEntry(noteId, entryId, { final_answer: finalAnswerEntry.final_answer })
+            if (result.success) {
+              router.refresh()
+              setFinalAnswerEntry({ final_answer: '', entryId: '' })
+            }
+            console.log('답변 수정 성공', result)
+          }}
+          variant={'primary'}
+          customClassName={'desktop:hidden tablet:hidden block w-[110px]'}
+          size={'sm'}
+        >
+          {finalAnswer ? '답변 수정완료' : '답변 작성완료'}
+        </Button>
+      ) : finalAnswer ? (
+        <Button
+          customClassName={'desktop:hidden tablet:hidden block w-[136px]'}
+          onClick={(e) => {
+            e.stopPropagation()
+            setFinalAnswerEntry({ entryId: entryId, noteId: noteId, final_answer: finalAnswer })
+            setIsTextFieldOpen(true)
+          }}
+          size={'sm'}
+          variant={'primary'}
+          rightIcon={<WhiteRightArrowIcon width={20} height={20} />}
+        >
+          답변 수정하기
+        </Button>
+      ) : (
+        <Button
+          customClassName={'desktop:hidden tablet:hidden block w-[136px]'}
+          onClick={(e) => {
+            e.stopPropagation()
+            setFinalAnswerEntry({ entryId: entryId, noteId: noteId })
+            setIsTextFieldOpen(true)
+          }}
+          size={'sm'}
+          variant={'primary'}
+          rightIcon={<WhiteRightArrowIcon width={20} height={20} />}
+        >
+          답변 작성하기
+        </Button>
       )}
     </div>
   )

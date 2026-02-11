@@ -1,6 +1,7 @@
 import { Badge, ResultContent, Spacing } from '@/components/common'
 import DetailedFeedbackMyAnswer from '@/components/interview/result/DetailedFeedbackMyAnswer'
 import FinalAnswer from '@/components/interview/note/FinalAnswer'
+import SaveNoteButton from '@/components/interview/result/SaveNoteButton'
 
 interface DetailedFeedbackBodyProps {
   userAnswer: string
@@ -12,9 +13,11 @@ interface DetailedFeedbackBodyProps {
   finalAnswer?: string
   improvements: string
   isFinalElement?: boolean
+  questionId: string
 }
 
 export default function DetailedFeedbackBody({
+  questionId,
   userAnswer,
   followUpAnswer,
   followUpQuestion,
@@ -28,7 +31,7 @@ export default function DetailedFeedbackBody({
   return (
     <div>
       <Spacing height={20} />
-      <section className="flex gap-x-[20px]">
+      <section className="desktop:flex-row tablet:flex-row desktop:gap-x-[20px] tablet:gap-x-[20px] flex flex-col gap-y-[16px]">
         <DetailedFeedbackMyAnswer
           followUpAnswer={followUpAnswer}
           userAnswer={userAnswer}
@@ -45,6 +48,21 @@ export default function DetailedFeedbackBody({
             </div>
           }
         />
+
+        {/* 답변 노트에는 뜨지 않도록 */}
+        {!noteId && (
+          <div className="desktop:hidden tablet:hidden block flex justify-end">
+            <SaveNoteButton
+              feedback={feedback}
+              improvements={improvements}
+              questionId={questionId}
+              userAnswer={userAnswer}
+              followUpAnswer={followUpAnswer}
+              followUpQuestion={followUpQuestion}
+              customClassName={'w-fit'}
+            />
+          </div>
+        )}
       </section>
       {isFinalElement ? (
         <>

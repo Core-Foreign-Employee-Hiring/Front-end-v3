@@ -15,7 +15,12 @@ export default function DeleteNoteModal() {
   }
 
   return (
-    <Modal customClassName={'w-[508px]'} onClose={toggleDeleteNoteState} isOpen={isDeleteNoteModalOpen}>
+    <Modal
+      mobileHidden={false}
+      customClassName={'w-[508px]'}
+      onClose={toggleDeleteNoteState}
+      isOpen={isDeleteNoteModalOpen}
+    >
       <Modal.Header>
         <Label label={'답변노트를 삭제하실껀가요?'} type={'subtitleLg'} />
       </Modal.Header>

@@ -9,8 +9,9 @@ interface SaveNoteButtonProps {
   userAnswer: string
   feedback: string
   improvements: string
-  followUpQuestion: string
-  followUpAnswer: string
+  followUpQuestion: string | null
+  followUpAnswer: string | null
+  customClassName?: string
 }
 
 export default function SaveNoteButton({
@@ -20,6 +21,7 @@ export default function SaveNoteButton({
   improvements,
   followUpQuestion,
   followUpAnswer,
+  customClassName,
 }: SaveNoteButtonProps) {
   const { isSaveAnswerNoteModalOpen, setIsSaveAnswerNoteModalOpen } = useModalStore((state) => state)
   const { setCreateNoteData, setAnswerEntry } = useNoteStore((state) => state)
@@ -53,6 +55,7 @@ export default function SaveNoteButton({
         })
       }}
       size={'sm'}
+      customClassName={customClassName}
       variant={'outline'}
     >
       답변노트에 저장

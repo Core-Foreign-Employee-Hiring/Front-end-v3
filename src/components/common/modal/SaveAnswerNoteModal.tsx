@@ -41,7 +41,12 @@ export default function SaveAnswerNoteModal() {
   }
 
   return (
-    <Modal customClassName={'w-[508px]'} onClose={toggleSaveAnswerNoteState} isOpen={isSaveAnswerNoteModalOpen}>
+    <Modal
+      mobileHidden={false}
+      customClassName={'w-[508px]'}
+      onClose={toggleSaveAnswerNoteState}
+      isOpen={isSaveAnswerNoteModalOpen}
+    >
       <Modal.Header>
         <Label label={'답변 노트 저장'} type={'subtitleLg'} />
       </Modal.Header>

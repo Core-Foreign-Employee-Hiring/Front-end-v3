@@ -15,7 +15,12 @@ export default function EditNoteTitleModal() {
   }
 
   return (
-    <Modal customClassName={'w-[508px]'} onClose={toggleEditNoteTitleState} isOpen={isEditNoteTitleModalOpen}>
+    <Modal
+      mobileHidden={false}
+      customClassName={'w-[508px]'}
+      onClose={toggleEditNoteTitleState}
+      isOpen={isEditNoteTitleModalOpen}
+    >
       <Modal.Header>
         <Label label={'답변 노트 수정'} type={'subtitleLg'} />
       </Modal.Header>

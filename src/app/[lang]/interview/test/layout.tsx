@@ -1,4 +1,3 @@
-import { PageLayout } from '@/components/common'
 import { InterviewHeader, TestHeaderOption, TestHeaderTitle } from '@/components/interview'
 
 export default async function InterviewLayout({
@@ -12,7 +11,7 @@ export default async function InterviewLayout({
   return (
     <div>
       <InterviewHeader leftElement={<TestHeaderTitle />} rightElement={<TestHeaderOption />} />
-      <PageLayout>{children}</PageLayout>
+      <div className="desktop:px-[40px] tablet:px-[32px] px-[20px] py-[20px]">{children}</div>
     </div>
   )
 }

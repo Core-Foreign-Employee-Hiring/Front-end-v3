@@ -13,7 +13,7 @@ interface HeaderTitleProps {
 }
 export default function HeaderTitle({ job_type, created_at, status, completed_at, level, title }: HeaderTitleProps) {
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className="desktop:gap-y-2 flex flex-col gap-y-1">
       <section className="flex items-center gap-x-2">
         <Badge
           textColor={status === 'completed' ? 'text-sub1' : 'text-main-500'}

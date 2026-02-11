@@ -24,6 +24,7 @@ export default function CreateNewAnswerNoteModal() {
 
   return (
     <Modal
+      mobileHidden={false}
       customClassName={'w-[508px]'}
       onClose={toggleCreateNewAnswerNoteState}
       isOpen={isCreateNewAnswerNoteModalOpen}

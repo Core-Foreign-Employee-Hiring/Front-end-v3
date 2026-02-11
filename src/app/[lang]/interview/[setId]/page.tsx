@@ -35,7 +35,7 @@ export default async function InterviewResultPage({ params }: InterviewResultPag
         rightElement={<ResultHeaderOption />}
       />
       <PageLayout>
-        <div className="flex gap-x-[32px]">
+        <div className="tablet:flex-row desktop:flex-row flex flex-col items-center gap-x-[32px] gap-y-[16px]">
           <InterviewResult
             completeness={evaluation?.completeness}
             evidence={evaluation?.evidence}
@@ -45,7 +45,9 @@ export default async function InterviewResultPage({ params }: InterviewResultPag
           />
           <ResultContent analysis={evaluation?.overall_feedback} />
         </div>
+
         <Spacing height={32} />
+
         <div className="flex w-full flex-col gap-y-[20px]">
           {evaluation?.detailed_feedback.map((feedback) => (
             <DetailedFeedbackItem
@@ -67,6 +69,7 @@ export default async function InterviewResultPage({ params }: InterviewResultPag
                   userAnswer={feedback.user_answer}
                   followUpAnswer={feedback.follow_up_answer}
                   followUpQuestion={feedback.follow_up_question}
+                  customClassName={'hidden desktop:block tablet:block'}
                 />
               }
             />

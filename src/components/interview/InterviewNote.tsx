@@ -7,7 +7,7 @@ export default async function InterviewNote() {
   const notes = result.data
 
   return (
-    <div className="grid grid-cols-2 gap-6">
+    <div className="tablet:grid-cols-2 desktop:grid-cols-2 grid grid-cols-1 gap-6">
       {notes?.map((note) => (
         <NoteItem
           noteId={note.id}

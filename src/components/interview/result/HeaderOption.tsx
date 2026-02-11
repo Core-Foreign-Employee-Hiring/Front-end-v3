@@ -20,7 +20,7 @@ export default function HeaderOption() {
         onClick={() => {
           setIsModalOpen(true)
         }}
-        customClassName={'w-[120px]'}
+        customClassName={'w-[110px]'}
         size={'sm'}
         variant={'primary'}
       >

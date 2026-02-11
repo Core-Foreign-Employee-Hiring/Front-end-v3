@@ -14,7 +14,7 @@ export default async function InterviewLayout({
         <Header headerType={'default'} currentLng={lang} />
       </div>
       <div className="desktop:hidden block">
-        <Header headerType={'dynamic'} currentLng={lang} title={'스펙입력'} />
+        <Header headerType={'dynamic'} currentLng={lang} title={'AI 면접'} />
       </div>
       {children}
     </div>
