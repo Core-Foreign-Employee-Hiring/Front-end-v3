@@ -35,7 +35,7 @@ export default function useSpecActivity() {
       host: '',
       acquiredDate: '',
       description: '',
-      documentUrl: '',
+      documentUrl: null,
     })
   }
 
@@ -91,19 +91,31 @@ export default function useSpecActivity() {
   // 6. 최종 제출 핸들러
   const handleSubmit = async () => {
     try {
-      // 활동 분배 (Store 업데이트)
-      specActivities.forEach((activity) => {
-        if (isAward(activity)) addAward(activity)
-        else if (isExperience(activity)) addExperience(activity)
-      })
+      // 1. 데이터 분류
+      const awards = specActivities.filter(isAward)
+      const experiences = specActivities.filter(isExperience)
 
+      // 2. 스토어 데이터를 현재 화면에 보이는 값으로 '교체' (추가 X)
+      // store에 setAwards, setExperiences가 있다고 가정
+      useSpecStore.setState((state) => ({
+        spec: {
+          ...state.spec,
+          awards: awards,
+          experiences: experiences,
+        },
+      }))
+
+      // 3. 최신 데이터 가져오기 및 업로드 처리
       const latestSpec = useSpecStore.getState().spec
       const completedSpec = await finalizeSpecData(latestSpec)
 
       const result = await postSpecData(completedSpec)
+      console.log('스펙 데이터 제출', result)
 
       if (result.success) {
         const specResult = await postSpecResult()
+        console.log('스펙 데이터 결과 response', specResult)
+
         if (specResult.success && specResult.data?.data) {
           alert('성공적으로 저장되었습니다.')
           setSpecEvaluationId(specResult.data.data)

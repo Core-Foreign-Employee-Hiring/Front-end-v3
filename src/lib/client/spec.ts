@@ -85,7 +85,6 @@ export const postSpecResult = async (): Promise<ApiCallResult<ApiCallResult<numb
     }
 
     const data = await response.json()
-    console.log('스펙 데이터', data)
     return { success: true, data }
   } catch (error) {
     console.error('Fetch 에러:', error)

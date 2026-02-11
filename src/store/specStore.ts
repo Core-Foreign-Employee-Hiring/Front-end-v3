@@ -54,6 +54,9 @@ interface SpecState {
   removeExperience: (index: number) => void
   updateExperience: (index: number, updatedExperience: SpecExperienceType) => void
   // 나머지 awards, experiences 등도 유사한 패턴으로 추가 가능합니다.
+
+  setAwards: (awards: SpecAwardType[]) => void
+  setExperiences: (experiences: SpecExperienceType[]) => void
 }
 
 const initialSpec: SpecType = {
@@ -243,5 +246,8 @@ export const useSpecStore = create<SpecState>()(
       set((state) => ({
         specActivities: state.specActivities.map((item, i) => (i === index ? { ...item, ...updatedActivity } : item)),
       })),
+
+    setAwards: (awards: SpecAwardType[]) => set((state) => ({ spec: { ...state.spec, awards } })),
+    setExperiences: (experiences: SpecExperienceType[]) => set((state) => ({ spec: { ...state.spec, experiences } })),
   }))
 )

@@ -55,7 +55,7 @@ export default function ExpImprovementRate({
             status={getStatus()}
             onFocus={(e) => handleFocus(e, 'beforeImprovementRate')}
             onBlur={(e) => handleBlur(e, 'beforeImprovementRate')}
-            onChange={(e) => handleExperienceChange(index, 'beforeImprovementRate', e.target.value)}
+            onChange={(e) => handleExperienceChange(index, 'beforeImprovementRate', Number(e.target.value))}
             inputType={'number'}
             value={beforeImprovementRate}
             placeholder={'이전 개선률'}
@@ -64,7 +64,7 @@ export default function ExpImprovementRate({
             status={getStatus()}
             onFocus={(e) => handleFocus(e, 'afterImprovementRate')}
             onBlur={(e) => handleBlur(e, 'afterImprovementRate')}
-            onChange={(e) => handleExperienceChange(index, 'afterImprovementRate', e.target.value)}
+            onChange={(e) => handleExperienceChange(index, 'afterImprovementRate', Number(e.target.value))}
             inputType={'number'}
             value={afterImprovementRate}
             placeholder={'이후 개선률'}

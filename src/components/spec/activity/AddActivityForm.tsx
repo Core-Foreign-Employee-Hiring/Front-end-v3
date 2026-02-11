@@ -18,7 +18,7 @@ const DEFAULT_AWARD: SpecAwardType = {
   host: '',
   acquiredDate: '',
   description: '',
-  documentUrl: '',
+  documentUrl: null,
 }
 
 const DEFAULT_EXPERIENCE: SpecExperienceType = {
