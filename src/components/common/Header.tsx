@@ -4,10 +4,19 @@ import { useMemo, useState, useSyncExternalStore } from 'react' // useMemo 추�
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
-import { BackIcon, DropDownGray3Icon, DropDownGray4Icon, LanguageIcon, LogoIcon } from '@/assets/svgComponents'
+import {
+  BackIcon,
+  DropDownGray3Icon,
+  DropDownGray4Icon,
+  LanguageIcon,
+  LogoIcon,
+  MenuCloseIcon,
+  MenuIcon,
+} from '@/assets/svgComponents'
 import '@/lib/i18n-client'
 import PopUp from '@/components/common/PopUp'
 import { Locale } from '@/lib/i18n.types'
+import { useModalStore } from '@/store/modalStore'
 
 interface HeaderProps {
   headerType?: 'default' | 'dynamic'
@@ -27,6 +36,8 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
   const pathname = usePathname()
 
   const [isLanguageSelectModalOpen, setIsLanguageSelectModalOpen] = useState(false)
+
+  const { setIsMoreOptionsMenuOpen, isMoreOptionsMenuOpen } = useModalStore((state) => state)
 
   // 1. 원시 문자열(String)만 구독합니다. (문자열은 값이 같으면 참조가 같다고 간주됨)
   const rawUserInfo = useSyncExternalStore(
@@ -177,13 +188,30 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
             ))}
           </PopUp>
         )}
-        <div className="flex items-center gap-x-3">
+        <div className="flex items-center gap-x-2">
           <LanguageIcon
             onClick={() => {
               setIsLanguageSelectModalOpen(!isLanguageSelectModalOpen)
             }}
             className={iconClass}
           />
+          {isMoreOptionsMenuOpen ? (
+            <MenuCloseIcon
+              onClick={() => {
+                setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+              }}
+              width={24}
+              height={24}
+            />
+          ) : (
+            <MenuIcon
+              onClick={() => {
+                setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+              }}
+              width={24}
+              height={24}
+            />
+          )}
         </div>
 
         <div className="kr-button text-gray4 tablet:flex hidden items-center gap-x-2">

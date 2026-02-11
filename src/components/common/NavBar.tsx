@@ -1,15 +1,15 @@
 'use client'
 
 import {
-  NavCloseIcon,
   SelectedAiIcon,
   SelectedCarrerIcon,
   SelectedHomeIcon,
+  SelectedMyIcon,
   SelectedRecruitIcon,
   UnselectedAiIcon,
   UnselectedCarrerIcon,
   UnselectedHomeIcon,
-  UnselectedMoreIcon,
+  UnselectedMyIcon,
   UnselectedRecruitIcon,
 } from '@/assets/svgComponents'
 import Link from 'next/link'
@@ -21,7 +21,7 @@ interface NavBarProps {
 }
 
 export default function NavBar({ path, lang }: NavBarProps) {
-  const { setIsMoreOptionsMenuOpen, isMoreOptionsMenuOpen } = useModalStore((state) => state)
+  const { isMoreOptionsMenuOpen } = useModalStore((state) => state)
   return (
     <div className="border-gray2 desktop:hidden tablet:px-[32px] bg-gray1 fixed bottom-0 z-60 flex w-full justify-between border-t-[1px] px-[20px] pt-[12px] pb-[32px]">
       {path === `/${lang}` && !isMoreOptionsMenuOpen ? (
@@ -72,24 +72,17 @@ export default function NavBar({ path, lang }: NavBarProps) {
         </Link>
       )}
 
-      <button
-        onClick={() => {
-          setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
-        }}
-        className="flex w-[63px] flex-col items-center gap-y-[6px]"
-      >
-        {isMoreOptionsMenuOpen ? (
-          <NavCloseIcon width={24} height={24} />
-        ) : (
-          <UnselectedMoreIcon width={24} height={24} />
-        )}
-
-        {isMoreOptionsMenuOpen ? (
-          <p className="kr-badge-sm text-main-500">닫기</p>
-        ) : (
-          <p className="kr-badge-sm text-gray3">더보기</p>
-        )}
-      </button>
+      {path === `/${lang}/mypage` && !isMoreOptionsMenuOpen ? (
+        <Link href={`/${lang}/mypage/home`} className="flex w-[63px] flex-col items-center gap-y-[6px]">
+          <SelectedMyIcon width={24} height={24} />
+          <p className="kr-badge-sm text-main-500">MY</p>
+        </Link>
+      ) : (
+        <Link href={`/${lang}/mypage/home`} className="flex w-[63px] flex-col items-center gap-y-[6px]">
+          <UnselectedMyIcon width={24} height={24} />
+          <p className="kr-badge-sm text-gray3">MY</p>
+        </Link>
+      )}
     </div>
   )
 }

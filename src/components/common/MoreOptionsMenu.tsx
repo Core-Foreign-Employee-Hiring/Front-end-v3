@@ -276,6 +276,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
         )}
       </div>
 
+      <Spacing height={80} />
       <NavBar lang={lang} path={path} />
     </div>
   )
