@@ -510,6 +510,5 @@ export const CONTRACT_TYPES: { content: string; enum: ContractEnumType }[] = [
   { content: '인턴', enum: 'INTERN' },
   { content: '정규직', enum: 'REGULAR' },
   { content: '계약직', enum: 'CONTRACT' },
-  { content: '신입', enum: 'NEWCOMER' },
-  { content: '경력', enum: 'EXPERIENCED' },
+  { content: '기타', enum: 'ETC' },
 ]
