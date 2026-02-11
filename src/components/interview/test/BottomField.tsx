@@ -55,7 +55,7 @@ export default function BottomField() {
   }
 
   return (
-    <div className="border-gray2 fixed bottom-0 left-0 flex w-full flex-col gap-y-3 border-t bg-white px-[40px] py-[20px]">
+    <div className="border-gray2 tablet:px-[32px] desktop:px-[40px] fixed bottom-0 left-0 flex w-full flex-col gap-y-3 border-t bg-white px-[20px] py-[20px]">
       {isServicePrepareModalOpen && <ServicePrepareModal />}
       <SwitchButton
         type={type}
