@@ -20,7 +20,7 @@ export default function ContentReview({ archiveId, star, starCount }: ContentRev
           </div>
           <div className="border-gray2 h-[40px] border-r-[1px]" />
           <div className="flex flex-col items-center gap-y-2">
-            <Rating star={1.2} />
+            <Rating star={star} />
             <p className="kr-badge-md text-gray5">{starCount}명의 후기</p>
           </div>
         </div>
