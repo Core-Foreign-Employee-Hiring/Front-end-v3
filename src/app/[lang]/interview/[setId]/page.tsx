@@ -65,6 +65,8 @@ export default async function InterviewResultPage({ params }: InterviewResultPag
                   improvements={feedback.improvements}
                   questionId={feedback.question_id}
                   userAnswer={feedback.user_answer}
+                  followUpAnswer={feedback.follow_up_answer}
+                  followUpQuestion={feedback.follow_up_question}
                 />
               }
             />

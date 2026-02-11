@@ -2,8 +2,10 @@ import { Button, Label, Modal, TextInput } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
 import { useNoteStore } from '@/store/interview/noteStore'
 import { putNoteTitle } from '@/lib/client/interview'
+import { useRouter } from 'next/navigation'
 
 export default function EditNoteTitleModal() {
+  const router = useRouter()
   const { isEditNoteTitleModalOpen, setIsEditNoteTitleModalOpen } = useModalStore((state) => state)
 
   const { setTitle, title, selectedNoteId } = useNoteStore((state) => state)
@@ -39,6 +41,8 @@ export default function EditNoteTitleModal() {
             onClick={async () => {
               const result = await putNoteTitle(selectedNoteId, title)
               console.log('제목 변경', result.data)
+              toggleEditNoteTitleState()
+              router.refresh()
             }}
             variant={'primary'}
             size={'lg'}

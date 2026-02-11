@@ -4,6 +4,7 @@ import InterviewHistory from '@/components/interview/InterviewHistory'
 import InterviewNote from '@/components/interview/InterviewNote'
 import InterviewHome from '@/components/interview/InterviewHome'
 import StartInterviewButton from '@/components/interview/StartInterviewButton'
+import NavBar from '@/components/common/NavBar'
 
 interface InterViewPageProps {
   params: Promise<{ lang: string }>
@@ -31,16 +32,20 @@ export default async function InterviewPage({ params, searchParams }: InterViewP
     { content: '답변 노트', path: `/${lang}/interview?tab=note`, key: 'note' },
   ]
   return (
-    <PageLayout>
-      <main className="w-full">
-        <Label label={'AI 면접'} type={'titleLg'} rightElement={<StartInterviewButton />} />
-        <Spacing height={20} />
+    <main>
+      <PageLayout>
+        <div className="w-full">
+          <Label label={'AI 면접'} type={'titleLg'} rightElement={<StartInterviewButton />} />
+          <Spacing height={20} />
 
-        <Tab tabList={tabList} />
-        <Spacing height={20} />
+          <Tab tabList={tabList} />
+          <Spacing height={20} />
 
-        <FindInterviewProcessStepSwitcher tab={tab} />
-      </main>
-    </PageLayout>
+          <FindInterviewProcessStepSwitcher tab={tab} />
+        </div>
+      </PageLayout>
+      <Spacing height={80} />
+      <NavBar path={`/${lang}/interview`} lang={lang} />
+    </main>
   )
 }

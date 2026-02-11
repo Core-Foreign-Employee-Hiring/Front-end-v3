@@ -5,11 +5,14 @@ import { ChatInputField } from '@/components/interview'
 import { useTest } from '@/hooks/interview/useTest'
 import { useEffect, useState } from 'react'
 import { useInterviewStore } from '@/store/interview/interviewStore'
+import { useModalStore } from '@/store/modalStore'
+import ServicePrepareModal from '@/components/common/modal/ServicePrepareModal'
 
 export default function BottomField() {
   const [type, setType] = useState<'text' | 'audio'>('text')
   // 분리된 비즈니스 로직 훅
   const { handleCommonSubmit, handleFollowUpSubmit } = useTest()
+  const { isServicePrepareModalOpen, setIsServicePrepareModalOpen } = useModalStore((state) => state)
 
   const {
     chatList,
@@ -53,9 +56,18 @@ export default function BottomField() {
 
   return (
     <div className="border-gray2 fixed bottom-0 left-0 flex w-full flex-col gap-y-3 border-t bg-white px-[40px] py-[20px]">
+      {isServicePrepareModalOpen && <ServicePrepareModal />}
       <SwitchButton
         type={type}
-        onClick={setType}
+        onClick={(clickedType) => {
+          if (clickedType === 'text') {
+            setType('text')
+          } else if (clickedType === 'audio') {
+            // 2. 서비스 준비 중인 경우 로직
+            setIsServicePrepareModalOpen(isServicePrepareModalOpen) // 모달을 여는 로직 (기존 isServicePrepareModalOpen 전달은 오타인듯 하네요)
+            // 선택은 바꾸지 않거나, 기획에 따라 처리
+          }
+        }}
         contentList={[
           { content: '텍스트 입력', type: 'text' },
           { content: '음성 입력', type: 'audio' },

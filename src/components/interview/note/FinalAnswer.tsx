@@ -5,6 +5,7 @@ import { WhiteRightArrowIcon } from '@/assets/svgComponents'
 import { useState } from 'react'
 import { useNoteStore } from '@/store/interview/noteStore'
 import { putNoteEntry } from '@/lib/client/interview'
+import { useRouter } from 'next/navigation'
 
 interface FinalAnswerProps {
   finalAnswer?: string
@@ -14,7 +15,7 @@ interface FinalAnswerProps {
 export default function FinalAnswer({ finalAnswer, noteId, entryId }: FinalAnswerProps) {
   const [isTextFieldOpen, setIsTextFieldOpen] = useState(false)
   const { setFinalAnswerEntry, finalAnswerEntry } = useNoteStore((state) => state)
-
+  const router = useRouter()
   return (
     <div className="bg-gray1 flex flex-col gap-y-3 rounded-[8px] p-4">
       <Badge bgColor={'bg-main-500'} textColor={'text-white'}>
@@ -35,6 +36,10 @@ export default function FinalAnswer({ finalAnswer, noteId, entryId }: FinalAnswe
           <Button
             onClick={async () => {
               const result = await putNoteEntry(noteId, entryId, { final_answer: finalAnswerEntry.final_answer })
+              if (result.success) {
+                router.refresh()
+                setFinalAnswerEntry({ final_answer: '', entryId: '' })
+              }
               console.log('답변 수정 성공', result)
             }}
             variant={'primary'}

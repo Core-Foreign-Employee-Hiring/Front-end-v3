@@ -24,8 +24,8 @@ export default async function InterviewNoteDetailPage({ params }: InterviewNoteD
             <DetailedFeedbackItem
               key={entry.question_id}
               questionId={entry.question_id}
-              followUpQuestion={'압박질문인데 현호오빠가 추가해줘야 해요'}
-              followUpAnswer={'압박질문에 대한 답변인데 현호오빠가 추가해줘야 해요'}
+              followUpQuestion={entry.follow_up_question}
+              followUpAnswer={entry.follow_up_answer}
               feedback={entry.feedback}
               questionOrder={index + 1}
               question={'질문이 들어가야하는데 현호오빠가 추가해줘야 해요'}

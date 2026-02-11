@@ -1,6 +1,6 @@
 import { JSX } from 'react'
 
-export default function StatIconItem({ label, Icon }: { label: string | null; Icon: JSX.Element }) {
+export default function StatIconItem({ label, Icon }: { label: string | null; Icon?: JSX.Element }) {
   return (
     <div className="flex items-center gap-x-1">
       {Icon && Icon}

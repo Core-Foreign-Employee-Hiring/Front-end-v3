@@ -16,6 +16,8 @@ export interface CreateEntryType {
   question_id: string
   initial_answer: string
   feedback: string | null
+  follow_up_question: string | null
+  follow_up_answer: string | null
   improvements: string | null
   final_answer: string | null
 }
@@ -29,15 +31,17 @@ export interface ResponseCreateNewNoteType {
 }
 
 export interface EntryType {
-  id: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
-  note_id: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
-  question_id: '3fa85f64-5717-4562-b3fc-2c963f66afa6'
-  initial_answer: 'string'
-  feedback: 'string'
-  improvements: 'string'
-  final_answer: 'string'
-  created_at: '2026-01-22T07:49:02.600Z'
-  updated_at: '2026-01-22T07:49:02.600Z'
+  id: string
+  note_id: string
+  question_id: string
+  initial_answer: string
+  follow_up_question: string
+  follow_up_answer: string
+  feedback: string
+  improvements: string
+  final_answer: string
+  created_at: string
+  updated_at: string
 }
 
 //기존 노트에 새로운 Entry 추가할 때 쓰는 Type

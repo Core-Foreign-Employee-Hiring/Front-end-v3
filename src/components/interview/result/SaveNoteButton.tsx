@@ -9,9 +9,18 @@ interface SaveNoteButtonProps {
   userAnswer: string
   feedback: string
   improvements: string
+  followUpQuestion: string
+  followUpAnswer: string
 }
 
-export default function SaveNoteButton({ questionId, userAnswer, feedback, improvements }: SaveNoteButtonProps) {
+export default function SaveNoteButton({
+  questionId,
+  userAnswer,
+  feedback,
+  improvements,
+  followUpQuestion,
+  followUpAnswer,
+}: SaveNoteButtonProps) {
   const { isSaveAnswerNoteModalOpen, setIsSaveAnswerNoteModalOpen } = useModalStore((state) => state)
   const { setCreateNoteData, setAnswerEntry } = useNoteStore((state) => state)
   return (
@@ -26,6 +35,8 @@ export default function SaveNoteButton({ questionId, userAnswer, feedback, impro
               question_id: questionId,
               initial_answer: userAnswer,
               feedback: feedback,
+              follow_up_question: followUpQuestion,
+              follow_up_answer: followUpAnswer,
               improvements: improvements,
               final_answer: null,
             },

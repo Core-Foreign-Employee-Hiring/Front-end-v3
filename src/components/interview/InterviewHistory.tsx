@@ -5,7 +5,7 @@ export default async function InterviewHistory() {
   const result = await fetchInterviewSets()
 
   return (
-    <div className="grid grid-cols-3 gap-6">
+    <div className="desktop:grid-cols-3 desktop:gap-6 tablet:grid-cols-2 grid grid-cols-1 gap-4">
       {result.data?.map((set) => (
         <HistoryItem
           id={set.id}

@@ -25,11 +25,8 @@ export default function HeaderTitle({ job_type, created_at, status, completed_at
         <p className="kr-subtitle-md">{getJobContent(job_type)}</p>
       </section>
       <section className="flex gap-x-3">
-        <StatIconItem
-          label={completed_at ? formatDate(completed_at) : formatDate(created_at)}
-          Icon={<div className="bg-gray1 h-[20px] w-[20px]" />}
-        />
-        <StatIconItem label={getLevelContent(level)} Icon={<div className="bg-gray1 h-[20px] w-[20px]" />} />
+        <StatIconItem label={completed_at ? formatDate(completed_at) : formatDate(created_at)} />
+        <StatIconItem label={getLevelContent(level)} />
       </section>
     </div>
   )

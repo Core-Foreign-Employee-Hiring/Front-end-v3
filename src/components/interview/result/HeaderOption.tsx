@@ -20,10 +20,9 @@ export default function HeaderOption() {
         onClick={() => {
           setIsModalOpen(true)
         }}
-        customClassName={'w-[140px]'}
+        customClassName={'w-[120px]'}
         size={'sm'}
         variant={'primary'}
-        leftIcon={<div className="h-[20px] w-[20px]" />}
       >
         다시 도전하기
       </Button>

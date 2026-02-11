@@ -33,7 +33,7 @@ export default function AIInterviewTestSettingModal({ isOpen, onClose }: AIInter
     },
   }
   return (
-    <Modal customClassName={'max-w-[860px]'} isOpen={isOpen} onClose={onClose}>
+    <Modal mobileHidden={false} customClassName={'max-w-[860px]'} isOpen={isOpen} onClose={onClose}>
       <Modal.Header>
         <div className="flex flex-col gap-y-2">
           <Label label={'면접 설정'} type={'titleMd'} />

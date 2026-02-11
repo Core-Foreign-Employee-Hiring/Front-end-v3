@@ -74,6 +74,7 @@ export default function SaveAnswerNoteModal() {
                 resetAnswerEntry()
                 resetSelectedNoteId('')
                 resetCreateNoteData()
+                toggleSaveAnswerNoteState()
               }
             }}
             variant={'primary'}

@@ -1,7 +1,6 @@
 'use client'
 
 import { Button } from '@/components/common'
-import { DeleteIcon } from '@/assets/svgComponents'
 import { useNoteStore } from '@/store/interview/noteStore'
 import { useModalStore } from '@/store/modalStore'
 import EditNoteTitleModal from '@/components/common/modal/EditNoteTitleModal'
@@ -22,7 +21,7 @@ export default function NoteHeaderOption({ noteId }: NoteHeaderOptionProps) {
 
       <div className="flex gap-x-3">
         <Button
-          customClassName={'w-[90px]'}
+          customClassName={'w-[80px]'}
           buttonType={'button'}
           onClick={() => {
             setSelectedNoteId(noteId)
@@ -30,12 +29,11 @@ export default function NoteHeaderOption({ noteId }: NoteHeaderOptionProps) {
           }}
           size={'sm'}
           variant={'outline'}
-          leftIcon={<DeleteIcon width={20} height={20} />}
         >
           수정
         </Button>
         <Button
-          customClassName={'w-[90px]'}
+          customClassName={'w-[80px]'}
           buttonType={'button'}
           onClick={() => {
             setSelectedNoteId(noteId)
@@ -43,7 +41,6 @@ export default function NoteHeaderOption({ noteId }: NoteHeaderOptionProps) {
           }}
           size={'sm'}
           variant={'outline'}
-          leftIcon={<DeleteIcon width={20} height={20} />}
         >
           삭제
         </Button>

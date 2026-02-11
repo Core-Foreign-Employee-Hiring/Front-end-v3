@@ -31,6 +31,8 @@ const initCreateNoteData = {
 const initAnswerEntry = {
   question_id: '',
   initial_answer: '',
+  follow_up_question: '',
+  follow_up_answer: '',
   feedback: '',
   improvements: '',
   final_answer: '',
