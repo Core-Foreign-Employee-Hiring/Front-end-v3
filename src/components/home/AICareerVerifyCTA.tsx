@@ -28,13 +28,13 @@ export default function AICareerVerifyCTA({ lang }: AICareerVerifyCTAProps) {
     },
   ]
   return (
-    <div className="bg-gray1 tablet:px-[32px] desktop:py-[40px] desktop:px-[40px] flex flex-col gap-y-[12px] px-[20px] py-[32px] py-[60px]">
+    <div className="bg-gray1 tablet:px-[32px] desktop:py-[40px] desktop:px-[40px] flex w-full flex-col gap-y-[12px] px-[20px] py-[32px] py-[60px]">
       <div className="flex flex-col gap-y-2">
         <Label type={'titleLg'} label={'AI 커리어 검증'} />
         <p className="kr-body-md">체계적인 프로세스로 커리어를 준비해보세요.</p>
       </div>
 
-      <div className="desktop:flex-row tablet:flex-row desktop:gap-x-6 tablet:gap-x-[16px] flex flex-col gap-y-4">
+      <div className="desktop:flex-row tablet:flex-row desktop:gap-x-6 tablet:gap-x-[16px] flex w-full flex-col gap-y-4">
         {ctaCardList.map((cta) => (
           <CTACard path={cta.path} key={cta.title} title={cta.title} description={cta.description} Icon={cta.icon} />
         ))}
