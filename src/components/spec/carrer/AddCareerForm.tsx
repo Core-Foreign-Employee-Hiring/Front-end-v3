@@ -37,7 +37,7 @@ export default function AddCareerForm({
    */
   const handleCareerChange = (
     index: number,
-    fieldName: 'companyName' | 'position' | 'endDate' | 'startDate' | 'highlight' | 'contactType',
+    fieldName: 'companyName' | 'position' | 'endDate' | 'startDate' | 'highlight' | 'contractType',
     value: string | null
   ) => {
     // 업데이트 함수 호출 시 변경된 필드만 덮어씌웁니다.

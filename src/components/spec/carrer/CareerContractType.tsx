@@ -8,7 +8,7 @@ interface CareerContractTypeProps {
   contractType: ContractEnumType
   handleCareerChange: (
     index: number,
-    fieldName: 'endDate' | 'startDate' | 'highlight' | 'position' | 'companyName' | 'contactType',
+    fieldName: 'endDate' | 'startDate' | 'highlight' | 'position' | 'companyName' | 'contractType',
     value: string | null
   ) => void
 }
@@ -30,7 +30,7 @@ export default function CareerContractType({ index, contractType, handleCareerCh
             key={contractType.enum}
             onClick={() => {
               selectedDropDownHandler(contractType.content)
-              handleCareerChange(index, 'contactType', contractType.enum)
+              handleCareerChange(index, 'contractType', contractType.enum)
               dropDownOpenHandler()
             }}
           >

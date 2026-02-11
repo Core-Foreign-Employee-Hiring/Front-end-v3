@@ -5,7 +5,7 @@ interface CareerCompanyNameProps {
   companyName: string
   handleCareerChange: (
     index: number,
-    fieldName: 'endDate' | 'startDate' | 'highlight' | 'position' | 'companyName' | 'contactType',
+    fieldName: 'endDate' | 'startDate' | 'highlight' | 'position' | 'companyName' | 'contractType',
     value: string
   ) => void
 }
