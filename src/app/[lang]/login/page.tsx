@@ -1,16 +1,7 @@
 import { BottomBorder, Label, Spacing } from '@/components/common'
-import {
-  AccountRecoveryLinks,
-  Id,
-  LoginButton,
-  LoginOptions,
-  Password,
-  PromotionDescription,
-  SaveIdButton,
-  SignUpCTAButton,
-  SignUpPromotion,
-} from '@/components/auth/login'
+import { PromotionDescription, SignUpCTAButton, SignUpPromotion } from '@/components/auth/login'
 import { LogoIcon } from '@/assets/svgComponents'
+import LoginFormContainer from '@/components/auth/login/LoginFormContainer'
 
 interface LoginProps {
   params: Promise<{ lang: string }>
@@ -26,20 +17,7 @@ export default async function LoginPage({ params }: LoginProps) {
           <Label type={'titleLg'} label="로그인" className={'mb-[40px]'} />
         </div>
 
-        <div className="flex w-full flex-col gap-y-5">
-          <Id />
-          <Password />
-          <LoginOptions>
-            <SaveIdButton />
-            <AccountRecoveryLinks
-              findIdHref={`/${lang}/find-auth?type=id&step=1`}
-              findPwHref={`/${lang}/find-auth?type=pw&step=1`}
-            />
-          </LoginOptions>
-        </div>
-
-        <Spacing height={24} />
-        <LoginButton lang={lang} />
+        <LoginFormContainer lang={lang} />
 
         <Spacing height={32} />
         <BottomBorder color={'gray2'} />

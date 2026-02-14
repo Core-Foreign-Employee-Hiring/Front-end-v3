@@ -2,7 +2,6 @@
 
 import { Button } from '@/components/common'
 import { useAuthStore } from '@/store/authStore'
-import { useLoginAction } from '@/hooks'
 
 interface LoginButtonProps {
   lang: string
@@ -11,11 +10,12 @@ interface LoginButtonProps {
 export default function LoginButton({ lang }: LoginButtonProps) {
   const { loading } = useAuthStore((state) => state)
 
-  const { loginProcess } = useLoginAction(lang)
-
   return (
     <div className="w-full">
-      <Button isLoading={loading} onClick={loginProcess}>
+      <Button
+        isLoading={loading}
+        buttonType="submit" // 폼 제출을 트리거함
+      >
         로그인
       </Button>
     </div>
