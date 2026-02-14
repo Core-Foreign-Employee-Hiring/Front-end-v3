@@ -15,7 +15,7 @@ export default function UserInfo({ userInfo }: UserInfoProps) {
   const { t } = useTranslation()
 
   return (
-    <div className="bg-gray1 flex w-full justify-between rounded-[12px] p-5">
+    <div className="bg-gray1 tablet:flex-row desktop:flex-row flex w-full flex-col justify-between gap-y-[24px] rounded-[12px] p-5">
       <section className="flex flex-col gap-y-2">
         <p className="kr-title-lg">{userInfo?.name}</p>
         <div className="kr-body-md flex items-center gap-x-2">
