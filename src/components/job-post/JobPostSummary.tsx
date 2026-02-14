@@ -75,7 +75,7 @@ export default function JobPostSummary({
       <BottomBorder />
       <section className="flex flex-col gap-y-3">
         <div className="flex items-center gap-x-1">
-          <div className="kr-subtitle-md text-gray4 w-[80px]">직종</div>
+          <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">직종</div>
           {JobCategoryTypes?.map((JobCategoryType) => (
             <p key={JobCategoryType} className="kr-body-md">
               {`${t(getJobCategoryLabel(JobCategoryType))}`}
@@ -84,7 +84,7 @@ export default function JobPostSummary({
         </div>
 
         <div className="flex items-center gap-x-1">
-          <div className="kr-subtitle-md text-gray4 w-[80px]">직무</div>
+          <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">직무</div>
           {jobRoles.map((jobRole) => (
             <p key={jobRole} className="kr-body-md">
               {`${t(getJobRoleLabel(jobRole))}`}
@@ -93,19 +93,25 @@ export default function JobPostSummary({
         </div>
 
         <div className="flex items-center gap-x-1">
-          <div className="kr-subtitle-md text-gray4 w-[80px]">고용형태</div>
+          <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">고용형태</div>
           <p className="kr-body-md">{t(convertEnumToKorContractTypeLabel(contractType))}</p>
         </div>
 
         {visas.length > 0 ? (
           <div className="flex items-center gap-x-1">
-            <div className="kr-subtitle-md text-gray4 w-[80px]">비자</div>
+            <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">비자</div>
 
-            {visas.map((visa) => (
-              <p key={visa} className="kr-body-md">
-                {`${t(getVisaLabel(visa))}`}
-              </p>
-            ))}
+            <div className="flex flex-wrap items-center gap-x-1">
+              {visas.map((visa, index) => {
+                const isLast = visas.length - 1 === index
+                return (
+                  <p key={visa} className="kr-body-md">
+                    {`${t(getVisaLabel(visa))}`}
+                    {isLast ? '' : ','}
+                  </p>
+                )
+              })}
+            </div>
           </div>
         ) : null}
 
@@ -113,18 +119,24 @@ export default function JobPostSummary({
           <div className="flex items-center gap-x-1">
             <div className="kr-subtitle-md text-gray4 w-[80px]">언어</div>
 
-            {languageTypes.map((languageType) => (
-              <p key={languageType} className="kr-body-md">
-                {`${t(getLanguageLabel(languageType))}`}
-              </p>
-            ))}
+            {languageTypes.map((languageType, index) => {
+              const isLast = languageTypes.length - 1 === index
+              return (
+                <p key={languageType} className="kr-body-md">
+                  {`${t(getLanguageLabel(languageType))}`}
+                  {isLast ? '' : ','}
+                </p>
+              )
+            })}
           </div>
         ) : null}
 
-        <div className="flex items-center gap-x-1">
-          <div className="kr-subtitle-md text-gray4 w-[80px]">근무지</div>
-          <p className="kr-body-md">{`(${zipcode}) ${address1} ${address2}`}</p>
-        </div>
+        {!(address1 && zipcode && address2) ? null : (
+          <div className="flex items-center gap-x-1">
+            <div className="kr-subtitle-md text-gray4 w-[80px]">근무지</div>
+            <p className="kr-body-md">{`${zipcode ? `(${zipcode})` : ''} ${address1 ? `${address1}` : ''} ${address2 ? `${address2}` : ''}`}</p>
+          </div>
+        )}
       </section>
     </div>
   )

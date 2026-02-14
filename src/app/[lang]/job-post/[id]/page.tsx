@@ -9,6 +9,8 @@ import TranslationsProvider from '@/providers/TranslationsProvider'
 import initTranslations from '@/i18n/i18n'
 import Loading from '@/components/common/Loading'
 import BottomBorder from '@/components/common/BottomBorder'
+import MobileWorkConditions from '@/components/job-post/MobileWorkConditions'
+import BottomActionsButtons from '@/components/job-post/BottomActionButtons'
 
 const i18nNamespaces = ['common']
 
@@ -47,6 +49,18 @@ export default async function JobPostDetail({
             recruitEndDate={jobPost.recruitEndDate}
             visas={jobPost.visas}
           />
+          <MobileWorkConditions
+            directInputSalaryType={jobPost.directInputSalaryType}
+            directInputWorkDayType={jobPost.directInputWorkDayType}
+            directInputWorkTime={jobPost.directInputWorkTime}
+            directInputWorkType={jobPost.directInputWorkType}
+            workEndTime={jobPost.workEndTime}
+            salaryType={jobPost.salaryType}
+            salary={jobPost.salary}
+            workDayType={jobPost.workDayType}
+            workStartTime={jobPost.workStartTime}
+            workType={jobPost.workType}
+          />
           <JobDetail
             posterImageUrl={jobPost.posterImageUrl}
             applicationMethod={jobPost.applicationMethod}
@@ -56,8 +70,14 @@ export default async function JobPostDetail({
             qualifications={jobPost.qualifications}
           />
           <BottomBorder height={6} color={'gray1'} />
-          <WorkplaceInfo address2={jobPost.address2} address1={jobPost.address1} zipcode={jobPost.zipcode} />
-          <BottomBorder height={6} color={'gray1'} />
+          {!(jobPost.zipcode && jobPost.address1 && jobPost.address2) ? (
+            ''
+          ) : (
+            <>
+              <WorkplaceInfo address2={jobPost.address2} address1={jobPost.address1} zipcode={jobPost.zipcode} />
+              <BottomBorder height={6} color={'gray1'} />
+            </>
+          )}
           <CompanyInfo
             companyImageUrl={jobPost.companyImageUrl}
             companyName={jobPost.companyName}
@@ -67,7 +87,7 @@ export default async function JobPostDetail({
             establishedDate={jobPost.establishedDate}
           />
         </div>
-        <div className="desktop:w-[384px] flex w-full shrink-0 flex-col gap-y-[20px]">
+        <div className="desktop:flex desktop:w-[384px] hidden w-full shrink-0 flex-col gap-y-[20px]">
           <WorkConditions
             directInputSalaryType={jobPost.directInputSalaryType}
             directInputWorkDayType={jobPost.directInputWorkDayType}
@@ -83,6 +103,7 @@ export default async function JobPostDetail({
           <ActionButtons />
         </div>
       </main>
+      <BottomActionsButtons />
     </TranslationsProvider>
   )
 }

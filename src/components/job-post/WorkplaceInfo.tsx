@@ -14,7 +14,7 @@ export default function WorkplaceInfo({ zipcode, address1, address2 }: Workplace
       <Label label={'근무지 정보'} type={'subtitleLg'} />
       <div className="flex items-center gap-x-2">
         <Gray5LocationIcon width={20} height={20} />
-        <p className="kr-body-md text-gray5">{`(${zipcode}) ${address1} ${address2}`}</p>
+        <p className="kr-body-md text-gray5">{`${zipcode ? `(${zipcode})` : ''} ${address1 ? address1 : ''} ${address2 ? address2 : ''}`}</p>
       </div>
     </div>
   )
