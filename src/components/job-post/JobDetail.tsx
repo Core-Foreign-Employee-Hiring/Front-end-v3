@@ -5,6 +5,9 @@ import Image from 'next/image'
 import { ApplicationMethodType } from '@/types/job-post'
 import { getApplicationMethodLabel } from '@/utils/filterList'
 import { useTranslation } from 'react-i18next'
+import { useModalStore } from '@/store/modalStore'
+import { useState } from 'react'
+import ImageModal from '@/components/common/modal/ImageModal'
 
 interface JobDetailProps {
   posterImageUrl: string
@@ -24,13 +27,23 @@ export default function JobDetail({
   preferences,
 }: JobDetailProps) {
   const { t } = useTranslation()
+  const { isImageModalOpen, setIsImageModalOpen } = useModalStore((state) => state)
+  const [selectedImageUrl, setSelectedImageUrl] = useState<string | undefined | null>('')
 
   return (
     <div className="flex flex-col gap-y-[20px]">
+      {isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
+
       <div className="flex flex-col gap-y-2">
         <Label label={'상세 정보'} type={'subtitleLg'} />
-        <div className="relative h-full w-[752px]">
-          <Image src={posterImageUrl} alt={'포스터'} fill className="object-cover" />
+        <div
+          onClick={() => {
+            setIsImageModalOpen(isImageModalOpen)
+            setSelectedImageUrl(posterImageUrl)
+          }}
+          className="relative h-full w-[752px]"
+        >
+          <Image src={posterImageUrl} alt={'포스터'} fill className="rounded-[12px] object-cover" />
         </div>
       </div>
 

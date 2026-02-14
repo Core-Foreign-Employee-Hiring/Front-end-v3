@@ -7,6 +7,9 @@ import { formatToShortDateWithDay } from '@/utils/common'
 import { useTranslation } from 'react-i18next'
 import { convertEnumToKorContractTypeLabel } from '@/utils/job-post'
 import { getJobCategoryLabel, getJobRoleLabel, getLanguageLabel, getVisaLabel } from '@/utils/filterList'
+import { useModalStore } from '@/store/modalStore'
+import { useState } from 'react'
+import ImageModal from '@/components/common/modal/ImageModal'
 
 interface JobPostSummaryProps {
   visas: VisaType[]
@@ -40,8 +43,14 @@ export default function JobPostSummary({
   JobCategoryTypes,
 }: JobPostSummaryProps) {
   const { t } = useTranslation()
+
+  const { isImageModalOpen, setIsImageModalOpen } = useModalStore((state) => state)
+  const [selectedImageUrl, setSelectedImageUrl] = useState<string | undefined | null>('')
+
   return (
     <div className="border-gray2 flex flex-col gap-y-[20px] rounded-[12px] border p-4">
+      {isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
+
       <section className="flex flex-col gap-y-2">
         <div className="flex items-center justify-between">
           <div className="flex gap-x-2">
@@ -66,7 +75,13 @@ export default function JobPostSummary({
 
         <h1 className="kr-subtitle-lg">{title}</h1>
         <div className="flex items-center gap-x-2">
-          <div className="relative h-[28px] w-[28px]">
+          <div
+            onClick={() => {
+              setIsImageModalOpen(isImageModalOpen)
+              setSelectedImageUrl(companyImageUrl)
+            }}
+            className="relative h-[28px] w-[28px]"
+          >
             <Image src={companyImageUrl} alt={'회사 로고'} fill className="rounded-[8px] object-cover" />
           </div>
           <p className="kr-small text-gray5">{companyName}</p>
