@@ -22,7 +22,6 @@ export default async function JobPostDetail({
   const { lang, id } = await params
 
   const result = await fetchJobPostDetail(id)
-  console.log('result', result)
   const jobPost = result.data
 
   const { resources } = await initTranslations(lang, i18nNamespaces)
@@ -100,10 +99,16 @@ export default async function JobPostDetail({
             workStartTime={jobPost.workStartTime}
             workType={jobPost.workType}
           />
-          <ActionButtons />
+          <ActionButtons
+            applicationMethod={jobPost.applicationMethod}
+            directInputApplicationMethod={jobPost.directInputApplicationMethod}
+          />
         </div>
       </main>
-      <BottomActionsButtons />
+      <BottomActionsButtons
+        applicationMethod={jobPost.applicationMethod}
+        directInputApplicationMethod={jobPost.directInputApplicationMethod}
+      />
     </TranslationsProvider>
   )
 }

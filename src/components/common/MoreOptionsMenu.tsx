@@ -10,12 +10,12 @@ import {
   SelectedHomeIcon,
   SelectedProgramIcon,
   SelectedRecruitIcon,
-  UnselectedAiIcon,
-  UnselectedCarrerIcon,
   UnselectedContentIcon,
-  UnselectedHomeIcon,
+  UnselectedGray4CarrerIcon,
+  UnselectedGray4HomeIcon,
+  UnselectedGray4RecruitIcon,
+  UnselectedGrayAiInterviewIcon,
   UnselectedProgramIcon,
-  UnselectedRecruitIcon,
 } from '@/assets/svgComponents'
 import NavBar from '@/components/common/NavBar'
 import Header from '@/components/common/Header'
@@ -140,7 +140,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
-            <UnselectedHomeIcon width={24} height={24} />
+            <UnselectedGray4HomeIcon width={24} height={24} />
             <p className="text-gray4 kr-subtitle-sm">홈</p>
           </div>
         )}
@@ -164,7 +164,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
-            <UnselectedRecruitIcon width={24} height={24} />
+            <UnselectedGray4RecruitIcon width={24} height={24} />
             <p className="text-gray4 kr-subtitle-sm">채용</p>
           </div>
         )}
@@ -188,7 +188,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
-            <UnselectedCarrerIcon width={24} height={24} />
+            <UnselectedGray4CarrerIcon width={24} height={24} />
             <p className="text-gray4 kr-subtitle-sm">커리어 진단</p>
           </div>
         )}
@@ -212,7 +212,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
-            <UnselectedAiIcon width={24} height={24} />
+            <UnselectedGrayAiInterviewIcon width={24} height={24} />
             <p className="text-gray4 kr-subtitle-sm">AI 면접</p>
           </div>
         )}

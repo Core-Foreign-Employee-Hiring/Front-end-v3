@@ -21,6 +21,7 @@ interface ModalState {
   isPurchaseCompletionModalOpen: boolean
   isInquiryModalOpen: boolean
   isImageModalOpen: boolean
+  isApplicationMethodModalOpen: boolean
 
   setIsSaveAnswerNoteModalOpen: (isSaveAnswerNoteModalOpen: boolean) => void
   setIsCreateNewAnswerNoteModalOpen: (isCreateNewAnswerNoteModalOpen: boolean) => void
@@ -41,6 +42,7 @@ interface ModalState {
   setIsPurchaseCompletionModalOpen: (isPurchaseCompletionModalOpen: boolean) => void
   setIsInquiryModalOpen: (isInquiryModalOpen: boolean) => void
   setIsImageModalOpen: (isImageModalOpen: boolean) => void
+  setIsApplicationMethodModalOpen: (isApplicationMethodModalOpen: boolean) => void
 }
 
 export const useModalStore = create<ModalState>()(
@@ -138,6 +140,10 @@ export const useModalStore = create<ModalState>()(
     setIsImageModalOpen: (isImageModalOpen) =>
       set(() => ({
         isImageModalOpen: !isImageModalOpen,
+      })),
+    setIsApplicationMethodModalOpen: (isApplicationMethodModalOpen) =>
+      set(() => ({
+        isApplicationMethodModalOpen: !isApplicationMethodModalOpen,
       })),
   }))
 )
