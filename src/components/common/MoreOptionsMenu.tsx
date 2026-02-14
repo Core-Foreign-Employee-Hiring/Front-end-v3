@@ -84,7 +84,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             </div>
             <Button
               onClick={() => {
-                router.push(`/${lang}/mypage/home`)
+                router.push(`/${lang}/mypage/home?type=sold&page=0`)
                 setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
               }}
               variant={'secondary'}

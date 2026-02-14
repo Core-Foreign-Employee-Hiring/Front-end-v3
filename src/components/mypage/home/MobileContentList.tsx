@@ -1,17 +1,15 @@
-// src/app/[lang]/mypage/content/page.tsx
-import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query'
-import { Header, Label, PageLayout, Spacing } from '@/components/common'
+import { Label } from '@/components/common'
+import ViewMoreButton from '@/components/mypage/home/ViewMoreButton'
 import ChangeContentSwitchButton from '@/components/mypage/content/ChangeContentSwitchButton'
+import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query'
 import SoldList from '@/components/mypage/content/SoldList'
 import PurchaseList from '@/components/mypage/content/PurchaseList'
 import WriteList from '@/components/mypage/content/WriteList'
 import { fetchPurchasedArchiveList, fetchSoldArchiveList, fetchWriteArchiveList } from '@/lib/server/mypage'
-import SideBar from '@/components/mypage/SideBar'
-import Footer from '@/components/common/Footer'
 
 type SearchType = 'sold' | 'purchase' | 'write'
 
-export default async function MyPageContent({
+export default async function MobileContentList({
   searchParams,
   params,
 }: {
@@ -44,32 +42,14 @@ export default async function MyPageContent({
   }
 
   return (
-    <main>
-      <div className="">
-        <Header headerType={'default'} currentLng={lang} />
-      </div>
-      <PageLayout>
-        <Label className={'desktop:block hidden'} label={'마이페이지'} type={'titleLg'} />
-        <Spacing className={'desktop:block tablet:block hidden'} height={16} />
-        <div className="flex gap-x-[32px]">
-          <SideBar lang={lang} />
-          <div className="w-full">
-            <Label label={'콘텐츠 내역'} type={'titleMd'} />
-            <Spacing height={12} />
-            <ChangeContentSwitchButton type={type} />
-            <Spacing height={12} />
-
-            {/* HydrationBoundary로 감싸서 서버 데이터를 클라이언트로 전달 */}
-            <HydrationBoundary state={dehydrate(queryClient)}>
-              {type === 'sold' && <SoldList currentPage={page} />}
-              {type === 'purchase' && <PurchaseList currentPage={page} />}
-              {type === 'write' && <WriteList currentPage={page} />}
-            </HydrationBoundary>
-          </div>
-        </div>
-      </PageLayout>
-      <Spacing height={200} />
-      <Footer />
-    </main>
+    <div className="desktop:hidden flex flex-col gap-y-3">
+      <Label type={'titleMd'} label={'콘텐츠 내역'} rightElement={<ViewMoreButton />} />
+      <ChangeContentSwitchButton type={type} />
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        {type === 'sold' && <SoldList currentPage={page} />}
+        {type === 'purchase' && <PurchaseList currentPage={page} />}
+        {type === 'write' && <WriteList currentPage={page} />}
+      </HydrationBoundary>
+    </div>
   )
 }

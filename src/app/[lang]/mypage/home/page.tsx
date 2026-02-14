@@ -5,12 +5,14 @@ import { fetchMyPageUserInfo } from '@/lib/server/mypage'
 import SideBar from '@/components/mypage/SideBar'
 import Footer from '@/components/common/Footer'
 import NavBar from '@/components/common/NavBar'
+import MobileContentList from '@/components/mypage/home/MobileContentList'
 
 interface MyPageHomeProps {
   params: Promise<{ lang: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
-export default async function HomePage({ params }: MyPageHomeProps) {
+export default async function HomePage({ params, searchParams }: MyPageHomeProps) {
   const { lang } = await params
   const result = await fetchMyPageUserInfo()
   console.log('result', result)
@@ -24,8 +26,11 @@ export default async function HomePage({ params }: MyPageHomeProps) {
         <div className="flex gap-x-[32px]">
           <SideBar lang={lang} />
           <div className="w-full">
-            <UserInfo userInfo={userInfo} />
             <Spacing height={16} />
+            <UserInfo userInfo={userInfo} />
+            <Spacing className="desktop:hidden" height={32} />
+            <MobileContentList params={params} searchParams={searchParams} />
+            <Spacing className="desktop:hidden" height={32} />
             <MyPageItem title={'아이디/비밀번호 변경'} path={`/${lang}/mypage/change-auth`} />
             {/*<MyPageItem title={'문의하기'} path={`/${lang}/mypage?tab=ask`} />*/}
             <MyPageItem title={'이용 약관'} path={`/${lang}/mypage/terms-of-service`} />

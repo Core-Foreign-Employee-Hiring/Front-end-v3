@@ -102,7 +102,7 @@ export default function PurchaseItem({
         >
           다운로드
         </Button>
-        <Button size={'md'} customClassName={'w-[200px]'}>
+        <Button size={'md'} customClassName={'desktop:w-[200px] w-[120px]'}>
           리뷰 {isReviewed ? '보기' : '작성하기'}
         </Button>
       </div>
