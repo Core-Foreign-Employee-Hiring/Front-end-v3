@@ -1,6 +1,8 @@
 import { Button, Spacing } from '@/components/common'
 import Image from 'next/image'
 import { useResumeStore } from '@/store/resumeStore'
+import { useModalStore } from '@/store/modalStore'
+import ResumePreviewModal from '@/components/common/modal/ResumePreviewModal'
 
 interface SelectTemplateItemProps {
   type: 'ver1' | 'ver2'
@@ -11,6 +13,7 @@ interface SelectTemplateItemProps {
 
 export default function SelectTemplateItem({ type, selectedType, setSelectedType, imageUrl }: SelectTemplateItemProps) {
   const { updateCreateResumeField } = useResumeStore((state) => state)
+  const { isResumePreviewModalOpen, setIsResumePreviewModalOpen } = useModalStore((state) => state)
   return (
     <div
       onClick={() => {
@@ -19,6 +22,7 @@ export default function SelectTemplateItem({ type, selectedType, setSelectedType
       }}
       className="w-full"
     >
+      {isResumePreviewModalOpen && <ResumePreviewModal type={selectedType} />}
       <div className="flex items-center gap-x-2">
         {type === selectedType ? (
           <button className="bg-main-500 flex h-[20px] w-[20px] items-center justify-center rounded-full">
@@ -37,7 +41,16 @@ export default function SelectTemplateItem({ type, selectedType, setSelectedType
         className={`${type === selectedType ? 'border-main-500' : 'border-gray2'} relative h-[260px] w-full rounded-[12px] border`}
       >
         <Image src={imageUrl} alt={'이미지'} className="rounded-[12px] object-cover" fill />
-        <Button customClassName={'absolute bottom-[16px] right-[16px] w-[85px]'} size={'sm'} variant={'outline'}>
+        <Button
+          onClick={(e) => {
+            e.stopPropagation()
+            setSelectedType(type)
+            setIsResumePreviewModalOpen(isResumePreviewModalOpen)
+          }}
+          customClassName={'absolute bottom-[16px] right-[16px] w-[85px]'}
+          size={'sm'}
+          variant={'outline'}
+        >
           미리보기
         </Button>
       </div>
