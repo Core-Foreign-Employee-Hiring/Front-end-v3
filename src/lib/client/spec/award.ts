@@ -37,7 +37,7 @@ export const postSpecAwards = async (awards: SpecAwardType[] | null): Promise<Ap
  * 수상 수정
  */
 export const putSpecAwards = async (
-  awardId: number,
+  awardId: string,
   award: SpecAwardType
 ): Promise<ApiCallResult<ApiCallResult<void>>> => {
   try {
@@ -71,7 +71,7 @@ export const putSpecAwards = async (
 /**
  * 수상 삭제
  */
-export const deleteSpecAwards = async (awardId: number): Promise<ApiCallResult<ApiCallResult<void>>> => {
+export const deleteSpecAwards = async (awardId: string): Promise<ApiCallResult<ApiCallResult<void>>> => {
   try {
     const response = await fetch('/api/member/specification/award', {
       method: 'DELETE',

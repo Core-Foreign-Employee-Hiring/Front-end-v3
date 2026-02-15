@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { apiCallServer } from '@/lib/api.server'
 import { SpecLanguageSkillType } from '@/types/spec'
 
-export async function PUT(request: NextRequest, context: { params: Promise<{ languageSkillId: number }> }) {
+export async function PUT(request: NextRequest, context: { params: Promise<{ languageSkillId: string }> }) {
   try {
     const { languageSkillId } = await context.params
 

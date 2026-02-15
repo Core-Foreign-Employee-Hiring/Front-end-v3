@@ -8,6 +8,7 @@ import Footer from '@/components/common/Footer'
 import { serverFetchAllJobPosts } from '@/lib/server/job-post'
 import { serverFetchAllContentPosts } from '@/lib/server/content'
 import NavBar from '@/components/common/NavBar'
+import GATracker from '@/components/common/GATracker'
 
 interface HomeProps {
   params: Promise<{ lang: string }>
@@ -21,6 +22,7 @@ export default async function Home({ params }: HomeProps) {
   const contents = contentResult.data?.content
   return (
     <main>
+      <GATracker />
       <Header headerType={'default'} currentLng={lang}></Header>
       <Banner />
       <div className="desktop:gap-y-[100px] flex flex-col gap-y-[60px]">

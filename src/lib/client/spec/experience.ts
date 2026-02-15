@@ -39,7 +39,7 @@ export const postSpecExperiences = async (
  * 커리어 수정
  */
 export const putSpecExperiences = async (
-  experienceId: number,
+  experienceId: string,
   experience: SpecExperienceType
 ): Promise<ApiCallResult<ApiCallResult<void>>> => {
   try {
@@ -73,7 +73,7 @@ export const putSpecExperiences = async (
 /**
  * 커리어 삭제
  */
-export const deleteSpecExperiences = async (experienceId: number): Promise<ApiCallResult<ApiCallResult<void>>> => {
+export const deleteSpecExperiences = async (experienceId: string): Promise<ApiCallResult<ApiCallResult<void>>> => {
   try {
     const response = await fetch('/api/member/specification/experience', {
       method: 'DELETE',

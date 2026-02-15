@@ -39,7 +39,7 @@ export const postSpecEducation = async (
  * 교육 데이터 수정
  */
 export const putSpecEducation = async (
-  educationId: number,
+  educationId: string,
   education: SpecEducationType | null
 ): Promise<ApiCallResult<ApiCallResult<void>>> => {
   try {
@@ -73,7 +73,7 @@ export const putSpecEducation = async (
 /**
  * 교육 데이터 삭제
  */
-export const deleteSpecEducation = async (educationId: number): Promise<ApiCallResult<ApiCallResult<void>>> => {
+export const deleteSpecEducation = async (educationId: string): Promise<ApiCallResult<ApiCallResult<void>>> => {
   try {
     const response = await fetch('/api/member/specification/education', {
       method: 'DELETE',

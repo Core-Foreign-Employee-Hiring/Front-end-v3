@@ -39,7 +39,7 @@ export const postSpecCertifications = async (
  * 수상 수정
  */
 export const putSpecCertifications = async (
-  certificationId: number,
+  certificationId: string,
   certification: SpecCertificationType
 ): Promise<ApiCallResult<ApiCallResult<void>>> => {
   try {
@@ -74,7 +74,7 @@ export const putSpecCertifications = async (
  * 수상 삭제
  */
 export const deleteSpecCertifications = async (
-  certificationId: number
+  certificationId: string
 ): Promise<ApiCallResult<ApiCallResult<void>>> => {
   try {
     const response = await fetch('/api/member/specification/certification', {

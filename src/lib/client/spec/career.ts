@@ -39,7 +39,7 @@ export const postSpecCareers = async (
  * 커리어 수정
  */
 export const putSpecCareers = async (
-  careerId: number,
+  careerId: string,
   career: SpecCareerType
 ): Promise<ApiCallResult<ApiCallResult<void>>> => {
   try {
@@ -73,7 +73,7 @@ export const putSpecCareers = async (
 /**
  * 커리어 삭제
  */
-export const deleteSpecCareers = async (careerId: number): Promise<ApiCallResult<ApiCallResult<void>>> => {
+export const deleteSpecCareers = async (careerId: string): Promise<ApiCallResult<ApiCallResult<void>>> => {
   try {
     const response = await fetch('/api/member/specification/career', {
       method: 'DELETE',

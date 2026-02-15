@@ -39,7 +39,7 @@ export const postSpecLanguageSkills = async (
  * 어학 수정
  */
 export const putSpecLanguageSkills = async (
-  languageSkillId: number,
+  languageSkillId: string,
   languageSkill: SpecLanguageSkillType
 ): Promise<ApiCallResult<ApiCallResult<void>>> => {
   try {
@@ -74,7 +74,7 @@ export const putSpecLanguageSkills = async (
  * 어학 삭제
  */
 export const deleteSpecLanguageSkills = async (
-  languageSkillId: number
+  languageSkillId: string
 ): Promise<ApiCallResult<ApiCallResult<void>>> => {
   try {
     const response = await fetch('/api/member/specification/language', {
