@@ -100,7 +100,6 @@ export default function RootLayout({
             font-family: var(--font-pretendard), system-ui, sans-serif;
           }
           main {
-            width: 375px;
             margin: 0 auto;
             background: white;
           }
