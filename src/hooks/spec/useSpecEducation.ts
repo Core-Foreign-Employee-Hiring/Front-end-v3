@@ -10,7 +10,7 @@ export default function useSpecEducation() {
   const router = useRouter()
   const pathname = usePathname()
 
-  const education = useSpecStore((state) => state.spec.education)
+  const education = useSpecStore((state) => state.education)
   const setEducation = useSpecStore((state) => state.setEducation)
 
   // 1. 단계 이동 로직

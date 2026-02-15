@@ -9,7 +9,7 @@ import { Button } from '@/components/common'
 import { GrayPlusIcon } from '@/assets/svgComponents'
 
 export default function EduMajor() {
-  const education = useSpecStore((state) => state.spec.education)
+  const education = useSpecStore((state) => state.education)
   const setEducation = useSpecStore((state) => state.setEducation)
 
   // 1. education이 null이면 렌더링하지 않거나 기본값 처리 (Early Return)

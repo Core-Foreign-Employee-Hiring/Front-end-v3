@@ -7,247 +7,168 @@ import {
   SpecEducationType,
   SpecExperienceType,
   SpecLanguageSkillType,
-  SpecType,
 } from '@/types/spec'
 
-// 인터페이스 정의 (제공해주신 내용 포함)
-// ... (위에서 정의한 SpecType, SpecEducationType 등 인터페이스들)
-
 interface SpecState {
-  spec: SpecType
-  specEvaluationId: number
-  specActivities: (SpecAwardType | SpecExperienceType)[]
+  // --- States ---
+  education: SpecEducationType | null
+  languageSkills: SpecLanguageSkillType[]
+  certifications: SpecCertificationType[]
+  careers: SpecCareerType[]
+  awards: SpecAwardType[]
+  experiences: SpecExperienceType[]
 
-  // 활동
-  addActivities: (activity: SpecAwardType | SpecExperienceType) => void
-  removeActivities: (index: number) => void
-  updateActivities: (index: number, updatedActivity: SpecAwardType | SpecExperienceType) => void
+  // --- Actions ---
+  // Education
+  setEducation: (data: SpecEducationType | null) => void
+  updateEducation: <K extends keyof SpecEducationType>(field: K, value: SpecEducationType[K]) => void
 
-  // 전체 초기화 또는 데이터 로드
-  setSpec: (spec: SpecType) => void
-  setSpecEvaluationId: (specEvaluationId: number) => void
-  resetSpec: () => void
+  // LanguageSkills
+  setLanguageSkills: (skills: SpecLanguageSkillType[]) => void
+  addLanguageSkill: (skill: SpecLanguageSkillType) => void
 
-  // 단일 객체 업데이트
-  setEducation: (education: SpecEducationType) => void
-  removeEducation: () => void
-
-  // 언어 (추가, 삭제 수정)
-  addLanguageSkills: (languageSkill: SpecLanguageSkillType) => void
-  removeLanguageSkills: (index: number) => void
-  updateLanguageSkills: (index: number, languageSkill: SpecLanguageSkillType) => void
-
-  // 자격증 (추가, 삭제, 수정)
+  // Certifications
+  setCertifications: (certs: SpecCertificationType[]) => void
   addCertification: (cert: SpecCertificationType) => void
-  removeCertification: (index: number) => void
-  updateCertification: (index: number, cert: SpecCertificationType) => void
 
+  // Careers
+  setCareers: (careers: SpecCareerType[]) => void
   addCareer: (career: SpecCareerType) => void
-  removeCareer: (index: number) => void
-  updateCareer: (index: number, updatedCareer: SpecCareerType) => void
 
-  addAward: (award: SpecAwardType) => void
-  removeAward: (index: number) => void
-  updateAward: (index: number, updatedAward: SpecAwardType) => void
-
-  addExperience: (experience: SpecExperienceType) => void
-  removeExperience: (index: number) => void
-  updateExperience: (index: number, updatedExperience: SpecExperienceType) => void
-  // 나머지 awards, experiences 등도 유사한 패턴으로 추가 가능합니다.
-
+  // Awards
   setAwards: (awards: SpecAwardType[]) => void
+  addAward: (award: SpecAwardType) => void
+
+  // Experiences
   setExperiences: (experiences: SpecExperienceType[]) => void
+  addExperience: (exp: SpecExperienceType) => void
+
+  // Reset
+  removeEducation: () => void
+  removeLanguageSkill: (index: number) => void
+  removeCertification: (index: number) => void
+  removeCareer: (index: number) => void
+  removeAward: (index: number) => void
+  removeExperience: (index: number) => void
+
+  resetAllSpecs: () => void
 }
-
-const initialSpec: SpecType = {
-  education: null,
-  languageSkills: [],
-  certifications: [],
-  careers: [],
-  awards: [],
-  experiences: [],
-}
-
-const initialSpecEvaluationId = 0
-
-const initialActivities: (SpecAwardType | SpecExperienceType)[] = []
 
 export const useSpecStore = create<SpecState>()(
   devtools((set) => ({
-    spec: initialSpec,
-    specEvaluationId: initialSpecEvaluationId,
-    specActivities: initialActivities,
+    // 초기 상태 (개별적으로 선언)
+    education: null,
+    languageSkills: [],
+    certifications: [],
+    careers: [],
+    awards: [],
+    experiences: [],
 
-    setSpec: (spec) => set({ spec }),
-    setSpecEvaluationId: (specEvaluationId: number) => set(() => ({ specEvaluationId: specEvaluationId })),
-    resetSpec: () => set({ spec: initialSpec }),
+    // --- Education Actions ---
+    setEducation: (education) => set({ education }, false, 'spec/setEducation'),
+    updateEducation: <K extends keyof SpecEducationType>(field: K, value: SpecEducationType[K]) =>
+      set(
+        (state) => ({
+          education: {
+            ...(state.education || {
+              schoolName: '',
+              majors: [],
+              admissionDate: '',
+              graduationDate: '',
+              earnedScore: '',
+              maxScore: '',
+            }),
+            [field]: value,
+          } as SpecEducationType, // 완성된 객체임을 보장
+        }),
+        false,
+        'spec/updateEducation'
+      ),
 
-    setEducation: (education) =>
-      set((state) => ({
-        spec: { ...state.spec, education },
-      })),
+    // --- LanguageSkills Actions ---
+    setLanguageSkills: (languageSkills) => set({ languageSkills }, false, 'spec/setLanguageSkills'),
+    addLanguageSkill: (skill) =>
+      set((state) => ({ languageSkills: [...state.languageSkills, skill] }), false, 'spec/addLanguageSkill'),
 
-    // 2. 스토어 내 함수 정의
-    // 만약 education이 단일 객체라면:
-    removeEducation: () =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          education: null,
-        },
-      })),
-
-    // 언어
-    addLanguageSkills: (languageSkill) =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          languageSkills: [...(state.spec.languageSkills || []), languageSkill],
-        },
-      })),
-
-    removeLanguageSkills: (index) =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          languageSkills: (state.spec.languageSkills || []).filter((_, i) => i !== index),
-        },
-      })),
-
-    updateLanguageSkills: (index, languageSkill) =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          languageSkills: (state.spec.languageSkills || []).map((item, i) => (i === index ? languageSkill : item)),
-        },
-      })),
-
-    // 자격증
+    // --- Certifications Actions ---
+    setCertifications: (certifications) => set({ certifications }, false, 'spec/setCertifications'),
     addCertification: (cert) =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          certifications: [...(state.spec.certifications || []), cert],
-        },
-      })),
+      set((state) => ({ certifications: [...state.certifications, cert] }), false, 'spec/addCertification'),
+
+    // --- Careers Actions ---
+    setCareers: (careers) => set({ careers }, false, 'spec/setCareers'),
+    addCareer: (career) => set((state) => ({ careers: [...state.careers, career] }), false, 'spec/addCareer'),
+
+    // --- Awards Actions ---
+    setAwards: (awards) => set({ awards }, false, 'spec/setAwards'),
+    addAward: (award) => set((state) => ({ awards: [...state.awards, award] }), false, 'spec/addAward'),
+
+    // --- Experiences Actions ---
+    setExperiences: (experiences) => set({ experiences }, false, 'spec/setExperiences'),
+    addExperience: (exp) => set((state) => ({ experiences: [...state.experiences, exp] }), false, 'spec/addExperience'),
+
+    // --- Education 삭제 (null로 초기화) ---
+    removeEducation: () => set({ education: null }, false, 'spec/removeEducation'),
+
+    // --- 배열 항목 삭제 (Index 기준) ---
+    removeLanguageSkill: (index) =>
+      set(
+        (state) => ({
+          languageSkills: state.languageSkills.filter((_, i) => i !== index),
+        }),
+        false,
+        'spec/removeLanguageSkill'
+      ),
 
     removeCertification: (index) =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          // 괄호로 감싸서 (기존배열 또는 빈배열)을 먼저 선택한 후 filter를 돌려야 합니다.
-          certifications: (state.spec.certifications || []).filter((_, i) => i !== index),
-        },
-      })),
-
-    updateCertification: (index, updatedCert) =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          certifications:
-            state.spec.certifications?.map((cert, i) => (i === index ? { ...cert, ...updatedCert } : cert)) || [],
-        },
-      })),
-
-    // 경력 배열 관리
-    addCareer: (career) =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          careers: [...(state.spec.careers || []), career],
-        },
-      })),
+      set(
+        (state) => ({
+          certifications: state.certifications.filter((_, i) => i !== index),
+        }),
+        false,
+        'spec/removeCertification'
+      ),
 
     removeCareer: (index) =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          careers: (state.spec.careers || []).filter((_, i) => i !== index),
-        },
-      })),
-
-    updateCareer: (index: number, updatedCareer: SpecCareerType) =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          careers:
-            state.spec.careers?.map((career, i) => (i === index ? { ...career, ...updatedCareer } : career)) || [],
-        },
-      })),
-
-    // 수상
-    addAward: (award) =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          awards: [...(state.spec.awards || []), award],
-        },
-      })),
+      set(
+        (state) => ({
+          careers: state.careers.filter((_, i) => i !== index),
+        }),
+        false,
+        'spec/removeCareer'
+      ),
 
     removeAward: (index) =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          awards: (state.spec.awards || []).filter((_, i) => i !== index),
-        },
-      })),
-
-    updateAward: (index: number, updatedAward: SpecAwardType) =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          awards: state.spec.awards?.map((award, i) => (i === index ? { ...award, ...updatedAward } : award)) || [],
-        },
-      })),
-
-    // 경험
-    addExperience: (experience) =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          experiences: [...(state.spec.experiences || []), experience],
-        },
-      })),
+      set(
+        (state) => ({
+          awards: state.awards.filter((_, i) => i !== index),
+        }),
+        false,
+        'spec/removeAward'
+      ),
 
     removeExperience: (index) =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          experiences: (state.spec.experiences || []).filter((_, i) => i !== index),
+      set(
+        (state) => ({
+          experiences: state.experiences.filter((_, i) => i !== index),
+        }),
+        false,
+        'spec/removeExperience'
+      ),
+
+    // --- Reset All ---
+    resetAllSpecs: () =>
+      set(
+        {
+          education: null,
+          languageSkills: [],
+          certifications: [],
+          careers: [],
+          awards: [],
+          experiences: [],
         },
-      })),
-
-    updateExperience: (index: number, updatedExperience: SpecExperienceType) =>
-      set((state) => ({
-        spec: {
-          ...state.spec,
-          experiences:
-            state.spec.experiences?.map((experience, i) =>
-              i === index ? { ...experience, ...updatedExperience } : experience
-            ) || [],
-        },
-      })),
-
-    // 1. 활동 추가 (배열의 가장 앞에 추가)
-    addActivities: (activity) =>
-      set((state) => ({
-        // activity를 앞에 두고, 기존 배열(...state.specActivities)을 뒤로 보냅니다.
-        specActivities: [activity, ...state.specActivities],
-      })),
-
-    // 2. 활동 삭제
-    removeActivities: (index: number) =>
-      set((state) => ({
-        specActivities: state.specActivities.filter((_, i) => i !== index),
-      })),
-
-    // 3. 활동 수정
-    updateActivities: (index: number, updatedActivity: SpecAwardType | SpecExperienceType) =>
-      set((state) => ({
-        specActivities: state.specActivities.map((item, i) => (i === index ? { ...item, ...updatedActivity } : item)),
-      })),
-
-    setAwards: (awards: SpecAwardType[]) => set((state) => ({ spec: { ...state.spec, awards } })),
-    setExperiences: (experiences: SpecExperienceType[]) => set((state) => ({ spec: { ...state.spec, experiences } })),
+        false,
+        'spec/resetAllSpecs'
+      ),
   }))
 )

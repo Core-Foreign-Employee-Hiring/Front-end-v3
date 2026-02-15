@@ -8,21 +8,26 @@ import {
 } from '@/components/spec/index'
 import { Spacing } from '@/components/common'
 import { StepType } from '@/app/[lang]/carrer/page'
+import { fetchSpecData } from '@/lib/server/spec'
+import { SpecType } from '@/types/spec'
 
-function FindSpecProcessStepSwitcher({ step }: { step: StepType }) {
-  if (step === '1') return <SpecEducation />
+function FindSpecProcessStepSwitcher({ step, specData }: { step: StepType; specData: SpecType | undefined }) {
+  if (step === '1') return <SpecEducation educationData={specData?.education} />
   if (step === '2') return <SpecLanguage />
   if (step === '3') return <SpecCertification />
   if (step === '4') return <SpecCareer />
   if (step === '5') return <SpecActivity />
-  return <SpecEducation />
+  return <SpecEducation educationData={specData?.education} />
 }
 
 interface SpecProps {
   step: StepType
 }
 
-export default function Spec({ step }: SpecProps) {
+export default async function Spec({ step }: SpecProps) {
+  const result = await fetchSpecData()
+  const specData = result.data
+
   const steps = [
     { stepNumber: '1', stepLabel: '학력' },
     { stepNumber: '2', stepLabel: '어학 능력' },
@@ -40,7 +45,7 @@ export default function Spec({ step }: SpecProps) {
       <ProgressBar currentStep={step} currentLabel={getCurrentLabel(step, steps)} steps={steps} />
       <Spacing height={20} />
 
-      <FindSpecProcessStepSwitcher step={step} />
+      <FindSpecProcessStepSwitcher step={step} specData={specData} />
     </div>
   )
 }

@@ -7,7 +7,7 @@ import { formatYYYYMM, padMonth } from '@/utils/spec'
 import { SpecEducationType } from '@/types/spec' // 타입 경로에 맞춰 수정하세요
 
 export default function EduDuration() {
-  const education = useSpecStore((state) => state.spec.education)
+  const education = useSpecStore((state) => state.education)
   const setEducation = useSpecStore((state) => state.setEducation)
 
   // 1. value 타입을 string | null로 확장

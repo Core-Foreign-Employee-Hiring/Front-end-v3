@@ -10,7 +10,7 @@ export default function useSpecCareer() {
   const router = useRouter()
   const pathname = usePathname()
 
-  const careers = useSpecStore((state) => state.spec.careers)
+  const careers = useSpecStore((state) => state.careers)
   const addCareer = useSpecStore((state) => state.addCareer)
 
   // 1. 단계 이동 로직

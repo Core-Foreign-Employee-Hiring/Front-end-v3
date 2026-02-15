@@ -10,7 +10,7 @@ export default function useSpecCertification() {
   const router = useRouter()
   const pathname = usePathname()
 
-  const certifications = useSpecStore((state) => state.spec.certifications)
+  const certifications = useSpecStore((state) => state.certifications)
   const addCertification = useSpecStore((state) => state.addCertification)
 
   // 1. 단계 이동 공통 함수

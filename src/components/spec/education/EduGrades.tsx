@@ -8,7 +8,7 @@ import { useSpecStore } from '@/store/specStore'
 import ErrorHelperText from '@/components/common/ErrorHelperText'
 
 export default function EduGrades() {
-  const education = useSpecStore((state) => state.spec.education)
+  const education = useSpecStore((state) => state.education)
   const setEducation = useSpecStore((state) => state.setEducation)
 
   // 1. education이 null이면 렌더링하지 않음 (타입 가드)

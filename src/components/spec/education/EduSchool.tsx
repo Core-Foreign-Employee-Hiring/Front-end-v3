@@ -8,7 +8,7 @@ import { DropDown, Label, Spacing, TextInput } from '@/components/common'
 export default function EduSchool() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
-  const education = useSpecStore((state) => state.spec.education)
+  const education = useSpecStore((state) => state.education)
   const setEducation = useSpecStore((state) => state.setEducation)
 
   // 검색 결과 필터링

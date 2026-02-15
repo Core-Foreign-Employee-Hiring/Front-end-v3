@@ -10,8 +10,8 @@ export default function useSpecLanguage() {
   const router = useRouter()
   const pathname = usePathname()
 
-  const languageSkills = useSpecStore((state) => state.spec.languageSkills)
-  const addLanguageSkills = useSpecStore((state) => state.addLanguageSkills)
+  const languageSkills = useSpecStore((state) => state.languageSkills)
+  const addLanguageSkills = useSpecStore((state) => state.addLanguageSkill)
 
   // 1. 단계 이동 공통 함수
   const navigateToStep = (step: StepType) => {
