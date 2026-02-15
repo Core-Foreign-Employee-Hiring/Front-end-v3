@@ -5,6 +5,10 @@ import { DownloadIcon } from 'lucide-react'
 import { PurchaseArchiveType } from '@/types/mypage'
 import Image from 'next/image'
 import { getPassArchivesDownLoad } from '@/lib/client/pass-archives'
+import { useModalStore } from '@/store/modalStore'
+import WriteReviewModal from '@/components/common/modal/WriteReviewModal'
+import ViewReviewModalOpen from '@/components/common/modal/ViewReviewModalOpen'
+import { useReviewStore } from '@/store/reviewStore'
 
 export default function PurchaseItem({
   archiveReviewId,
@@ -18,6 +22,25 @@ export default function PurchaseItem({
   thumbnailUrl,
   approvedAt,
 }: PurchaseArchiveType) {
+  const { isWriteReviewModalOpen, setIsWriteReviewModalOpen, isViewReviewModalOpen, setIsViewReviewModalOpen } =
+    useModalStore((state) => state)
+
+  const { selectedReviewId, selectedArchiveId, setSelectedArchiveId, setSelectedReviewId } = useReviewStore(
+    (state) => state
+  )
+
+  const handleReviewClick = () => {
+    if (isReviewed) {
+      // 1. 리뷰 보기 모드: 해당 리뷰의 ID를 스토어에 저장
+      setSelectedReviewId(archiveReviewId)
+      setIsViewReviewModalOpen(isViewReviewModalOpen) // 명시적으로 true 전달
+    } else {
+      // 2. 리뷰 작성 모드: 해당 아카이브의 ID를 스토어에 저장
+      setSelectedArchiveId(passArchiveId)
+      setIsWriteReviewModalOpen(isWriteReviewModalOpen) // 명시적으로 true 전달
+    }
+  }
+
   /**
    * 아카이브의 모든 파일을 로컬에 다운로드
    * @param passArchiveId - 아카이브 ID
@@ -75,7 +98,20 @@ export default function PurchaseItem({
   }
 
   return (
-    <div className="border-gray2 flex items-end justify-between border-b-[1px] py-[20px]">
+    <div className="border-gray2 tablet:flex-row desktop:flex-row tablet:justify-between desktop:justify-between tablet:items-end desktop:items-end flex flex-col border-b-[1px] py-[20px]">
+      {isWriteReviewModalOpen && selectedArchiveId === passArchiveId && (
+        <WriteReviewModal
+          archiveId={passArchiveId}
+          title={title}
+          price={price}
+          thumbnailUrl={thumbnailUrl}
+          approvedAt={approvedAt}
+        />
+      )}
+
+      {isViewReviewModalOpen && selectedReviewId === archiveReviewId && (
+        <ViewReviewModalOpen reviewId={archiveReviewId} />
+      )}
       <div className="flex flex-col gap-y-3">
         {isReviewed ? null : <Badge>아직 리뷰를 작성하지 않았어요.</Badge>}
         <div className="flex items-center gap-x-3">
@@ -90,7 +126,7 @@ export default function PurchaseItem({
         </div>
       </div>
 
-      <div className="flex gap-x-3">
+      <div className="tablet:w-fit desktop:w-fit flex w-full justify-end gap-x-3">
         <Button
           onClick={async () => {
             await downloadPassArchive(passArchiveId)
@@ -102,7 +138,7 @@ export default function PurchaseItem({
         >
           다운로드
         </Button>
-        <Button size={'md'} customClassName={'desktop:w-[200px] w-[120px]'}>
+        <Button onClick={handleReviewClick} size={'md'} customClassName={'desktop:w-[200px] w-[120px]'}>
           리뷰 {isReviewed ? '보기' : '작성하기'}
         </Button>
       </div>

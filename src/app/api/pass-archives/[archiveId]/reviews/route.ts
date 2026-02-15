@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { apiCallServer } from '@/lib/api.server'
+import { ReviewType } from '@/types/review'
 
 export async function GET(request: NextRequest, context: { params: Promise<{ archiveId: string }> }) {
   try {
@@ -20,6 +21,35 @@ export async function GET(request: NextRequest, context: { params: Promise<{ arc
 
     const { data, error } = await apiCallServer(endpoint, {
       method: 'GET',
+    })
+
+    if (error) {
+      return NextResponse.json({ error }, { status: 400 })
+    }
+
+    return NextResponse.json({ success: true, data })
+  } catch (error) {
+    console.error('Route Handler Error:', error)
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : 'Internal server error' },
+      { status: 500 }
+    )
+  }
+}
+
+export async function POST(request: NextRequest, context: { params: Promise<{ archiveId: string }> }) {
+  try {
+    const { archiveId } = await context.params
+    const requestData: ReviewType = await request.json()
+    if (!requestData) {
+      return Response.json({ error: 'requestData is required' }, { status: 500 })
+    }
+
+    const endpoint = `/api/v1/pass-archives/${archiveId}/reviews`
+
+    const { data, error } = await apiCallServer(endpoint, {
+      method: 'POST',
+      body: JSON.stringify(requestData),
     })
 
     if (error) {

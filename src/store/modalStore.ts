@@ -23,6 +23,8 @@ interface ModalState {
   isImageModalOpen: boolean
   isApplicationMethodModalOpen: boolean
   isResumePreviewModalOpen: boolean
+  isWriteReviewModalOpen: boolean
+  isViewReviewModalOpen: boolean
 
   setIsSaveAnswerNoteModalOpen: (isSaveAnswerNoteModalOpen: boolean) => void
   setIsCreateNewAnswerNoteModalOpen: (isCreateNewAnswerNoteModalOpen: boolean) => void
@@ -45,6 +47,8 @@ interface ModalState {
   setIsImageModalOpen: (isImageModalOpen: boolean) => void
   setIsApplicationMethodModalOpen: (isApplicationMethodModalOpen: boolean) => void
   setIsResumePreviewModalOpen: (isResumePreviewModalOpen: boolean) => void
+  setIsWriteReviewModalOpen: (isWriteReviewModalOpen: boolean) => void
+  setIsViewReviewModalOpen: (isViewReviewModalOpen: boolean) => void
 }
 
 export const useModalStore = create<ModalState>()(
@@ -63,6 +67,8 @@ export const useModalStore = create<ModalState>()(
     isImageModalOpen: false,
     isApplicationMethodModalOpen: false,
     isResumePreviewModalOpen: false,
+    isWriteReviewModalOpen: false,
+    isViewReviewModalOpen: false,
 
     setIsSaveAnswerNoteModalOpen: (isSaveAnswerNoteModalOpen) =>
       set(() => ({
@@ -152,6 +158,14 @@ export const useModalStore = create<ModalState>()(
     setIsResumePreviewModalOpen: (isResumePreviewModalOpen) =>
       set(() => ({
         isResumePreviewModalOpen: !isResumePreviewModalOpen,
+      })),
+    setIsWriteReviewModalOpen: (isWriteReviewModalOpen) =>
+      set(() => ({
+        isWriteReviewModalOpen: !isWriteReviewModalOpen,
+      })),
+    setIsViewReviewModalOpen: (isViewReviewModalOpen) =>
+      set(() => ({
+        isViewReviewModalOpen: !isViewReviewModalOpen,
       })),
   }))
 )
