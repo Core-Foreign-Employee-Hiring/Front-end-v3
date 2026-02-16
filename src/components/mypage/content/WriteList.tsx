@@ -6,6 +6,7 @@ import { fetchWriteArchiveList } from '@/lib/client/mypage'
 import Loading from '../../common/Loading'
 import Pagination from '@/components/common/Pagination'
 import ContentCard from '@/components/content/ContentCard'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 interface WriteListProps {
   currentPage: number
@@ -34,6 +35,8 @@ export default function WriteList({ currentPage }: WriteListProps) {
 
   return (
     <div>
+      <AuthWatcher results={[data]} />
+
       <div className="grid grid-cols-3 gap-[20px]">
         {list.map((item) => (
           <ContentCard

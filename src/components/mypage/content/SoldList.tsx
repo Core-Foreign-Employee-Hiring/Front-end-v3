@@ -7,6 +7,7 @@ import Pagination from '@/components/common/Pagination'
 import Loading from '@/components/common/Loading'
 import { fetchSoldArchiveList } from '@/lib/client/mypage'
 import SoldItem from '@/components/mypage/content/SoldItem'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 export default function SoldList({ currentPage }: { currentPage: number }) {
   const router = useRouter()
@@ -32,6 +33,8 @@ export default function SoldList({ currentPage }: { currentPage: number }) {
 
   return (
     <div>
+      <AuthWatcher results={[data]} />
+
       <div className="flex flex-col gap-y-4">
         {list.map((item) => (
           <SoldItem key={item.archiveId} {...item} />

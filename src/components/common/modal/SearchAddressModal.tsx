@@ -9,11 +9,11 @@ interface SearchAddressModalProps {
 }
 
 export default function SearchAddressModal({ handleChangeAddress }: SearchAddressModalProps) {
-  const { isSearchAddressModalOpen, setIsSearchAddressModalOpen } = useModalStore()
+  const { toggleModal, modals } = useModalStore()
 
   // 수정: 명시적으로 false를 전달해야 모달이 닫힙니다.
   const onClose = () => {
-    setIsSearchAddressModalOpen(isSearchAddressModalOpen)
+    toggleModal('isSearchAddressModalOpen')
   }
 
   const handleComplete = (data: Address) => {
@@ -63,7 +63,7 @@ export default function SearchAddressModal({ handleChangeAddress }: SearchAddres
 
   return (
     <Modal
-      isOpen={isSearchAddressModalOpen}
+      isOpen={modals.isSearchAddressModalOpen}
       onClose={onClose}
       customClassName={'desktop:w-[860px] tablet:w-[680px] w-[335px]'}
     >

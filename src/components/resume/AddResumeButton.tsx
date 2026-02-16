@@ -5,12 +5,12 @@ import { Main5000PlusIcon } from '@/assets/svgComponents'
 import { useModalStore } from '@/store/modalStore'
 
 export default function AddResumeButton() {
-  const { isCreateResumeModalOpen, setIsCreateResumeModalOpen } = useModalStore((state) => state)
+  const { toggleModal } = useModalStore((state) => state)
 
   return (
     <Button
       onClick={() => {
-        setIsCreateResumeModalOpen(isCreateResumeModalOpen)
+        toggleModal('isCreateResumeModalOpen')
       }}
       variant={'secondary'}
       size={'md'}

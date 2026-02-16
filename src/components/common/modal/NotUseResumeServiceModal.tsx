@@ -8,11 +8,11 @@ interface NotUseResumeServiceModalProps {
 }
 
 export default function NotUseResumeServiceModal({ lang }: NotUseResumeServiceModalProps) {
-  const { isNotUseResumeService, setIsNotUseResumeService } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const router = useRouter()
 
   return (
-    <Modal isOpen={isNotUseResumeService}>
+    <Modal isOpen={modals.isNotUseResumeService}>
       <Modal.Header>
         <Label label={'스펙 분석을 먼저 해야 이력서를 추출할 수 있습니다.'} />
       </Modal.Header>
@@ -21,7 +21,7 @@ export default function NotUseResumeServiceModal({ lang }: NotUseResumeServiceMo
           <Button
             onClick={() => {
               router.back()
-              setIsNotUseResumeService(isNotUseResumeService)
+              toggleModal('isNotUseResumeService')
             }}
             variant={'outline'}
           >

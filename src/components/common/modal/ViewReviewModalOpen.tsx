@@ -11,9 +11,9 @@ interface ViewReviewModalOpenProps {
 }
 
 export default function ViewReviewModalOpen({ reviewId }: ViewReviewModalOpenProps) {
-  const { isViewReviewModalOpen, setIsViewReviewModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const onClose = () => {
-    setIsViewReviewModalOpen(isViewReviewModalOpen)
+    toggleModal('isViewReviewModalOpen')
   }
   const [reviewDetail, setReviewDetail] = useState<ReviewDetailType>()
 
@@ -24,7 +24,7 @@ export default function ViewReviewModalOpen({ reviewId }: ViewReviewModalOpenPro
   }, [])
 
   return (
-    <Modal isOpen={isViewReviewModalOpen} mobileHidden={false}>
+    <Modal isOpen={modals.isViewReviewModalOpen} mobileHidden={false}>
       <Modal.Header>
         <Label label={'리뷰'} type={'titleMd'} />
       </Modal.Header>

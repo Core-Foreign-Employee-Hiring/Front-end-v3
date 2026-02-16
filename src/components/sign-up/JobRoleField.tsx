@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next'
 import { JobCategoryType, JobRoleType } from '@/types/job-post'
 
 export default function JobRoleField() {
-  const { isJobRoleModalOpen, setIsJobRoleModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const { registerData, updateRegister } = useRegisterStore((state) => state)
   const [selectedJobCategory, setSelectedJobCategory] = useState<JobCategoryType | undefined>(undefined)
   const [selectedJobRoles, setSelectedJobRoles] = useState<JobRoleType[]>()
@@ -48,11 +48,11 @@ export default function JobRoleField() {
   }
 
   const onClose = () => {
-    setIsJobRoleModalOpen(isJobRoleModalOpen)
+    toggleModal('isJobRoleModalOpen')
   }
   return (
     <div>
-      {isJobRoleModalOpen && (
+      {modals.isJobRoleModalOpen && (
         <JobRoleModal
           onApply={onApply}
           onReset={onReset}

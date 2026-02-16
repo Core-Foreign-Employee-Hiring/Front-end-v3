@@ -11,7 +11,7 @@ import { useState } from 'react'
 import { CarrerType } from '@/types/job-post'
 
 export default function ContractFilter() {
-  const { isContractModalOpen, setIsContractModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const { selectedContractFilter, setContractFilter } = useFilterStore((state) => state)
   const { t } = useTranslation()
   const [selectedContract, setSelectedContract] = useState<ContractEnumType | CarrerType | undefined>(undefined)
@@ -36,12 +36,12 @@ export default function ContractFilter() {
   }
 
   const onContractClose = () => {
-    setIsContractModalOpen(isContractModalOpen)
+    toggleModal('isContractModalOpen')
   }
 
   return (
     <div>
-      {isContractModalOpen && (
+      {modals.isContractModalOpen && (
         <ContractModal
           onApply={onContractFilterApply}
           onReset={onContractFilterReset}
@@ -52,7 +52,7 @@ export default function ContractFilter() {
       )}
       <button
         onClick={() => {
-          setIsContractModalOpen(isContractModalOpen)
+          toggleModal('isContractModalOpen')
         }}
         className={`${selectedContractFilter === undefined ? 'text-gray5 border-gray2' : 'text-main-500 border-gray2'} hover:border-gray3 flex h-[36px] cursor-pointer items-center gap-x-2 rounded-[12px] border px-4 whitespace-nowrap transition hover:duration-75`}
       >
@@ -61,7 +61,7 @@ export default function ContractFilter() {
             ? t('recruitHome.filters.contractType')
             : t(convertEnumToKorContractTypeLabel(selectedContractFilter))}
         </p>
-        {isContractModalOpen ? (
+        {modals.isContractModalOpen ? (
           <DropDownGray3Icon width={20} height={20} />
         ) : (
           <DropDownGray4Icon width={20} height={20} />

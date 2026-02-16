@@ -15,15 +15,15 @@ interface ContentSummaryProps {
 }
 
 export default function ContentSummary({ archiveId, title, price, thumbnailUrl, oneLineReview }: ContentSummaryProps) {
-  const { isImageModalOpen, setIsImageModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const [selectedImageUrl, setSelectedImageUrl] = useState<string | undefined | null>('')
   return (
     <div className="desktop:pt-[40px] desktop:px-[40px] tablet:pt-[32px] tablet:px-[32px] desktop:flex-row tablet:flex-row tablet:gap-x-[20px] desktop:gap-x-[24px] flex flex-col gap-y-3 px-[20px] pt-[24px]">
-      {isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
+      {modals.isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
       <div className="desktop:w-[384px] tablet:w-[308px] tablet:h-[180px] desktop:h-[224px] relative h-[196px] w-full shrink-0 whitespace-nowrap">
         <Image
           onClick={() => {
-            setIsImageModalOpen(isImageModalOpen)
+            toggleModal('isImageModalOpen')
             setSelectedImageUrl(thumbnailUrl)
           }}
           alt={'썸네일 사진'}

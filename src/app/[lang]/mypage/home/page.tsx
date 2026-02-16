@@ -6,6 +6,7 @@ import SideBar from '@/components/mypage/SideBar'
 import Footer from '@/components/common/Footer'
 import NavBar from '@/components/common/NavBar'
 import MobileContentList from '@/components/mypage/home/MobileContentList'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 interface MyPageHomeProps {
   params: Promise<{ lang: string }>
@@ -15,10 +16,11 @@ interface MyPageHomeProps {
 export default async function HomePage({ params, searchParams }: MyPageHomeProps) {
   const { lang } = await params
   const result = await fetchMyPageUserInfo()
-  console.log('result', result)
   const userInfo = result.data
   return (
     <main>
+      <AuthWatcher results={[result]} />
+
       <Header headerType={'default'} currentLng={lang} />
       <PageLayout>
         <Label className={'desktop:block hidden'} label={'마이페이지'} type={'titleLg'} />

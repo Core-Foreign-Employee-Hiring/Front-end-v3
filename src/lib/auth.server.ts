@@ -1,5 +1,4 @@
 import { cookies } from 'next/headers'
-import { useModalStore } from '@/store/modalStore'
 
 export const getAccessTokenServer = async (): Promise<string | null> => {
   try {
@@ -42,7 +41,6 @@ export const refreshAccessTokenServer = async () => {
 
     if (!refreshToken) {
       //token 만료 modal
-      // useModalStore.getState().setState({ isTokenExpiredModalOpen: true })
       return { success: false, error: 'No refresh token' }
     }
 
@@ -54,11 +52,7 @@ export const refreshAccessTokenServer = async () => {
       },
     })
 
-    console.log('😡response', response)
-
     if (!response.ok) {
-      //token 만료 modal
-      useModalStore.getState().setIsRequiredLoginModalOpen(true)
       // 쿠키 삭제 - Route Handler 호출
       await fetch(`${process.env.NEXT_PUBLIC_URL}/api/auth/cookies`, {
         method: 'DELETE',
@@ -67,12 +61,6 @@ export const refreshAccessTokenServer = async () => {
     }
 
     const accessToken = response.headers.get('authorization')?.replace('Bearer ', '')
-    console.log('😊accessToken', response.headers.get('authorization'))
-    console.log('😊refreshToken', response.headers.get('authorization-refresh'))
-
-    for (const [key, value] of response.headers.entries()) {
-      console.log(`${key}: ${value}`)
-    }
 
     // 쿠키 설정 - Route Handler 호출
     await fetch(`${process.env.NEXT_PUBLIC_URL}/api/auth/cookies`, {

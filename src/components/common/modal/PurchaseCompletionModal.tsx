@@ -6,13 +6,13 @@ import { PurchaseCompletionIcon } from '@/assets/svgComponents'
 import { useRouter } from 'next/navigation'
 
 export default function PurchaseCompletionModal() {
-  const { isPurchaseCompletionModalOpen, setIsPurchaseCompletionModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const router = useRouter()
   const onClose = () => {
-    setIsPurchaseCompletionModalOpen(isPurchaseCompletionModalOpen)
+    toggleModal('isPurchaseCompletionModalOpen')
   }
   return (
-    <Modal isOpen={isPurchaseCompletionModalOpen} mobileHidden={false}>
+    <Modal isOpen={modals.isPurchaseCompletionModalOpen} mobileHidden={false}>
       <Modal.Header>
         <div className="flex w-full flex-col items-center gap-y-2">
           <h1 className="kr-title-md">

@@ -4,6 +4,7 @@ import Spec from '@/components/spec/Spec'
 import Resume from '@/components/spec/Resume'
 import { fetchResumeList } from '@/lib/server/resume'
 import { ResumeListType } from '@/types/resume'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 export type StepType = '1' | '2' | '3' | '4' | '5'
 export type TabType = 'spec' | 'resume'
@@ -44,10 +45,11 @@ export default async function SpecPage({
   ]
 
   const resumeResult = await fetchResumeList(0, 20)
-  console.log('resumeResult', resumeResult)
 
   return (
     <main>
+      <AuthWatcher results={[resumeResult]} />
+
       <div className="desktop:block hidden">
         <Header headerType={'default'} currentLng={lang} />
       </div>

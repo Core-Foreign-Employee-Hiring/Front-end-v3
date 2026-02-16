@@ -27,18 +27,18 @@ export default function JobDetail({
   preferences,
 }: JobDetailProps) {
   const { t } = useTranslation()
-  const { isImageModalOpen, setIsImageModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const [selectedImageUrl, setSelectedImageUrl] = useState<string | undefined | null>('')
 
   return (
     <div className="flex flex-col gap-y-[20px]">
-      {isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
+      {modals.isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
 
       <div className="flex flex-col gap-y-2">
         <Label label={'상세 정보'} type={'subtitleLg'} />
         <div
           onClick={() => {
-            setIsImageModalOpen(isImageModalOpen)
+            toggleModal('isImageModalOpen')
             setSelectedImageUrl(posterImageUrl)
           }}
           className="relative h-full w-[752px]"

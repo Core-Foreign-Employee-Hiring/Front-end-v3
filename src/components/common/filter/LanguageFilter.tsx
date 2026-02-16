@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { useFilterStore } from '@/store/filterStore'
 
 export default function LanguageFilter() {
-  const { isLanguageModalOpen, setIsLanguageModalOpen } = useModalStore((state) => state)
+  const { modals, toggleModal } = useModalStore((state) => state)
   const [selectedLanguages, setSelectedLanguages] = useState<LanguageType[] | undefined>(undefined)
   const { selectedLanguageFilterContentList, setSelectedLanguageFilterList } = useFilterStore((state) => state)
 
@@ -43,12 +43,12 @@ export default function LanguageFilter() {
   }
 
   const onClose = () => {
-    setIsLanguageModalOpen(isLanguageModalOpen)
+    toggleModal('isLanguageModalOpen')
   }
 
   return (
     <div>
-      {isLanguageModalOpen && (
+      {modals.isLanguageModalOpen && (
         <LanguageModal
           addLanguages={addLanguages}
           onReset={onReset}
@@ -59,7 +59,7 @@ export default function LanguageFilter() {
       )}
       <button
         onClick={() => {
-          setIsLanguageModalOpen(isLanguageModalOpen)
+          toggleModal('isLanguageModalOpen')
         }}
         className="hover:border-gray3 border-gray2 flex h-[36px] cursor-pointer items-center gap-x-2 rounded-[12px] border px-4 whitespace-nowrap transition hover:duration-75"
       >
@@ -71,7 +71,7 @@ export default function LanguageFilter() {
             </div>
           )}
         </div>
-        {isLanguageModalOpen ? (
+        {modals.isLanguageModalOpen ? (
           <DropDownGray3Icon width={20} height={20} />
         ) : (
           <DropDownGray4Icon width={20} height={20} />

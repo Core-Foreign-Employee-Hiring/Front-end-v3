@@ -7,13 +7,13 @@ interface ResumePreviewModalProps {
 }
 
 export default function ResumePreviewModal({ type }: ResumePreviewModalProps) {
-  const { isResumePreviewModalOpen, setIsResumePreviewModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const onClose = () => {
-    setIsResumePreviewModalOpen(isResumePreviewModalOpen)
+    toggleModal('isResumePreviewModalOpen')
   }
 
   return (
-    <Modal mobileHidden={false} isOpen={isResumePreviewModalOpen}>
+    <Modal mobileHidden={false} isOpen={modals.isResumePreviewModalOpen}>
       <Modal.Header>
         <div className="flex flex-col gap-y-2">
           <Label label={'이력서 미리보기'} type={'titleLg'} />

@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { useFilterStore } from '@/store/filterStore'
 
 export default function JobRoleFilter() {
-  const { isJobRoleModalOpen, setIsJobRoleModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const [selectedJobCategory, setSelectedJobCategory] = useState<JobCategoryType | undefined>(undefined)
   const [selectedJobRoles, setSelectedJobRoles] = useState<JobRoleType[]>([])
 
@@ -48,12 +48,12 @@ export default function JobRoleFilter() {
   }
 
   const onClose = () => {
-    setIsJobRoleModalOpen(isJobRoleModalOpen)
+    toggleModal('isJobRoleModalOpen')
   }
 
   return (
     <div>
-      {isJobRoleModalOpen && (
+      {modals.isJobRoleModalOpen && (
         <JobRoleModal
           selectedJobRoles={selectedJobRoles}
           deleteJobRoles={deleteJobRoles}
@@ -66,7 +66,7 @@ export default function JobRoleFilter() {
       )}
       <button
         onClick={() => {
-          setIsJobRoleModalOpen(isJobRoleModalOpen)
+          toggleModal('isJobRoleModalOpen')
         }}
         className="hover:border-gray3 border-gray2 flex h-[36px] cursor-pointer items-center gap-x-2 rounded-[12px] border px-4 whitespace-nowrap transition hover:duration-75"
       >
@@ -78,7 +78,7 @@ export default function JobRoleFilter() {
             </div>
           )}
         </div>
-        {isJobRoleModalOpen ? (
+        {modals.isJobRoleModalOpen ? (
           <DropDownGray3Icon width={20} height={20} />
         ) : (
           <DropDownGray4Icon width={20} height={20} />

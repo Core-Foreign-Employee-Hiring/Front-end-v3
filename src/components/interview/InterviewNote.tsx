@@ -1,5 +1,6 @@
 import { fetchInterviewAnswerNotes } from '@/lib/server/interview'
 import NoteItem from '@/components/interview/note/NoteItem'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 export default async function InterviewNote() {
   const result = await fetchInterviewAnswerNotes()
@@ -8,6 +9,8 @@ export default async function InterviewNote() {
 
   return (
     <div className="tablet:grid-cols-2 desktop:grid-cols-2 grid grid-cols-1 gap-6">
+      <AuthWatcher results={[result]} />
+
       {notes?.map((note) => (
         <NoteItem
           noteId={note.id}

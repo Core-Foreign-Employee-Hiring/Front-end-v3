@@ -16,17 +16,17 @@ interface IntroVer2Props {
 export default function IntroVer2({ profileImageUrl, introduction, memberBasicInfo }: IntroVer2Props) {
   const { t } = useTranslation()
 
-  const { isImageModalOpen, setIsImageModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const [selectedImageUrl, setSelectedImageUrl] = useState<string | undefined | null>('')
 
   return (
     <div className="tablet:py-[40px] tablet:px-[32px] desktop:py-[60px] desktop:px-[40px] flex flex-col gap-y-[32px] p-[20px]">
-      {isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
+      {modals.isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
 
       <div className="desktop:gap-x-[40px] tablet:gap-x-[40px] flex gap-x-[20px]">
         <div
           onClick={() => {
-            setIsImageModalOpen(isImageModalOpen)
+            toggleModal('isImageModalOpen')
             setSelectedImageUrl(profileImageUrl)
           }}
           className="tablet:w-[184px] tablet:h-[240px] desktop:h-[240px] desktop:w-[184px] relative h-[160px] w-[123px]"

@@ -5,6 +5,7 @@ import ContentDescription from '@/components/content/ContentDescription'
 import ContentReview from '@/components/content/ContentReview'
 import BottomBoarder from '@/components/content/BottomBoarder'
 import ContentImages from '@/components/content/ContentImages'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 export default async function ContentDetailPage({
   params,
@@ -23,6 +24,8 @@ export default async function ContentDetailPage({
 
   return (
     <main className="flex flex-col gap-y-[32px]">
+      <AuthWatcher results={[result]} />
+
       <ContentSummary
         archiveId={id}
         price={contentData.price}

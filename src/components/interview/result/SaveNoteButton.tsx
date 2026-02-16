@@ -23,13 +23,13 @@ export default function SaveNoteButton({
   followUpAnswer,
   customClassName,
 }: SaveNoteButtonProps) {
-  const { isSaveAnswerNoteModalOpen, setIsSaveAnswerNoteModalOpen } = useModalStore((state) => state)
+  const { toggleModal } = useModalStore((state) => state)
   const { setCreateNoteData, setAnswerEntry } = useNoteStore((state) => state)
   return (
     <Button
       onClick={(e) => {
         e.stopPropagation()
-        setIsSaveAnswerNoteModalOpen(isSaveAnswerNoteModalOpen)
+        toggleModal('isSaveAnswerNoteModalOpen')
         //새로운 노트에 데이터 추가
         setCreateNoteData({
           entries: [

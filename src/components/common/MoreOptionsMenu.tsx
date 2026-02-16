@@ -31,7 +31,7 @@ interface MoreOptionsMenuProps {
 export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
   const router = useRouter()
 
-  const { setIsMoreOptionsMenuOpen, isMoreOptionsMenuOpen } = useModalStore((state) => state)
+  const { toggleModal } = useModalStore((state) => state)
 
   // 1. 원시 문자열(String)만 구독합니다. (문자열은 값이 같으면 참조가 같다고 간주됨)
   const rawUserInfo = useSyncExternalStore(
@@ -68,7 +68,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
 
     // 4. 로그인 페이지로 이동
     router.push(`/${lang}/login`)
-    setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+    toggleModal('isMoreOptionsMenuOpen')
   }
 
   return (
@@ -85,7 +85,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             <Button
               onClick={() => {
                 router.push(`/${lang}/mypage/home?type=sold&page=0`)
-                setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+                toggleModal('isMoreOptionsMenuOpen')
               }}
               variant={'secondary'}
             >
@@ -99,7 +99,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
               <Button
                 onClick={() => {
                   router.push(`/${lang}/sign-up`)
-                  setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+                  toggleModal('isMoreOptionsMenuOpen')
                 }}
                 variant={'outline'}
               >
@@ -108,7 +108,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
               <Button
                 onClick={() => {
                   router.push(`/${lang}/login`)
-                  setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+                  toggleModal('isMoreOptionsMenuOpen')
                 }}
               >
                 로그인
@@ -125,7 +125,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
           <div
             onClick={() => {
               router.push(`/${lang}`)
-              setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+              toggleModal('isMoreOptionsMenuOpen')
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
@@ -136,7 +136,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
           <div
             onClick={() => {
               router.push(`/${lang}`)
-              setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+              toggleModal('isMoreOptionsMenuOpen')
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
@@ -149,7 +149,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
           <div
             onClick={() => {
               router.push(`/${lang}/job-post`)
-              setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+              toggleModal('isMoreOptionsMenuOpen')
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
@@ -160,7 +160,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
           <div
             onClick={() => {
               router.push(`/${lang}/job-post`)
-              setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+              toggleModal('isMoreOptionsMenuOpen')
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
@@ -173,7 +173,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
           <div
             onClick={() => {
               router.push(`/${lang}/carrer?tab=resume`)
-              setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+              toggleModal('isMoreOptionsMenuOpen')
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
@@ -184,7 +184,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
           <div
             onClick={() => {
               router.push(`/${lang}/carrer?tab=resume`)
-              setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+              toggleModal('isMoreOptionsMenuOpen')
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
@@ -197,7 +197,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
           <div
             onClick={() => {
               router.push(`/${lang}/interview`)
-              setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+              toggleModal('isMoreOptionsMenuOpen')
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
@@ -208,7 +208,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
           <div
             onClick={() => {
               router.push(`/${lang}/interview`)
-              setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+              toggleModal('isMoreOptionsMenuOpen')
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
@@ -221,7 +221,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
           <div
             onClick={() => {
               router.push(`/${lang}/content`)
-              setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+              toggleModal('isMoreOptionsMenuOpen')
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
@@ -232,7 +232,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
           <div
             onClick={() => {
               router.push(`/${lang}/content`)
-              setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+              toggleModal('isMoreOptionsMenuOpen')
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
@@ -245,7 +245,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
           <div
             onClick={() => {
               router.push(`/${lang}/program`)
-              setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+              toggleModal('isMoreOptionsMenuOpen')
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
@@ -256,7 +256,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
           <div
             onClick={() => {
               router.push(`/${lang}/program`)
-              setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+              toggleModal('isMoreOptionsMenuOpen')
             }}
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >

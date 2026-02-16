@@ -23,9 +23,9 @@ export default function LanguageModal({
 }: LanguageModalProps) {
   const { t } = useTranslation()
   const [searchQuery, setSearchQuery] = useState('')
-  const { isLanguageModalOpen, setIsLanguageModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const onClose = () => {
-    setIsLanguageModalOpen(isLanguageModalOpen)
+    toggleModal('isLanguageModalOpen')
   }
   // 검색어에 따라 필터링된 리스트 생성
   const filteredLanguageList = useMemo(() => {
@@ -37,7 +37,7 @@ export default function LanguageModal({
   }, [searchQuery, t])
 
   return (
-    <Modal customClassName={'desktop:w-[860px] tablet:w-[680px]'} isOpen={isLanguageModalOpen} onClose={onClose}>
+    <Modal customClassName={'desktop:w-[860px] tablet:w-[680px]'} isOpen={modals.isLanguageModalOpen} onClose={onClose}>
       <Modal.Header
         rightElement={
           <Button onClick={onReset} size={'sm'} customClassName={'w-[70px]'} variant={'outline'}>

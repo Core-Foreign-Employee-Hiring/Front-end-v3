@@ -6,6 +6,7 @@ import { fetchPurchasedArchiveList } from '@/lib/client/mypage'
 import Loading from '../../common/Loading'
 import Pagination from '@/components/common/Pagination'
 import PurchaseItem from '@/components/mypage/content/PurchaseItem'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 interface PurchaseListProps {
   currentPage: number
@@ -35,6 +36,8 @@ export default function PurchaseList({ currentPage }: PurchaseListProps) {
 
   return (
     <div>
+      <AuthWatcher results={[data]} />
+
       <div className="flex flex-col gap-y-4">
         {list.map((item) => (
           <PurchaseItem key={item.passArchiveId} {...item} />

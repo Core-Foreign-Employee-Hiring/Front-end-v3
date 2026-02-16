@@ -3,6 +3,7 @@ import ContentCard from '@/components/content/ContentCard'
 import { Label, PageLayout, Spacing } from '@/components/common'
 import NavBar from '@/components/common/NavBar'
 import type { Metadata } from 'next'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.korfit.co.kr'
 
@@ -70,6 +71,8 @@ export default async function ContentPage({
 
   return (
     <div>
+      <AuthWatcher results={[contentResult]} />
+
       <PageLayout>
         <main>
           <Label label={'콘텐츠'} type={'titleLg'} />

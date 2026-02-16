@@ -9,6 +9,7 @@ import { serverFetchAllJobPosts } from '@/lib/server/job-post'
 import { serverFetchAllContentPosts } from '@/lib/server/content'
 import NavBar from '@/components/common/NavBar'
 import GATracker from '@/components/common/GATracker'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 interface HomeProps {
   params: Promise<{ lang: string }>
@@ -22,6 +23,7 @@ export default async function Home({ params }: HomeProps) {
   const contents = contentResult.data?.content
   return (
     <main>
+      <AuthWatcher results={[jobPostResult, contentResult]} />
       <GATracker />
       <Header headerType={'default'} currentLng={lang}></Header>
       <Banner />

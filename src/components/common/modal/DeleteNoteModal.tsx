@@ -6,12 +6,12 @@ import { useModalStore } from '@/store/modalStore'
 import { useNoteStore } from '@/store/interview/noteStore'
 
 export default function DeleteNoteModal() {
-  const { isDeleteNoteModalOpen, setIsDeleteNoteModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
 
   const { selectedNoteId } = useNoteStore((state) => state)
 
   const toggleDeleteNoteState = () => {
-    setIsDeleteNoteModalOpen(isDeleteNoteModalOpen)
+    toggleModal('isDeleteNoteModalOpen')
   }
 
   return (
@@ -19,7 +19,7 @@ export default function DeleteNoteModal() {
       mobileHidden={false}
       customClassName={'w-[508px]'}
       onClose={toggleDeleteNoteState}
-      isOpen={isDeleteNoteModalOpen}
+      isOpen={modals.isDeleteNoteModalOpen}
     >
       <Modal.Header>
         <Label label={'답변노트를 삭제하실껀가요?'} type={'subtitleLg'} />

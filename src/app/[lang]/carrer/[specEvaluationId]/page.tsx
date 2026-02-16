@@ -2,6 +2,7 @@ import { Label, ResultContent, Spacing } from '@/components/common'
 import CTAButton from '@/components/spec/result/CTAButton'
 import { fetchSpecResult } from '@/lib/server/spec'
 import Chat from '@/components/spec/result/Chat'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 interface SpecResultProps {
   params: Promise<{ specEvaluationId: string }>
@@ -21,6 +22,8 @@ export default async function SpecResult({ params }: SpecResultProps) {
 
   return (
     <main>
+      <AuthWatcher results={[specResultResponse]} />
+
       <Label label={'스펙 결과'} type={'titleLg'} />
 
       <div className="tablet:flex-row tablet:gap-y-0 tablet:gap-x-[24px] desktop:gap-x-[24px] tablet:items-start flex flex-col items-center gap-y-[24px]">

@@ -14,12 +14,12 @@ interface InterviewHeaderProps {
 
 export default function InterviewHeader({ leftElement, rightElement }: InterviewHeaderProps) {
   const router = useRouter()
-  const { isSaveAnswerNoteModalOpen, isCreateNewAnswerNoteModalOpen } = useModalStore((state) => state)
+  const { modals } = useModalStore((state) => state)
 
   return (
     <header className="border-gray2 tablet:px-[32px] desktop:px-[40px] flex w-full items-center gap-x-5 border-b px-[20px] py-[20px]">
-      {isSaveAnswerNoteModalOpen && <SaveAnswerNoteModal />}
-      {isCreateNewAnswerNoteModalOpen && <CreateNewAnswerNoteModal />}
+      {modals.isSaveAnswerNoteModalOpen && <SaveAnswerNoteModal />}
+      {modals.isCreateNewAnswerNoteModalOpen && <CreateNewAnswerNoteModal />}
       <BackIcon
         onClick={() => {
           router.back()

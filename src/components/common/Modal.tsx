@@ -7,7 +7,7 @@ import { Spacing } from '@/components/common/index'
 import { twMerge } from 'tailwind-merge'
 
 interface ModalProps {
-  isOpen: boolean
+  isOpen: boolean | undefined
   onClose?: () => void
   children: ReactNode
   customClassName?: string // 넓이 같은 경우는 매번 달라져서 props로 받음

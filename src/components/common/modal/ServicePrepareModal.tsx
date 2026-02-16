@@ -4,12 +4,12 @@ import { Button, Label, Modal } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
 
 export default function ServicePrepareModal() {
-  const { isServicePrepareModalOpen, setIsServicePrepareModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const onClose = () => {
-    setIsServicePrepareModalOpen(isServicePrepareModalOpen)
+    toggleModal('isServicePrepareModalOpen')
   }
   return (
-    <Modal isOpen={isServicePrepareModalOpen}>
+    <Modal isOpen={modals.isServicePrepareModalOpen}>
       <Modal.Header>
         <div className="kr-subtitle-lg flex w-full flex-col items-center justify-center">
           <Label label={'현재 서비스 준비중입니다.'} type={'subtitleLg'} />

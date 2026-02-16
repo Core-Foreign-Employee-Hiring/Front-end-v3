@@ -10,7 +10,7 @@ import { getJobRoleLabel, getSelectedCategoriesFromRoles } from '@/utils/filterL
 import JobRoleModal from '@/components/common/modal/JobRoleModal'
 
 export default function JobRole() {
-  const { isJobRoleModalOpen, setIsJobRoleModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const [selectedJobCategory, setSelectedJobCategory] = useState<JobCategoryType | undefined>(undefined)
   const [selectedJobRoles, setSelectedJobRoles] = useState<JobRoleType[]>([])
   const { updateCreateJobPost, createJobPost } = useCreateJobPostStore((state) => state)
@@ -49,12 +49,12 @@ export default function JobRole() {
   }
 
   const onClose = () => {
-    setIsJobRoleModalOpen(isJobRoleModalOpen)
+    toggleModal('isJobRoleModalOpen')
   }
 
   return (
     <div>
-      {isJobRoleModalOpen && (
+      {modals.isJobRoleModalOpen && (
         <JobRoleModal
           onApply={onApply}
           onReset={onReset}

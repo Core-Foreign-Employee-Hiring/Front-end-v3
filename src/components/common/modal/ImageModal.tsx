@@ -12,16 +12,16 @@ interface ImageModalProps {
 }
 
 export default function ImageModal({ ImageUrl, setSelectedImageUrl }: ImageModalProps) {
-  const { isImageModalOpen, setIsImageModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
 
   const handleCloseModal = () => {
-    setIsImageModalOpen(isImageModalOpen) // 기존 코드가 (isImageModalOpen)으로 되어있어 false로 명시함이 좋습니다.
+    toggleModal('isImageModalOpen')
     setSelectedImageUrl(undefined)
   }
 
   return createPortal(
     <AnimatePresence>
-      {isImageModalOpen && ( // 1. 조건부 렌더링을 추가해야 애니메이션이 작동합니다.
+      {modals.isImageModalOpen && ( // 1. 조건부 렌더링을 추가해야 애니메이션이 작동합니다.
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           {/* 2. 부모를 Flex 중앙 정렬로 설정 */}
           {/* 배경 오버레이 */}

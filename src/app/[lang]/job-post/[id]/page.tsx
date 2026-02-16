@@ -11,6 +11,7 @@ import Loading from '@/components/common/Loading'
 import BottomBorder from '@/components/common/BottomBorder'
 import MobileWorkConditions from '@/components/job-post/MobileWorkConditions'
 import BottomActionsButtons from '@/components/job-post/BottomActionButtons'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 const i18nNamespaces = ['common']
 
@@ -32,6 +33,8 @@ export default async function JobPostDetail({
 
   return (
     <TranslationsProvider locale={lang} namespaces={i18nNamespaces} resources={resources}>
+      <AuthWatcher results={[result]} />
+
       <main className="flex w-full justify-between gap-x-[64px]">
         <div className="flex w-full flex-col gap-y-[24px]">
           <JobPostSummary

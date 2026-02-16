@@ -12,7 +12,7 @@ export default function ApplicationMethodModal({
   applicationMethod,
   directInputApplicationMethod,
 }: ApplicationMethodModalProps) {
-  const { isApplicationMethodModalOpen, setIsApplicationMethodModalOpen } = useModalStore((state) => state)
+  const { modals, toggleModal } = useModalStore((state) => state)
   const convertHeaderTitle = (applicationMethod: ApplicationMethodType) => {
     switch (applicationMethod) {
       case 'EMAIL':
@@ -25,7 +25,7 @@ export default function ApplicationMethodModal({
   }
 
   const onClose = () => {
-    setIsApplicationMethodModalOpen(isApplicationMethodModalOpen)
+    toggleModal('isApplicationMethodModalOpen')
   }
 
   const handleCopy = async () => {
@@ -39,7 +39,7 @@ export default function ApplicationMethodModal({
   }
 
   return (
-    <Modal isOpen={isApplicationMethodModalOpen} mobileHidden={false} onClose={onClose}>
+    <Modal isOpen={modals.isApplicationMethodModalOpen} mobileHidden={false} onClose={onClose}>
       <Modal.Header>
         <div className="flex w-full items-center justify-center">
           <h1 className="kr-subtitle-lg">

@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { useFilterStore } from '@/store/filterStore'
 
 export default function VisaFilter() {
-  const { isVisaModalOpen, setIsVisaModalOpen } = useModalStore((state) => state)
+  const { modals, toggleModal } = useModalStore((state) => state)
 
   const [selectedVisas, setSelectedVisas] = useState<VisaType[] | undefined>(undefined)
   const { selectedVisaFilterContentList, setSelectedVisaFilterList } = useFilterStore((state) => state)
@@ -44,12 +44,12 @@ export default function VisaFilter() {
   }
 
   const onClose = () => {
-    setIsVisaModalOpen(isVisaModalOpen)
+    toggleModal('isVisaModalOpen')
   }
 
   return (
     <div>
-      {isVisaModalOpen && (
+      {modals.isVisaModalOpen && (
         <VisaModal
           addVisas={addVisas}
           deleteVisas={deleteVisas}
@@ -60,7 +60,7 @@ export default function VisaFilter() {
       )}
       <button
         onClick={() => {
-          setIsVisaModalOpen(isVisaModalOpen)
+          toggleModal('isVisaModalOpen')
         }}
         className="hover:border-gray3 border-gray2 flex h-[36px] cursor-pointer items-center gap-x-2 rounded-[12px] border px-4 whitespace-nowrap transition hover:duration-75"
       >
@@ -72,7 +72,11 @@ export default function VisaFilter() {
             </div>
           )}
         </div>
-        {isVisaModalOpen ? <DropDownGray3Icon width={20} height={20} /> : <DropDownGray4Icon width={20} height={20} />}
+        {modals.isVisaModalOpen ? (
+          <DropDownGray3Icon width={20} height={20} />
+        ) : (
+          <DropDownGray4Icon width={20} height={20} />
+        )}
       </button>
     </div>
   )

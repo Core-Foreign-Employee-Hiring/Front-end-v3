@@ -7,7 +7,7 @@ import { useFilterStore } from '@/store/filterStore'
 import { useTranslation } from 'react-i18next'
 
 export default function RegionFilter() {
-  const { isRegionModalOpen, setIsRegionModalOpen } = useModalStore((state) => state)
+  const { modals, toggleModal } = useModalStore((state) => state)
   const [selectedRegions, setSelectedRegions] = useState<RegionType[] | undefined>(undefined)
   const { selectedRegionFilterContentList, setSelectedRegionFilterList } = useFilterStore((state) => state)
 
@@ -43,12 +43,12 @@ export default function RegionFilter() {
   }
 
   const onClose = () => {
-    setIsRegionModalOpen(isRegionModalOpen)
+    toggleModal('isRegionModalOpen')
   }
 
   return (
     <div>
-      {isRegionModalOpen && (
+      {modals.isRegionModalOpen && (
         <RegionModal
           onReset={onReset}
           onApply={onApply}
@@ -59,7 +59,7 @@ export default function RegionFilter() {
       )}
       <button
         onClick={() => {
-          setIsRegionModalOpen(isRegionModalOpen)
+          toggleModal('isRegionModalOpen')
         }}
         className="hover:border-gray3 border-gray2 flex h-[36px] cursor-pointer items-center gap-x-2 rounded-[12px] border px-4 whitespace-nowrap transition hover:duration-75"
       >
@@ -71,7 +71,7 @@ export default function RegionFilter() {
             </div>
           )}
         </div>
-        {isRegionModalOpen ? (
+        {modals.isRegionModalOpen ? (
           <DropDownGray3Icon width={20} height={20} />
         ) : (
           <DropDownGray4Icon width={20} height={20} />

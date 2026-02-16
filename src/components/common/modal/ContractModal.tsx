@@ -16,13 +16,13 @@ interface ContractModalProps {
 }
 
 export default function ContractModal({ addContract, selectedContract, onReset, onApply }: ContractModalProps) {
-  const { isContractModalOpen, setIsContractModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const { t } = useTranslation()
   const onClose = () => {
-    setIsContractModalOpen(isContractModalOpen)
+    toggleModal('isContractModalOpen')
   }
   return (
-    <Modal customClassName={'desktop:w-[860px] tablet:w-[680px]'} isOpen={isContractModalOpen} onClose={onClose}>
+    <Modal customClassName={'desktop:w-[860px] tablet:w-[680px]'} isOpen={modals.isContractModalOpen} onClose={onClose}>
       <Modal.Header
         rightElement={
           <Button onClick={onReset} size={'sm'} customClassName={'w-[70px]'} variant={'outline'}>

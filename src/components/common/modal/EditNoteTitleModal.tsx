@@ -6,12 +6,12 @@ import { useRouter } from 'next/navigation'
 
 export default function EditNoteTitleModal() {
   const router = useRouter()
-  const { isEditNoteTitleModalOpen, setIsEditNoteTitleModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
 
   const { setTitle, title, selectedNoteId } = useNoteStore((state) => state)
 
   const toggleEditNoteTitleState = () => {
-    setIsEditNoteTitleModalOpen(isEditNoteTitleModalOpen)
+    toggleModal('isEditNoteTitleModalOpen')
   }
 
   return (
@@ -19,7 +19,7 @@ export default function EditNoteTitleModal() {
       mobileHidden={false}
       customClassName={'w-[508px]'}
       onClose={toggleEditNoteTitleState}
-      isOpen={isEditNoteTitleModalOpen}
+      isOpen={modals.isEditNoteTitleModalOpen}
     >
       <Modal.Header>
         <Label label={'답변 노트 수정'} type={'subtitleLg'} />

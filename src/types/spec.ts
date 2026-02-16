@@ -7,6 +7,7 @@ export interface SpecType {
   experiences: SpecExperienceType[] | null
 }
 export interface SpecEducationType {
+  educationId: number
   schoolName: string
   majors: string[]
   admissionDate: string // 2025-03
@@ -15,15 +16,18 @@ export interface SpecEducationType {
   maxScore: number | string
 }
 export interface SpecLanguageSkillType {
+  languageSkillId: number
   title: string
   score: string
 }
 export interface SpecCertificationType {
+  certificationId: number
   certificationName: string
   acquiredDate: string
   documentUrl: string | null | File
 }
 export interface SpecCareerType {
+  careerId: number
   companyName: string
   position: string
   startDate: string
@@ -34,6 +38,7 @@ export interface SpecCareerType {
 export type ContractEnumType = 'INTERN' | 'REGULAR' | 'CONTRACT' | 'ETC' | null
 
 export interface SpecAwardType {
+  awardId: number
   awardName: string
   host: string
   acquiredDate: string
@@ -42,6 +47,7 @@ export interface SpecAwardType {
 }
 
 export interface SpecExperienceType {
+  experienceId: number
   experience: string
   beforeImprovementRate: number | string
   afterImprovementRate: number | string

@@ -9,12 +9,12 @@ interface InquiryModalProps {
 }
 
 export default function InquiryModal({ inquiry }: InquiryModalProps) {
-  const { isInquiryModalOpen, setIsInquiryModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const onClose = () => {
-    setIsInquiryModalOpen(isInquiryModalOpen)
+    toggleModal('isInquiryModalOpen')
   }
   return (
-    <Modal isOpen={isInquiryModalOpen} mobileHidden={false}>
+    <Modal isOpen={modals.isInquiryModalOpen} mobileHidden={false}>
       <Modal.Header>
         <Link href={inquiry} className="flex w-full items-center justify-center underline">
           {inquiry}

@@ -44,12 +44,12 @@ export default function JobPostSummary({
 }: JobPostSummaryProps) {
   const { t } = useTranslation()
 
-  const { isImageModalOpen, setIsImageModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const [selectedImageUrl, setSelectedImageUrl] = useState<string | undefined | null>('')
 
   return (
     <div className="border-gray2 flex flex-col gap-y-[20px] rounded-[12px] border p-4">
-      {isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
+      {modals.isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
 
       <section className="flex flex-col gap-y-2">
         <div className="flex items-center justify-between">
@@ -77,7 +77,7 @@ export default function JobPostSummary({
         <div className="flex items-center gap-x-2">
           <div
             onClick={() => {
-              setIsImageModalOpen(isImageModalOpen)
+              toggleModal('isImageModalOpen')
               setSelectedImageUrl(companyImageUrl)
             }}
             className="relative h-[28px] w-[28px]"

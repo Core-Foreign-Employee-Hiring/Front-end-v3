@@ -13,13 +13,15 @@ import TermsOfService from '@/components/mypage/profile/TermsOfService'
 import BottomButton from '@/components/mypage/profile/BottomButton'
 import { fetchMyPageUserInfo } from '@/lib/server/mypage'
 import ProfileStoreInitializer from '@/components/mypage/profile/ProfileStoreInitializer'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 export default async function ProfilePage() {
   const result = await fetchMyPageUserInfo()
-  console.log('result', result)
   const userInfo = result.data
   return (
     <main className="w-full">
+      <AuthWatcher results={[result]} />
+
       <ProfileStoreInitializer initialData={userInfo} />
       <Label label={'프로필 수정'} type={'titleMd'} />
       <Spacing height={16} />

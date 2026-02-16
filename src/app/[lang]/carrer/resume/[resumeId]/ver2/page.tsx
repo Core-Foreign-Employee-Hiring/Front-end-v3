@@ -8,6 +8,7 @@ import AchivementsVer2 from '@/components/resume/template/ver2/AchievementsVer2'
 import CertificationsVer2 from '@/components/resume/template/ver2/CertificationsVer2'
 import LanguageSkillsVer2 from '@/components/resume/template/ver2/LanguageSkillsVer2'
 import URLsVer2 from '@/components/resume/template/ver2/URLsVer2'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 export default async function ResumeVer2Page({ params }: { params: Promise<{ lang: string; resumeId: string }> }) {
   const { lang, resumeId } = await params
@@ -20,6 +21,8 @@ export default async function ResumeVer2Page({ params }: { params: Promise<{ lan
 
   return (
     <main>
+      <AuthWatcher results={[result]} />
+
       <Header headerType={'default'} currentLng={lang} />
       <div id="resume-print-area">
         <div className="w-full">

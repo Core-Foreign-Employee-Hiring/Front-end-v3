@@ -12,7 +12,7 @@ export default function BottomField() {
   const [type, setType] = useState<'text' | 'audio'>('text')
   // 분리된 비즈니스 로직 훅
   const { handleCommonSubmit, handleFollowUpSubmit } = useTest()
-  const { isServicePrepareModalOpen, setIsServicePrepareModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
 
   const {
     chatList,
@@ -56,7 +56,7 @@ export default function BottomField() {
 
   return (
     <div className="border-gray2 tablet:px-[32px] desktop:px-[40px] fixed bottom-0 left-0 flex w-full flex-col gap-y-3 border-t bg-white px-[20px] py-[20px]">
-      {isServicePrepareModalOpen && <ServicePrepareModal />}
+      {modals.isServicePrepareModalOpen && <ServicePrepareModal />}
       <SwitchButton
         type={type}
         onClick={(clickedType) => {
@@ -64,7 +64,7 @@ export default function BottomField() {
             setType('text')
           } else if (clickedType === 'audio') {
             // 2. 서비스 준비 중인 경우 로직
-            setIsServicePrepareModalOpen(isServicePrepareModalOpen) // 모달을 여는 로직 (기존 isServicePrepareModalOpen 전달은 오타인듯 하네요)
+            toggleModal('isServicePrepareModalOpen')
             // 선택은 바꾸지 않거나, 기획에 따라 처리
           }
         }}

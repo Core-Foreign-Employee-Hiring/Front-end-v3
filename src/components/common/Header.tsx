@@ -37,7 +37,7 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
 
   const [isLanguageSelectModalOpen, setIsLanguageSelectModalOpen] = useState(false)
 
-  const { setIsMoreOptionsMenuOpen, isMoreOptionsMenuOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
 
   // 1. 원시 문자열(String)만 구독합니다. (문자열은 값이 같으면 참조가 같다고 간주됨)
   const rawUserInfo = useSyncExternalStore(
@@ -195,10 +195,10 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
             }}
             className={iconClass}
           />
-          {isMoreOptionsMenuOpen ? (
+          {modals.isMoreOptionsMenuOpen ? (
             <MenuCloseIcon
               onClick={() => {
-                setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+                toggleModal('isMoreOptionsMenuOpen')
               }}
               width={24}
               height={24}
@@ -206,7 +206,7 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
           ) : (
             <MenuIcon
               onClick={() => {
-                setIsMoreOptionsMenuOpen(isMoreOptionsMenuOpen)
+                toggleModal('isMoreOptionsMenuOpen')
               }}
               width={24}
               height={24}

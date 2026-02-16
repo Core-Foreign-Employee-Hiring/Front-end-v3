@@ -10,7 +10,7 @@ import { getLanguageLabel } from '@/utils/filterList'
 import LanguageModal from '@/components/common/modal/LanguageModal'
 
 export default function Language() {
-  const { isLanguageModalOpen, setIsLanguageModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const [selectedLanguages, setSelectedLanguages] = useState<LanguageType[] | undefined>(undefined)
   const { updateCreateJobPost, createJobPost } = useCreateJobPostStore((state) => state)
 
@@ -45,12 +45,12 @@ export default function Language() {
   }
 
   const onClose = () => {
-    setIsLanguageModalOpen(isLanguageModalOpen)
+    toggleModal('isLanguageModalOpen')
   }
 
   return (
     <div>
-      {isLanguageModalOpen && (
+      {modals.isLanguageModalOpen && (
         <LanguageModal
           addLanguages={addLanguages}
           deleteLanguages={deleteLanguages}

@@ -8,6 +8,7 @@ import URLsVer1 from '@/components/resume/template/ver1/URLsVer1'
 import { fetchResumeResult } from '@/lib/server/resume'
 import BottomButton from '@/components/resume/template/BottomButton'
 import AchievementsVer1 from '@/components/resume/template/ver1/AchievementsVer1'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 export default async function ResumeVer1Page({ params }: { params: Promise<{ lang: string; resumeId: string }> }) {
   const { lang, resumeId } = await params
@@ -20,6 +21,8 @@ export default async function ResumeVer1Page({ params }: { params: Promise<{ lan
 
   return (
     <main>
+      <AuthWatcher results={[result]} />
+
       <Header headerType={'default'} currentLng={lang} />
       <div id="resume-print-area">
         <div className="w-full">

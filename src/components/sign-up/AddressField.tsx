@@ -7,7 +7,7 @@ import SearchAddressModal from '@/components/common/modal/SearchAddressModal'
 
 export default function AddressField() {
   const { registerData, updateRegister } = useRegisterStore((state) => state)
-  const { isSearchAddressModalOpen, setIsSearchAddressModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
 
   const handleChangeAddress = (zipcode: string, address1: string) => {
     updateRegister('zipcode', zipcode)
@@ -16,14 +16,14 @@ export default function AddressField() {
 
   return (
     <div>
-      {isSearchAddressModalOpen && <SearchAddressModal handleChangeAddress={handleChangeAddress} />}
+      {modals.isSearchAddressModalOpen && <SearchAddressModal handleChangeAddress={handleChangeAddress} />}
       <div className="flex flex-col gap-y-2">
         <Label label={'주소'} isRequired={true} type={'titleSm'} />
         {/* 우편 번호 입력 */}
         <div className="flex gap-x-2">
           <TextInput
             onClick={() => {
-              setIsSearchAddressModalOpen(isSearchAddressModalOpen)
+              toggleModal('isSearchAddressModalOpen')
             }}
             value={registerData.zipcode || ''}
             onChange={() => {}}
@@ -31,7 +31,7 @@ export default function AddressField() {
           />
           <Button
             onClick={() => {
-              setIsSearchAddressModalOpen(isSearchAddressModalOpen)
+              toggleModal('isSearchAddressModalOpen')
             }}
             size={'lg'}
             variant={'primary'}
@@ -44,7 +44,7 @@ export default function AddressField() {
         {/* 주소 입력 */}
         <TextInput
           onClick={() => {
-            setIsSearchAddressModalOpen(isSearchAddressModalOpen)
+            toggleModal('isSearchAddressModalOpen')
           }}
           value={registerData.address1 || ''}
           onChange={() => {}}

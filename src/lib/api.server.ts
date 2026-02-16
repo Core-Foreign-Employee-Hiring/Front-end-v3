@@ -67,6 +67,7 @@ export const apiFetchServer = async (
     console.log('🔄 Token expired, attempting to refresh...')
 
     const refreshResult = await refreshAccessTokenServer()
+
     console.log('refresh result', refreshResult)
 
     if (refreshResult.success && refreshResult.accessToken) {

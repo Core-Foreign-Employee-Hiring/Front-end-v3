@@ -11,11 +11,11 @@ interface ActionButtonsProps {
 }
 
 export default function ActionButtons({ applicationMethod, directInputApplicationMethod }: ActionButtonsProps) {
-  const { isApplicationMethodModalOpen, setIsApplicationMethodModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
 
   return (
     <div>
-      {isApplicationMethodModalOpen && (
+      {modals.isApplicationMethodModalOpen && (
         <ApplicationMethodModal
           directInputApplicationMethod={directInputApplicationMethod}
           applicationMethod={applicationMethod}
@@ -23,7 +23,7 @@ export default function ActionButtons({ applicationMethod, directInputApplicatio
       )}
       <Button
         onClick={() => {
-          setIsApplicationMethodModalOpen(isApplicationMethodModalOpen)
+          toggleModal('isApplicationMethodModalOpen')
         }}
       >
         지원하기

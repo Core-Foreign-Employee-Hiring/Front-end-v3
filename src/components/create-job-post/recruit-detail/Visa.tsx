@@ -10,7 +10,7 @@ import { getVisaLabel } from '@/utils/filterList'
 import { useTranslation } from 'react-i18next'
 
 export default function Visa() {
-  const { isVisaModalOpen, setIsVisaModalOpen } = useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
   const [selectedVisas, setSelectedVisas] = useState<VisaType[] | undefined>(undefined)
   const { updateCreateJobPost, createJobPost } = useCreateJobPostStore((state) => state)
 
@@ -45,12 +45,12 @@ export default function Visa() {
   }
 
   const onClose = () => {
-    setIsVisaModalOpen(isVisaModalOpen)
+    toggleModal('isVisaModalOpen')
   }
 
   return (
     <div>
-      {isVisaModalOpen && (
+      {modals.isVisaModalOpen && (
         <VisaModal
           addVisas={addVisas}
           deleteVisas={deleteVisas}

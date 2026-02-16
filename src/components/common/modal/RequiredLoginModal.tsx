@@ -7,11 +7,11 @@ interface RequiredLoginModalProps {
 }
 
 export default function RequiredLoginModal({ lang }: RequiredLoginModalProps) {
-  const { isRequiredLoginModalOpen, setIsRequiredLoginModalOpen } = useModalStore((state) => state)
+  const { modals, setModal } = useModalStore((state) => state)
   const router = useRouter()
 
   return (
-    <Modal mobileHidden={false} isOpen={isRequiredLoginModalOpen}>
+    <Modal mobileHidden={false} isOpen={modals.isRequiredLoginModalOpen}>
       <Modal.Header>
         <Label label={'로그인이 필요한 서비스입니다.'} />
       </Modal.Header>
@@ -20,7 +20,7 @@ export default function RequiredLoginModal({ lang }: RequiredLoginModalProps) {
           <Button
             onClick={() => {
               router.push(`/${lang}/login`)
-              setIsRequiredLoginModalOpen(false)
+              setModal('isRequiredLoginModalOpen', false)
             }}
             variant={'primary'}
           >
