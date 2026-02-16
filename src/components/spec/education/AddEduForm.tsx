@@ -1,6 +1,5 @@
 'use client'
 
-import { DeleteIcon } from '@/assets/svgComponents'
 import { Button, Label, Spacing } from '@/components/common'
 import { EduDuration, EduGrades, EduMajor, EduSchool } from '@/components/spec'
 import { useSpecStore } from '@/store/specStore'
@@ -15,7 +14,7 @@ interface AddEduFormProps {
 }
 
 export default function AddEduForm({ educationData, onClose }: AddEduFormProps) {
-  const { removeEducation, education } = useSpecStore((state) => state)
+  const { removeEducation, education, setEducation } = useSpecStore((state) => state)
   const { isActive } = useSpecEducation()
   const router = useRouter()
 
@@ -28,7 +27,7 @@ export default function AddEduForm({ educationData, onClose }: AddEduFormProps) 
     try {
       if (isEditMode) {
         // 1. 수정 모드일 때 (PUT 또는 PATCH)
-        const result = await putSpecEducation(1, education) // 수정 API 호출
+        const result = await putSpecEducation(`${education.educationId}`, education) // 수정 API 호출
         console.log('교육 데이터 수정 완료', result)
         if (result.success) {
           onClose()
@@ -67,14 +66,20 @@ export default function AddEduForm({ educationData, onClose }: AddEduFormProps) 
             </Button>
             <Button
               onClick={() => {
-                removeEducation()
+                if (isEditMode) {
+                  setEducation(educationData)
+                  onClose()
+                } else {
+                  removeEducation()
+                  onClose()
+                }
+                onClose()
               }}
-              leftIcon={<DeleteIcon width={20} height={20} />}
               customClassName={'w-fit'}
               variant={'outline'}
               size={'md'}
             >
-              삭제
+              취소
             </Button>
           </div>
         }

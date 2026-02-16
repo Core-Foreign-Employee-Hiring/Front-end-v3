@@ -3,14 +3,25 @@
 import { Button, Label, Spacing, TextInput } from '@/components/common'
 import { SpecLanguageSkillType } from '@/types/spec'
 import { useSpecStore } from '@/store/specStore'
+import { putSpecLanguageSkills } from '@/lib/client/spec/language'
+import { useRouter } from 'next/navigation'
 
-interface AddLangFormProps {
+interface EditLangFormProps {
   languageSkill: SpecLanguageSkillType
   toggleState: () => void
-  index?: number // 새로 생성한다면 languageSkills의 index값을 찾기 위해
+  languageSkillsData: SpecLanguageSkillType[] | null | undefined
 }
-export default function AddLangForm({ languageSkill, toggleState, index }: AddLangFormProps) {
-  const { updateLanguageSkill, removeLanguageSkill } = useSpecStore((state) => state)
+export default function EditLangForm({ languageSkill, toggleState, languageSkillsData }: EditLangFormProps) {
+  const router = useRouter()
+  const { updateEditLanguageSkill, setEditLanguageSkills } = useSpecStore((state) => state)
+
+  const handleSave = async () => {
+    const result = await putSpecLanguageSkills(`${languageSkill.languageSkillId}`, languageSkill)
+    if (result.success) {
+      router.refresh()
+      toggleState()
+    }
+  }
 
   return (
     <div className="border-gray2 rounded-[12px] border p-5">
@@ -20,9 +31,9 @@ export default function AddLangForm({ languageSkill, toggleState, index }: AddLa
         rightElement={
           <Button
             onClick={() => {
-              if (typeof index === 'number') {
-                removeLanguageSkill(index)
-                toggleState()
+              toggleState()
+              if (languageSkillsData) {
+                setEditLanguageSkills(languageSkillsData)
               }
             }}
             customClassName={'w-fit'}
@@ -38,8 +49,9 @@ export default function AddLangForm({ languageSkill, toggleState, index }: AddLa
       <div className="flex gap-x-4">
         <TextInput
           onChange={(e) => {
-            if (typeof index === 'number') {
-              updateLanguageSkill(index, {
+            if (languageSkill.languageSkillId) {
+              updateEditLanguageSkill(languageSkill.languageSkillId, {
+                languageSkillId: languageSkill.languageSkillId,
                 title: e.target.value,
                 score: languageSkill.score,
               })
@@ -52,8 +64,9 @@ export default function AddLangForm({ languageSkill, toggleState, index }: AddLa
         <TextInput
           value={languageSkill.score}
           onChange={(e) => {
-            if (typeof index === 'number') {
-              updateLanguageSkill(index, {
+            if (languageSkill.languageSkillId) {
+              updateEditLanguageSkill(languageSkill.languageSkillId, {
+                languageSkillId: languageSkill.languageSkillId,
                 title: languageSkill.title,
                 score: e.target.value,
               })
@@ -64,6 +77,11 @@ export default function AddLangForm({ languageSkill, toggleState, index }: AddLa
         />
       </div>
       <Spacing height={24} />
+      <div className="flex w-full justify-end">
+        <Button onClick={handleSave} size={'md'} customClassName={'w-[160px]'}>
+          수정
+        </Button>
+      </div>
     </div>
   )
 }

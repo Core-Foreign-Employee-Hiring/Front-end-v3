@@ -13,7 +13,7 @@ import { SpecType } from '@/types/spec'
 
 function FindSpecProcessStepSwitcher({ step, specData }: { step: StepType; specData: SpecType | undefined }) {
   if (step === '1') return <SpecEducation educationData={specData?.education} />
-  if (step === '2') return <SpecLanguage />
+  if (step === '2') return <SpecLanguage languageSkillsData={specData?.languageSkills} />
   if (step === '3') return <SpecCertification />
   if (step === '4') return <SpecCareer />
   if (step === '5') return <SpecActivity />

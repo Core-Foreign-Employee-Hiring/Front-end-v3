@@ -16,11 +16,18 @@ export default function EducationItem({ education, onEdit }: EducationItemProps)
     <div className="border-gray2 flex justify-between gap-x-[20px] rounded-[12px] border p-5">
       <section className="flex flex-col gap-y-2">
         <Label label={education.schoolName} type={'subtitleLg'} />
-        {education.majors.map((major) => (
-          <p key={major} className="kr-body-md text-gray5">
-            {major}
-          </p>
-        ))}
+        <div className="flex gap-x-1">
+          {education.majors.map((major, index) => {
+            const isLast = index === education.majors.length - 1
+            return (
+              <p key={major} className="kr-body-md text-gray5">
+                {major}
+                {isLast ? '' : ','}
+              </p>
+            )
+          })}
+        </div>
+
         <p className="kr-body-md text-gray5">
           {education.earnedScore}/{education.maxScore}
         </p>
@@ -35,7 +42,7 @@ export default function EducationItem({ education, onEdit }: EducationItemProps)
         </Button>
         <Button
           onClick={async () => {
-            const result = await deleteSpecEducation(1)
+            const result = await deleteSpecEducation(`${education.educationId}`)
             if (result.success) {
               router.refresh()
             }
