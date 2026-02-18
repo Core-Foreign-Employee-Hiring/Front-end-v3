@@ -43,8 +43,8 @@ export default function Footer() {
 
         <section className="desktop:w-[250px] tablet:w-[250px] desktop:flex kr-body-sm text-gray4 hidden flex-col gap-y-3">
           <div>고객센터</div>
-          <div>010-0000-0000</div>
-          <div>00000@gmail.com</div>
+          <div>010-7557-9217</div>
+          <div>hske3602@naver.com</div>
           <div>민원접수</div>
           <div className="">© 2026 KORFIT. All rights reserved</div>
         </section>
