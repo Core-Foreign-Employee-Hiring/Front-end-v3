@@ -45,6 +45,7 @@ export default async function SpecPage({
   ]
 
   const resumeResult = await fetchResumeList(0, 20)
+  console.log('resumeResult', resumeResult)
 
   return (
     <main>

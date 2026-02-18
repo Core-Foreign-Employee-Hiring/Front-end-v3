@@ -4,6 +4,7 @@ import { Button, Label } from '@/components/common'
 import { SpecEducationType } from '@/types/spec'
 import { useRouter } from 'next/navigation'
 import { deleteSpecEducation } from '@/lib/client/spec/education'
+import { DeleteIcon, EditIcon } from '@/assets/svgComponents'
 
 interface EducationItemProps {
   education: SpecEducationType
@@ -36,7 +37,7 @@ export default function EducationItem({ education, onEdit }: EducationItemProps)
         </p>
       </section>
 
-      <section className="flex gap-x-2">
+      <section className="desktop:flex tablet:flex hidden shrink-0 gap-x-2 whitespace-nowrap">
         <Button onClick={onEdit} customClassName={'w-fit'} variant={'outline'} size={'sm'}>
           수정
         </Button>
@@ -53,6 +54,28 @@ export default function EducationItem({ education, onEdit }: EducationItemProps)
         >
           삭제
         </Button>
+      </section>
+
+      <section className="desktop:hidden tablet:hidden flex shrink-0 gap-x-2 whitespace-nowrap">
+        <Button
+          leftIcon={<EditIcon width={24} height={24} />}
+          customClassName="w-[36px]"
+          onClick={onEdit}
+          variant={'outline'}
+          size={'sm'}
+        />
+        <Button
+          onClick={async () => {
+            const result = await deleteSpecEducation(`${education.educationId}`)
+            if (result.success) {
+              router.refresh()
+            }
+          }}
+          leftIcon={<DeleteIcon width={24} height={24} />}
+          customClassName="w-[36px]"
+          variant={'outline'}
+          size={'sm'}
+        />
       </section>
     </div>
   )

@@ -1,0 +1,6 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgEditIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 24 24" {...props}><mask id="edit-icon_svg__a" width={24} height={24} x={0} y={0} maskUnits="userSpaceOnUse" style={{
+    maskType: "alpha"
+  }}><path fill="#D9D9D9" d="M0 0h24v24H0z" /></mask><g mask="url(#edit-icon_svg__a)"><path fill="#6F717C" d="M3.5 24a1.45 1.45 0 0 1-1.057-.438A1.44 1.44 0 0 1 2 22.5q0-.613.443-1.056A1.44 1.44 0 0 1 3.5 21h17q.613 0 1.057.439.443.438.443 1.061 0 .615-.443 1.057A1.44 1.44 0 0 1 20.5 24zM6 16.414h1.237l8.3-8.285-.63-.638-.622-.614L6 15.177zm-1.5.596v-2.094q0-.181.06-.344a.85.85 0 0 1 .202-.304L15.71 3.345q.217-.217.493-.33.276-.11.57-.11.304 0 .578.11.274.113.507.345l1.201 1.217q.234.217.337.496.105.279.104.583 0 .279-.104.555a1.4 1.4 0 0 1-.337.509L8.137 17.643a.9.9 0 0 1-.303.205.9.9 0 0 1-.344.066H5.404a.88.88 0 0 1-.645-.259.88.88 0 0 1-.259-.645m11.037-8.881-.63-.638-.622-.614z" /></g></svg>;
+export default SvgEditIcon;

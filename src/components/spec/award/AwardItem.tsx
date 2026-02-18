@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { SpecAwardType } from '@/types/spec'
 import { deleteSpecAwards } from '@/lib/client/spec/award'
+import { DeleteIcon, EditIcon } from '@/assets/svgComponents'
 
 interface AwardItemProps {
   award: SpecAwardType
@@ -29,47 +30,72 @@ export default function AwardItem({ award, toggleFormOpenState }: AwardItemProps
   }, [award.documentUrl]) // URL이 바뀔 때마다 다시 계산
 
   return (
-    <div className="border-gray2 flex items-start justify-between gap-x-[20px] rounded-[12px] border p-5">
-      <section className="flex w-full flex-col gap-y-2">
-        <Label label={award.awardName} type={'subtitleLg'} />
-        <div className="kr-body-sm text-gray4 flex gap-x-1">
-          <p>{award.acquiredDate}</p>
-          <p>|</p>
-          <p>{award.host}</p>
-        </div>
-        <p className="kr-body-md text-gray5">{award.description}</p>
+    <div className="border-gray2 flex flex-col gap-y-2 rounded-[12px] border p-5">
+      <div className="flex items-start justify-between gap-x-[20px]">
+        <section className="flex w-full flex-col gap-y-2">
+          <Label label={award.awardName} type={'subtitleLg'} />
+          <div className="kr-body-sm text-gray4 flex gap-x-1">
+            <p>{award.acquiredDate}</p>
+            <p>|</p>
+            <p>{award.host}</p>
+          </div>
+        </section>
 
-        {award.documentUrl ? (
-          <section className="border-gray2 flex gap-x-2 rounded-[10px] border p-3">
-            <div className="relative h-[44px] w-[44px]">
-              <Image alt={'이미지'} fill src={award.documentUrl as string} className="rounded-[3px] object-cover" />
-            </div>
-            <div className="flex flex-col gap-y-2">
-              <p className="kr-body-md">{getFileNameFromUrl(award.documentUrl as string)}</p>
-              <p className="kr-small text-gray4">{fileSize}</p>
-            </div>
-          </section>
-        ) : null}
-      </section>
+        <section className="desktop:flex tablet:flex hidden shrink-0 gap-x-2 whitespace-nowrap">
+          <Button onClick={toggleFormOpenState} size={'sm'} variant={'outline'} customClassName="w-fit">
+            수정
+          </Button>
+          <Button
+            onClick={async () => {
+              const result = await deleteSpecAwards(`${award.awardId}`)
+              if (result.success) {
+                router.refresh()
+              }
+            }}
+            size={'sm'}
+            variant={'outline'}
+            customClassName="w-fit"
+          >
+            삭제
+          </Button>
+        </section>
 
-      <section className="flex shrink-0 gap-x-2 whitespace-nowrap">
-        <Button onClick={toggleFormOpenState} size={'sm'} variant={'outline'} customClassName="w-fit">
-          수정
-        </Button>
-        <Button
-          onClick={async () => {
-            const result = await deleteSpecAwards(`${award.awardId}`)
-            if (result.success) {
-              router.refresh()
-            }
-          }}
-          size={'sm'}
-          variant={'outline'}
-          customClassName="w-fit"
-        >
-          삭제
-        </Button>
-      </section>
+        <section className="desktop:hidden tablet:hidden flex shrink-0 gap-x-2 whitespace-nowrap">
+          <Button
+            leftIcon={<EditIcon width={24} height={24} />}
+            onClick={toggleFormOpenState}
+            size={'sm'}
+            variant={'outline'}
+            customClassName="w-[36px]"
+          />
+          <Button
+            leftIcon={<DeleteIcon width={24} height={24} />}
+            onClick={async () => {
+              const result = await deleteSpecAwards(`${award.awardId}`)
+              if (result.success) {
+                router.refresh()
+              }
+            }}
+            size={'sm'}
+            variant={'outline'}
+            customClassName="w-[36px]"
+          />
+        </section>
+      </div>
+
+      <p className="kr-body-md text-gray5">{award.description}</p>
+
+      {award.documentUrl ? (
+        <section className="border-gray2 flex gap-x-2 rounded-[10px] border p-3">
+          <div className="relative h-[44px] w-[44px]">
+            <Image alt={'이미지'} fill src={award.documentUrl as string} className="rounded-[3px] object-cover" />
+          </div>
+          <div className="flex flex-col gap-y-2">
+            <p className="kr-body-md">{getFileNameFromUrl(award.documentUrl as string)}</p>
+            <p className="kr-small text-gray4">{fileSize}</p>
+          </div>
+        </section>
+      ) : null}
     </div>
   )
 }
