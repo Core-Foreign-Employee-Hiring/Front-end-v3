@@ -99,7 +99,7 @@ export default function JobRoleModal({
                     jobCategory.code === selectedCategory
                       ? 'border-main-500 bg-main-100 text-main-500 rounded-[12px] border'
                       : ''
-                  } badge-sm text-gray5 flex h-[36px] w-full flex-shrink cursor-pointer items-center justify-center py-3 whitespace-nowrap transition hover:opacity-80`}
+                  } kr-button text-gray5 flex h-[36px] w-full flex-shrink cursor-pointer items-center justify-center py-3 whitespace-nowrap transition hover:opacity-80`}
                   key={jobCategory.code}
                 >
                   {t(jobCategory.label)}
@@ -116,7 +116,7 @@ export default function JobRoleModal({
                     <button
                       type="button"
                       onClick={() => addJobRoles(jobRole.code)}
-                      className={`badge-sm text-gray5 flex h-[36px] w-full cursor-pointer items-center justify-between rounded-[8px] px-2 py-3 text-start whitespace-nowrap transition hover:opacity-80 ${
+                      className={`kr-button text-gray5 flex h-[36px] w-full cursor-pointer items-center justify-between rounded-[8px] px-2 py-3 text-start whitespace-nowrap transition hover:opacity-80 ${
                         searchQuery && filteredRoles.some((role) => role.code === jobRole.code) ? 'bg-yellow-50' : ''
                       }`}
                       key={jobRole.code}
@@ -140,7 +140,7 @@ export default function JobRoleModal({
                 onClick={() => deleteJobRoles(selectedJobRole)}
                 type="button"
                 key={selectedJobRole}
-                className="border-gray3 bg-gray1 badge-sm text-gray5 flex cursor-pointer items-center rounded-full border px-3 py-2 whitespace-nowrap transition hover:opacity-80"
+                className="border-gray3 bg-gray1 kr-badge-sm text-gray5 flex cursor-pointer items-center rounded-full border px-3 py-2 whitespace-nowrap transition hover:opacity-80"
               >
                 {t(getJobRoleLabel(selectedJobRole))}
                 <Gray5XIcon width={20} height={20} />

@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { JobCategoryType, JobRoleType } from '@/types/job-post'
 import { useTranslation } from 'react-i18next'
 import { useFilterStore } from '@/store/filterStore'
+import MobileJobRoleModal from '@/components/common/modal/mobile/MobileJobRoleModal'
 
 export default function JobRoleFilter() {
   const { toggleModal, modals } = useModalStore((state) => state)
@@ -55,6 +56,17 @@ export default function JobRoleFilter() {
     <div>
       {modals.isJobRoleModalOpen && (
         <JobRoleModal
+          selectedJobRoles={selectedJobRoles}
+          deleteJobRoles={deleteJobRoles}
+          setSelectedJobCategory={setSelectedJobCategory}
+          addJobRoles={addJobRoles}
+          onReset={onReset}
+          onApply={onApply}
+          selectedCategory={selectedJobCategory}
+        />
+      )}
+      {modals.isJobRoleModalOpen && (
+        <MobileJobRoleModal
           selectedJobRoles={selectedJobRoles}
           deleteJobRoles={deleteJobRoles}
           setSelectedJobCategory={setSelectedJobCategory}
