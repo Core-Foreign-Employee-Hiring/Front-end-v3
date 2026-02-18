@@ -29,7 +29,7 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
   }, [experiencesData])
 
   const navigateToStep = (step: StepType) => {
-    router.push(`${pathname}?step=${encodeURIComponent(step)}`)
+    router.push(`${pathname}?tab=spec&step=${encodeURIComponent(step)}`)
   }
 
   const handlePrev = () => navigateToStep('5')

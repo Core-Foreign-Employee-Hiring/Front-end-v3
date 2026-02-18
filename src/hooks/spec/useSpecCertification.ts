@@ -15,7 +15,7 @@ export default function useSpecCertification() {
 
   // 1. 단계 이동 공통 함수
   const navigateToStep = (step: StepType) => {
-    router.push(`${pathname}?step=${encodeURIComponent(step)}`)
+    router.push(`${pathname}?tab=spec&step=${encodeURIComponent(step)}`)
   }
 
   // 2. 자격증 추가 핸들러

@@ -15,7 +15,7 @@ export default function useSpecCareer() {
 
   // 1. 단계 이동 로직
   const navigateToStep = (step: StepType) => {
-    router.push(`${pathname}?step=${encodeURIComponent(step)}`)
+    router.push(`${pathname}?tab=spec&step=${encodeURIComponent(step)}`)
   }
 
   // 2. 경력 추가 로직
