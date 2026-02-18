@@ -1,12 +1,13 @@
 import { ResumeEducationType } from '@/types/resume'
 
 interface EducationItemProps {
+  isLast: boolean
   education: ResumeEducationType | undefined
 }
 
-export default function EducationItem({ education }: EducationItemProps) {
+export default function EducationItem({ isLast, education }: EducationItemProps) {
   return (
-    <div className="flex w-full flex-col items-start gap-y-2">
+    <div className={`${isLast ? '' : 'border-gray2 border-b pb-[24px]'} flex w-full flex-col items-start gap-y-2`}>
       <div className="desktop:flex-row tablet:flex-row tablet:justify-between desktop:justify-between desktop:items-start tablet:items-start flex w-full flex-col gap-y-2">
         <div className="flex flex-col gap-y-2">
           <p className="desktop:kr-title-md tablet:kr-title-md kr-subtitle-lg">{education?.schoolName}</p>

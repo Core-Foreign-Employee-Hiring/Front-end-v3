@@ -9,7 +9,7 @@ interface LanguageSkillsVer1Props {
 export default function LanguageSkillsVer1({ languageSkills }: LanguageSkillsVer1Props) {
   return (
     <div className="desktop:flex-row tablet:flex-row flex w-full flex-col gap-x-[20px] gap-y-[20px] border-b-[2px] border-black py-[40px]">
-      <div className="kr-title-md w-[200px] shrink-0 whitespace-nowrap">어학능력</div>
+      <div className="kr-title-md w-[200px] shrink-0">어학능력</div>
       <div className="flex w-full flex-col gap-y-[24px]">
         {languageSkills?.map((languageSkill, index) => {
           const isLastIndex = languageSkills?.length - 1 === index

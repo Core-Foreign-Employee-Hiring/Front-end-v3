@@ -20,11 +20,11 @@ export default function AchievementItem({
       <div className="tablet:justify-between desktop:flex-row tablet:flex-row desktop:justify-between flex flex-col items-start gap-y-2">
         <div className="tablet:flex-row desktop:flex-row flex flex-col items-center gap-x-2 gap-y-2">
           <p className="desktop:kr-title-md kr-subtitle-lg tablet:kr-title-md">{title}</p>
-          {beforeImprovementRate && afterImprovementRate && (
+          {beforeImprovementRate && afterImprovementRate ? (
             <Badge
               leftIcon={<Main500FireIcon width={12} height={13} />}
             >{`개선률 ${beforeImprovementRate} -> ${afterImprovementRate}`}</Badge>
-          )}
+          ) : null}
         </div>
         <p className="tablet:kr-body-sm desktop:kr-body-sm kr-small text-gray5">{date}</p>
       </div>

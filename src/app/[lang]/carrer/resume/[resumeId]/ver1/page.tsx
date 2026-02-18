@@ -34,7 +34,7 @@ export default async function ResumeVer1Page({ params }: { params: Promise<{ lan
           <PageLayout>
             {resumeData.careers.length !== 0 && <WorkExperienceVer1 careers={resumeData.careers} />}
             {resumeData.educations.length !== 0 && <EducationVer1 educations={resumeData.educations} />}
-            {resumeData.awards.length !== 0 && resumeData.experiences.length !== 0 ? null : (
+            {(resumeData.awards.length > 0 || resumeData.experiences.length > 0) && (
               <AchievementsVer1 awards={resumeData.awards} experiences={resumeData.experiences} />
             )}
             {resumeData.certifications.length !== 0 && (

@@ -1,3 +1,5 @@
+import { ContractEnumType } from '@/types/spec'
+
 export interface CreateResumeType {
   resumeName: string
   template: string
@@ -79,7 +81,7 @@ export interface ResumeCareerType {
   position: string
   startDate: string
   endDate: string
-  contractType: string
+  contractType: ContractEnumType
   highlight: string
 }
 export interface ResumeLanguageSkillType {

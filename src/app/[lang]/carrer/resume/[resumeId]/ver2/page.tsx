@@ -1,5 +1,5 @@
 import { fetchResumeResult } from '@/lib/server/resume'
-import { Header, Loading, PageLayout, Spacing } from '@/components/common'
+import { Header, Loading, Spacing } from '@/components/common'
 import BottomButton from '@/components/resume/template/BottomButton'
 import IntroVer2 from '@/components/resume/template/ver2/IntroVer2'
 import WorkExperienceVer2 from '@/components/resume/template/ver2/WorkExperienceVer2'
@@ -16,13 +16,16 @@ export default async function ResumeVer2Page({ params }: { params: Promise<{ lan
   const resumeData = result.data
 
   if (!resumeData) {
-    return <Loading size={'lg'} />
+    return (
+      <>
+        <Loading size={'lg'} />
+        <AuthWatcher results={[result]} />
+      </>
+    )
   }
 
   return (
     <main>
-      <AuthWatcher results={[result]} />
-
       <Header headerType={'default'} currentLng={lang} />
       <div id="resume-print-area">
         <div className="w-full">
@@ -31,10 +34,10 @@ export default async function ResumeVer2Page({ params }: { params: Promise<{ lan
             profileImageUrl={resumeData.profileImageUrl}
             introduction={resumeData.introduction}
           />
-          <PageLayout>
+          <div className="tablet:px-[32px] desktop:px-[40px] px-[20px]">
             {resumeData.careers.length !== 0 && <WorkExperienceVer2 careers={resumeData.careers} />}
             {resumeData.educations.length !== 0 && <EducationVer2 educations={resumeData.educations} />}
-            {resumeData.awards.length !== 0 && resumeData.experiences.length !== 0 ? null : (
+            {(resumeData.awards.length > 0 || resumeData.experiences.length > 0) && (
               <AchivementsVer2 awards={resumeData.awards} experiences={resumeData.experiences} />
             )}
             {resumeData.certifications.length !== 0 && (
@@ -44,7 +47,7 @@ export default async function ResumeVer2Page({ params }: { params: Promise<{ lan
               <LanguageSkillsVer2 languageSkills={resumeData.languageSkills} />
             )}
             {resumeData.urls.length !== 0 && <URLsVer2 urls={resumeData.urls} />}
-          </PageLayout>
+          </div>
         </div>
       </div>
 

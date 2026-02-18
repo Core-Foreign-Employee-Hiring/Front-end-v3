@@ -59,6 +59,7 @@ export default function IntroVer2({ profileImageUrl, introduction, memberBasicIn
           {introduction}
         </p>
       ) : null}
+      <div className="border-b-[2px] border-black" />
     </div>
   )
 }
