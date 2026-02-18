@@ -20,7 +20,7 @@ export default function ResumeItem({ lang, title, createdAt, modifiedAt, resumeI
       onClick={() => {
         router.push(`/${lang}/carrer/resume/${resumeId}/ver1`)
       }}
-      className="border-gray2 flex items-center justify-between rounded-[12px] border p-5"
+      className="border-gray2 hover:border-gray3 flex cursor-pointer items-center justify-between rounded-[12px] border p-5 transition"
     >
       <ResumeItemContent title={title} createdAt={createdAt} modifiedAt={modifiedAt} id={resumeId} />
       <ResumeButtons resumeId={resumeId} />

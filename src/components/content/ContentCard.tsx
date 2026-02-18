@@ -20,7 +20,7 @@ export default function ContentCard({
       onClick={() => {
         router.push(`/content/${passArchiveId}`)
       }}
-      className="flex shrink-0 flex-col gap-y-3"
+      className="flex shrink-0 cursor-pointer flex-col gap-y-3"
     >
       <div className="relative h-[164px] w-full">
         <Image alt={'콘텐츠 사진'} src={thumbnailUrl} fill className="rounded-[16px] object-cover" />
