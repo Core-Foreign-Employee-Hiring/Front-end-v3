@@ -153,19 +153,28 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
         </Link>
 
         <nav className="desktop:flex hidden gap-x-10">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`kr-title-sm transition-colors ${
-                currentPath === item.href
-                  ? 'text-main-500 hover:text-main-300'
-                  : 'hover:text-main-400 hover:text-gray5 text-black'
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            // 1. item.href와 currentPath에서 쿼리 스트링(?) 부분을 제외한 순수 경로만 추출합니다.
+            const pureItemPath = item.href.split('?')[0]
+            const pureCurrentPath = currentPath.split('?')[0]
+
+            // 2. 홈('/')인 경우와 그 외의 경로를 구분하여 활성화 여부를 결정합니다.
+            const isActive =
+              pureItemPath === `/${currentLng}`
+                ? pureCurrentPath === pureItemPath
+                : pureCurrentPath.startsWith(pureItemPath)
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`kr-title-sm transition-colors ${
+                  isActive ? 'text-main-500 hover:text-main-300' : 'hover:text-main-400 hover:text-gray5 text-black'
+                }`}
+              >
+                {item.label}
+              </Link>
+            )
+          })}
         </nav>
       </section>
 
@@ -202,6 +211,7 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
               }}
               width={24}
               height={24}
+              className={'desktop:hidden'}
             />
           ) : (
             <MenuIcon
@@ -210,6 +220,7 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
               }}
               width={24}
               height={24}
+              className={'desktop:hidden'}
             />
           )}
         </div>
