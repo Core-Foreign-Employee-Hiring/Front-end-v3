@@ -13,7 +13,11 @@ export default function ResumePreviewModal({ type }: ResumePreviewModalProps) {
   }
 
   return (
-    <Modal mobileHidden={false} isOpen={modals.isResumePreviewModalOpen}>
+    <Modal
+      customClassName={'desktop:w-[860px] tablet:w-[682px] w-[335px]'}
+      mobileHidden={false}
+      isOpen={modals.isResumePreviewModalOpen}
+    >
       <Modal.Header>
         <div className="flex flex-col gap-y-2">
           <Label label={'이력서 미리보기'} type={'titleLg'} />

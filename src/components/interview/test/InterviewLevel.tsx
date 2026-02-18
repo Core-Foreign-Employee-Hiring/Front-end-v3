@@ -19,7 +19,7 @@ export default function InterviewLevel() {
     { content: '경력', enum: 'experienced' },
   ]
   return (
-    <div className="w-full">
+    <div className="w-full whitespace-nowrap">
       <Label isRequired={true} label={'지원 레벨'} />
       <Spacing height={8} />
       <DropDown
