@@ -39,7 +39,7 @@ export default function MobileRegionModal({
   return (
     <div className="desktop:hidden tablet:hidden fixed inset-0 z-80 flex h-full w-full flex-col gap-y-[24px] overflow-y-auto bg-white p-5">
       <section className="flex items-center justify-between">
-        <Label label={'직무 선택'} type={'titleMd'} />
+        <Label label={'지역 선택'} type={'titleMd'} />
         <Gray5XIcon className="cursor-pointer" onClick={onClose} width={24} height={24} />
       </section>
       <div className="flex flex-col gap-y-4">
