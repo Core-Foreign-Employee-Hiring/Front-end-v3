@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { LanguageType } from '@/types/job-post'
 import { useTranslation } from 'react-i18next'
 import { useFilterStore } from '@/store/filterStore'
+import MobileLanguageModal from '@/components/common/modal/mobile/MobileLanguageModal'
 
 export default function LanguageFilter() {
   const { modals, toggleModal } = useModalStore((state) => state)
@@ -50,6 +51,15 @@ export default function LanguageFilter() {
     <div>
       {modals.isLanguageModalOpen && (
         <LanguageModal
+          addLanguages={addLanguages}
+          onReset={onReset}
+          deleteLanguages={deleteLanguages}
+          selectedLanguages={selectedLanguages}
+          onApply={onApply}
+        />
+      )}
+      {modals.isLanguageModalOpen && (
+        <MobileLanguageModal
           addLanguages={addLanguages}
           onReset={onReset}
           deleteLanguages={deleteLanguages}
