@@ -10,14 +10,13 @@ import { useResumeStore } from '@/store/resumeStore'
 import { postResume } from '@/lib/client/resume'
 
 export default function CreateResumeModal() {
-  const { isCreateResumeModalOpen, setIsCreateResumeModalOpen, isInfoPickerModalOpen, setIsInfoPickerModalOpen } =
-    useModalStore((state) => state)
+  const { modals, toggleModal } = useModalStore((state) => state)
   const { createResume, resumeProfileFile, selectedType, setCreateResumeResponse } = useResumeStore((state) => state)
 
   const [currentStep, setCurrentStep] = useState<'1' | '2'>('1')
 
   const onClose = () => {
-    setIsCreateResumeModalOpen(isCreateResumeModalOpen)
+    toggleModal('isCreateResumeModalOpen')
   }
   const steps = [
     { stepLabel: '이력서 내용 입력', stepNumber: '1' },
@@ -26,7 +25,7 @@ export default function CreateResumeModal() {
   return (
     <Modal
       customClassName={'desktop:w-[860px] tablet:w-[680px] w-[335px]'}
-      isOpen={isCreateResumeModalOpen}
+      isOpen={modals.isCreateResumeModalOpen}
       onClose={onClose}
     >
       <Modal.Header>
@@ -43,7 +42,7 @@ export default function CreateResumeModal() {
         <>
           <Button
             onClick={() => {
-              setIsCreateResumeModalOpen(isCreateResumeModalOpen)
+              toggleModal('isCreateResumeModalOpen')
             }}
             variant={'outline'}
             size={'lg'}
@@ -57,7 +56,7 @@ export default function CreateResumeModal() {
                 const result = await postResume(createResume, resumeProfileFile)
                 if (result) {
                   onClose()
-                  setIsInfoPickerModalOpen(isInfoPickerModalOpen)
+                  toggleModal('isInfoPickerModalOpen')
                   setCreateResumeResponse(result)
                 }
               } else {

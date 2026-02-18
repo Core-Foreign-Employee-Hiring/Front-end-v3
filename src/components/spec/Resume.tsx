@@ -18,24 +18,23 @@ interface ResumeProps {
 }
 
 export default function Resume({ lang, resumeList }: ResumeProps) {
-  const { isCreateResumeModalOpen, isInfoPickerModalOpen, isNotUseResumeService, setIsNotUseResumeService } =
-    useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
 
   useEffect(() => {
     clientFetchSpecData().then((res) => {
       if (!res.success) {
-        setIsNotUseResumeService(isNotUseResumeService)
+        toggleModal('isNotUseResumeService')
       }
     })
   }, [])
 
   return (
     <div>
-      {isNotUseResumeService && <NotUseResumeServiceModal lang={lang} />}
-      {isCreateResumeModalOpen && <CreateResumeModal />}
-      {isCreateResumeModalOpen && <MobileCreateResumeModal lang={lang} />}
+      {modals.isNotUseResumeService && <NotUseResumeServiceModal lang={lang} />}
+      {modals.isCreateResumeModalOpen && <CreateResumeModal />}
+      {modals.isCreateResumeModalOpen && <MobileCreateResumeModal lang={lang} />}
 
-      {isInfoPickerModalOpen && <InfoPickerModal />}
+      {modals.isInfoPickerModalOpen && <InfoPickerModal />}
       <Label label={'이력서'} type={'titleMd'} rightElement={<AddResumeButton />} />
       <Spacing height={12} />
       <div className="flex flex-col gap-y-3">

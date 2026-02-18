@@ -14,9 +14,9 @@ export default function InfoPickerModal() {
   const onNavigate = (resumeId: number) => {
     router.push(`/carrer/resume/${resumeId}/${selectedType}`)
   }
-  const { isInfoPickerModalOpen, setIsInfoPickerModalOpen } = useModalStore((state) => state)
+  const { modals, toggleModal } = useModalStore((state) => state)
   const onClose = () => {
-    setIsInfoPickerModalOpen(isInfoPickerModalOpen)
+    toggleModal('isInfoPickerModalOpen')
   }
 
   return (
@@ -24,7 +24,7 @@ export default function InfoPickerModal() {
       mobileHidden={false}
       customClassName={'desktop:w-[860px] tablet:w-[680px] w-[335px]'}
       onClose={onClose}
-      isOpen={isInfoPickerModalOpen}
+      isOpen={modals.isInfoPickerModalOpen}
     >
       <Modal.Header>
         <div className="flex flex-col gap-y-2">

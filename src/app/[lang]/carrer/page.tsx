@@ -6,7 +6,7 @@ import { fetchResumeList } from '@/lib/server/resume'
 import { ResumeListType } from '@/types/resume'
 import AuthWatcher from '@/components/auth/AuthWatcher'
 
-export type StepType = '1' | '2' | '3' | '4' | '5'
+export type StepType = '1' | '2' | '3' | '4' | '5' | '6'
 export type TabType = 'spec' | 'resume'
 
 function FindCarrerStepSwitcher({

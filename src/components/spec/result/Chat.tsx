@@ -22,7 +22,7 @@ export default function Chat({ specResult }: ChatProps) {
         keys={['value']}
         colors={['#3B3DFF']}
         indexBy="label"
-        maxValue="auto"
+        maxValue={100}
         gridShape="linear"
         dotBorderColor={{ theme: 'background' }}
         dotColor={{ theme: 'background' }}

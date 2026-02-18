@@ -21,10 +21,10 @@ interface NavBarProps {
 }
 
 export default function NavBar({ path, lang }: NavBarProps) {
-  const { isMoreOptionsMenuOpen } = useModalStore((state) => state)
+  const { modals } = useModalStore((state) => state)
   return (
     <div className="border-gray2 desktop:hidden tablet:px-[32px] bg-gray1 fixed bottom-0 z-60 flex w-full justify-between border-t-[1px] px-[20px] pt-[12px] pb-[32px]">
-      {path === `/${lang}` && !isMoreOptionsMenuOpen ? (
+      {path === `/${lang}` && !modals.isMoreOptionsMenuOpen ? (
         <Link href={`/${lang}`} className="flex w-[63px] flex-col items-center gap-y-[6px]">
           <SelectedHomeIcon width={24} height={24} />
           <p className="kr-badge-sm text-main-500">홈</p>
@@ -36,7 +36,7 @@ export default function NavBar({ path, lang }: NavBarProps) {
         </Link>
       )}
 
-      {path === `/${lang}/job-post` && !isMoreOptionsMenuOpen ? (
+      {path === `/${lang}/job-post` && !modals.isMoreOptionsMenuOpen ? (
         <Link href={`/${lang}/job-post`} className="flex w-[63px] flex-col items-center gap-y-[6px]">
           <SelectedRecruitIcon width={24} height={24} />
           <p className="kr-badge-sm text-main-500">채용</p>
@@ -48,7 +48,7 @@ export default function NavBar({ path, lang }: NavBarProps) {
         </Link>
       )}
 
-      {path === `/${lang}/carrer` && !isMoreOptionsMenuOpen ? (
+      {path === `/${lang}/carrer` && !modals.isMoreOptionsMenuOpen ? (
         <Link href={`/${lang}/carrer?tab=spec`} className="flex w-[63px] flex-col items-center gap-y-[6px]">
           <SelectedCarrerIcon width={24} height={24} />
           <p className="kr-badge-sm text-main-500">커리어 진단</p>
@@ -60,7 +60,7 @@ export default function NavBar({ path, lang }: NavBarProps) {
         </Link>
       )}
 
-      {path === `/${lang}/interview` && !isMoreOptionsMenuOpen ? (
+      {path === `/${lang}/interview` && !modals.isMoreOptionsMenuOpen ? (
         <Link href={`/${lang}/interview?tab=home`} className="flex w-[63px] flex-col items-center gap-y-[6px]">
           <SelectedAiIcon width={24} height={24} />
           <p className="kr-badge-sm text-main-500">AI 면접</p>
@@ -72,7 +72,7 @@ export default function NavBar({ path, lang }: NavBarProps) {
         </Link>
       )}
 
-      {path === `/${lang}/mypage` && !isMoreOptionsMenuOpen ? (
+      {path === `/${lang}/mypage` && !modals.isMoreOptionsMenuOpen ? (
         <Link href={`/${lang}/mypage/home`} className="flex w-[63px] flex-col items-center gap-y-[6px]">
           <SelectedMyIcon width={24} height={24} />
           <p className="kr-badge-sm text-main-500">MY</p>

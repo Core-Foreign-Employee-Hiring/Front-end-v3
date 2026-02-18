@@ -12,15 +12,14 @@ interface DesktopActionButtonsProps {
 }
 
 export default function DesktopActionButtons({ archiveId }: DesktopActionButtonsProps) {
-  const { isInquiryModalOpen, setIsInquiryModalOpen, isPurchaseCompletionModalOpen, setIsPurchaseCompletionModalOpen } =
-    useModalStore((state) => state)
+  const { toggleModal, modals } = useModalStore((state) => state)
 
   const [inquiry, setInquiry] = useState<string>('')
 
   return (
     <div className="desktop:flex hidden gap-x-[20px]">
-      {isPurchaseCompletionModalOpen && <PurchaseCompletionModal />}
-      {isInquiryModalOpen && <InquiryModal inquiry={inquiry} />}
+      {modals.isPurchaseCompletionModalOpen && <PurchaseCompletionModal />}
+      {modals.isInquiryModalOpen && <InquiryModal inquiry={inquiry} />}
 
       <Button
         onClick={async () => {
@@ -28,7 +27,7 @@ export default function DesktopActionButtons({ archiveId }: DesktopActionButtons
           if (result) {
             console.log('문의', result)
             setInquiry(result)
-            setIsInquiryModalOpen(isInquiryModalOpen)
+            toggleModal('isInquiryModalOpen')
           }
         }}
         customClassName={'w-[200px]'}
@@ -41,7 +40,7 @@ export default function DesktopActionButtons({ archiveId }: DesktopActionButtons
         onClick={async () => {
           const result = await postPaymentContent(archiveId)
           console.log('구매하기', result)
-          setIsPurchaseCompletionModalOpen(isPurchaseCompletionModalOpen)
+          toggleModal('isPurchaseCompletionModalOpen')
         }}
         customClassName="w-[313px]"
       >

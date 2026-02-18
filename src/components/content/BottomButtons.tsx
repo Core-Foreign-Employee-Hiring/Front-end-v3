@@ -12,15 +12,14 @@ interface BottomButtonsProps {
 }
 
 export default function BottomButtons({ archiveId }: BottomButtonsProps) {
-  const { isInquiryModalOpen, setIsInquiryModalOpen, isPurchaseCompletionModalOpen, setIsPurchaseCompletionModalOpen } =
-    useModalStore((state) => state)
+  const { modals, toggleModal } = useModalStore((state) => state)
 
   const [inquiry, setInquiry] = useState<string>('')
 
   return (
     <div className="desktop:hidden tablet:px-[32px] tablet:gap-x-4 fixed bottom-0 left-0 flex w-full gap-x-3 bg-white px-[20px] py-[20px]">
-      {isPurchaseCompletionModalOpen && <PurchaseCompletionModal />}
-      {isInquiryModalOpen && <InquiryModal inquiry={inquiry} />}
+      {modals.isPurchaseCompletionModalOpen && <PurchaseCompletionModal />}
+      {modals.isInquiryModalOpen && <InquiryModal inquiry={inquiry} />}
 
       <Button
         onClick={async () => {
@@ -28,7 +27,7 @@ export default function BottomButtons({ archiveId }: BottomButtonsProps) {
           if (result) {
             console.log('문의', result)
             setInquiry(result)
-            setIsInquiryModalOpen(isInquiryModalOpen)
+            toggleModal('isInquiryModalOpen')
           }
         }}
         customClassName={'w-[200px]'}
@@ -41,7 +40,7 @@ export default function BottomButtons({ archiveId }: BottomButtonsProps) {
         onClick={async () => {
           const result = await postPaymentContent(archiveId)
           console.log('구매하기', result)
-          setIsPurchaseCompletionModalOpen(isPurchaseCompletionModalOpen)
+          toggleModal('isPurchaseCompletionModalOpen')
         }}
       >
         구매하기

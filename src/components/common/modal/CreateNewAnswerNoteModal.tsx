@@ -4,21 +4,16 @@ import { useNoteStore } from '@/store/interview/noteStore'
 import { postCreateNote } from '@/lib/client/interview'
 
 export default function CreateNewAnswerNoteModal() {
-  const {
-    isSaveAnswerNoteModalOpen,
-    isCreateNewAnswerNoteModalOpen,
-    setIsSaveAnswerNoteModalOpen,
-    setIsCreateNewAnswerNoteModalOpen,
-  } = useModalStore((state) => state)
+  const { modals, toggleModal } = useModalStore((state) => state)
 
   const { setCreateNoteData, createNoteData, resetCreateNoteData } = useNoteStore((state) => state)
 
   const toggleSaveAnswerNoteState = () => {
-    setIsSaveAnswerNoteModalOpen(isSaveAnswerNoteModalOpen)
+    toggleModal('isSaveAnswerNoteModalOpen')
   }
 
   const toggleCreateNewAnswerNoteState = () => {
-    setIsCreateNewAnswerNoteModalOpen(isCreateNewAnswerNoteModalOpen)
+    toggleModal('isCreateNewAnswerNoteModalOpen')
     toggleSaveAnswerNoteState()
   }
 
@@ -27,7 +22,7 @@ export default function CreateNewAnswerNoteModal() {
       mobileHidden={false}
       customClassName={'w-[508px]'}
       onClose={toggleCreateNewAnswerNoteState}
-      isOpen={isCreateNewAnswerNoteModalOpen}
+      isOpen={modals.isCreateNewAnswerNoteModalOpen}
     >
       <Modal.Header>
         <Label label={'새 답변 노트'} type={'subtitleLg'} />

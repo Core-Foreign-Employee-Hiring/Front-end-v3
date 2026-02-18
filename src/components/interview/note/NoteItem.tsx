@@ -22,8 +22,7 @@ export default function NoteItem({ noteId, title, content, status }: NoteItemPro
     router.push(`/interview/note/${noteId}`)
   }
 
-  const { isDeleteNoteModalOpen, setIsDeleteNoteModalOpen, setIsEditNoteTitleModalOpen, isEditNoteTitleModalOpen } =
-    useModalStore((state) => state)
+  const { toggleModal } = useModalStore((state) => state)
   const setSelectedNoteId = useNoteStore((state) => state.setSelectedNoteId)
   return (
     <div onClick={onNavigation} className="border-gray2 flex items-start justify-between rounded-[12px] border p-5">
@@ -46,7 +45,7 @@ export default function NoteItem({ noteId, title, content, status }: NoteItemPro
             <Options.Item
               onClick={() => {
                 setSelectedNoteId(noteId)
-                setIsEditNoteTitleModalOpen(isEditNoteTitleModalOpen)
+                toggleModal('isEditNoteTitleModalOpen')
               }}
               customClassName={'text-black'}
             >
@@ -55,7 +54,7 @@ export default function NoteItem({ noteId, title, content, status }: NoteItemPro
             <Options.Item
               onClick={() => {
                 setSelectedNoteId(noteId)
-                setIsDeleteNoteModalOpen(isDeleteNoteModalOpen)
+                toggleModal('isDeleteNoteModalOpen')
               }}
               customClassName={'text-error hover:text-error-light'}
             >

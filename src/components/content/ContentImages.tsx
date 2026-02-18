@@ -9,18 +9,18 @@ interface ContentImagesProps {
   imageUrls: string[]
 }
 export default function ContentImages({ imageUrls }: ContentImagesProps) {
-  const { isImageModalOpen, setIsImageModalOpen } = useModalStore((state) => state)
+  const { modals, toggleModal } = useModalStore((state) => state)
   const [selectedImageUrl, setSelectedImageUrl] = useState<string | undefined | null>('')
 
   return (
     <div className="desktop:px-[40px] tablet:px-[32px] px-[20px]">
-      {isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
+      {modals.isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
 
       <div className="flex w-full gap-x-3 overflow-x-scroll">
         {imageUrls.map((imageUrl) => (
           <div
             onClick={() => {
-              setIsImageModalOpen(isImageModalOpen)
+              toggleModal('isImageModalOpen')
               setSelectedImageUrl(imageUrl)
             }}
             key={imageUrl}

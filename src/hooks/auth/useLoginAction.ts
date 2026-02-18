@@ -24,8 +24,8 @@ export default function useLoginAction(lang: string) {
     if (isIdSaved) persistSavedId()
   }
 
-  const navigateTo = (path: string) => {
-    router.push(path)
+  const navigateTo = () => {
+    router.back()
   }
 
   const persistUserInfo = ({ email, name, role, userId }: UserInfoType) => {
@@ -53,7 +53,7 @@ export default function useLoginAction(lang: string) {
 
       if (result.success && result) {
         applyIdPersistence()
-        navigateTo(`/${lang}`)
+        navigateTo()
         persistCookie(result.accessToken, result.refreshToken)
         persistUserInfo({ email: result.email, name: result.name, role: result.role, userId: result.userId })
       } else {

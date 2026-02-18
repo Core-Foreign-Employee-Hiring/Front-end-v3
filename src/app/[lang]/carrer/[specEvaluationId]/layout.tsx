@@ -1,5 +1,3 @@
-import { PageLayout } from '@/components/common'
-
 export default async function SpecResultLayout({
   children,
   params,
@@ -8,9 +6,5 @@ export default async function SpecResultLayout({
   params: Promise<{ lang: string }>
 }>) {
   const { lang } = await params
-  return (
-    <div>
-      <PageLayout>{children}</PageLayout>
-    </div>
-  )
+  return <div>{children}</div>
 }

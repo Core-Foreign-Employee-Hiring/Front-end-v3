@@ -13,13 +13,12 @@ interface MobileBottomButtonProps {
 }
 
 export default function MobileBottomButton({ currentStep, setCurrentStep, setCurrentLabel }: MobileBottomButtonProps) {
-  const { isCreateResumeModalOpen, setIsCreateResumeModalOpen, isInfoPickerModalOpen, setIsInfoPickerModalOpen } =
-    useModalStore((state) => state)
+  const { modals, toggleModal } = useModalStore((state) => state)
 
   const { resumeProfileFile, createResume, setCreateResumeResponse } = useResumeStore((state) => state)
 
   const onClose = () => {
-    setIsCreateResumeModalOpen(isCreateResumeModalOpen)
+    toggleModal('isCreateResumeModalOpen')
   }
 
   return (
@@ -53,7 +52,7 @@ export default function MobileBottomButton({ currentStep, setCurrentStep, setCur
               const result = await postResume(createResume, resumeProfileFile)
               if (result) {
                 onClose()
-                setIsInfoPickerModalOpen(isInfoPickerModalOpen)
+                toggleModal('isInfoPickerModalOpen')
                 setCreateResumeResponse(result)
               }
             }}

@@ -9,12 +9,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useNoteStore } from '@/store/interview/noteStore'
 
 export default function SaveAnswerNoteModal() {
-  const {
-    isSaveAnswerNoteModalOpen,
-    isCreateNewAnswerNoteModalOpen,
-    setIsSaveAnswerNoteModalOpen,
-    setIsCreateNewAnswerNoteModalOpen,
-  } = useModalStore((state) => state)
+  const { modals, toggleModal } = useModalStore((state) => state)
 
   const { selectedNoteId, answerEntry, resetAnswerEntry, resetSelectedNoteId, resetCreateNoteData } = useNoteStore(
     (state) => state
@@ -28,15 +23,15 @@ export default function SaveAnswerNoteModal() {
       return result.data?.data || []
     },
     // 모달이 열려있을 때만 데이터를 가져옵니다.
-    enabled: isSaveAnswerNoteModalOpen,
+    enabled: modals.isSaveAnswerNoteModalOpen,
   })
 
   const toggleSaveAnswerNoteState = () => {
-    setIsSaveAnswerNoteModalOpen(isSaveAnswerNoteModalOpen)
+    toggleModal('isSaveAnswerNoteModalOpen')
   }
 
   const toggleCreateNewAnswerNoteState = () => {
-    setIsCreateNewAnswerNoteModalOpen(isCreateNewAnswerNoteModalOpen)
+    toggleModal('isCreateNewAnswerNoteModalOpen')
     toggleSaveAnswerNoteState()
   }
 
@@ -45,7 +40,7 @@ export default function SaveAnswerNoteModal() {
       mobileHidden={false}
       customClassName={'w-[508px]'}
       onClose={toggleSaveAnswerNoteState}
-      isOpen={isSaveAnswerNoteModalOpen}
+      isOpen={modals.isSaveAnswerNoteModalOpen}
     >
       <Modal.Header>
         <Label label={'답변 노트 저장'} type={'subtitleLg'} />

@@ -30,8 +30,8 @@ export default function InterviewResultChat({
         data={data}
         keys={['value']}
         colors={['#3B3DFF']}
-        indexBy="label"
         maxValue={100}
+        indexBy="label"
         gridShape="linear"
         dotBorderColor={{ theme: 'background' }}
         dotColor={{ theme: 'background' }}

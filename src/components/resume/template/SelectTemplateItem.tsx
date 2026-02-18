@@ -13,7 +13,7 @@ interface SelectTemplateItemProps {
 
 export default function SelectTemplateItem({ type, selectedType, setSelectedType, imageUrl }: SelectTemplateItemProps) {
   const { updateCreateResumeField } = useResumeStore((state) => state)
-  const { isResumePreviewModalOpen, setIsResumePreviewModalOpen } = useModalStore((state) => state)
+  const { modals, toggleModal } = useModalStore((state) => state)
   return (
     <div
       onClick={() => {
@@ -22,7 +22,7 @@ export default function SelectTemplateItem({ type, selectedType, setSelectedType
       }}
       className="w-full"
     >
-      {isResumePreviewModalOpen && <ResumePreviewModal type={selectedType} />}
+      {modals.isResumePreviewModalOpen && <ResumePreviewModal type={selectedType} />}
       <div className="flex items-center gap-x-2">
         {type === selectedType ? (
           <button className="bg-main-500 flex h-[20px] w-[20px] items-center justify-center rounded-full">
@@ -45,7 +45,7 @@ export default function SelectTemplateItem({ type, selectedType, setSelectedType
           onClick={(e) => {
             e.stopPropagation()
             setSelectedType(type)
-            setIsResumePreviewModalOpen(isResumePreviewModalOpen)
+            toggleModal('isResumePreviewModalOpen')
           }}
           customClassName={'absolute bottom-[16px] right-[16px] w-[85px]'}
           size={'sm'}

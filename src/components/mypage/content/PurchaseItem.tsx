@@ -22,8 +22,7 @@ export default function PurchaseItem({
   thumbnailUrl,
   approvedAt,
 }: PurchaseArchiveType) {
-  const { isWriteReviewModalOpen, setIsWriteReviewModalOpen, isViewReviewModalOpen, setIsViewReviewModalOpen } =
-    useModalStore((state) => state)
+  const { modals, toggleModal } = useModalStore((state) => state)
 
   const { selectedReviewId, selectedArchiveId, setSelectedArchiveId, setSelectedReviewId } = useReviewStore(
     (state) => state
@@ -33,11 +32,11 @@ export default function PurchaseItem({
     if (isReviewed) {
       // 1. 리뷰 보기 모드: 해당 리뷰의 ID를 스토어에 저장
       setSelectedReviewId(archiveReviewId)
-      setIsViewReviewModalOpen(isViewReviewModalOpen) // 명시적으로 true 전달
+      toggleModal('isViewReviewModalOpen')
     } else {
       // 2. 리뷰 작성 모드: 해당 아카이브의 ID를 스토어에 저장
       setSelectedArchiveId(passArchiveId)
-      setIsWriteReviewModalOpen(isWriteReviewModalOpen) // 명시적으로 true 전달
+      toggleModal('isWriteReviewModalOpen')
     }
   }
 
@@ -99,7 +98,7 @@ export default function PurchaseItem({
 
   return (
     <div className="border-gray2 tablet:flex-row desktop:flex-row tablet:justify-between desktop:justify-between tablet:items-end desktop:items-end flex flex-col border-b-[1px] py-[20px]">
-      {isWriteReviewModalOpen && selectedArchiveId === passArchiveId && (
+      {modals.isWriteReviewModalOpen && selectedArchiveId === passArchiveId && (
         <WriteReviewModal
           archiveId={passArchiveId}
           title={title}
@@ -109,7 +108,7 @@ export default function PurchaseItem({
         />
       )}
 
-      {isViewReviewModalOpen && selectedReviewId === archiveReviewId && (
+      {modals.isViewReviewModalOpen && selectedReviewId === archiveReviewId && (
         <ViewReviewModalOpen reviewId={archiveReviewId} />
       )}
       <div className="flex flex-col gap-y-3">

@@ -11,13 +11,12 @@ interface NoteHeaderOptionProps {
 }
 
 export default function NoteHeaderOption({ noteId }: NoteHeaderOptionProps) {
-  const { isEditNoteTitleModalOpen, setIsEditNoteTitleModalOpen, isDeleteNoteModalOpen, setIsDeleteNoteModalOpen } =
-    useModalStore((state) => state)
+  const { modals, toggleModal } = useModalStore((state) => state)
   const setSelectedNoteId = useNoteStore((state) => state.setSelectedNoteId)
   return (
     <div>
-      {isEditNoteTitleModalOpen && <EditNoteTitleModal />}
-      {isDeleteNoteModalOpen && <DeleteNoteModal />}
+      {modals.isEditNoteTitleModalOpen && <EditNoteTitleModal />}
+      {modals.isDeleteNoteModalOpen && <DeleteNoteModal />}
 
       <div className="flex gap-x-3">
         <Button
@@ -25,7 +24,7 @@ export default function NoteHeaderOption({ noteId }: NoteHeaderOptionProps) {
           buttonType={'button'}
           onClick={() => {
             setSelectedNoteId(noteId)
-            setIsEditNoteTitleModalOpen(isEditNoteTitleModalOpen)
+            toggleModal('isEditNoteTitleModalOpen')
           }}
           size={'sm'}
           variant={'outline'}
@@ -37,7 +36,7 @@ export default function NoteHeaderOption({ noteId }: NoteHeaderOptionProps) {
           buttonType={'button'}
           onClick={() => {
             setSelectedNoteId(noteId)
-            setIsDeleteNoteModalOpen(isDeleteNoteModalOpen)
+            toggleModal('isDeleteNoteModalOpen')
           }}
           size={'sm'}
           variant={'outline'}

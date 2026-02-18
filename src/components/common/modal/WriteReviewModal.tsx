@@ -18,15 +18,15 @@ interface WriteReviewModalProps {
 }
 
 export default function WriteReviewModal({ archiveId, title, thumbnailUrl, approvedAt, price }: WriteReviewModalProps) {
-  const { isWriteReviewModalOpen, setIsWriteReviewModalOpen } = useModalStore((state) => state)
+  const { modals, toggleModal } = useModalStore((state) => state)
   const { reviewData } = useReviewStore((state) => state)
   const router = useRouter()
   const onClose = () => {
-    setIsWriteReviewModalOpen(isWriteReviewModalOpen)
+    toggleModal('isWriteReviewModalOpen')
   }
 
   return (
-    <Modal isOpen={isWriteReviewModalOpen} mobileHidden={false}>
+    <Modal isOpen={modals.isWriteReviewModalOpen} mobileHidden={false}>
       <Modal.Header>
         <Label label={'리뷰 작성'} type={'titleMd'} />
       </Modal.Header>
