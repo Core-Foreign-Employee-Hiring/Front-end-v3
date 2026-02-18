@@ -1,6 +1,6 @@
 'use client'
 
-import { usePathname, useRouter } from 'next/navigation' // usePathname 추가
+import { usePathname, useRouter } from 'next/navigation'
 import {
   SidebarSelectedContentIcon,
   SidebarSelectedHomeIcon,
@@ -14,21 +14,25 @@ interface SideBarProps {
 
 export default function SideBar({ lang }: SideBarProps) {
   const router = useRouter()
-  const pathname = usePathname() // 현재 전체 경로 (예: /ko/mypage/home)
+  const pathname = usePathname()
 
-  // URL에서 마지막 부분을 추출하여 'home' 또는 'content'를 판별합니다.
-  const currentTab = pathname.split('/').pop()
+  /**
+   * 활성화 여부 판단 함수
+   * pathname에 'mypage/home' 또는 'mypage/content'가 포함되어 있는지 확인합니다.
+   * 이렇게 하면 뒤에 쿼리스트링(?type=sold)이 붙어도 불이 유지됩니다.
+   */
+  const isActive = (pathKey: string) => pathname.includes(`/mypage/${pathKey}`)
 
-  // 공통 스타일 클래스 추출 (유지보수 용이)
-  const getTabClass = (tabName: string) =>
-    `${currentTab === tabName ? 'bg-main-50 text-main-500 kr-subtitle-md' : 'kr-body-md text-gray3 hover:bg-gray-50'} 
-     flex w-full cursor-pointer items-center gap-x-2 rounded-[8px] p-3 transition-colors`
+  const getTabClass = (pathKey: string) =>
+    `${
+      isActive(pathKey) ? 'bg-main-50 text-main-500 kr-subtitle-md' : 'kr-body-md text-gray3 hover:bg-gray-50'
+    } flex w-full cursor-pointer items-center gap-x-2 rounded-[8px] p-3 transition-colors`
 
   return (
     <nav className="desktop:w-[180px] desktop:block hidden space-y-1">
       {/* MY 홈 탭 */}
       <div onClick={() => router.push(`/${lang}/mypage/home`)} className={getTabClass('home')}>
-        {currentTab === 'home' ? (
+        {isActive('home') ? (
           <SidebarSelectedHomeIcon width={24} height={24} />
         ) : (
           <SidebarUnselectedHomeIcon width={24} height={24} />
@@ -38,7 +42,7 @@ export default function SideBar({ lang }: SideBarProps) {
 
       {/* 콘텐츠 내역 탭 */}
       <div onClick={() => router.push(`/${lang}/mypage/content?type=sold&page=0`)} className={getTabClass('content')}>
-        {currentTab === 'content' ? (
+        {isActive('content') ? (
           <SidebarSelectedContentIcon width={24} height={24} />
         ) : (
           <SidebarUnselectedContentIcon width={24} height={24} />

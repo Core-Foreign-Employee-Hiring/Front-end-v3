@@ -34,10 +34,9 @@ export default async function HomePage({ params, searchParams }: MyPageHomeProps
             <MobileContentList params={params} searchParams={searchParams} />
             <Spacing className="desktop:hidden" height={32} />
             <MyPageItem title={'아이디/비밀번호 변경'} path={`/${lang}/mypage/home/change-auth`} />
-            {/*<MyPageItem title={'문의하기'} path={`/${lang}/mypage?tab=ask`} />*/}
             <MyPageItem title={'이용 약관'} path={`/${lang}/mypage/home/terms-of-service`} />
-            <MyPageItem title={'로그아웃'} path={`/${lang}/mypage/home/?tab=logout`} />
-            <MyPageItem title={'탈퇴하기'} textColor={'text-error'} path={`/${lang}/mypage/home/?tab=withdraw`} />
+            <MyPageItem title={'로그아웃'} path={`/${lang}/login`} />
+            <MyPageItem title={'탈퇴하기'} textColor={'text-error'} path={`/${lang}/mypage/home/withdraw`} />
             <Spacing height={190} />
           </div>
         </div>

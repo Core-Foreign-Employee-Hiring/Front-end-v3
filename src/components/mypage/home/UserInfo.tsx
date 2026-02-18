@@ -28,7 +28,7 @@ export default function UserInfo({ userInfo }: UserInfoProps) {
         <p className="kr-body-md text-gray5">{userInfo?.birthDate}</p>
       </section>
       <Button
-        onClick={() => router.push('/mypage/profile')}
+        onClick={() => router.push('/mypage/home/profile')}
         customClassName={'w-[100px]'}
         variant={'outline'}
         size={'md'}
