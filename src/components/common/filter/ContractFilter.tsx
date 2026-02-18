@@ -9,6 +9,7 @@ import { useFilterStore } from '@/store/filterStore'
 import { ContractEnumType } from '@/types/spec'
 import { useState } from 'react'
 import { CarrerType } from '@/types/job-post'
+import MobileContractModal from '@/components/common/modal/mobile/MobileContractModal'
 
 export default function ContractFilter() {
   const { toggleModal, modals } = useModalStore((state) => state)
@@ -43,6 +44,15 @@ export default function ContractFilter() {
     <div>
       {modals.isContractModalOpen && (
         <ContractModal
+          onApply={onContractFilterApply}
+          onReset={onContractFilterReset}
+          addContract={addContract}
+          deleteContract={deleteContract}
+          selectedContract={selectedContract}
+        />
+      )}
+      {modals.isContractModalOpen && (
+        <MobileContractModal
           onApply={onContractFilterApply}
           onReset={onContractFilterReset}
           addContract={addContract}
