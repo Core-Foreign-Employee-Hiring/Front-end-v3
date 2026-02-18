@@ -26,6 +26,7 @@ export default function useLoginAction(lang: string) {
 
   const navigateTo = () => {
     router.back()
+    router.refresh()
   }
 
   const persistUserInfo = ({ email, name, role, userId }: UserInfoType) => {
