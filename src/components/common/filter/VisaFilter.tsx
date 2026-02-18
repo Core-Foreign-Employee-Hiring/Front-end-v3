@@ -7,6 +7,7 @@ import { useState } from 'react'
 import { VisaType } from '@/types/job-post'
 import { useTranslation } from 'react-i18next'
 import { useFilterStore } from '@/store/filterStore'
+import MobileVisaModal from '@/components/common/modal/mobile/MobileVisaModal'
 
 export default function VisaFilter() {
   const { modals, toggleModal } = useModalStore((state) => state)
@@ -51,6 +52,15 @@ export default function VisaFilter() {
     <div>
       {modals.isVisaModalOpen && (
         <VisaModal
+          addVisas={addVisas}
+          deleteVisas={deleteVisas}
+          onReset={onReset}
+          selectedVisas={selectedVisas}
+          onApply={onApply}
+        />
+      )}
+      {modals.isVisaModalOpen && (
+        <MobileVisaModal
           addVisas={addVisas}
           deleteVisas={deleteVisas}
           onReset={onReset}
