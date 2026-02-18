@@ -2,6 +2,8 @@ import { DetailedFeedbackItem, InterviewHeader } from '@/components/interview'
 import { Label, PageLayout, Spacing } from '@/components/common'
 import NoteHeaderOption from '@/components/interview/note/NoteHeaderOption'
 import { fetchInterviewAnswerNoteDetail } from '@/lib/server/interview'
+import { ResponseCreateNewNoteType } from '@/types/interview/note'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 interface InterviewNoteDetailPageProps {
   params: Promise<{ noteId: string }>
@@ -9,7 +11,11 @@ interface InterviewNoteDetailPageProps {
 export default async function InterviewNoteDetailPage({ params }: InterviewNoteDetailPageProps) {
   const { noteId } = await params
   const result = await fetchInterviewAnswerNoteDetail(noteId)
-  const noteData = result.data
+  const noteData = result.data as ResponseCreateNewNoteType
+
+  if (!result.success) {
+    return <AuthWatcher results={[result]} />
+  }
 
   return (
     <main>

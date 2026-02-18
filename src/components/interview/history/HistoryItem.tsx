@@ -146,7 +146,7 @@ export default function HistoryItem({
     }
   }
   return (
-    <div className="border-gray2 rounded-[12px] border bg-white p-5">
+    <div className="border-gray2 hover:border-gray3 cursor-pointer rounded-[12px] border bg-white p-5 transition">
       <HistoryItemHeader title={title} progress={progress} />
       <Spacing height={8} />
 

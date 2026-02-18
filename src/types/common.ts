@@ -1,3 +1,10 @@
+export interface AIApiCallResult<T = never> {
+  success: boolean
+  data?: T | ErrorDetailType
+  error?: string
+  status?: number
+}
+
 export interface ApiCallResult<T = never> {
   success: boolean
   data?: T
@@ -18,4 +25,7 @@ export interface PageNation<T> {
   size: number
   totalElements: number
   totalPages: number
+}
+export interface ErrorDetailType {
+  detail: string
 }

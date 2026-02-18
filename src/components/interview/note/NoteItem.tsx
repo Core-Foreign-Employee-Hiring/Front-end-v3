@@ -25,7 +25,10 @@ export default function NoteItem({ noteId, title, content, status }: NoteItemPro
   const { toggleModal } = useModalStore((state) => state)
   const setSelectedNoteId = useNoteStore((state) => state.setSelectedNoteId)
   return (
-    <div onClick={onNavigation} className="border-gray2 flex items-start justify-between rounded-[12px] border p-5">
+    <div
+      onClick={onNavigation}
+      className="border-gray2 hover:border-gray3 flex cursor-pointer items-start justify-between rounded-[12px] border p-5 transition"
+    >
       <div className="flex flex-col gap-y-2">
         <NoteItemHeader title={title} status={status} />
         <NoteItemBody content={content} />

@@ -1,16 +1,18 @@
 import { fetchInterviewAnswerNotes } from '@/lib/server/interview'
 import NoteItem from '@/components/interview/note/NoteItem'
 import AuthWatcher from '@/components/auth/AuthWatcher'
+import { AnswerNoteType } from '@/types/interview/note'
 
 export default async function InterviewNote() {
   const result = await fetchInterviewAnswerNotes()
-  console.log('result', result)
-  const notes = result.data
+
+  if (!result.success) {
+    return <AuthWatcher results={[result]} />
+  }
+  const notes = result.data as AnswerNoteType[]
 
   return (
     <div className="tablet:grid-cols-2 desktop:grid-cols-2 grid grid-cols-1 gap-6">
-      <AuthWatcher results={[result]} />
-
       {notes?.map((note) => (
         <NoteItem
           noteId={note.id}

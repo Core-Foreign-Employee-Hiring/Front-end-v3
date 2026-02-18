@@ -8,6 +8,8 @@ import {
 } from '@/components/interview'
 import { fetchInterviewResult } from '@/lib/server/interview'
 import SaveNoteButton from '@/components/interview/result/SaveNoteButton'
+import { InterviewResultType } from '@/types/interview'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 interface InterviewResultPageProps {
   params: Promise<{ setId: string }>
@@ -16,8 +18,13 @@ interface InterviewResultPageProps {
 export default async function InterviewResultPage({ params }: InterviewResultPageProps) {
   const { setId } = await params
   const response = await fetchInterviewResult(setId)
-  const evaluation = response.data?.evaluation
-  const set = response.data?.set
+  const interviewResult = response.data as InterviewResultType
+  const evaluation = interviewResult.evaluation
+  const set = interviewResult.set
+
+  if (!response.success) {
+    return <AuthWatcher results={[response]} />
+  }
 
   return (
     <main>

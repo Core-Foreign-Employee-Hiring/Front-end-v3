@@ -74,8 +74,9 @@ export default async function FindAuthLayout({
         <Header headerType={'default'} currentLng={lang} />
       </div>
       <PageLayout>{children}</PageLayout>
+      <Spacing height={150} />
+
       <Footer />
-      <Spacing height={80} />
     </div>
   )
 }

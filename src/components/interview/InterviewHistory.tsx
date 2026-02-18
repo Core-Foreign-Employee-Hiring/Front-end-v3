@@ -1,15 +1,19 @@
 import { fetchInterviewSets } from '@/lib/server/interview'
 import HistoryItem from '@/components/interview/history/HistoryItem'
+import { InterviewSetType } from '@/types/interview'
 import AuthWatcher from '@/components/auth/AuthWatcher'
 
 export default async function InterviewHistory() {
   const result = await fetchInterviewSets()
 
+  if (!result.success) {
+    return <AuthWatcher results={[result]} />
+  }
+  const interviewSets = result.data as InterviewSetType[]
+
   return (
     <div className="desktop:grid-cols-3 desktop:gap-6 tablet:grid-cols-2 grid grid-cols-1 gap-4">
-      <AuthWatcher results={[result]} />
-
-      {result.data?.map((set) => (
+      {interviewSets?.map((set) => (
         <HistoryItem
           id={set.id}
           level={set.level}
