@@ -6,7 +6,7 @@ import ContractFilter from '@/components/common/filter/ContractFilter'
 
 export default function Filters() {
   return (
-    <div className="flex gap-x-2">
+    <div className="flex gap-x-2 overflow-x-scroll">
       <VisaFilter />
       <JobRoleFilter />
       <LanguageFilter />
