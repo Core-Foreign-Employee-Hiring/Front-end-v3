@@ -1,29 +1,15 @@
+'use client'
+
 import { SpecExperienceType } from '@/types/spec'
 import { FocusEvent } from 'react'
 import { ErrorHelperText, Label, Spacing, TextInput } from '@/components/common'
 
 interface ExpImprovementRateProps {
+  experience: SpecExperienceType
   index: number
-  beforeImprovementRate: number | string
-  afterImprovementRate: number | string
-  activity: SpecExperienceType
-  onUpdate: (index: number, newData: SpecExperienceType) => void
+  handleExperienceChange: (index: number, fieldName: keyof SpecExperienceType, value: string | number | null) => void
 }
-export default function ExpImprovementRate({
-  index,
-  afterImprovementRate,
-  beforeImprovementRate,
-  activity,
-  onUpdate,
-}: ExpImprovementRateProps) {
-  // 공통 변경 핸들러: 기존 activity를 복사하고 특정 필드만 업데이트
-  const handleExperienceChange = (index: number, fieldName: keyof SpecExperienceType, value: string | number) => {
-    onUpdate(index, {
-      ...activity,
-      [fieldName]: value,
-    })
-  }
-
+export default function ExpImprovementRate({ index, handleExperienceChange, experience }: ExpImprovementRateProps) {
   // 1. 포커스 시 0 제거 로직
   const handleFocus = (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>, fieldName: keyof SpecExperienceType) => {
     // 값이 '0'이면 빈 값으로 변경 (사용자가 바로 입력할 수 있게)
@@ -40,8 +26,10 @@ export default function ExpImprovementRate({
   }
 
   const getStatus = () => {
-    if (typeof afterImprovementRate === 'string' && typeof beforeImprovementRate === 'string') {
-      return parseInt(beforeImprovementRate) > parseInt(afterImprovementRate) ? 'error' : 'default'
+    if (typeof experience.afterImprovementRate === 'string' && typeof experience.beforeImprovementRate === 'string') {
+      return parseInt(experience.beforeImprovementRate) > parseInt(experience.afterImprovementRate)
+        ? 'error'
+        : 'default'
     }
   }
 
@@ -57,7 +45,7 @@ export default function ExpImprovementRate({
             onBlur={(e) => handleBlur(e, 'beforeImprovementRate')}
             onChange={(e) => handleExperienceChange(index, 'beforeImprovementRate', Number(e.target.value))}
             inputType={'number'}
-            value={beforeImprovementRate}
+            value={experience.beforeImprovementRate}
             placeholder={'이전 개선률'}
           />
           <TextInput
@@ -66,7 +54,7 @@ export default function ExpImprovementRate({
             onBlur={(e) => handleBlur(e, 'afterImprovementRate')}
             onChange={(e) => handleExperienceChange(index, 'afterImprovementRate', Number(e.target.value))}
             inputType={'number'}
-            value={afterImprovementRate}
+            value={experience.afterImprovementRate}
             placeholder={'이후 개선률'}
           />
         </div>

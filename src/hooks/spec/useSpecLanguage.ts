@@ -5,17 +5,16 @@ import { useMemo } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { useSpecStore } from '@/store/specStore'
 import { StepType } from '@/app/[lang]/carrer/page'
-import { postSpecLanguageSkills } from '@/lib/client/spec/language'
 
 export default function useSpecLanguage() {
   const router = useRouter()
   const pathname = usePathname()
 
-  const { languageSkills, addLanguageSkill, setLanguageSkills } = useSpecStore((state) => state)
+  const { languageSkills, addLanguageSkill } = useSpecStore((state) => state)
 
   // 1. 단계 이동 공통 함수
   const navigateToStep = (step: StepType) => {
-    router.push(`${pathname}?step=${encodeURIComponent(step)}`)
+    router.push(`${pathname}?tab=spec&step=${encodeURIComponent(step)}`)
   }
 
   // 2. 어학 능력 항목 추가 핸들러
@@ -41,11 +40,6 @@ export default function useSpecLanguage() {
     handlePrev: () => navigateToStep('1'),
     handleNext: async () => {
       navigateToStep('3')
-      const result = await postSpecLanguageSkills(languageSkills)
-      if (result.success) {
-        router.refresh()
-        setLanguageSkills([])
-      }
     },
   }
 }

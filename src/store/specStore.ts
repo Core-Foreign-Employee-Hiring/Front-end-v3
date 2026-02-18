@@ -10,16 +10,27 @@ import {
 } from '@/types/spec'
 
 interface SpecState {
+  specEvaluationId: number
   // --- States ---
   education: SpecEducationType | null
   languageSkills: SpecLanguageSkillType[]
   editLanguageSkills: SpecLanguageSkillType[]
+
   certifications: SpecCertificationType[]
+  editCertifications: SpecCertificationType[]
+
   careers: SpecCareerType[]
+  editCareers: SpecCareerType[]
+
   awards: SpecAwardType[]
+  editAwards: SpecAwardType[]
+
   experiences: SpecExperienceType[]
+  editExperiences: SpecExperienceType[]
 
   // --- Actions ---
+  setSpecEvaluationId: (specEvaluationId: number) => void
+
   // Education
   setEducation: (data: SpecEducationType | null) => void
   updateEducation: <K extends keyof SpecEducationType>(field: K, value: SpecEducationType[K]) => void
@@ -33,18 +44,22 @@ interface SpecState {
 
   // Certifications
   setCertifications: (certs: SpecCertificationType[]) => void
+  setEditCertifications: (certs: SpecCertificationType[]) => void
   addCertification: (cert: SpecCertificationType) => void
 
   // Careers
   setCareers: (careers: SpecCareerType[]) => void
+  setEditCareers: (editCareers: SpecCareerType[]) => void
   addCareer: (career: SpecCareerType) => void
 
   // Awards
   setAwards: (awards: SpecAwardType[]) => void
+  setEditAwards: (editAwards: SpecAwardType[]) => void
   addAward: (award: SpecAwardType) => void
 
   // Experiences
   setExperiences: (experiences: SpecExperienceType[]) => void
+  setEditExperiences: (editExperiences: SpecExperienceType[]) => void
   addExperience: (exp: SpecExperienceType) => void
 
   // Reset
@@ -61,23 +76,40 @@ interface SpecState {
   updateEditLanguageSkill: (languageSkillId: number, updatedSkill: SpecLanguageSkillType) => void
 
   updateCertification: (index: number, cert: SpecCertificationType) => void
+  updateEditCertification: (certificationId: number, updatedCert: SpecCertificationType) => void
+
   updateCareer: (index: number, career: SpecCareerType) => void
+  updateEditCareer: (careerId: number, updatedCareer: SpecCareerType) => void
+
   updateAward: (index: number, award: SpecAwardType) => void
+  updateEditAward: (awardId: number, updatedAward: SpecAwardType) => void
+
   updateExperience: (index: number, exp: SpecExperienceType) => void
+  updateEditExperience: (experienceId: number, updatedExp: SpecExperienceType) => void
 
   resetAllSpecs: () => void
 }
 export const useSpecStore = create<SpecState>()(
   devtools((set) => ({
     // 초기 상태
+    specEvaluationId: 0,
     education: null,
     languageSkills: [],
     editLanguageSkills: [],
-    certifications: [],
-    careers: [],
-    awards: [],
-    experiences: [],
 
+    certifications: [],
+    editCertifications: [],
+
+    careers: [],
+    editCareers: [],
+
+    awards: [],
+    editAwards: [],
+
+    experiences: [],
+    editExperiences: [],
+
+    setSpecEvaluationId: (specEvaluationId) => set({ specEvaluationId }, false, 'spec/setSpecEvaluationId'),
     // --- 기존 Education Actions ---
     setEducation: (education) => set({ education }, false, 'spec/setEducation'),
     updateEducation: <K extends keyof SpecEducationType>(field: K, value: SpecEducationType[K]) =>
@@ -138,8 +170,11 @@ export const useSpecStore = create<SpecState>()(
 
     // --- Certifications Actions ---
     setCertifications: (certifications) => set({ certifications }, false, 'spec/setCertifications'),
+    setEditCertifications: (editCertifications) => set({ editCertifications }, false, 'spec/setEditCertifications'),
+
     addCertification: (cert) =>
       set((state) => ({ certifications: [...state.certifications, cert] }), false, 'spec/addCertification'),
+
     updateCertification: (index, cert) =>
       set(
         (state) => {
@@ -150,9 +185,23 @@ export const useSpecStore = create<SpecState>()(
         false,
         'spec/updateCertification'
       ),
+    updateEditCertification: (certificationId, updatedCert) =>
+      set(
+        (state) => ({
+          editCertifications: state.editCertifications.map(
+            (certification) =>
+              certification.certificationId === certificationId
+                ? { ...certification, ...updatedCert } // ID가 같으면 교체 (기존 값 보존을 위해 스프레드 연산자 사용)
+                : certification // 다르면 기존 값 유지
+          ),
+        }),
+        false,
+        'spec/updateEditEditCertification'
+      ),
 
     // --- Careers Actions ---
     setCareers: (careers) => set({ careers }, false, 'spec/setCareers'),
+    setEditCareers: (editCareers) => set({ editCareers }, false, 'spec/setEditCareers'),
     addCareer: (career) => set((state) => ({ careers: [...state.careers, career] }), false, 'spec/addCareer'),
     updateCareer: (index, career) =>
       set(
@@ -164,9 +213,23 @@ export const useSpecStore = create<SpecState>()(
         false,
         'spec/updateCareer'
       ),
+    updateEditCareer: (careerId, updatedCareer) =>
+      set(
+        (state) => ({
+          editCareers: state.editCareers.map(
+            (editCareer) =>
+              editCareer.careerId === careerId
+                ? { ...editCareer, ...updatedCareer } // ID가 같으면 교체 (기존 값 보존을 위해 스프레드 연산자 사용)
+                : editCareer // 다르면 기존 값 유지
+          ),
+        }),
+        false,
+        'spec/updateEditCareer'
+      ),
 
     // --- Awards Actions ---
     setAwards: (awards) => set({ awards }, false, 'spec/setAwards'),
+    setEditAwards: (editAwards) => set({ editAwards }, false, 'spec/setEditAwards'),
     addAward: (award) => set((state) => ({ awards: [...state.awards, award] }), false, 'spec/addAward'),
     updateAward: (index, award) =>
       set(
@@ -178,9 +241,24 @@ export const useSpecStore = create<SpecState>()(
         false,
         'spec/updateAward'
       ),
+    updateEditAward: (awardId, updatedAward) =>
+      set(
+        (state) => ({
+          editAwards: state.editAwards.map(
+            (editAward) =>
+              editAward.awardId === awardId
+                ? { ...editAward, ...updatedAward } // ID가 같으면 교체 (기존 값 보존을 위해 스프레드 연산자 사용)
+                : editAward // 다르면 기존 값 유지
+          ),
+        }),
+        false,
+        'spec/updateEditAward'
+      ),
 
     // --- Experiences Actions ---
     setExperiences: (experiences) => set({ experiences }, false, 'spec/setExperiences'),
+    setEditExperiences: (editExperiences) => set({ editExperiences }, false, 'spec/setEditExperiences'),
+
     addExperience: (exp) => set((state) => ({ experiences: [...state.experiences, exp] }), false, 'spec/addExperience'),
     updateExperience: (index, exp) =>
       set(
@@ -191,6 +269,19 @@ export const useSpecStore = create<SpecState>()(
         },
         false,
         'spec/updateExperience'
+      ),
+    updateEditExperience: (experienceId, updatedExp) =>
+      set(
+        (state) => ({
+          editExperiences: state.editExperiences.map(
+            (editExperience) =>
+              editExperience.experienceId === experienceId
+                ? { ...editExperience, ...updatedExp } // ID가 같으면 교체 (기존 값 보존을 위해 스프레드 연산자 사용)
+                : editExperience // 다르면 기존 값 유지
+          ),
+        }),
+        false,
+        'spec/updateEditExperience'
       ),
 
     // --- 삭제 관련 Actions (기존 유지) ---

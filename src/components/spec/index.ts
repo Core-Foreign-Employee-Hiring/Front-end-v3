@@ -1,7 +1,6 @@
 export { default as SpecEducation } from './SpecEducation'
 export { default as SpecCareer } from './SpecCareer'
 export { default as SpecCertification } from './SpecCertification'
-export { default as SpecActivity } from './SpecActivity'
 export { default as SpecLanguage } from './SpecLanguage'
 export { default as ProgressBar } from './ProgressBar'
 export { default as BottomButton } from './BottomButton'
@@ -31,19 +30,18 @@ export { default as CareerContractType } from './carrer/CareerContractType'
 export { default as CareerHighlight } from './carrer/CareerHighlight'
 
 //activity
-export { default as AddActivityForm } from '@/components/spec/activity/AddActivityForm'
-export { default as AddExperienceForm } from '@/components/spec/activity/experience/AddExperienceForm'
-export { default as AddAwardForm } from '@/components/spec/activity/award/AddAwardForm'
+export { default as AddExperienceForm } from '@/components/spec/experience/AddExperienceForm'
+export { default as AddAwardForm } from '@/components/spec/award/AddAwardForm'
 
 //award
-export { default as AwardAcquiredDate } from '@/components/spec/activity/award/AwardAcquiredDate'
-export { default as AwardDescription } from '@/components/spec/activity/award/AwardDescription'
-export { default as AwardDocumentUrl } from '@/components/spec/activity/award/AwardDocumentUrl'
-export { default as AwardHost } from '@/components/spec/activity/award/AwardHost'
-export { default as AwardName } from '@/components/spec/activity/award/AwardName'
+export { default as AwardAcquiredDate } from '@/components/spec/award/AwardAcquiredDate'
+export { default as AwardDescription } from '@/components/spec/award/AwardDescription'
+export { default as AwardDocumentUrl } from '@/components/spec/award/AwardDocumentUrl'
+export { default as AwardHost } from '@/components/spec/award/AwardHost'
+export { default as AwardName } from '@/components/spec/award/AwardName'
 
 //experience
-export { default as Experience } from '@/components/spec/activity/experience/Experience'
-export { default as ExpImprovementRate } from '@/components/spec/activity/experience/ExpImprovementRate'
-export { default as ExpDuration } from '@/components/spec/activity/experience/ExpDuration'
-export { default as ExpDescription } from '@/components/spec/activity/experience/ExpDescription'
+export { default as Experience } from '@/components/spec/experience/Experience'
+export { default as ExpImprovementRate } from '@/components/spec/experience/ExpImprovementRate'
+export { default as ExpDuration } from '@/components/spec/experience/ExpDuration'
+export { default as ExpDescription } from '@/components/spec/experience/ExpDescription'

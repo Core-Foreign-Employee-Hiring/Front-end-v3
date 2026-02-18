@@ -1,22 +1,19 @@
-import {
-  ProgressBar,
-  SpecActivity,
-  SpecCareer,
-  SpecCertification,
-  SpecEducation,
-  SpecLanguage,
-} from '@/components/spec/index'
+import { ProgressBar, SpecCareer, SpecCertification, SpecEducation, SpecLanguage } from '@/components/spec/index'
 import { Spacing } from '@/components/common'
 import { StepType } from '@/app/[lang]/carrer/page'
 import { fetchSpecData } from '@/lib/server/spec'
 import { SpecType } from '@/types/spec'
+import SpecExperience from '@/components/spec/experience/SpecExperience'
+import SpecAward from '@/components/spec/award/SpecAward'
 
 function FindSpecProcessStepSwitcher({ step, specData }: { step: StepType; specData: SpecType | undefined }) {
   if (step === '1') return <SpecEducation educationData={specData?.education} />
   if (step === '2') return <SpecLanguage languageSkillsData={specData?.languageSkills} />
-  if (step === '3') return <SpecCertification />
-  if (step === '4') return <SpecCareer />
-  if (step === '5') return <SpecActivity />
+  if (step === '3') return <SpecCertification certificationsData={specData?.certifications} />
+  if (step === '4') return <SpecCareer careersData={specData?.careers} />
+  if (step === '5') return <SpecAward awardsData={specData?.awards} />
+  if (step === '6') return <SpecExperience experiencesData={specData?.experiences} />
+
   return <SpecEducation educationData={specData?.education} />
 }
 
@@ -33,7 +30,8 @@ export default async function Spec({ step }: SpecProps) {
     { stepNumber: '2', stepLabel: '어학 능력' },
     { stepNumber: '3', stepLabel: '자격증' },
     { stepNumber: '4', stepLabel: '경력' },
-    { stepNumber: '5', stepLabel: '수상 및 기타 경험' },
+    { stepNumber: '5', stepLabel: '수상 경험' },
+    { stepNumber: '6', stepLabel: '기타 경험' },
   ]
 
   const getCurrentLabel = (step: StepType, steps: { stepNumber: string; stepLabel: string }[]) => {

@@ -1,7 +1,7 @@
 import { Button } from '@/components/common'
 
 interface BottomButtonProps {
-  step?: '1' | '2' | '3' | '4' | '5'
+  step?: '1' | '2' | '3' | '4' | '5' | '6'
   handlePrev?: () => void
   isPrevButtonActive?: boolean
   handleNext?: () => void
@@ -38,7 +38,7 @@ export default function BottomButton({
           customClassName={'w-[180px]'}
           variant={'primary'}
         >
-          {step === '5' ? '제출' : '다음'}
+          {step === '6' ? '제출' : '다음'}
         </Button>
       ) : (
         <div className="w-[180px]" />

@@ -38,9 +38,6 @@ export const formatToShortDateWithDay = (dateString: string | undefined): string
   return `~${month}/${day}(${dayOfWeek})`
 }
 
-// 사용 예시
-console.log(formatToShortDateWithDay('2026-12-12')) // 결과: ~12/12(토)
-
 /**
  * 휴대폰 전화 추출
  * @param value
@@ -91,4 +88,43 @@ export const getShortAddress = (address: string | undefined): string => {
   }
 
   return address // 형식이 짧을 경우 그대로 반환
+}
+
+/**
+ * URL에서 파일명만 추출합니다.
+ */
+export const getFileNameFromUrl = (url: string): string => {
+  try {
+    const decodedUrl = decodeURIComponent(url) // 한글 파일명 대응
+    const fileName = decodedUrl.split('/').pop()?.split('?')[0] // 쿼리스트링 제거
+    return fileName || 'unknown_file'
+  } catch {
+    return 'unknown_file'
+  }
+}
+
+/**
+ * 파일 크기(bytes)를 읽기 좋은 단위(KB, MB 등)로 변환합니다.
+ */
+export const formatBytes = (bytes: number, decimals = 2) => {
+  if (bytes === 0) return '0 Bytes'
+  const k = 1024
+  const dm = decimals < 0 ? 0 : decimals
+  const sizes = ['Bytes', 'KB', 'MB', 'GB']
+  const i = Math.floor(Math.log(bytes) / Math.log(k))
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i]
+}
+
+/**
+ * URL을 통해 실제 파일의 크기를 가져옵니다. (CORS 허용 필요)
+ */
+export const getFileSizeFromUrl = async (url: string): Promise<string> => {
+  try {
+    const response = await fetch(url, { method: 'HEAD' })
+    const size = response.headers.get('content-length')
+    return size ? formatBytes(parseInt(size)) : 'Unknown Size'
+  } catch (error) {
+    console.error('파일 크기를 가져오는데 실패했습니다:', error)
+    return 'Unknown Size'
+  }
 }

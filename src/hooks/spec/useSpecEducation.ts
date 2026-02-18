@@ -15,7 +15,7 @@ export default function useSpecEducation() {
 
   // 1. 단계 이동 로직
   const handleStepClick = (step: StepType) => {
-    router.push(`${pathname}?step=${encodeURIComponent(step)}`)
+    router.push(`${pathname}?tab=spec&step=${encodeURIComponent(step)}`)
   }
 
   // 2. 학력 정보 초기화(추가) 로직

@@ -1,34 +1,23 @@
-import { ChangeEvent, JSX } from 'react'
+'use client'
+
+import { ChangeEvent } from 'react'
 import { formatYYYYMM, padMonth } from '@/utils/spec'
 import { ErrorHelperText, Label, Spacing, TextInput } from '@/components/common'
-import { SpecAwardType } from '@/types/spec'
 
-interface AwardAcquiredDateProps {
-  index: number
-  activity: SpecAwardType
-  onUpdate: (index: number, newData: SpecAwardType) => void
+interface EditCertAcquiredDateProps {
   acquiredDate: string
+  handleCertificationChange: (
+    fieldName: 'certificationName' | 'acquiredDate' | 'documentUrl',
+    value: string | File | null
+  ) => void
 }
-
-export default function AwardAcquiredDate({
-  index,
-  acquiredDate,
-  activity,
-  onUpdate,
-}: AwardAcquiredDateProps): JSX.Element {
-  const handleAwardChange = (index: number, fieldName: keyof SpecAwardType, value: string | number) => {
-    onUpdate(index, {
-      ...activity,
-      [fieldName]: value,
-    })
-  }
-
+export default function EditCertAcquiredDate({ acquiredDate, handleCertificationChange }: EditCertAcquiredDateProps) {
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    handleAwardChange(index, 'acquiredDate', formatYYYYMM(e.target.value))
+    handleCertificationChange('acquiredDate', formatYYYYMM(e.target.value))
   }
 
   const handleBlur = (value: string | undefined) => {
-    handleAwardChange(index, 'acquiredDate', padMonth(value))
+    handleCertificationChange('acquiredDate', padMonth(value))
   }
 
   const getStatus = (value: string) => (value.length > 0 && value.length < 5 ? 'error' : 'default')
@@ -46,7 +35,7 @@ export default function AwardAcquiredDate({
           onBlur={() => handleBlur(acquiredDate)}
         />
         {getStatus(acquiredDate ?? '') === 'error' ? (
-          <ErrorHelperText>취득 날짜를 YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
+          <ErrorHelperText>YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
         ) : null}
       </div>
     </div>

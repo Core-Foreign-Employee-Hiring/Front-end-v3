@@ -1,30 +1,21 @@
-'use client'
-
+import { SpecAwardType } from '@/types/spec'
+import { useRef } from 'react'
 import { Button, Label, Spacing, UploadItem } from '@/components/common'
 import { UploadIcon } from '@/assets/svgComponents'
-import { useRef } from 'react'
-import { SpecAwardType } from '@/types/spec'
 
-interface AwardDocumentUrlProps {
-  index: number
-  activity: SpecAwardType
-  documentURL: string | null | File
-  onUpdate: (index: number, newData: SpecAwardType) => void
+interface EditAwardDocumentUrlProps {
+  editAward: SpecAwardType
+  handleAwardChange: (
+    fieldName: 'awardName' | 'host' | 'acquiredDate' | 'description' | 'documentUrl',
+    value: string | File | null
+  ) => void
 }
-
-export default function AwardDocumentUrl({ index, activity, documentURL, onUpdate }: AwardDocumentUrlProps) {
-  // 공통 변경 핸들러: 기존 activity를 복사하고 특정 필드만 업데이트
-  const handleAwardChange = (index: number, fieldName: keyof SpecAwardType, value: string | number | File | null) => {
-    onUpdate(index, {
-      ...activity,
-      [fieldName]: value,
-    })
-  }
+export default function EditAwardDocumentUrl({ editAward, handleAwardChange }: EditAwardDocumentUrlProps) {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
     if (file) {
-      handleAwardChange(index, 'documentUrl', file)
+      handleAwardChange('documentUrl', file)
     }
   }
 
@@ -33,7 +24,7 @@ export default function AwardDocumentUrl({ index, activity, documentURL, onUpdat
   }
 
   const handleRemoveFile = () => {
-    handleAwardChange(index, 'documentUrl', null)
+    handleAwardChange('documentUrl', null)
     if (fileInputRef.current) {
       fileInputRef.current.value = ''
     }
@@ -43,7 +34,7 @@ export default function AwardDocumentUrl({ index, activity, documentURL, onUpdat
     <div>
       <Label type={'inputLabel'} label={'증빙 자료'} className={'kr-title-sm text-gray5'} />
       <Spacing height={8} />
-      <UploadItem file={documentURL} onRemove={handleRemoveFile} />
+      <UploadItem file={editAward.documentUrl} onRemove={handleRemoveFile} />
       <Spacing height={8} />
       <Button
         onClick={handleUploadClick}

@@ -1,21 +1,17 @@
 'use client'
 
-import { useEffect } from 'react'
 import { CertAcquiredDate, CertDocumentURL, CertName } from '@/components/spec'
 import { Button, Label, Spacing } from '@/components/common'
-import { DeleteIcon } from '@/assets/svgComponents'
 import { useSpecStore } from '@/store/specStore'
+import { SpecCertificationType } from '@/types/spec'
 
 interface AddCertFormProps {
   index: number
-  certificationName: string
-  acquiredDate: string
-  documentUrl: string | null | File
+  toggleFormOpenState: () => void
+  certification: SpecCertificationType
 }
-export default function AddCertForm({ index, certificationName, documentUrl, acquiredDate }: AddCertFormProps) {
-  const certifications = useSpecStore((state) => state.spec.certifications)
-  const removeCertification = useSpecStore((state) => state.removeCertification)
-  const updateCertification = useSpecStore((state) => state.updateCertification)
+export default function AddCertForm({ index, certification, toggleFormOpenState }: AddCertFormProps) {
+  const { updateCertification, removeCertification } = useSpecStore((state) => state)
 
   /**
    * 특정 인덱스의 전공명 수정 핸들러
@@ -27,19 +23,15 @@ export default function AddCertForm({ index, certificationName, documentUrl, acq
   ) => {
     // 업데이트 함수 호출 시 변경된 필드만 덮어씌웁니다.
     updateCertification(index, {
-      certificationName, // 기존 props 값
-      acquiredDate, // 기존 props 값
-      documentUrl, // 기존 props 값
+      certificationName: certification.certificationName, // 기존 props 값
+      acquiredDate: certification.acquiredDate, // 기존 props 값
+      documentUrl: certification.documentUrl, // 기존 props 값
       [fieldName]: value, // 현재 바뀐 값으로 덮어쓰기
     })
   }
 
-  useEffect(() => {
-    console.log('certifications', certifications)
-  }, [certifications])
-
   return (
-    <>
+    <div className="border-gray2 rounded-[12px] border p-5">
       <Spacing height={16} />
 
       <Label
@@ -47,13 +39,15 @@ export default function AddCertForm({ index, certificationName, documentUrl, acq
         type={'subtitleLg'}
         rightElement={
           <Button
-            onClick={() => removeCertification(index)}
-            leftIcon={<DeleteIcon width={20} height={20} />}
+            onClick={() => {
+              toggleFormOpenState()
+              removeCertification(index)
+            }}
             customClassName={'w-fit'}
             variant={'outline'}
             size={'md'}
           >
-            삭제
+            취소
           </Button>
         }
       />
@@ -61,21 +55,23 @@ export default function AddCertForm({ index, certificationName, documentUrl, acq
       <Spacing height={24} />
       <CertName
         index={index}
-        certificationName={certificationName}
+        certificationName={certification.certificationName}
         handleCertificationChange={handleCertificationChange}
       />
 
       <Spacing height={24} />
       <CertAcquiredDate
         index={index}
-        acquiredDate={acquiredDate}
+        acquiredDate={certification.acquiredDate}
         handleCertificationChange={handleCertificationChange}
       />
 
       <Spacing height={24} />
-      <CertDocumentURL index={index} documentURL={documentUrl} handleCertificationChange={handleCertificationChange} />
-
-      <Spacing height={32} className="border-gray3 border-b" />
-    </>
+      <CertDocumentURL
+        index={index}
+        documentURL={certification.documentUrl}
+        handleCertificationChange={handleCertificationChange}
+      />
+    </div>
   )
 }

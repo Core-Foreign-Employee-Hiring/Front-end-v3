@@ -9,15 +9,18 @@ import LanguageEntry from '@/components/spec/language/LanguageEntry'
 import { useSpecLanguage } from '@/hooks'
 import BottomButton from '@/components/spec/BottomButton'
 import EditLanguageEntry from '@/components/spec/language/EditLanguageEntry'
+import { postSpecLanguageSkills } from '@/lib/client/spec/language'
+import { useRouter } from 'next/navigation'
 
 interface SpecLanguageProps {
   languageSkillsData: SpecLanguageSkillType[] | null | undefined
 }
 
 export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) {
-  const { languageSkills, addLanguageSkill, setEditLanguageSkills, editLanguageSkills } = useSpecStore((state) => state)
+  const { languageSkills, addLanguageSkill, setEditLanguageSkills, editLanguageSkills, setLanguageSkills } =
+    useSpecStore((state) => state)
   const { handlePrev, handleNext, isActive } = useSpecLanguage()
-
+  const router = useRouter()
   useEffect(() => {
     // 기존에 저장된 값이 있다면 editData에 추가
     if (languageSkillsData) {
@@ -69,6 +72,17 @@ export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) 
       </div>
 
       <Spacing height={100} />
+      <Button
+        onClick={async () => {
+          const result = await postSpecLanguageSkills(languageSkills)
+          if (result.success) {
+            router.refresh()
+            setLanguageSkills([])
+          }
+        }}
+      >
+        저장
+      </Button>
       <BottomButton handlePrev={handlePrev} isNextButtonActive={isActive} handleNext={handleNext} />
     </div>
   )
