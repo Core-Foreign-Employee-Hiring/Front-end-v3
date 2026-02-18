@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { RegionType } from '@/types/job-post'
 import { useFilterStore } from '@/store/filterStore'
 import { useTranslation } from 'react-i18next'
+import MobileRegionModal from '@/components/common/modal/mobile/MobileRegionModal'
 
 export default function RegionFilter() {
   const { modals, toggleModal } = useModalStore((state) => state)
@@ -50,6 +51,15 @@ export default function RegionFilter() {
     <div>
       {modals.isRegionModalOpen && (
         <RegionModal
+          onReset={onReset}
+          onApply={onApply}
+          selectedRegions={selectedRegions}
+          addRegions={addRegions}
+          deleteRegions={deleteRegions}
+        />
+      )}
+      {modals.isRegionModalOpen && (
+        <MobileRegionModal
           onReset={onReset}
           onApply={onApply}
           selectedRegions={selectedRegions}
