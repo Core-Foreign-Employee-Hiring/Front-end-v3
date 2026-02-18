@@ -68,7 +68,7 @@ export default async function MyPageContent({
           </div>
         </div>
       </PageLayout>
-      <Spacing height={200} />
+      <Spacing height={300} />
       <Footer />
     </main>
   )
