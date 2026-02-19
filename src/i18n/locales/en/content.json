@@ -1,0 +1,34 @@
+{
+  "home": {
+    "title": "Content"
+  },
+  "detail": {
+    "contentSummary": {
+      "unit": "KRW",
+      "actionButtons": {
+        "inquiryButton": "Inquiry",
+        "purchaseButton": "Buy Now"
+      }
+    },
+
+    "contentDescription": {
+      "title": "Description"
+    },
+
+    "contentReview": {
+      "title": "Reviews",
+      "reviewCount": "{{count}} Reviews",
+      "relativeTime": {
+        "justNow": "Just now",
+        "minutes_one": "{{count}} minute ago",
+        "minutes_other": "{{count}} minutes ago",
+        "hours_one": "{{count}} hour ago",
+        "hours_other": "{{count}} hours ago",
+        "days_one": "{{count}} day ago",
+        "days_other": "{{count}} days ago",
+        "weeks_one": "{{count}} week ago",
+        "weeks_other": "{{count}} weeks ago"
+      }
+    }
+  }
+}

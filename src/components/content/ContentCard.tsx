@@ -4,6 +4,7 @@ import { StarIcon } from '@/assets/svgComponents'
 import Image from 'next/image'
 import { ContentType } from '@/types/content'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 export default function ContentCard({
   passArchiveId,
@@ -15,6 +16,7 @@ export default function ContentCard({
   starCount,
 }: ContentType) {
   const router = useRouter()
+  const { t } = useTranslation(['content'])
   return (
     <div
       onClick={() => {
@@ -29,7 +31,9 @@ export default function ContentCard({
       <section className="flex flex-col gap-y-1">
         <h2 className="kr-subtitle-md line-clamp-2 h-[52px] overflow-hidden">{title}</h2>
         <p className="kr-body-sm text-gray5">{oneLineReview}</p>
-        <p className="kr-subtitle-md">{price}원</p>
+        <p className="kr-subtitle-md">
+          {price} {t('detail.contentSummary.unit')}
+        </p>
         <div className="flex items-center gap-x-1">
           <StarIcon width={20} height={20} />
           <div className="flex gap-x-[2px]">

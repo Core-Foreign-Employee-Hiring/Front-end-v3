@@ -6,12 +6,14 @@ import { getInquiryUrl, postPaymentContent } from '@/lib/client/content'
 import PurchaseCompletionModal from '@/components/common/modal/PurchaseCompletionModal'
 import InquiryModal from '@/components/common/modal/InquiryModal'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface DesktopActionButtonsProps {
   archiveId: string
 }
 
 export default function DesktopActionButtons({ archiveId }: DesktopActionButtonsProps) {
+  const { t } = useTranslation(['content'])
   const { toggleModal, modals } = useModalStore((state) => state)
 
   const [inquiry, setInquiry] = useState<string>('')
@@ -34,7 +36,7 @@ export default function DesktopActionButtons({ archiveId }: DesktopActionButtons
         size={'lg'}
         variant={'outline'}
       >
-        문의
+        {t('detail.contentSummary.actionButtons.inquiryButton')}
       </Button>
       <Button
         onClick={async () => {
@@ -44,7 +46,7 @@ export default function DesktopActionButtons({ archiveId }: DesktopActionButtons
         }}
         customClassName="w-[313px]"
       >
-        구매하기
+        {t('detail.contentSummary.actionButtons.purchaseButton')}
       </Button>
     </div>
   )

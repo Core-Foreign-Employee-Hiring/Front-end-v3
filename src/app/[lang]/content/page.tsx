@@ -4,6 +4,8 @@ import { Label, PageLayout, Spacing } from '@/components/common'
 import NavBar from '@/components/common/NavBar'
 import type { Metadata } from 'next'
 import AuthWatcher from '@/components/auth/AuthWatcher'
+import { getTranslationServer } from '@/lib/i18n'
+import { Locale } from '@/lib/i18n.types'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.korfit.co.kr'
 
@@ -63,9 +65,10 @@ export const metadata: Metadata = {
 export default async function ContentPage({
   params,
 }: Readonly<{
-  params: Promise<{ lang: string }>
+  params: Promise<{ lang: Locale }>
 }>) {
   const { lang } = await params
+  const { t } = await getTranslationServer(lang, 'content')
   const contentResult = await serverFetchAllContentPosts({ page: 0, size: 4 })
   const contents = contentResult.data?.content
 
@@ -75,7 +78,7 @@ export default async function ContentPage({
 
       <PageLayout>
         <main>
-          <Label label={'콘텐츠'} type={'titleLg'} />
+          <Label label={t('content:home.title')} type={'titleLg'} />
           <Spacing height={16} />
           <section className="desktop:grid-cols-3 desktop:gap-[24px] tablet:grid-cols-2 grid grid-cols-1 gap-[20px]">
             {contents?.map((content) => (

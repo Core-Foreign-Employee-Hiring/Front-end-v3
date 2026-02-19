@@ -5,6 +5,7 @@ import DesktopActionButtons from '@/components/content/DesktopActionButtons'
 import { useModalStore } from '@/store/modalStore'
 import { useState } from 'react'
 import ImageModal from '@/components/common/modal/ImageModal'
+import { useTranslation } from 'react-i18next'
 
 interface ContentSummaryProps {
   title: string
@@ -17,6 +18,8 @@ interface ContentSummaryProps {
 export default function ContentSummary({ archiveId, title, price, thumbnailUrl, oneLineReview }: ContentSummaryProps) {
   const { toggleModal, modals } = useModalStore((state) => state)
   const [selectedImageUrl, setSelectedImageUrl] = useState<string | undefined | null>('')
+  const { t } = useTranslation(['content'])
+
   return (
     <div className="desktop:pt-[40px] desktop:px-[40px] tablet:pt-[32px] tablet:px-[32px] desktop:flex-row tablet:flex-row tablet:gap-x-[20px] desktop:gap-x-[24px] flex flex-col gap-y-3 px-[20px] pt-[24px]">
       {modals.isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
@@ -39,7 +42,9 @@ export default function ContentSummary({ archiveId, title, price, thumbnailUrl, 
             <p className="kr-subtitle-lg">{title}</p>
             <p className="kr-body-sm text-gray5">{oneLineReview}</p>
           </section>
-          <p className="kr-title-sm">{price.toLocaleString()}원</p>
+          <p className="kr-title-sm">
+            {price.toLocaleString()} {t('detail.contentSummary.unit')}
+          </p>
         </div>
         <DesktopActionButtons archiveId={archiveId} />
       </div>

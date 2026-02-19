@@ -1,0 +1,30 @@
+{
+  "home": {
+    "title": "콘텐츠"
+  },
+  "detail": {
+    "contentSummary": {
+      "unit": "원",
+      "actionButtons": {
+        "inquiryButton": "문의",
+        "purchaseButton": "구매하기"
+      }
+    },
+
+    "contentDescription": {
+      "title": "설명"
+    },
+
+    "contentReview": {
+      "title": "리뷰",
+      "reviewCount": "{{count}}명의 후기",
+      "relativeTime": {
+        "justNow": "방금 전",
+        "minutes": "{{count}}분 전",
+        "hours": "{{count}}시간 전",
+        "days": "{{count}}일 전",
+        "weeks": "{{count}}주 전"
+      }
+    }
+  }
+}
