@@ -23,7 +23,7 @@ export default function JobPostCard({
   workAddress1,
 }: JobPostType) {
   const router = useRouter()
-  const { t } = useTranslation()
+  const { t } = useTranslation(['jobPost'])
   return (
     <div
       onClick={() => {
@@ -34,22 +34,31 @@ export default function JobPostCard({
       <section className="flex gap-x-2">
         <div className="flex gap-x-2">
           {visas.length > 0 ? (
-            visas.length === 1 ? (
-              <Badge>{visas[0]}</Badge>
-            ) : visas.length > 1 ? (
-              <Badge>{`${visas[0]} 외 ${visas.length - 1} 가능`}</Badge>
-            ) : null
+            <Badge>
+              {visas.length === 1
+                ? visas[0]
+                : t('jobPost:detail.jobPostSummary.visaBadge.others', {
+                    main: visas[0],
+                    count: visas.length - 1,
+                  })}
+            </Badge>
           ) : null}
 
           {languageTypes.length > 0 ? (
             languageTypes.length === 1 ? (
               <Badge>{t(getLanguageLabel(languageTypes[0]))}</Badge>
             ) : languageTypes.length > 1 ? (
-              <Badge>{`${t(getLanguageLabel(languageTypes[0]))} 외 ${languageTypes.length - 1}`}</Badge>
+              <Badge>
+                {t('jobPost:detail.jobPostSummary.languageBadge.others', {
+                  main: t(getLanguageLabel(languageTypes[0])),
+                  count: languageTypes.length - 1,
+                })}
+              </Badge>
             ) : null
           ) : null}
         </div>
       </section>
+
       <section>
         <h2 className="kr-subtitle-md line-clamp-2 h-[52px] overflow-hidden">{title}</h2>
         <div className="kr-body-sm text-gray5 mt-1 flex gap-x-2">
@@ -57,7 +66,12 @@ export default function JobPostCard({
             jobRoles.length === 1 ? (
               <p>{t(getJobRoleLabel(jobRoles[0]))}</p>
             ) : jobRoles.length > 1 ? (
-              <p>{`${t(getJobRoleLabel(jobRoles[0]))} 외 ${jobRoles.length - 1} 가능`}</p>
+              <p>
+                {t('jobPost:home.jobPostCard.jobRoles.others', {
+                  main: t(getJobRoleLabel(jobRoles[0])),
+                  count: jobRoles.length - 1,
+                })}
+              </p>
             ) : null
           ) : null}
           {directInputCarrerType ? (
@@ -85,7 +99,7 @@ export default function JobPostCard({
           <LocationIcon width={13} height={16} />
           <p className="kr-button text-gray4">{`${getShortAddress(workAddress1)}`}</p>
         </div>
-        <p className="kr-button text-gray4">{formatToShortDateWithDay(recruitEndDate)}</p>
+        <p className="kr-button text-gray4">{formatToShortDateWithDay(recruitEndDate, t)}</p>
       </section>
     </div>
   )

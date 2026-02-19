@@ -2,7 +2,12 @@
   "home": {
     "title": "채용 정보",
     "jobCount":"<0>{{count}}</0> 건",
-    "noResults": "검색 결과가 없습니다."
+    "noResults": "검색 결과가 없습니다.",
+    "jobPostCard": {
+      "jobRoles": {
+        "others": "{{main}} 외 {{count}} 가능"
+      }
+    }
   },
 
   "detail": {
