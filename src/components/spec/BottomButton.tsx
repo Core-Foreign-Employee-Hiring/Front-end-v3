@@ -1,4 +1,7 @@
+'use client'
+
 import { Button } from '@/components/common'
+import { useTranslation } from 'react-i18next'
 
 interface BottomButtonProps {
   step?: '1' | '2' | '3' | '4' | '5' | '6'
@@ -15,6 +18,8 @@ export default function BottomButton({
   isPrevButtonActive = true,
   step = '1',
 }: BottomButtonProps) {
+  const { t } = useTranslation(['spec'])
+
   return (
     <div className="fixed bottom-0 left-0 flex w-full justify-between gap-x-3 bg-white px-5 py-5">
       {handlePrev ? (
@@ -25,7 +30,7 @@ export default function BottomButton({
           customClassName={'w-[180px]'}
           variant={'outline'}
         >
-          이전
+          {t('education.buttons.prev')}
         </Button>
       ) : (
         <div className="w-[180px]" />
@@ -38,7 +43,7 @@ export default function BottomButton({
           customClassName={'w-[180px]'}
           variant={'primary'}
         >
-          {step === '6' ? '제출' : '다음'}
+          {step === '6' ? t('education.buttons.submit') : t('education.buttons.next')}
         </Button>
       ) : (
         <div className="w-[180px]" />

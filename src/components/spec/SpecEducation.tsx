@@ -8,6 +8,7 @@ import { useSpecEducation } from '@/hooks'
 import { SpecEducationType } from '@/types/spec'
 import EducationItem from '@/components/spec/education/EducationItem'
 import { useSpecStore } from '@/store/specStore'
+import { useTranslation } from 'react-i18next'
 
 interface SpecEducationProps {
   educationData: SpecEducationType | undefined | null
@@ -16,6 +17,8 @@ interface SpecEducationProps {
 export default function SpecEducation({ educationData }: SpecEducationProps) {
   const { handleAddEducation, handleNextStep, isActive } = useSpecEducation()
   const { education, setEducation } = useSpecStore() // 스토어에서 전체 데이터를 세팅하는 함수
+
+  const { t } = useTranslation(['spec'])
 
   useEffect(() => {
     console.log('education', education)
@@ -52,7 +55,7 @@ export default function SpecEducation({ educationData }: SpecEducationProps) {
   return (
     <div>
       <Label
-        label={'학력 정보'}
+        label={t('education.title')}
         type={'titleMd'}
         rightElement={
           // 데이터가 없고 폼이 닫혀있을 때만 '추가' 버튼 노출
@@ -64,7 +67,7 @@ export default function SpecEducation({ educationData }: SpecEducationProps) {
               customClassName={'w-fit'}
               leftIcon={<Main5000PlusIcon width={20} height={20} />}
             >
-              추가
+              {t('education.buttons.add')}
             </Button>
           ) : null
         }

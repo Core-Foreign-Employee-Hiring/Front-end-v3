@@ -1,0 +1,49 @@
+{
+  "home": {
+    "title": "스펙 관리",
+    "education": {
+      "title": "학력"
+    },
+    "language": {
+      "title": "어학 능력"
+    },
+    "certification": {
+      "title": "자격증"
+    },
+    "career": {
+      "title": "경력"
+    },
+    "award": {
+      "title": "수상 경험"
+    },
+    "experience": {
+      "title": "기타 경험"
+    }
+  },
+
+  "education": {
+    "title": "학력 정보",
+    "buttons": {
+      "add": "추가",
+      "prev": "이전",
+      "next": "다음",
+      "submit": "제출",
+      "edit": "수정",
+      "save": "저장",
+      "cancel": "취소"
+    },
+    "addEduForm": {
+      "editTitle": "학력 수정",
+      "initTitle": "학력 내역",
+      "eduSchool": {
+        "title": "학교명",
+        "placeholder": "학교 이름 입력",
+        "searchResultsCount": "총 {{count}}개",
+        "noResults": "검색 결과가 없습니다."
+      }
+    },
+    "educationItem": {
+
+    }
+  }
+}

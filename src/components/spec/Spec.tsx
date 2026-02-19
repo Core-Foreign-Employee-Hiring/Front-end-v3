@@ -5,6 +5,8 @@ import { fetchSpecData } from '@/lib/server/spec'
 import { SpecType } from '@/types/spec'
 import SpecExperience from '@/components/spec/experience/SpecExperience'
 import SpecAward from '@/components/spec/award/SpecAward'
+import { getTranslationServer } from '@/lib/i18n'
+import { Locale } from '@/lib/i18n.types'
 
 function FindSpecProcessStepSwitcher({ step, specData }: { step: StepType; specData: SpecType | undefined }) {
   if (step === '1') return <SpecEducation educationData={specData?.education} />
@@ -19,19 +21,21 @@ function FindSpecProcessStepSwitcher({ step, specData }: { step: StepType; specD
 
 interface SpecProps {
   step: StepType
+  lang: Locale
 }
 
-export default async function Spec({ step }: SpecProps) {
+export default async function Spec({ step, lang }: SpecProps) {
   const result = await fetchSpecData()
   const specData = result.data
+  const { t } = await getTranslationServer(lang, ['spec'])
 
   const steps = [
-    { stepNumber: '1', stepLabel: '학력' },
-    { stepNumber: '2', stepLabel: '어학 능력' },
-    { stepNumber: '3', stepLabel: '자격증' },
-    { stepNumber: '4', stepLabel: '경력' },
-    { stepNumber: '5', stepLabel: '수상 경험' },
-    { stepNumber: '6', stepLabel: '기타 경험' },
+    { stepNumber: '1', stepLabel: t('spec:home.education.title') },
+    { stepNumber: '2', stepLabel: t('spec:home.language.title') },
+    { stepNumber: '3', stepLabel: t('spec:home.certification.title') },
+    { stepNumber: '4', stepLabel: t('spec:home.career.title') },
+    { stepNumber: '5', stepLabel: t('spec:home.award.title') },
+    { stepNumber: '6', stepLabel: t('spec:home.experience.title') },
   ]
 
   const getCurrentLabel = (step: StepType, steps: { stepNumber: string; stepLabel: string }[]) => {

@@ -4,9 +4,12 @@ import { ChangeEvent, useMemo, useState } from 'react'
 import { useSpecStore } from '@/store/specStore'
 import { universityList } from '@/text/spec'
 import { DropDown, Label, Spacing, TextInput } from '@/components/common'
+import { useTranslation } from 'react-i18next'
 
 export default function EduSchool() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+  const { t } = useTranslation(['spec', 'filter'])
 
   const education = useSpecStore((state) => state.education)
   const setEducation = useSpecStore((state) => state.setEducation)
@@ -16,8 +19,8 @@ export default function EduSchool() {
     const searchTerm = education?.schoolName ?? ''
     if (!searchTerm.trim()) return []
 
-    return universityList.filter((university) => university.toLowerCase().includes(searchTerm.toLowerCase()))
-  }, [education?.schoolName])
+    return universityList.filter((university) => t(university).toLowerCase().includes(searchTerm.toLowerCase()))
+  }, [education?.schoolName, t, universityList])
 
   if (!education) return null
 
@@ -49,14 +52,18 @@ export default function EduSchool() {
 
   return (
     <div className="w-full">
-      <Label label={'학교명'} className="kr-subtitle-lg text-gray5" isRequired={true}></Label>
+      <Label
+        label={t('spec:education.addEduForm.eduSchool.title')}
+        className="kr-subtitle-lg text-gray5"
+        isRequired={true}
+      />
       <Spacing height={8} />
 
       <div className="relative">
         <TextInput
           inputType={'text'}
           value={education?.schoolName ?? ''}
-          placeholder={'학교 이름 입력'}
+          placeholder={t('spec:education.addEduForm.eduSchool.placeholder')}
           onChange={(e) => handleSchoolChange(e, 'schoolName')}
           onFocus={() => setIsDropdownOpen(true)}
         />
@@ -67,16 +74,20 @@ export default function EduSchool() {
               <>
                 {filteredUniversities.map((university) => (
                   <DropDown.DropBoxOptionItem
-                    onClick={() => handleUniversitySelect(university, 'schoolName')}
+                    onClick={() => handleUniversitySelect(t(university), 'schoolName')}
                     key={university}
                   >
-                    {university}
+                    {t(university)}
                   </DropDown.DropBoxOptionItem>
                 ))}
-                <div className="bg-gray-50 px-4 py-2 text-xs text-gray-500">총 {filteredUniversities.length}개</div>
+                <div className="bg-gray-50 px-4 py-2 text-xs text-gray-500">
+                  {t('spec:education.addEduForm.eduSchool.searchResultsCount', { count: filteredUniversities.length })}
+                </div>
               </>
             ) : (
-              <div className="px-4 py-3 text-center text-sm text-gray-500">검색 결과가 없습니다.</div>
+              <div className="px-4 py-3 text-center text-sm text-gray-500">
+                {t('spec:education.addEduForm.eduSchool.noResults')}
+              </div>
             )}
           </DropDown.DropBoxOptionBox>
         )}

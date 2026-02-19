@@ -5,6 +5,8 @@ import Resume from '@/components/spec/Resume'
 import { fetchResumeList } from '@/lib/server/resume'
 import { ResumeListType } from '@/types/resume'
 import AuthWatcher from '@/components/auth/AuthWatcher'
+import { getTranslationServer } from '@/lib/i18n'
+import { Locale } from '@/lib/i18n.types'
 
 export type StepType = '1' | '2' | '3' | '4' | '5' | '6'
 export type TabType = 'spec' | 'resume'
@@ -17,22 +19,23 @@ function FindCarrerStepSwitcher({
 }: {
   tab: TabType
   step: StepType
-  lang: string
+  lang: Locale
   resumeList: ResumeListType[] | undefined
 }) {
-  if (tab === 'spec') return <Spec step={step} />
+  if (tab === 'spec') return <Spec step={step} lang={lang} />
   if (tab === 'resume') return <Resume resumeList={resumeList} lang={lang} />
-  return <Spec step={step} />
+  return <Spec step={step} lang={lang} />
 }
 
 export default async function SpecPage({
   params,
   searchParams,
 }: {
-  params: Promise<{ lang: string }>
+  params: Promise<{ lang: Locale }>
   searchParams: SearchParams
 }) {
   const { lang } = await params
+  const { t } = await getTranslationServer(lang, ['spec'])
   const resolvedSearchParams = await searchParams
 
   const step = (resolvedSearchParams.step as StepType) || '1'
@@ -40,7 +43,7 @@ export default async function SpecPage({
   const tab = (resolvedSearchParams.tab as TabType) || 'spec'
 
   const tabList: { content: string; path: string; key: string }[] = [
-    { content: '스펙 관리', path: `/${lang}/carrer?tab=spec`, key: 'spec' },
+    { content: t('spec:home.title'), path: `/${lang}/carrer?tab=spec`, key: 'spec' },
     { content: '이력서', path: `/${lang}/carrer?tab=resume`, key: 'resume' },
   ]
 
