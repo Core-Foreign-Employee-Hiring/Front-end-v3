@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Trans, useTranslation } from 'react-i18next'
 import { useQuery } from '@tanstack/react-query'
 import { clientFetchAllPosts } from '@/lib/client/job-post'
 import JobPostCard from '@/components/job-post/JobPostCard'
@@ -11,6 +12,7 @@ import { JobPostType } from '@/types/job-post'
 import { useFilterStore } from '@/store/filterStore'
 
 export default function JobPostList() {
+  const { t } = useTranslation(['jobPost'])
   const pageSize = 21
 
   // 1. Zustand 스토어에서 모든 필터 상태 가져오기
@@ -71,11 +73,15 @@ export default function JobPostList() {
 
   return (
     <div className="flex flex-col">
-      <Label label={'채용정보'} type={'titleLg'} />
+      <Label label={t('home.title')} type={'titleLg'} />
       <Spacing height={8} />
       <div className="desktop:flex-row tablet:flex-row desktop:items-center tablet:items-center flex flex-col justify-between gap-y-2">
         <div className="kr-subtitle-lg flex gap-x-1">
-          <p className="text-main-500">{totalElements.toLocaleString()}</p> 건
+          <Trans
+            i18nKey="jobPost:home.jobCount"
+            values={{ count: totalElements }}
+            components={[<span key="0" className="text-main-500" />]}
+          />
         </div>
         <Filters />
       </div>
@@ -84,7 +90,7 @@ export default function JobPostList() {
         {jobPosts.length > 0 ? (
           jobPosts.map((job: JobPostType) => <JobPostCard key={job.recruitId} {...job} />)
         ) : (
-          <div className="col-span-full py-20 text-center text-gray-400">검색 결과가 없습니다.</div>
+          <div className="col-span-full py-20 text-center text-gray-400">{t('home.noResults')}</div>
         )}
       </section>
       <Spacing height={40} />

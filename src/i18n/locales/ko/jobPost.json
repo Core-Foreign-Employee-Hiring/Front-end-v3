@@ -1,0 +1,110 @@
+{
+  "home": {
+    "title": "채용 정보",
+    "jobCount":"<0>{{count}}</0> 건",
+    "noResults": "검색 결과가 없습니다."
+  },
+
+  "detail": {
+    "jobPostSummary": {
+      "visaBadge": {
+        "others": "{{main}} 외 {{count}}개 가능"
+      },
+      "languageBadge": {
+        "others": "{{main}} 외 {{count}}"
+      },
+      "days": {
+        "mon": "월",
+        "tue": "화",
+        "wed": "수",
+        "thu": "목",
+        "fri": "금",
+        "sat": "토",
+        "sun": "일"
+      },
+      "jobCategory": "직종",
+      "jobRole": "직무",
+      "contractType": "고용형태",
+      "visa": "비자",
+      "language": "언어",
+      "workAddress": "근무지"
+    },
+
+    "workConditions": {
+      "title": "근무 조건",
+      "workType": {
+        "title": "근무형태",
+        "ONSITE": "대면",
+        "HYBRID": "혼합근무",
+        "REMOTE": "비대면",
+        "ETC": "기타"
+      },
+      "workTime": "근무시간",
+      "workDaysType": {
+        "title": "근무요일",
+        "WEEKDAYS": "평일(월, 화, 수, 목, 금)",
+        "WEEKENDS": "주말(토, 일)",
+        "FULL_WEEK": "주 7일(월~일)",
+        "SIX_DAYS": "주 6일",
+        "MONDAY": "월요일",
+        "TUESDAY": "화요일",
+        "WEDNESDAY": "수요일",
+        "THURSDAY": "목요일",
+        "FRIDAY": "금요일",
+        "SATURDAY": "토요일",
+        "SUNDAY": "일요일",
+        "ETC": "기타"
+      },
+      "salaryType": {
+        "title": "급여형태",
+        "ANNUAL": "연봉",
+        "DAILY": "일급",
+        "WEEKLY": "주급",
+        "HOURLY": "시급",
+        "MONTHLY": "월급",
+        "ETC": "기타"
+      }
+    },
+
+    "jobDetail": {
+      "title": "상세 정보",
+      "mainTasks": "주요 업무",
+      "qualifications": "자격 요건",
+      "preferences": "우대사항",
+      "others": "기타",
+      "applicationMethod": {
+        "title": "지원 방식",
+        "EMAIL": "‘이메일 지원’",
+        "PHONE_SMS": "‘전화 / 문자 지원’",
+        "WEBSITE": "‘웹사이트 지원‘"
+      }
+    },
+
+    "workPlace": {
+      "title": "근무지 정보"
+    },
+
+    "companyInfo": {
+      "title": "기업 정보",
+      "representativeName": "대표",
+      "establishedDate": "설립일",
+      "companyType": {
+        "title": "회사형태",
+        "LARGE_CORPORATION": "대기업",
+        "MIDSIZE_COMPANY": "중견기업",
+        "SMALL_MEDIUM_ENTERPRISE": "중소기업",
+        "MICRO_BUSINESS": "소상공인",
+        "SOLE_PROPRIETOR": "개인사업자",
+        "CORPORATION": "법인기업",
+        "SOCIAL_ENTERPRISE": "사회적기업",
+        "COOPERATIVE": "협동조합",
+        "ETC": "기타"
+      },
+      "webSite": "웹사이트"
+    },
+
+    "actionButtons": {
+      "applyButton": "Apply"
+    }
+  }
+}

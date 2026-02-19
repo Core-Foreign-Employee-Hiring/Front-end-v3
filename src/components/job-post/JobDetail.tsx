@@ -26,7 +26,7 @@ export default function JobDetail({
   qualifications,
   preferences,
 }: JobDetailProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['jobPost'])
   const { toggleModal, modals } = useModalStore((state) => state)
   const [selectedImageUrl, setSelectedImageUrl] = useState<string | undefined | null>('')
 
@@ -35,7 +35,7 @@ export default function JobDetail({
       {modals.isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
 
       <div className="flex flex-col gap-y-2">
-        <Label label={'상세 정보'} type={'subtitleLg'} />
+        <Label label={t('jobPost:detail.jobDetail.title')} type={'subtitleLg'} />
         <div
           onClick={() => {
             toggleModal('isImageModalOpen')
@@ -48,27 +48,27 @@ export default function JobDetail({
       </div>
 
       <section className="flex flex-col gap-y-1">
-        <p className="kr-title-sm">주요 업무</p>
+        <p className="kr-title-sm">{t('jobPost:detail.jobDetail.mainTasks')}</p>
         <p className="kr-body-md text-gray5">{mainTasks}</p>
       </section>
 
       <section className="flex flex-col gap-y-1">
-        <p className="kr-title-sm">자격 요건</p>
+        <p className="kr-title-sm">{t('jobPost:detail.jobDetail.qualifications')}</p>
         <p className="kr-body-md text-gray5">{qualifications}</p>
       </section>
 
       <section className="flex flex-col gap-y-1">
-        <p className="kr-title-sm">우대사항</p>
+        <p className="kr-title-sm">{t('jobPost:detail.jobDetail.preferences')}</p>
         <p className="kr-body-md text-gray5">{preferences}</p>
       </section>
 
       <section className="flex flex-col gap-y-1">
-        <p className="kr-title-sm">기타</p>
+        <p className="kr-title-sm">{t('jobPost:detail.jobDetail.others')}</p>
         <p className="kr-body-md text-gray5">{others}</p>
       </section>
 
       <section className="flex flex-col gap-y-1">
-        <p className="kr-title-sm">지원 방식</p>
+        <p className="kr-title-sm">{t('jobPost:detail.jobDetail.applicationMethod.title')}</p>
         <p className="kr-body-md text-gray5">{`${t(getApplicationMethodLabel(applicationMethod))}`}</p>
       </section>
     </div>

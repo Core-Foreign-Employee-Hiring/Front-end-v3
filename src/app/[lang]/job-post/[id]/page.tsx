@@ -13,7 +13,7 @@ import MobileWorkConditions from '@/components/job-post/MobileWorkConditions'
 import BottomActionsButtons from '@/components/job-post/BottomActionButtons'
 import AuthWatcher from '@/components/auth/AuthWatcher'
 
-const i18nNamespaces = ['common']
+const namespaces = ['jobPost', 'common', 'filter']
 
 export default async function JobPostDetail({
   params,
@@ -25,14 +25,14 @@ export default async function JobPostDetail({
   const result = await fetchJobPostDetail(id)
   const jobPost = result.data
 
-  const { resources } = await initTranslations(lang, i18nNamespaces)
+  const { resources } = await initTranslations(lang, namespaces)
 
   if (!jobPost) {
     return <Loading />
   }
 
   return (
-    <TranslationsProvider locale={lang} namespaces={i18nNamespaces} resources={resources}>
+    <TranslationsProvider locale={lang} namespaces={namespaces} resources={resources}>
       <AuthWatcher results={[result]} />
 
       <main className="flex w-full justify-between gap-x-[64px]">

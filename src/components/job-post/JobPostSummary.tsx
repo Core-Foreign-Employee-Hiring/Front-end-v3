@@ -42,8 +42,7 @@ export default function JobPostSummary({
   address1,
   JobCategoryTypes,
 }: JobPostSummaryProps) {
-  const { t } = useTranslation()
-
+  const { t } = useTranslation(['jobPost', 'common', 'filter'])
   const { toggleModal, modals } = useModalStore((state) => state)
   const [selectedImageUrl, setSelectedImageUrl] = useState<string | undefined | null>('')
 
@@ -55,22 +54,30 @@ export default function JobPostSummary({
         <div className="flex items-center justify-between">
           <div className="flex gap-x-2">
             {visas.length > 0 ? (
-              visas.length === 1 ? (
-                <Badge>{visas[0]}</Badge>
-              ) : visas.length > 1 ? (
-                <Badge>{`${visas[0]} 외 ${visas.length - 1} 가능`}</Badge>
-              ) : null
+              <Badge>
+                {visas.length === 1
+                  ? visas[0]
+                  : t('jobPost:detail.jobPostSummary.visaBadge.others', {
+                      main: visas[0],
+                      count: visas.length - 1,
+                    })}
+              </Badge>
             ) : null}
 
             {languageTypes.length > 0 ? (
               languageTypes.length === 1 ? (
                 <Badge>{t(getLanguageLabel(languageTypes[0]))}</Badge>
               ) : languageTypes.length > 1 ? (
-                <Badge>{`${t(getLanguageLabel(languageTypes[0]))} 외 ${languageTypes.length - 1}`}</Badge>
+                <Badge>
+                  {t('jobPost:detail.jobPostSummary.languageBadge.others', {
+                    main: t(getLanguageLabel(languageTypes[0])),
+                    count: languageTypes.length - 1,
+                  })}
+                </Badge>
               ) : null
             ) : null}
           </div>
-          <p className="kr-button text-gray4">{formatToShortDateWithDay(recruitEndDate)}</p>
+          <p className="kr-button text-gray4">{formatToShortDateWithDay(recruitEndDate, t)}</p>
         </div>
 
         <h1 className="kr-subtitle-lg">{title}</h1>
@@ -87,19 +94,27 @@ export default function JobPostSummary({
           <p className="kr-small text-gray5">{companyName}</p>
         </div>
       </section>
+
       <BottomBorder />
+
       <section className="flex flex-col gap-y-3">
-        <div className="flex items-center gap-x-1">
-          <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">직종</div>
-          {JobCategoryTypes?.map((JobCategoryType) => (
-            <p key={JobCategoryType} className="kr-body-md">
-              {`${t(getJobCategoryLabel(JobCategoryType))}`}
-            </p>
-          ))}
-        </div>
+        {JobCategoryTypes.length !== 0 ? (
+          <div className="flex items-center gap-x-1">
+            <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">
+              {t('jobPost:detail.jobPostSummary.jobCategory')}
+            </div>
+            {JobCategoryTypes?.map((JobCategoryType) => (
+              <p key={JobCategoryType} className="kr-body-md">
+                {t(getJobCategoryLabel(JobCategoryType))}
+              </p>
+            ))}
+          </div>
+        ) : null}
 
         <div className="flex items-center gap-x-1">
-          <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">직무</div>
+          <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">
+            {t('jobPost:detail.jobPostSummary.jobRole')}
+          </div>
           {jobRoles.map((jobRole) => (
             <p key={jobRole} className="kr-body-md">
               {`${t(getJobRoleLabel(jobRole))}`}
@@ -108,13 +123,17 @@ export default function JobPostSummary({
         </div>
 
         <div className="flex items-center gap-x-1">
-          <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">고용형태</div>
+          <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">
+            {t('jobPost:detail.jobPostSummary.contractType')}
+          </div>
           <p className="kr-body-md">{t(convertEnumToKorContractTypeLabel(contractType))}</p>
         </div>
 
         {visas.length > 0 ? (
           <div className="flex items-center gap-x-1">
-            <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">비자</div>
+            <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">
+              {t('jobPost:detail.jobPostSummary.visa')}
+            </div>
 
             <div className="flex flex-wrap items-center gap-x-1">
               {visas.map((visa, index) => {
@@ -132,7 +151,7 @@ export default function JobPostSummary({
 
         {languageTypes.length > 0 ? (
           <div className="flex items-center gap-x-1">
-            <div className="kr-subtitle-md text-gray4 w-[80px]">언어</div>
+            <div className="kr-subtitle-md text-gray4 w-[80px]">{t('jobPost:detail.jobPostSummary.language')}</div>
 
             {languageTypes.map((languageType, index) => {
               const isLast = languageTypes.length - 1 === index
@@ -148,7 +167,7 @@ export default function JobPostSummary({
 
         {!(address1 && zipcode && address2) ? null : (
           <div className="flex items-center gap-x-1">
-            <div className="kr-subtitle-md text-gray4 w-[80px]">근무지</div>
+            <div className="kr-subtitle-md text-gray4 w-[80px]">{t('jobPost:detail.jobPostSummary.workAddress')}</div>
             <p className="kr-body-md">{`${zipcode ? `(${zipcode})` : ''} ${address1 ? `${address1}` : ''} ${address2 ? `${address2}` : ''}`}</p>
           </div>
         )}

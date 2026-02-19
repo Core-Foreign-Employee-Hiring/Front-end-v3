@@ -1,0 +1,110 @@
+{
+  "home": {
+    "title": "Jobs",
+    "jobCount": "<0>{{count}}</0> jobs",
+    "noResults": "No results found."
+  },
+
+  "detail": {
+    "jobPostSummary": {
+      "visaBadge": {
+        "others": "{{main}} & {{count}} more"
+      },
+      "languageBadge": {
+        "others": "{{main}} & {{count}} more"
+      },
+      "days": {
+        "mon": "Mon",
+        "tue": "Tue",
+        "wed": "Wed",
+        "thu": "Thu",
+        "fri": "Fri",
+        "sat": "Sat",
+        "sun": "Sun"
+      },
+      "jobCategory": "Category",
+      "jobRole": "Role",
+      "contractType": "Type",
+      "visa": "Visa",
+      "language": "Language",
+      "workAddress": "Location"
+    },
+
+    "workConditions": {
+      "title": "Work Conditions",
+      "workType": {
+        "title": "Work Type",
+        "ONSITE": "On-site",
+        "HYBRID": "Hybrid",
+        "REMOTE": "Remote",
+        "ETC": "Others"
+      },
+      "workTime": "Hours",
+      "workDaysType": {
+        "title": "Work Days",
+        "WEEKDAYS": "Weekdays (Mon-Fri)",
+        "WEEKENDS": "Weekends (Sat-Sun)",
+        "FULL_WEEK": "7 Days (Mon-Sun)",
+        "SIX_DAYS": "6 Days a week",
+        "MONDAY": "Mon",
+        "TUESDAY": "Tue",
+        "WEDNESDAY": "Wed",
+        "THURSDAY": "Thu",
+        "FRIDAY": "Fri",
+        "SATURDAY": "Sat",
+        "SUNDAY": "Sun",
+        "ETC": "Others"
+      },
+      "salaryType": {
+        "title": "Salary",
+        "ANNUAL": "Yearly",
+        "DAILY": "Daily",
+        "WEEKLY": "Weekly",
+        "HOURLY": "Hourly",
+        "MONTHLY": "Monthly",
+        "ETC": "Others"
+      }
+    },
+
+    "jobDetail": {
+      "title": "Details",
+      "mainTasks": "Key Tasks",
+      "qualifications": "Requirements",
+      "preferences": "Preferences",
+      "others": "Others",
+      "applicationMethod": {
+        "title": "How to Apply",
+        "EMAIL": "Email",
+        "PHONE_SMS": "Phone / SMS",
+        "WEBSITE": "Website"
+      }
+    },
+
+    "workPlace": {
+      "title": "Workplace"
+    },
+
+    "companyInfo": {
+      "title": "Company Info",
+      "representativeName": "CEO",
+      "establishedDate": "Founded",
+      "companyType": {
+        "title": "Company Type",
+        "LARGE_CORPORATION": "Large Corp",
+        "MIDSIZE_COMPANY": "Mid-size",
+        "SMALL_MEDIUM_ENTERPRISE": "SME",
+        "MICRO_BUSINESS": "Micro biz",
+        "SOLE_PROPRIETOR": "Individual",
+        "CORPORATION": "Corporation",
+        "SOCIAL_ENTERPRISE": "Social Enterprise",
+        "COOPERATIVE": "Co-op",
+        "ETC": "Others"
+      },
+      "webSite": "Website"
+    },
+
+    "actionButtons": {
+      "applyButton": "Apply"
+    }
+  }
+}

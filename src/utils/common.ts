@@ -20,22 +20,35 @@ export const formatDate = (dateString: string | undefined): string => {
 
 /**
  * @param dateString - "2026-12-12" 형식의 문자열
+ * @param t - i18next 번역 함수
  * @returns "~12/12(토)" 형식의 문자열
  */
-export const formatToShortDateWithDay = (dateString: string | undefined): string => {
+export const formatToShortDateWithDay = (
+  dateString: string | undefined,
+  t: (key: string) => string // 번역 함수를 인자로 받음
+): string => {
   if (!dateString) return ''
   const date = new Date(dateString)
 
-  // 날짜가 유효하지 않을 경우 빈 문자열 반환
   if (isNaN(date.getTime())) return ''
 
-  const month = date.getMonth() + 1 // getMonth는 0부터 시작하므로 1을 더함
+  const month = date.getMonth() + 1
   const day = date.getDate()
 
-  // 요일 배열 (한국어)
-  const dayOfWeek = ['일', '월', '화', '수', '목', '금', '토'][date.getDay()]
+  // 번역 키 배열
+  const dayKeys = [
+    'jobPost:detail.jobPostSummary.days.sun',
+    'jobPost:detail.jobPostSummary.days.mon',
+    'jobPost:detail.jobPostSummary.days.tue',
+    'jobPost:detail.jobPostSummary.days.wed',
+    'jobPost:detail.jobPostSummary.days.thu',
+    'jobPost:detail.jobPostSummary.days.fri',
+    'jobPost:detail.jobPostSummary.days.sat',
+  ]
 
-  return `~${month}/${day}(${dayOfWeek})`
+  const dayLabel = t(dayKeys[date.getDay()])
+
+  return `~${month}/${day}(${dayLabel})`
 }
 
 /**

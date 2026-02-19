@@ -27,7 +27,7 @@ export default function CompanyInfo({
   representativeName,
   establishedDate,
 }: CompanyInfoProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['jobPost'])
   const { toggleModal, modals } = useModalStore((state) => state)
   const [selectedImageUrl, setSelectedImageUrl] = useState<string | undefined | null>('')
 
@@ -35,7 +35,7 @@ export default function CompanyInfo({
     <div className="flex flex-col gap-y-2">
       {modals.isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
 
-      <Label label={'기업 정보'} />
+      <Label label={t('jobPost:detail.companyInfo.title')} />
       <section className="bg-gray1 flex flex-col gap-y-4 rounded-[12px] p-4">
         <div className="flex gap-x-2">
           <div
@@ -55,22 +55,22 @@ export default function CompanyInfo({
 
         <div className="flex flex-col gap-y-3">
           <div className="flex">
-            <div className="kr-body-md text-gray4 w-[80px]">대표</div>
+            <div className="kr-body-md text-gray4 w-[80px]">{t('jobPost:detail.companyInfo.representativeName')}</div>
             <p className="kr-subtitle-md text-gray5">{representativeName}</p>
           </div>
 
           <div className="flex">
-            <div className="kr-body-md text-gray4 w-[80px]">설립일</div>
+            <div className="kr-body-md text-gray4 w-[80px]">{t('jobPost:detail.companyInfo.establishedDate')}</div>
             <p className="kr-subtitle-md text-gray5">{establishedDate}</p>
           </div>
 
           <div className="flex">
-            <div className="kr-body-md text-gray4 w-[80px]">회사형태</div>
-            <p className="kr-subtitle-md text-gray5">{changeCompanyTypeEnumToKor(companyType)}</p>
+            <div className="kr-body-md text-gray4 w-[80px]">{t('jobPost:detail.companyInfo.companyType.title')}</div>
+            <p className="kr-subtitle-md text-gray5">{t(changeCompanyTypeEnumToKor(companyType))}</p>
           </div>
 
           <div className="flex">
-            <div className="kr-body-md text-gray4 w-[80px]">웹사이트</div>
+            <div className="kr-body-md text-gray4 w-[80px]">{t('jobPost:detail.companyInfo.webSite')}</div>
             <Link
               href={'/https://www.korfit.co.kr/ko'}
               className="kr-subtitle-md text-gray5 underline decoration-1 underline-offset-4"

@@ -4,6 +4,7 @@ import { Button } from '@/components/common'
 import { ApplicationMethodType } from '@/types/job-post'
 import { useModalStore } from '@/store/modalStore'
 import ApplicationMethodModal from '@/components/common/modal/ApplicationMethodModal'
+import { useTranslation } from 'react-i18next'
 
 interface ActionButtonsProps {
   applicationMethod: ApplicationMethodType
@@ -11,6 +12,8 @@ interface ActionButtonsProps {
 }
 
 export default function ActionButtons({ applicationMethod, directInputApplicationMethod }: ActionButtonsProps) {
+  const { t } = useTranslation(['jobPost'])
+
   const { toggleModal, modals } = useModalStore((state) => state)
 
   return (
@@ -26,7 +29,7 @@ export default function ActionButtons({ applicationMethod, directInputApplicatio
           toggleModal('isApplicationMethodModalOpen')
         }}
       >
-        지원하기
+        {t('jobPost:detail.actionButtons.applyButton')}
       </Button>
     </div>
   )

@@ -1,6 +1,7 @@
 'use client'
 import { Gray5LocationIcon } from '@/assets/svgComponents'
 import { Label } from '@/components/common'
+import { useTranslation } from 'react-i18next'
 
 interface WorkplaceInfoProps {
   zipcode: string
@@ -9,9 +10,10 @@ interface WorkplaceInfoProps {
 }
 
 export default function WorkplaceInfo({ zipcode, address1, address2 }: WorkplaceInfoProps) {
+  const { t } = useTranslation(['jobPost'])
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'근무지 정보'} type={'subtitleLg'} />
+      <Label label={t('jobPost:detail.workPlace')} type={'subtitleLg'} />
       <div className="flex items-center gap-x-2">
         <Gray5LocationIcon width={20} height={20} />
         <p className="kr-body-md text-gray5">{`${zipcode ? `(${zipcode})` : ''} ${address1 ? address1 : ''} ${address2 ? address2 : ''}`}</p>
