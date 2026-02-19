@@ -4,23 +4,28 @@ import { resources } from './locales'
 const instanceCache = new Map()
 
 export async function useTranslationServer(lng: Locale, ns: string | string[] = 'common') {
-  // 캐시 키 생성
-  const cacheKey = `${lng}-${Array.isArray(ns) ? ns.join(',') : ns}`
+  const namespaces = Array.isArray(ns) ? ns : [ns]
+  const cacheKey = `${lng}-${namespaces.join(',')}`
 
-  // 이미 생성된 인스턴스가 있으면 반환
   if (instanceCache.has(cacheKey)) {
     const cached = instanceCache.get(cacheKey)
-    return {
-      t: cached.t,
-      i18n: { language: lng },
-    }
+    return { t: cached.t, i18n: { language: lng } }
   }
 
-  const namespace = Array.isArray(ns) ? ns[0] : ns
-  const translations = resources[lng]?.[namespace] || {}
-
+  // 여러 네임스페이스의 데이터를 병합하여 가져옵니다.
   const t = (key: string, defaultValue?: string): string => {
-    const keys = key.split('.')
+    // "namespace:key" 형태인지 확인 (예: "home:title")
+    let targetNs = namespaces[0]
+    let targetKey = key
+
+    if (key.includes(':')) {
+      const [n, k] = key.split(':')
+      targetNs = n
+      targetKey = k
+    }
+
+    const translations = resources[lng]?.[targetNs] || {}
+    const keys = targetKey.split('.')
     let value: any = translations
 
     for (const k of keys) {
@@ -34,11 +39,6 @@ export async function useTranslationServer(lng: Locale, ns: string | string[] = 
     return typeof value === 'string' ? value : defaultValue || key
   }
 
-  // 캐시에 저장
   instanceCache.set(cacheKey, { t })
-
-  return {
-    t,
-    i18n: { language: lng },
-  }
+  return { t, i18n: { language: lng } }
 }

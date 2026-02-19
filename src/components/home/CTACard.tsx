@@ -3,6 +3,7 @@
 import { ReactNode } from 'react'
 import { Button } from '@/components/common'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface CTACardProps {
   Icon: ReactNode
@@ -11,6 +12,7 @@ interface CTACardProps {
   path: string
 }
 export default function CTACard({ Icon, title, description, path }: CTACardProps) {
+  const { t } = useTranslation(['home'])
   const router = useRouter()
 
   const onNavigate = () => {
@@ -25,7 +27,7 @@ export default function CTACard({ Icon, title, description, path }: CTACardProps
       </div>
 
       <Button onClick={onNavigate} variant={'secondary'} size={'md'}>
-        시작하기
+        {t('aiCareerVerifyCTA.button')}
       </Button>
     </div>
   )

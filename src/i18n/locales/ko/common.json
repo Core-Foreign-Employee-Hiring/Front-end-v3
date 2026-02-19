@@ -1,4 +1,15 @@
 {
+  "footer": {
+    "description": "막막했던 한국 취업·창업 준비, KORFIT과 함께 해요.",
+    "kakaoUrl": "외국인 유학생 학교 생활 / 취업 정보방",
+    "ceoName": "대표자명",
+    "businessRegistrationNumber": "사업자 등록번호",
+    "mailOrderBusinessReportNumber": "통신판매업 신고번호",
+    "address": "주소",
+    "phoneNumber": "전화번호",
+    "customerCenter": "고객센터",
+    "customerComplaints": "민원접수"
+  },
   "navigation": {
     "home": "홈",
     "recruit": "채용",

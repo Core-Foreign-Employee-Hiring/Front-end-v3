@@ -1,4 +1,15 @@
 {
+  "footer": {
+    "description": "Start your career and business in Korea with KORFIT.",
+    "kakaoUrl": "Intl. Students Community: Life & Jobs",
+    "ceoName": "CEO",
+    "businessRegistrationNumber": "Business Registration No.",
+    "mailOrderBusinessReportNumber": "Mail Order License",
+    "address": "Address",
+    "phoneNumber": "Phone",
+    "customerCenter": "CS Center",
+    "customerComplaints": "Inquiry"
+  },
   "navigation": {
     "home": "Home",
     "recruit": "Jobs",

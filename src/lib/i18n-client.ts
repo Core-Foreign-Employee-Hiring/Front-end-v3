@@ -1,21 +1,15 @@
-// src/lib/i18n-client.ts
 import i18n from 'i18next'
 import resourcesToBackend from 'i18next-resources-to-backend'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 
-// JSON 파일들을 직접 import
-import koCommon from '@/i18n/locales/ko/common.json'
-import enCommon from '@/i18n/locales/en/common.json'
-
 i18n
   .use(
-    resourcesToBackend((language: string, namespace: string) => {
-      // 동적으로 리소스 반환
-      if (language === 'ko' && namespace === 'common') return koCommon
-      if (language === 'en' && namespace === 'common') return enCommon
-      return {}
-    })
+    resourcesToBackend(
+      (language: string, namespace: string) =>
+        // 경로에 namespace를 변수로 사용하여 자동으로 해당 json 파일을 가져옵니다.
+        import(`@/i18n/locales/${language}/${namespace}.json`)
+    )
   )
   .use(LanguageDetector)
   .use(initReactI18next)
@@ -26,7 +20,8 @@ i18n
       order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
     },
-    ns: ['common'],
+    // ns에 사용할 모든 네임스페이스를 나열하거나 기본값을 설정합니다.
+    ns: ['common', 'home'],
     defaultNS: 'common',
     react: {
       useSuspense: false,

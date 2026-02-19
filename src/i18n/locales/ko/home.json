@@ -1,0 +1,34 @@
+{
+  "banner": {
+    "h1": "막막했던 한국 취업·창업 준비 KORFIT과 함께",
+    "description": "복잡한 채용 절차부터 취업 역량 강화까지 글로벌 인재를 위한 한국 커리어 준비의 모든 과정을 지원합니다",
+    "button": "KORFIT 알아보기"
+  },
+  "aiCareerVerifyCTA": {
+    "title": "AI 커리어 검증",
+    "description": "체계적인 프로세스로 커리어를 준비해보세요.",
+    "button": "시작하기",
+    "specCard": {
+      "title": "커리어 진단",
+      "content": "AI 분석을 통해 나의 역량과 적성을 진단해, 커리어 방향과 전략을 제안받으세요."
+    },
+    "resumeCard": {
+      "title": "이력서 작성",
+      "content": "스펙을 기반으로 지원하는 회사와 직무에 맞게 이력서를 작성하고 관리할 수 있어요."
+    },
+    "aiInterviewCard": {
+      "title": "AI 면접",
+      "content": "실제 면접처럼 반복 연습하면서, 정밀한 AI 분석을 통해 면접 역량 점검해요."
+    }
+  },
+  "jobPost": {
+    "title": "채용 정보",
+    "description": "다양한 기업의 채용 정보를 확인해보세요.",
+    "moreButton": "더보기"
+  },
+  "contentPost": {
+    "title": "콘텐츠",
+    "description": "커리어 성장과 한국생활을 위한 korfit만의 콘텐츠",
+    "moreButton": "더보기"
+  }
+}

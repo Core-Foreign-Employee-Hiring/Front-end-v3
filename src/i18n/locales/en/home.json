@@ -1,0 +1,34 @@
+{
+  "banner": {
+    "h1": "Launch Your Career in Korea with KORFIT",
+    "description": "From complex hiring to career growth, we support your entire journey in Korea.",
+    "button": "Explore KORFIT"
+  },
+  "aiCareerVerifyCTA": {
+    "title": "AI Career Check",
+    "description": "Prepare your career with our structured process.",
+    "button": "Get Started",
+    "specCard": {
+      "title": "Diagnosis",
+      "content": "Get AI-driven insights on your skills and career strategy."
+    },
+    "resumeCard": {
+      "title": "Resume Builder",
+      "content": "Create and manage resumes tailored to your target roles."
+    },
+    "aiInterviewCard": {
+      "title": "AI Interview",
+      "content": "Practice with AI and get precise feedback on your performance."
+    }
+  },
+  "jobPost": {
+    "title": "Jobs",
+    "description": "Explore career opportunities from various companies.",
+    "moreButton": "more"
+  },
+  "contentPost": {
+    "title": "Contents",
+    "description": "KORFIT's guide to career growth and life in Korea.",
+    "moreButton": "More"
+  }
+}

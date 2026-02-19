@@ -4,6 +4,7 @@ import { Button, Label } from '@/components/common'
 import ContentCard from '@/components/content/ContentCard'
 import { ContentType } from '@/types/content'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface ContentPostProps {
   lang: string
@@ -12,12 +13,14 @@ interface ContentPostProps {
 
 export default function ContentPost({ lang, contents }: ContentPostProps) {
   const router = useRouter()
+  const { t } = useTranslation(['home'])
+
   return (
     <div className="desktop:px-[40px] tablet:px-[32px] flex flex-col gap-y-3 px-[20px]">
       <section className="flex items-end justify-between">
         <div className="flex flex-col gap-y-2">
-          <Label type={'titleLg'} label={'콘텐츠'} />
-          <p className="kr-body-md">커리어 성장과 한국생활을 위한 korfit만의 콘텐츠</p>
+          <Label type={'titleLg'} label={t('contentPost.title')} />
+          <p className="kr-body-md">{t('contentPost.description')}</p>
         </div>
         <Button
           variant={'ghost'}
@@ -27,7 +30,7 @@ export default function ContentPost({ lang, contents }: ContentPostProps) {
           size={'sm'}
           customClassName={'w-[70px] shrink-0'}
         >
-          더보기
+          {t('contentPost.moreButton')}
         </Button>
       </section>
 

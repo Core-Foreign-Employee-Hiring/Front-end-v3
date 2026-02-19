@@ -4,6 +4,7 @@ import { Button, Label } from '@/components/common'
 import JobPostCard from '@/components/job-post/JobPostCard'
 import { JobPostType } from '@/types/job-post'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface JobPostProps {
   lang: string
@@ -11,13 +12,14 @@ interface JobPostProps {
 }
 
 export default function JobPost({ lang, recruitData }: JobPostProps) {
+  const { t } = useTranslation(['home'])
   const router = useRouter()
   return (
     <div className="desktop:px-[40px] tablet:px-[32px] flex flex-col gap-y-3 px-[20px]">
       <section className="flex items-end justify-between">
         <div className="flex flex-col gap-y-2">
-          <Label type={'titleLg'} label={'채용 정보'} />
-          <p className="kr-body-md">다양한 기업의 채용 정보를 확인해보세요.</p>
+          <Label type={'titleLg'} label={t('jobPost.title')} />
+          <p className="kr-body-md">{t('jobPost.description')}</p>
         </div>
         <Button
           variant={'ghost'}
@@ -27,7 +29,7 @@ export default function JobPost({ lang, recruitData }: JobPostProps) {
           size={'sm'}
           customClassName={'w-[70px] shrink-0'}
         >
-          더보기
+          {t('jobPost.moreButton')}
         </Button>
       </section>
 
