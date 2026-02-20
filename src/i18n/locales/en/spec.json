@@ -175,5 +175,20 @@
       "improvementRate": "Improvement Rate",
       "inProgress": "In Progress"
     }
+  },
+  "result": {
+    "title": "Profile Analysis",
+    "overallEvaluation": "Overall Summary",
+    "percentage": "Top",
+    "step2": "Auto-generate Resume",
+    "step3": "AI Interview Preparation with KORFIT",
+    "step4": "Success Stories from Alumni",
+    "chat": {
+      "experience": "Activities",
+      "certificate": "Certificates",
+      "language": "Languages",
+      "career": "Experience",
+      "education": "Education"
+    }
   }
 }

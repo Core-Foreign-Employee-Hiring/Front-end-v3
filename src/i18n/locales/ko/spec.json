@@ -176,5 +176,21 @@
       "improvementRate": "개선률",
       "inProgress": "진행중"
     }
+  },
+
+  "result": {
+    "title": "스펙 결과",
+    "overallEvaluation": "총평",
+    "percentage": "상위",
+    "step2": "이력서 자동 생성",
+    "step3": "KORFIT의 AI 면접 준비",
+    "step4": "취업에 성공한 선배들의 경험담",
+    "chat": {
+      "experience": "경험",
+      "certificate": "자격증",
+      "language": "어학",
+      "career": "경력",
+      "education": "학력"
+    }
   }
 }

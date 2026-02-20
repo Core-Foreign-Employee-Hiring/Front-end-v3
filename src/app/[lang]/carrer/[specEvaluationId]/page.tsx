@@ -3,21 +3,24 @@ import CTAButton from '@/components/spec/result/CTAButton'
 import { fetchSpecResult } from '@/lib/server/spec'
 import Chat from '@/components/spec/result/Chat'
 import AuthWatcher from '@/components/auth/AuthWatcher'
+import { getTranslationServer } from '@/lib/i18n'
+import { Locale } from '@/lib/i18n.types'
 
 interface SpecResultProps {
-  params: Promise<{ specEvaluationId: string; lang: string }>
+  params: Promise<{ specEvaluationId: string; lang: Locale }>
 }
 
 export default async function SpecResult({ params }: SpecResultProps) {
   const { specEvaluationId, lang } = await params
+  const { t } = await getTranslationServer(lang, ['spec'])
 
   const specResultResponse = await fetchSpecResult(specEvaluationId)
   const specResult = specResultResponse.data
 
   const ctaButtons: { step: '2' | '3' | '4'; content: string; path: string }[] = [
-    { step: '2', content: '이력서 자동 생성', path: '/carrer?tab=resume' },
-    { step: '3', content: 'KORFIT AI 면접 준비', path: '/interview?tab=home' },
-    { step: '4', content: '취업 성공한 선배님들과 멘토링', path: '/content' },
+    { step: '2', content: t('spec:result.step2'), path: '/carrer?tab=resume' },
+    { step: '3', content: t('spec:result.step3'), path: '/interview?tab=home' },
+    { step: '4', content: t('spec:result.step4'), path: '/content' },
   ]
 
   return (
@@ -31,7 +34,7 @@ export default async function SpecResult({ params }: SpecResultProps) {
       <PageLayout>
         <div>
           <AuthWatcher results={[specResultResponse]} />
-          <Label label={'스펙 결과'} type={'titleLg'} />
+          <Label label={t('spec:result.title')} type={'titleLg'} />
 
           <div className="tablet:flex-row tablet:gap-y-0 tablet:gap-x-[24px] desktop:gap-x-[24px] tablet:items-start flex flex-col items-center gap-y-[24px]">
             <Chat specResult={specResult} />
