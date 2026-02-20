@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import { SpecAwardType } from '@/types/spec'
 import { deleteSpecAwards } from '@/lib/client/spec/award'
 import { DeleteIcon, EditIcon } from '@/assets/svgComponents'
+import { useTranslation } from 'react-i18next'
 
 interface AwardItemProps {
   award: SpecAwardType
@@ -15,6 +16,7 @@ interface AwardItemProps {
 }
 
 export default function AwardItem({ award, toggleFormOpenState }: AwardItemProps) {
+  const { t } = useTranslation(['spec'])
   const router = useRouter()
   const [fileSize, setFileSize] = useState<string>('Loading...')
 
@@ -43,7 +45,7 @@ export default function AwardItem({ award, toggleFormOpenState }: AwardItemProps
 
         <section className="desktop:flex tablet:flex hidden shrink-0 gap-x-2 whitespace-nowrap">
           <Button onClick={toggleFormOpenState} size={'sm'} variant={'outline'} customClassName="w-fit">
-            수정
+            {t('buttons.edit')}
           </Button>
           <Button
             onClick={async () => {
@@ -56,7 +58,7 @@ export default function AwardItem({ award, toggleFormOpenState }: AwardItemProps
             variant={'outline'}
             customClassName="w-fit"
           >
-            삭제
+            {t('buttons.delete')}
           </Button>
         </section>
 

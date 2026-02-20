@@ -1,3 +1,5 @@
+'use client'
+
 import { Button, Label, Spacing } from '@/components/common'
 import { useSpecStore } from '@/store/specStore'
 import {
@@ -8,6 +10,7 @@ import {
   CareerPosition,
 } from '@/components/spec'
 import { SpecCareerType } from '@/types/spec'
+import { useTranslation } from 'react-i18next'
 
 interface AddCareerFormProps {
   index: number
@@ -16,6 +19,7 @@ interface AddCareerFormProps {
 }
 
 export default function AddCareerForm({ index, toggleFormOpenState, career }: AddCareerFormProps) {
+  const { t } = useTranslation(['spec'])
   const { removeCareer, updateCareer } = useSpecStore((state) => state)
   /**
    * 특정 인덱스의 전공명 수정 핸들러
@@ -41,7 +45,7 @@ export default function AddCareerForm({ index, toggleFormOpenState, career }: Ad
       <Spacing height={16} />
 
       <Label
-        label={'경력 내용'}
+        label={t('career.form.title')}
         type={'subtitleLg'}
         rightElement={
           <Button
@@ -53,7 +57,7 @@ export default function AddCareerForm({ index, toggleFormOpenState, career }: Ad
             variant={'outline'}
             size={'md'}
           >
-            삭제
+            {t('buttons.delete')}
           </Button>
         }
       />

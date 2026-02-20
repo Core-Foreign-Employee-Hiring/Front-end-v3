@@ -1,6 +1,9 @@
+'use client'
+
 import { ChangeEvent } from 'react'
 import { formatYYYYMM, padMonth } from '@/utils/spec'
 import { ErrorHelperText, Label, Spacing, TextInput } from '@/components/common'
+import { useTranslation } from 'react-i18next'
 
 interface CertAcquiredDateProps {
   index: number
@@ -13,6 +16,7 @@ interface CertAcquiredDateProps {
 }
 
 export default function CertAcquiredDate({ index, acquiredDate, handleCertificationChange }: CertAcquiredDateProps) {
+  const { t } = useTranslation(['spec'])
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     handleCertificationChange(index, 'acquiredDate', formatYYYYMM(e.target.value))
   }
@@ -25,7 +29,12 @@ export default function CertAcquiredDate({ index, acquiredDate, handleCertificat
 
   return (
     <div>
-      <Label type={'inputLabel'} label={'취득 날짜'} isRequired={true} className={'kr-title-sm text-gray5'} />
+      <Label
+        type={'inputLabel'}
+        label={t('certification.form.acquiredDate.title')}
+        isRequired={true}
+        className={'kr-title-sm text-gray5'}
+      />
       <Spacing height={8} />
       <div className="flex flex-col gap-y-2">
         <TextInput
@@ -36,7 +45,7 @@ export default function CertAcquiredDate({ index, acquiredDate, handleCertificat
           onBlur={() => handleBlur(acquiredDate)}
         />
         {getStatus(acquiredDate ?? '') === 'error' ? (
-          <ErrorHelperText>YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
+          <ErrorHelperText>{t('certification.form.acquiredDate.acquiredDateError')}</ErrorHelperText>
         ) : null}
       </div>
     </div>

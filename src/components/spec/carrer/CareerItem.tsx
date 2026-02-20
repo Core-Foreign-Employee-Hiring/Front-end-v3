@@ -14,7 +14,7 @@ interface CareerItemProps {
 }
 
 export default function CareerItem({ career, toggleFormOpenState }: CareerItemProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['spec', 'filter'])
   const router = useRouter()
 
   return (
@@ -26,7 +26,7 @@ export default function CareerItem({ career, toggleFormOpenState }: CareerItemPr
         </section>
         <section className="desktop:flex tablet:flex hidden shrink-0 gap-x-2 whitespace-nowrap">
           <Button onClick={toggleFormOpenState} size={'sm'} variant={'outline'} customClassName="w-fit">
-            수정
+            {t('spec:buttons.edit')}
           </Button>
           <Button
             onClick={async () => {
@@ -39,7 +39,7 @@ export default function CareerItem({ career, toggleFormOpenState }: CareerItemPr
             variant={'outline'}
             customClassName="w-fit"
           >
-            삭제
+            {t('spec:buttons.delete')}
           </Button>
         </section>
         <section className="desktop:hidden tablet:hidden flex shrink-0 gap-x-2 whitespace-nowrap">
@@ -67,7 +67,7 @@ export default function CareerItem({ career, toggleFormOpenState }: CareerItemPr
 
       <div className="kr-body-sm text-gray4 flex items-center gap-x-2">
         <p>
-          {career.startDate} ~ {career.endDate ? `${career.endDate}` : '현재 재직중'}
+          {career.startDate} ~ {career.endDate ? `${career.endDate}` : t('career.form.duration.isWorking')}
         </p>
         <p>|</p>
         <p>{t(convertEnumToKorContractTypeLabel(career.contractType))}</p>

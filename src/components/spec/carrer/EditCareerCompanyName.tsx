@@ -1,4 +1,7 @@
+'use client'
+
 import { Label, Spacing, TextInput } from '@/components/common'
+import { useTranslation } from 'react-i18next'
 
 interface EditCareerCompanyNameProps {
   companyName: string
@@ -8,12 +11,18 @@ interface EditCareerCompanyNameProps {
   ) => void
 }
 export default function EditCareerCompanyName({ companyName, handleCareerChange }: EditCareerCompanyNameProps) {
+  const { t } = useTranslation(['spec'])
   return (
     <div>
-      <Label type={'inputLabel'} label={'회사명'} isRequired={true} className={'kr-title-sm text-gray5'} />
+      <Label
+        type={'inputLabel'}
+        label={t('career.form.companyName.title')}
+        isRequired={true}
+        className={'kr-title-sm text-gray5'}
+      />
       <Spacing height={8} />
       <TextInput
-        placeholder={'회사명을 입력해주세요.'}
+        placeholder={t('career.form.companyName.placeholder')}
         value={companyName}
         onChange={(e) => handleCareerChange('companyName', e.target.value)}
       />

@@ -6,8 +6,10 @@ import Spacing from '@/components/common/Spacing'
 import TextInput from '@/components/common/TextInput'
 import { useSpecStore } from '@/store/specStore'
 import ErrorHelperText from '@/components/common/ErrorHelperText'
+import { useTranslation } from 'react-i18next'
 
 export default function EduGrades() {
+  const { t } = useTranslation(['spec'])
   const education = useSpecStore((state) => state.education)
   const setEducation = useSpecStore((state) => state.setEducation)
 
@@ -56,14 +58,19 @@ export default function EduGrades() {
 
   const getHelperText = () => {
     const { earnedScore, maxScore } = education
-    if (Number(earnedScore) < 0 || Number(earnedScore) > 4.5) return '학점은 0점 ~ 4.5점 사이 값이어야 합니다.'
-    if (Number(maxScore) < 0 || Number(maxScore) > 4.5) return '총점은 0점 ~ 4.5점 사이 값이어야 합니다.'
-    if (Number(earnedScore) > Number(maxScore)) return '학점이 총점보다 낮아야 합니다.'
+    if (Number(earnedScore) < 0 || Number(earnedScore) > 4.5)
+      return t('education.addEduForm.eduGrades.scoreOutOfRangeMessage')
+    if (Number(maxScore) < 0 || Number(maxScore) > 4.5) return t('education.addEduForm.eduGrades.invalidScoreError')
+    if (Number(earnedScore) > Number(maxScore)) return t('education.addEduForm.eduGrades.scoreComparisonError')
   }
 
   return (
     <div className="w-full">
-      <Label label={'학점'} className="kr-subtitle-lg text-gray5" isRequired={true} />
+      <Label
+        label={t('education.addEduForm.eduGrades.title')}
+        className="kr-subtitle-lg text-gray5"
+        isRequired={true}
+      />
       <Spacing height={8} />
       <div className="flex flex-col gap-y-2">
         <div className="flex w-full gap-x-4">
@@ -74,7 +81,7 @@ export default function EduGrades() {
             onChange={(e) => updateField(e.target.value, 'earnedScore')}
             inputType={'number'}
             value={education.earnedScore ?? 0}
-            placeholder={'학점'}
+            placeholder={t('education.addEduForm.eduGrades.earnedScore')}
           />
           <TextInput
             status={getStatus()}
@@ -83,7 +90,7 @@ export default function EduGrades() {
             onChange={(e) => updateField(e.target.value, 'maxScore')}
             inputType={'number'}
             value={education.maxScore ?? 0}
-            placeholder={'총점'}
+            placeholder={t('education.addEduForm.eduGrades.maxScore')}
           />
         </div>
         {getStatus() === 'error' ? <ErrorHelperText>{getHelperText()}</ErrorHelperText> : null}

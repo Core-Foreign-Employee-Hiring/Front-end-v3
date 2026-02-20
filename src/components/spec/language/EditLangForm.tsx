@@ -5,6 +5,7 @@ import { SpecLanguageSkillType } from '@/types/spec'
 import { useSpecStore } from '@/store/specStore'
 import { putSpecLanguageSkills } from '@/lib/client/spec/language'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface EditLangFormProps {
   languageSkill: SpecLanguageSkillType
@@ -12,6 +13,7 @@ interface EditLangFormProps {
   languageSkillsData: SpecLanguageSkillType[] | null | undefined
 }
 export default function EditLangForm({ languageSkill, toggleState, languageSkillsData }: EditLangFormProps) {
+  const { t } = useTranslation(['spec'])
   const router = useRouter()
   const { updateEditLanguageSkill, setEditLanguageSkills } = useSpecStore((state) => state)
 
@@ -26,7 +28,7 @@ export default function EditLangForm({ languageSkill, toggleState, languageSkill
   return (
     <div className="border-gray2 rounded-[12px] border p-5">
       <Label
-        label={'외국어 능력'}
+        label={t('language.form.title')}
         type={'subtitleLg'}
         rightElement={
           <Button
@@ -40,7 +42,7 @@ export default function EditLangForm({ languageSkill, toggleState, languageSkill
             variant={'outline'}
             size={'md'}
           >
-            취소
+            {t('buttons.cancel')}
           </Button>
         }
       />
@@ -59,7 +61,7 @@ export default function EditLangForm({ languageSkill, toggleState, languageSkill
           }}
           value={languageSkill.title}
           inputType={'text'}
-          placeholder="외국어 시험명을 입력해주세요"
+          placeholder={t('language.form.titlePlaceHolder')}
         />
         <TextInput
           value={languageSkill.score}
@@ -73,13 +75,13 @@ export default function EditLangForm({ languageSkill, toggleState, languageSkill
             }
           }}
           inputType={'text'}
-          placeholder="점수를 입력해주세요."
+          placeholder={t('language.form.scorePlaceHolder')}
         />
       </div>
       <Spacing height={24} />
       <div className="flex w-full justify-end">
         <Button onClick={handleSave} size={'md'} customClassName={'w-[160px]'}>
-          수정
+          {t('buttons.edit')}
         </Button>
       </div>
     </div>

@@ -12,11 +12,13 @@ import EditAwardEntry from '@/components/spec/award/EditAwardEntry'
 import AwardEntry from '@/components/spec/award/AwardEntry'
 import { StepType } from '@/app/[lang]/carrer/page'
 import { uploadFile } from '@/lib/client/common'
+import { useTranslation } from 'react-i18next'
 
 interface SpecAwardProps {
   awardsData: SpecAwardType[] | null | undefined
 }
 export default function SpecAward({ awardsData }: SpecAwardProps) {
+  const { t } = useTranslation(['spec'])
   const router = useRouter()
   const pathname = usePathname()
   const { editAwards, setEditAwards, addAward, setAwards, awards } = useSpecStore((state) => state)
@@ -75,7 +77,7 @@ export default function SpecAward({ awardsData }: SpecAwardProps) {
   return (
     <div>
       <Label
-        label={'수상 경험'}
+        label={t('award.title')}
         type={'titleMd'}
         rightElement={
           <Button
@@ -93,7 +95,7 @@ export default function SpecAward({ awardsData }: SpecAwardProps) {
             customClassName={'w-fit'}
             leftIcon={<Main5000PlusIcon width={20} height={20} />}
           >
-            추가
+            {t('buttons.add')}
           </Button>
         }
       />

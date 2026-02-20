@@ -12,11 +12,13 @@ import EditExperienceEntry from '@/components/spec/experience/EditExperienceEntr
 import ExperienceEntry from '@/components/spec/experience/ExperienceEntry'
 import { postSpecExperiences } from '@/lib/client/spec/experience'
 import { postSpecResult } from '@/lib/client/spec'
+import { useTranslation } from 'react-i18next'
 
 interface SpecExperienceProps {
   experiencesData: SpecExperienceType[] | null | undefined
 }
 export default function SpecExperience({ experiencesData }: SpecExperienceProps) {
+  const { t } = useTranslation(['spec'])
   const router = useRouter()
   const pathname = usePathname()
   const { addExperience, editExperiences, setEditExperiences, experiences, setExperiences, setSpecEvaluationId } =
@@ -63,7 +65,7 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
   return (
     <div>
       <Label
-        label={'기타 경험'}
+        label={t('experience.title')}
         type={'titleMd'}
         rightElement={
           <Button
@@ -82,7 +84,7 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
             customClassName={'w-fit'}
             leftIcon={<Main5000PlusIcon width={20} height={20} />}
           >
-            추가
+            {t('buttons.add')}
           </Button>
         }
       />
@@ -106,7 +108,7 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
         ))}
       </div>
 
-      <Button onClick={handleSave}>저장</Button>
+      <Button onClick={handleSave}>{t('buttons.save')}</Button>
 
       <Spacing height={100} />
       <BottomButton handlePrev={handlePrev} isNextButtonActive={true} handleNext={handleNext} />

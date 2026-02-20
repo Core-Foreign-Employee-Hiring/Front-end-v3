@@ -1,5 +1,8 @@
+'use client'
+
 import { SpecAwardType } from '@/types/spec'
 import { Label, Spacing, TextInput } from '@/components/common'
+import { useTranslation } from 'react-i18next'
 
 interface AwardDescriptionProps {
   index: number
@@ -11,16 +14,14 @@ interface AwardDescriptionProps {
   ) => void
 }
 export default function AwardDescription({ index, award, handleAwardChange }: AwardDescriptionProps) {
+  const { t } = useTranslation(['spec'])
   return (
     <div>
-      <Label type={'inputLabel'} label={'내용'} className={'kr-title-sm text-gray5'} />
+      <Label type={'inputLabel'} label={t('award.form.description.title')} className={'kr-title-sm text-gray5'} />
       <Spacing height={8} />
       <TextInput
         textType={'textArea'}
-        placeholder={
-          '구체적인 역할과 성과 위주의 업무 내용을 작성해보세요.\n' +
-          '수치와 함께 표현되면 경험이 잘 전달될 수 있습니다.'
-        }
+        placeholder={t('award.form.description.placeholder')}
         value={award.description}
         onChange={(e) => handleAwardChange(index, 'description', e.target.value)}
       />

@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { Button, Label, Spacing, UploadItem } from '@/components/common'
 import { UploadIcon } from '@/assets/svgComponents'
+import { useTranslation } from 'react-i18next'
 
 interface CertDocumentURLProps {
   index: number
@@ -14,6 +15,7 @@ interface CertDocumentURLProps {
   ) => void
 }
 export default function CertDocumentURL({ index, documentURL, handleCertificationChange }: CertDocumentURLProps) {
+  const { t } = useTranslation(['spec'])
   const fileInputRef = useRef<HTMLInputElement>(null)
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
@@ -35,7 +37,11 @@ export default function CertDocumentURL({ index, documentURL, handleCertificatio
 
   return (
     <div>
-      <Label type={'inputLabel'} label={'증빙 자료'} className={'kr-title-sm text-gray5'} />
+      <Label
+        type={'inputLabel'}
+        label={t('certification.form.documentURL.title')}
+        className={'kr-title-sm text-gray5'}
+      />
       <Spacing height={8} />
       <UploadItem file={documentURL} onRemove={handleRemoveFile} />
       <Spacing height={8} />
@@ -47,7 +53,7 @@ export default function CertDocumentURL({ index, documentURL, handleCertificatio
         state={'default'}
         customClassName={'w-[96px]'}
       >
-        업로드
+        {t('certification.form.documentURL.button')}
       </Button>
       <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileSelect} className="hidden" />
     </div>

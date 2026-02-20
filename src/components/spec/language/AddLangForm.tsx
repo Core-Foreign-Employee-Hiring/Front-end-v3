@@ -3,6 +3,7 @@
 import { Button, Label, Spacing, TextInput } from '@/components/common'
 import { SpecLanguageSkillType } from '@/types/spec'
 import { useSpecStore } from '@/store/specStore'
+import { useTranslation } from 'react-i18next'
 
 interface AddLangFormProps {
   languageSkill: SpecLanguageSkillType
@@ -10,12 +11,13 @@ interface AddLangFormProps {
   index?: number // 새로 생성한다면 languageSkills의 index값을 찾기 위해
 }
 export default function AddLangForm({ languageSkill, toggleState, index }: AddLangFormProps) {
+  const { t } = useTranslation()
   const { updateLanguageSkill, removeLanguageSkill } = useSpecStore((state) => state)
 
   return (
     <div className="border-gray2 rounded-[12px] border p-5">
       <Label
-        label={'외국어 능력'}
+        label={t('language.form.title')}
         type={'subtitleLg'}
         rightElement={
           <Button
@@ -29,7 +31,7 @@ export default function AddLangForm({ languageSkill, toggleState, index }: AddLa
             variant={'outline'}
             size={'md'}
           >
-            취소
+            {t('buttons.cancel')}
           </Button>
         }
       />
@@ -47,7 +49,7 @@ export default function AddLangForm({ languageSkill, toggleState, index }: AddLa
           }}
           value={languageSkill.title}
           inputType={'text'}
-          placeholder="외국어 시험명을 입력해주세요"
+          placeholder={t('language.form.titlePlaceHolder')}
         />
         <TextInput
           value={languageSkill.score}
@@ -60,7 +62,7 @@ export default function AddLangForm({ languageSkill, toggleState, index }: AddLa
             }
           }}
           inputType={'text'}
-          placeholder="점수를 입력해주세요."
+          placeholder={t('language.form.scorePlaceHolder')}
         />
       </div>
       <Spacing height={24} />

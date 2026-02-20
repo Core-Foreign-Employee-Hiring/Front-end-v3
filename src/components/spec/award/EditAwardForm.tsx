@@ -1,3 +1,5 @@
+'use client'
+
 import { SpecAwardType } from '@/types/spec'
 import { Button, Label, Spacing } from '@/components/common'
 import { uploadFile } from '@/lib/client/common'
@@ -9,6 +11,7 @@ import EditAwardHost from '@/components/spec/award/EditAwardHost'
 import EditAwardDocumentUrl from '@/components/spec/award/EditAwardDocumentUrl'
 import EditAwardDescription from '@/components/spec/award/EditAwardDescription'
 import EditAwardAcquiredDate from '@/components/spec/award/EditAwardAcquiredDate'
+import { useTranslation } from 'react-i18next'
 
 interface EditAwardFormProps {
   toggleFormOpenState: () => void
@@ -17,6 +20,7 @@ interface EditAwardFormProps {
 }
 
 export default function EditAwardForm({ toggleFormOpenState, editAward, awardsData }: EditAwardFormProps) {
+  const { t } = useTranslation(['spec'])
   const { updateEditAward, setEditAwards } = useSpecStore((state) => state)
   const router = useRouter()
 
@@ -75,7 +79,7 @@ export default function EditAwardForm({ toggleFormOpenState, editAward, awardsDa
   return (
     <div className="border-gray2 rounded-[12px] border p-5">
       <Label
-        label={'수상 내용'}
+        label={t('award.form.title')}
         type={'subtitleLg'}
         rightElement={
           <Button
@@ -89,7 +93,7 @@ export default function EditAwardForm({ toggleFormOpenState, editAward, awardsDa
             variant={'outline'}
             size={'md'}
           >
-            취소
+            {t('buttons.cancel')}
           </Button>
         }
       />
@@ -110,7 +114,7 @@ export default function EditAwardForm({ toggleFormOpenState, editAward, awardsDa
 
       <div className="flex w-full justify-end">
         <Button onClick={handleSave} size={'md'} customClassName={'w-[160px]'}>
-          수정
+          {t('buttons.edit')}
         </Button>
       </div>
     </div>

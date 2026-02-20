@@ -1,7 +1,10 @@
+'use client'
+
 import { SpecAwardType } from '@/types/spec'
 import { ChangeEvent } from 'react'
 import { formatYYYYMM, padMonth } from '@/utils/spec'
 import { ErrorHelperText, Label, Spacing, TextInput } from '@/components/common'
+import { useTranslation } from 'react-i18next'
 
 interface EditAwardAcquiredDateProps {
   editAward: SpecAwardType
@@ -11,6 +14,8 @@ interface EditAwardAcquiredDateProps {
   ) => void
 }
 export default function EditAwardAcquiredDate({ editAward, handleAwardChange }: EditAwardAcquiredDateProps) {
+  const { t } = useTranslation(['spec'])
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     handleAwardChange('acquiredDate', formatYYYYMM(e.target.value))
   }
@@ -23,7 +28,12 @@ export default function EditAwardAcquiredDate({ editAward, handleAwardChange }: 
 
   return (
     <div>
-      <Label type={'inputLabel'} label={'취득 날짜'} isRequired={true} className={'kr-title-sm text-gray5'} />
+      <Label
+        type={'inputLabel'}
+        label={t('award.form.acquiredDate.title')}
+        isRequired={true}
+        className={'kr-title-sm text-gray5'}
+      />
       <Spacing height={8} />
       <div className="flex flex-col gap-y-2">
         <TextInput
@@ -34,7 +44,7 @@ export default function EditAwardAcquiredDate({ editAward, handleAwardChange }: 
           onBlur={() => handleBlur(editAward.acquiredDate)}
         />
         {getStatus(editAward.acquiredDate ?? '') === 'error' ? (
-          <ErrorHelperText>취득 날짜를 YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
+          <ErrorHelperText>{t('award.form.acquiredDate.error')}</ErrorHelperText>
         ) : null}
       </div>
     </div>

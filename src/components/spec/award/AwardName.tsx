@@ -2,6 +2,7 @@
 
 import { SpecAwardType } from '@/types/spec'
 import { Label, Spacing, TextInput } from '@/components/common'
+import { useTranslation } from 'react-i18next'
 
 interface AwardNameProps {
   index: number
@@ -14,12 +15,19 @@ interface AwardNameProps {
 }
 
 export default function AwardName({ index, award, handleAwardChange }: AwardNameProps) {
+  const { t } = useTranslation(['spec'])
+
   return (
     <div>
-      <Label type={'inputLabel'} label={'수상명'} isRequired={true} className={'kr-title-sm text-gray5'} />
+      <Label
+        type={'inputLabel'}
+        label={t('award.form.awardName.title')}
+        isRequired={true}
+        className={'kr-title-sm text-gray5'}
+      />
       <Spacing height={8} />
       <TextInput
-        placeholder={'수상명을 입력해주세요.'}
+        placeholder={t('award.form.awardName.placeholder')}
         value={award.awardName}
         onChange={(e) => handleAwardChange(index, 'awardName', e.target.value)}
       />

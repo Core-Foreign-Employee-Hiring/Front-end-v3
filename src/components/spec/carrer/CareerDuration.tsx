@@ -4,6 +4,7 @@ import { ErrorHelperText, Label, Spacing, TextInput } from '@/components/common'
 import { ChangeEvent, useState } from 'react'
 import { formatYYYYMM, padMonth } from '@/utils/spec'
 import { CheckIcon, UncheckIcon } from '@/assets/svgComponents'
+import { useTranslation } from 'react-i18next'
 
 interface CareerDurationProps {
   index: number
@@ -13,6 +14,7 @@ interface CareerDurationProps {
 }
 
 export default function CareerDuration({ handleCareerChange, index, startDate, endDate }: CareerDurationProps) {
+  const { t } = useTranslation(['spec'])
   // 초기 상태: graduationDate가 null이면 재학 중으로 간주
   const [isInProgress, setIsInProgress] = useState<boolean>(endDate === null)
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, fieldName: 'startDate' | 'endDate') => {
@@ -27,7 +29,7 @@ export default function CareerDuration({ handleCareerChange, index, startDate, e
 
   return (
     <div className="w-full">
-      <Label label="기간" className="kr-subtitle-lg text-gray5" isRequired />
+      <Label label={t('career.form.duration.title')} className="kr-subtitle-lg text-gray5" isRequired />
       <Spacing height={8} />
 
       <div className="flex flex-col gap-y-2">
@@ -54,9 +56,9 @@ export default function CareerDuration({ handleCareerChange, index, startDate, e
           )}
         </div>
         {getStatus(startDate ?? '') === 'error' ? (
-          <ErrorHelperText>시작일을 YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
+          <ErrorHelperText>{t('career.form.duration.startDateErrorMessage')}</ErrorHelperText>
         ) : getStatus(endDate ?? '') === 'error' ? (
-          <ErrorHelperText>종료일을 YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
+          <ErrorHelperText>{t('career.form.duration.endDateErrorMessage')}</ErrorHelperText>
         ) : null}
       </div>
 
@@ -71,7 +73,7 @@ export default function CareerDuration({ handleCareerChange, index, startDate, e
         className="flex items-center gap-x-2"
       >
         {isInProgress ? <CheckIcon width={24} height={24} /> : <UncheckIcon width={24} height={24} />}
-        <p className="kr-subtitle-md text-gray5">재직중</p>
+        <p className="kr-subtitle-md text-gray5">{t('career.form.duration.isWorking')}</p>
       </button>
     </div>
   )

@@ -4,6 +4,7 @@ import { SpecExperienceType } from '@/types/spec'
 import { Button, Label, Spacing } from '@/components/common'
 import { ExpDescription, ExpDuration, Experience, ExpImprovementRate } from '@/components/spec'
 import { useSpecStore } from '@/store/specStore'
+import { useTranslation } from 'react-i18next'
 
 interface AddExperienceFormProps {
   index: number
@@ -11,6 +12,7 @@ interface AddExperienceFormProps {
   experience: SpecExperienceType
 }
 export default function AddExperienceForm({ index, toggleFormOpenState, experience }: AddExperienceFormProps) {
+  const { t } = useTranslation(['spec'])
   const { removeExperience, updateExperience } = useSpecStore((state) => state)
   /**
    * 특정 인덱스의 전공명 수정 핸들러
@@ -37,7 +39,7 @@ export default function AddExperienceForm({ index, toggleFormOpenState, experien
       <Spacing height={16} />
 
       <Label
-        label={'기타 경험'}
+        label={t('experience.form.title')}
         type={'subtitleLg'}
         rightElement={
           <Button
@@ -49,7 +51,7 @@ export default function AddExperienceForm({ index, toggleFormOpenState, experien
             variant={'outline'}
             size={'md'}
           >
-            삭제
+            {t('buttons.delete')}
           </Button>
         }
       />

@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { AddCareerForm } from '@/components/spec'
 import { SpecCareerType } from '@/types/spec'

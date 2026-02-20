@@ -30,7 +30,7 @@ export default function BottomButton({
           customClassName={'w-[180px]'}
           variant={'outline'}
         >
-          {t('education.buttons.prev')}
+          {t('buttons.prev')}
         </Button>
       ) : (
         <div className="w-[180px]" />
@@ -43,7 +43,7 @@ export default function BottomButton({
           customClassName={'w-[180px]'}
           variant={'primary'}
         >
-          {step === '6' ? t('education.buttons.submit') : t('education.buttons.next')}
+          {step === '6' ? t('buttons.submit') : t('buttons.next')}
         </Button>
       ) : (
         <div className="w-[180px]" />

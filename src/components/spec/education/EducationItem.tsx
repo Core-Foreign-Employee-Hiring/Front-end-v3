@@ -5,6 +5,7 @@ import { SpecEducationType } from '@/types/spec'
 import { useRouter } from 'next/navigation'
 import { deleteSpecEducation } from '@/lib/client/spec/education'
 import { DeleteIcon, EditIcon } from '@/assets/svgComponents'
+import { useTranslation } from 'react-i18next'
 
 interface EducationItemProps {
   education: SpecEducationType
@@ -13,6 +14,7 @@ interface EducationItemProps {
 
 export default function EducationItem({ education, onEdit }: EducationItemProps) {
   const router = useRouter()
+  const { t } = useTranslation(['spec'])
   return (
     <div className="border-gray2 flex justify-between gap-x-[20px] rounded-[12px] border p-5">
       <section className="flex flex-col gap-y-2">
@@ -39,7 +41,7 @@ export default function EducationItem({ education, onEdit }: EducationItemProps)
 
       <section className="desktop:flex tablet:flex hidden shrink-0 gap-x-2 whitespace-nowrap">
         <Button onClick={onEdit} customClassName={'w-fit'} variant={'outline'} size={'sm'}>
-          수정
+          {t('buttons.edit')}
         </Button>
         <Button
           onClick={async () => {
@@ -52,7 +54,7 @@ export default function EducationItem({ education, onEdit }: EducationItemProps)
           variant={'outline'}
           size={'sm'}
         >
-          삭제
+          {t('buttons.delete')}
         </Button>
       </section>
 

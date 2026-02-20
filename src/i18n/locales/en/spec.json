@@ -1,1 +1,179 @@
-{}
+{
+  "home": {
+    "title": "Manage Profile",
+    "education": {
+      "title": "Education"
+    },
+    "language": {
+      "title": "Languages"
+    },
+    "certification": {
+      "title": "Certifications"
+    },
+    "career": {
+      "title": "Work Experience"
+    },
+    "award": {
+      "title": "Awards"
+    },
+    "experience": {
+      "title": "Other Activities"
+    }
+  },
+
+  "buttons": {
+    "add": "Add",
+    "prev": "Previous",
+    "next": "Next",
+    "submit": "Submit",
+    "edit": "Edit",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
+
+  "education": {
+    "title": "Education Info",
+    "addEduForm": {
+      "editTitle": "Edit Education",
+      "initTitle": "Education Details",
+      "eduSchool": {
+        "title": "School Name",
+        "placeholder": "Enter school name",
+        "searchResultsCount": "{{count}} results found",
+        "noResults": "No results found."
+      },
+      "eduDuration": {
+        "title": "Duration",
+        "errorAdmissionDate": "Enter admission date as YYYY-MM.",
+        "errorGraduationDate": "Enter graduation date as YYYY-MM."
+      },
+      "eduMajor": {
+        "title": "Major & Department",
+        "placeholder": "Major and department"
+      },
+      "eduGrades": {
+        "title": "GPA",
+        "earnedScore": "GPA",
+        "maxScore": "Scale",
+        "scoreOutOfRangeMessage": "GPA must be between 0 and 4.5.",
+        "invalidScoreError": "Scale must be between 0 and 4.5.",
+        "scoreComparisonError": "GPA cannot exceed the scale."
+      }
+    }
+  },
+
+  "language": {
+    "title": "Languages",
+    "form": {
+      "title": "Language Proficiency",
+      "titlePlaceHolder": "Enter language exam name",
+      "scorePlaceHolder": "Enter your score"
+    }
+  },
+
+  "certification": {
+    "title": "Certifications",
+    "form": {
+      "title": "Certification Details",
+      "name": {
+        "title": "Certification Name",
+        "placeholder": "Enter certification name"
+      },
+      "acquiredDate": {
+        "title": "Acquisition Date",
+        "acquiredDateError": "Please use YYYY-MM format."
+      },
+      "documentURL": {
+        "title": "Supporting Documents",
+        "button": "Upload"
+      }
+    }
+  },
+
+  "career": {
+    "title": "Work Experience",
+    "form": {
+      "title": "Experience Details",
+      "companyName": {
+        "title": "Company",
+        "placeholder": "Enter company name"
+      },
+      "position": {
+        "title": "Position",
+        "placeholder": "Enter your position"
+      },
+      "duration": {
+        "title": "Duration",
+        "startDateErrorMessage": "Enter start date as YYYY-MM.",
+        "endDateErrorMessage": "Enter end date as YYYY-MM.",
+        "isWorking": "Currently Employed"
+      },
+      "contractType": {
+        "title": "Contract Type",
+        "placeholder": "e.g., Full-time, Internship"
+      },
+      "highlight": {
+        "title": "Description",
+        "placeholder": "Describe your roles and achievements. Using numbers can help showcase your impact effectively."
+      }
+    }
+  },
+
+  "award": {
+    "title": "Awards",
+    "form": {
+      "title": "Award Details",
+      "awardName": {
+        "title": "Award Name",
+        "placeholder": "Enter award name"
+      },
+      "host": {
+        "title": "Issuing Organization",
+        "placeholder": "Enter organization name"
+      },
+      "acquiredDate": {
+        "title": "Date Received",
+        "error": "Enter date as YYYY-MM."
+      },
+      "description": {
+        "title": "Description",
+        "placeholder": "Describe your role and the significance of this award."
+      },
+      "documentUrl": {
+        "title": "Supporting Documents",
+        "button": "Upload"
+      }
+    }
+  },
+
+  "experience": {
+    "title": "Other Activities",
+    "form": {
+      "title": "Activity Details",
+      "experienceName": {
+        "title": "Activity Name",
+        "placeholder": "Enter activity name"
+      },
+      "duration": {
+        "title": "Duration",
+        "startDateErrorMessage": "Enter start date as YYYY-MM.",
+        "endDateErrorMessage": "Enter end date as YYYY-MM."
+      },
+      "description": {
+        "title": "Description",
+        "placeholder": "Describe your roles and achievements in detail."
+      },
+      "improvementRate": {
+        "title": "Improvement Rate",
+        "beforeImprovementRatePlaceholder": "Before",
+        "afterImprovementRatePlaceholder": "After",
+        "error": "Initial rate must be lower than the final rate."
+      }
+    },
+    "item": {
+      "improvementRate": "Improvement Rate",
+      "inProgress": "In Progress"
+    }
+  }
+}

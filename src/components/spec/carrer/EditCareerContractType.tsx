@@ -1,3 +1,5 @@
+'use client'
+
 import { useDropDown } from '@/hooks'
 import { DropDown, Label, Spacing } from '@/components/common'
 import { CONTRACT_TYPES } from '@/text/spec'
@@ -15,10 +17,10 @@ interface EditCareerContractTypeProps {
 }
 
 export default function EditCareerContractType({ contractType, handleCareerChange }: EditCareerContractTypeProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['spec, filter'])
 
   const { dropDownOpenHandler, selectedDropDownHandler, selectedDropDownContent, isDropDownOpen, initialValue } =
-    useDropDown({ initialValue: '계약형태를 입력해주세요.' })
+    useDropDown({ initialValue: t('spec:career.form.contractType.placeholder') })
 
   useEffect(() => {
     selectedDropDownHandler(t(convertEnumToKorContractTypeLabel(contractType)))
@@ -26,7 +28,11 @@ export default function EditCareerContractType({ contractType, handleCareerChang
 
   return (
     <div>
-      <Label type={'inputLabel'} label={'계약 형태'} className={'kr-title-sm text-gray5'} />
+      <Label
+        type={'inputLabel'}
+        label={t('spec:career.form.contractType.title')}
+        className={'kr-title-sm text-gray5'}
+      />
       <Spacing height={8} />
       <DropDown
         selectedValue={selectedDropDownContent}

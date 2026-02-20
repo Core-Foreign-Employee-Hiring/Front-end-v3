@@ -11,12 +11,14 @@ import BottomButton from '@/components/spec/BottomButton'
 import EditLanguageEntry from '@/components/spec/language/EditLanguageEntry'
 import { postSpecLanguageSkills } from '@/lib/client/spec/language'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface SpecLanguageProps {
   languageSkillsData: SpecLanguageSkillType[] | null | undefined
 }
 
 export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) {
+  const { t } = useTranslation(['spec'])
   const { languageSkills, addLanguageSkill, setEditLanguageSkills, editLanguageSkills, setLanguageSkills } =
     useSpecStore((state) => state)
   const { handlePrev, handleNext, isActive } = useSpecLanguage()
@@ -31,7 +33,7 @@ export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) 
   return (
     <div>
       <Label
-        label={'어학 능력'}
+        label={t('language.title')}
         type={'titleMd'}
         rightElement={
           <Button
@@ -43,7 +45,7 @@ export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) 
             customClassName={'w-fit'}
             leftIcon={<Main5000PlusIcon width={20} height={20} />}
           >
-            추가
+            {t('buttons.add')}
           </Button>
         }
       />
@@ -81,7 +83,7 @@ export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) 
           }
         }}
       >
-        저장
+        {t('buttons.save')}
       </Button>
       <BottomButton handlePrev={handlePrev} isNextButtonActive={isActive} handleNext={handleNext} />
     </div>

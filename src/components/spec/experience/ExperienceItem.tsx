@@ -1,14 +1,18 @@
+'use client'
+
 import { Badge, Button, Label } from '@/components/common'
 import { SpecExperienceType } from '@/types/spec'
 import { useRouter } from 'next/navigation'
 import { DeleteIcon, EditIcon, Main500FireIcon } from '@/assets/svgComponents'
 import { deleteSpecExperiences } from '@/lib/client/spec/experience'
+import { useTranslation } from 'react-i18next'
 
 interface ExperienceItemProps {
   toggleFormOpenState: () => void
   experience: SpecExperienceType
 }
 export default function ExperienceItem({ toggleFormOpenState, experience }: ExperienceItemProps) {
+  const { t } = useTranslation(['spec'])
   const router = useRouter()
 
   return (
@@ -19,14 +23,15 @@ export default function ExperienceItem({ toggleFormOpenState, experience }: Expe
             <Label label={experience.experience} type={'subtitleLg'} />
             {experience.beforeImprovementRate && experience.afterImprovementRate ? (
               <Badge leftIcon={<Main500FireIcon width={13} height={13} />}>
-                개선률 {experience.beforeImprovementRate}% → {experience.afterImprovementRate}%
+                {t('experience.item.improvementRate')} {experience.beforeImprovementRate}% →{' '}
+                {experience.afterImprovementRate}%
               </Badge>
             ) : null}
           </div>
         </section>
         <section className="desktop:flex tablet:flex hidden shrink-0 gap-x-2 whitespace-nowrap">
           <Button onClick={toggleFormOpenState} size={'sm'} variant={'outline'} customClassName="w-fit">
-            수정
+            {t('buttons.edit')}
           </Button>
           <Button
             onClick={async () => {
@@ -39,7 +44,7 @@ export default function ExperienceItem({ toggleFormOpenState, experience }: Expe
             variant={'outline'}
             customClassName="w-fit"
           >
-            삭제
+            {t('buttons.delete')}
           </Button>
         </section>
 
@@ -66,7 +71,7 @@ export default function ExperienceItem({ toggleFormOpenState, experience }: Expe
         </section>
       </div>
       <p className="kr-body-md text-gray5">
-        {experience.startDate} ~ {experience.endDate ? experience.endDate : '현재 진행중'}
+        {experience.startDate} ~ {experience.endDate ? experience.endDate : t('experience.item.inProgress')}
       </p>
       <p className="kr-body-md text-gray5">{experience.description}</p>
     </div>

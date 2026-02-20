@@ -5,12 +5,14 @@ import { ChangeEvent, useState } from 'react'
 import { formatYYYYMM, padMonth } from '@/utils/spec'
 import { ErrorHelperText, Label, Spacing, TextInput } from '@/components/common'
 import { CheckIcon, UncheckIcon } from '@/assets/svgComponents'
+import { useTranslation } from 'react-i18next'
 
 interface EditExpDurationProps {
   editExperience: SpecExperienceType
   handleExperienceChange: (fieldName: keyof SpecExperienceType, value: string | number | null) => void
 }
 export default function EditExpDuration({ editExperience, handleExperienceChange }: EditExpDurationProps) {
+  const { t } = useTranslation(['spec'])
   // 초기 상태: graduationDate가 null이면 재학 중으로 간주
   const [isInProgress, setIsInProgress] = useState<boolean>(editExperience.endDate === null)
 
@@ -26,7 +28,7 @@ export default function EditExpDuration({ editExperience, handleExperienceChange
 
   return (
     <div className="w-full">
-      <Label label="기간" className="kr-subtitle-lg text-gray5" isRequired />
+      <Label label={t('experience.form.duration.title')} className="kr-subtitle-lg text-gray5" isRequired />
       <Spacing height={8} />
 
       <div className="flex flex-col gap-y-2">
@@ -50,9 +52,9 @@ export default function EditExpDuration({ editExperience, handleExperienceChange
           )}
         </div>
         {getStatus(editExperience.startDate ?? '') === 'error' ? (
-          <ErrorHelperText>시작일을 YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
+          <ErrorHelperText>{t('experience.form.duration.startDateErrorMessage')}</ErrorHelperText>
         ) : getStatus(editExperience.endDate ?? '') === 'error' ? (
-          <ErrorHelperText>종료일을 YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
+          <ErrorHelperText>{t('experience.form.duration.endDateErrorMessage')}</ErrorHelperText>
         ) : null}
       </div>
 
@@ -67,7 +69,7 @@ export default function EditExpDuration({ editExperience, handleExperienceChange
         className="flex items-center gap-x-2"
       >
         {isInProgress ? <CheckIcon width={24} height={24} /> : <UncheckIcon width={24} height={24} />}
-        <p className="kr-subtitle-md text-gray5">진행중</p>
+        <p className="kr-subtitle-md text-gray5">{t('experience.item.inProgress')}</p>
       </button>
     </div>
   )

@@ -9,6 +9,7 @@ import EditCertDocumentURL from '@/components/spec/certification/EditCertDocumen
 import { putSpecCertifications } from '@/lib/client/spec/certification'
 import { uploadFile } from '@/lib/client/common'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface EditCertFormProps {
   toggleFormOpenState: () => void
@@ -21,6 +22,7 @@ export default function EditCertForm({
   editCertification,
   certificationsData,
 }: EditCertFormProps) {
+  const { t } = useTranslation(['spec'])
   const router = useRouter()
 
   const { updateEditCertification, setEditCertifications } = useSpecStore((state) => state)
@@ -81,7 +83,7 @@ export default function EditCertForm({
       <Spacing height={16} />
 
       <Label
-        label={'자격 내용'}
+        label={t('certification.form.title')}
         type={'subtitleLg'}
         rightElement={
           <Button
@@ -95,7 +97,7 @@ export default function EditCertForm({
             variant={'outline'}
             size={'md'}
           >
-            취소
+            {t('buttons.cancel')}
           </Button>
         }
       />
@@ -120,7 +122,7 @@ export default function EditCertForm({
 
       <div className="flex w-full justify-end">
         <Button onClick={handleSave} size={'md'} customClassName={'w-[160px]'}>
-          수정
+          {t('buttons.edit')}
         </Button>
       </div>
     </div>

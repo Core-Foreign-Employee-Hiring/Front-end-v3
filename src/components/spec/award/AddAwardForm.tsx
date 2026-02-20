@@ -1,7 +1,10 @@
+'use client'
+
 import { SpecAwardType } from '@/types/spec'
 import { Button, Label, Spacing } from '@/components/common'
 import { AwardAcquiredDate, AwardDescription, AwardDocumentUrl, AwardHost, AwardName } from '@/components/spec'
 import { useSpecStore } from '@/store/specStore'
+import { useTranslation } from 'react-i18next'
 
 interface AddAwardFormProps {
   index: number
@@ -9,6 +12,8 @@ interface AddAwardFormProps {
   award: SpecAwardType
 }
 export default function AddAwardForm({ index, toggleFormOpenState, award }: AddAwardFormProps) {
+  const { t } = useTranslation(['spec'])
+
   const { updateAward, removeAward } = useSpecStore((state) => state)
 
   /**
@@ -33,7 +38,7 @@ export default function AddAwardForm({ index, toggleFormOpenState, award }: AddA
   return (
     <div className="border-gray2 rounded-[12px] border p-5">
       <Label
-        label={'수상 내용'}
+        label={t('award.form.title')}
         type={'subtitleLg'}
         rightElement={
           <Button
@@ -45,7 +50,7 @@ export default function AddAwardForm({ index, toggleFormOpenState, award }: AddA
             variant={'outline'}
             size={'md'}
           >
-            취소
+            {t('buttons.cancel')}
           </Button>
         }
       />

@@ -11,12 +11,14 @@ import EditCareerEntry from '@/components/spec/carrer/EditCareerEntry'
 import CareerEntry from '@/components/spec/carrer/CareerEntry'
 import { postSpecCareers } from '@/lib/client/spec/career'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface SpecCareerProps {
   careersData: SpecCareerType[] | null | undefined
 }
 
 export default function SpecCareer({ careersData }: SpecCareerProps) {
+  const { t } = useTranslation(['spec'])
   const router = useRouter()
   const { handleNext, handlePrev, careers, isActive } = useSpecCareer()
 
@@ -47,7 +49,7 @@ export default function SpecCareer({ careersData }: SpecCareerProps) {
   return (
     <div>
       <Label
-        label={'경력'}
+        label={t('career.title')}
         type={'titleMd'}
         rightElement={
           <Button
@@ -66,7 +68,7 @@ export default function SpecCareer({ careersData }: SpecCareerProps) {
             customClassName={'w-fit'}
             leftIcon={<Main5000PlusIcon width={20} height={20} />}
           >
-            추가
+            {t('buttons.add')}
           </Button>
         }
       />
@@ -90,7 +92,7 @@ export default function SpecCareer({ careersData }: SpecCareerProps) {
         ))}
       </div>
 
-      <Button onClick={handleSave}>저장</Button>
+      <Button onClick={handleSave}>{t('buttons.save')}</Button>
 
       <Spacing height={100} />
       <BottomButton handlePrev={handlePrev} isNextButtonActive={isActive} handleNext={handleNext} />

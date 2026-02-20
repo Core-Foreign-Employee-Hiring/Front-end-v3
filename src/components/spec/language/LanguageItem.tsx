@@ -5,6 +5,7 @@ import { Button, Label } from '@/components/common'
 import { deleteSpecLanguageSkills } from '@/lib/client/spec/language'
 import { useRouter } from 'next/navigation'
 import { DeleteIcon, EditIcon } from '@/assets/svgComponents'
+import { useTranslation } from 'react-i18next'
 
 interface LanguageItemProps {
   languageSkill: SpecLanguageSkillType
@@ -12,6 +13,7 @@ interface LanguageItemProps {
 }
 
 export default function LanguageItem({ languageSkill, toggleState }: LanguageItemProps) {
+  const { t } = useTranslation(['spec'])
   const router = useRouter()
   return (
     <div className="border-gray2 flex items-start justify-between gap-x-[20px] rounded-[12px] border p-5">
@@ -22,7 +24,7 @@ export default function LanguageItem({ languageSkill, toggleState }: LanguageIte
 
       <section className="desktop:flex tablet:flex hidden shrink-0 items-center gap-x-2 whitespace-nowrap">
         <Button onClick={toggleState} size={'sm'} variant={'outline'} customClassName="w-fit">
-          수정
+          {t('buttons.edit')}
         </Button>
         <Button
           onClick={async () => {
@@ -35,7 +37,7 @@ export default function LanguageItem({ languageSkill, toggleState }: LanguageIte
           variant={'outline'}
           customClassName="w-fit"
         >
-          삭제
+          {t('buttons.delete')}
         </Button>
       </section>
 

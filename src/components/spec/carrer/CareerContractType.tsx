@@ -1,7 +1,10 @@
+'use client'
+
 import { ContractEnumType } from '@/types/spec'
 import { DropDown, Label, Spacing } from '@/components/common'
 import { CONTRACT_TYPES } from '@/text/spec'
 import { useDropDown } from '@/hooks'
+import { useTranslation } from 'react-i18next'
 
 interface CareerContractTypeProps {
   index: number
@@ -13,11 +16,12 @@ interface CareerContractTypeProps {
   ) => void
 }
 export default function CareerContractType({ index, contractType, handleCareerChange }: CareerContractTypeProps) {
+  const { t } = useTranslation(['spec'])
   const { dropDownOpenHandler, selectedDropDownHandler, selectedDropDownContent, isDropDownOpen, initialValue } =
-    useDropDown({ initialValue: '계약형태를 입력해주세요.' })
+    useDropDown({ initialValue: t('career.form.contractType.placeholder') })
   return (
     <div>
-      <Label type={'inputLabel'} label={'계약 형태'} className={'kr-title-sm text-gray5'} />
+      <Label type={'inputLabel'} label={t('career.form.contractType.title')} className={'kr-title-sm text-gray5'} />
       <Spacing height={8} />
       <DropDown
         selectedValue={selectedDropDownContent}

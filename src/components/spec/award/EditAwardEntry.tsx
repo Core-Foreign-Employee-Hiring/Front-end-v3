@@ -1,3 +1,5 @@
+'use client'
+
 import { SpecAwardType } from '@/types/spec'
 import { useState } from 'react'
 import EditAwardForm from '@/components/spec/award/EditAwardForm'

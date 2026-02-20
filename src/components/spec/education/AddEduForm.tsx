@@ -62,7 +62,7 @@ export default function AddEduForm({ educationData, onClose }: AddEduFormProps) 
               size={'md'}
               variant={'outline'}
             >
-              {isEditMode ? t('education.buttons.edit') : t('education.buttons.save')}
+              {isEditMode ? t('buttons.edit') : t('buttons.save')}
             </Button>
             <Button
               onClick={() => {
@@ -79,7 +79,7 @@ export default function AddEduForm({ educationData, onClose }: AddEduFormProps) 
               variant={'outline'}
               size={'md'}
             >
-              {t('education.buttons.cancel')}
+              {t('buttons.cancel')}
             </Button>
           </div>
         }

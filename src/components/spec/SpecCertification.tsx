@@ -12,12 +12,14 @@ import { postSpecCertifications } from '@/lib/client/spec/certification'
 import EditCertificationEntry from '@/components/spec/certification/EditCertificationEntry'
 import CertificationEntry from '@/components/spec/certification/CertificationEntry'
 import { uploadFile } from '@/lib/client/common'
+import { useTranslation } from 'react-i18next'
 
 interface SpecCertificationProps {
   certificationsData: SpecCertificationType[] | null | undefined
 }
 
 export default function SpecCertification({ certificationsData }: SpecCertificationProps) {
+  const { t } = useTranslation(['spec'])
   const { handleNext, handlePrev, certifications, isActive } = useSpecCertification()
 
   const { editCertifications, setEditCertifications, setCertifications, addCertification } = useSpecStore(
@@ -73,7 +75,7 @@ export default function SpecCertification({ certificationsData }: SpecCertificat
   return (
     <div>
       <Label
-        label={'자격증'}
+        label={t('certification.title')}
         type={'titleMd'}
         rightElement={
           <Button
@@ -85,7 +87,7 @@ export default function SpecCertification({ certificationsData }: SpecCertificat
             customClassName={'w-fit'}
             leftIcon={<Main5000PlusIcon width={20} height={20} />}
           >
-            추가
+            {t('buttons.add')}
           </Button>
         }
       />
@@ -111,7 +113,7 @@ export default function SpecCertification({ certificationsData }: SpecCertificat
 
       <Spacing height={100} />
 
-      <Button onClick={handleSave}>저장</Button>
+      <Button onClick={handleSave}>{t('buttons.save')}</Button>
       <Spacing height={100} />
 
       <BottomButton handlePrev={handlePrev} isNextButtonActive={isActive} handleNext={handleNext} />

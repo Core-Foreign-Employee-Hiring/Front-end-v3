@@ -1,3 +1,5 @@
+'use client'
+
 import { SpecCareerType } from '@/types/spec'
 import { useRouter } from 'next/navigation'
 import { useSpecStore } from '@/store/specStore'
@@ -8,6 +10,7 @@ import EditCareerDuration from '@/components/spec/carrer/EditCareerDuration'
 import EditCareerContractType from '@/components/spec/carrer/EditCareerContractType'
 import EditCareerHighlight from '@/components/spec/carrer/EditCareerHighlight'
 import { putSpecCareers } from '@/lib/client/spec/career'
+import { useTranslation } from 'react-i18next'
 
 interface EditCareerFormProps {
   toggleFormOpenState: () => void
@@ -15,6 +18,8 @@ interface EditCareerFormProps {
   careersData: SpecCareerType[] | null | undefined
 }
 export default function EditCareerForm({ toggleFormOpenState, editCareer, careersData }: EditCareerFormProps) {
+  const { t } = useTranslation(['spec'])
+
   const router = useRouter()
   const { updateEditCareer, setEditCareers } = useSpecStore((state) => state)
 
@@ -55,7 +60,7 @@ export default function EditCareerForm({ toggleFormOpenState, editCareer, career
       <Spacing height={16} />
 
       <Label
-        label={'경력 내용'}
+        label={t('career.form.title')}
         type={'subtitleLg'}
         rightElement={
           <Button
@@ -69,7 +74,7 @@ export default function EditCareerForm({ toggleFormOpenState, editCareer, career
             variant={'outline'}
             size={'md'}
           >
-            취소
+            {t('buttons.cancel')}
           </Button>
         }
       />
@@ -96,7 +101,7 @@ export default function EditCareerForm({ toggleFormOpenState, editCareer, career
       <Spacing height={16} />
       <div className="flex w-full justify-end">
         <Button onClick={handleSave} size={'md'} customClassName={'w-[160px]'}>
-          수정
+          {t('buttons.edit')}
         </Button>
       </div>
     </div>

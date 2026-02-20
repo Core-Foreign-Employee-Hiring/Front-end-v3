@@ -7,8 +7,10 @@ import TextInput from '@/components/common/TextInput'
 import { useSpecStore } from '@/store/specStore'
 import { Button } from '@/components/common'
 import { GrayPlusIcon } from '@/assets/svgComponents'
+import { useTranslation } from 'react-i18next'
 
 export default function EduMajor() {
+  const { t } = useTranslation(['spec'])
   const education = useSpecStore((state) => state.education)
   const setEducation = useSpecStore((state) => state.setEducation)
 
@@ -52,7 +54,7 @@ export default function EduMajor() {
 
   return (
     <div className="w-full">
-      <Label label={'전공명 및 학과'} className="kr-subtitle-lg text-gray5" isRequired={true} />
+      <Label label={t('education.addEduForm.eduMajor.title')} className="kr-subtitle-lg text-gray5" isRequired={true} />
       <Spacing height={8} />
 
       {education.majors.map((major, index) => (
@@ -62,7 +64,7 @@ export default function EduMajor() {
             onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
               handleMajorChange(index, e.target.value)
             }
-            placeholder={'전공 및 학과'}
+            placeholder={t('education.addEduForm.eduMajor.placeholder')}
           />
           {education.majors.length > 1 && (
             <button
@@ -70,7 +72,7 @@ export default function EduMajor() {
               onClick={() => handleRemoveMajor(index)}
               className="text-gray3 kr-caption-md mt-1 underline"
             >
-              삭제
+              {t('buttons.delete')}
             </button>
           )}
           <Spacing height={8} />
@@ -84,7 +86,7 @@ export default function EduMajor() {
         variant="ghost"
         leftIcon={<GrayPlusIcon width={20} height={20} />}
       >
-        추가
+        {t('buttons.add')}
       </Button>
     </div>
   )

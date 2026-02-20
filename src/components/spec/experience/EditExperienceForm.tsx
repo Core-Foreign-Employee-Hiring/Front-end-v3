@@ -1,3 +1,5 @@
+'use client'
+
 import { SpecExperienceType } from '@/types/spec'
 import { useSpecStore } from '@/store/specStore'
 import { Button, Label, Spacing } from '@/components/common'
@@ -7,6 +9,7 @@ import EditExperience from '@/components/spec/experience/EditExperience'
 import EditExpImprovementRate from '@/components/spec/experience/EditExpImprovementRate'
 import { putSpecExperiences } from '@/lib/client/spec/experience'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface EditExperienceFormProps {
   toggleFormOpenState: () => void
@@ -18,6 +21,7 @@ export default function EditExperienceForm({
   editExperience,
   experiencesData,
 }: EditExperienceFormProps) {
+  const { t } = useTranslation(['spec'])
   const router = useRouter()
   const { setEditExperiences, updateEditExperience } = useSpecStore((state) => state)
   /**
@@ -54,7 +58,7 @@ export default function EditExperienceForm({
       <Spacing height={16} />
 
       <Label
-        label={'기타 경험'}
+        label={t('experience.title')}
         type={'subtitleLg'}
         rightElement={
           <Button
@@ -68,7 +72,7 @@ export default function EditExperienceForm({
             variant={'outline'}
             size={'md'}
           >
-            삭제
+            {t('buttons.delete')}
           </Button>
         }
       />
@@ -87,7 +91,7 @@ export default function EditExperienceForm({
       <Spacing height={16} />
       <div className="flex w-full justify-end">
         <Button onClick={handleSave} size={'md'} customClassName={'w-[160px]'}>
-          수정
+          {t('buttons.edit')}
         </Button>
       </div>
     </div>

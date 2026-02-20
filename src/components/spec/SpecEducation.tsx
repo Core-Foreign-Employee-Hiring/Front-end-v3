@@ -67,7 +67,7 @@ export default function SpecEducation({ educationData }: SpecEducationProps) {
               customClassName={'w-fit'}
               leftIcon={<Main5000PlusIcon width={20} height={20} />}
             >
-              {t('education.buttons.add')}
+              {t('buttons.add')}
             </Button>
           ) : null
         }

@@ -4,6 +4,7 @@ import { CertAcquiredDate, CertDocumentURL, CertName } from '@/components/spec'
 import { Button, Label, Spacing } from '@/components/common'
 import { useSpecStore } from '@/store/specStore'
 import { SpecCertificationType } from '@/types/spec'
+import { useTranslation } from 'react-i18next'
 
 interface AddCertFormProps {
   index: number
@@ -11,6 +12,7 @@ interface AddCertFormProps {
   certification: SpecCertificationType
 }
 export default function AddCertForm({ index, certification, toggleFormOpenState }: AddCertFormProps) {
+  const { t } = useTranslation(['spec'])
   const { updateCertification, removeCertification } = useSpecStore((state) => state)
 
   /**
@@ -35,7 +37,7 @@ export default function AddCertForm({ index, certification, toggleFormOpenState 
       <Spacing height={16} />
 
       <Label
-        label={'자격 내용'}
+        label={t('certification.form.title')}
         type={'subtitleLg'}
         rightElement={
           <Button
@@ -47,7 +49,7 @@ export default function AddCertForm({ index, certification, toggleFormOpenState 
             variant={'outline'}
             size={'md'}
           >
-            취소
+            {t('buttons.cancel')}
           </Button>
         }
       />

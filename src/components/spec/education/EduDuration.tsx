@@ -4,9 +4,11 @@ import { ChangeEvent } from 'react'
 import { ErrorHelperText, Label, Spacing, TextInput } from '@/components/common'
 import { useSpecStore } from '@/store/specStore'
 import { formatYYYYMM, padMonth } from '@/utils/spec'
-import { SpecEducationType } from '@/types/spec' // 타입 경로에 맞춰 수정하세요
+import { SpecEducationType } from '@/types/spec'
+import { useTranslation } from 'react-i18next' // 타입 경로에 맞춰 수정하세요
 
 export default function EduDuration() {
+  const { t } = useTranslation(['spec'])
   const education = useSpecStore((state) => state.education)
   const setEducation = useSpecStore((state) => state.setEducation)
 
@@ -36,7 +38,7 @@ export default function EduDuration() {
 
   return (
     <div className="w-full">
-      <Label label="기간" className="kr-subtitle-lg text-gray5" isRequired />
+      <Label label={t('education.addEduForm.eduDuration.title')} className="kr-subtitle-lg text-gray5" isRequired />
       <Spacing height={8} />
 
       <div className="flex flex-col gap-y-2">
@@ -58,9 +60,9 @@ export default function EduDuration() {
           />
         </div>
         {getStatus(education?.admissionDate ?? '') === 'error' ? (
-          <ErrorHelperText>입학일을 YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
+          <ErrorHelperText>{t('education.addEduForm.eduDuration.errorAdmissionDate')}</ErrorHelperText>
         ) : getStatus(education?.graduationDate ?? '') === 'error' ? (
-          <ErrorHelperText>졸업(예정)일을 YYYY-MM 형태로 입력해주세요.</ErrorHelperText>
+          <ErrorHelperText>{t('education.addEduForm.eduDuration.errorGraduationDate')}</ErrorHelperText>
         ) : null}
       </div>
 
