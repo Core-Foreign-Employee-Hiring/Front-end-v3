@@ -62,7 +62,7 @@ export default async function SpecPage({
       </div>
       <PageLayout>
         <div className="w-full">
-          <Label label={'커리어 진단'} className={'desktop:block tablet:hidden hidden'} type={'titleLg'} />
+          <Label label={t('spec:title')} className={'desktop:block tablet:hidden hidden'} type={'titleLg'} />
           <Spacing height={20} className="desktop:block hidden" />
 
           <Tab tabList={tabList} />

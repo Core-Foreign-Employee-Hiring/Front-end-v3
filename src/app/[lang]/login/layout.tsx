@@ -1,5 +1,7 @@
 import { Header } from '@/components/common'
 import type { Metadata } from 'next'
+import { Locale } from '@/lib/i18n.types'
+import { getTranslationServer } from '@/lib/i18n'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.korfit.co.kr'
 
@@ -61,13 +63,14 @@ export default async function LoginLayout({
   params,
 }: Readonly<{
   children: React.ReactNode
-  params: Promise<{ lang: string }>
+  params: Promise<{ lang: Locale }>
 }>) {
   const { lang } = await params
+  const { t } = await getTranslationServer(lang, 'login')
   return (
     <div>
       <div className="desktop:hidden block">
-        <Header headerType={'dynamic'} currentLng={lang} title={'로그인'} />
+        <Header headerType={'dynamic'} currentLng={lang} title={t('title')} />
       </div>
       {children}
     </div>

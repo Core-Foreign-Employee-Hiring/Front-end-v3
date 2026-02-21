@@ -1,0 +1,18 @@
+{
+  "title": "Login",
+  "buttons": {
+    "save_id": "Save ID",
+    "find_id": "Find ID",
+    "find_pw": "Find PW",
+    "cta": "Join Korfit to get expert tips for your career and startup journey.",
+    "sign_up": "Sign Up"
+  },
+  "id": {
+    "label": "ID",
+    "placeholder": "Enter your ID"
+  },
+  "pw": {
+    "label": "Password",
+    "placeholder": "Enter your password"
+  }
+}

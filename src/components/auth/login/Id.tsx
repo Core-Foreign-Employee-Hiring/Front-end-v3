@@ -4,8 +4,11 @@ import { useAuthStore } from '@/store/authStore'
 
 import { Label, Spacing, TextInput } from '@/components/common'
 import { ChangeEvent } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function Id() {
+  const { t } = useTranslation('login')
+
   const { login, error, setLogin, resetAuthStatus } = useAuthStore((state) => state)
 
   const handleIdChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -15,13 +18,13 @@ export default function Id() {
 
   return (
     <div className="w-full">
-      <Label type={'subtitleLg'} label={'아이디'} />
+      <Label type={'subtitleLg'} label={t('id.label')} />
       <Spacing height={8} />
       <TextInput
         status={error ? 'error' : 'default'}
         onChange={handleIdChange}
         value={login.userId ?? ''}
-        placeholder="아아디를 입력해주세요."
+        placeholder={t('id.placeholder')}
       />
     </div>
   )

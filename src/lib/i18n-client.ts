@@ -21,7 +21,7 @@ i18n
       caches: ['localStorage'],
     },
     // ns에 사용할 모든 네임스페이스를 나열하거나 기본값을 설정합니다.
-    ns: ['common', 'home', 'jobPost', 'filter', 'content', 'spec', 'interview', 'resume'],
+    ns: ['common', 'home', 'jobPost', 'filter', 'content', 'spec', 'interview', 'resume', 'login'],
     defaultNS: 'common',
     react: {
       useSuspense: false,
