@@ -1,0 +1,351 @@
+{
+  "title": "회원가입",
+  "menu": {
+    "step1": "필수 입력",
+    "step2": "추가 정보 입력"
+  },
+
+  "step1": {
+    "buttons": {
+      "next": "다음"
+    },
+    "idField": {
+      "label": "아이디",
+      "placeholder": "아이디를 입력해주세요.",
+      "button": {
+        "verify": "중복확인"
+      },
+      "messages": {
+        "success": "사용 가능한 아이디 입니다."
+      }
+    },
+
+    "passwordField": {
+      "label": "비밀번호",
+      "placeholder": "대소문자, 숫자, 기호 포함 8~15자",
+      "messages": {
+        "invalidFormat": "비밀번호는 대소문자, 숫자, 기호(~ 포함) 8~15자를 만족해야 합니다."
+      }
+    },
+
+    "checkPasswordField": {
+      "label": "비밀번호 확인",
+      "placeholder": "비밀번호를 다시 입력해주세요.",
+      "messages": {
+        "mismatch": "비밀번호가 일치하지 않습니다."
+      }
+    },
+
+    "nameField": {
+      "label": "이름",
+      "placeholder": "이름을 입력해주세요."
+    },
+
+    "phoneNumberField":{
+      "label": "전화번호",
+      "placeholder": "‘-’ 제외하고 번호 입력해주세요.",
+      "verifyCodePlaceholder": "인증번호 입력",
+      "button": {
+        "sendCode": "인증번호",
+        "verifyCode": "인증확인"
+      },
+      "messages": {
+        "success": "인증되었습니다."
+      }
+    },
+
+    "emailField": {
+      "label": "이메일",
+      "placeholder": "이메일을 입력해주세요.",
+      "verifyCodePlaceholder": "인증번호 입력",
+      "button": {
+        "sendCode": "인증번호",
+        "verifyCode": "인증확인"
+      },
+      "messages": { "success": "인증되었습니다." }
+    },
+
+    "addressField": {
+      "label": "주소",
+      "placeholder": {
+        "zipcode": "우편번호",
+        "address1": "주소",
+        "address2": "상세주소를 입력해주세요."
+      },
+      "button": {
+        "search": "우편번호 검색"
+      }
+    }
+  },
+
+  "step2": {
+    "buttons": {
+      "sign_up": "회원가입"
+    },
+    "nationalityField": {
+      "label": "국적",
+      "placeholder": "국적을 선택해주세요.",
+      "searchPlaceholder": "국적 검색",
+      "noSearchResultMessage": "검색 결과가 없습니다.",
+      "content": {
+        "GHANA": "Ghana (가나)",
+        "GABON": "Gabon (가봉)",
+        "GUYANA": "Guyana (가이아나)",
+        "GAMBIA": "Gambia (감비아)",
+        "GUATEMALA": "Guatemala (과테말라)",
+        "GRENADA": "Grenada (그레나다)",
+        "GREECE": "Greece (그리스)",
+        "GUINEA": "Guinea (기니)",
+        "GUINEA_BISSAU": "Guinea-Bissau (기니비사우)",
+        "NAMIBIA": "Namibia (나미비아)",
+        "NAURU": "Nauru (나우루)",
+        "NIGERIA": "Nigeria (나이지리아)",
+        "REPUBLIC_OF_SOUTH_SUDAN": "Republic Of South Sudan (남수단)",
+        "SOUTH_AFRICA": "South Africa (남아프리카 공화국)",
+        "REPUBLIC_OF_SOUTH_OSSETIA": "Republic Of South Ossetia (남오세티야)",
+        "NETHERLANDS": "Netherlands (네덜란드)",
+        "NEPAL": "Nepal (네팔)",
+        "NORWAY": "Norway (노르웨이)",
+        "NEW_ZEALAND": "New Zealand (뉴질랜드)",
+        "NIGER": "Niger (니제르)",
+        "NICARAGUA": "Nicaragua (니카라과)",
+        "KOREA_REPUBLIC_OF": "Korea, Republic Of (대한민국)",
+        "TAIWAN": "Taiwan (대만)",
+        "DENMARK": "Denmark (덴마크)",
+        "DOMINICAN_REPUBLIC": "Dominican Republic (도미니카 공화국)",
+        "DOMINICA": "Dominica (도미니카 연방)",
+        "GERMANY": "Germany (독일)",
+        "EAST_TIMOR": "East Timor (동티모르)",
+        "LAO_PEOPLE_DEMOCRATIC_REPUBLIC": "Lao People’s Democratic Republic (라오스)",
+        "LIBERIA": "Liberia (라이베리아)",
+        "LATVIA": "Latvia (라트비아)",
+        "RUSSIAN_FEDERATION": "Russian Federation (러시아)",
+        "LEBANON": "Lebanon (레바논)",
+        "LESOTHO": "Lesotho (레소토)",
+        "ROMANIA": "Romania (루마니아)",
+        "LUXEMBOURG": "Luxembourg (룩셈부르크)",
+        "RWANDA": "Rwanda (르완다)",
+        "LIBYAN_ARAB_JAMAHIRIYA": "Libyan Arab Jamahiriya (리비아)",
+        "REPUBLIC_OF_LITHUANIA": "Republic of Lithuania (리투아니아)",
+        "LIECHTENSTEIN": "Liechtenstein (리히텐슈타인)",
+        "MADAGASCAR": "Madagascar (마다가스카르)",
+        "MARSHALL_ISLANDS": "Marshall Islands (마셜 제도)",
+        "MALAWI": "Malawi (말라위)",
+        "MALAYSIA": "Malaysia (말레이시아)",
+        "MALI": "Mali (말리)",
+        "MEXICO": "Mexico (멕시코)",
+        "MONACO": "Monaco (모나코)",
+        "MOROCCO": "Morocco (모로코)",
+        "MAURITIUS": "Mauritius (모리셔스)",
+        "MAURITANIA": "Mauritania (모리타니)",
+        "MOZAMBIQUE": "Mozambique (모잠비크)",
+        "MONTENEGRO": "Montenegro (몬테네그로)",
+        "MOLDOVA": "Moldova (몰도바)",
+        "MALDIVES": "Maldives (몰디브)",
+        "MALTA": "Malta (몰타)",
+        "MONGOLIA": "Mongolia (몽골)",
+        "UNITED_STATES": "United States (미국)",
+        "MYANMAR": "Myanmar (미얀마)",
+        "FEDERATED_STATES_OF_MICRONESIA": "Federated States of Micronesia (미크로네시아 연방)",
+        "VANUATU": "Vanuatu (바누아투)",
+        "BAHRAIN": "Bahrain (바레인)",
+        "BARBADOS": "Barbados (바베이도스)",
+        "VATICAN_CITY": "Vatican City (바티칸)",
+        "BAHAMAS": "Bahamas (바하마)",
+        "BANGLADESH": "Bangladesh (방글라데시)",
+        "BENIN": "Benin (베냉)",
+        "VENEZUELA": "Venezuela (베네수엘라)",
+        "VIETNAM": "Vietnam (베트남)",
+        "BELGIUM": "Belgium (벨기에)",
+        "BELARUS": "Belarus (벨라루스)",
+        "BELIZE": "Belize (벨리즈)",
+        "BOSNIA_AND_HERZEGOVINA": "Bosnia and Herzegovina (보스니아 헤르체고비나)",
+        "BOTSWANA": "Botswana (보츠와나)",
+        "BOLIVIA": "Bolivia (볼리비아)",
+        "BURUNDI": "Burundi (부룬디)",
+        "BURKINA_FASO": "Burkina Faso (부르키나파소)",
+        "BHUTAN": "Bhutan (부탄)",
+        "NORTH_MACEDONIA": "North Macedonia (북마케도니아)",
+        "NORTHERN_CYPRUS": "Northern Cyprus (북키프로스)",
+        "NORTH_KOREA": "North Korea (북한)",
+        "BULGARIA": "Bulgaria (불가리아)",
+        "BRAZIL": "Brazil (브라질)",
+        "BRUNEI": "Brunei (브루나이)",
+        "SAMOA": "Samoa (사모아)",
+        "SAUDI_ARABIA": "Saudi Arabia (사우디아라비아)",
+        "SAN_MARINO": "San Marino (산마리노)",
+        "SAO_TOME_AND_PRINCIPE": "São Tomé and Príncipe (상투메 프린시페)",
+        "WESTERN_SAHARA": "Western Sahara (서사하라)",
+        "SENEGAL": "Senegal (세네갈)",
+        "SERBIA": "Serbia (세르비아)",
+        "SEYCHELLES": "Seychelles (세이셸)",
+        "SAINT_LUCIA": "Saint Lucia (세인트루시아)",
+        "SAINT_VINCENT_AND_THE_GRENADINES": "Saint Vincent and the Grenadines (세인트빈센트 그레나딘)",
+        "SAINT_KITTS_AND_NEVIS": "Saint Kitts and Nevis (세인트키츠 네비스)",
+        "SOMALIA": "Somalia (소말리아)",
+        "SOMALILAND": "Somaliland (소말릴란드)",
+        "SOLOMON_ISLANDS": "Solomon Islands (솔로몬 제도)",
+        "SUDAN": "Sudan (수단)",
+        "SURINAME": "Suriname (수리남)",
+        "SRI_LANKA": "Sri Lanka (스리랑카)",
+        "SWEDEN": "Sweden (스웨덴)",
+        "SWITZERLAND": "Switzerland (스위스)",
+        "SPAIN": "Spain (스페인)",
+        "SLOVAKIA": "Slovakia (슬로바키아)",
+        "SLOVENIA": "Slovenia (슬로베니아)",
+        "SYRIA": "Syria (시리아)",
+        "SIERRA_LEONE": "Sierra Leone (시에라리온)",
+        "SINGAPORE": "Singapore (싱가포르)",
+        "UNITED_ARAB_EMIRATES": "United Arab Emirates (아랍에미리트)",
+        "ARMENIA": "Armenia (아르메니아)",
+        "ARGENTINA": "Argentina (아르헨티나)",
+        "ARTSAKH": "Artsakh (아르차흐)",
+        "ICELAND": "Iceland (아이슬란드)",
+        "HAITI": "Haiti (아이티)",
+        "IRELAND": "Ireland (아일랜드)",
+        "AZERBAIJAN": "Azerbaijan (아제르바이잔)",
+        "AFGHANISTAN": "Afghanistan (아프가니스탄)",
+        "ANDORRA": "Andorra (안도라)",
+        "ALBANIA": "Albania (알바니아)",
+        "ALGERIA": "Algeria (알제리)",
+        "ABKHAZIA": "Abkhazia (압하지야)",
+        "ANGOLA": "Angola (앙골라)",
+        "ANTIGUA_AND_BARBUDA": "Antigua and Barbuda (앤티가 바부다)",
+        "ERITREA": "Eritrea (에리트레아)",
+        "ESWATINI": "Eswatini (에스와티니)",
+        "ESTONIA": "Estonia (에스토니아)",
+        "ECUADOR": "Ecuador (에콰도르)",
+        "ETHIOPIA": "Ethiopia (에티오피아)",
+        "EL_SALVADOR": "El Salvador (엘살바도르)",
+        "UNITED_KINGDOM": "United Kingdom (영국)",
+        "YEMEN": "Yemen (예멘)",
+        "OMAN": "Oman (오만)",
+        "AUSTRIA": "Austria (오스트리아)",
+        "HONDURAS": "Honduras (온두라스)",
+        "JORDAN": "Jordan (요르단)",
+        "UGANDA": "Uganda (우간다)",
+        "URUGUAY": "Uruguay (우루과이)",
+        "UZBEKISTAN": "Uzbekistan (우즈베키스탄)",
+        "UKRAINE": "Ukraine (우크라이나)",
+        "IRAQ": "Iraq (이라크)",
+        "IRAN": "Iran (이란)",
+        "ISRAEL": "Israel (이스라엘)",
+        "EGYPT": "Egypt (이집트)",
+        "ITALY": "Italy (이탈리아)",
+        "INDIA": "India (인도)",
+        "INDONESIA": "Indonesia (인도네시아)",
+        "JAPAN": "Japan (일본)",
+        "JAMAICA": "Jamaica (자메이카)",
+        "ZAMBIA": "Zambia (잠비아)",
+        "EQUATORIAL_GUINEA": "Equatorial Guinea (적도 기니)",
+        "GEORGIA": "Georgia (조지아)",
+        "CHINA": "China (중국)",
+        "CENTRAL_AFRICAN_REPUBLIC": "Central African Republic (중앙아프리카 공화국)",
+        "DJIBOUTI": "Djibouti (지부티)",
+        "ZIMBABWE": "Zimbabwe (짐바브웨)",
+        "CHAD": "Chad (차드)",
+        "CZECH_REPUBLIC": "Czech Republic (체코)",
+        "CHILE": "Chile (칠레)",
+        "CAMEROON": "Cameroon (카메룬)",
+        "CABO_VERDE": "Cabo Verde (카보베르데)",
+        "KAZAKHSTAN": "Kazakhstan (카자흐스탄)",
+        "QATAR": "Qatar (카타르)",
+        "CAMBODIA": "Cambodia (캄보디아)",
+        "CANADA": "Canada (캐나다)",
+        "KENYA": "Kenya (케냐)",
+        "COMOROS": "Comoros (코모로)",
+        "KOSOVO": "Kosovo (코소보)",
+        "COSTA_RICA": "Costa Rica (코스타리카)",
+        "COTE_DIVOIRE": "Côte d’Ivoire (코트디부아르)",
+        "COLOMBIA": "Colombia (콜롬비아)",
+        "REPUBLIC_OF_THE_CONGO": "Republic of the Congo (콩고 공화국)",
+        "DEMOCRATIC_REPUBLIC_OF_THE_CONGO": "Democratic Republic of the Congo (콩고 민주 공화국)",
+        "CUBA": "Cuba (쿠바)",
+        "KUWAIT": "Kuwait (쿠웨이트)",
+        "CROATIA": "Croatia (크로아티아)",
+        "KYRGYZSTAN": "Kyrgyzstan (키르기스스탄)",
+        "KIRIBATI": "Kiribati (키리바시)",
+        "CYPRUS": "Cyprus (키프로스)",
+        "TAJIKISTAN": "Tajikistan (타지키스탄)",
+        "TANZANIA": "Tanzania (탄자니아)",
+        "THAILAND": "Thailand (태국)",
+        "TOGO": "Togo (토고)",
+        "TONGA": "Tonga (통가)",
+        "TURKMENISTAN": "Turkmenistan (투르크메니스탄)",
+        "TUVALU": "Tuvalu (투발루)",
+        "TUNISIA": "Tunisia (튀니지)",
+        "TURKIYE": "Türkiye (튀르키예)",
+        "TRANSNISTRIA": "Transnistria (트란스니스트리아)",
+        "TRINIDAD_AND_TOBAGO": "Trinidad and Tobago (트리니다드 토바고)",
+        "PANAMA": "Panama (파나마)",
+        "PARAGUAY": "Paraguay (파라과이)",
+        "PAKISTAN": "Pakistan (파키스탄)",
+        "PAPUA_NEW_GUINEA": "Papua New Guinea (파푸아 뉴기니아)",
+        "PALAU": "Palau (팔라우)",
+        "PALESTINE": "Palestine (팔레스타인)",
+        "PERU": "Peru (페루)",
+        "PORTUGAL": "Portugal (포르투갈)",
+        "POLAND": "Poland (폴란드)",
+        "FRANCE": "France (프랑스)",
+        "FIJI": "Fiji (피지)",
+        "FINLAND": "Finland (핀란드)",
+        "PHILIPPINES": "Philippines (필리핀)",
+        "HUNGARY": "Hungary (헝가리)",
+        "AUSTRALIA": "Australia (호주)",
+        "HONG_KONG": "Hong Kong (홍콩)",
+        "MACAU": "Macau (마카오)"
+      }
+    },
+
+    "visaField": {
+      "label": "비자",
+      "placeholder": "비자를 선택해주세요.",
+      "searchVisaPlaceholder": "비자 종류를 검색하세요",
+      "noSearchResultMessage": "검색 결과가 없습니다."
+    },
+
+    "educationField": {
+      "label": "학력",
+      "placeholder": "학력을 선택해주세요.",
+      "content": {
+        "highSchoolGraduate": "고졸",
+        "universityEnrolled": "대학 재학",
+        "universityGraduateOrExpected": "대졸 및 예정",
+        "graduateSchoolEnrolled": "대학원 재학",
+        "graduateSchoolGraduateOrExpected": "대학원졸 및 예정"
+      }
+    },
+
+    "jobRoleField": {
+      "label": "관심 직무",
+      "selectButton": "직무 선택"
+    },
+
+    "birthDateField": {
+      "label": "생년월일",
+      "placeholder": {
+        "year": "년도",
+        "month": "월",
+        "day": "일"
+      }
+    },
+
+    "genderField": {
+      "label": "성별",
+      "options": {
+        "male": "남자",
+        "female": "여자",
+        "none": "선택안함"
+      }
+    },
+
+    "termsField": {
+      "termsOfServiceAgreement": "(필수) 서비스 이용약관 동의",
+      "personalInfoAgreement": "(필수) 개인정보 수집 및 이용 동의",
+      "over15": "(필수)만 15세 이상 동의",
+      "adInfoAgreementSmsMms": "(선택) 광고성 정보 수신 동의 (SNS/MMS)",
+      "adInfoAgreementEmail": "광고성 정보 수신 동의 (이메일)",
+      "allOptions": "전체 동의"
+    }
+  }
+}

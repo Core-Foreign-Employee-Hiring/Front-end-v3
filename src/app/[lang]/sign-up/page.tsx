@@ -3,6 +3,8 @@ import { Label, Spacing } from '@/components/common'
 import { ProgressBar } from '@/components/spec'
 import RegisterStep1 from '@/components/sign-up/RegisterStep1'
 import RegisterStep2 from '@/components/sign-up/RegisterStep2'
+import { getTranslationServer } from '@/lib/i18n'
+import { Locale } from '@/lib/i18n.types'
 
 export type StepType = '1' | '2'
 
@@ -16,14 +18,15 @@ export default async function SignUpPage({
   params,
   searchParams,
 }: {
-  params: Promise<{ lang: string }>
+  params: Promise<{ lang: Locale }>
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const { lang } = await params
+  const { t } = await getTranslationServer(lang, 'signup')
 
   const steps = [
-    { stepNumber: '1', stepLabel: '필수입력' },
-    { stepNumber: '2', stepLabel: '추가 정보 입력' },
+    { stepNumber: '1', stepLabel: t('menu.step1') },
+    { stepNumber: '2', stepLabel: t('menu.step2') },
   ]
   const resolvedSearchParams = await searchParams
 
@@ -38,7 +41,7 @@ export default async function SignUpPage({
         <div className="desktop:flex hidden flex-col items-center justify-center">
           <LogoIcon width={200} height={60} />
           <Spacing height={80} />
-          <Label label="회원가입" type={'titleLg'} />
+          <Label label={t('title')} type={'titleLg'} />
           <Spacing height={20} />
         </div>
         <ProgressBar currentStep={'1'} currentLabel={getCurrentLabel('1', steps)} steps={steps} />

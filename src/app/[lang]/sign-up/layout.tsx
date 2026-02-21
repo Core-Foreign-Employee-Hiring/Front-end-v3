@@ -1,5 +1,7 @@
 import { Header, PageLayout } from '@/components/common'
 import type { Metadata } from 'next'
+import { Locale } from '@/lib/i18n.types'
+import { getTranslationServer } from '@/lib/i18n'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.korfit.co.kr'
 
@@ -61,13 +63,14 @@ export default async function SignUpLayout({
   params,
 }: Readonly<{
   children: React.ReactNode
-  params: Promise<{ lang: string }>
+  params: Promise<{ lang: Locale }>
 }>) {
   const { lang } = await params
+  const { t } = await getTranslationServer(lang, 'signup')
   return (
     <div>
       <div className="desktop:hidden block">
-        <Header headerType={'dynamic'} currentLng={lang} title={'회원가입'} />
+        <Header headerType={'dynamic'} currentLng={lang} title={t('title')} />
       </div>
       <PageLayout>{children}</PageLayout>
     </div>

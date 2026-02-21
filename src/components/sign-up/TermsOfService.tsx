@@ -3,8 +3,10 @@
 import { CheckIcon, UncheckIcon } from '@/assets/svgComponents'
 import { BottomBorder } from '@/components/common'
 import { useRegisterStore } from '@/store/registerStore'
+import { useTranslation } from 'react-i18next'
 
 export default function TermsOfService() {
+  const { t } = useTranslation('signup')
   // 스토어에서 상태와 업데이트 함수를 가져옵니다.
   const { registerData, updateRegister } = useRegisterStore()
 
@@ -31,34 +33,36 @@ export default function TermsOfService() {
       {/* 전체 동의 */}
       <div className="flex cursor-pointer gap-x-2" onClick={handleAllAgreement}>
         {isAllAgreed ? <CheckIcon width={24} height={24} /> : <UncheckIcon width={24} height={24} />}
-        <p className={`kr-subtitle-md ${isAllAgreed ? 'text-black' : 'text-gray5'}`}>전체동의</p>
+        <p className={`kr-subtitle-md ${isAllAgreed ? 'text-black' : 'text-gray5'}`}>
+          {t('step2.termsField.allOptions')}
+        </p>
       </div>
 
       <BottomBorder />
 
       {/* 개별 항목들 */}
       <AgreementItem
-        label="(필수) 만 15세 이상입니다."
+        label={t('step2.termsField.over15')}
         checked={registerData.over15 || false}
         onChange={(val) => updateRegister('over15', val)}
       />
       <AgreementItem
-        label="(필수) 서비스 이용약관 동의"
+        label={t('step2.termsField.termsOfServiceAgreement')}
         checked={registerData.termsOfServiceAgreement || false}
         onChange={(val) => updateRegister('termsOfServiceAgreement', val)}
       />
       <AgreementItem
-        label="(필수) 개인정보 수집 및 이용 동의"
+        label={t('step2.termsField.personalInfoAgreement')}
         checked={registerData.personalInfoAgreement || false}
         onChange={(val) => updateRegister('personalInfoAgreement', val)}
       />
       <AgreementItem
-        label="(선택) 광고성 정보 수신 동의 (SNS/MMS)"
+        label={t('step2.termsField.adInfoAgreementSmsMms')}
         checked={registerData.adInfoAgreementSmsMms || false}
         onChange={(val) => updateRegister('adInfoAgreementSmsMms', val)}
       />
       <AgreementItem
-        label="(선택) 광고성 정보 수신 동의 (이메일)"
+        label={t('step2.termsField.adInfoAgreementEmail')}
         checked={registerData.adInfoAgreementEmail || false}
         onChange={(val) => updateRegister('adInfoAgreementEmail', val)}
       />

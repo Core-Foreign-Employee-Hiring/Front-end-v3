@@ -7,6 +7,7 @@ import specKo from '@/i18n/locales/ko/spec.json'
 import interviewKo from '@/i18n/locales/ko/interview.json'
 import resumeKo from '@/i18n/locales/ko/resume.json'
 import loginKo from '@/i18n/locales/ko/login.json'
+import signupKo from '@/i18n/locales/ko/signup.json'
 
 import commonEn from '@/i18n/locales/en/common.json'
 import contentEn from '@/i18n/locales/en/content.json'
@@ -17,6 +18,7 @@ import specEn from '@/i18n/locales/en/spec.json'
 import interviewEn from '@/i18n/locales/en/interview.json'
 import resumeEn from '@/i18n/locales/en/resume.json'
 import loginEn from '@/i18n/locales/en/login.json'
+import signupEn from '@/i18n/locales/en/signup.json'
 
 import { Locale } from './i18n.types'
 
@@ -37,6 +39,7 @@ export const resources: Resources = {
     interview: interviewKo,
     resume: resumeKo,
     login: loginKo,
+    signup: signupKo,
   },
   en: {
     common: commonEn,
@@ -48,5 +51,6 @@ export const resources: Resources = {
     interview: interviewEn,
     resume: resumeEn,
     login: loginEn,
+    signup: signupEn,
   },
 }

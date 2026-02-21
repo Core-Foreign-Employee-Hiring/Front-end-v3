@@ -4,8 +4,10 @@ import { Button, Label, TextInput } from '@/components/common'
 import { useRegisterStore } from '@/store/registerStore'
 import { useModalStore } from '@/store/modalStore'
 import SearchAddressModal from '@/components/common/modal/SearchAddressModal'
+import { useTranslation } from 'react-i18next'
 
 export default function AddressField() {
+  const { t } = useTranslation('signup')
   const { registerData, updateRegister } = useRegisterStore((state) => state)
   const { toggleModal, modals } = useModalStore((state) => state)
 
@@ -18,7 +20,7 @@ export default function AddressField() {
     <div>
       {modals.isSearchAddressModalOpen && <SearchAddressModal handleChangeAddress={handleChangeAddress} />}
       <div className="flex flex-col gap-y-2">
-        <Label label={'주소'} isRequired={true} type={'titleSm'} />
+        <Label label={t('step1.addressField.label')} isRequired={true} type={'titleSm'} />
         {/* 우편 번호 입력 */}
         <div className="flex gap-x-2">
           <TextInput
@@ -27,7 +29,7 @@ export default function AddressField() {
             }}
             value={registerData.zipcode || ''}
             onChange={() => {}}
-            placeholder={'우편번호'}
+            placeholder={t('step1.addressField.placeholder.zipcode')}
           />
           <Button
             onClick={() => {
@@ -37,7 +39,7 @@ export default function AddressField() {
             variant={'primary'}
             customClassName={'w-[140px]'}
           >
-            우편번호 검색
+            {t('step1.addressField.button.search')}
           </Button>
         </div>
 
@@ -48,7 +50,7 @@ export default function AddressField() {
           }}
           value={registerData.address1 || ''}
           onChange={() => {}}
-          placeholder={'주소'}
+          placeholder={t('step1.addressField.label')}
         />
 
         {/* 상세 주소 입력 */}
@@ -57,7 +59,7 @@ export default function AddressField() {
           onChange={(e) => {
             updateRegister('address2', e.target.value)
           }}
-          placeholder={'상세주소를 입력해주세요.'}
+          placeholder={t('step1.addressField.placeholder.address2')}
         />
       </div>
     </div>

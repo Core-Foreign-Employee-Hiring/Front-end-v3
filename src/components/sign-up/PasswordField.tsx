@@ -5,8 +5,10 @@ import { useRegisterStore } from '@/store/registerStore'
 import { EyeIcon, NonEyeIcon } from '@/assets/svgComponents'
 import { useEffect, useState } from 'react'
 import ErrorMessage from '@/components/common/ErrorMessage'
+import { useTranslation } from 'react-i18next'
 
 export default function PasswordField() {
+  const { t } = useTranslation('signup')
   const { registerData, updateRegister, setNotValidPWErrorMessage, notValidPWErrorMessage } = useRegisterStore(
     (state) => state
   )
@@ -26,7 +28,7 @@ export default function PasswordField() {
 
     if (!passwordRegex.test(password)) {
       // 검증 실패
-      setNotValidPWErrorMessage('비밀번호는 대소문자, 숫자, 기호(~ 포함) 8~15자를 만족해야 합니다.')
+      setNotValidPWErrorMessage(t('step1.passwordField.messages.invalidFormat'))
     } else {
       setNotValidPWErrorMessage('')
     }
@@ -34,7 +36,7 @@ export default function PasswordField() {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'비밀번호'} isRequired={true} type={'titleSm'} />
+      <Label label={t('step1.passwordField.label')} isRequired={true} type={'titleSm'} />
       <TextInput
         rightElement={
           show ? (
@@ -56,7 +58,7 @@ export default function PasswordField() {
           )
         }
         inputType={show ? 'text' : 'password'}
-        placeholder={'대소문자, 숫자, 기호 포함 8~15자'}
+        placeholder={t('step1.passwordField.placeholder')}
         onChange={(e) => updateRegister('password', e.target.value)}
         value={registerData.password ?? ''}
         status={notValidPWErrorMessage ? 'error' : 'default'}

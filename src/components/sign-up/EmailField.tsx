@@ -7,8 +7,10 @@ import SuccessMessage from '@/components/common/SuccessMessage'
 import { useRegisterStore } from '@/store/registerStore'
 import { validateEmail } from '@/utils/common'
 import { ChangeEvent } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function EmailField() {
+  const { t } = useTranslation('signup')
   const {
     registerData,
     updateRegister,
@@ -42,14 +44,14 @@ export default function EmailField() {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'이메일'} isRequired={true} type={'titleSm'} />
+      <Label label={t('step1.emailField.label')} isRequired={true} type={'titleSm'} />
 
       {/* 전화번호 인증 번호 전송 */}
       <div className="flex items-center gap-x-2">
         <TextInput
           value={registerData.email || ''}
           onChange={handleEmailChange}
-          placeholder={'이메일을 입력해주세요.'}
+          placeholder={t('step1.emailField.placeholder')}
         />
         <Button
           onClick={async () => {
@@ -69,21 +71,25 @@ export default function EmailField() {
           state={validateEmail(registerData.email) && registerData.email?.length !== 0 ? 'default' : 'disable'}
           customClassName={'w-[130px]'}
         >
-          인증번호
+          {t('step1.emailField.button.sendCode')}
         </Button>
       </div>
 
       {/* 인증 코드 */}
       {isVerifyEmailFieldOpen && (
         <div className="flex gap-x-2">
-          <TextInput value={verifyEmailCode} onChange={verifyCodeChange} placeholder={'인증번호 입력'} />
+          <TextInput
+            value={verifyEmailCode}
+            onChange={verifyCodeChange}
+            placeholder={t('step1.emailField.verifyCodePlaceholder')}
+          />
           <Button
             onClick={async () => {
               setVerifyEmailCodeLoading(true)
               const result = await postVerifyEmailCode(verifyEmailCode)
               if (result.success) {
                 setVerifyEmailCodeLoading(false)
-                setVerifyEmailSuccessMessage('인증되었습니다.')
+                setVerifyEmailSuccessMessage(t('step1.emailField.messages.success'))
               } else {
                 setVerifyEmailCodeLoading(false)
                 setVerifyEmailErrorMessage(result.error)
@@ -94,7 +100,7 @@ export default function EmailField() {
             variant={'primary'}
             customClassName={'w-[130px]'}
           >
-            인증확인
+            {t('step1.emailField.button.verifyCode')}
           </Button>
         </div>
       )}

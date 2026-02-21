@@ -13,7 +13,7 @@ export default function VisaField() {
   const [isDropBoxOpen, setIsDropBoxOpen] = useState(false)
   const [searchValue, setSearchValue] = useState('')
   const { registerData, updateRegister } = useRegisterStore((state) => state)
-  const { t } = useTranslation()
+  const { t } = useTranslation(['signup', 'filter'])
 
   // 검색어에 따라 필터링된 비자 리스트
   const filteredList = useMemo(() => {
@@ -23,7 +23,7 @@ export default function VisaField() {
 
   // 현재 선택된 비자의 라벨을 찾는 함수
   const getSelectedLabel = () => {
-    if (!registerData?.visa) return t('signUp.visa.placeholder')
+    if (!registerData?.visa) return t('signup:step2.visaField.placeholder')
     const found = VISA_LIST.find((visa) => visa.code === registerData.visa)
     return found?.i18nKey || registerData.visa
   }
@@ -41,7 +41,7 @@ export default function VisaField() {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'비자'} isRequired={true} type={'titleSm'} />
+      <Label label={t('signup:step2.visaField.label')} isRequired={true} type={'titleSm'} />
       <div onClick={handleInputContainerClick} className="relative">
         {isDropBoxOpen ? (
           <div
@@ -52,7 +52,7 @@ export default function VisaField() {
             <input
               className="w-full outline-none"
               value={searchValue}
-              placeholder={'비자를 선택해주세요.'}
+              placeholder={t('signup:step2.visaField.searchVisaPlaceholder')}
               onChange={(e) => {
                 setSearchValue(e.target.value)
               }}
@@ -80,7 +80,7 @@ export default function VisaField() {
               ))
             ) : (
               <div className="text-gray4 flex h-[60px] items-center justify-center px-4">
-                {t('signUp.visa.noSearchResultMessage')}
+                {t('signup:step2.visaField.noSearchResultMessage')}
               </div>
             )}
           </DropDown.DropBoxOptionBox>

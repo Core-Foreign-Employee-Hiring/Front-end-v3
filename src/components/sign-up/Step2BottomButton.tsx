@@ -7,12 +7,14 @@ import { postRegister } from '@/lib/client/register'
 import { RegisterType } from '@/types/auth/register'
 import { useState } from 'react'
 import ErrorMessage from '@/components/common/ErrorMessage'
+import { useTranslation } from 'react-i18next'
 
 interface Step2BottomButtonProps {
   lang: string
 }
 
 export default function Step2BottomButton({ lang }: Step2BottomButtonProps) {
+  const { t } = useTranslation('signup')
   const router = useRouter()
 
   const { registerData, isStep2FormValid } = useRegisterStore()
@@ -50,7 +52,7 @@ export default function Step2BottomButton({ lang }: Step2BottomButtonProps) {
     <div className="flex flex-col gap-y-2">
       <ErrorMessage>{errorMessage}</ErrorMessage>
       <Button state={isValid ? 'default' : 'disable'} onClick={handleRegister}>
-        회원가입
+        {t('step2.buttons.sign_up')}
       </Button>
     </div>
   )

@@ -5,6 +5,7 @@ import { useRegisterStore } from '@/store/registerStore'
 import { getVerifyUserId } from '@/lib/client/register'
 import ErrorMessage from '@/components/common/ErrorMessage'
 import SuccessMessage from '@/components/common/SuccessMessage'
+import { useTranslation } from 'react-i18next'
 
 export default function IdField() {
   const {
@@ -17,9 +18,10 @@ export default function IdField() {
     setVerifyIdErrorMessage,
     verifySuccessMessage,
   } = useRegisterStore((state) => state)
+  const { t } = useTranslation('signup')
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'아이디'} isRequired={true} type={'titleSm'} />
+      <Label label={t('step1.idField.label')} isRequired={true} type={'titleSm'} />
       <div className="flex items-center gap-x-2">
         <TextInput
           value={registerData.userId ?? ''}
@@ -29,7 +31,7 @@ export default function IdField() {
             setVerifyIdSuccessMessage('')
             setVerifyIdErrorMessage('')
           }}
-          placeholder={'아이디를 입력해주세요.'}
+          placeholder={t('step1.idField.placeholder')}
         />
         <Button
           onClick={async () => {
@@ -37,7 +39,7 @@ export default function IdField() {
             setVerifyIdLoading(true)
             console.log('result', result)
             if (result.success) {
-              setVerifyIdSuccessMessage('사용 가능한 아이디 입니다.')
+              setVerifyIdSuccessMessage(t('step1.idField.messages.success'))
               setVerifyIdLoading(false)
             } else {
               setVerifyIdErrorMessage(result.error)
@@ -49,7 +51,7 @@ export default function IdField() {
           variant={'primary'}
           leftIcon={verifyIdLoading ? <Loading size={'sm'} /> : null}
         >
-          중복확인
+          {t('step1.idField.button.verify')}
         </Button>
       </div>
       {verifySuccessMessage && <SuccessMessage>{verifySuccessMessage}</SuccessMessage>}

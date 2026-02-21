@@ -3,17 +3,19 @@
 import { Button, Label } from '@/components/common'
 import { useRegisterStore } from '@/store/registerStore'
 import { GenderType } from '@/types/auth/register'
+import { useTranslation } from 'react-i18next'
 
 export default function GenderField() {
+  const { t } = useTranslation('signup')
   const { registerData, updateRegister } = useRegisterStore((state) => state)
   const genderList: { key: GenderType; content: string }[] = [
-    { key: 'MALE', content: '남자' },
-    { key: 'FEMALE', content: '여자' },
-    { key: 'NULL', content: '선택안함' },
+    { key: 'MALE', content: t('step2.genderField.options.male') },
+    { key: 'FEMALE', content: t('step2.genderField.options.female') },
+    { key: 'NULL', content: t('step2.genderField.options.none') },
   ]
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'성별'} type={'titleSm'} />
+      <Label label={t('step2.genderField.label')} type={'titleSm'} />
       <div className="flex gap-x-3">
         {genderList.map((gender) => (
           <Button

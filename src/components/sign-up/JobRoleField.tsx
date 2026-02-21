@@ -15,7 +15,7 @@ export default function JobRoleField() {
   const [selectedJobCategory, setSelectedJobCategory] = useState<JobCategoryType | undefined>(undefined)
   const [selectedJobRoles, setSelectedJobRoles] = useState<JobRoleType[]>()
 
-  const { t } = useTranslation()
+  const { t } = useTranslation(['filter', 'signup'])
 
   const deleteJobRoles = (selectedJobRole: JobRoleType) => {
     setSelectedJobRoles((prev) => prev?.filter((role) => role !== selectedJobRole))
@@ -64,7 +64,7 @@ export default function JobRoleField() {
         />
       )}
       <div className="flex flex-col gap-y-2">
-        <Label isRequired={true} label={'관심 직무'} type={'titleSm'} />
+        <Label isRequired={true} label={t('signup:step2.jobRoleField.label')} type={'titleSm'} />
         <div className="flex flex-col gap-y-3">
           {registerData.jobRoles ? (
             <div className="flex gap-x-2">
@@ -80,7 +80,7 @@ export default function JobRoleField() {
             </div>
           ) : null}
           <Button variant={'outline'} size={'lg'} onClick={onClose} buttonType={'button'}>
-            직무 선택
+            {t('signup:step2.jobRoleField.selectButton')}
           </Button>
         </div>
       </div>

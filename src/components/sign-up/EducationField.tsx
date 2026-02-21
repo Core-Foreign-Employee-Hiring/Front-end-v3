@@ -3,8 +3,10 @@
 import { DropDown, Label } from '@/components/common'
 import { useDropDown } from '@/hooks'
 import { useRegisterStore } from '@/store/registerStore'
+import { useTranslation } from 'react-i18next'
 
 export default function EducationField() {
+  const { t } = useTranslation('signup')
   const {
     initialValue,
     selectedDropDownContent,
@@ -12,15 +14,21 @@ export default function EducationField() {
     setIsDropDownOpen,
     selectedDropDownHandler,
     dropDownOpenHandler,
-  } = useDropDown({ initialValue: '학력을 선택해주세요.' })
+  } = useDropDown({ initialValue: t('step2.educationField.placeholder') })
 
   const { updateRegister } = useRegisterStore((state) => state)
 
-  const educationList = ['고졸', '대학 재학', '대졸 및 예정', '대학원 재학', '대학원졸 및 예정']
+  const educationList = [
+    t('step2.educationField.content.highSchoolGraduate'),
+    t('step2.educationField.content.universityEnrolled'),
+    t('step2.educationField.content.universityGraduateOrExpected'),
+    t('step2.educationField.content.graduateSchoolEnrolled'),
+    t('step2.educationField.content.graduateSchoolGraduateOrExpected'),
+  ]
 
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'학력'} type={'titleSm'} isRequired={true} />
+      <Label label={t('step2.educationField.label')} type={'titleSm'} isRequired={true} />
       <DropDown
         selectedValue={selectedDropDownContent}
         defaultValue={initialValue}
