@@ -95,7 +95,7 @@ export default function SpecCareer({ careersData }: SpecCareerProps) {
       <Button onClick={handleSave}>{t('buttons.save')}</Button>
 
       <Spacing height={100} />
-      <BottomButton handlePrev={handlePrev} isNextButtonActive={isActive} handleNext={handleNext} />
+      <BottomButton handlePrev={handlePrev} isNextButtonActive={true} handleNext={handleNext} />
     </div>
   )
 }

@@ -85,7 +85,7 @@ export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) 
       >
         {t('buttons.save')}
       </Button>
-      <BottomButton handlePrev={handlePrev} isNextButtonActive={isActive} handleNext={handleNext} />
+      <BottomButton handlePrev={handlePrev} isNextButtonActive={true} handleNext={handleNext} />
     </div>
   )
 }

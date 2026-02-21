@@ -83,7 +83,7 @@ export default function SpecEducation({ educationData }: SpecEducationProps) {
       )}
 
       <Spacing height={100} />
-      <BottomButton isNextButtonActive={isActive} handleNext={handleNextStep} />
+      <BottomButton isNextButtonActive={true} handleNext={handleNextStep} />
     </div>
   )
 }
