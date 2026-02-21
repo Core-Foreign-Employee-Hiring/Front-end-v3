@@ -1,0 +1,12 @@
+{
+  "title": "Resume",
+  "buttons": {
+    "delete": "Delete",
+    "add": "Add",
+    "export_pdf": "Export PDF"
+  },
+  "item": {
+    "modified_date": "Last Modified",
+    "created_date": "Date Created"
+  }
+}

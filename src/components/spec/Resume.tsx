@@ -11,6 +11,7 @@ import MobileCreateResumeModal from '@/components/common/modal/mobile/MobileCrea
 import { clientFetchSpecData } from '@/lib/client/spec'
 import { useEffect } from 'react'
 import NotUseResumeServiceModal from '@/components/common/modal/NotUseResumeServiceModal'
+import { useTranslation } from 'react-i18next'
 
 interface ResumeProps {
   resumeList: ResumeListType[] | undefined
@@ -18,6 +19,7 @@ interface ResumeProps {
 }
 
 export default function Resume({ lang, resumeList }: ResumeProps) {
+  const { t } = useTranslation('resume')
   const { toggleModal, modals } = useModalStore((state) => state)
 
   useEffect(() => {
@@ -35,7 +37,7 @@ export default function Resume({ lang, resumeList }: ResumeProps) {
       {modals.isCreateResumeModalOpen && <MobileCreateResumeModal lang={lang} />}
 
       {modals.isInfoPickerModalOpen && <InfoPickerModal />}
-      <Label label={'이력서'} type={'titleMd'} rightElement={<AddResumeButton />} />
+      <Label label={t('title')} type={'titleMd'} rightElement={<AddResumeButton />} />
       <Spacing height={12} />
       <div className="flex flex-col gap-y-3">
         {resumeList?.map((resume) => (

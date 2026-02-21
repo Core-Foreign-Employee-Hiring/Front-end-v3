@@ -5,6 +5,7 @@ import homeKo from '@/i18n/locales/ko/home.json'
 import filterKo from '@/i18n/locales/ko/filter.json'
 import specKo from '@/i18n/locales/ko/spec.json'
 import interviewKo from '@/i18n/locales/ko/interview.json'
+import resumeKo from '@/i18n/locales/ko/resume.json'
 
 import commonEn from '@/i18n/locales/en/common.json'
 import contentEn from '@/i18n/locales/en/content.json'
@@ -13,6 +14,7 @@ import homeEn from '@/i18n/locales/en/home.json'
 import filterEn from '@/i18n/locales/en/filter.json'
 import specEn from '@/i18n/locales/en/spec.json'
 import interviewEn from '@/i18n/locales/en/interview.json'
+import resumeEn from '@/i18n/locales/en/resume.json'
 
 import { Locale } from './i18n.types'
 
@@ -31,6 +33,7 @@ export const resources: Resources = {
     filter: filterKo,
     spec: specKo,
     interview: interviewKo,
+    resume: resumeKo,
   },
   en: {
     common: commonEn,
@@ -40,5 +43,6 @@ export const resources: Resources = {
     filter: filterEn,
     spec: specEn,
     interview: interviewEn,
+    resume: resumeEn,
   },
 }

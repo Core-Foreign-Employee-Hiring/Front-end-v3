@@ -3,12 +3,14 @@
 import { Button } from '@/components/common'
 import { deleteResume } from '@/lib/client/resume'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface ResumeButtonsProps {
   resumeId: number
 }
 
 export default function ResumeButtons({ resumeId }: ResumeButtonsProps) {
+  const { t } = useTranslation('resume')
   const router = useRouter()
   return (
     <div className="flex gap-x-[7px]">
@@ -26,7 +28,7 @@ export default function ResumeButtons({ resumeId }: ResumeButtonsProps) {
         variant={'outline'}
         size={'sm'}
       >
-        삭제
+        {t('buttons.delete')}
       </Button>
     </div>
   )

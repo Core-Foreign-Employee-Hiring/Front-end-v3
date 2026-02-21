@@ -1,0 +1,12 @@
+{
+  "title": "이력서",
+  "buttons": {
+    "delete": "삭제",
+    "add": "추가",
+    "export_pdf": "PDF 내보내기"
+  },
+  "item": {
+    "modified_date": "수정일자",
+    "created_date": "생성일자"
+  }
+}

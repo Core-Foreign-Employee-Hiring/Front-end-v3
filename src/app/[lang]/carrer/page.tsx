@@ -35,7 +35,7 @@ export default async function SpecPage({
   searchParams: SearchParams
 }) {
   const { lang } = await params
-  const { t } = await getTranslationServer(lang, ['spec'])
+  const { t } = await getTranslationServer(lang, ['spec', 'resume'])
   const resolvedSearchParams = await searchParams
 
   const step = (resolvedSearchParams.step as StepType) || '1'
@@ -44,7 +44,7 @@ export default async function SpecPage({
 
   const tabList: { content: string; path: string; key: string }[] = [
     { content: t('spec:home.title'), path: `/${lang}/carrer?tab=spec`, key: 'spec' },
-    { content: '이력서', path: `/${lang}/carrer?tab=resume`, key: 'resume' },
+    { content: t('resume:title'), path: `/${lang}/carrer?tab=resume`, key: 'resume' },
   ]
 
   const resumeResult = await fetchResumeList(0, 20)
