@@ -63,9 +63,9 @@ export default async function LoginLayout({
   params,
 }: Readonly<{
   children: React.ReactNode
-  params: Promise<{ lang: Locale }>
+  params: Promise<{ lang: string }>
 }>) {
-  const { lang } = await params
+  const { lang } = (await params) as { lang: Locale }
   const { t } = await getTranslationServer(lang, 'login')
   return (
     <div>
