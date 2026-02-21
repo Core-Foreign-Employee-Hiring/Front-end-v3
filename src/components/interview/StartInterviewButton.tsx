@@ -4,8 +4,10 @@ import { Button } from '@/components/common'
 import AIInterviewTestSettingModal from '@/components/common/modal/AIInterviewTestSettingModal'
 import { ArrowFowardGray3Icon } from '@/assets/svgComponents'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export default function StartInterviewButton() {
+  const { t } = useTranslation(['interview'])
   const [isModalOpen, setIsModalOpen] = useState(false)
   return (
     <div>
@@ -16,10 +18,10 @@ export default function StartInterviewButton() {
         }}
         size={'md'}
         variant={'primary'}
-        customClassName={'w-[126px]'}
+        customClassName={'w-fit'}
         rightIcon={<ArrowFowardGray3Icon width={20} height={20} />}
       >
-        새 면접 시작
+        {t('startButton')}
       </Button>
     </div>
   )

@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { useNoteStore } from '@/store/interview/noteStore'
 import { putNoteEntry } from '@/lib/client/interview'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface FinalAnswerProps {
   finalAnswer?: string
@@ -13,6 +14,7 @@ interface FinalAnswerProps {
   entryId?: string
 }
 export default function FinalAnswer({ finalAnswer, noteId, entryId }: FinalAnswerProps) {
+  const { t } = useTranslation('interview')
   const [isTextFieldOpen, setIsTextFieldOpen] = useState(false)
   const { setFinalAnswerEntry, finalAnswerEntry } = useNoteStore((state) => state)
   const router = useRouter()
@@ -20,7 +22,7 @@ export default function FinalAnswer({ finalAnswer, noteId, entryId }: FinalAnswe
     <div className="flex flex-col items-end gap-y-[20px]">
       <div className="bg-gray1 flex w-full flex-col gap-y-3 rounded-[8px] p-4">
         <Badge bgColor={'bg-main-500'} textColor={'text-white'}>
-          최종 답변
+          {t('history.setDetail.detail_feedback_body.final_answer.badge')}
         </Badge>
         {isTextFieldOpen ? (
           <div className="flex flex-col items-end gap-y-3">
@@ -28,7 +30,7 @@ export default function FinalAnswer({ finalAnswer, noteId, entryId }: FinalAnswe
               onClick={(e) => {
                 e.stopPropagation()
               }}
-              placeholder={'개선한 최종 답변을 작성해주세요.'}
+              placeholder={t('history.setDetail.detail_feedback_body.final_answer.placeholder')}
               value={finalAnswerEntry.final_answer ?? ''}
               onChange={(e) => {
                 setFinalAnswerEntry({ final_answer: e.target.value })
@@ -44,10 +46,12 @@ export default function FinalAnswer({ finalAnswer, noteId, entryId }: FinalAnswe
                 console.log('답변 수정 성공', result)
               }}
               variant={'primary'}
-              customClassName={'desktop:block tablet:block hidden w-[110px]'}
+              customClassName={'desktop:block tablet:block hidden w-fit'}
               size={'sm'}
             >
-              {finalAnswer ? '답변 수정완료' : '답변 작성완료'}
+              {finalAnswer
+                ? t('history.setDetail.detail_feedback_body.final_answer.action.submit_edit')
+                : t('history.setDetail.detail_feedback_body.final_answer.action.submit_create')}
             </Button>
           </div>
         ) : (
@@ -55,12 +59,12 @@ export default function FinalAnswer({ finalAnswer, noteId, entryId }: FinalAnswe
             {finalAnswer ? (
               <p className="kr-body-md">{finalAnswer}</p>
             ) : (
-              <p className="kr-body-md">아직 답변이 작성되지 않았습니다.</p>
+              <p className="kr-body-md">{t('history.setDetail.detail_feedback_body.final_answer.status.empty')}</p>
             )}
 
             {finalAnswer ? (
               <Button
-                customClassName={'desktop:block tablet:block hidden w-[136px]'}
+                customClassName={'desktop:block tablet:block hidden w-fit'}
                 onClick={(e) => {
                   e.stopPropagation()
                   setFinalAnswerEntry({ entryId: entryId, noteId: noteId, final_answer: finalAnswer })
@@ -70,11 +74,11 @@ export default function FinalAnswer({ finalAnswer, noteId, entryId }: FinalAnswe
                 variant={'primary'}
                 rightIcon={<WhiteRightArrowIcon width={20} height={20} />}
               >
-                답변 수정하기
+                {t('history.setDetail.detail_feedback_body.final_answer.action.edit')}
               </Button>
             ) : (
               <Button
-                customClassName={'desktop:block tablet:block hidden w-[136px]'}
+                customClassName={'desktop:block tablet:block hidden w-fit'}
                 onClick={(e) => {
                   e.stopPropagation()
                   setFinalAnswerEntry({ entryId: entryId, noteId: noteId })
@@ -84,7 +88,7 @@ export default function FinalAnswer({ finalAnswer, noteId, entryId }: FinalAnswe
                 variant={'primary'}
                 rightIcon={<WhiteRightArrowIcon width={20} height={20} />}
               >
-                답변 작성하기
+                {t('history.setDetail.detail_feedback_body.final_answer.action.create')}
               </Button>
             )}
           </div>
@@ -102,14 +106,16 @@ export default function FinalAnswer({ finalAnswer, noteId, entryId }: FinalAnswe
             console.log('답변 수정 성공', result)
           }}
           variant={'primary'}
-          customClassName={'desktop:hidden tablet:hidden block w-[110px]'}
+          customClassName={'desktop:hidden tablet:hidden block w-fit'}
           size={'sm'}
         >
-          {finalAnswer ? '답변 수정완료' : '답변 작성완료'}
+          {finalAnswer
+            ? t('history.setDetail.detail_feedback_body.final_answer.action.submit_edit')
+            : t('history.setDetail.detail_feedback_body.final_answer.action.submit_create')}
         </Button>
       ) : finalAnswer ? (
         <Button
-          customClassName={'desktop:hidden tablet:hidden block w-[136px]'}
+          customClassName={'desktop:hidden tablet:hidden block w-fit'}
           onClick={(e) => {
             e.stopPropagation()
             setFinalAnswerEntry({ entryId: entryId, noteId: noteId, final_answer: finalAnswer })
@@ -119,11 +125,11 @@ export default function FinalAnswer({ finalAnswer, noteId, entryId }: FinalAnswe
           variant={'primary'}
           rightIcon={<WhiteRightArrowIcon width={20} height={20} />}
         >
-          답변 수정하기
+          {t('history.setDetail.detail_feedback_body.final_answer.action.edit')}
         </Button>
       ) : (
         <Button
-          customClassName={'desktop:hidden tablet:hidden block w-[136px]'}
+          customClassName={'desktop:hidden tablet:hidden block w-fit'}
           onClick={(e) => {
             e.stopPropagation()
             setFinalAnswerEntry({ entryId: entryId, noteId: noteId })
@@ -133,7 +139,7 @@ export default function FinalAnswer({ finalAnswer, noteId, entryId }: FinalAnswe
           variant={'primary'}
           rightIcon={<WhiteRightArrowIcon width={20} height={20} />}
         >
-          답변 작성하기
+          {t('history.setDetail.detail_feedback_body.final_answer.action.create')}
         </Button>
       )}
     </div>

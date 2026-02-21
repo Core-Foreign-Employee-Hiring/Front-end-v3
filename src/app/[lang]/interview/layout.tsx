@@ -1,5 +1,7 @@
 import { Header } from '@/components/common'
 import type { Metadata } from 'next'
+import { getTranslationServer } from '@/lib/i18n'
+import { Locale } from '@/lib/i18n.types'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.korfit.co.kr'
 
@@ -61,16 +63,17 @@ export default async function InterviewLayout({
   params,
 }: Readonly<{
   children: React.ReactNode
-  params: Promise<{ lang: string }>
+  params: Promise<{ lang: Locale }>
 }>) {
   const { lang } = await params
+  const { t } = await getTranslationServer(lang, 'interview')
   return (
     <div>
       <div className="desktop:block hidden">
         <Header headerType={'default'} currentLng={lang} />
       </div>
       <div className="desktop:hidden block">
-        <Header headerType={'dynamic'} currentLng={lang} title={'AI 면접'} />
+        <Header headerType={'dynamic'} currentLng={lang} title={t('title')} />
       </div>
       {children}
     </div>

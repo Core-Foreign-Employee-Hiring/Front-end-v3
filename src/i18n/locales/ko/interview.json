@@ -1,0 +1,163 @@
+{
+  "title": "AI 면접",
+  "startButton": "새 면접 시작",
+
+  "menu": {
+    "home": "면접 홈",
+    "history": "면접 기록",
+    "note": "답변 노트"
+  },
+  "home": {
+    "hero": {
+      "label": "KORFIT과 함께하는 실전 면접 준비",
+      "description": "직무별 맞춤 질문으로 실전처럼 연습하고, 면접 역량을 향상시킬 수 있는 AI의 상세한 분석을 받아보세요."
+    },
+    "guide": {
+      "process": {
+        "title": "진행 가이드",
+        "items": [
+          "공통/직무/역량 질문이 랜덤하게 섞여 출제돼요.",
+          "답변 꼬리질문 기능을 키면 심화된 질문과 답을 할 수 있어요.",
+          "음성으로 답변하면 텍스트가 자동으로 변환되어 기록돼요.",
+          "모든 답변이 끝나면 KORFIT이 5가지 역량을 분석해줍니다."
+        ]
+      },
+      "examples": {
+        "title": "이런 질문이 나와요",
+        "items": [
+          "간단한 자기소개를 부탁드려요.",
+          "본인의 강점과 약점을 직무와 연관지어 설명해주세요.",
+          "한국 기업 문화에서 가장 중요하게 생각하는 것이 무엇인가요?",
+          "인사 후 3년 내에 이루고 싶은 목표가 있다면 말씀해주세요."
+        ]
+      }
+    },
+
+    "manual": {
+      "title": "사용방법",
+      "items": [
+        {
+          "number": 1,
+          "title": "질문 설정",
+          "content": "직무와 난이도를 선택해 질문을 구성해요."
+        },
+        {
+          "number": 2,
+          "title": "면접 진행",
+          "content": "실제 면접처럼 음성 또는 텍스트로 질문에 답변해요."
+        },
+        {
+          "number": 3,
+          "title": "AI 분석",
+          "content": "답변 내용을 기반으로 역량을 분석해요."
+        },
+        {
+          "number": 4,
+          "title": "정밀한 피드백",
+          "content": "개선 포인트와 개선 답변을 통해 면접 역량을 다듬을 수 있어요."
+        }
+      ]
+    },
+
+    "comparison": {
+      "title": "KORFIT 면접의 차별점",
+      "items": [
+        {
+          "title": "실제 면접 흐름을 반영한 질문 구조",
+          "content": "공통, 직무, 역량 질문으로 구성되어 있어요."
+        },
+        {
+          "title": "역량 기준에 따른 분석 리포트",
+          "content": "5대 역량을 기준으로 객관적인 평가를 제공해요."
+        },
+        {
+          "title": "답변 기록과 노트를 통한 답변 개선",
+          "content": "이전 답변과 비교하며 성장 과정을 확인할 수 있어요."
+        },
+        {
+          "title": "구독 기반의 체계적인 면접 훈련",
+          "content": "단계별 플랜으로 원하는 목표에 따라 준비가 가능해요."
+        }
+      ]
+    }
+  },
+
+  "history": {
+    "title": "면접 기록",
+    "no_data": "기존 면접 기록이 없습니다.",
+    "button": {
+      "report": "리포트 보기",
+      "resume": "이어서 진행하기"
+    },
+    "status": {
+      "completed": "완료",
+      "in_progress": "진행 중"
+    },
+    "options": {
+      "job": {
+        "it": "IT",
+        "marketing": "마케팅"
+      },
+      "level": {
+        "intern": "인턴",
+        "entry": "신입",
+        "experienced": "경력"
+      }
+    },
+    "setDetail": {
+      "headerOptionButton":"다시 도전하기",
+      "chat": {
+        "logic": "논리성",
+        "evidence": "근거제시",
+        "job_understanding": "직무이해",
+        "formality": "표현력",
+        "completeness": "완성도"
+      },
+      "header": {
+        "total_score_label": "종합 역량 점수",
+        "score_unit": "점",
+        "evaluations": {
+          "top_1": { "label": "상위 1%", "text": "독보적인 수준, 결점이 거의 없음" },
+          "top_10": { "label": "상위 10%", "text": "최상위권이나 완벽하진 않음" },
+          "top_25": { "label": "상위 25%", "text": "우수하지만 경쟁력 보완 필요" },
+          "mid": { "label": "중위권", "text": "평범함, 냉정하게 특징이 부족함" },
+          "bottom_30": { "label": "하위 30%", "text": "전반적인 기초 역량 재검토 필요" },
+          "bottom_10": { "label": "하위 10%", "text": "실전 투입이 어려움" }
+        }
+      },
+      "detail_feedback_body": {
+        "badge": "개선 재안",
+        "save_note_button": "답변노트에 저장",
+        "my_answer": {
+          "my":"나의 답변",
+          "follow_up_question": "압박 질문"
+        },
+        "final_answer": {
+          "badge": "최종 답변",
+          "placeholder": "개선한 최종 답변을 작성해주세요.",
+          "status": {
+            "empty": "아직 답변이 작성되지 않았습니다."
+          },
+          "action": {
+            "create": "답변 작성하기",
+            "edit": "답변 수정하기",
+            "submit_create": "답변 작성완료",
+            "submit_edit": "답변 수정완료"
+          }
+        }
+      }
+    }
+  },
+
+  "note": {
+    "item": {
+      "unit": "개"
+    },
+    "buttons": {
+      "edit_title": "노트명 수정",
+      "delete": "삭제"
+    },
+    "header": {
+    }
+  }
+}

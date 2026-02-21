@@ -7,6 +7,7 @@ import { formatDate, getLevelContent } from '@/utils/interview'
 import { useRouter } from 'next/navigation'
 import { useInterviewStore } from '@/store/interview/interviewStore'
 import { fetchClientInterviewResult } from '@/lib/client/interview'
+import { useTranslation } from 'react-i18next' // 추가
 
 interface HistoryItemProps {
   id: string
@@ -28,6 +29,8 @@ export default function HistoryItem({
   level,
 }: HistoryItemProps) {
   const router = useRouter()
+  const { t } = useTranslation('interview') // i18n hook
+
   const {
     setInterviewQuestion,
     clearChatList,
@@ -36,38 +39,30 @@ export default function HistoryItem({
     setFollowUpAnswer,
     setCommonAnswer,
     setSettingInterviewOption,
-    chatList,
   } = useInterviewStore((state) => state)
 
   const handleResumeInterview = async () => {
     try {
       const result = await fetchClientInterviewResult(id)
-      console.log('결과', result)
       if (!result.data?.data) return
 
       const { questions, answers, set } = result.data.data
 
-      // 1. 기존 데이터 초기화
       clearChatList()
 
-      // 2. 면접 설정 정보 복구 (추가된 부분)
       setSettingInterviewOption({
         job_type: set.job_type,
-        level: set.level, // set.job_level을 level로 매핑
-        question_count: questions.length, // 질문 배열의 길이
+        level: set.level,
+        question_count: questions.length,
         title: set.title,
       })
 
-      // 3. 질문 데이터 세팅
       setInterviewQuestion({ set_id: set.id, questions: questions })
 
       let lastIndex = 0
 
-      // 4. 답변 기록을 순회하며 채팅 리스트 복구
       answers.forEach((ans, idx) => {
         lastIndex = idx
-
-        // 일반 질문 추가
         addChatMessage({
           id: ans.question_id,
           type: 'COMMON_QUESTION',
@@ -75,14 +70,12 @@ export default function HistoryItem({
           order: ans.question_order,
         })
 
-        // 일반 답변 추가
         addChatMessage({
           id: ans.id,
           type: 'COMMON_ANSWER',
           content: ans.user_answer,
         })
 
-        // 압박 질문이 있고 답변까지 완료된 경우
         if (ans.follow_up_question) {
           addChatMessage({
             id: ans.id,
@@ -100,10 +93,8 @@ export default function HistoryItem({
         }
       })
 
-      // 5. 다음 진행 지점 결정 로직
       const lastAnswer = answers[answers.length - 1]
 
-      // 케이스 A: 압박 질문에 대한 답변이 필요한 상태
       if (lastAnswer && lastAnswer.follow_up_question && !lastAnswer.follow_up_answer) {
         setCurrentIndex(lastIndex)
         setFollowUpAnswer({
@@ -116,9 +107,7 @@ export default function HistoryItem({
           question_order: lastAnswer.question_order,
           user_answer: '',
         })
-      }
-      // 케이스 B: 새로운 일반 질문이 필요한 상태
-      else {
+      } else {
         const nextIdx = answers.length
         if (nextIdx < questions.length) {
           const nextQ = questions[nextIdx]
@@ -145,6 +134,9 @@ export default function HistoryItem({
       console.error('인터뷰 복구 실패:', error)
     }
   }
+
+  const isCompleted = progress === 'completed'
+
   return (
     <div className="border-gray2 hover:border-gray3 cursor-pointer rounded-[12px] border bg-white p-5 transition">
       <HistoryItemHeader title={title} progress={progress} />
@@ -155,22 +147,22 @@ export default function HistoryItem({
         job={job}
         createdAt={formatDate(createdAt)}
         completedAt={formatDate(completedAt)}
-        level={getLevelContent(level)}
+        level={getLevelContent(level, t)}
       />
       <Spacing height={24} />
 
       <Button
         onClick={() => {
-          if (progress === 'completed') {
+          if (isCompleted) {
             router.push(`/interview/${id}`)
           } else {
             handleResumeInterview()
           }
         }}
         size={'lg'}
-        variant={progress === 'completed' ? 'secondary' : 'primary'}
+        variant={isCompleted ? 'secondary' : 'primary'}
       >
-        {progress === 'completed' ? '리포트보기' : '이어서 진행하기'}
+        {isCompleted ? t('history.button.report') : t('history.button.resume')}
       </Button>
     </div>
   )

@@ -1,7 +1,10 @@
+'use client'
+
 import { Badge, ResultContent, Spacing } from '@/components/common'
 import DetailedFeedbackMyAnswer from '@/components/interview/result/DetailedFeedbackMyAnswer'
 import FinalAnswer from '@/components/interview/note/FinalAnswer'
 import SaveNoteButton from '@/components/interview/result/SaveNoteButton'
+import { useTranslation } from 'react-i18next'
 
 interface DetailedFeedbackBodyProps {
   userAnswer: string
@@ -28,6 +31,7 @@ export default function DetailedFeedbackBody({
   improvements,
   isFinalElement = false,
 }: DetailedFeedbackBodyProps) {
+  const { t } = useTranslation('interview')
   return (
     <div>
       <Spacing height={20} />
@@ -42,7 +46,7 @@ export default function DetailedFeedbackBody({
           bottomElement={
             <div className="mt-[20px] flex flex-col gap-y-[12px]">
               <Badge bgColor={'bg-main-500'} textColor={'text-white'}>
-                개선 제안
+                {t('history.setDetail.detail_feedback_body.badge')}
               </Badge>
               <p className="kr-body-md">{improvements}</p>
             </div>

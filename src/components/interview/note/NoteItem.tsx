@@ -7,6 +7,7 @@ import Options from '@/components/common/Options'
 import { useModalStore } from '@/store/modalStore'
 import { useState } from 'react'
 import { useNoteStore } from '@/store/interview/noteStore'
+import { useTranslation } from 'react-i18next'
 
 interface NoteItemProps {
   noteId: string
@@ -16,6 +17,7 @@ interface NoteItemProps {
 }
 
 export default function NoteItem({ noteId, title, content, status }: NoteItemProps) {
+  const { t } = useTranslation('interview')
   const [isOptionOpen, setIsOptionOpen] = useState(false)
   const router = useRouter()
   const onNavigation = () => {
@@ -52,7 +54,7 @@ export default function NoteItem({ noteId, title, content, status }: NoteItemPro
               }}
               customClassName={'text-black'}
             >
-              노트명 수정
+              {t('note.buttons.edit_title')}
             </Options.Item>
             <Options.Item
               onClick={() => {
@@ -61,7 +63,7 @@ export default function NoteItem({ noteId, title, content, status }: NoteItemPro
               }}
               customClassName={'text-error hover:text-error-light'}
             >
-              삭제
+              {t('note.buttons.delete')}
             </Options.Item>
           </Options>
         ) : null}

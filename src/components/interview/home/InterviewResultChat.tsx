@@ -1,6 +1,7 @@
 'use client'
 
 import { ResponsiveRadar } from '@nivo/radar'
+import { useTranslation } from 'react-i18next'
 
 interface InterviewResultChatProps {
   logic: number | undefined
@@ -17,12 +18,13 @@ export default function InterviewResultChat({
   job_understanding,
   evidence,
 }: InterviewResultChatProps) {
+  const { t } = useTranslation('interview')
   const data = [
-    { label: '논리성', value: logic },
-    { label: '근거제시', value: evidence },
-    { label: '직무이해', value: job_understanding },
-    { label: '표현력', value: formality },
-    { label: '완성도', value: completeness },
+    { label: t('history.setDetail.chat.logic'), value: logic },
+    { label: t('history.setDetail.chat.evidence'), value: evidence },
+    { label: t('history.setDetail.chat.job_understanding'), value: job_understanding },
+    { label: t('history.setDetail.chat.formality'), value: formality },
+    { label: t('history.setDetail.chat.completeness'), value: completeness },
   ]
   return (
     <div className="desktop:w-[319px] desktop:h-[280px] tablet:w-[319px] tablet:h-[280px] h-[294px] w-[335px] flex-shrink-0 whitespace-nowrap">

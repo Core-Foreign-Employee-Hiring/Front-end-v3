@@ -5,12 +5,14 @@ import { useNoteStore } from '@/store/interview/noteStore'
 import { useModalStore } from '@/store/modalStore'
 import EditNoteTitleModal from '@/components/common/modal/EditNoteTitleModal'
 import DeleteNoteModal from '@/components/common/modal/DeleteNoteModal'
+import { useTranslation } from 'react-i18next'
 
 interface NoteHeaderOptionProps {
   noteId: string
 }
 
 export default function NoteHeaderOption({ noteId }: NoteHeaderOptionProps) {
+  const { t } = useTranslation('interview')
   const { modals, toggleModal } = useModalStore((state) => state)
   const setSelectedNoteId = useNoteStore((state) => state.setSelectedNoteId)
   return (
@@ -20,7 +22,7 @@ export default function NoteHeaderOption({ noteId }: NoteHeaderOptionProps) {
 
       <div className="flex gap-x-3">
         <Button
-          customClassName={'w-[80px]'}
+          customClassName={'w-fit'}
           buttonType={'button'}
           onClick={() => {
             setSelectedNoteId(noteId)
@@ -29,7 +31,7 @@ export default function NoteHeaderOption({ noteId }: NoteHeaderOptionProps) {
           size={'sm'}
           variant={'outline'}
         >
-          수정
+          {t('note.buttons.edit_title')}
         </Button>
         <Button
           customClassName={'w-[80px]'}
@@ -41,7 +43,7 @@ export default function NoteHeaderOption({ noteId }: NoteHeaderOptionProps) {
           size={'sm'}
           variant={'outline'}
         >
-          삭제
+          {t('note.buttons.delete')}
         </Button>
       </div>
     </div>

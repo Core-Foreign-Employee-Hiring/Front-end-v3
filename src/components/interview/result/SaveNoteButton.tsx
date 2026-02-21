@@ -3,6 +3,7 @@
 import { Button } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
 import { useNoteStore } from '@/store/interview/noteStore'
+import { useTranslation } from 'react-i18next'
 
 interface SaveNoteButtonProps {
   question: string
@@ -23,6 +24,7 @@ export default function SaveNoteButton({
   followUpAnswer,
   customClassName,
 }: SaveNoteButtonProps) {
+  const { t } = useTranslation('interview')
   const { toggleModal } = useModalStore((state) => state)
   const { setCreateNoteData, setAnswerEntry } = useNoteStore((state) => state)
   return (
@@ -60,7 +62,7 @@ export default function SaveNoteButton({
       customClassName={customClassName}
       variant={'outline'}
     >
-      답변노트에 저장
+      {t('history.setDetail.detail_feedback_body.save_note_button')}
     </Button>
   )
 }

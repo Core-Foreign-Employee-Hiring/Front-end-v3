@@ -1,0 +1,164 @@
+{
+  "title": "AI Interview",
+  "startButton": "New Interview",
+  "menu": {
+    "home": "Home",
+    "history": "History",
+    "note": "Notes"
+  },
+
+  "home": {
+    "hero": {
+      "label": "Practical Interview Prep with KORFIT",
+      "description": "Practice with customized questions for each job role and receive detailed AI analysis to enhance your interview skills."
+    },
+    "guide": {
+      "process": {
+        "title": "Interview Guide",
+        "items": [
+          "Common, job-specific, and competency questions are presented randomly.",
+          "Enable the follow-up question feature for in-depth Q&A sessions.",
+          "Voice responses are automatically transcribed and recorded as text.",
+          "KORFIT analyzes 5 core competencies after all answers are completed."
+        ]
+      },
+      "examples": {
+        "title": "Sample Questions",
+        "items": [
+          "Please give us a brief introduction of yourself.",
+          "Explain your strengths and weaknesses in relation to the job role.",
+          "What do you value most in Korean corporate culture?",
+          "Tell us about the goals you want to achieve within 3 years of joining."
+        ]
+      }
+    },
+    "manual": {
+      "title": "How to Use",
+      "items": [
+        {
+          "number": 1,
+          "title": "Question Setup",
+          "content": "Configure your interview by selecting the job role and difficulty level."
+        },
+        {
+          "number": 2,
+          "title": "Conduct Interview",
+          "content": "Answer questions via voice or text, just like a real interview."
+        },
+        {
+          "number": 3,
+          "title": "AI Analysis",
+          "content": "Analyze your competencies based on the content of your answers."
+        },
+        {
+          "number": 4,
+          "title": "Detailed Feedback",
+          "content": "Refine your skills through key improvement points and suggested answers."
+        }
+      ]
+    },
+    "comparison": {
+      "title": "Why KORFIT Interview?",
+      "items": [
+        {
+          "title": "Real-world Interview Flow",
+          "content": "Structured with common, job-specific, and competency-based questions."
+        },
+        {
+          "title": "Competency-based Reports",
+          "content": "Provides objective evaluations based on 5 core professional competencies."
+        },
+        {
+          "title": "Improvement via Notes",
+          "content": "Track your growth by comparing current responses with previous records."
+        },
+        {
+          "title": "Systematic Training",
+          "content": "Prepare effectively with step-by-step plans tailored to your goals."
+        }
+      ]
+    }
+  },
+
+  "history": {
+    "title": "Interview History",
+    "no_data": "No existing interview records found.",
+    "button": {
+      "report": "View Report",
+      "resume": "Resume Interview"
+    },
+    "status": {
+      "completed": "Completed",
+      "in_progress": "In Progress"
+    },
+    "options": {
+      "job": {
+        "it": "IT",
+        "marketing": "Marketing"
+      },
+      "level": {
+        "intern": "Intern",
+        "entry": "Entry-level",
+        "experienced": "Experienced"
+      }
+    },
+    "setDetail": {
+      "headerOptionButton": "Retry Challenge",
+      "chat": {
+        "logic": "Logic",
+        "evidence": "Supporting Evidence",
+        "job_understanding": "Job Proficiency",
+        "formality": "Expressiveness",
+        "completeness": "Completeness"
+      },
+      "header": {
+        "total_score_label": "Total Competency Score",
+        "score_unit": "pts",
+        "evaluations": {
+          "top_1": { "label": "Top 1%", "text": "Exceptional & Flawless" },
+          "top_10": { "label": "Top 10%", "text": "Top-tier Performance" },
+          "top_25": { "label": "Top 25%", "text": "Solid & Competitive" },
+          "mid": { "label": "Average", "text": "Average; Needs more impact" },
+          "bottom_30": { "label": "Bottom 30%", "text": "Requires fundamental review" },
+          "bottom_10": { "label": "Bottom 10%", "text": "Not ready for practice" }
+        }
+      },
+      "detail_feedback_body": {
+        "badge": "Suggestions",
+        "save_note_button": "Save to Answer Note",
+        "my_answer": {
+          "my": "My Answer",
+          "follow_up_question": "Follow-up Question"
+        },
+        "final_answer": {
+          "badge": "Final Answer",
+          "placeholder": "Please write your improved final answer.",
+          "status": {
+            "empty": "No answer has been written yet."
+          },
+          "action": {
+            "create": "Write Answer",
+            "edit": "Edit Answer",
+            "submit_create": "Complete Writing",
+            "submit_edit": "Complete Editing"
+          }
+        }
+      }
+    }
+  },
+
+  "note": {
+    "item": {
+      "unit": "Items"
+    },
+    "buttons": {
+      "edit_title": "Edit Note Name",
+      "delete": "Delete"
+    },
+    "header": {
+      "title": "Interview Notes",
+      "create_note": "Create New Note",
+      "search_placeholder": "Search notes..."
+    }
+  }
+}

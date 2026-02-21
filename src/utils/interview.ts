@@ -1,14 +1,16 @@
 import { JobType, LevelType } from '@/types/interview'
+import { TFunction } from 'i18next'
 
-export const getJobContent = (job: JobType | undefined) => {
+export const getJobContent = (job: JobType | undefined, t: TFunction) => {
   if (!job) return ''
-  switch (job) {
-    case 'it':
-      return 'IT'
-    case 'marketing':
-      return '마케팅'
-  }
+  return t(`interview:history.options.job.${job}`)
 }
+
+export const getLevelContent = (level: LevelType | undefined, t: TFunction) => {
+  if (!level) return ''
+  return t(`interview:history.options.level.${level}`)
+}
+
 export const formatDate = (dateString?: string) => {
   if (!dateString) return null
 
@@ -18,16 +20,4 @@ export const formatDate = (dateString?: string) => {
   const day = String(date.getDate()).padStart(2, '0')
 
   return `${year}. ${month}. ${day}`
-}
-
-export const getLevelContent = (level: LevelType | undefined) => {
-  if (!level) return ''
-  switch (level) {
-    case 'intern':
-      return '인턴'
-    case 'entry':
-      return '신입'
-    case 'experienced':
-      return '경력'
-  }
 }

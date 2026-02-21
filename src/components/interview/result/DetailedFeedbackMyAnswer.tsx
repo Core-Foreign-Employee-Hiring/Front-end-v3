@@ -1,4 +1,7 @@
+'use client'
+
 import { Badge, Spacing } from '@/components/common'
+import { useTranslation } from 'react-i18next'
 
 interface DetailedFeedbackMyAnswerProps {
   userAnswer: string
@@ -11,11 +14,12 @@ export default function DetailedFeedbackMyAnswer({
   followUpAnswer,
   followUpQuestion,
 }: DetailedFeedbackMyAnswerProps) {
+  const { t } = useTranslation('interview')
   return (
     <div className="bg-gray1 w-full rounded-[12px] p-4">
       <section>
         <Badge textColor={'text-white'} bgColor={'bg-main-300'}>
-          나의 답변
+          {t('history.setDetail.detail_feedback_body.my_answer.my')}
         </Badge>
         <Spacing height={12} />
 
@@ -26,7 +30,7 @@ export default function DetailedFeedbackMyAnswer({
       {followUpQuestion && (
         <section className="rounded-[8px] bg-white p-[12px]">
           <Badge textColor={'text-error'} bgColor={'bg-error-light'}>
-            압박 질문
+            {t('history.setDetail.detail_feedback_body.my_answer.follow_up_question')}
           </Badge>
           <Spacing height={12} />
 

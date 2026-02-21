@@ -1,33 +1,48 @@
+'use client'
+
 import { Label, Spacing } from '@/components/common'
+import { useTranslation } from 'react-i18next'
 
 interface InterviewResultHeaderProps {
   score: number
 }
 
 export default function InterviewResultHeader({ score }: InterviewResultHeaderProps) {
+  const { t } = useTranslation('interview')
+
   const getStrictEvaluation = (score: number) => {
-    if (score >= 98) return { label: '상위 1%', text: '독보적인 수준, 결점이 거의 없음', color: '#1D4ED8' }
-    if (score >= 94) return { label: '상위 10%', text: '최상위권이나 완벽하진 않음', color: '#3B3DFF' }
-    if (score >= 85) return { label: '상위 25%', text: '우수하지만 경쟁력 보완 필요', color: '#2DD4BF' }
-    if (score >= 70) return { label: '중위권', text: '평범함, 냉정하게 특징이 부족함', color: '#FACC15' }
-    if (score >= 50) return { label: '하위 30%', text: '전반적인 기초 역량 재검토 필요', color: '#FB923C' }
-    return { label: '하위 10%', text: '실전 투입이 어려움', color: '#FF4D4F' }
+    // i18n 키값과 컬러만 매핑
+    if (score >= 98) return { key: 'top_1', color: '#1D4ED8' }
+    if (score >= 94) return { key: 'top_10', color: '#3B3DFF' }
+    if (score >= 85) return { key: 'top_25', color: '#2DD4BF' }
+    if (score >= 70) return { key: 'mid', color: '#FACC15' }
+    if (score >= 50) return { key: 'bottom_30', color: '#FB923C' }
+    return { key: 'bottom_10', color: '#FF4D4F' }
   }
 
-  const evaluation = getStrictEvaluation(score)
+  const { key, color } = getStrictEvaluation(score)
+
+  // JSON에서 라벨과 텍스트를 불러옴
+  const evaluationLabel = t(`history.setDetail.header.evaluations.${key}.label`)
+  const evaluationText = t(`history.setDetail.header.evaluations.${key}.text`)
 
   return (
     <div>
-      <Label label={'종합 역량 점수'} labelColor={'text-gray5'} type={'button'} />
+      <Label label={t('history.setDetail.header.total_score_label')} labelColor={'text-gray5'} type={'button'} />
       <Spacing height={12} />
       <div className="flex items-end justify-between">
         <div className="flex items-end gap-x-1">
-          <h4 className="kr-title-md">{score}점</h4>
+          <h4 className="kr-title-md">
+            {score}
+            {t('history.setDetail.header.score_unit')}
+          </h4>
           <p className="kr-subtitle-md text-gray4">/</p>
-          <p className="kr-subtitle-md text-gray4">100점</p>
+          <p className="kr-subtitle-md text-gray4">100{t('history.setDetail.header.score_unit')}</p>
         </div>
 
-        <p className="kr-title-sm" style={{ color: evaluation.color }}>{`${evaluation.label}, ${evaluation.text}`}</p>
+        <p className="kr-title-sm" style={{ color }}>
+          {`${evaluationLabel}, ${evaluationText}`}
+        </p>
       </div>
     </div>
   )
