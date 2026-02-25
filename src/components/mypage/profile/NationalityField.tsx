@@ -12,7 +12,7 @@ export default function NationalityField() {
   const [isDropBoxOpen, setIsDropBoxOpen] = useState(false)
   const [searchValue, setSearchValue] = useState('')
   const { modifyProfileData, updateProfile } = useModifyProfileStore((state) => state)
-  const { t } = useTranslation()
+  const { t } = useTranslation(['signup', 'my'])
 
   // 검색어에 따라 필터링된 비자 리스트
   const filteredList = useMemo(() => {
@@ -22,7 +22,7 @@ export default function NationalityField() {
 
   // 현재 선택된 비자의 라벨을 찾는 함수
   const getSelectedLabel = () => {
-    if (!modifyProfileData?.nationality) return t('signUp.nationality.placeholder')
+    if (!modifyProfileData?.nationality) return t('signup:step2.nationalityField.placeholder')
     const found = NATIONALITY_LIST.find((nationality) => nationality.code === modifyProfileData.nationality)
     return found?.label || modifyProfileData.nationality
   }
@@ -40,7 +40,7 @@ export default function NationalityField() {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'국적'} isRequired={true} type={'titleSm'} />
+      <Label label={t('my:profile.nationality_field.label')} isRequired={true} type={'titleSm'} />
       <div onClick={handleInputContainerClick} className="relative">
         {isDropBoxOpen ? (
           <div
@@ -51,7 +51,7 @@ export default function NationalityField() {
             <input
               className="w-full outline-none"
               value={searchValue}
-              placeholder={'국적을 선택해주세요.'}
+              placeholder={t('my:profile.nationality_field.placeholder')}
               onChange={(e) => {
                 setSearchValue(e.target.value)
               }}
@@ -82,7 +82,7 @@ export default function NationalityField() {
               ))
             ) : (
               <div className="text-gray4 flex h-[60px] items-center justify-center px-4">
-                {t('signUp.visa.noSearchResultMessage')}
+                {t('my:profile.nationality_field.no_result')}
               </div>
             )}
           </DropDown.DropBoxOptionBox>

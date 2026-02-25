@@ -3,17 +3,19 @@
 import { Button, Label } from '@/components/common'
 import { GenderType } from '@/types/auth/register'
 import { useModifyProfileStore } from '@/store/modifyProfileStore'
+import { useTranslation } from 'react-i18next'
 
 export default function GenderField() {
+  const { t } = useTranslation('my')
   const { modifyProfileData, updateProfile } = useModifyProfileStore((state) => state)
   const genderList: { key: GenderType; content: string }[] = [
-    { key: 'MALE', content: '남자' },
-    { key: 'FEMALE', content: '여자' },
-    { key: 'NULL', content: '선택안함' },
+    { key: 'MALE', content: t('profile.gender_field.list.male') },
+    { key: 'FEMALE', content: t('profile.gender_field.list.female') },
+    { key: 'NULL', content: t('profile.gender_field.list.null') },
   ]
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'성별'} type={'titleSm'} />
+      <Label label={t('profile.gender_field.label')} type={'titleSm'} />
       <div className="flex gap-x-3">
         {genderList.map((gender) => (
           <Button

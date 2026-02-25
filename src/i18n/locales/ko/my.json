@@ -47,5 +47,123 @@
         "currency": "{{price}}원"
       }
     }
+  },
+
+  "change_auth": {
+    "title": "아이디 / 비밀번호 변경",
+    "switch_buttons": {
+      "id": "아이디 변경",
+      "pw": "비밀번호 변경"
+    },
+    "modify_id": {
+      "label": "새 아이디",
+      "placeholder": "새 아이디를 입력해주세요."
+    },
+    "modify_pw": {
+      "label": "새 비밀번호",
+      "placeholder": "새 비밀번호를 입력해주세요."
+    },
+    "bottom_buttons": {
+      "prev": "이전",
+      "change_id": "아이디 변경",
+      "change_pw": "비밀번호 변경"
+    }
+  },
+
+  "profile": {
+    "title": "프로필 수정",
+    "name_field": {
+      "label": "이름"
+    },
+    "phone_number_field": {
+      "label": "전화번호",
+      "placeholder": "‘-’ 제외하고 번호 입력해주세요.",
+      "buttons": {
+        "send_code": "인증번호",
+        "verify_confirm": "인증확인"
+      },
+      "messages": {
+        "success": "인증되었습니다."
+      }
+    },
+    "email_field": {
+      "label": "이메일",
+      "placeholder": "이메일을 입력해주세요.",
+      "verify_code_placeholder": "인증번호 입력",
+      "buttons": {
+        "send_code": "인증번호",
+        "verify_confirm": "인증확인"
+      },
+      "messages": {
+        "success": "인증되었습니다."
+      }
+    },
+    "address_field": {
+      "label": "주소",
+      "zipcode_placeholder": "우편번호",
+      "address_placeholder": "주소",
+      "detail_address_placeholder": "상세주소를 입력해주세요.",
+      "buttons": {
+        "search_zipcode": "우편번호 검색"
+      }
+    },
+    "nationality_field": {
+      "label": "국적",
+      "placeholder": "국적을 선택해주세요.",
+      "no_result": "검색 결과가 없습니다."
+    },
+    "visa_field": {
+      "label": "비자",
+      "placeholder": "비자를 선택해주세요.",
+      "searchVisaPlaceholder": "비자 종류를 검색하세요",
+      "noSearchResultMessage": "검색 결과가 없습니다."
+    },
+    "education_field": {
+      "label": "학력",
+      "placeholder": "학력을 선택해주세요.",
+      "list": {
+        "high_school": "고졸",
+        "university_attending": "대학 재학",
+        "university_graduate": "대졸 및 예정",
+        "graduate_school_attending": "대학원 재학",
+        "graduate_school_graduate": "대학원졸 및 예정"
+      }
+    },
+    "job_role_field":{
+      "label": "관심 직무",
+      "buttons": {
+        "open_modal": "직무 선택"
+      }
+    },
+    "birth_date_field": {
+      "label": "생년월일",
+      "placeholders": {
+        "year": "년도",
+        "month": "월",
+        "day": "일"
+      }
+    },
+    "gender_field": {
+      "label": "성별",
+      "list": {
+        "male": "남자",
+        "female": "여자",
+        "null": "선택안함"
+      }
+    },
+    "terms_of_service": {
+      "all_agree": "전체동의",
+      "items": {
+        "service": "(필수) 서비스 이용약관 동의",
+        "privacy": "(필수) 개인정보 수집 및 이용 동의",
+        "marketing_sms": "(선택) 광고성 정보 수신 동의 (SMS/MMS)",
+        "marketing_email": "(선택) 광고성 정보 수신 동의 (이메일)"
+      }
+    },
+    "bottom_buttons": {
+      "back": "이전",
+      "submit": "수정 완료",
+      "success_log": "프로필 수정 성공"
+    }
   }
 }

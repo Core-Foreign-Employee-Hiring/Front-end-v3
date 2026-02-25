@@ -7,8 +7,10 @@ import { postVerifyEmailCode, sendEmailCode } from '@/lib/client/register'
 import { validateEmail } from '@/utils/common'
 import ErrorMessage from '@/components/common/ErrorMessage'
 import SuccessMessage from '@/components/common/SuccessMessage'
+import { useTranslation } from 'react-i18next'
 
 export default function EmailField() {
+  const { t } = useTranslation('my')
   const {
     modifyProfileData,
     updateProfile,
@@ -47,14 +49,14 @@ export default function EmailField() {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'이메일'} isRequired={true} type={'titleSm'} />
+      <Label label={t('profile.email_field.label')} isRequired={true} type={'titleSm'} />
 
       {/* 전화번호 인증 번호 전송 */}
       <div className="flex items-center gap-x-2">
         <TextInput
           value={modifyProfileData.email || ''}
           onChange={handleEmailChange}
-          placeholder={'이메일을 입력해주세요.'}
+          placeholder={t('profile.email_field.placeholder')}
         />
         <Button
           onClick={async () => {
@@ -76,7 +78,7 @@ export default function EmailField() {
           }
           customClassName={'w-[130px]'}
         >
-          인증번호
+          {t('profile.email_field.buttons.send_code')}
         </Button>
       </div>
 
@@ -90,7 +92,7 @@ export default function EmailField() {
               const result = await postVerifyEmailCode(verifyEmailCode)
               if (result.success) {
                 setVerifyEmailCodeLoading(false)
-                setVerifyEmailCodeSuccessMessage('인증되었습니다.')
+                setVerifyEmailCodeSuccessMessage(t('profile.email_field.messages.success'))
               } else {
                 setVerifyEmailCodeLoading(false)
                 setVerifyEmailCodeErrorMessage(result.error)
@@ -101,7 +103,7 @@ export default function EmailField() {
             variant={'primary'}
             customClassName={'w-[130px]'}
           >
-            인증확인
+            {t('profile.email_field.buttons.verify_confirm')}
           </Button>
         </div>
       )}

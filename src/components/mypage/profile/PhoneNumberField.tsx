@@ -6,8 +6,10 @@ import { ChangeEvent } from 'react'
 import { postVerifyPhoneNumberCode, sendPhoneNumberCode } from '@/lib/client/register'
 import ErrorMessage from '@/components/common/ErrorMessage'
 import SuccessMessage from '@/components/common/SuccessMessage'
+import { useTranslation } from 'react-i18next'
 
 export default function PhoneNumberField() {
+  const { t } = useTranslation('my')
   const {
     modifyProfileData,
     updateProfile,
@@ -53,14 +55,14 @@ export default function PhoneNumberField() {
   }
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'전화번호'} isRequired={true} type={'titleSm'} />
+      <Label label={t('profile.phone_number_field.label')} isRequired={true} type={'titleSm'} />
 
       {/* 전화번호 인증 번호 전송 */}
       <div className="flex items-center gap-x-2">
         <TextInput
           value={modifyProfileData.phoneNumber || ''}
           onChange={handlePhoneNumberChange}
-          placeholder={'‘-’ 제외하고 번호 입력해주세요.'}
+          placeholder={t('profile.phone_number_field.placeholder')}
         />
         <Button
           onClick={async () => {
@@ -80,7 +82,7 @@ export default function PhoneNumberField() {
           state={modifyProfileData.phoneNumber?.length !== 11 ? 'disable' : 'default'}
           customClassName={'w-[130px]'}
         >
-          인증번호
+          {t('profile.phone_number_field.buttons.send_code')}
         </Button>
       </div>
 
@@ -94,7 +96,7 @@ export default function PhoneNumberField() {
               const result = await postVerifyPhoneNumberCode(verifyPhoneNumberCode)
               if (result.success) {
                 setVerifySMSCodeLoading(false)
-                setVerifySMSCodeSuccessMessage('인증되었습니다.')
+                setVerifySMSCodeSuccessMessage(t('profile.phone_number_field.messages.success'))
               } else {
                 setVerifySMSCodeLoading(false)
                 setVerifySMSCodeErrorMessage(result.error)
@@ -105,7 +107,7 @@ export default function PhoneNumberField() {
             variant={'primary'}
             customClassName={'w-[130px]'}
           >
-            인증확인
+            {t('profile.phone_number_field.buttons.verify_confirm')}
           </Button>
         </div>
       )}

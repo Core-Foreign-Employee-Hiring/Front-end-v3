@@ -17,6 +17,8 @@ import AuthWatcher from '@/components/auth/AuthWatcher'
 import SideBar from '@/components/mypage/SideBar'
 import Footer from '@/components/common/Footer'
 import NavBar from '@/components/common/NavBar'
+import { getTranslationServer } from '@/lib/i18n'
+import { Locale } from '@/lib/i18n.types'
 
 interface ProfilePageProps {
   params: Promise<{ lang: string }>
@@ -24,6 +26,8 @@ interface ProfilePageProps {
 
 export default async function ProfilePage({ params }: ProfilePageProps) {
   const { lang } = await params
+  const currentLang = lang as Locale
+  const { t } = await getTranslationServer(currentLang, 'my')
   const result = await fetchMyPageUserInfo()
   const userInfo = result.data
 
@@ -42,13 +46,13 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
     <main className="w-full">
       <Header headerType={'default'} currentLng={lang} />
       <PageLayout>
-        <Label className={'desktop:block hidden'} label={'마이페이지'} type={'titleLg'} />
+        <Label className={'desktop:block hidden'} label={t('home.title')} type={'titleLg'} />
         <Spacing className={'desktop:block tablet:block hidden'} height={16} />
         <div className="flex gap-x-[32px]">
           <SideBar lang={lang} />
           <div className="w-full">
             <ProfileStoreInitializer initialData={userInfo} />
-            <Label label={'프로필 수정'} type={'titleMd'} />
+            <Label label={t('profile.title')} type={'titleMd'} />
             <Spacing height={16} />
             <div className="flex w-full flex-col gap-y-6">
               <NameField />

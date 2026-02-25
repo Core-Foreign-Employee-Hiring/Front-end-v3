@@ -4,8 +4,10 @@ import { useEffect } from 'react' // 1. useEffect 추가
 import { DropDown, Label } from '@/components/common'
 import { useDropDown } from '@/hooks'
 import { useModifyProfileStore } from '@/store/modifyProfileStore'
+import { useTranslation } from 'react-i18next'
 
 export default function EducationField() {
+  const { t } = useTranslation('my')
   const {
     initialValue,
     selectedDropDownContent,
@@ -13,11 +15,17 @@ export default function EducationField() {
     setIsDropDownOpen,
     selectedDropDownHandler,
     dropDownOpenHandler,
-  } = useDropDown({ initialValue: '학력을 선택해주세요.' })
+  } = useDropDown({ initialValue: t('profile.education_field.placeholder') })
 
   const { updateProfile, modifyProfileData } = useModifyProfileStore((state) => state)
 
-  const educationList = ['고졸', '대학 재학', '대졸 및 예정', '대학원 재학', '대학원졸 및 예정']
+  const educationList = [
+    t('profile.education_field.list.high_school'),
+    t('profile.education_field.list.university_attending'),
+    t('profile.education_field.list.university_graduate'),
+    t('profile.education_field.list.graduate_school_attending'),
+    t('profile.education_field.list.graduate_school_graduate'),
+  ]
 
   // 2. 초기 데이터 동기화 (Store -> DropDown State)
   useEffect(() => {
@@ -32,7 +40,7 @@ export default function EducationField() {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'학력'} type={'titleSm'} isRequired={true} />
+      <Label label={t('profile.education_field.label')} type={'titleSm'} isRequired={true} />
       <DropDown
         selectedValue={selectedDropDownContent}
         defaultValue={initialValue}

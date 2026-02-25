@@ -4,8 +4,10 @@ import { Button } from '@/components/common'
 import { patchModifyProfile } from '@/lib/client/mypage'
 import { useModifyProfileStore } from '@/store/modifyProfileStore'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 export default function BottomButton() {
+  const { t } = useTranslation('my')
   const { modifyProfileData } = useModifyProfileStore((state) => state)
   const router = useRouter()
   return (
@@ -17,7 +19,7 @@ export default function BottomButton() {
         customClassName={'w-[180px]'}
         variant={'outline'}
       >
-        이전
+        {t('profile.bottom_buttons.back')}
       </Button>
       <Button
         onClick={async () => {
@@ -26,7 +28,7 @@ export default function BottomButton() {
         }}
         customClassName={'w-[180px]'}
       >
-        수정 완료
+        {t('profile.bottom_buttons.submit')}
       </Button>
     </div>
   )

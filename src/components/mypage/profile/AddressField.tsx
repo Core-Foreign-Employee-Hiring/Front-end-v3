@@ -4,8 +4,10 @@ import { useModifyProfileStore } from '@/store/modifyProfileStore'
 import { Button, Label, TextInput } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
 import SearchAddressModal from '@/components/common/modal/SearchAddressModal'
+import { useTranslation } from 'react-i18next'
 
 export default function AddressField() {
+  const { t } = useTranslation('my')
   const { modifyProfileData, updateProfile } = useModifyProfileStore((state) => state)
   const { toggleModal, modals } = useModalStore((state) => state)
 
@@ -18,7 +20,7 @@ export default function AddressField() {
     <div>
       {modals.isSearchAddressModalOpen && <SearchAddressModal handleChangeAddress={handleChangeAddress} />}
       <div className="flex flex-col gap-y-2">
-        <Label label={'주소'} isRequired={true} type={'titleSm'} />
+        <Label label={t('profile.address_field.label')} isRequired={true} type={'titleSm'} />
         {/* 우편 번호 입력 */}
         <div className="flex gap-x-2">
           <TextInput
@@ -27,7 +29,7 @@ export default function AddressField() {
             }}
             value={modifyProfileData.zipcode || ''}
             onChange={() => {}}
-            placeholder={'우편번호'}
+            placeholder={t('address_field.zipcode_placeholder')}
           />
           <Button
             onClick={() => {
@@ -37,7 +39,7 @@ export default function AddressField() {
             variant={'primary'}
             customClassName={'w-[140px]'}
           >
-            우편번호 검색
+            {t('profile.address_field.buttons.search_zipcode')}
           </Button>
         </div>
 
@@ -48,7 +50,7 @@ export default function AddressField() {
           }}
           value={modifyProfileData.address1 || ''}
           onChange={() => {}}
-          placeholder={'주소'}
+          placeholder={t('profile.address_field.label')}
         />
 
         {/* 상세 주소 입력 */}
@@ -57,7 +59,7 @@ export default function AddressField() {
           onChange={(e) => {
             updateProfile('address2', e.target.value)
           }}
-          placeholder={'상세주소를 입력해주세요.'}
+          placeholder={t('profile.address_field.detail_address_placeholder')}
         />
       </div>
     </div>

@@ -50,23 +50,120 @@
   },
 
   "change_auth": {
-    "title": "아이디 / 비밀번호 변경",
+    "title": "Change ID / Password",
     "switch_buttons": {
-      "id": "아이디 변경",
-      "pw": "비밀번호 변경"
+      "id": "Change ID",
+      "pw": "Change Password"
     },
     "modify_id": {
-      "label": "새 아이디",
-      "placeholder": "새 아이디를 입력해주세요."
+      "label": "New ID",
+      "placeholder": "Enter your new ID"
     },
     "modify_pw": {
-      "label": "새 비밀번호",
-      "placeholder": "새 비밀번호를 입력해주세요."
+      "label": "New Password",
+      "placeholder": "Enter your new password"
     },
     "bottom_buttons": {
-      "prev": "이전",
-      "change_id": "아이디 변경",
-      "change_pw": "비밀번호 변경"
+      "prev": "Back",
+      "change_id": "Change ID",
+      "change_pw": "Change Password"
     }
   },
+
+  "profile": {
+    "title": "Edit Profile",
+    "name_field": {
+      "label": "Name"
+    },
+    "phone_number_field": {
+      "label": "Phone Number",
+      "placeholder": "Numbers only, no hyphens",
+      "buttons": {
+        "send_code": "Get Code",
+        "verify_confirm": "Verify"
+      },
+      "messages": {
+        "success": "Verified successfully."
+      }
+    },
+    "email_field": {
+      "label": "Email",
+      "placeholder": "Enter your email",
+      "verify_code_placeholder": "Enter code",
+      "buttons": {
+        "send_code": "Get Code",
+        "verify_confirm": "Verify"
+      },
+      "messages": {
+        "success": "Verified successfully."
+      }
+    },
+    "address_field": {
+      "label": "Address",
+      "zipcode_placeholder": "Zip Code",
+      "address_placeholder": "Address",
+      "detail_address_placeholder": "Suite, Apt, etc.",
+      "buttons": {
+        "search_zipcode": "Search Zip"
+      }
+    },
+    "nationality_field": {
+      "label": "Nationality",
+      "placeholder": "Select nationality",
+      "no_result": "No results found."
+    },
+    "visa_field": {
+      "label": "Visa",
+      "placeholder": "Select visa type",
+      "searchVisaPlaceholder": "Search for visa",
+      "noSearchResultMessage": "No results found."
+    },
+    "education_field": {
+      "label": "Education",
+      "placeholder": "Select education",
+      "list": {
+        "high_school": "High School",
+        "university_attending": "University (Attending)",
+        "university_graduate": "University (Graduated)",
+        "graduate_school_attending": "Master's (Attending)",
+        "graduate_school_graduate": "Master's/PhD"
+      }
+    },
+    "job_role_field": {
+      "label": "Interested Roles",
+      "buttons": {
+        "open_modal": "Select Roles"
+      }
+    },
+    "birth_date_field": {
+      "label": "Date of Birth",
+      "placeholders": {
+        "year": "YYYY",
+        "month": "MM",
+        "day": "DD"
+      }
+    },
+    "gender_field": {
+      "label": "Gender",
+      "list": {
+        "male": "Male",
+        "female": "Female",
+        "null": "None"
+      }
+    },
+    "terms_of_service": {
+      "all_agree": "Agree to all",
+      "items": {
+        "service": "[Required] Terms of Service",
+        "privacy": "[Required] Privacy Policy",
+        "marketing_sms": "[Optional] Marketing (SMS/MMS)",
+        "marketing_email": "[Optional] Marketing (Email)"
+      }
+    },
+    "bottom_buttons": {
+      "back": "Back",
+      "submit": "Save Changes",
+      "success_log": "Profile updated successfully."
+    }
+  }
 }
