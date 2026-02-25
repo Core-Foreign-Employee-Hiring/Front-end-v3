@@ -165,5 +165,60 @@
       "submit": "수정 완료",
       "success_log": "프로필 수정 성공"
     }
+  },
+
+  "terms_of_service": {
+    "header": "이용약관",
+    "items": {
+      "service": "서비스 이용약관 동의",
+      "privacy": "개인정보 수집 및 이용 동의",
+      "marketing_sms": "광고성 정보 수신 동의 (SMS/MMS)",
+      "marketing_email": "광고성 정보 수신 동의 (이메일)"
+    },
+
+    "sms_terms": {
+      "title": "광고성 정보 수신 동의 (SNS/SMS)",
+      "list": {
+        "purpose": {
+          "title": "수집/이용의 목적",
+          "description": "회원의 SMS/MMS를 이용하여 뉴스, 이벤트, 소식, 설문, 광고 정보를 전송"
+        },
+        "items": {
+          "title": "수집/이용 항목",
+          "description": "SMS/MMS"
+        },
+        "retention": {
+          "title": "보유 기한",
+          "description": "관계 법령의 규정에 따라 보존할 의무가 있는 경우가 아닌 한, <span class=\"text-main-500\">회원탈퇴 또는 동의 철회 시</span> 까지"
+        },
+        "refusal": {
+          "title": "수신동의 거부 철회 방법",
+          "desc_1": "본 동의는 거부하실 수 있습니다. 다만 거부 시 동의를 통해 제공 가능한 각종 혜택, 이벤트 안내를 받아보실 수 없습니다.",
+          "desc_2": "본 수신동의를 철회하고자 할 경우에는 회원정보 수정 페이지에서 수신여부를 변경하실 수 있습니다."
+        }
+      }
+    }
+  },
+
+  "withdraw_page": {
+    "title": "회원 탈퇴",
+    "list": {
+      "immediate_deletion": {
+        "title": "탈퇴 즉시 회원정보 삭제",
+        "description": "탈퇴 즉시 아카이브, 저장된 기록 모두 삭제되며, 삭제된 정보는 복구되지 않습니다. 단, 공공적 성격의 게시물은 삭제되지 않으므로 탈퇴 전 미리 삭제해주세요."
+      },
+      "retention_policy": {
+        "title": "이용 정보 일정기간 보관",
+        "description": "전자상거래 등에서 소비자보호에 관한 법률에 따라 유료 결제에 관한 계약 기록은 5년간 보관됩니다. 부적합 정보, 이용제한 및 징계에 관한 기록은 일정기간 보관합니다."
+      }
+    },
+    "warnings": {
+      "no_recovery": "해당 서비스는 계정 복구 기능을 지원하지 않습니다.",
+      "no_refund": "탈퇴 진행 후, 유료서비스의 환불 진행은 어렵습니다."
+    },
+    "reason_section": {
+      "label": "떠나시는 이유를 알려주세요.",
+      "placeholder": "서비스 탈퇴 사유에 대해 알려주세요.\n고객님의 소중한 피드백을 담아 더 나은 서비스로 보답하겠습니다."
+    }
   }
 }

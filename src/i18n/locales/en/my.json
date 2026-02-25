@@ -165,5 +165,57 @@
       "submit": "Save Changes",
       "success_log": "Profile updated successfully."
     }
+  },
+  "terms_of_service": {
+    "header": "Terms of Service",
+    "items": {
+      "service": "Agreement to Terms of Service",
+      "privacy": "Consent to Privacy Policy",
+      "marketing_sms": "Consent to Marketing Alerts (SMS/MMS)",
+      "marketing_email": "Consent to Marketing Alerts (Email)"
+    },
+    "sms_terms": {
+      "title": "Consent to Receive Marketing Information (SMS/MMS)",
+      "list": {
+        "purpose": {
+          "title": "Purpose of Collection and Use",
+          "description": "To send news, events, announcements, surveys, and promotional advertisements via SMS/MMS."
+        },
+        "items": {
+          "title": "Items to be Collected and Used",
+          "description": "SMS/MMS"
+        },
+        "retention": {
+          "title": "Retention Period",
+          "description": "Until <span class=\"text-main-500\">account withdrawal or withdrawal of consent</span>, unless required to be preserved by relevant laws and regulations."
+        },
+        "refusal": {
+          "title": "Right to Refuse and Method of Withdrawal",
+          "desc_1": "You have the right to refuse this consent. However, refusal may restrict access to various benefits and event notifications provided through this agreement.",
+          "desc_2": "To withdraw your consent, you can change your preferences on the 'Edit Profile' page."
+        }
+      }
+    }
+  },
+  "withdraw_page": {
+    "title": "Delete Account",
+    "list": {
+      "immediate_deletion": {
+        "title": "Immediate Deletion of Member Information",
+        "description": "Upon deletion, all archived and stored records will be permanently removed and cannot be recovered. However, public posts will not be deleted, so please remove them before deleting your account."
+      },
+      "retention_policy": {
+        "title": "Retention of Information for a Certain Period",
+        "description": "Records related to paid payment contracts are kept for 5 years in accordance with the Act on Consumer Protection in Electronic Commerce. Records regarding inappropriate information, usage restrictions, and disciplinary actions are also retained for a specific period."
+      }
+    },
+    "warnings": {
+      "no_recovery": "This service does not support account recovery functions.",
+      "no_refund": "Refunds for paid services are not available after account deletion."
+    },
+    "reason_section": {
+      "label": "Please let us know why you are leaving.",
+      "placeholder": "Please share your reason for leaving.\nWe will use your valuable feedback to improve our service."
+    }
   }
 }

@@ -1,47 +1,48 @@
 import { Header, PageLayout, Spacing } from '@/components/common'
 import Footer from '@/components/common/Footer'
+import { Locale } from '@/lib/i18n.types'
+import { getTranslationServer } from '@/lib/i18n'
 
 export default async function ServicePage({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params
+  const currentLang = lang as Locale
+  const { t } = await getTranslationServer(currentLang, 'my')
 
   return (
     <main>
-      <Header headerType={'dynamic'} title={'서비스 이용약관 동의'} currentLng={lang} />
+      <Header headerType={'dynamic'} title={t('terms_of_service.sms_terms.title')} currentLng={lang} />
       <PageLayout>
         <ol className="kr-body-sm list-inside list-decimal space-y-4">
+          {/* 1. Purpose */}
           <li>
-            수집/이용의 목적
-            {/* 내부 중첩 리스트 (불렛 형태) */}
+            {t('terms_of_service.sms_terms.list.purpose.title')}
             <ul className="kr-body-sm mt-2 ml-3 list-inside list-disc space-y-1">
-              <li>회원의 SMS/MMS를 이용하여 뉴스, 이벤트, 소식, 설문, 광고 정보를 전송</li>
+              <li>{t('terms_of_service.sms_terms.list.purpose.description')}</li>
             </ul>
           </li>
 
+          {/* 2. Items */}
           <li>
-            수집/이용 항목
+            {t('terms_of_service.sms_terms.list.items.title')}
             <ul className="kr-body-sm mt-2 ml-3 list-inside list-disc space-y-1">
-              <li>SMS/MMS</li>
+              <li>{t('terms_of_service.sms_terms.list.items.description')}</li>
             </ul>
           </li>
 
+          {/* 3. Retention */}
           <li>
-            보유 기한
+            {t('terms_of_service.sms_terms.list.retention.title')}
             <ul className="kr-body-sm mt-2 ml-3 list-inside list-disc space-y-1">
-              <li>
-                관계 법령의 규정에 따라 보존할 의무가 있는 경우가 아닌 한,{' '}
-                <span className="text-main-500">회원탈퇴 또는 동의 철회 시</span> 까지
-              </li>
+              <li dangerouslySetInnerHTML={{ __html: t('terms_of_service.sms_terms.list.retention.description') }} />
             </ul>
           </li>
 
+          {/* 4. Refusal/Withdrawal */}
           <li>
-            수신동의 거부 철회 방법
+            {t('terms_of_service.sms_terms.list.refusal.title')}
             <ul className="kr-body-sm mt-2 ml-3 list-inside list-disc space-y-1">
-              <li>
-                본 동의는 거부하실 수 있습니다. 다만 거부 시 동의를 통해 제공 가능한 각종 혜택, 이벤트 안내를 받아보실
-                수 없습니다.
-              </li>
-              <li>본 수신동의를 철회하고자 할 경우에는 회원정보 수정 페이지에서 수신여부를 변경하실 수 있습니다.</li>
+              <li>{t('terms_of_service.sms_terms.list.refusal.desc_1')}</li>
+              <li>{t('terms_of_service.sms_terms.list.refusal.desc_2')}</li>
             </ul>
           </li>
         </ol>
