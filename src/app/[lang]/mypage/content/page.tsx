@@ -8,6 +8,8 @@ import WriteList from '@/components/mypage/content/WriteList'
 import { fetchPurchasedArchiveList, fetchSoldArchiveList, fetchWriteArchiveList } from '@/lib/server/mypage'
 import SideBar from '@/components/mypage/SideBar'
 import Footer from '@/components/common/Footer'
+import { Locale } from '@/lib/i18n.types'
+import { getTranslationServer } from '@/lib/i18n'
 
 type SearchType = 'sold' | 'purchase' | 'write'
 
@@ -19,6 +21,8 @@ export default async function MyPageContent({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const { lang } = await params
+  const currentLang = lang as Locale
+  const { t } = await getTranslationServer(currentLang, 'my')
   const resolvedSearchParams = await searchParams
   const type = (resolvedSearchParams.type || 'sold') as SearchType
   const page = Number(resolvedSearchParams.page) || 1
@@ -49,12 +53,12 @@ export default async function MyPageContent({
         <Header headerType={'default'} currentLng={lang} />
       </div>
       <PageLayout>
-        <Label className={'desktop:block hidden'} label={'마이페이지'} type={'titleLg'} />
+        <Label className={'desktop:block hidden'} label={t('home.title')} type={'titleLg'} />
         <Spacing className={'desktop:block tablet:block hidden'} height={16} />
         <div className="flex gap-x-[32px]">
           <SideBar lang={lang} />
           <div className="w-full">
-            <Label label={'콘텐츠 내역'} type={'titleMd'} />
+            <Label label={t('content.title')} type={'titleMd'} />
             <Spacing height={12} />
             <ChangeContentSwitchButton type={type} />
             <Spacing height={12} />

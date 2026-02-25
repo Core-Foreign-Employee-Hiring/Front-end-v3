@@ -1,0 +1,72 @@
+{
+  "side_bar": {
+    "home": "My Home",
+    "content": "My Content"
+  },
+  "home": {
+    "title": "My Page",
+    "items": {
+      "change_auth": "Change ID/Password",
+      "terms_of_service": "Terms of Service",
+      "logout": "Log Out",
+      "withdraw": "Delete Account"
+    },
+    "user_info": {
+      "profile_button": "Edit Profile"
+    }
+  },
+  "content": {
+    "title": "My Content",
+    "more_button": "More",
+    "switch_buttons": {
+      "sold": "Sold",
+      "purchase": "Purchased",
+      "write": "Written"
+    },
+    "sold": {
+      "no_data": "No history found.",
+      "sold_item": {
+        "withdrawn_status": "Withdrawn: {{date}}",
+        "currency": "₩{{price}}"
+      }
+    },
+    "purchase": {
+      "no_data": "No history found.",
+      "purchase_item": {
+        "no_review_badge": "No review written yet",
+        "payment_completed": "Paid on {{date}}",
+        "currency": "₩{{price}}",
+        "download_btn": "Download",
+        "view_review_btn": "View Review",
+        "write_review_btn": "Write Review"
+      }
+    },
+    "write": {
+      "no_data": "No history found.",
+      "write_item": {
+        "currency": "₩{{price}}"
+      }
+    }
+  },
+
+  "change_auth": {
+    "title": "아이디 / 비밀번호 변경",
+    "switch_buttons": {
+      "id": "아이디 변경",
+      "pw": "비밀번호 변경"
+    },
+    "modify_id": {
+      "label": "새 아이디",
+      "placeholder": "새 아이디를 입력해주세요."
+    },
+    "modify_pw": {
+      "label": "새 비밀번호",
+      "placeholder": "새 비밀번호를 입력해주세요."
+    },
+    "bottom_buttons": {
+      "prev": "이전",
+      "change_id": "아이디 변경",
+      "change_pw": "비밀번호 변경"
+    }
+  },
+}

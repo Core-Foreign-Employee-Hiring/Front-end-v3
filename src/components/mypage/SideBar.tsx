@@ -7,12 +7,14 @@ import {
   SidebarUnselectedContentIcon,
   SidebarUnselectedHomeIcon,
 } from '@/assets/svgComponents'
+import { useTranslation } from 'react-i18next'
 
 interface SideBarProps {
   lang: string
 }
 
 export default function SideBar({ lang }: SideBarProps) {
+  const { t } = useTranslation('my')
   const router = useRouter()
   const pathname = usePathname()
 
@@ -37,7 +39,7 @@ export default function SideBar({ lang }: SideBarProps) {
         ) : (
           <SidebarUnselectedHomeIcon width={24} height={24} />
         )}
-        <p>my 홈</p>
+        <p>{t('side_bar.home')}</p>
       </div>
 
       {/* 콘텐츠 내역 탭 */}
@@ -47,7 +49,7 @@ export default function SideBar({ lang }: SideBarProps) {
         ) : (
           <SidebarUnselectedContentIcon width={24} height={24} />
         )}
-        <p>콘텐츠 내역</p>
+        <p>{t('side_bar.content')}</p>
       </div>
     </nav>
   )

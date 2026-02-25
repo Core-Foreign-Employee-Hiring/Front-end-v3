@@ -1,4 +1,4 @@
-import { I18nParams } from '@/lib/i18n.types'
+import { I18nParams, Locale } from '@/lib/i18n.types'
 import { Header, Label, PageLayout, Spacing } from '@/components/common'
 import React from 'react'
 import ModifyId from '@/components/mypage/change-auth/ModifyId'
@@ -8,6 +8,7 @@ import Footer from '@/components/common/Footer'
 import NavBar from '@/components/common/NavBar'
 import ChangeAuthSwitchButton from '@/components/mypage/change-auth/ChangeAuthSwitchButton'
 import BottomButton from '@/components/mypage/change-auth/BottomButton'
+import { getTranslationServer } from '@/lib/i18n'
 
 type SearchType = 'id' | 'pw'
 
@@ -29,6 +30,8 @@ export default async function MyPageChangeAuthPage({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const { lang } = await params
+  const currentLang = lang as Locale
+  const { t } = await getTranslationServer(currentLang, 'my')
   const resolvedSearchParams = await searchParams
   // URL에 진짜로 "undefined"라는 글자가 올 경우를 대비해 처리
   const rawType = resolvedSearchParams.type
@@ -39,12 +42,12 @@ export default async function MyPageChangeAuthPage({
     <main>
       <Header headerType={'default'} currentLng={lang} />
       <PageLayout>
-        <Label className={'desktop:block hidden'} label={'마이페이지'} type={'titleLg'} />
+        <Label className={'desktop:block hidden'} label={t('home.title')} type={'titleLg'} />
         <Spacing className={'desktop:block tablet:block hidden'} height={16} />
         <div className="flex gap-x-[32px]">
           <SideBar lang={lang} />
           <div className="flex w-full flex-col gap-y-4">
-            <Label label={'아이디 / 비밀번호 변경'} type={'titleMd'} />
+            <Label label={t('change_auth.title')} type={'titleMd'} />
             <ChangeAuthSwitchButton type={type} />
 
             {/* 본문 */}

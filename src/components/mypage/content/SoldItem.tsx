@@ -1,4 +1,7 @@
+'use client'
+
 import { SoldArchiveType } from '@/types/mypage'
+import { useTranslation } from 'react-i18next'
 
 export default function SoldItem({
   soldAt,
@@ -10,17 +13,24 @@ export default function SoldItem({
   withdrawalAt,
   isWithdrawn,
 }: SoldArchiveType) {
+  const { t } = useTranslation('my')
   return (
     <div className="border-gray2 flex items-center justify-between gap-x-3 border-b-[1px] py-4">
       <div className="flex items-center gap-x-3">
         <div className="flex flex-col gap-y-1">
-          {isWithdrawn ? <p className="kr-badge-sm text-main-500">인출 완료 {withdrawalAt}</p> : null}
+          {isWithdrawn ? (
+            <p className="kr-badge-sm text-main-500">
+              {t('content.sold.sold_item.withdrawn_status', { date: withdrawalAt })}
+            </p>
+          ) : null}
 
           <p className={`${isWithdrawn ? 'text-gray4' : 'text-black'} kr-subtitle-lg`}>{title}</p>
           <p className="kr-body-sm text-gray4">{soldAt}</p>
         </div>
       </div>
-      <p className={`${isWithdrawn ? 'text-gray4' : 'text-black'} kr-subtitle-lg`}>{price.toLocaleString()}원</p>
+      <p className={`${isWithdrawn ? 'text-gray4' : 'text-black'} kr-subtitle-lg`}>
+        {t('content.sold.sold_item.currency', { price: price.toLocaleString() })}
+      </p>
     </div>
   )
 }

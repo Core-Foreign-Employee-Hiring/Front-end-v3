@@ -12,7 +12,7 @@ interface UserInfoProps {
 
 export default function UserInfo({ userInfo }: UserInfoProps) {
   const router = useRouter()
-  const { t } = useTranslation()
+  const { t } = useTranslation(['common', 'my'])
 
   return (
     <div className="bg-gray1 tablet:flex-row desktop:flex-row flex w-full flex-col justify-between gap-y-[24px] rounded-[12px] p-5">
@@ -29,11 +29,11 @@ export default function UserInfo({ userInfo }: UserInfoProps) {
       </section>
       <Button
         onClick={() => router.push('/mypage/home/profile')}
-        customClassName={'w-[100px]'}
+        customClassName={'w-fit'}
         variant={'outline'}
         size={'md'}
       >
-        프로필 수정
+        {t('my:home.user_info.profile_button')}
       </Button>
     </div>
   )

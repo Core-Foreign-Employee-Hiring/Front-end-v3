@@ -7,12 +7,14 @@ import Loading from '../../common/Loading'
 import Pagination from '@/components/common/Pagination'
 import PurchaseItem from '@/components/mypage/content/PurchaseItem'
 import AuthWatcher from '@/components/auth/AuthWatcher'
+import { useTranslation } from 'react-i18next'
 
 interface PurchaseListProps {
   currentPage: number
 }
 
 export default function PurchaseList({ currentPage }: PurchaseListProps) {
+  const { t } = useTranslation('my')
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -42,7 +44,7 @@ export default function PurchaseList({ currentPage }: PurchaseListProps) {
         {list.map((item) => (
           <PurchaseItem key={item.passArchiveId} {...item} />
         ))}
-        {list.length === 0 && <p className="text-gray3 py-20 text-center">내역이 없습니다.</p>}
+        {list.length === 0 && <p className="text-gray3 py-20 text-center">{t('content.purchase.no_data')}</p>}
       </div>
 
       <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />

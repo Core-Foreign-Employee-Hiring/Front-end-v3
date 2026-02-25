@@ -8,8 +8,10 @@ import Loading from '@/components/common/Loading'
 import { fetchSoldArchiveList } from '@/lib/client/mypage'
 import SoldItem from '@/components/mypage/content/SoldItem'
 import AuthWatcher from '@/components/auth/AuthWatcher'
+import { useTranslation } from 'react-i18next'
 
 export default function SoldList({ currentPage }: { currentPage: number }) {
+  const { t } = useTranslation('my')
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
@@ -39,7 +41,7 @@ export default function SoldList({ currentPage }: { currentPage: number }) {
         {list.map((item) => (
           <SoldItem key={item.archiveId} {...item} />
         ))}
-        {list.length === 0 && <p className="text-gray3 py-20 text-center">내역이 없습니다.</p>}
+        {list.length === 0 && <p className="text-gray3 py-20 text-center">{t('content.sold.no_data')}</p>}
       </div>
 
       <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />

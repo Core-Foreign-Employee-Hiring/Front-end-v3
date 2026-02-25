@@ -1,16 +1,18 @@
 'use client'
 
 import { usePathname, useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface ChangeAuthSwitchButtonProps {
   type: 'id' | 'pw'
 }
 export default function ChangeAuthSwitchButton({ type }: ChangeAuthSwitchButtonProps) {
+  const { t } = useTranslation('my')
   const router = useRouter()
   const pathname = usePathname()
   const contentList: { content: string; type: 'id' | 'pw' }[] = [
-    { content: '아이디 변경', type: 'id' },
-    { content: '비밀번호 변경', type: 'pw' },
+    { content: t('change_auth.switch_buttons.id'), type: 'id' },
+    { content: t('change_auth.switch_buttons.pw'), type: 'pw' },
   ]
   const handleStepClick = (type: 'id' | 'pw') => {
     router.push(`${pathname}?type=${encodeURIComponent(type)}&step=1`)

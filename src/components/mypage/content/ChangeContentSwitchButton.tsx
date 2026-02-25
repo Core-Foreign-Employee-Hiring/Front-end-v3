@@ -1,18 +1,20 @@
 'use client'
 
 import { usePathname, useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface ChangeContentSwitchButtonProps {
   type: 'sold' | 'purchase' | 'write'
 }
 
 export default function ChangeContentSwitchButton({ type }: ChangeContentSwitchButtonProps) {
+  const { t } = useTranslation('my')
   const router = useRouter()
   const pathname = usePathname()
   const contentList: { content: string; type: 'sold' | 'purchase' | 'write' }[] = [
-    { content: '판매한 콘텐츠', type: 'sold' },
-    { content: '구매한 콘텐츠', type: 'purchase' },
-    { content: '작성한 콘텐츠', type: 'write' },
+    { content: t('content.switch_buttons.sold'), type: 'sold' },
+    { content: t('content.switch_buttons.purchase'), type: 'purchase' },
+    { content: t('content.switch_buttons.write'), type: 'write' },
   ]
   const handleStepClick = (type: 'sold' | 'purchase' | 'write') => {
     router.push(`${pathname}?type=${encodeURIComponent(type)}&page=0`)

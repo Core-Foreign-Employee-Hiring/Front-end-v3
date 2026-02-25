@@ -9,6 +9,7 @@ import { useModalStore } from '@/store/modalStore'
 import WriteReviewModal from '@/components/common/modal/WriteReviewModal'
 import ViewReviewModalOpen from '@/components/common/modal/ViewReviewModalOpen'
 import { useReviewStore } from '@/store/reviewStore'
+import { useTranslation } from 'react-i18next'
 
 export default function PurchaseItem({
   archiveReviewId,
@@ -22,6 +23,7 @@ export default function PurchaseItem({
   thumbnailUrl,
   approvedAt,
 }: PurchaseArchiveType) {
+  const { t } = useTranslation('my')
   const { modals, toggleModal } = useModalStore((state) => state)
 
   const { selectedReviewId, selectedArchiveId, setSelectedArchiveId, setSelectedReviewId } = useReviewStore(
@@ -112,15 +114,19 @@ export default function PurchaseItem({
         <ViewReviewModalOpen reviewId={archiveReviewId} />
       )}
       <div className="flex flex-col gap-y-3">
-        {isReviewed ? null : <Badge>아직 리뷰를 작성하지 않았어요.</Badge>}
+        {isReviewed ? null : <Badge>{t('content.purchase.purchase_item.no_review_badge')}</Badge>}
         <div className="flex items-center gap-x-3">
           <div className="relative h-[64px] w-[64px]">
             <Image src={thumbnailUrl} alt={'썸네일'} className="rounded-[8px] object-cover" fill />
           </div>
           <div className="flex flex-col gap-y-1">
             <p className="kr-subtitle-lg">{title}</p>
-            <p className="kr-body-sm">{price}원</p>
-            <p className="kr-small text-gray4">{approvedAt} 결제완료</p>
+            <p className="kr-body-sm">
+              {t('content.purchase.purchase_item.currency', { price: price.toLocaleString() })}
+            </p>
+            <p className="kr-small text-gray4">
+              {t('content.purchase.purchase_item.payment_completed', { date: approvedAt })}
+            </p>
           </div>
         </div>
       </div>
@@ -135,10 +141,12 @@ export default function PurchaseItem({
           variant={'outline'}
           customClassName={'w-[120px]'}
         >
-          다운로드
+          {t('content.purchase.purchase_item.download_btn')}
         </Button>
         <Button onClick={handleReviewClick} size={'md'} customClassName={'desktop:w-[200px] w-[120px]'}>
-          리뷰 {isReviewed ? '보기' : '작성하기'}
+          {isReviewed
+            ? t('content.purchase.purchase_item.view_review_btn')
+            : t('content.purchase.purchase_item.write_review_btn')}
         </Button>
       </div>
     </div>

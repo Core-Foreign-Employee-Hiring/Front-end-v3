@@ -1,0 +1,51 @@
+{
+  "side_bar": {
+    "home": "my 홈",
+    "content": "콘텐츠 내역"
+  },
+  "home": {
+    "title": "마이페이지",
+    "items": {
+      "change_auth": "아이디/비밀번호 변경",
+      "terms_of_service": "이용 약관",
+      "logout": "로그아웃",
+      "withdraw": "탈퇴하기"
+    },
+    "user_info": {
+      "profile_button": "프로필 수정"
+    }
+  },
+  "content": {
+    "title": "콘텐츠 내역",
+    "more_button": "더보기",
+    "switch_buttons": {
+      "sold": "판매한 콘텐츠",
+      "purchase": "구매한 콘텐츠",
+      "write": "작성한 콘텐츠"
+    },
+    "sold": {
+      "no_data": "내역이 없습니다.",
+      "sold_item": {
+        "withdrawn_status": "인출 완료 {{date}}",
+        "currency": "{{price}}원"
+      }
+    },
+    "purchase": {
+      "no_data": "내역이 없습니다.",
+      "purchase_item": {
+        "no_review_badge": "아직 리뷰를 작성하지 않았어요.",
+        "payment_completed": "{{date}} 결제완료",
+        "currency": "{{price}}원",
+        "download_btn": "다운로드",
+        "view_review_btn": "리뷰 보기",
+        "write_review_btn": "리뷰 작성하기"
+      }
+    },
+    "write": {
+      "no_data": "내역이 없습니다.",
+      "write_item": {
+        "currency": "{{price}}원"
+      }
+    }
+  }
+}
