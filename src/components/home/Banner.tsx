@@ -14,7 +14,7 @@ export default function Banner() {
           <h1 className="kr-title-lg desktop:kr-resume-lg text-center text-white">{t('banner.h1')} </h1>
 
           <div className="flex flex-col items-center justify-center">
-            <p className="kr-subtitle-md desktop:kr-title-sm text-white">{t('banner.description')}</p>
+            <p className="kr-subtitle-md desktop:kr-title-sm text-center text-white">{t('banner.description')}</p>
           </div>
         </div>
         <Button
