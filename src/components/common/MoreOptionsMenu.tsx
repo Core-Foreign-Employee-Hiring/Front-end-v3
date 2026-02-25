@@ -22,6 +22,7 @@ import Header from '@/components/common/Header'
 import { useRouter } from 'next/navigation'
 import { useMemo, useSyncExternalStore } from 'react'
 import { useModalStore } from '@/store/modalStore'
+import { useTranslation } from 'react-i18next'
 
 interface MoreOptionsMenuProps {
   lang: string
@@ -29,6 +30,7 @@ interface MoreOptionsMenuProps {
 }
 
 export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
+  const { t } = useTranslation('common')
   const router = useRouter()
 
   const { toggleModal } = useModalStore((state) => state)
@@ -79,7 +81,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
         {userInfo?.name ? (
           <section className="border-gray2 flex flex-col gap-y-4 rounded-[12px] border bg-white p-[20px]">
             <div className="flex flex-col gap-y-1">
-              <Label label={`${userInfo.name}님`} type={'subtitleMd'} />
+              <Label label={`${userInfo.name}`} type={'subtitleMd'} />
               <p className="kr-body-sm text-gray4">{userInfo.email}</p>
             </div>
             <Button
@@ -89,7 +91,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
               }}
               variant={'secondary'}
             >
-              마이페이지
+              {t('navigation.my_page_text')}
             </Button>
           </section>
         ) : (
@@ -103,7 +105,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
                 }}
                 variant={'outline'}
               >
-                회원가입
+                {t('navigation.signup')}
               </Button>
               <Button
                 onClick={() => {
@@ -111,7 +113,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
                   toggleModal('isMoreOptionsMenuOpen')
                 }}
               >
-                로그인
+                {t('navigation.login')}
               </Button>
             </div>
           </section>
@@ -119,7 +121,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
 
         <Spacing height={32} />
 
-        <Label label={'전체 메뉴'} type={'subtitleSm'} />
+        <Label label={t('navigation.menu_label')} type={'subtitleSm'} />
         <Spacing height={8} />
         {path === `/${lang}` ? (
           <div
@@ -130,7 +132,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
             <SelectedHomeIcon width={24} height={24} />
-            <p className="text-main-500 kr-subtitle-sm">홈</p>
+            <p className="text-main-500 kr-subtitle-sm">{t('navigation.home')}</p>
           </div>
         ) : (
           <div
@@ -141,7 +143,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
             <UnselectedGray4HomeIcon width={24} height={24} />
-            <p className="text-gray4 kr-subtitle-sm">홈</p>
+            <p className="text-gray4 kr-subtitle-sm">{t('navigation.home')}</p>
           </div>
         )}
 
@@ -154,7 +156,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
             <SelectedRecruitIcon width={24} height={24} />
-            <p className="text-main-500 kr-subtitle-sm">채용</p>
+            <p className="text-main-500 kr-subtitle-sm">{t('navigation.job_post')}</p>
           </div>
         ) : (
           <div
@@ -165,7 +167,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
             <UnselectedGray4RecruitIcon width={24} height={24} />
-            <p className="text-gray4 kr-subtitle-sm">채용</p>
+            <p className="text-gray4 kr-subtitle-sm">{t('navigation.job_post')}</p>
           </div>
         )}
 
@@ -178,7 +180,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
             <SelectedCarrerIcon width={24} height={24} />
-            <p className="text-main-500 kr-subtitle-sm">커리어 진단</p>
+            <p className="text-main-500 kr-subtitle-sm">{t('navigation.career')}</p>
           </div>
         ) : (
           <div
@@ -189,7 +191,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
             <UnselectedGray4CarrerIcon width={24} height={24} />
-            <p className="text-gray4 kr-subtitle-sm">커리어 진단</p>
+            <p className="text-gray4 kr-subtitle-sm">{t('navigation.career')}</p>
           </div>
         )}
 
@@ -202,7 +204,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
             <SelectedAiIcon width={24} height={24} />
-            <p className="text-main-500 kr-subtitle-sm">AI 면접</p>
+            <p className="text-main-500 kr-subtitle-sm">{t('navigation.interview')}</p>
           </div>
         ) : (
           <div
@@ -213,7 +215,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
             <UnselectedGrayAiInterviewIcon width={24} height={24} />
-            <p className="text-gray4 kr-subtitle-sm">AI 면접</p>
+            <p className="text-gray4 kr-subtitle-sm">{t('navigation.interview')}</p>
           </div>
         )}
 
@@ -226,7 +228,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
             <SelectedContentIcon width={24} height={24} />
-            <p className="text-main-500 kr-subtitle-sm">콘텐츠</p>
+            <p className="text-main-500 kr-subtitle-sm">{t('navigation.content')}</p>
           </div>
         ) : (
           <div
@@ -237,7 +239,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
             <UnselectedContentIcon width={24} height={24} />
-            <p className="text-gray4 kr-subtitle-sm">콘텐츠</p>
+            <p className="text-gray4 kr-subtitle-sm">{t('navigation.content')}</p>
           </div>
         )}
 
@@ -250,7 +252,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
             <SelectedProgramIcon width={24} height={24} />
-            <p className="text-main-500 kr-subtitle-sm">프로그램</p>
+            <p className="text-main-500 kr-subtitle-sm">{t('navigation.program')}</p>
           </div>
         ) : (
           <div
@@ -261,7 +263,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             className="flex cursor-pointer items-center gap-x-3 py-3"
           >
             <UnselectedProgramIcon width={24} height={24} />
-            <p className="text-gray4 kr-subtitle-sm">프로그램</p>
+            <p className="text-gray4 kr-subtitle-sm">{t('navigation.program')}</p>
           </div>
         )}
 
@@ -270,7 +272,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             <Spacing height={20} />
             <BottomBorder />
             <button onClick={handleLogout} className="text-gray4 kr-subtitle-sm flex items-center py-3">
-              로그아웃
+              {t('navigation.logout')}
             </button>
           </div>
         )}

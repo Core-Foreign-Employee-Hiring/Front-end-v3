@@ -10,16 +10,19 @@
     "customerCenter": "CS Center",
     "customerComplaints": "Inquiry"
   },
+
   "navigation": {
+    "menu_label": "Menu",
     "home": "Home",
-    "recruit": "Jobs",
-    "spec": "Career Assessment",
+    "job_post": "Jobs",
+    "career": "Career",
     "interview": "AI Interview",
-    "content": "Content",
+    "content": "Insights",
     "program": "Programs",
     "login": "Log In",
     "signup": "Sign Up",
-    "logout": "Log Out"
+    "logout": "Log Out",
+    "my_page_text": "Profile"
   },
 
   "login": {

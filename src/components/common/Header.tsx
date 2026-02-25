@@ -26,7 +26,7 @@ interface HeaderProps {
 }
 
 export default function Header({ headerType = 'default', currentLng = 'ko', path, title }: HeaderProps) {
-  const { t } = useTranslation('common', { lng: currentLng })
+  const { t } = useTranslation('common')
   const { i18n } = useTranslation()
   const currentPath = usePathname()
   const router = useRouter()
@@ -136,8 +136,8 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
 
   const navItems = [
     { label: t('navigation.home'), href: `/${currentLng}` },
-    { label: t('navigation.recruit'), href: `/${currentLng}/job-post` },
-    { label: t('navigation.spec'), href: `/${currentLng}/carrer?tab=spec` },
+    { label: t('navigation.job_post'), href: `/${currentLng}/job-post` },
+    { label: t('navigation.career'), href: `/${currentLng}/carrer?tab=spec` },
     { label: t('navigation.interview'), href: `/${currentLng}/interview?tab=home` },
     { label: t('navigation.content'), href: `/${currentLng}/content` },
     { label: t('navigation.program'), href: `/${currentLng}/program` },

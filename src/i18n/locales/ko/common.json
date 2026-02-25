@@ -11,15 +11,18 @@
     "customerComplaints": "민원접수"
   },
   "navigation": {
+    "menu_label": "전체 메뉴",
     "home": "홈",
-    "recruit": "채용",
-    "spec": "커리어 진단",
+    "job_post": "채용",
+    "career": "커리어 진단",
     "interview": "AI 면접",
+    "my_page": "MY",
     "content": "콘텐츠",
     "program": "프로그램",
     "login": "로그인",
     "signup": "회원가입",
-    "logout": "로그아웃"
+    "logout": "로그아웃",
+    "my_page_text": "마이페이지"
   },
 
   "modal": {
