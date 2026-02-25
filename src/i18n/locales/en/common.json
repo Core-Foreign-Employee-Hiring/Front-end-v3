@@ -25,6 +25,11 @@
     "my_page_text": "Profile"
   },
 
+  "language": {
+    "ko": "Korean",
+    "en": "English"
+  },
+
   "login": {
     "title": "Log In",
     "description": "Become a Korfit member and enjoy more services!",

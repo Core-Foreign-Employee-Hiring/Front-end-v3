@@ -10,6 +10,7 @@
     "customerCenter": "고객센터",
     "customerComplaints": "민원접수"
   },
+
   "navigation": {
     "menu_label": "전체 메뉴",
     "home": "홈",
@@ -23,6 +24,11 @@
     "signup": "회원가입",
     "logout": "로그아웃",
     "my_page_text": "마이페이지"
+  },
+
+  "language": {
+    "ko": "한국어",
+    "en": "영어"
   },
 
   "modal": {

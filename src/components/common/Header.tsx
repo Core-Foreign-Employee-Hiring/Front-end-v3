@@ -110,12 +110,12 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
 
   const loginPopupList = [
     {
-      content: '마이페이지',
+      content: t('navigation.my_page_text'),
       textColor: 'text-black',
       onClick: () => router.push(`/${currentLng}/mypage/home`),
     },
     {
-      content: '로그아웃',
+      content: t('navigation.logout'),
       textColor: 'text-gray4',
       onClick: handleLogout,
     },
@@ -123,12 +123,12 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
 
   const languagePopupList = [
     {
-      content: '한국어',
+      content: t('language.ko'),
       textColor: 'text-black',
       onClick: () => changeLanguage('ko'),
     },
     {
-      content: '영어',
+      content: t('language.en'),
       textColor: 'text-black',
       onClick: () => changeLanguage('en'),
     },
