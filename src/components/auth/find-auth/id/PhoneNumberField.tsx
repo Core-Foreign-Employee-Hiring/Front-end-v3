@@ -5,8 +5,10 @@ import { useFindAuthStore } from '@/store/findAuthStore'
 import { postFindId } from '@/lib/client/find-auth'
 import { ChangeEvent } from 'react'
 import ErrorMessage from '@/components/common/ErrorMessage'
+import { useTranslation } from 'react-i18next'
 
 export default function PhoneNumberField() {
+  const { t } = useTranslation('findAuth')
   const {
     findIdData,
     updateFindIdData,
@@ -41,13 +43,13 @@ export default function PhoneNumberField() {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'연락처'} />
+      <Label label={t('id.process.phone_number.title')} />
       <div className="flex items-center gap-x-2">
         <TextInput
           status={errorMessage ? 'error' : 'default'}
           value={findIdData.phoneNumber}
           onChange={handlePhoneNumberChange}
-          placeholder={'`-`없이 번호를 입력해주세요.'}
+          placeholder={t('id.process.phone_number.placeholder')}
         />
         <Button
           state={findIdData.phoneNumber.length !== 11 ? 'disable' : 'default'}
@@ -69,7 +71,7 @@ export default function PhoneNumberField() {
           variant={'primary'}
           customClassName={`${isSendPhoneNumberCodeLoading ? 'w-[150px]' : 'w-[150px]'} h-[52px]`}
         >
-          인증번호 전송
+          {t('id.process.phone_number.buttons.sendPhoneNumberCode')}
         </Button>
       </div>
 
@@ -78,7 +80,7 @@ export default function PhoneNumberField() {
           status={errorMessage ? 'error' : 'default'}
           value={idVerifyCode}
           onChange={verifyCodeChange}
-          placeholder={'인증번호 입력'}
+          placeholder={t('id.process.phone_number.buttons.sendIDVerifyCode')}
         />
       ) : null}
 

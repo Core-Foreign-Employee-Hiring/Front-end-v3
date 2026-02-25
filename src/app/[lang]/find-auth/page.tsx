@@ -9,6 +9,7 @@ import IdProcess from '@/components/auth/find-auth/id/IdProcess'
 import IdResult from '@/components/auth/find-auth/id/IdResult'
 import PassWordProcess from '@/components/auth/find-auth/password/PassWordProcess'
 import PassWordResult from '@/components/auth/find-auth/password/PassWordResult'
+import { getTranslationServer } from '@/lib/i18n'
 
 type StepType = '1' | '2'
 type SearchType = 'id' | 'pw'
@@ -37,6 +38,7 @@ export default async function FindAccountProcessPage({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const { lang } = await params
+  const { t } = await getTranslationServer(lang, 'findAuth')
   const resolvedSearchParams = await searchParams
   // URL에 진짜로 "undefined"라는 글자가 올 경우를 대비해 처리
   const rawType = resolvedSearchParams.type
@@ -48,14 +50,14 @@ export default async function FindAccountProcessPage({
   return (
     <main className="desktop:items-center desktop:justify-center flex min-h-screen w-full flex-col">
       <div className="desktop:hidden block">
-        <Header headerType={'dynamic'} currentLng={lang} title={type === 'id' ? '아이디 찾기' : '비밀번호 찾기'} />
+        <Header headerType={'dynamic'} currentLng={lang} title={type === 'id' ? t('id.title') : t('pw.title')} />
       </div>
       <PageLayout className={'desktop:w-[600px]'}>
         {/* 메뉴바 */}
         <div className="desktop:items-center desktop:justify-center flex flex-col gap-y-5">
           <div className="desktop:flex hidden flex-col items-center justify-center gap-y-[80px]">
             <LogoIcon width={193} height={60} />
-            <Label label={'아이디 찾기'} type={'titleLg'} />
+            <Label label={type === 'id' ? t('id.title') : t('pw.title')} type={'titleLg'} />
           </div>
 
           <FindAuthSwitchButton type={type} />

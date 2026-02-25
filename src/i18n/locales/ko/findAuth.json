@@ -1,0 +1,66 @@
+{
+  "id": {
+    "title": "아이디 찾기",
+    "process": {
+      "name_field": {
+        "title": "이름",
+        "placeholder": "이름을 입력해주세요."
+      },
+      "phone_number": {
+        "title": "연락처",
+        "placeholder": "`-`없이 번호를 입력해주세요.",
+        "buttons": {
+          "sendPhoneNumberCode": "인증번호 전송",
+          "sendIDVerifyCode": "인증번호 입력"
+        }
+      }
+    },
+    "result": {
+      "label": "기존 아이디",
+      "created_at": "가입일 {{date}}"
+    },
+    "bottom_buttons": {
+      "search_id_button": "아이디 검색",
+      "search_pw_button": "비밀번호 찾기",
+      "login_button": "로그인"
+    }
+  },
+
+  "pw": {
+    "title": "비밀번호 찾기",
+    "process": {
+      "id_field": {
+        "label": "아이디",
+        "placeholder": "아이디를 입력해주세요."
+      },
+      "name_field": {
+        "label": "이름",
+        "placeholder": "이름을 입력해주세요."
+      },
+      "email_field": {
+        "label": "이메일",
+        "placeholder": "이메일을 입력해주세요.",
+        "buttons": {
+          "send_email_code": "이메일 전송",
+          "verify_code": "인증번호 입력"
+        }
+      }
+    },
+    "result": {
+      "password_field": {
+        "label": "새로운 비밀번호",
+        "placeholder": "대소문자, 숫자, 기호 포함 8~15자",
+        "error_message": "비밀번호는 대소문자, 숫자, 기호(~ 포함) 8~15자를 만족해야 합니다."
+      },
+      "new_password_field": {
+        "label": "새로운 비밀번호 확인",
+        "placeholder": "대소문자, 숫자, 기호 포함 8~15자",
+        "error_message": "비밀번호가 일치하지 않습니다."
+      }
+    },
+    "bottom_buttons": {
+      "next_button": "다음",
+      "change_pw_button": "비밀번호 변경"
+    }
+  }
+}

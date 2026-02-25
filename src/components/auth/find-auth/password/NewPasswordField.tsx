@@ -5,8 +5,10 @@ import { useFindAuthStore } from '@/store/findAuthStore'
 import { useEffect, useState } from 'react'
 import ErrorMessage from '@/components/common/ErrorMessage'
 import { EyeIcon, NonEyeIcon } from '@/assets/svgComponents'
+import { useTranslation } from 'react-i18next'
 
 export default function NewPasswordField() {
+  const { t } = useTranslation('findAuth')
   const [show, setShow] = useState(false)
 
   const {
@@ -30,7 +32,7 @@ export default function NewPasswordField() {
       setIsPasswordMatch(true)
     } else {
       setIsPasswordMatch(false)
-      setNotMatchPWErrorMessage('비밀번호가 일치하지 않습니다.')
+      setNotMatchPWErrorMessage(t('pw.result.new_password_field.error_message'))
     }
   }, [checkPassword])
 
@@ -38,7 +40,7 @@ export default function NewPasswordField() {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <Label type={'titleSm'} label={'새로운 비밀번호 확인'} />
+      <Label type={'titleSm'} label={t('pw.result.new_password_field.label')} />
       <TextInput
         rightElement={
           show ? (
@@ -60,7 +62,7 @@ export default function NewPasswordField() {
           )
         }
         inputType={show ? 'text' : 'password'}
-        placeholder={'대소문자, 숫자, 기호 포함 8~15자'}
+        placeholder={t('pw.result.new_password_field.placeholder')}
         onChange={(e) => {
           setCheckPassword(e.target.value)
         }}

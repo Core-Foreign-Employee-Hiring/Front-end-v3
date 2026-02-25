@@ -1,6 +1,7 @@
 'use client'
 
 import { usePathname, useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 type SearchType = 'id' | 'pw'
 interface FindAuthSwitchButtonProps {
@@ -8,11 +9,12 @@ interface FindAuthSwitchButtonProps {
 }
 
 export default function FindAuthSwitchButton({ type }: FindAuthSwitchButtonProps) {
+  const { t } = useTranslation('findAuth')
   const router = useRouter()
   const pathname = usePathname()
   const contentList: { content: string; type: SearchType }[] = [
-    { content: '아이디 찾기', type: 'id' },
-    { content: '비밀번호 찾기', type: 'pw' },
+    { content: t('id.title'), type: 'id' },
+    { content: t('pw.title'), type: 'pw' },
   ]
   const handleStepClick = (type: SearchType) => {
     router.push(`${pathname}?type=${encodeURIComponent(type)}&step=1`)

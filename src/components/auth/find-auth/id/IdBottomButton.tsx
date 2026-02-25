@@ -4,11 +4,13 @@ import { Button, Loading } from '@/components/common'
 import { usePathname, useRouter } from 'next/navigation'
 import { postFindIdVerifyCode } from '@/lib/client/find-auth'
 import { useFindAuthStore } from '@/store/findAuthStore'
+import { useTranslation } from 'react-i18next'
 
 interface IdBottomButtonProps {
   step: '1' | '2'
 }
 export default function IdBottomButton({ step }: IdBottomButtonProps) {
+  const { t } = useTranslation('findAuth')
   const router = useRouter()
   const pathname = usePathname()
 
@@ -44,7 +46,7 @@ export default function IdBottomButton({ step }: IdBottomButtonProps) {
           size={'lg'}
           variant={'primary'}
         >
-          아이디 검색
+          {t('id.bottom_buttons.search_id_button')}
         </Button>
       ) : (
         <div className="flex gap-x-3">
@@ -56,10 +58,10 @@ export default function IdBottomButton({ step }: IdBottomButtonProps) {
             size={'lg'}
             variant={'outline'}
           >
-            비밀번호 찾기
+            {t('id.bottom_buttons.search_pw_button')}
           </Button>
           <Button onClick={onNavigate} size={'lg'} variant={'primary'}>
-            로그인
+            {t('id.bottom_buttons.login_button')}
           </Button>
         </div>
       )}

@@ -4,6 +4,7 @@ import { Button, Loading } from '@/components/common'
 import { usePathname, useRouter } from 'next/navigation'
 import { modifyPW, postFindPWVerifyCode } from '@/lib/client/find-auth'
 import { useFindAuthStore } from '@/store/findAuthStore'
+import { useTranslation } from 'react-i18next'
 
 interface PwBottomButtonProps {
   step: '1' | '2'
@@ -11,6 +12,7 @@ interface PwBottomButtonProps {
 export default function PwBottomButton({ step }: PwBottomButtonProps) {
   const router = useRouter()
   const pathname = usePathname()
+  const { t } = useTranslation('findAuth')
 
   const {
     isVerifyEmailCodeLoading,
@@ -57,7 +59,7 @@ export default function PwBottomButton({ step }: PwBottomButtonProps) {
           size={'lg'}
           variant={'primary'}
         >
-          다음
+          {t('pw.bottom_buttons.next_button')}
         </Button>
       ) : (
         <Button
@@ -77,7 +79,7 @@ export default function PwBottomButton({ step }: PwBottomButtonProps) {
           size={'lg'}
           variant={'primary'}
         >
-          비밀번호 변경
+          {t('pw.bottom_buttons.change_pw_button')}
         </Button>
       )}
     </div>

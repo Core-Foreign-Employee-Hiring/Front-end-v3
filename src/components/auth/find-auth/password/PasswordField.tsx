@@ -5,8 +5,10 @@ import ErrorMessage from '@/components/common/ErrorMessage'
 import { useFindAuthStore } from '@/store/findAuthStore'
 import { useEffect, useState } from 'react'
 import { EyeIcon, NonEyeIcon } from '@/assets/svgComponents'
+import { useTranslation } from 'react-i18next'
 
 export default function PasswordField() {
+  const { t } = useTranslation('findAuth')
   const [show, setShow] = useState(false)
 
   const {
@@ -34,7 +36,7 @@ export default function PasswordField() {
     if (!passwordRegex.test(password)) {
       // 검증 실패
       setIsPasswordValid(false)
-      setNotValidPWErrorMessage('비밀번호는 대소문자, 숫자, 기호(~ 포함) 8~15자를 만족해야 합니다.')
+      setNotValidPWErrorMessage(t('pw.result.password_field.error_message'))
     } else {
       // 검증 성공
       setIsPasswordValid(true)
@@ -47,7 +49,7 @@ export default function PasswordField() {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <Label type={'titleSm'} label={'새로운 비밀번호'} />
+      <Label type={'titleSm'} label={t('pw.result.password_field.label')} />
       <TextInput
         rightElement={
           show ? (
@@ -69,7 +71,7 @@ export default function PasswordField() {
           )
         }
         inputType={'password'}
-        placeholder={'대소문자, 숫자, 기호 포함 8~15자'}
+        placeholder={t('pw.result.password_field.placeholder')}
         onChange={(e) => updateModifyPWData('newPassword', e.target.value)}
         value={modifyPWData.newPassword}
         status={showError ? 'error' : 'default'}

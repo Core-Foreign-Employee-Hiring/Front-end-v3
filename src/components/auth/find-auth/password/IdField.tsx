@@ -2,13 +2,15 @@
 
 import { Label, TextInput } from '@/components/common'
 import { useFindAuthStore } from '@/store/findAuthStore'
+import { useTranslation } from 'react-i18next'
 
 export default function IdField() {
+  const { t } = useTranslation('findAuth')
   const { findPWData, updateFindPWData, errorMessage, setErrorMessage, setIsPWVerifyCodeFieldOpen, setPWVerifyCode } =
     useFindAuthStore((state) => state)
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'아이디'} />
+      <Label label={t('pw.process.id_field.label')} />
       <TextInput
         status={errorMessage ? 'error' : 'default'}
         value={findPWData.userId}
@@ -18,7 +20,7 @@ export default function IdField() {
           setErrorMessage(undefined)
           setPWVerifyCode('')
         }}
-        placeholder={'아이디를 입력해주세요.'}
+        placeholder={t('pw.process.id_field.placeholder')}
       />
     </div>
   )

@@ -1,0 +1,66 @@
+{
+  "id": {
+    "title": "Find ID",
+    "process": {
+      "name_field": {
+        "title": "Name",
+        "placeholder": "Enter your name"
+      },
+      "phone_number": {
+        "title": "Phone Number",
+        "placeholder": "Numbers only, no hyphens",
+        "buttons": {
+          "sendPhoneNumberCode": "Send Code",
+          "sendIDVerifyCode": "Verify Code"
+        }
+      }
+    },
+    "result": {
+      "label": "Registered ID",
+      "created_at": "Joined on {{date}}"
+    },
+    "bottom_buttons": {
+      "search_id_button": "Find ID",
+      "search_pw_button": "Find Password",
+      "login_button": "Log In"
+    }
+  },
+
+  "pw": {
+    "title": "Find Password",
+    "process": {
+      "id_field": {
+        "label": "ID",
+        "placeholder": "Enter your ID"
+      },
+      "name_field": {
+        "label": "Name",
+        "placeholder": "Enter your name"
+      },
+      "email_field": {
+        "label": "Email",
+        "placeholder": "Enter your email",
+        "buttons": {
+          "send_email_code": "Send Email",
+          "verify_code": "Verify"
+        }
+      }
+    },
+    "result": {
+      "password_field": {
+        "label": "New Password",
+        "placeholder": "8-15 chars, incl. symbols",
+        "error_message": "Must be 8-15 chars with cases, numbers, & symbols."
+      },
+      "new_password_field": {
+        "label": "Confirm Password",
+        "placeholder": "Confirm your password",
+        "error_message": "Passwords do not match."
+      }
+    },
+    "bottom_buttons": {
+      "next_button": "Next",
+      "change_pw_button": "Change Password"
+    }
+  }
+}

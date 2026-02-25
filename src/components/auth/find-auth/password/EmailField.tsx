@@ -6,8 +6,10 @@ import { validateEmail } from '@/utils/common'
 import { postFindPW } from '@/lib/client/find-auth'
 import { ChangeEvent } from 'react'
 import ErrorMessage from '@/components/common/ErrorMessage'
+import { useTranslation } from 'react-i18next'
 
 export default function EmailField() {
+  const { t } = useTranslation('findAuth')
   const {
     setIsSendEmailCodeLoading,
     isSendEmailCodeLoading,
@@ -28,7 +30,7 @@ export default function EmailField() {
 
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'이메일'} />
+      <Label label={t('pw.process.email_field.label')} />
       <div className="flex items-center gap-x-2">
         <TextInput
           status={errorMessage ? 'error' : 'default'}
@@ -39,7 +41,7 @@ export default function EmailField() {
             setErrorMessage(undefined)
             setPWVerifyCode('')
           }}
-          placeholder={'이메일을 입력해주세요.'}
+          placeholder={t('pw.process.email_field.placeholder')}
         />
         <Button
           onClick={async () => {
@@ -65,7 +67,7 @@ export default function EmailField() {
           leftIcon={isSendEmailCodeLoading ? <Loading size={'sm'} /> : null}
           customClassName={'w-[150px]'}
         >
-          이메일 전송
+          {t('pw.process.email_field.buttons.send_email_code')}
         </Button>
       </div>
 
@@ -74,7 +76,7 @@ export default function EmailField() {
           status={errorMessage ? 'error' : 'default'}
           value={pwVerifyCode}
           onChange={verifyCodeChange}
-          placeholder={'인증번호 입력'}
+          placeholder={t('pw.process.email_field.buttons.verify_code')}
         />
       ) : null}
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
