@@ -57,7 +57,7 @@ function LoadingContent({ t }: { t: TFunction }) {
           <CareerAnalysisLoadingGraphic width={245} height={193} />
         </div>
 
-        <p className="kr-body-sm animate-pulse text-gray-400">{t('career_analysis_loading.sub_messages.0')}</p>
+        <p className="kr-body-sm text-main-800 animate-pulse">{t('career_analysis_loading.sub_messages.0')}</p>
       </div>
     </Modal.Body>
   )

@@ -8,6 +8,7 @@ import { useRegisterStore } from '@/store/registerStore'
 import { getJobRoleLabel } from '@/utils/filterList'
 import { useTranslation } from 'react-i18next'
 import { JobCategoryType, JobRoleType } from '@/types/job-post'
+import MobileJobRoleModal from '@/components/common/modal/mobile/MobileJobRoleModal'
 
 export default function JobRoleField() {
   const { toggleModal, modals } = useModalStore((state) => state)
@@ -54,6 +55,17 @@ export default function JobRoleField() {
     <div>
       {modals.isJobRoleModalOpen && (
         <JobRoleModal
+          onApply={onApply}
+          onReset={onReset}
+          selectedJobRoles={selectedJobRoles}
+          addJobRoles={addJobRoles}
+          setSelectedJobCategory={setSelectedJobCategory}
+          deleteJobRoles={deleteJobRoles}
+          selectedCategory={selectedJobCategory}
+        />
+      )}
+      {modals.isJobRoleModalOpen && (
+        <MobileJobRoleModal
           onApply={onApply}
           onReset={onReset}
           selectedJobRoles={selectedJobRoles}
