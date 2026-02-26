@@ -6,13 +6,15 @@ import { useRouter } from 'next/navigation'
 import { DeleteIcon, EditIcon, Main500FireIcon } from '@/assets/svgComponents'
 import { deleteSpecExperiences } from '@/lib/client/spec/experience'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface ExperienceItemProps {
   toggleFormOpenState: () => void
   experience: SpecExperienceType
 }
 export default function ExperienceItem({ toggleFormOpenState, experience }: ExperienceItemProps) {
-  const { t } = useTranslation(['spec'])
+  const { t } = useTranslation(['spec', 'message'])
+  const { success, error } = useToast()
   const router = useRouter()
 
   return (
@@ -23,7 +25,7 @@ export default function ExperienceItem({ toggleFormOpenState, experience }: Expe
             <Label label={experience.experience} type={'subtitleLg'} />
             {experience.beforeImprovementRate && experience.afterImprovementRate ? (
               <Badge leftIcon={<Main500FireIcon width={13} height={13} />}>
-                {t('experience.item.improvementRate')} {experience.beforeImprovementRate}% →{' '}
+                {t('spec:experience.item.improvementRate')} {experience.beforeImprovementRate}% →{' '}
                 {experience.afterImprovementRate}%
               </Badge>
             ) : null}
@@ -31,20 +33,29 @@ export default function ExperienceItem({ toggleFormOpenState, experience }: Expe
         </section>
         <section className="desktop:flex tablet:flex hidden shrink-0 gap-x-2 whitespace-nowrap">
           <Button onClick={toggleFormOpenState} size={'sm'} variant={'outline'} customClassName="w-fit">
-            {t('buttons.edit')}
+            {t('spec:buttons.edit')}
           </Button>
           <Button
             onClick={async () => {
               const result = await deleteSpecExperiences(`${experience.experienceId}`)
               if (result.success) {
+                success(
+                  t('message:delete_spec_experiences.success.title'),
+                  t('message:delete_spec_experiences.success.description')
+                )
                 router.refresh()
+              } else {
+                error(
+                  t('message:delete_spec_experiences.error.title'),
+                  t('message:delete_spec_experiences.error.description')
+                )
               }
             }}
             size={'sm'}
             variant={'outline'}
             customClassName="w-fit"
           >
-            {t('buttons.delete')}
+            {t('spec:buttons.delete')}
           </Button>
         </section>
 
@@ -61,7 +72,16 @@ export default function ExperienceItem({ toggleFormOpenState, experience }: Expe
             onClick={async () => {
               const result = await deleteSpecExperiences(`${experience.experienceId}`)
               if (result.success) {
+                success(
+                  t('message:delete_spec_experiences.success.title'),
+                  t('message:delete_spec_experiences.success.description')
+                )
                 router.refresh()
+              } else {
+                error(
+                  t('message:delete_spec_experiences.error.title'),
+                  t('message:delete_spec_experiences.error.description')
+                )
               }
             }}
             size={'sm'}
@@ -71,7 +91,7 @@ export default function ExperienceItem({ toggleFormOpenState, experience }: Expe
         </section>
       </div>
       <p className="kr-body-md text-gray5">
-        {experience.startDate} ~ {experience.endDate ? experience.endDate : t('experience.item.inProgress')}
+        {experience.startDate} ~ {experience.endDate ? experience.endDate : t('spec:experience.item.inProgress')}
       </p>
       <p className="kr-body-md text-gray5">{experience.description}</p>
     </div>

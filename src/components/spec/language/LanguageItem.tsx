@@ -33,6 +33,15 @@ export default function LanguageItem({ languageSkill, toggleState }: LanguageIte
             const result = await deleteSpecLanguageSkills(`${languageSkill.languageSkillId}`)
             if (result.success) {
               router.refresh()
+              success(
+                t('message:delete_spec_language_skills.success.title'),
+                t('message:delete_spec_language_skills.success.description')
+              )
+            } else {
+              error(
+                t('message:delete_spec_language_skills.error.title'),
+                t('message:delete_spec_language_skills.error.description')
+              )
             }
           }}
           size={'sm'}

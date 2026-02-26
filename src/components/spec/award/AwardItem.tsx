@@ -53,7 +53,13 @@ export default function AwardItem({ award, toggleFormOpenState }: AwardItemProps
             onClick={async () => {
               const result = await deleteSpecAwards(`${award.awardId}`)
               if (result.success) {
+                success(
+                  t('message:delete_spec_awards.success.title'),
+                  t('message:delete_spec_awards.success.description')
+                )
                 router.refresh()
+              } else {
+                error(t('message:delete_spec_awards.error.title'), t('message:delete_spec_awards.error.description'))
               }
             }}
             size={'sm'}

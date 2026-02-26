@@ -215,5 +215,15 @@
       "title": "실패",
       "description": "수상 경력 정보를 삭제하지 못했어요."
     }
+  },
+  "delete_spec_experiences": {
+    "success": {
+      "title": "성공",
+      "description": "기타 경험 정보를 삭제했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "기타 경험 정보를 삭제하지 못했어요."
+    }
   }
 }

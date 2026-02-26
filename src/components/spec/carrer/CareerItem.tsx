@@ -34,7 +34,13 @@ export default function CareerItem({ career, toggleFormOpenState }: CareerItemPr
             onClick={async () => {
               const result = await deleteSpecCareers(`${career.careerId}`)
               if (result.success) {
+                success(
+                  t('message:delete_spec_careers.success.title'),
+                  t('message:delete_spec_careers.success.description')
+                )
                 router.refresh()
+              } else {
+                error(t('message:delete_spec_careers.error.title'), t('message:delete_spec_careers.error.description'))
               }
             }}
             size={'sm'}

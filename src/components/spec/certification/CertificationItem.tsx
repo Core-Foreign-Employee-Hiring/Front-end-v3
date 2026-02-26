@@ -49,7 +49,16 @@ export default function CertificationItem({ certification, toggleFormOpenState }
             onClick={async () => {
               const result = await deleteSpecCertifications(`${certification.certificationId}`)
               if (result.success) {
+                success(
+                  t('message:delete_spec_certifications.success.title'),
+                  t('message:delete_spec_certifications.success.description')
+                )
                 router.refresh()
+              } else {
+                error(
+                  t('message:delete_spec_certifications.error.title'),
+                  t('message:delete_spec_certifications.error.description')
+                )
               }
             }}
             size={'sm'}
