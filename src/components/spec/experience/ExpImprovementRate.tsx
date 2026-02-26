@@ -1,9 +1,11 @@
 'use client'
 
 import { SpecExperienceType } from '@/types/spec'
-import { FocusEvent } from 'react'
+import { FocusEvent, useState } from 'react'
 import { ErrorHelperText, Label, Spacing, TextInput } from '@/components/common'
 import { useTranslation } from 'react-i18next'
+import { HelpIcon } from '@/assets/svgComponents'
+import Tooltip from '@/components/common/Tooltip'
 
 interface ExpImprovementRateProps {
   experience: SpecExperienceType
@@ -11,7 +13,8 @@ interface ExpImprovementRateProps {
   handleExperienceChange: (index: number, fieldName: keyof SpecExperienceType, value: string | number | null) => void
 }
 export default function ExpImprovementRate({ index, handleExperienceChange, experience }: ExpImprovementRateProps) {
-  const { t } = useTranslation(['spec'])
+  const { t } = useTranslation(['spec', 'common'])
+  const [isToolTipOpen, setIsToolTipOpen] = useState(false)
   // 1. 포커스 시 0 제거 로직
   const handleFocus = (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>, fieldName: keyof SpecExperienceType) => {
     // 값이 '0'이면 빈 값으로 변경 (사용자가 바로 입력할 수 있게)
@@ -37,7 +40,19 @@ export default function ExpImprovementRate({ index, handleExperienceChange, expe
 
   return (
     <div className="w-full">
-      <Label label={t('experience.form.improvementRate.title')} className="kr-subtitle-lg text-gray5" />
+      <div className="relative flex gap-x-1">
+        <Label label={t('spec:experience.form.improvementRate.title')} className="kr-subtitle-lg text-gray5" />
+        <HelpIcon
+          className="cursor-pointer"
+          onClick={() => {
+            setIsToolTipOpen(!isToolTipOpen)
+          }}
+          width={24}
+          height={24}
+        />
+        {isToolTipOpen ? <Tooltip description={t('common:tooltip.improvement_rate')} /> : null}
+      </div>
+      <Label label={t('spec:experience.form.improvementRate.title')} className="kr-subtitle-lg text-gray5" />
       <Spacing height={8} />
       <div className="flex flex-col gap-y-2">
         <div className="flex w-full gap-x-4">
@@ -49,7 +64,7 @@ export default function ExpImprovementRate({ index, handleExperienceChange, expe
             onChange={(e) => handleExperienceChange(index, 'beforeImprovementRate', Number(e.target.value))}
             inputType={'number'}
             value={experience.beforeImprovementRate}
-            placeholder={t('experience.form.improvementRate.beforeImprovementRatePlaceholder')}
+            placeholder={t('spec:experience.form.improvementRate.beforeImprovementRatePlaceholder')}
           />
           <TextInput
             rightElement={<p className="kr-body-md">%</p>}
@@ -59,11 +74,11 @@ export default function ExpImprovementRate({ index, handleExperienceChange, expe
             onChange={(e) => handleExperienceChange(index, 'afterImprovementRate', Number(e.target.value))}
             inputType={'number'}
             value={experience.afterImprovementRate}
-            placeholder={t('experience.form.improvementRate.afterImprovementRatePlaceholder')}
+            placeholder={t('spec:experience.form.improvementRate.afterImprovementRatePlaceholder')}
           />
         </div>
         {getStatus() === 'error' ? (
-          <ErrorHelperText>{t('experience.form.improvementRate.error')}</ErrorHelperText>
+          <ErrorHelperText>{t('spec:experience.form.improvementRate.error')}</ErrorHelperText>
         ) : null}
       </div>
     </div>

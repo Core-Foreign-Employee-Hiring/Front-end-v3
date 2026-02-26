@@ -30,6 +30,11 @@
     "en": "English"
   },
 
+  "tooltip": {
+    "url": "Add links to showcase your professional skills, such as a Portfolio, GitHub, or Notion.\\nMaterials that companies can verify directly can increase your chances of being hired.",
+    "improvement_rate": "Please enter the percentage of improvement compared to the previous result.\\nImprovement rate is an intuitive indicator of a candidate's problem-solving and execution skills.\\nE.g., Improvement rate 5% → 15% increase"
+  },
+
   "login": {
     "title": "Log In",
     "description": "Become a Korfit member and enjoy more services!",
