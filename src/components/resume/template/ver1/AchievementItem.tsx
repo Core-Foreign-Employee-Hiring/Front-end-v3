@@ -23,7 +23,7 @@ export default function AchievementItem({
           {beforeImprovementRate && afterImprovementRate ? (
             <Badge
               leftIcon={<Main500FireIcon width={12} height={13} />}
-            >{`개선률 ${beforeImprovementRate} -> ${afterImprovementRate}`}</Badge>
+            >{`개선률 ${beforeImprovementRate}% -> ${afterImprovementRate}%`}</Badge>
           ) : null}
         </div>
         <p className="tablet:kr-body-sm desktop:kr-body-sm kr-small text-gray5">{date}</p>

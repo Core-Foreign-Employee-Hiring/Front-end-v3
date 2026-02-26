@@ -29,7 +29,7 @@ export default function IntroVer2({ profileImageUrl, introduction, memberBasicIn
             toggleModal('isImageModalOpen')
             setSelectedImageUrl(profileImageUrl)
           }}
-          className="tablet:w-[184px] tablet:h-[240px] desktop:h-[240px] desktop:w-[184px] relative h-[160px] w-[123px]"
+          className="tablet:w-[184px] tablet:h-[240px] desktop:h-[240px] desktop:w-[184px] relative h-[160px] w-[123px] shrink-0"
         >
           <Image alt={'사진'} fill src={profileImageUrl || ''} className={'rounded-[8px] object-cover'} />
         </div>

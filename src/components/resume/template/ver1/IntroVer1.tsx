@@ -21,7 +21,7 @@ export default function IntroVer1({ memberBasicInfo, profileImageUrl, introducti
   const [selectedImageUrl, setSelectedImageUrl] = useState<string | undefined | null>('')
 
   return (
-    <div className="bg-main-50 desktop:px-[40px] desktop:py-[60px] tablet:py-[40px] tablet:px-[32px] flex gap-x-[40px] px-[20px] py-[24px]">
+    <div className="bg-main-50 desktop:px-[40px] desktop:py-[60px] tablet:py-[40px] tablet:px-[32px] flex flex-col gap-x-[40px] gap-y-[24px] px-[20px] py-[24px]">
       {modals.isImageModalOpen && <ImageModal setSelectedImageUrl={setSelectedImageUrl} ImageUrl={selectedImageUrl} />}
 
       <div className="flex w-full justify-between gap-x-[40px]">
@@ -40,7 +40,9 @@ export default function IntroVer1({ memberBasicInfo, profileImageUrl, introducti
 
           <div className="w-[80px] border-b border-black" />
           {introduction ? (
-            <p className="desktop:kr-resume-md-light tablet:kr-resume-md-light kr-subtitle-md">{introduction}</p>
+            <p className="desktop:kr-resume-md-light tablet:kr-resume-md-light kr-subtitle-md desktop:block tablet:block hidden">
+              {introduction}
+            </p>
           ) : null}
         </div>
         <div
@@ -53,6 +55,11 @@ export default function IntroVer1({ memberBasicInfo, profileImageUrl, introducti
           <Image alt={'사진'} fill src={profileImageUrl || ''} className={'rounded-[8px] object-cover'} />
         </div>
       </div>
+      {introduction ? (
+        <p className="desktop:kr-resume-md-light tablet:kr-resume-md-light kr-subtitle-md desktop:hidden tablet:hidden">
+          {introduction}
+        </p>
+      ) : null}
     </div>
   )
 }

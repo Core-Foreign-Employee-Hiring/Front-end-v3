@@ -25,7 +25,7 @@ export default function AchivementsVer2Item({
         {beforeImprovementRate && afterImprovementRate ? (
           <Badge
             leftIcon={<Main500FireIcon width={12} height={13} />}
-          >{`개선률 ${beforeImprovementRate} -> ${afterImprovementRate}`}</Badge>
+          >{`개선률 ${beforeImprovementRate}% -> ${afterImprovementRate}%`}</Badge>
         ) : null}
         <p className="text-gray5 kr-body-sm desktop:hidden block">{date}</p>
         <p className="kr-body-md">{description}</p>
