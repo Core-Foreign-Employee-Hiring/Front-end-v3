@@ -18,7 +18,7 @@ export default function BottomButton({ type }: BottomButtonProps) {
   return (
     <div className="flex w-full justify-end gap-x-4 py-4">
       <Button onClick={() => {}} customClassName={'w-[200px]'} variant={'outline'}>
-        {t('change_auth.bottom_buttons.prev')}
+        {t('my:change_auth.bottom_buttons.prev')}
       </Button>
       {type === 'id' ? (
         <Button
@@ -36,7 +36,7 @@ export default function BottomButton({ type }: BottomButtonProps) {
           }}
           customClassName={'w-[200px]'}
         >
-          {t('change_auth.bottom_buttons.change_id')}
+          {t('my:change_auth.bottom_buttons.change_id')}
         </Button>
       ) : (
         <Button
@@ -57,7 +57,7 @@ export default function BottomButton({ type }: BottomButtonProps) {
           }}
           customClassName={'w-[200px]'}
         >
-          {t('change_auth.bottom_buttons.change_pw"')}
+          {t('my:change_auth.bottom_buttons.change_pw"')}
         </Button>
       )}
     </div>

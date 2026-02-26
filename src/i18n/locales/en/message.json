@@ -282,5 +282,16 @@
       "title": "Error",
       "description": "Failed to change password."
     }
+  },
+
+  "patch_modify_profile": {
+    "success": {
+      "title": "Success",
+      "description": "Profile updated successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to update profile information."
+    }
   }
 }

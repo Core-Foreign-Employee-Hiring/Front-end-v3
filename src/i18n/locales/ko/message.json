@@ -277,5 +277,16 @@
       "title": "실패",
       "description": "비밀번호를 변경하지 못했어요."
     }
+  },
+
+  "patch_modify_profile": {
+    "success": {
+      "title": "성공",
+      "description": "프로필 정보를 변경했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "프로필 정보를 변경하지 못했어요."
+    }
   }
 }
