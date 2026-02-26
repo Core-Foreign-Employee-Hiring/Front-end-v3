@@ -249,5 +249,16 @@
       "title": "Error",
       "description": "Failed to delete the note."
     }
+  },
+
+  "put_note_entry": {
+    "success": {
+      "title": "Success",
+      "description": "Answer updated successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to update the answer."
+    }
   }
 }
