@@ -11,6 +11,7 @@ import signupKo from '@/i18n/locales/ko/signup.json'
 import findAuthKo from '@/i18n/locales/ko/findAuth.json'
 import myKo from '@/i18n/locales/ko/my.json'
 import modalKo from '@/i18n/locales/ko/modal.json'
+import programKo from '@/i18n/locales/ko/program.json'
 
 import commonEn from '@/i18n/locales/en/common.json'
 import contentEn from '@/i18n/locales/en/content.json'
@@ -25,6 +26,7 @@ import signupEn from '@/i18n/locales/en/signup.json'
 import findAuthEn from '@/i18n/locales/en/findAuth.json'
 import myEn from '@/i18n/locales/en/my.json'
 import modalEn from '@/i18n/locales/en/modal.json'
+import programEn from '@/i18n/locales/en/program.json'
 
 import { Locale } from './i18n.types'
 
@@ -49,6 +51,7 @@ export const resources: Resources = {
     findAuth: findAuthKo,
     my: myKo,
     modal: modalKo,
+    program: programKo,
   },
   en: {
     common: commonEn,
@@ -64,5 +67,6 @@ export const resources: Resources = {
     findAuth: findAuthEn,
     my: myEn,
     modal: modalEn,
+    program: programEn,
   },
 }

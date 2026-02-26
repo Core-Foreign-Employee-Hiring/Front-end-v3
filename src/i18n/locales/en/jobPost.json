@@ -11,6 +11,7 @@
   },
 
   "detail": {
+    "title": "Job Post",
     "jobPostSummary": {
       "visaBadge": {
         "others": "{{main}} & {{count}} more"

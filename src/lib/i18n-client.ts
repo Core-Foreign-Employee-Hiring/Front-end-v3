@@ -35,6 +35,7 @@ i18n
       'findAuth',
       'my',
       'modal',
+      'program',
     ],
     defaultNS: 'common',
     react: {

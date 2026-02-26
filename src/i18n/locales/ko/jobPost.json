@@ -11,6 +11,7 @@
   },
 
   "detail": {
+    "title": "공고",
     "jobPostSummary": {
       "visaBadge": {
         "others": "{{main}} 외 {{count}}개 가능"

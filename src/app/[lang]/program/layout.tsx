@@ -1,6 +1,8 @@
 import { Header, Spacing } from '@/components/common'
 import NavBar from '@/components/common/NavBar'
 import type { Metadata } from 'next'
+import { Locale } from '@/lib/i18n.types'
+import { getTranslationServer } from '@/lib/i18n'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.korfit.co.kr'
 
@@ -65,13 +67,15 @@ export default async function ProgramLayout({
   params: Promise<{ lang: string }>
 }>) {
   const { lang } = await params
+  const currentLang = lang as Locale
+  const { t } = await getTranslationServer(currentLang, 'program')
   return (
     <div>
       <div className="desktop:block hidden">
         <Header headerType={'default'} currentLng={lang} />
       </div>
       <div className="desktop:hidden block">
-        <Header headerType={'dynamic'} currentLng={lang} title={'스펙입력'} />
+        <Header headerType={'dynamic'} currentLng={lang} title={t('title')} />
       </div>
       {children}
       <Spacing height={80} />

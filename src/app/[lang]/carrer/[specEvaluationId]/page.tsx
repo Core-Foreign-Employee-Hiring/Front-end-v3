@@ -29,7 +29,7 @@ export default async function SpecResult({ params }: SpecResultProps) {
         <Header headerType={'default'} currentLng={lang} />
       </div>
       <div className="desktop:hidden block">
-        <Header headerType={'dynamic'} currentLng={lang} title={'스펙입력'} />
+        <Header headerType={'dynamic'} currentLng={lang} title={t('home.title')} />
       </div>
       <PageLayout>
         <div>

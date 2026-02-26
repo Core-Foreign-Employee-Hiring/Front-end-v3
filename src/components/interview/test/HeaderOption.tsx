@@ -2,8 +2,10 @@
 
 import { Switch } from '@/components/ui/switch'
 import { useInterviewStore } from '@/store/interview/interviewStore'
+import { useTranslation } from 'react-i18next'
 
 export default function HeaderOption() {
+  const { t } = useTranslation('interview')
   const { commonAnswer, setCommonAnswer } = useInterviewStore((state) => state)
 
   const handleToggle = (checked: boolean) => {
@@ -17,7 +19,7 @@ export default function HeaderOption() {
   return (
     <div className="flex flex-shrink-0 items-center gap-x-6">
       <div className="flex flex-shrink-0 items-center gap-x-2">
-        <label htmlFor="follow-up-mode">압박 면접</label>
+        <label htmlFor="follow-up-mode">{t('test.chat.question.follow_up_question')}</label>
         <Switch
           id="follow-up-mode"
           checked={commonAnswer.enable_follow_up} // 상태에 따라 true/false 결정

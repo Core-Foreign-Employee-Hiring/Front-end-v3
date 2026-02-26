@@ -1,6 +1,8 @@
 import { Header, PageLayout, Spacing } from '@/components/common'
 import Footer from '@/components/common/Footer'
 import { Metadata } from 'next'
+import { Locale } from '@/lib/i18n.types'
+import { getTranslationServer } from '@/lib/i18n'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.korfit.co.kr'
 
@@ -65,10 +67,12 @@ export default async function FindAuthLayout({
   params: Promise<{ lang: string }>
 }>) {
   const { lang } = await params
+  const currentLang = lang as Locale
+  const { t } = await getTranslationServer(currentLang, 'jobPost')
   return (
     <div>
       <div className="desktop:hidden block">
-        <Header headerType={'dynamic'} currentLng={lang} title={'공고'} />
+        <Header headerType={'dynamic'} currentLng={lang} title={t('detail.title')} />
       </div>
       <div className="desktop:block hidden">
         <Header headerType={'default'} currentLng={lang} />
