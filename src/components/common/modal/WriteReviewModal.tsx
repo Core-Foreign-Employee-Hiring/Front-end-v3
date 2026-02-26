@@ -9,6 +9,7 @@ import { useReviewStore } from '@/store/reviewStore'
 import { postReview } from '@/lib/client/pass-archives'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface WriteReviewModalProps {
   archiveId: number
@@ -19,7 +20,8 @@ interface WriteReviewModalProps {
 }
 
 export default function WriteReviewModal({ archiveId, title, thumbnailUrl, approvedAt, price }: WriteReviewModalProps) {
-  const { t } = useTranslation('modal')
+  const { t } = useTranslation(['modal', 'message'])
+  const { success, error } = useToast()
   const { modals, toggleModal } = useModalStore((state) => state)
   const { reviewData } = useReviewStore((state) => state)
   const router = useRouter()
@@ -30,7 +32,7 @@ export default function WriteReviewModal({ archiveId, title, thumbnailUrl, appro
   return (
     <Modal isOpen={modals.isWriteReviewModalOpen} mobileHidden={false}>
       <Modal.Header>
-        <Label label={t('write_review.header')} type={'titleMd'} />
+        <Label label={t('modal:write_review.header')} type={'titleMd'} />
       </Modal.Header>
 
       <Modal.Body>
@@ -44,19 +46,21 @@ export default function WriteReviewModal({ archiveId, title, thumbnailUrl, appro
       <Modal.Footer>
         <>
           <Button onClick={onClose} variant={'outline'} customClassName="w-[200px]">
-            {t('footer_buttons.close')}
+            {t('modal:footer_buttons.close')}
           </Button>
           <Button
             onClick={async () => {
               const result = await postReview(archiveId, reviewData)
-              console.log('작성 완료', result)
-              if (result.data?.data) {
+              if (result.data?.data && result.success) {
                 router.refresh()
+                success(t('message:post_review.success.title'), t('message:post_review.success.description'))
+              } else if (!result.success) {
+                error(t('message:post_review.error.title'), t('message:post_review.error.description'))
               }
               onClose()
             }}
           >
-            {t('write_review.footer.write')}
+            {t('modal:write_review.footer.write')}
           </Button>
         </>
       </Modal.Footer>

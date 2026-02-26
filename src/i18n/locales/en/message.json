@@ -293,5 +293,16 @@
       "title": "Error",
       "description": "Failed to update profile information."
     }
+  },
+
+  "post_review": {
+    "success": {
+      "title": "Success",
+      "description": "Review submitted successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to submit your review."
+    }
   }
 }

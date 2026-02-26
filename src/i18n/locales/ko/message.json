@@ -288,5 +288,16 @@
       "title": "실패",
       "description": "프로필 정보를 변경하지 못했어요."
     }
+  },
+
+  "post_review": {
+    "success": {
+      "title": "성공",
+      "description": "작성한 리뷰를 저장했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "작성한 리뷰를 저장하지 못했어요."
+    }
   }
 }
