@@ -39,7 +39,7 @@ export default function ToastItem({ toast, onClose }: ToastItemProps) {
         duration: 0.3,
         ease: 'easeOut',
       }}
-      className={`${typeClass} flex w-[335px] justify-between rounded-[8px] p-4`}
+      className={`${typeClass} flex w-[335px] items-start justify-between rounded-[8px] p-4`}
       role="alert"
     >
       <div className="flex gap-x-2">
