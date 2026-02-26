@@ -172,5 +172,16 @@
       "title": "실패",
       "description": "새로운 노트를 만들지 못했어요."
     }
+  },
+
+  "delete_spec_language_skills": {
+    "success": {
+      "title": "성공",
+      "description": "어학 능력 삭제에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "어학 능력 삭제에 실패했어요."
+    }
   }
 }

@@ -55,7 +55,7 @@ export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) 
                   } else {
                     router.refresh()
                     setLanguageSkills([])
-                    success(
+                    error(
                       t('message:post_spec_language_skills.error.title'),
                       t('message:post_spec_language_skills.error.description')
                     )

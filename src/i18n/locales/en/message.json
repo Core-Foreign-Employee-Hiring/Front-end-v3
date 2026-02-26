@@ -172,5 +172,15 @@
       "title": "Error",
       "description": "Failed to create a new note."
     }
+  },
+  "delete_spec_language_skills": {
+    "success": {
+      "title": "Success",
+      "description": "Language skills deleted successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to delete language skills."
+    }
   }
 }

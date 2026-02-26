@@ -6,6 +6,7 @@ import { deleteSpecLanguageSkills } from '@/lib/client/spec/language'
 import { useRouter } from 'next/navigation'
 import { DeleteIcon, EditIcon } from '@/assets/svgComponents'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface LanguageItemProps {
   languageSkill: SpecLanguageSkillType
@@ -13,7 +14,8 @@ interface LanguageItemProps {
 }
 
 export default function LanguageItem({ languageSkill, toggleState }: LanguageItemProps) {
-  const { t } = useTranslation(['spec'])
+  const { t } = useTranslation(['spec', 'message'])
+  const { success, error } = useToast()
   const router = useRouter()
   return (
     <div className="border-gray2 flex items-start justify-between gap-x-[20px] rounded-[12px] border p-5">
@@ -24,7 +26,7 @@ export default function LanguageItem({ languageSkill, toggleState }: LanguageIte
 
       <section className="desktop:flex tablet:flex hidden shrink-0 items-center gap-x-2 whitespace-nowrap">
         <Button onClick={toggleState} size={'sm'} variant={'outline'} customClassName="w-fit">
-          {t('buttons.edit')}
+          {t('spec:buttons.edit')}
         </Button>
         <Button
           onClick={async () => {
@@ -37,7 +39,7 @@ export default function LanguageItem({ languageSkill, toggleState }: LanguageIte
           variant={'outline'}
           customClassName="w-fit"
         >
-          {t('buttons.delete')}
+          {t('spec:buttons.delete')}
         </Button>
       </section>
 
@@ -55,6 +57,15 @@ export default function LanguageItem({ languageSkill, toggleState }: LanguageIte
             const result = await deleteSpecLanguageSkills(`${languageSkill.languageSkillId}`)
             if (result.success) {
               router.refresh()
+              success(
+                t('message:delete_spec_language_skills.success.title'),
+                t('message:delete_spec_language_skills.success.description')
+              )
+            } else {
+              error(
+                t('message:delete_spec_language_skills.error.title'),
+                t('message:delete_spec_language_skills.error.description')
+              )
             }
           }}
           size={'sm'}
