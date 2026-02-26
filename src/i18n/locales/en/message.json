@@ -326,5 +326,16 @@
       "title": "Error",
       "description": "Password update failed."
     }
+  },
+
+  "post_recruit": {
+    "success": {
+      "title": "Success",
+      "description": "The job posting has been successfully published."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to publish the job posting. Please try again."
+    }
   }
 }

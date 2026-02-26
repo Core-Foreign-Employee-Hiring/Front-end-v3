@@ -8,6 +8,8 @@ import { useState } from 'react'
 import { postRecruit } from '@/lib/client/create-job-post'
 import { uploadFile } from '@/lib/client/common'
 import { CreateJobPostType } from '@/types/create-job-post'
+import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface BottomButtonsProps {
   currentStep: CreateJobPostStepType
@@ -15,6 +17,8 @@ interface BottomButtonsProps {
 }
 
 export default function BottomButtons({ currentStep, lang }: BottomButtonsProps) {
+  const { t } = useTranslation('message')
+  const { success, error } = useToast()
   const router = useRouter()
   const { createJobPost, isStep1DataValid, isStep2DataValid, isStep3DataValid } = useCreateJobPostStore(
     (state) => state
@@ -67,12 +71,13 @@ export default function BottomButtons({ currentStep, lang }: BottomButtonsProps)
 
       // 5. 최종 POST 요청
       const result = await postRecruit(submitData as CreateJobPostType)
-      console.log('공고 생성 완료', result)
-
-      alert('채용 공고가 성공적으로 등록되었습니다.')
-    } catch (error) {
-      console.error('공고 등록 중 오류 발생:', error)
-      alert('등록에 실패했습니다. 다시 시도해 주세요.')
+      if (result.success) {
+        success(t('message:post_recruit.success.title'), t('message:post_recruit.success.description'))
+      } else {
+        error(t('message:post_recruit.error.title'), t('message:post_recruit.error.description'))
+      }
+    } catch (e) {
+      error(t('message:fetch_error.title'), t('message:fetch_error.description'))
     } finally {
       setIsLoading(false)
     }

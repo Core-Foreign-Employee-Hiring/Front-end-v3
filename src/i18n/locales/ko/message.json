@@ -321,5 +321,16 @@
       "title": "실패",
       "description": "비밀번호를 변경하지 못했어요."
     }
+  },
+
+  "post_recruit": {
+    "success": {
+      "title": "성공",
+      "description": "채용 공고가 성공적으로 등록되었어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "채용 공고가 등록되지 않았어요."
+    }
   }
 }
