@@ -1,16 +1,21 @@
 {
   "fetch_error": {
-    "title": "Failed",
-    "description": "An error occurred while processing data."
+    "title": "Error",
+    "description": "An error occurred while saving. Please try again."
+  },
+
+  "file_upload_error": {
+    "title": "Error",
+    "description": "Failed to upload file."
   },
 
   "put_spec_education": {
     "success": {
       "title": "Success",
-      "description": "Education details have been updated successfully."
+      "description": "Education details updated successfully."
     },
     "error": {
-      "title": "Failed",
+      "title": "Error",
       "description": "Failed to update education details."
     }
   },
@@ -18,22 +23,143 @@
   "post_spec_education": {
     "success": {
       "title": "Success",
-      "description": "Education details have been created successfully."
+      "description": "Education details added successfully."
     },
     "error": {
-      "title": "Failed",
-      "description": "Failed to create education details."
+      "title": "Error",
+      "description": "Failed to add education details."
     }
   },
 
   "put_spec_language_skills": {
     "success": {
       "title": "Success",
-      "description": "Language skills have been updated successfully."
+      "description": "Language skills updated successfully."
     },
     "error": {
-      "title": "Failed",
+      "title": "Error",
       "description": "Failed to update language skills."
+    }
+  },
+
+  "post_spec_language_skills": {
+    "success": {
+      "title": "Success",
+      "description": "Language skills added successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to add language skills."
+    }
+  },
+
+  "post_spec_certifications": {
+    "success": {
+      "title": "Success",
+      "description": "Certification added successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to add certification."
+    }
+  },
+
+  "put_spec_certifications": {
+    "success": {
+      "title": "Success",
+      "description": "Certification updated successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to update certification."
+    }
+  },
+
+  "post_spec_careers": {
+    "success": {
+      "title": "Success",
+      "description": "Work experience added successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to add work experience."
+    }
+  },
+
+  "put_spec_careers": {
+    "success": {
+      "title": "Success",
+      "description": "Work experience updated successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to update work experience."
+    }
+  },
+
+  "post_spec_awards": {
+    "success": {
+      "title": "Success",
+      "description": "Award/Honors added successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to add award/honors."
+    }
+  },
+
+  "put_spec_awards": {
+    "success": {
+      "title": "Success",
+      "description": "Award/Honors updated successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to update award/honors."
+    }
+  },
+
+  "post_spec_result": {
+    "success": {
+      "title": "Success",
+      "description": "Spec data created successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to create spec data."
+    }
+  },
+
+  "post_spec_experiences": {
+    "success": {
+      "title": "Success",
+      "description": "Other experience added successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to add other experience."
+    }
+  },
+
+  "put_spec_experiences": {
+    "success": {
+      "title": "Success",
+      "description": "Other experience updated successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to update other experience."
+    }
+  },
+
+  "post_answer_entry": {
+    "success": {
+      "title": "Success",
+      "description": "Saved to notes."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to save to notes."
     }
   }
 }

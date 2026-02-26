@@ -150,5 +150,16 @@
       "title": "실패",
       "description": "기타 경험 수정에 실패했어요."
     }
+  },
+
+  "post_answer_entry": {
+    "success": {
+      "title": "성공",
+      "description": "노트에 저장했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "노트에 저장하지 못했어요."
+    }
   }
 }

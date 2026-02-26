@@ -8,9 +8,11 @@ import { fetchClientAnswerNotes, postAnswerEntry } from '@/lib/client/interview'
 import { useQuery } from '@tanstack/react-query'
 import { useNoteStore } from '@/store/interview/noteStore'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 export default function SaveAnswerNoteModal() {
-  const { t } = useTranslation('modal')
+  const { t } = useTranslation(['modal', 'message'])
+  const { success, error } = useToast()
   const { modals, toggleModal } = useModalStore((state) => state)
 
   const { selectedNoteId, answerEntry, resetAnswerEntry, resetSelectedNoteId, resetCreateNoteData } = useNoteStore(
@@ -45,45 +47,50 @@ export default function SaveAnswerNoteModal() {
       isOpen={modals.isSaveAnswerNoteModalOpen}
     >
       <Modal.Header>
-        <Label label={t('save_answer_note.header')} type={'subtitleLg'} />
+        <Label label={t('modal:save_answer_note.header')} type={'subtitleLg'} />
       </Modal.Header>
       <Modal.Body>
         <div className="flex flex-col gap-y-2">
-          <Label label={t('save_answer_note.body.label')} type={'titleSm'} labelColor={'text-gray5'} />
+          <Label label={t('modal:save_answer_note.body.label')} type={'titleSm'} labelColor={'text-gray5'} />
           {notes.length > 0 && <NoteListDropDown noteList={notes} />}
           <Button
-            customClassName={'w-[140px]'}
+            customClassName={'w-fit'}
             leftIcon={<PlusIcon width={20} height={20} />}
             variant={'secondary'}
             onClick={toggleCreateNewAnswerNoteState}
             size={'sm'}
             buttonType={'button'}
           >
-            {t('save_answer_note.body.button')}
+            {t('modal:save_answer_note.body.button')}
           </Button>
         </div>
       </Modal.Body>
       <Modal.Footer>
         <>
           <Button onClick={toggleSaveAnswerNoteState} variant={'outline'} size={'lg'} buttonType={'button'}>
-            {t('footer_buttons.close')}
+            {t('modal:footer_buttons.close')}
           </Button>
           <Button
             onClick={async () => {
               const result = await postAnswerEntry(selectedNoteId, answerEntry)
-              if (result.data) {
-                console.log('기존 노트 답변 추가 성공', result)
+              if (result.success && result.data) {
+                success(
+                  t('message:post_answer_entry.success.title'),
+                  t('message:post_answer_entry.success.description')
+                )
                 resetAnswerEntry()
                 resetSelectedNoteId('')
                 resetCreateNoteData()
                 toggleSaveAnswerNoteState()
+              } else if (!result.success) {
+                error(t('message:post_answer_entry.error.title'), t('message:post_answer_entry.error.description'))
               }
             }}
             variant={'primary'}
             size={'lg'}
             buttonType={'button'}
           >
-            {t('footer_buttons.save')}
+            {t('modal:footer_buttons.save')}
           </Button>
         </>
       </Modal.Footer>
