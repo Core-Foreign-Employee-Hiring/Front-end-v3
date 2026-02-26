@@ -6,6 +6,7 @@ import { getVerifyUserId } from '@/lib/client/register'
 import ErrorMessage from '@/components/common/ErrorMessage'
 import SuccessMessage from '@/components/common/SuccessMessage'
 import { useTranslation } from 'react-i18next'
+import { useState } from 'react'
 
 export default function IdField() {
   const {
@@ -19,17 +20,21 @@ export default function IdField() {
     verifySuccessMessage,
   } = useRegisterStore((state) => state)
   const { t } = useTranslation('signup')
+  const [errorStatus, setErrorStatus] = useState(false)
+
   return (
     <div className="flex flex-col gap-y-2">
       <Label label={t('step1.idField.label')} isRequired={true} type={'titleSm'} />
       <div className="flex items-center gap-x-2">
         <TextInput
+          status={errorStatus ? 'error' : 'default'}
           value={registerData.userId ?? ''}
           onChange={(e) => {
             updateRegister('userId', e.target.value)
             setVerifyIdLoading(false)
             setVerifyIdSuccessMessage('')
             setVerifyIdErrorMessage('')
+            setErrorStatus(false)
           }}
           placeholder={t('step1.idField.placeholder')}
         />
@@ -37,12 +42,12 @@ export default function IdField() {
           onClick={async () => {
             const result = await getVerifyUserId(registerData.userId)
             setVerifyIdLoading(true)
-            console.log('result', result)
             if (result.success) {
               setVerifyIdSuccessMessage(t('step1.idField.messages.success'))
               setVerifyIdLoading(false)
             } else {
               setVerifyIdErrorMessage(result.error)
+              setErrorStatus(true)
               setVerifyIdLoading(false)
             }
           }}
