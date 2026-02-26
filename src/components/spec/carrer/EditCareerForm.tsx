@@ -50,7 +50,7 @@ export default function EditCareerForm({ toggleFormOpenState, editCareer, career
     try {
       const result = await putSpecCareers(`${editCareer.careerId}`, editCareer)
       if (result.data) {
-        if (result.success) {
+        if (result.data.success) {
           router.refresh()
           success(t('message:put_spec_careers.success.title'), t('message:put_spec_careers.success.description'))
         } else {
@@ -67,7 +67,7 @@ export default function EditCareerForm({ toggleFormOpenState, editCareer, career
       <Spacing height={16} />
 
       <Label
-        label={t('career.form.title')}
+        label={t('spec:career.form.title')}
         type={'subtitleLg'}
         rightElement={
           <Button
@@ -81,7 +81,7 @@ export default function EditCareerForm({ toggleFormOpenState, editCareer, career
             variant={'outline'}
             size={'md'}
           >
-            {t('buttons.cancel')}
+            {t('spec:buttons.cancel')}
           </Button>
         }
       />
@@ -108,7 +108,7 @@ export default function EditCareerForm({ toggleFormOpenState, editCareer, career
       <Spacing height={16} />
       <div className="flex w-full justify-end">
         <Button onClick={handleSave} size={'md'} customClassName={'w-[160px]'}>
-          {t('buttons.edit')}
+          {t('spec:buttons.edit')}
         </Button>
       </div>
     </div>

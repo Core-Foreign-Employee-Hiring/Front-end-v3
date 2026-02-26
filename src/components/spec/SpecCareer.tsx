@@ -38,7 +38,7 @@ export default function SpecCareer({ careersData }: SpecCareerProps) {
 
       // 3. 성공 후 처리
       if (result.data) {
-        if (result.success) {
+        if (result.data.success) {
           setCareers([]) // 추가용 임시 상태 초기화 (필요시)
           router.refresh()
           success(t('message:post_spec_careers.success.title'), t('message:post_spec_careers.success.description'))

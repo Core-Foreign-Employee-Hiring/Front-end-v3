@@ -60,7 +60,7 @@ export default function SpecAward({ awardsData }: SpecAwardProps) {
       const result = await postSpecAwards(updatedAwards)
 
       if (result.data) {
-        if (result.success) {
+        if (result.data.success) {
           setAwards([]) // 추가용 임시 상태 초기화 (필요시)
           router.refresh()
           success(t('message:post_spec_awards.success.title'), t('message:post_spec_awards.success.description'))

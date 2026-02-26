@@ -72,7 +72,7 @@ export default function EditCertForm({
 
       // 4. API 성공 후 UI 상태 동기화 (선택 사항)
       if (result.data && dataToSave.certificationId) {
-        if (result.success) {
+        if (result.data.success) {
           updateEditCertification(dataToSave.certificationId, dataToSave)
           router.refresh()
           success(

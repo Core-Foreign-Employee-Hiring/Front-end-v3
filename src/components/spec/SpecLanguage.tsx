@@ -45,7 +45,7 @@ export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) 
               onClick={async () => {
                 const result = await postSpecLanguageSkills(languageSkills)
                 if (result.data) {
-                  if (result.success) {
+                  if (result.data.success) {
                     router.refresh()
                     setLanguageSkills([])
                     success(

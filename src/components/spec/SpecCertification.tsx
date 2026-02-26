@@ -69,7 +69,7 @@ export default function SpecCertification({ certificationsData }: SpecCertificat
 
       // 3. 성공 후 처리
       if (result.data) {
-        if (result.success) {
+        if (result.data.success) {
           setCertifications([]) // 추가용 임시 상태 초기화 (필요시)
           router.refresh()
           success(
