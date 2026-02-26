@@ -13,7 +13,7 @@ export default function CareerAnalysisLoadingModal() {
   const isOpen = modals.isCareerAnalysisLoadingModalOpen
 
   return (
-    <Modal isOpen={isOpen}>
+    <Modal isOpen={isOpen} mobileHidden={false}>
       {/* isOpen을 key로 주어 모달이 열릴 때마다 내부 상태를 초기화합니다 */}
       {isOpen && <LoadingContent t={t} />}
     </Modal>
