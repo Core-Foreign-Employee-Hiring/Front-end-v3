@@ -86,7 +86,7 @@ export default function PhoneNumberField() {
 
       {/* 인증 코드 */}
       {isVerifyPhoneNumberFieldOpen && (
-        <div className="flex gap-x-2">
+        <div className="flex items-center gap-x-2">
           <TextInput
             value={verifyPhoneNumberCode}
             onChange={verifyCodeChange}
