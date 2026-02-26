@@ -255,5 +255,27 @@
       "title": "실패",
       "description": "수정된 답변을 저장하지 못했어요."
     }
+  },
+
+  "patch_modify_user_id": {
+    "success": {
+      "title": "성공",
+      "description": "아이디를 변경했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "아이디를 변경하지 못했어요."
+    }
+  },
+
+  "patch_modify_password": {
+    "success": {
+      "title": "성공",
+      "description": "비밀번호를 변경했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "비밀번호를 변경하지 못했어요."
+    }
   }
 }

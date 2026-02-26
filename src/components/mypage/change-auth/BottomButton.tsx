@@ -4,12 +4,14 @@ import { Button } from '@/components/common'
 import { patchModifyPassword, patchModifyUserId } from '@/lib/client/mypage'
 import { useModifyAuthStore } from '@/store/modifyAuthStore'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface BottomButtonProps {
   type: 'id' | 'pw'
 }
 export default function BottomButton({ type }: BottomButtonProps) {
-  const { t } = useTranslation('my')
+  const { t } = useTranslation(['my', 'message'])
+  const { success, error } = useToast()
   const { newUserId, setNewUserIdErrorMessage, setNewPasswordErrorMessage, newPassword } = useModifyAuthStore(
     (state) => state
   )
@@ -23,8 +25,12 @@ export default function BottomButton({ type }: BottomButtonProps) {
           onClick={async () => {
             const result = await patchModifyUserId(newUserId)
             if (result.success) {
-              console.log('아이디 변경 성공')
+              success(
+                t('message:patch_modify_user_id.success.title'),
+                t('message:patch_modify_user_id.success.description')
+              )
             } else {
+              error(t('message:patch_modify_user_id.error.title'), t('message:patch_modify_user_id.error.description'))
               setNewUserIdErrorMessage(result.error)
             }
           }}
@@ -37,8 +43,15 @@ export default function BottomButton({ type }: BottomButtonProps) {
           onClick={async () => {
             const result = await patchModifyPassword(newPassword)
             if (result.success) {
-              console.log('비밀번호 변경 성공')
+              success(
+                t('message:patch_modify_password.success.title'),
+                t('message:patch_modify_password.success.description')
+              )
             } else {
+              error(
+                t('message:patch_modify_password.error.title'),
+                t('message:patch_modify_password.error.description')
+              )
               setNewPasswordErrorMessage(result.error)
             }
           }}

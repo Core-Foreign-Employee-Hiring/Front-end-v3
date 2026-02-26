@@ -260,5 +260,27 @@
       "title": "Error",
       "description": "Failed to update the answer."
     }
+  },
+
+  "patch_modify_user_id": {
+    "success": {
+      "title": "Success",
+      "description": "ID changed successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to change ID."
+    }
+  },
+
+  "patch_modify_password": {
+    "success": {
+      "title": "Success",
+      "description": "Password changed successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to change password."
+    }
   }
 }
