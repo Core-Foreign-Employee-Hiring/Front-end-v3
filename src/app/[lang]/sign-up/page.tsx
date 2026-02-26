@@ -44,7 +44,7 @@ export default async function SignUpPage({
           <Label label={t('title')} type={'titleLg'} />
           <Spacing height={20} />
         </div>
-        <ProgressBar currentStep={'1'} currentLabel={getCurrentLabel('1', steps)} steps={steps} />
+        <ProgressBar currentStep={step} currentLabel={getCurrentLabel(step, steps)} steps={steps} />
         <Spacing height={40} />
         <FindRegisterStepSwitcher lang={lang} step={step} />
       </div>
