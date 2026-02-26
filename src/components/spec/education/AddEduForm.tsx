@@ -8,6 +8,7 @@ import { SpecEducationType } from '@/types/spec'
 import { useRouter } from 'next/navigation'
 import { postSpecEducation, putSpecEducation } from '@/lib/client/spec/education'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface AddEduFormProps {
   educationData?: SpecEducationType | null
@@ -18,7 +19,8 @@ export default function AddEduForm({ educationData, onClose }: AddEduFormProps) 
   const { removeEducation, education, setEducation } = useSpecStore((state) => state)
   const { isActive } = useSpecEducation()
   const router = useRouter()
-  const { t } = useTranslation(['spec'])
+  const { t } = useTranslation(['spec', 'message'])
+  const { success, error } = useToast()
 
   // 데이터 존재 여부에 따른 모드 설정
   const isEditMode = !!educationData
@@ -30,27 +32,45 @@ export default function AddEduForm({ educationData, onClose }: AddEduFormProps) 
       if (isEditMode) {
         // 1. 수정 모드일 때 (PUT 또는 PATCH)
         const result = await putSpecEducation(`${education.educationId}`, education) // 수정 API 호출
-        if (result.success) {
-          onClose()
-          router.refresh()
+        if (result.data) {
+          if (result.data.success) {
+            onClose()
+            router.refresh()
+            success(t('message:put_spec_education.success.title'), t('message:put_spec_education.success.description'))
+          } else {
+            onClose()
+            router.refresh()
+            error(t('message:put_spec_education.error.title'), t('message:put_spec_education.error.description'))
+          }
         }
       } else {
         // 2. 신규 작성 모드일 때 (POST)
         const result = await postSpecEducation(education)
-        if (result.success) {
-          onClose()
-          router.refresh()
+        if (result.data) {
+          if (result.data.success) {
+            onClose()
+            router.refresh()
+            success(
+              t('message:post_spec_education.success.title'),
+              t('message:post_spec_education.success.description')
+            )
+          } else {
+            onClose()
+            router.refresh()
+            error(t('message:post_spec_education.error.title'), t('message:post_spec_education.error.description'))
+          }
+        } else {
         }
       }
-    } catch (error) {
-      console.error('데이터 처리 중 오류 발생:', error)
+    } catch (e) {
+      error(t('message:fetch_error.title'), t('message:fetch_error.description'))
     }
   }
 
   return (
     <div className="border-gray2 rounded-[12px] border p-5">
       <Label
-        label={isEditMode ? t('education.addEduForm.editTitle') : t('education.addEduForm.initTitle')} // 제목 동적 변경
+        label={isEditMode ? t('spec:education.addEduForm.editTitle') : t('spec:education.addEduForm.initTitle')} // 제목 동적 변경
         type={'subtitleLg'}
         rightElement={
           <div className="flex gap-x-2">
@@ -62,7 +82,7 @@ export default function AddEduForm({ educationData, onClose }: AddEduFormProps) 
               size={'md'}
               variant={'outline'}
             >
-              {isEditMode ? t('buttons.edit') : t('buttons.save')}
+              {isEditMode ? t('spec:buttons.edit') : t('spec:buttons.save')}
             </Button>
             <Button
               onClick={() => {
@@ -79,7 +99,7 @@ export default function AddEduForm({ educationData, onClose }: AddEduFormProps) 
               variant={'outline'}
               size={'md'}
             >
-              {t('buttons.cancel')}
+              {t('spec:buttons.cancel')}
             </Button>
           </div>
         }

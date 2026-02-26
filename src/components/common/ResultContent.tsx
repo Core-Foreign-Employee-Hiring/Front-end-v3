@@ -19,7 +19,7 @@ export default function ResultContent({ topPercent, analysis, bottomElement }: R
     if (!analysis) return ''
     // 1. 마침표(.) 뒤에 공백이 오는 패턴을 찾아 줄바꿈(\n)으로 대체합니다.
     // 2. trim()을 통해 앞뒤 공백을 제거합니다.
-    return analysis.split('. ').join('.\n').trim()
+    return analysis.replace(/(?<!\d)\.\s+/g, '.\n').trim()
   }, [analysis])
 
   return (

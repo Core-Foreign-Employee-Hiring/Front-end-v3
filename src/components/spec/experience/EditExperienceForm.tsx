@@ -10,6 +10,7 @@ import EditExpImprovementRate from '@/components/spec/experience/EditExpImprovem
 import { putSpecExperiences } from '@/lib/client/spec/experience'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface EditExperienceFormProps {
   toggleFormOpenState: () => void
@@ -21,7 +22,8 @@ export default function EditExperienceForm({
   editExperience,
   experiencesData,
 }: EditExperienceFormProps) {
-  const { t } = useTranslation(['spec'])
+  const { t } = useTranslation(['spec', 'message'])
+  const { success, error } = useToast()
   const router = useRouter()
   const { setEditExperiences, updateEditExperience } = useSpecStore((state) => state)
   /**
@@ -45,11 +47,20 @@ export default function EditExperienceForm({
   const handleSave = async () => {
     try {
       const result = await putSpecExperiences(`${editExperience.experienceId}`, editExperience)
-      if (result.success) {
-        router.refresh()
+      if (result.data) {
+        if (result.data.success) {
+          router.refresh()
+          success(
+            t('message:put_spec_experiences.success.title'),
+            t('message:put_spec_experiences.success.description')
+          )
+        } else {
+          router.refresh()
+          error(t('message:put_spec_experiences.error.title'), t('message:put_spec_experiences.error.description'))
+        }
       }
-    } catch (error) {
-      console.error('저장 중 오류 발생:', error)
+    } catch (e) {
+      error(t('message:fetch_error.title'), t('message:fetch_error.description'))
     }
   }
 
@@ -58,7 +69,7 @@ export default function EditExperienceForm({
       <Spacing height={16} />
 
       <Label
-        label={t('experience.title')}
+        label={t('spec:experience.title')}
         type={'subtitleLg'}
         rightElement={
           <Button
@@ -72,7 +83,7 @@ export default function EditExperienceForm({
             variant={'outline'}
             size={'md'}
           >
-            {t('buttons.delete')}
+            {t('spec:buttons.delete')}
           </Button>
         }
       />
@@ -91,7 +102,7 @@ export default function EditExperienceForm({
       <Spacing height={16} />
       <div className="flex w-full justify-end">
         <Button onClick={handleSave} size={'md'} customClassName={'w-[160px]'}>
-          {t('buttons.edit')}
+          {t('spec:buttons.edit')}
         </Button>
       </div>
     </div>

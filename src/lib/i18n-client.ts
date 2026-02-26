@@ -36,6 +36,7 @@ i18n
       'my',
       'modal',
       'program',
+      'message',
     ],
     defaultNS: 'common',
     react: {

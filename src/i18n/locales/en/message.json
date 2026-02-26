@@ -1,0 +1,39 @@
+{
+  "fetch_error": {
+    "title": "Failed",
+    "description": "An error occurred while processing data."
+  },
+
+  "put_spec_education": {
+    "success": {
+      "title": "Success",
+      "description": "Education details have been updated successfully."
+    },
+    "error": {
+      "title": "Failed",
+      "description": "Failed to update education details."
+    }
+  },
+
+  "post_spec_education": {
+    "success": {
+      "title": "Success",
+      "description": "Education details have been created successfully."
+    },
+    "error": {
+      "title": "Failed",
+      "description": "Failed to create education details."
+    }
+  },
+
+  "put_spec_language_skills": {
+    "success": {
+      "title": "Success",
+      "description": "Language skills have been updated successfully."
+    },
+    "error": {
+      "title": "Failed",
+      "description": "Failed to update language skills."
+    }
+  }
+}

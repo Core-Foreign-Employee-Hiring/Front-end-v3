@@ -1,0 +1,154 @@
+{
+  "fetch_error": {
+    "title": "실패",
+    "description": "저장 중 오류가 발생하였어요. 다시 시도해주세요."
+  },
+
+  "file_upload_error": {
+    "title": "실패",
+    "description": "파일 업로드에 실패했습니다."
+  },
+
+  "put_spec_education": {
+    "success": {
+      "title": "성공",
+      "description": "학력 수정에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "학력 수정에 실패했어요."
+    }
+  },
+
+  "post_spec_education": {
+    "success": {
+      "title": "성공",
+      "description": "학력 생성에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "학력 생성에 실패했어요."
+    }
+  },
+
+  "put_spec_language_skills": {
+    "success": {
+      "title": "성공",
+      "description": "어학 수정에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "어학 수정에 실패했어요."
+    }
+  },
+
+  "post_spec_language_skills": {
+    "success": {
+      "title": "성공",
+      "description": "어학 생성에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "어학 생성에 실패했어요."
+    }
+  },
+
+  "post_spec_certifications": {
+    "success": {
+      "title": "성공",
+      "description": "자격증 생성에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "자격증 생성에 실패했어요."
+    }
+  },
+
+  "put_spec_certifications": {
+    "success": {
+      "title": "성공",
+      "description": "자격증 수정에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "자격증 수정에 실패했어요."
+    }
+  },
+
+  "post_spec_careers": {
+    "success": {
+      "title": "성공",
+      "description": "경력 사항 생성에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "경력 사항 생성에 실패했어요."
+    }
+  },
+
+  "put_spec_careers": {
+    "success": {
+      "title": "성공",
+      "description": "경력 사항 수정에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "경력 사항 수정에 실패했어요."
+    }
+  },
+
+  "post_spec_awards": {
+    "success": {
+      "title": "성공",
+      "description": "수상 경험 생성에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "수상 경험 생성에 실패했어요."
+    }
+  },
+
+  "put_spec_awards": {
+    "success": {
+      "title": "성공",
+      "description": "수상 경험 수정에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "수상 경험 수정에 실패했어요."
+    }
+  },
+
+  "post_spec_result": {
+    "success": {
+      "title": "성공",
+      "description": "스펙 데이터 생성에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "스펙 데이터 생성에 실패했어요."
+    }
+  },
+
+  "post_spec_experiences": {
+    "success": {
+      "title": "성공",
+      "description": "기타 경험 생성에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "기타 경험 생성에 실패했어요."
+    }
+  },
+
+  "put_spec_experiences": {
+    "success": {
+      "title": "성공",
+      "description": "기타 경험 수정에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "기타 경험 수정에 실패했어요."
+    }
+  }
+}

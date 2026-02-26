@@ -11,6 +11,7 @@ import EditCareerContractType from '@/components/spec/carrer/EditCareerContractT
 import EditCareerHighlight from '@/components/spec/carrer/EditCareerHighlight'
 import { putSpecCareers } from '@/lib/client/spec/career'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface EditCareerFormProps {
   toggleFormOpenState: () => void
@@ -18,7 +19,8 @@ interface EditCareerFormProps {
   careersData: SpecCareerType[] | null | undefined
 }
 export default function EditCareerForm({ toggleFormOpenState, editCareer, careersData }: EditCareerFormProps) {
-  const { t } = useTranslation(['spec'])
+  const { t } = useTranslation(['spec', 'message'])
+  const { success, error } = useToast()
 
   const router = useRouter()
   const { updateEditCareer, setEditCareers } = useSpecStore((state) => state)
@@ -47,11 +49,16 @@ export default function EditCareerForm({ toggleFormOpenState, editCareer, career
   const handleSave = async () => {
     try {
       const result = await putSpecCareers(`${editCareer.careerId}`, editCareer)
-      if (result.success) {
-        router.refresh()
+      if (result.data) {
+        if (result.success) {
+          router.refresh()
+          success(t('message:put_spec_careers.success.title'), t('message:put_spec_careers.success.description'))
+        } else {
+          error(t('message:put_spec_careers.error.title'), t('message:put_spec_careers.error.description'))
+        }
       }
-    } catch (error) {
-      console.error('저장 중 오류 발생:', error)
+    } catch (e) {
+      error(t('message:fetch_error.title'), t('message:fetch_error.description'))
     }
   }
 

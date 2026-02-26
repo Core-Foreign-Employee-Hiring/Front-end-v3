@@ -6,6 +6,7 @@ import { useSpecStore } from '@/store/specStore'
 import { putSpecLanguageSkills } from '@/lib/client/spec/language'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface EditLangFormProps {
   languageSkill: SpecLanguageSkillType
@@ -13,22 +14,33 @@ interface EditLangFormProps {
   languageSkillsData: SpecLanguageSkillType[] | null | undefined
 }
 export default function EditLangForm({ languageSkill, toggleState, languageSkillsData }: EditLangFormProps) {
-  const { t } = useTranslation(['spec'])
   const router = useRouter()
+  const { t } = useTranslation(['spec', 'message'])
+  const { success, error } = useToast()
   const { updateEditLanguageSkill, setEditLanguageSkills } = useSpecStore((state) => state)
 
   const handleSave = async () => {
     const result = await putSpecLanguageSkills(`${languageSkill.languageSkillId}`, languageSkill)
-    if (result.success) {
-      router.refresh()
-      toggleState()
+    if (result.data) {
+      if (result.data.success) {
+        console.log('fkgj', result.data)
+        router.refresh()
+        toggleState()
+        success(
+          t('message:put_spec_language_skills.success.title', 'message:put_spec_language_skills.success.description')
+        )
+      } else {
+        router.refresh()
+        toggleState()
+        error(t('message:put_spec_language_skills.error.title', 'message:put_spec_language_skills.error.description'))
+      }
     }
   }
 
   return (
     <div className="border-gray2 rounded-[12px] border p-5">
       <Label
-        label={t('language.form.title')}
+        label={t('spec:language.form.title')}
         type={'subtitleLg'}
         rightElement={
           <Button
@@ -42,7 +54,7 @@ export default function EditLangForm({ languageSkill, toggleState, languageSkill
             variant={'outline'}
             size={'md'}
           >
-            {t('buttons.cancel')}
+            {t('spec:buttons.cancel')}
           </Button>
         }
       />
@@ -61,7 +73,7 @@ export default function EditLangForm({ languageSkill, toggleState, languageSkill
           }}
           value={languageSkill.title}
           inputType={'text'}
-          placeholder={t('language.form.titlePlaceHolder')}
+          placeholder={t('spec:language.form.titlePlaceHolder')}
         />
         <TextInput
           value={languageSkill.score}
@@ -75,13 +87,13 @@ export default function EditLangForm({ languageSkill, toggleState, languageSkill
             }
           }}
           inputType={'text'}
-          placeholder={t('language.form.scorePlaceHolder')}
+          placeholder={t('spec:language.form.scorePlaceHolder')}
         />
       </div>
       <Spacing height={24} />
       <div className="flex w-full justify-end">
         <Button onClick={handleSave} size={'md'} customClassName={'w-[160px]'}>
-          {t('buttons.edit')}
+          {t('spec:buttons.edit')}
         </Button>
       </div>
     </div>

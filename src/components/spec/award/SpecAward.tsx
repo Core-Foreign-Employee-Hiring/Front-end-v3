@@ -13,12 +13,14 @@ import AwardEntry from '@/components/spec/award/AwardEntry'
 import { StepType } from '@/app/[lang]/carrer/page'
 import { uploadFile } from '@/lib/client/common'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface SpecAwardProps {
   awardsData: SpecAwardType[] | null | undefined
 }
 export default function SpecAward({ awardsData }: SpecAwardProps) {
-  const { t } = useTranslation(['spec'])
+  const { t } = useTranslation(['spec', 'message'])
+  const { success, error } = useToast()
   const router = useRouter()
   const pathname = usePathname()
   const { editAwards, setEditAwards, addAward, setAwards, awards } = useSpecStore((state) => state)
@@ -38,7 +40,13 @@ export default function SpecAward({ awardsData }: SpecAwardProps) {
           // 1. 실제로 '파일'이 들어있는 경우에만 업로드 실행
           if (newAward.documentUrl instanceof File) {
             const uploadUrl = await uploadFile(newAward.documentUrl)
-            newAward.documentUrl = uploadUrl || null // 업로드 실패 시 null 혹은 빈 문자열
+
+            if (uploadUrl) {
+              newAward.documentUrl = uploadUrl
+            } else {
+              newAward.documentUrl = null
+              error(t('message:file_upload_error.title'), t('message:file_upload_error.description'))
+            }
           }
           // 2. 만약 documentUrl이 File도 아니고, 문자열도 아닌 (빈 객체 {} 등) 경우
           else if (typeof newAward.documentUrl !== 'string') {
@@ -49,20 +57,21 @@ export default function SpecAward({ awardsData }: SpecAwardProps) {
         })
       )
 
-      // 전송 전 최종 데이터 확인 (디버깅용)
-      console.log('정제된 데이터:', updatedAwards)
-
       const result = await postSpecAwards(updatedAwards)
 
-      // 3. 성공 후 처리
-      if (result.success) {
-        setAwards([]) // 추가용 임시 상태 초기화 (필요시)
-        router.refresh()
-        alert('모든 수상 경험을 성공적으로 저장되었습니다.')
+      if (result.data) {
+        if (result.success) {
+          setAwards([]) // 추가용 임시 상태 초기화 (필요시)
+          router.refresh()
+          success(t('message:post_spec_awards.success.title'), t('message:post_spec_awards.success.description'))
+        } else {
+          setAwards([]) // 추가용 임시 상태 초기화 (필요시)
+          router.refresh()
+          error(t('message:post_spec_awards.error.title'), t('message:post_spec_awards.error.description'))
+        }
       }
-    } catch (error) {
-      console.error('저장 과정 중 오류 발생:', error)
-      alert('저장 중 오류가 발생했습니다. 다시 시도해주세요.')
+    } catch (e) {
+      error(t('message:fetch_error.title'), t('message:fetch_error.description'))
     }
   }
 
@@ -77,12 +86,12 @@ export default function SpecAward({ awardsData }: SpecAwardProps) {
   return (
     <div>
       <Label
-        label={t('award.title')}
+        label={t('spec:award.title')}
         type={'titleMd'}
         rightElement={
           <div className="flex gap-x-2">
             <Button customClassName={'w-[72px]'} size={'md'} onClick={handleSave}>
-              저장
+              {t('spec:buttons.save')}
             </Button>
             <Button
               onClick={() => {
@@ -99,7 +108,7 @@ export default function SpecAward({ awardsData }: SpecAwardProps) {
               customClassName={'w-fit'}
               leftIcon={<Main5000PlusIcon width={20} height={20} />}
             >
-              {t('buttons.add')}
+              {t('spec:buttons.add')}
             </Button>
           </div>
         }

@@ -12,13 +12,15 @@ import EditLanguageEntry from '@/components/spec/language/EditLanguageEntry'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
 import { postSpecLanguageSkills } from '@/lib/client/spec/language'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface SpecLanguageProps {
   languageSkillsData: SpecLanguageSkillType[] | null | undefined
 }
 
 export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) {
-  const { t } = useTranslation(['spec'])
+  const { t } = useTranslation(['spec', 'message'])
+  const { success, error } = useToast()
   const { languageSkills, addLanguageSkill, setEditLanguageSkills, editLanguageSkills, setLanguageSkills } =
     useSpecStore((state) => state)
   const { handlePrev, handleNext, isActive } = useSpecLanguage()
@@ -33,7 +35,7 @@ export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) 
   return (
     <div>
       <Label
-        label={t('language.title')}
+        label={t('spec:language.title')}
         type={'titleMd'}
         rightElement={
           <div className="flex gap-x-2">
@@ -42,13 +44,26 @@ export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) 
               customClassName={'w-[72px]'}
               onClick={async () => {
                 const result = await postSpecLanguageSkills(languageSkills)
-                if (result.success) {
-                  router.refresh()
-                  setLanguageSkills([])
+                if (result.data) {
+                  if (result.success) {
+                    router.refresh()
+                    setLanguageSkills([])
+                    success(
+                      t('message:post_spec_language_skills.success.title'),
+                      t('message:post_spec_language_skills.success.description')
+                    )
+                  } else {
+                    router.refresh()
+                    setLanguageSkills([])
+                    success(
+                      t('message:post_spec_language_skills.error.title'),
+                      t('message:post_spec_language_skills.error.description')
+                    )
+                  }
                 }
               }}
             >
-              {t('buttons.save')}
+              {t('spec:buttons.save')}
             </Button>
             <Button
               onClick={() => {
@@ -59,7 +74,7 @@ export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) 
               customClassName={'w-fit'}
               leftIcon={<Main5000PlusIcon width={20} height={20} />}
             >
-              {t('buttons.add')}
+              {t('spec:buttons.add')}
             </Button>
           </div>
         }

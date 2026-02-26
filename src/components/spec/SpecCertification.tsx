@@ -13,13 +13,15 @@ import EditCertificationEntry from '@/components/spec/certification/EditCertific
 import CertificationEntry from '@/components/spec/certification/CertificationEntry'
 import { uploadFile } from '@/lib/client/common'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface SpecCertificationProps {
   certificationsData: SpecCertificationType[] | null | undefined
 }
 
 export default function SpecCertification({ certificationsData }: SpecCertificationProps) {
-  const { t } = useTranslation(['spec'])
+  const { t } = useTranslation(['spec', 'message'])
+  const { success, error } = useToast()
   const { handleNext, handlePrev, certifications, isActive } = useSpecCertification()
 
   const { editCertifications, setEditCertifications, setCertifications, addCertification } = useSpecStore(
@@ -44,7 +46,15 @@ export default function SpecCertification({ certificationsData }: SpecCertificat
           // 1. 실제로 '파일'이 들어있는 경우에만 업로드 실행
           if (newCert.documentUrl instanceof File) {
             const uploadUrl = await uploadFile(newCert.documentUrl)
-            newCert.documentUrl = uploadUrl || null // 업로드 실패 시 null 혹은 빈 문자열
+            if (uploadUrl) {
+              // 업로드된 URL로 데이터 교체
+              newCert.documentUrl = uploadUrl
+            } else {
+              newCert.documentUrl = null
+              // 업로드 실패 시 로직 처리 (예: return 또는 에러 던지기)
+              error(t('message:file_upload_error.title'), t('message:file_upload_error.description'))
+              return
+            }
           }
           // 2. 만약 documentUrl이 File도 아니고, 문자열도 아닌 (빈 객체 {} 등) 경우
           else if (typeof newCert.documentUrl !== 'string') {
@@ -55,32 +65,40 @@ export default function SpecCertification({ certificationsData }: SpecCertificat
         })
       )
 
-      // 전송 전 최종 데이터 확인 (디버깅용)
-      console.log('정제된 데이터:', updatedCertifications)
-
-      const result = await postSpecCertifications(updatedCertifications)
+      const result = await postSpecCertifications(updatedCertifications as SpecCertificationType[])
 
       // 3. 성공 후 처리
-      if (result.success) {
-        setCertifications([]) // 추가용 임시 상태 초기화 (필요시)
-        router.refresh()
-        alert('모든 자격증이 성공적으로 저장되었습니다.')
+      if (result.data) {
+        if (result.success) {
+          setCertifications([]) // 추가용 임시 상태 초기화 (필요시)
+          router.refresh()
+          success(
+            t('message:post_spec_certifications.success.title'),
+            t('message:post_spec_certifications.success.description')
+          )
+        } else {
+          setCertifications([])
+          router.refresh()
+          error(
+            t('message:post_spec_certifications.error.title'),
+            t('message:post_spec_certifications.error.description')
+          )
+        }
       }
-    } catch (error) {
-      console.error('저장 과정 중 오류 발생:', error)
-      alert('저장 중 오류가 발생했습니다. 다시 시도해주세요.')
+    } catch (e) {
+      error(t('message:fetch_error.title'), t('message:fetch_error.description'))
     }
   }
 
   return (
     <div>
       <Label
-        label={t('certification.title')}
+        label={t('spec:certification.title')}
         type={'titleMd'}
         rightElement={
           <div className="flex gap-x-2">
             <Button size={'md'} customClassName={'w-[72px]'} onClick={handleSave}>
-              {t('buttons.save')}
+              {t('spec:buttons.save')}
             </Button>
             <Button
               onClick={() => {
@@ -91,7 +109,7 @@ export default function SpecCertification({ certificationsData }: SpecCertificat
               customClassName={'w-fit'}
               leftIcon={<Main5000PlusIcon width={20} height={20} />}
             >
-              {t('buttons.add')}
+              {t('spec:buttons.add')}
             </Button>
           </div>
         }

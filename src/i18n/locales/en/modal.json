@@ -278,5 +278,21 @@
     "footer": {
       "write": "Submit"
     }
+  },
+
+  "career_analysis_loading": {
+    "title": "Analyzing your career",
+    "description": "We analyze based on actual hiring criteria,\\n not just a simple score.",
+    "steps": {
+      "extracting": "Extracting core keywords from your professional history.",
+      "matching": "Matching job competencies with corporate requirements.",
+      "verifying": "Verifying experience specificity and performance metrics.",
+      "finalizing": "Compiling analysis results into a report."
+    },
+    "sub_messages": [
+      "Identifying your unique professional strengths.",
+      "Benchmarking against thousands of successful hiring data points.",
+      "Please wait. A precise analysis takes a moment."
+    ]
   }
 }

@@ -12,6 +12,7 @@ import EditAwardDocumentUrl from '@/components/spec/award/EditAwardDocumentUrl'
 import EditAwardDescription from '@/components/spec/award/EditAwardDescription'
 import EditAwardAcquiredDate from '@/components/spec/award/EditAwardAcquiredDate'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface EditAwardFormProps {
   toggleFormOpenState: () => void
@@ -20,9 +21,10 @@ interface EditAwardFormProps {
 }
 
 export default function EditAwardForm({ toggleFormOpenState, editAward, awardsData }: EditAwardFormProps) {
-  const { t } = useTranslation(['spec'])
+  const { t } = useTranslation(['spec', 'message'])
   const { updateEditAward, setEditAwards } = useSpecStore((state) => state)
   const router = useRouter()
+  const { error, success } = useToast()
 
   /**
    * 특정 인덱스의 전공명 수정 핸들러
@@ -58,28 +60,34 @@ export default function EditAwardForm({ toggleFormOpenState, editAward, awardsDa
           dataToSave.documentUrl = uploadUrl
         } else {
           // 업로드 실패 시 로직 처리 (예: return 또는 에러 던지기)
-          console.error('파일 업로드에 실패했습니다.')
+          error(t('message:file_upload_error.title', 'message:file_upload_error.description'))
           return
         }
       }
 
-      // 3. 최종 정제된 데이터로 API 요청 (상태 업데이트를 기다릴 필요 없음)
       const result = await putSpecAwards(`${dataToSave.awardId}`, dataToSave)
 
       // 4. API 성공 후 UI 상태 동기화 (선택 사항)
-      if (result && dataToSave.awardId) {
-        updateEditAward(dataToSave.awardId, dataToSave)
-        router.refresh()
+      if (result.data) {
+        if (result.data.success) {
+          success(t('message:put_spec_awards.success.title'), t('message:put_spec_awards.success.description'))
+          if (result && dataToSave.awardId) {
+            updateEditAward(dataToSave.awardId, dataToSave)
+            router.refresh()
+          }
+        } else {
+          error(t('message:put_spec_awards.error.title'), t('message:put_spec_awards.error.description'))
+        }
       }
-    } catch (error) {
-      console.error('저장 중 오류 발생:', error)
+    } catch (e) {
+      error(t('message:fetch_error.title'), t('message:fetch_error.title'))
     }
   }
 
   return (
     <div className="border-gray2 rounded-[12px] border p-5">
       <Label
-        label={t('award.form.title')}
+        label={t('spec:award.form.title')}
         type={'subtitleLg'}
         rightElement={
           <Button
@@ -93,7 +101,7 @@ export default function EditAwardForm({ toggleFormOpenState, editAward, awardsDa
             variant={'outline'}
             size={'md'}
           >
-            {t('buttons.cancel')}
+            {t('spec:buttons.cancel')}
           </Button>
         }
       />
@@ -114,7 +122,7 @@ export default function EditAwardForm({ toggleFormOpenState, editAward, awardsDa
 
       <div className="flex w-full justify-end">
         <Button onClick={handleSave} size={'md'} customClassName={'w-[160px]'}>
-          {t('buttons.edit')}
+          {t('spec:buttons.edit')}
         </Button>
       </div>
     </div>

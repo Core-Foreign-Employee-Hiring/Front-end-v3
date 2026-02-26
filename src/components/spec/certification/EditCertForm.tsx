@@ -10,6 +10,7 @@ import { putSpecCertifications } from '@/lib/client/spec/certification'
 import { uploadFile } from '@/lib/client/common'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface EditCertFormProps {
   toggleFormOpenState: () => void
@@ -22,7 +23,8 @@ export default function EditCertForm({
   editCertification,
   certificationsData,
 }: EditCertFormProps) {
-  const { t } = useTranslation(['spec'])
+  const { t } = useTranslation(['spec', 'message'])
+  const { success, error } = useToast()
   const router = useRouter()
 
   const { updateEditCertification, setEditCertifications } = useSpecStore((state) => state)
@@ -60,7 +62,7 @@ export default function EditCertForm({
           dataToSave.documentUrl = uploadUrl
         } else {
           // 업로드 실패 시 로직 처리 (예: return 또는 에러 던지기)
-          console.error('파일 업로드에 실패했습니다.')
+          error(t('message:file_upload_error.title'), t('message:file_upload_error.description'))
           return
         }
       }
@@ -69,12 +71,24 @@ export default function EditCertForm({
       const result = await putSpecCertifications(`${dataToSave.certificationId}`, dataToSave)
 
       // 4. API 성공 후 UI 상태 동기화 (선택 사항)
-      if (result && dataToSave.certificationId) {
-        updateEditCertification(dataToSave.certificationId, dataToSave)
-        router.refresh()
+      if (result.data && dataToSave.certificationId) {
+        if (result.success) {
+          updateEditCertification(dataToSave.certificationId, dataToSave)
+          router.refresh()
+          success(
+            t('message:put_spec_certifications.success.title'),
+            t('message:put_spec_certifications.success.description')
+          )
+        } else {
+          router.refresh()
+          error(
+            t('message:put_spec_certifications.error.title'),
+            t('message:put_spec_certifications.error.description')
+          )
+        }
       }
-    } catch (error) {
-      console.error('저장 중 오류 발생:', error)
+    } catch (e) {
+      error(t('message:fetch_error.title'), t('message:fetch_error.description'))
     }
   }
 
@@ -83,7 +97,7 @@ export default function EditCertForm({
       <Spacing height={16} />
 
       <Label
-        label={t('certification.form.title')}
+        label={t('spec:certification.form.title')}
         type={'subtitleLg'}
         rightElement={
           <Button
@@ -97,7 +111,7 @@ export default function EditCertForm({
             variant={'outline'}
             size={'md'}
           >
-            {t('buttons.cancel')}
+            {t('spec:buttons.cancel')}
           </Button>
         }
       />
@@ -122,7 +136,7 @@ export default function EditCertForm({
 
       <div className="flex w-full justify-end">
         <Button onClick={handleSave} size={'md'} customClassName={'w-[160px]'}>
-          {t('buttons.edit')}
+          {t('spec:buttons.edit')}
         </Button>
       </div>
     </div>

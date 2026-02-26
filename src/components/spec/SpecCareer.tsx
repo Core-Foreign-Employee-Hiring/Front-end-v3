@@ -12,15 +12,17 @@ import CareerEntry from '@/components/spec/carrer/CareerEntry'
 import { postSpecCareers } from '@/lib/client/spec/career'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface SpecCareerProps {
   careersData: SpecCareerType[] | null | undefined
 }
 
 export default function SpecCareer({ careersData }: SpecCareerProps) {
-  const { t } = useTranslation(['spec'])
+  const { t } = useTranslation(['spec', 'message'])
   const router = useRouter()
   const { handleNext, handlePrev, careers, isActive } = useSpecCareer()
+  const { success, error } = useToast()
 
   const { editCareers, setEditCareers, addCareer, setCareers } = useSpecStore((state) => state)
 
@@ -35,26 +37,31 @@ export default function SpecCareer({ careersData }: SpecCareerProps) {
       const result = await postSpecCareers(careers)
 
       // 3. 성공 후 처리
-      if (result.success) {
-        setCareers([]) // 추가용 임시 상태 초기화 (필요시)
-        router.refresh()
-        alert('모든 자격증이 성공적으로 저장되었습니다.')
+      if (result.data) {
+        if (result.success) {
+          setCareers([]) // 추가용 임시 상태 초기화 (필요시)
+          router.refresh()
+          success(t('message:post_spec_careers.success.title'), t('message:post_spec_careers.success.description'))
+        } else {
+          setCareers([]) // 추가용 임시 상태 초기화 (필요시)
+          router.refresh()
+          error(t('message:post_spec_careers.error.title'), t('message:post_spec_careers.error.description'))
+        }
       }
-    } catch (error) {
-      console.error('저장 과정 중 오류 발생:', error)
-      alert('저장 중 오류가 발생했습니다. 다시 시도해주세요.')
+    } catch (e) {
+      error(t('message:fetch_error.title'), t('message:fetch_error.description'))
     }
   }
 
   return (
     <div>
       <Label
-        label={t('career.title')}
+        label={t('spec:career.title')}
         type={'titleMd'}
         rightElement={
           <div className="flex gap-x-2">
             <Button customClassName={'w-[72px]'} size={'md'} onClick={handleSave}>
-              {t('buttons.save')}
+              {t('spec:buttons.save')}
             </Button>
             <Button
               onClick={() => {
@@ -72,7 +79,7 @@ export default function SpecCareer({ careersData }: SpecCareerProps) {
               customClassName={'w-fit'}
               leftIcon={<Main5000PlusIcon width={20} height={20} />}
             >
-              {t('buttons.add')}
+              {t('spec:buttons.add')}
             </Button>
           </div>
         }

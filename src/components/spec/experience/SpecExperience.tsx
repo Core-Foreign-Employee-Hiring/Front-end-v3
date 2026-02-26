@@ -13,17 +13,21 @@ import ExperienceEntry from '@/components/spec/experience/ExperienceEntry'
 import { postSpecExperiences } from '@/lib/client/spec/experience'
 import { postSpecResult } from '@/lib/client/spec'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
+import { useModalStore } from '@/store/modalStore'
+import CareerAnalysisLoadingModal from '@/components/common/modal/CareerAnalysisLoadingModal'
 
 interface SpecExperienceProps {
   experiencesData: SpecExperienceType[] | null | undefined
 }
 export default function SpecExperience({ experiencesData }: SpecExperienceProps) {
-  const { t } = useTranslation(['spec'])
+  const { t } = useTranslation(['spec', 'message'])
+  const { toggleModal, setModal, modals } = useModalStore((state) => state)
   const router = useRouter()
   const pathname = usePathname()
+  const { success, error } = useToast()
   const { addExperience, editExperiences, setEditExperiences, experiences, setExperiences, setSpecEvaluationId } =
     useSpecStore((state) => state)
-
   useEffect(() => {
     if (experiencesData) {
       setEditExperiences(experiencesData)
@@ -35,14 +39,19 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
   }
 
   const handlePrev = () => navigateToStep('5')
-  const handleNext = async () => {
-    const specResult = await postSpecResult()
-    console.log('스펙 데이터 결과 response', specResult)
 
+  const handleNext = async () => {
+    setModal('isCareerAnalysisLoadingModalOpen', true)
+
+    const specResult = await postSpecResult()
     if (specResult.success && specResult.data?.data) {
-      alert('성공적으로 저장되었습니다.')
+      success(t('post_spec_result.success.title'), t('post_spec_result.success.description'))
       setSpecEvaluationId(specResult.data.data)
+      setModal('isCareerAnalysisLoadingModalOpen', false)
       router.push(`/carrer/${specResult.data.data}`)
+    } else if (!specResult.data?.success) {
+      setModal('isCareerAnalysisLoadingModalOpen', false)
+      error(t('post_spec_result.error.title'), t('post_spec_result.error.description'))
     }
   }
 
@@ -51,26 +60,35 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
       const result = await postSpecExperiences(experiences)
 
       // 3. 성공 후 처리
-      if (result.success) {
-        setExperiences([]) // 추가용 임시 상태 초기화 (필요시)
-        router.refresh()
-        alert('모든 경험이 성공적으로 저장되었습니다.')
+      if (result.data) {
+        if (result.data.success) {
+          setExperiences([]) // 추가용 임시 상태 초기화 (필요시)
+          router.refresh()
+          success(
+            t('message:post_spec_experiences.success.title'),
+            t('message:post_spec_experiences.success.description')
+          )
+        } else {
+          setExperiences([]) // 추가용 임시 상태 초기화 (필요시)
+          router.refresh()
+          error(t('message:post_spec_experiences.error.title'), t('message:post_spec_experiences.error.description'))
+        }
       }
-    } catch (error) {
-      console.error('저장 과정 중 오류 발생:', error)
-      alert('저장 중 오류가 발생했습니다. 다시 시도해주세요.')
+    } catch (e) {
+      error(t('message:fetch_error.title'), t('message:fetch_error.description'))
     }
   }
 
   return (
     <div>
+      {modals.isCareerAnalysisLoadingModalOpen ? <CareerAnalysisLoadingModal /> : null}
       <Label
-        label={t('experience.title')}
+        label={t('spec:experience.title')}
         type={'titleMd'}
         rightElement={
           <div className="flex gap-x-2">
             <Button size={'md'} customClassName={'w-[72px]'} onClick={handleSave}>
-              {t('buttons.save')}
+              {t('spec:buttons.save')}
             </Button>
             <Button
               onClick={() => {
@@ -88,7 +106,7 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
               customClassName={'w-fit'}
               leftIcon={<Main5000PlusIcon width={20} height={20} />}
             >
-              {t('buttons.add')}
+              {t('spec:buttons.add')}
             </Button>
           </div>
         }

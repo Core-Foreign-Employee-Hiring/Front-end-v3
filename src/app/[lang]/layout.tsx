@@ -4,6 +4,8 @@ import localFont from 'next/font/local'
 import ReactQueryProvider from '@/providers/ReactQueryProvider'
 import LayoutContent from '@/components/common/LayoutContent'
 import Script from 'next/script'
+import { ToastProvider } from '@/components/common/toast/ToastContext'
+import ToastContainer from '@/components/common/toast/ToastContainer'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.korfit.co.kr'
 
@@ -124,7 +126,12 @@ export default function RootLayout({
 
       <body className={`${inter.variable} ${pretendard.variable} font-sans antialiased`}>
         <ReactQueryProvider>
-          <LayoutContent>{children}</LayoutContent>
+          <LayoutContent>
+            <ToastProvider>
+              {children}
+              <ToastContainer />
+            </ToastProvider>
+          </LayoutContent>
         </ReactQueryProvider>
         <Script
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_KEY}&libraries=services&autoload=false`}
