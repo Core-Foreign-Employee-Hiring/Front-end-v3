@@ -5,6 +5,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { modifyPW, postFindPWVerifyCode } from '@/lib/client/find-auth'
 import { useFindAuthStore } from '@/store/findAuthStore'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface PwBottomButtonProps {
   step: '1' | '2'
@@ -12,7 +13,8 @@ interface PwBottomButtonProps {
 export default function PwBottomButton({ step }: PwBottomButtonProps) {
   const router = useRouter()
   const pathname = usePathname()
-  const { t } = useTranslation('findAuth')
+  const { t } = useTranslation(['findAuth', 'message'])
+  const { success, error } = useToast()
 
   const {
     isVerifyEmailCodeLoading,
@@ -59,7 +61,7 @@ export default function PwBottomButton({ step }: PwBottomButtonProps) {
           size={'lg'}
           variant={'primary'}
         >
-          {t('pw.bottom_buttons.next_button')}
+          {t('findAuth:pw.bottom_buttons.next_button')}
         </Button>
       ) : (
         <Button
@@ -70,16 +72,18 @@ export default function PwBottomButton({ step }: PwBottomButtonProps) {
             const result = await modifyPW(modifyPWData)
             if (result.success) {
               setIsModifyPWLoading(false)
+              success(t('message:modify_pw.success.title'), t('message:modify_pw.success.description'))
               onNavigate()
             } else {
               setIsModifyPWLoading(false)
+              error(t('message:modify_pw.error.title'), t('message:modify_pw.error.description'))
               setErrorMessage(result.error)
             }
           }}
           size={'lg'}
           variant={'primary'}
         >
-          {t('pw.bottom_buttons.change_pw_button')}
+          {t('findAuth:pw.bottom_buttons.change_pw_button')}
         </Button>
       )}
     </div>

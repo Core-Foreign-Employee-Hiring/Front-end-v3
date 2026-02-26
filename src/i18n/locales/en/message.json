@@ -304,5 +304,27 @@
       "title": "Error",
       "description": "Failed to submit your review."
     }
+  },
+
+  "post_register": {
+    "success": {
+      "title": "Success",
+      "description": "Registration complete."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Registration failed."
+    }
+  },
+
+  "modify_pw": {
+    "success": {
+      "title": "Success",
+      "description": "Password updated."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Password update failed."
+    }
   }
 }

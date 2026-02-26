@@ -299,5 +299,27 @@
       "title": "실패",
       "description": "작성한 리뷰를 저장하지 못했어요."
     }
+  },
+
+  "post_register": {
+    "success": {
+      "title": "성공",
+      "description": "회원가입에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "회원가입에 실패했어요."
+    }
+  },
+
+  "modify_pw": {
+    "success": {
+      "title": "성공",
+      "description": "비밀번호 변경에 성공했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "비밀번호를 변경하지 못했어요."
+    }
   }
 }

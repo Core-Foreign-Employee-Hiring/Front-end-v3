@@ -8,13 +8,15 @@ import { RegisterType } from '@/types/auth/register'
 import { useState } from 'react'
 import ErrorMessage from '@/components/common/ErrorMessage'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface Step2BottomButtonProps {
   lang: string
 }
 
 export default function Step2BottomButton({ lang }: Step2BottomButtonProps) {
-  const { t } = useTranslation('signup')
+  const { t } = useTranslation(['signup', 'message'])
+  const { success, error } = useToast()
   const router = useRouter()
 
   const { registerData, isStep2FormValid } = useRegisterStore()
@@ -39,12 +41,14 @@ export default function Step2BottomButton({ lang }: Step2BottomButtonProps) {
       console.log('서버로 보낼 데이터:', finalPayload)
       const result = await postRegister(finalPayload as RegisterType)
       if (result.success) {
+        success(t('message:post_register.success.title'), t('message:post_register.success.description'))
         router.push(`/${lang}`)
       } else {
+        error(t('message:post_register.error.title'), t('message:post_register.error.description'))
         setErrorMessage(result.error)
       }
-    } catch (error) {
-      console.error(error)
+    } catch (e) {
+      error(t('message:fetch_error.title'), t('message:fetch_error.description'))
     }
   }
 
@@ -52,7 +56,7 @@ export default function Step2BottomButton({ lang }: Step2BottomButtonProps) {
     <div className="flex flex-col gap-y-2">
       <ErrorMessage>{errorMessage}</ErrorMessage>
       <Button state={isValid ? 'default' : 'disable'} onClick={handleRegister}>
-        {t('step2.buttons.sign_up')}
+        {t('signup:step2.buttons.sign_up')}
       </Button>
     </div>
   )
