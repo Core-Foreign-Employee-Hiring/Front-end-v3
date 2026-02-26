@@ -100,7 +100,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
             <div className="flex gap-x-2">
               <Button
                 onClick={() => {
-                  router.push(`/${lang}/sign-up`)
+                  router.push(`/${lang}/sign-up?step=1`)
                   toggleModal('isMoreOptionsMenuOpen')
                 }}
                 variant={'outline'}

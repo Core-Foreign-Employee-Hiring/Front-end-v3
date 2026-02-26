@@ -246,7 +246,7 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
                 {t('navigation.login')}
               </Link>
               <span className="text-gray-300">|</span>
-              <Link href={`/${currentLng}/sign-up`} className="hover:text-black">
+              <Link href={`/${currentLng}/sign-up?step=1`} className="hover:text-black">
                 {t('navigation.signup')}
               </Link>
             </>

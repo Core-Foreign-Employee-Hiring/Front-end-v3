@@ -28,7 +28,7 @@ export default async function LoginPage({ params }: LoginProps) {
 
         <SignUpPromotion>
           <PromotionDescription description={t('buttons.cta')} />
-          <SignUpCTAButton href={`/${lang}/sign-up`} />
+          <SignUpCTAButton href={`/${lang}/sign-up?step=1`} />
         </SignUpPromotion>
       </div>
     </main>
