@@ -9,6 +9,7 @@ import { SpecAwardType } from '@/types/spec'
 import { deleteSpecAwards } from '@/lib/client/spec/award'
 import { DeleteIcon, EditIcon } from '@/assets/svgComponents'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface AwardItemProps {
   award: SpecAwardType
@@ -16,7 +17,8 @@ interface AwardItemProps {
 }
 
 export default function AwardItem({ award, toggleFormOpenState }: AwardItemProps) {
-  const { t } = useTranslation(['spec'])
+  const { t } = useTranslation(['spec', 'message'])
+  const { success, error } = useToast()
   const router = useRouter()
   const [fileSize, setFileSize] = useState<string>('Loading...')
 
@@ -45,7 +47,7 @@ export default function AwardItem({ award, toggleFormOpenState }: AwardItemProps
 
         <section className="desktop:flex tablet:flex hidden shrink-0 gap-x-2 whitespace-nowrap">
           <Button onClick={toggleFormOpenState} size={'sm'} variant={'outline'} customClassName="w-fit">
-            {t('buttons.edit')}
+            {t('spec:buttons.edit')}
           </Button>
           <Button
             onClick={async () => {
@@ -58,7 +60,7 @@ export default function AwardItem({ award, toggleFormOpenState }: AwardItemProps
             variant={'outline'}
             customClassName="w-fit"
           >
-            {t('buttons.delete')}
+            {t('spec:buttons.delete')}
           </Button>
         </section>
 
@@ -75,7 +77,13 @@ export default function AwardItem({ award, toggleFormOpenState }: AwardItemProps
             onClick={async () => {
               const result = await deleteSpecAwards(`${award.awardId}`)
               if (result.success) {
+                success(
+                  t('message:delete_spec_awards.success.title'),
+                  t('message:delete_spec_awards.success.description')
+                )
                 router.refresh()
+              } else {
+                error(t('message:delete_spec_awards.error.title'), t('message:delete_spec_awards.error.description'))
               }
             }}
             size={'sm'}

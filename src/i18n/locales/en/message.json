@@ -205,5 +205,16 @@
       "title": "Error",
       "description": "Failed to delete work experience."
     }
+  },
+
+  "delete_spec_awards": {
+    "success": {
+      "title": "Success",
+      "description": "Awards & honors deleted successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to delete awards & honors."
+    }
   }
 }
