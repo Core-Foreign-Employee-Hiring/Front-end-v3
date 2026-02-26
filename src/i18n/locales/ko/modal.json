@@ -235,7 +235,10 @@
     "header": "답변 노트 저장",
     "body": {
       "label": "노트명",
-      "button": "새 노트 만들기"
+      "button": "새 노트 만들기",
+      "note_list_drop_down": {
+        "label": "예: 자기소개 모음"
+      }
     }
   },
 

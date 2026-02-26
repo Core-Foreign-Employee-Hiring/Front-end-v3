@@ -238,7 +238,10 @@
     "header": "Save Answer Note",
     "body": {
       "label": "Note Title",
-      "button": "Create New Note"
+      "button": "Create New Note",
+      "note_list_drop_down": {
+        "label": "e.g., My Self-Introductions"
+      }
     }
   },
 

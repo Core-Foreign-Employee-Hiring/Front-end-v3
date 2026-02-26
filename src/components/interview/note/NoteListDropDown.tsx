@@ -4,12 +4,14 @@ import { DropDown } from '@/components/common'
 import { useDropDown } from '@/hooks'
 import { AnswerNoteType } from '@/types/interview/note'
 import { useNoteStore } from '@/store/interview/noteStore'
+import { useTranslation } from 'react-i18next'
 
 interface NoteListDropDownProps {
   noteList: AnswerNoteType[] | undefined
 }
 
 export default function NoteListDropDown({ noteList }: NoteListDropDownProps) {
+  const { t } = useTranslation('modal')
   const {
     initialValue,
     selectedDropDownContent,
@@ -17,7 +19,7 @@ export default function NoteListDropDown({ noteList }: NoteListDropDownProps) {
     setIsDropDownOpen,
     selectedDropDownHandler,
     dropDownOpenHandler,
-  } = useDropDown({ initialValue: '예: 자기소개 모음' })
+  } = useDropDown({ initialValue: t('save_answer_note.body.note_list_drop_down.label') })
 
   const setSelectedNoteId = useNoteStore((state) => state.setSelectedNoteId)
 
