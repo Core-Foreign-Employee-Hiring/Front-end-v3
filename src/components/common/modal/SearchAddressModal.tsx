@@ -65,6 +65,7 @@ export default function SearchAddressModal({ handleChangeAddress }: SearchAddres
 
   return (
     <Modal
+      mobileHidden={false}
       isOpen={modals.isSearchAddressModalOpen}
       onClose={onClose}
       customClassName={'desktop:w-[860px] tablet:w-[680px] w-[335px]'}
