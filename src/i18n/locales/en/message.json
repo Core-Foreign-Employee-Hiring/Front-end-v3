@@ -227,5 +227,16 @@
       "title": "Error",
       "description": "Failed to delete other experience."
     }
+  },
+
+  "put_note_title": {
+    "success": {
+      "title": "Success",
+      "description": "Note title updated successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to update note title."
+    }
   }
 }

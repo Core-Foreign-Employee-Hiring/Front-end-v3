@@ -225,5 +225,15 @@
       "title": "실패",
       "description": "기타 경험 정보를 삭제하지 못했어요."
     }
+  },
+  "put_note_title": {
+    "success": {
+      "title": "성공",
+      "description": "수정된 노트 제목을 저장했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "수정된 노트 제목을 저장하지 못했어요."
+    }
   }
 }

@@ -6,9 +6,11 @@ import { useNoteStore } from '@/store/interview/noteStore'
 import { putNoteTitle } from '@/lib/client/interview'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 export default function EditNoteTitleModal() {
-  const { t } = useTranslation('modal')
+  const { t } = useTranslation(['modal', 'message'])
+  const { success, error } = useToast()
   const router = useRouter()
   const { toggleModal, modals } = useModalStore((state) => state)
 
@@ -26,17 +28,20 @@ export default function EditNoteTitleModal() {
       isOpen={modals.isEditNoteTitleModalOpen}
     >
       <Modal.Header>
-        <Label label={t('edit_note_title.header')} type={'subtitleLg'} />
+        <Label label={t('modal:edit_note_title.header')} type={'subtitleLg'} />
       </Modal.Header>
       <Modal.Body>
         <div className="flex flex-col gap-y-2">
-          <Label label={t('edit_note_title.body.note_title_field.label')} type={'titleSm'} labelColor={'text-gray5'} />
+          <Label
+            label={t('modal:edit_note_title.body.note_title_field.label')}
+            type={'titleSm'}
+            labelColor={'text-gray5'}
+          />
           <TextInput
-            placeholder={t('edit_note_title.body.note_title_field.placeholder')}
+            placeholder={t('modal:edit_note_title.body.note_title_field.placeholder')}
             value={title}
             onChange={(e) => {
               setTitle(e.target.value)
-              console.log('title', title)
             }}
           />
         </div>
@@ -44,20 +49,24 @@ export default function EditNoteTitleModal() {
       <Modal.Footer>
         <>
           <Button onClick={toggleEditNoteTitleState} variant={'outline'} size={'lg'} buttonType={'button'}>
-            {t('footer_buttons.cancel')}
+            {t('modal:footer_buttons.cancel')}
           </Button>
           <Button
             onClick={async () => {
               const result = await putNoteTitle(selectedNoteId, title)
-              console.log('제목 변경', result.data)
-              toggleEditNoteTitleState()
-              router.refresh()
+              if (result.success) {
+                success(t('message:put_note_title.success.title'), t('message:put_note_title.success.description'))
+                toggleEditNoteTitleState()
+                router.refresh()
+              } else {
+                error(t('message:put_note_title.error.title'), t('message:put_note_title.error.description'))
+              }
             }}
             variant={'primary'}
             size={'lg'}
             buttonType={'button'}
           >
-            {t('footer_buttons.save')}
+            {t('modal:footer_buttons.save')}
           </Button>
         </>
       </Modal.Footer>
