@@ -154,9 +154,9 @@ export default function JobRoleModal({
 
       <Modal.Footer>
         <Button onClick={onClose} size={'lg'} variant={'outline'} customClassName={'w-[200px]'}>
-          {t('modal.footer_buttons.close')}
+          {t('modal:footer_buttons.close')}
         </Button>
-        <Button onClick={onApply}>{t('modal.footer_buttons.completed')}</Button>
+        <Button onClick={onApply}>{t('modal:footer_buttons.completed')}</Button>
       </Modal.Footer>
     </Modal>
   )

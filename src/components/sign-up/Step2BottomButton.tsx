@@ -19,7 +19,7 @@ export default function Step2BottomButton({ lang }: Step2BottomButtonProps) {
   const { success, error } = useToast()
   const router = useRouter()
 
-  const { registerData, isStep2FormValid } = useRegisterStore()
+  const { registerData, isStep2FormValid, resetAll } = useRegisterStore()
 
   const isValid = isStep2FormValid()
 
@@ -41,6 +41,7 @@ export default function Step2BottomButton({ lang }: Step2BottomButtonProps) {
       console.log('서버로 보낼 데이터:', finalPayload)
       const result = await postRegister(finalPayload as RegisterType)
       if (result.success) {
+        resetAll()
         success(t('message:post_register.success.title'), t('message:post_register.success.description'))
         router.push(`/${lang}`)
       } else {

@@ -14,25 +14,28 @@ export default function PasswordField() {
   )
   const [show, setShow] = useState(false)
 
+  // 사용자가 입력 필드에 들어갔다 나왔는지 확인하는 상태
+  const [isTouched, setIsTouched] = useState(false)
+
   useEffect(() => {
     const password = registerData.password
 
-    // 1. 값이 없을 때 처리
-    if (!password || password.length === 0) {
+    // 사용자가 아직 필드를 건드리지 않았거나 값이 없으면 에러 메시지를 비움
+    if (!isTouched || !password || password.length === 0) {
       setNotValidPWErrorMessage('')
       return
     }
 
-    // 2. 정규식 검사 (~ 포함)
+    // 정규식 검사
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&~])[A-Za-z\d@$!%*?&~]{8,15}$/
 
     if (!passwordRegex.test(password)) {
-      // 검증 실패
       setNotValidPWErrorMessage(t('step1.passwordField.messages.invalidFormat'))
     } else {
       setNotValidPWErrorMessage('')
     }
-  }, [registerData.password, setNotValidPWErrorMessage])
+    // isTouched를 의존성에 추가하여 포커스를 잃은 시점에도 체크되게 함
+  }, [registerData.password, isTouched, setNotValidPWErrorMessage, t])
 
   return (
     <div className="flex flex-col gap-y-2">
@@ -60,10 +63,14 @@ export default function PasswordField() {
         inputType={show ? 'text' : 'password'}
         placeholder={t('step1.passwordField.placeholder')}
         onChange={(e) => updateRegister('password', e.target.value)}
+        // 포커스를 잃었을 때 비로소 에러를 검증할 준비가 되었음을 알림
+        onBlur={() => setIsTouched(true)}
         value={registerData.password ?? ''}
-        status={notValidPWErrorMessage ? 'error' : 'default'}
+        // 사용자가 건드렸고(isTouched) 에러 메시지가 있을 때만 에러 스타일 적용
+        status={isTouched && notValidPWErrorMessage ? 'error' : 'default'}
       />
-      {notValidPWErrorMessage && <ErrorMessage>{notValidPWErrorMessage}</ErrorMessage>}
+      {/* 에러 메시지 노출 조건도 동일하게 설정 */}
+      {isTouched && notValidPWErrorMessage && <ErrorMessage>{notValidPWErrorMessage}</ErrorMessage>}
     </div>
   )
 }

@@ -16,6 +16,7 @@ export default function Step1BottomButton({ lang }: Step1BottomButtonProps) {
   const isStep1FormValid = useRegisterStore((state) => state.isStep1FormValid())
   return (
     <Button
+      disabled={!isStep1FormValid}
       onClick={() => {
         router.push(`/${lang}/sign-up?step=2`)
       }}

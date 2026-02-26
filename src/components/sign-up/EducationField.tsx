@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef } from 'react' // 1. useRef, useEffect 추가
 import { DropDown, Label } from '@/components/common'
 import { useDropDown } from '@/hooks'
 import { useRegisterStore } from '@/store/registerStore'
@@ -18,6 +19,26 @@ export default function EducationField() {
 
   const { updateRegister } = useRegisterStore((state) => state)
 
+  // 2. 외부 클릭 감지를 위한 ref 생성
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  // 3. 외부 클릭 시 닫기 로직 추가
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsDropDownOpen(false)
+      }
+    }
+
+    if (isDropDownOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isDropDownOpen, setIsDropDownOpen])
+
   const educationList = [
     t('step2.educationField.content.highSchoolGraduate'),
     t('step2.educationField.content.universityEnrolled'),
@@ -27,7 +48,8 @@ export default function EducationField() {
   ]
 
   return (
-    <div className="flex flex-col gap-y-2">
+    // 4. 최상위 div에 ref 연결
+    <div className="flex flex-col gap-y-2" ref={containerRef}>
       <Label label={t('step2.educationField.label')} type={'titleSm'} isRequired={true} />
       <DropDown
         selectedValue={selectedDropDownContent}

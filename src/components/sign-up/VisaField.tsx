@@ -1,8 +1,8 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { VISA_LIST } from '@/utils/filterList'
-import { DropDownGray3Icon, SearchIcon } from '@/assets/svgComponents'
+import { DropDownGray3Icon, DropDownGray4Icon, SearchIcon } from '@/assets/svgComponents'
 import { useTranslation } from 'react-i18next'
 import { useRegisterStore } from '@/store/registerStore'
 import DropDown from '../common/DropDown'
@@ -15,11 +15,32 @@ export default function VisaField() {
   const { registerData, updateRegister } = useRegisterStore((state) => state)
   const { t } = useTranslation(['signup', 'filter'])
 
+  // 외부 클릭 감지를 위한 ref
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  // 외부 클릭 시 드롭다운을 닫는 로직
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsDropBoxOpen(false)
+        setSearchValue('')
+      }
+    }
+
+    if (isDropBoxOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isDropBoxOpen])
+
   // 검색어에 따라 필터링된 비자 리스트
   const filteredList = useMemo(() => {
     if (!searchValue) return VISA_LIST
-    return VISA_LIST.filter((visa) => visa.i18nKey.toLowerCase().includes(searchValue.toLowerCase()))
-  }, [searchValue])
+    return VISA_LIST.filter((visa) => t(visa.i18nKey).toLowerCase().includes(searchValue.toLowerCase()))
+  }, [searchValue, t])
 
   // 현재 선택된 비자의 라벨을 찾는 함수
   const getSelectedLabel = () => {
@@ -34,38 +55,35 @@ export default function VisaField() {
     setSearchValue('')
   }
 
-  // Input 컨테이너 클릭 시 드롭박스 토글
-  const handleInputContainerClick = () => {
-    setIsDropBoxOpen(!isDropBoxOpen)
-  }
-
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className="flex flex-col gap-y-2" ref={containerRef}>
       <Label label={t('signup:step2.visaField.label')} isRequired={true} type={'titleSm'} />
-      <div onClick={handleInputContainerClick} className="relative">
+
+      <div className="relative">
         {isDropBoxOpen ? (
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="border-gray2 flex h-[52px] items-center gap-x-2 rounded-[12px] border px-4 py-3"
-          >
+          // 검색창 활성화 상태
+          <div className="border-gray2 flex h-[52px] items-center gap-x-2 rounded-[12px] border bg-white px-4 py-3">
             <SearchIcon width={24} height={24} />
             <input
+              autoFocus
               className="w-full outline-none"
               value={searchValue}
               placeholder={t('signup:step2.visaField.searchVisaPlaceholder')}
-              onChange={(e) => {
-                setSearchValue(e.target.value)
-              }}
+              onChange={(e) => setSearchValue(e.target.value)}
             />
           </div>
         ) : (
           // 드롭박스가 닫혀있을 때: 선택된 값 표시
           <section
             onClick={() => setIsDropBoxOpen(true)}
-            className="border-gray2 flex h-[52px] items-center justify-between rounded-[12px] border px-4 py-3"
+            className="border-gray2 flex h-[52px] cursor-pointer items-center justify-between rounded-[12px] border bg-white px-4 py-3"
           >
             <p className={`${registerData?.visa ? 'text-black' : 'text-gray4'} button`}>{t(getSelectedLabel())}</p>
-            <DropDownGray3Icon width={20} height={20} />
+            {isDropBoxOpen ? (
+              <DropDownGray3Icon width={20} height={20} />
+            ) : (
+              <DropDownGray4Icon width={20} height={20} />
+            )}
           </section>
         )}
 

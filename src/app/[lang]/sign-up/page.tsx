@@ -25,8 +25,8 @@ export default async function SignUpPage({
   const { t } = await getTranslationServer(lang, 'signup')
 
   const steps = [
-    { stepNumber: '1', stepLabel: t('menu.step1') },
-    { stepNumber: '2', stepLabel: t('menu.step2') },
+    { stepNumber: '1', stepLabel: t('signup:menu.step1') },
+    { stepNumber: '2', stepLabel: t('signup:menu.step2') },
   ]
   const resolvedSearchParams = await searchParams
 
