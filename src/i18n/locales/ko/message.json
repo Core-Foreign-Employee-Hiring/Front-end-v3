@@ -183,5 +183,27 @@
       "title": "실패",
       "description": "어학 능력 삭제에 실패했어요."
     }
+  },
+
+  "delete_spec_certifications": {
+    "success": {
+      "title": "성공",
+      "description": "자격증 정보를 삭제했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "자격증 정보를 삭제하지 못했어요."
+    }
+  },
+
+  "delete_spec_careers": {
+    "success": {
+      "title": "성공",
+      "description": "경력 정보를 삭제했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "경력 정보를 삭제하지 못했어요."
+    }
   }
 }

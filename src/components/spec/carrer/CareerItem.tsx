@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { useRouter } from 'next/navigation'
 import { deleteSpecCareers } from '@/lib/client/spec/career'
 import { DeleteIcon, EditIcon } from '@/assets/svgComponents'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface CareerItemProps {
   career: SpecCareerType
@@ -14,7 +15,8 @@ interface CareerItemProps {
 }
 
 export default function CareerItem({ career, toggleFormOpenState }: CareerItemProps) {
-  const { t } = useTranslation(['spec', 'filter'])
+  const { t } = useTranslation(['spec', 'filter', 'message'])
+  const { success, error } = useToast()
   const router = useRouter()
 
   return (
@@ -55,7 +57,13 @@ export default function CareerItem({ career, toggleFormOpenState }: CareerItemPr
             onClick={async () => {
               const result = await deleteSpecCareers(`${career.careerId}`)
               if (result.success) {
+                success(
+                  t('message:delete_spec_careers.success.title'),
+                  t('message:delete_spec_careers.success.description')
+                )
                 router.refresh()
+              } else {
+                error(t('message:delete_spec_careers.error.title'), t('message:delete_spec_careers.error.description'))
               }
             }}
             size={'sm'}

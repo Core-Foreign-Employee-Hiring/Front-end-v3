@@ -8,6 +8,8 @@ import { deleteSpecCertifications } from '@/lib/client/spec/certification'
 import { getFileNameFromUrl, getFileSizeFromUrl } from '@/utils/common'
 import { useEffect, useState } from 'react'
 import { DeleteIcon, EditIcon } from '@/assets/svgComponents'
+import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface CertificationItemProps {
   certification: SpecCertificationType
@@ -15,6 +17,8 @@ interface CertificationItemProps {
 }
 
 export default function CertificationItem({ certification, toggleFormOpenState }: CertificationItemProps) {
+  const { t } = useTranslation(['spec', 'message'])
+  const { success, error } = useToast()
   const router = useRouter()
   const [fileSize, setFileSize] = useState<string>('Loading...')
 
@@ -39,7 +43,7 @@ export default function CertificationItem({ certification, toggleFormOpenState }
 
         <section className="desktop:flex tablet:flex hidden shrink-0 gap-x-2 whitespace-nowrap">
           <Button onClick={toggleFormOpenState} size={'sm'} variant={'outline'} customClassName="w-fit">
-            수정
+            {t('spec:buttons.edit')}
           </Button>
           <Button
             onClick={async () => {
@@ -52,7 +56,7 @@ export default function CertificationItem({ certification, toggleFormOpenState }
             variant={'outline'}
             customClassName="w-fit"
           >
-            삭제
+            {t('spec:buttons.delete')}
           </Button>
         </section>
 
@@ -70,7 +74,16 @@ export default function CertificationItem({ certification, toggleFormOpenState }
             onClick={async () => {
               const result = await deleteSpecCertifications(`${certification.certificationId}`)
               if (result.success) {
+                success(
+                  t('message:delete_spec_certifications.success.title'),
+                  t('message:delete_spec_certifications.success.description')
+                )
                 router.refresh()
+              } else {
+                error(
+                  t('message:delete_spec_certifications.error.title'),
+                  t('message:delete_spec_certifications.error.description')
+                )
               }
             }}
             size={'sm'}
