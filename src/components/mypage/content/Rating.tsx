@@ -3,9 +3,11 @@
 import { useEffect, useState } from 'react'
 import { Label, TextInput } from '@/components/common'
 import { GrayStarIcon, StarIcon } from '@/assets/svgComponents'
-import { useReviewStore } from '@/store/reviewStore' // 스토어 경로를 확인하세요
+import { useReviewStore } from '@/store/reviewStore'
+import { useTranslation } from 'react-i18next' // 스토어 경로를 확인하세요
 
 export default function Rating() {
+  const { t } = useTranslation('modal')
   const [integer, setInteger] = useState('')
   const [decimal, setDecimal] = useState('')
 
@@ -26,7 +28,7 @@ export default function Rating() {
 
   return (
     <section className="flex flex-col gap-y-2">
-      <Label label={'평점'} type={'subtitleMd'} />
+      <Label label={t('write_review.body.rating.label')} type={'subtitleMd'} />
 
       <div className="flex items-center gap-x-2">
         {/* 정수 입력: 0~5까지만 허용 */}

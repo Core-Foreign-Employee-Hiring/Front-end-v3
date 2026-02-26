@@ -7,8 +7,10 @@ import { useEffect, useState } from 'react'
 import { useInterviewStore } from '@/store/interview/interviewStore'
 import { useModalStore } from '@/store/modalStore'
 import ServicePrepareModal from '@/components/common/modal/ServicePrepareModal'
+import { useTranslation } from 'react-i18next'
 
 export default function BottomField() {
+  const { t } = useTranslation('interview')
   const [type, setType] = useState<'text' | 'audio'>('text')
   // 분리된 비즈니스 로직 훅
   const { handleCommonSubmit, handleFollowUpSubmit } = useTest()
@@ -31,10 +33,10 @@ export default function BottomField() {
 
   // 3. 로딩 상태에 따른 맞춤형 메시지 설정
   const getPlaceholder = () => {
-    if (isFollowUpLoading) return '압박 질문을 생성하고 있습니다...'
-    if (isNextLoading) return '다음 질문을 불러오고 있습니다...'
-    if (isResultLoading) return '면접 결과를 분석 중입니다. 잠시만 기다려주세요...'
-    return '질문에 대한 답변을 입력하세요.'
+    if (isFollowUpLoading) return t('test.bottom_field.placeholders.follow_up_loading')
+    if (isNextLoading) return t('test.bottom_field.placeholders.next_loading')
+    if (isResultLoading) return t('test.bottom_field.placeholders.result_loading')
+    return t('test.bottom_field.placeholders.default')
   }
 
   useEffect(() => {
@@ -69,8 +71,8 @@ export default function BottomField() {
           }
         }}
         contentList={[
-          { content: '텍스트 입력', type: 'text' },
-          { content: '음성 입력', type: 'audio' },
+          { content: t('test.bottom_field.input_types.text'), type: 'text' },
+          { content: t('test.bottom_field.input_types.audio'), type: 'audio' },
         ]}
       />
 
@@ -88,7 +90,7 @@ export default function BottomField() {
           // 5. 동적 플레이스홀더 전달
           placeholder={getPlaceholder()}
         />
-        <p className="kr-subtitle-sm text-gray5">Shift + Enter로 줄바꿈이 가능합니다.</p>
+        <p className="kr-subtitle-sm text-gray5">{t('test.bottom_field.guide')}</p>
       </div>
     </div>
   )

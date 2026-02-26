@@ -4,8 +4,10 @@ import { Button, Label, Modal } from '@/components/common'
 import { deleteNote } from '@/lib/client/interview'
 import { useModalStore } from '@/store/modalStore'
 import { useNoteStore } from '@/store/interview/noteStore'
+import { useTranslation } from 'react-i18next'
 
 export default function DeleteNoteModal() {
+  const { t } = useTranslation('modal')
   const { toggleModal, modals } = useModalStore((state) => state)
 
   const { selectedNoteId } = useNoteStore((state) => state)
@@ -22,15 +24,15 @@ export default function DeleteNoteModal() {
       isOpen={modals.isDeleteNoteModalOpen}
     >
       <Modal.Header>
-        <Label label={'답변노트를 삭제하실껀가요?'} type={'subtitleLg'} />
+        <Label label={t('delete_note.header')} type={'subtitleLg'} />
       </Modal.Header>
       <Modal.Body>
-        <Label label={'삭제된 노트는 되돌릴 수 없습니다.'} type={'subtitleMd'} labelColor={'text-gray5'} />
+        <Label label={t('delete_note.body')} type={'subtitleMd'} labelColor={'text-gray5'} />
       </Modal.Body>
       <Modal.Footer>
         <>
           <Button onClick={toggleDeleteNoteState} variant={'outline'} size={'lg'} buttonType={'button'}>
-            취소
+            {t('footer_buttons.cancel')}
           </Button>
           <Button
             onClick={async () => {
@@ -41,7 +43,7 @@ export default function DeleteNoteModal() {
             size={'lg'}
             buttonType={'button'}
           >
-            저장
+            {t('footer_buttons.save')}
           </Button>
         </>
       </Modal.Footer>

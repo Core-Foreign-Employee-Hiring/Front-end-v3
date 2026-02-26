@@ -1,0 +1,270 @@
+{
+  "footer_buttons": {
+    "close": "닫기",
+    "reset": "초기화",
+    "completed": "완료",
+    "cancel": "취소",
+    "save": "저장",
+    "next": "다음",
+    "prev": "이전"
+  },
+
+  "ai_interview_test_setting": {
+    "header": {
+      "title": "면접 설정",
+      "description": "지원하는 직무와 레벨을 선택하면 KORFIT이 실전 질문으로 구성해요."
+    },
+    "body": {
+      "basic_setting": "기본 설정",
+      "interview_title": {
+        "label": "면접명",
+        "placeholder": "면접 명을 입력해주세요."
+      },
+      "interview_job": {
+        "label": "지원 직무",
+        "placeholder": "직무 선택",
+        "list": {
+          "marketing": "마케팅",
+          "it": "IT"
+        }
+      },
+      "interview_level": {
+        "label": "지원 레벨",
+        "placeholder": "지원 레벨 선택",
+        "list": {
+          "intern": "인턴",
+          "entry": "신입",
+          "experienced": "경력"
+        }
+      }
+    },
+    "footer": {
+      "start": "면접 시작"
+    },
+    "messages": {
+      "fetch_error": "면접 데이터를 불러오는데 실패했습니다."
+    }
+  },
+  "application_method": {
+    "header": {
+      "title": "해당 공고는 <0>`{{method}}`</0> 입니다.",
+      "types": {
+        "EMAIL": "이메일 지원",
+        "WEBSITE": "웹사이트 지원",
+        "PHONE_SMS": "전화 / 문자 지원"
+      }
+    },
+    "body": {
+      "copy_success": "복사되었습니다!",
+      "copy_fail": "복사에 실패했습니다. 직접 복사해 주세요."
+    },
+    "footer": {
+      "copy": "링크 복사"
+    }
+  },
+
+  "contract": {
+    "header": {
+      "title": "계약 형태 선택"
+    }
+  },
+
+  "create_new_answer_note": {
+    "header": {
+      "title": "새 답변 노트"
+    },
+    "body": {
+      "note_name": {
+        "label": "노트명",
+        "placeholder": "예: 자기소개 모음"
+      }
+    },
+    "messages": {
+      "success": "노트 추가 성공"
+    }
+  },
+
+  "create_resume": {
+    "header": {
+      "title": "새 이력서"
+    },
+    "body": {
+      "steps": {
+        "step_1": "이력서 내용 입력",
+        "step_2": "템플릿 선택"
+      },
+      "info": {
+        "profile_image_uploader": {
+          "label": "사진",
+          "buttons": {
+            "upload": "업로드",
+            "re_upload": "재업로드"
+          }
+        },
+        "title_field": {
+          "label": "이력서 이름",
+          "placeholder": "예. 00직무 이력서, 00회사 지원용 이력서"
+        },
+        "self_intro_field": {
+          "label": "자기소개",
+          "placeholder": "예. 00직무 이력서, 00회사 지원용 이력서",
+          "tips": [
+            "본인의 강점과 경험을 구체적으로 작성하면 좋아요.",
+            "지원 직무와 관련된 역량을 강조하면 좋아요.",
+            "성과는 수치로 표현하면 좋아요."
+          ]
+        },
+        "url_field": {
+          "button": "URL 추가",
+          "title_placeholder": "제목입력",
+          "url_placeholder": "URL 입력"
+        }
+      },
+      "template": {
+        "preview_button": "미리보기"
+      }
+    },
+    "footer": {
+      "completed": "작성완료"
+    }
+  },
+
+  "delete_note": {
+    "header": "답변노트를 삭제하실껀가요?",
+    "body": "삭제된 노트는 되돌릴 수 없습니다."
+  },
+
+  "edit_note_title": {
+    "header": "답변 노트 수정",
+    "body": {
+      "note_title_field": {
+        "label": "노트명",
+        "placeholder": "예: 자기소개 모음"
+      }
+    }
+  },
+
+  "info_picker": {
+    "header": {
+      "title": "지원 목적에 맞게\n이력서에 포함할 정보를 선택하세요.",
+      "sub_title": "나의 강점이 가장 잘 드러나는\n맞춤형 PDF 이력서를 만들 수 있어요."
+    },
+    "body": {
+      "select_all": "모두 선택",
+      "info_list": {
+        "includeIntroduction": "자기소개",
+        "includeEducation": "학력",
+        "includeCertificate": "자격증",
+        "includeLanguage": "어학 능력",
+        "includeCareer": "경력",
+        "includeAward": "수상",
+        "includeActivity": "기타 활동",
+        "includeUrls": "URL"
+      }
+    },
+    "footer": {
+      "export": "내보내기"
+    }
+  },
+
+  "job_role": {
+    "header": "직무 선택",
+    "body": {
+      "message": {
+        "no_search_result": "검색 결과가 없습니다"
+      }
+    }
+  },
+
+  "language": {
+    "header": "언어 선택",
+    "body": {
+      "placeholder": "언어를 검색해주세요.",
+      "message": {
+        "no_search_result": "검색 결과가 없습니다"
+      }
+    }
+  },
+
+  "not_use_resume_service": {
+    "header": "스펙 분석을 먼저 해야 이력서를 추출할 수 있습니다.",
+    "footer": {
+      "spec": "스펙 분석"
+    }
+  },
+
+  "purchase_completion": {
+    "header": {
+      "title": "<0>구매</0>가 완료되었어요!",
+      "description": "구매한 내역은 <0>마이페이지 → 콘텐츠 내역</0> 에서 확인할 수 있어요."
+    },
+    "footer": {
+      "go_to_history": "콘텐츠 내역"
+    }
+  },
+
+  "region": {
+    "header": "지역 선택",
+    "body": {
+      "placeholder": "지역을 검색해주세요.",
+      "message": {
+        "no_search_result": "검색 결과가 없습니다"
+      }
+    }
+  },
+
+  "required_login": {
+    "header": "로그인이 필요한 서비스입니다.",
+    "footer": {
+      "login": "로그인"
+    }
+  },
+  "resume_preview": {
+    "header": "이력서 미리보기"
+  },
+  "save_answer_note": {
+    "header": "답변 노트 저장",
+    "body": {
+      "label": "노트명",
+      "button": "새 노트 만들기"
+    }
+  },
+
+  "service_prepare": {
+    "header": "현재 서비스 준비중입니다."
+  },
+
+  "view_review": {
+    "header": "리뷰"
+  },
+
+  "visa": {
+    "header": "비자 선택",
+    "body": {
+      "placeholder": "비자를 검색해주세요.",
+      "message": {
+        "no_search_result": "검색 결과가 없습니다"
+      }
+    }
+  },
+
+  "write_review": {
+    "header": "리뷰 작성",
+    "body": {
+      "review_summary": {
+        "price_unit": "{{price}}원",
+        "payment_status": "{{date}} 결제완료"
+      },
+      "rating": {
+        "label": "평점"
+      },
+      "review_input_field": {
+        "label": "리뷰",
+        "placeholder": "리뷰를 남겨보세요."
+      }
+    },
+    "footer": {
+      "write": "작성하기"
+    }
+  }
+}

@@ -3,12 +3,14 @@
 import PostCode, { Address } from 'react-daum-postcode'
 import { Button, Modal } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
+import { useTranslation } from 'react-i18next'
 
 interface SearchAddressModalProps {
   handleChangeAddress: (zipcode: string, address1: string, latitude?: number, longitude?: number) => void
 }
 
 export default function SearchAddressModal({ handleChangeAddress }: SearchAddressModalProps) {
+  const { t } = useTranslation('modal')
   const { toggleModal, modals } = useModalStore()
 
   // 수정: 명시적으로 false를 전달해야 모달이 닫힙니다.
@@ -72,7 +74,7 @@ export default function SearchAddressModal({ handleChangeAddress }: SearchAddres
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={onClose} size={'lg'} variant={'outline'}>
-          닫기
+          {t('footer_buttons.close')}
         </Button>
       </Modal.Footer>
     </Modal>

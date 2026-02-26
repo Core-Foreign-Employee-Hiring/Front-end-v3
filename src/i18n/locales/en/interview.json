@@ -160,5 +160,34 @@
       "create_note": "Create New Note",
       "search_placeholder": "Search notes..."
     }
+  },
+
+  "test": {
+    "chat": {
+      "loading": {
+        "next_question": "Generating next question...",
+        "follow_up": "Generating follow-up question...",
+        "result": "Analyzing results..."
+      },
+      "question": {
+        "label": "Question",
+        "common_question": "General",
+        "follow_up_question": "Deep Dive"
+      }
+    },
+
+    "bottom_field": {
+      "input_types": {
+        "text": "Text Input",
+        "audio": "Voice Input"
+      },
+      "placeholders": {
+        "default": "Please enter your answer to the question.",
+        "follow_up_loading": "Generating a follow-up question...",
+        "next_loading": "Loading the next question...",
+        "result_loading": "Analyzing interview results. Please wait..."
+      },
+      "guide": "Press Shift + Enter for a new line."
+    }
   }
 }

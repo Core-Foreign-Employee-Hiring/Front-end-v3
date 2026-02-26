@@ -1,15 +1,15 @@
-import { PageLayout, ResultContent, Spacing } from '@/components/common'
-import {
-  DetailedFeedbackItem,
-  InterviewHeader,
-  InterviewResult,
-  ResultHeaderOption,
-  ResultHeaderTitle,
-} from '@/components/interview'
 import { fetchInterviewResult } from '@/lib/server/interview'
-import SaveNoteButton from '@/components/interview/result/SaveNoteButton'
 import { InterviewResultType } from '@/types/interview'
+import SaveNoteButton from '@/components/interview/result/SaveNoteButton'
 import AuthWatcher from '@/components/auth/AuthWatcher'
+import PageLayout from '@/components/common/PageLayout'
+import ResultContent from '@/components/common/ResultContent'
+import Spacing from '@/components/common/Spacing'
+import InterviewHeader from '@/components/interview/InterviewHeader'
+import ResultHeaderOption from '@/components/interview/result/HeaderOption'
+import ResultHeaderTitle from '@/components/interview/result/HeaderTitle'
+import InterviewResult from '@/components/interview/InterviewResult'
+import DetailedFeedbackItem from '@/components/interview/result/DetailedFeedbackItem'
 
 interface InterviewResultPageProps {
   params: Promise<{ setId: string }>

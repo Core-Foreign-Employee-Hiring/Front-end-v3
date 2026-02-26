@@ -1,3 +1,5 @@
+'use client'
+
 import { Button, Label, TextInput } from '@/components/common'
 import { VisaType } from '@/types/job-post'
 import { useTranslation } from 'react-i18next'
@@ -21,7 +23,7 @@ export default function MobileVisaModal({
   onReset,
   onApply,
 }: MobileVisaModalProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['filter', 'modal'])
   const [searchQuery, setSearchQuery] = useState('')
   const { toggleModal, modals } = useModalStore((state) => state)
 
@@ -41,7 +43,7 @@ export default function MobileVisaModal({
   return (
     <div className="desktop:hidden tablet:hidden fixed inset-0 z-80 flex h-full w-full flex-col gap-y-[24px] overflow-y-auto bg-white p-5">
       <section className="flex items-center justify-between">
-        <Label label={'비자 선택'} type={'titleMd'} />
+        <Label label={t('modal:visa.header')} type={'titleMd'} />
         <Gray5XIcon className="cursor-pointer" onClick={onClose} width={24} height={24} />
       </section>
       <div className="flex flex-col gap-y-4">
@@ -49,7 +51,7 @@ export default function MobileVisaModal({
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           status={'default'}
-          placeholder={'비자를 검색해주세요.'}
+          placeholder={t('modal:visa.body.placeholder')}
         />
         <div className="flex flex-col gap-y-4">
           {/* 필터링된 리스트만 렌더링 */}
@@ -73,7 +75,9 @@ export default function MobileVisaModal({
                 )
               })
             ) : (
-              <p className="text-gray4 w-full py-10 text-center font-sans">검색 결과가 없습니다.</p>
+              <p className="text-gray4 w-full py-10 text-center font-sans">
+                {t('modal:visa.body.message.no_search_result')}
+              </p>
             )}
           </section>
 
@@ -100,9 +104,9 @@ export default function MobileVisaModal({
 
       <div className="fixed bottom-0 left-0 z-80 flex w-full gap-x-2 bg-white px-5 py-[24px]">
         <Button onClick={onReset} size={'lg'} variant={'outline'}>
-          초기화
+          {t('modal:footer_buttons.reset')}
         </Button>
-        <Button onClick={onApply}>완료</Button>
+        <Button onClick={onApply}>{t('modal:footer_buttons.completed')}</Button>
       </div>
     </div>
   )

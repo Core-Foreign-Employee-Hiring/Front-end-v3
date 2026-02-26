@@ -9,7 +9,7 @@ interface SalaryTypeBadgeProps {
 }
 
 export default function SalaryTypeBadge({ salaryType }: SalaryTypeBadgeProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('jobPost')
 
   const SalaryTypeClassName = (salaryEnumType: SalaryEnumType) => {
     switch (salaryEnumType) {

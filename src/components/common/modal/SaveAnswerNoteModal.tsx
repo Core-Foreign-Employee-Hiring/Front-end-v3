@@ -7,8 +7,10 @@ import { useModalStore } from '@/store/modalStore'
 import { fetchClientAnswerNotes, postAnswerEntry } from '@/lib/client/interview'
 import { useQuery } from '@tanstack/react-query'
 import { useNoteStore } from '@/store/interview/noteStore'
+import { useTranslation } from 'react-i18next'
 
 export default function SaveAnswerNoteModal() {
+  const { t } = useTranslation('modal')
   const { modals, toggleModal } = useModalStore((state) => state)
 
   const { selectedNoteId, answerEntry, resetAnswerEntry, resetSelectedNoteId, resetCreateNoteData } = useNoteStore(
@@ -43,11 +45,11 @@ export default function SaveAnswerNoteModal() {
       isOpen={modals.isSaveAnswerNoteModalOpen}
     >
       <Modal.Header>
-        <Label label={'답변 노트 저장'} type={'subtitleLg'} />
+        <Label label={t('save_answer_note.header')} type={'subtitleLg'} />
       </Modal.Header>
       <Modal.Body>
         <div className="flex flex-col gap-y-2">
-          <Label label={'노트명'} type={'titleSm'} labelColor={'text-gray5'} />
+          <Label label={t('save_answer_note.body.label')} type={'titleSm'} labelColor={'text-gray5'} />
           {notes.length > 0 && <NoteListDropDown noteList={notes} />}
           <Button
             customClassName={'w-[140px]'}
@@ -57,14 +59,14 @@ export default function SaveAnswerNoteModal() {
             size={'sm'}
             buttonType={'button'}
           >
-            새 노트 만들기
+            {t('save_answer_note.body.button')}
           </Button>
         </div>
       </Modal.Body>
       <Modal.Footer>
         <>
           <Button onClick={toggleSaveAnswerNoteState} variant={'outline'} size={'lg'} buttonType={'button'}>
-            닫기
+            {t('footer_buttons.close')}
           </Button>
           <Button
             onClick={async () => {
@@ -81,7 +83,7 @@ export default function SaveAnswerNoteModal() {
             size={'lg'}
             buttonType={'button'}
           >
-            저장
+            {t('footer_buttons.save')}
           </Button>
         </>
       </Modal.Footer>

@@ -2,13 +2,15 @@
 
 import { Label, Spacing, TextInput } from '@/components/common'
 import { useInterviewStore } from '@/store/interview/interviewStore'
+import { useTranslation } from 'react-i18next'
 
 export default function InterviewTitle() {
+  const { t } = useTranslation('modal')
   const { setSettingInterviewOption, settingInterviewOption } = useInterviewStore((state) => state)
 
   return (
     <div>
-      <Label label={'면접명'} type={'titleSm'} />
+      <Label label={t('ai_interview_test_setting.body.interview_title.label')} type={'titleSm'} />
       <Spacing height={8} />
       <TextInput
         value={settingInterviewOption.title ?? ''}
@@ -16,7 +18,7 @@ export default function InterviewTitle() {
           setSettingInterviewOption({ title: e.target.value })
         }}
         status={'default'}
-        placeholder={'면접 명을 입력해주세요.'}
+        placeholder={t('ai_interview_test_setting.body.interview_title.placeholder')}
       />
     </div>
   )

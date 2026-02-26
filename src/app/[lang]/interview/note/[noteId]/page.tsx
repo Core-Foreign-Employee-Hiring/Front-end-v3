@@ -1,9 +1,12 @@
-import { DetailedFeedbackItem, InterviewHeader } from '@/components/interview'
-import { Label, PageLayout, Spacing } from '@/components/common'
-import NoteHeaderOption from '@/components/interview/note/NoteHeaderOption'
 import { fetchInterviewAnswerNoteDetail } from '@/lib/server/interview'
 import { ResponseCreateNewNoteType } from '@/types/interview/note'
+import NoteHeaderOption from '@/components/interview/note/NoteHeaderOption'
 import AuthWatcher from '@/components/auth/AuthWatcher'
+import PageLayout from '@/components/common/PageLayout'
+import Spacing from '@/components/common/Spacing'
+import Label from '@/components/common/Label'
+import InterviewHeader from '@/components/interview/InterviewHeader'
+import DetailedFeedbackItem from '@/components/interview/result/DetailedFeedbackItem'
 
 interface InterviewNoteDetailPageProps {
   params: Promise<{ noteId: string }>

@@ -15,11 +15,11 @@ import {
 } from '@/types/job-post'
 
 export const CONTRACT_LIST: { code: ContractEnumType | CarrerType; label: string }[] = [
-  { code: 'INTERN', label: 'filter.contractTypeFilter.content.INTERN' },
-  { code: 'NEWCOMER', label: 'filter.contractTypeFilter.content.NEWCOMER' },
-  { code: 'EXPERIENCED', label: 'filter.contractTypeFilter.content.EXPERIENCED' },
-  { code: 'CONTRACT', label: 'filter.contractTypeFilter.content.CONTRACT' },
-  { code: 'REGULAR', label: 'filter.contractTypeFilter.content.REGULAR' },
+  { code: 'INTERN', label: 'filter:filter.contractTypeFilter.content.INTERN' },
+  { code: 'NEWCOMER', label: 'filter:filter.contractTypeFilter.content.NEWCOMER' },
+  { code: 'EXPERIENCED', label: 'filter:filter.contractTypeFilter.content.EXPERIENCED' },
+  { code: 'CONTRACT', label: 'filter:filter.contractTypeFilter.content.CONTRACT' },
+  { code: 'REGULAR', label: 'filter:filter.contractTypeFilter.content.REGULAR' },
 ]
 
 export const NATIONALITY_LIST: { code: NationalityType; label: string }[] = [

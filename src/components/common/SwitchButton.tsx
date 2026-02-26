@@ -1,3 +1,5 @@
+'use client'
+
 interface SwitchButtonProps<T extends string> {
   contentList: { content: string; type: T }[]
   type: T

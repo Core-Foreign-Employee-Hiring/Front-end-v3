@@ -1,3 +1,4 @@
+'use client'
 import { Button, Label } from '@/components/common'
 import { CarrerType } from '@/types/job-post'
 import { useTranslation } from 'react-i18next'
@@ -21,7 +22,7 @@ export default function MobileContractModal({
   onApply,
 }: MobileContractModalProps) {
   const { toggleModal, modals } = useModalStore((state) => state)
-  const { t } = useTranslation()
+  const { t } = useTranslation(['filter', 'modal'])
   const onClose = () => {
     toggleModal('isContractModalOpen')
   }
@@ -29,7 +30,7 @@ export default function MobileContractModal({
   return (
     <div className="desktop:hidden tablet:hidden fixed inset-0 z-80 flex h-full w-full flex-col gap-y-[24px] overflow-y-auto bg-white p-5">
       <section className="flex items-center justify-between">
-        <Label label={'계약 형태 선택'} type={'titleMd'} />
+        <Label label={t('modal:contract.header.title')} type={'titleMd'} />
         <Gray5XIcon className="cursor-pointer" onClick={onClose} width={24} height={24} />
       </section>
       <div className="flex flex-wrap gap-2">
@@ -49,9 +50,9 @@ export default function MobileContractModal({
 
       <div className="fixed bottom-0 left-0 z-80 flex w-full gap-x-2 bg-white px-5 py-[24px]">
         <Button onClick={onReset} size={'lg'} variant={'outline'}>
-          초기화
+          {t('modal:footer_buttons.reset')}
         </Button>
-        <Button onClick={onApply}>완료</Button>
+        <Button onClick={onApply}>{t('modal:footer_buttons.completed')}</Button>
       </div>
     </div>
   )

@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 
 import { Dispatch, SetStateAction } from 'react'
@@ -5,6 +6,7 @@ import { WhiteXIcon } from '@/assets/svgComponents'
 import { useModalStore } from '@/store/modalStore'
 import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 
 interface ImageModalProps {
   ImageUrl: string | undefined | null
@@ -12,6 +14,7 @@ interface ImageModalProps {
 }
 
 export default function ImageModal({ ImageUrl, setSelectedImageUrl }: ImageModalProps) {
+  const { t } = useTranslation('modal')
   const { toggleModal, modals } = useModalStore((state) => state)
 
   const handleCloseModal = () => {
@@ -46,7 +49,7 @@ export default function ImageModal({ ImageUrl, setSelectedImageUrl }: ImageModal
               onClick={handleCloseModal}
               className="absolute -top-12 right-0 flex cursor-pointer items-center text-white transition-colors hover:text-gray-300"
             >
-              닫기
+              {t('footer_buttons.close')}
               <WhiteXIcon width={32} height={32} className="hover:opacity-60" />
             </button>
 

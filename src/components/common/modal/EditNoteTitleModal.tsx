@@ -1,10 +1,14 @@
+'use client'
+
 import { Button, Label, Modal, TextInput } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
 import { useNoteStore } from '@/store/interview/noteStore'
 import { putNoteTitle } from '@/lib/client/interview'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 export default function EditNoteTitleModal() {
+  const { t } = useTranslation('modal')
   const router = useRouter()
   const { toggleModal, modals } = useModalStore((state) => state)
 
@@ -22,13 +26,13 @@ export default function EditNoteTitleModal() {
       isOpen={modals.isEditNoteTitleModalOpen}
     >
       <Modal.Header>
-        <Label label={'답변 노트 수정'} type={'subtitleLg'} />
+        <Label label={t('edit_note_title.header')} type={'subtitleLg'} />
       </Modal.Header>
       <Modal.Body>
         <div className="flex flex-col gap-y-2">
-          <Label label={'노트명'} type={'titleSm'} labelColor={'text-gray5'} />
+          <Label label={t('edit_note_title.body.note_title_field.label')} type={'titleSm'} labelColor={'text-gray5'} />
           <TextInput
-            placeholder={'예: 자기소개 모음'}
+            placeholder={t('edit_note_title.body.note_title_field.placeholder')}
             value={title}
             onChange={(e) => {
               setTitle(e.target.value)
@@ -40,7 +44,7 @@ export default function EditNoteTitleModal() {
       <Modal.Footer>
         <>
           <Button onClick={toggleEditNoteTitleState} variant={'outline'} size={'lg'} buttonType={'button'}>
-            취소
+            {t('footer_buttons.cancel')}
           </Button>
           <Button
             onClick={async () => {
@@ -53,7 +57,7 @@ export default function EditNoteTitleModal() {
             size={'lg'}
             buttonType={'button'}
           >
-            저장
+            {t('footer_buttons.save')}
           </Button>
         </>
       </Modal.Footer>

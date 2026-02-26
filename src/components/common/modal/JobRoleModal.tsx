@@ -27,7 +27,7 @@ export default function JobRoleModal({
   onReset,
 }: JobRoleModalProps) {
   const [searchQuery, setSearchQuery] = useState('')
-  const { t } = useTranslation()
+  const { t } = useTranslation(['filter', 'modal'])
 
   // Zustand store 구독 최적화 (modals 객체 전체가 아닌 필요한 값과 함수만)
   const isJobRoleModalOpen = useModalStore((state) => state.modals.isJobRoleModalOpen)
@@ -73,11 +73,11 @@ export default function JobRoleModal({
       <Modal.Header
         rightElement={
           <Button onClick={onReset} size={'sm'} customClassName={'w-[70px]'} variant={'outline'}>
-            초기화
+            {t('modal:footer_buttons.reset')}
           </Button>
         }
       >
-        <Label label={'직무선택'} type={'titleMd'} />
+        <Label label={t('modal:job_role.header')} type={'titleMd'} />
       </Modal.Header>
 
       <Modal.Body>
@@ -86,7 +86,7 @@ export default function JobRoleModal({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             status={'default'}
-            placeholder={t('filter.jobRoleFilter.jobRoleSearchPlaceHolder')}
+            placeholder={t('filter:filter.jobRoleFilter.jobRoleSearchPlaceHolder')}
           />
           <section className="border-gray2 flex h-[500px] gap-x-3 rounded-[12px] border bg-white p-3">
             {/* 왼쪽: 직군 리스트 */}
@@ -129,7 +129,9 @@ export default function JobRoleModal({
                       )}
                     </button>
                   ))
-                : searchQuery && <p className="p-4 text-sm text-gray-400">검색 결과가 없습니다</p>}
+                : searchQuery && (
+                    <p className="p-4 text-sm text-gray-400">{t('modal:job_role.body.message.no_search_result')}</p>
+                  )}
             </div>
           </section>
 
@@ -152,9 +154,9 @@ export default function JobRoleModal({
 
       <Modal.Footer>
         <Button onClick={onClose} size={'lg'} variant={'outline'} customClassName={'w-[200px]'}>
-          닫기
+          {t('modal.footer_buttons.close')}
         </Button>
-        <Button onClick={onApply}>완료</Button>
+        <Button onClick={onApply}>{t('modal.footer_buttons.completed')}</Button>
       </Modal.Footer>
     </Modal>
   )

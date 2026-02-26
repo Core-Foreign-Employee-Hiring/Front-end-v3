@@ -1,3 +1,5 @@
+'use client'
+
 interface AnswerProps {
   answer: string
 }

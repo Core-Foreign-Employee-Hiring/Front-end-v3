@@ -1,7 +1,9 @@
 'use client'
+
 import { Button, Modal } from '@/components/common'
 import { ApplicationMethodType } from '@/types/job-post'
 import { useModalStore } from '@/store/modalStore'
+import { Trans, useTranslation } from 'react-i18next'
 
 interface ApplicationMethodModalProps {
   applicationMethod: ApplicationMethodType
@@ -12,15 +14,16 @@ export default function ApplicationMethodModal({
   applicationMethod,
   directInputApplicationMethod,
 }: ApplicationMethodModalProps) {
+  const { t } = useTranslation('modal')
   const { modals, toggleModal } = useModalStore((state) => state)
   const convertHeaderTitle = (applicationMethod: ApplicationMethodType) => {
     switch (applicationMethod) {
       case 'EMAIL':
-        return '이메일 지원'
+        return t('application_method.header.types.EMAIL')
       case 'WEBSITE':
-        return '웹사이트 지원'
+        return t('application_method.header.types.WEBSITE')
       case 'PHONE_SMS':
-        return '전화 / 문자 지원'
+        return t('application_method.header.types.PHONE_SMS')
     }
   }
 
@@ -31,10 +34,10 @@ export default function ApplicationMethodModal({
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(directInputApplicationMethod)
-      alert('복사되었습니다!') // 또는 Toast UI 사용 추천
+      alert(t('application_method.body.copy_success')) // 또는 Toast UI 사용 추천
     } catch (error) {
       console.error('복사 실패:', error)
-      alert('복사에 실패했습니다. 직접 복사해 주세요.')
+      alert(t('application_method.body.copy_fail'))
     }
   }
 
@@ -43,7 +46,11 @@ export default function ApplicationMethodModal({
       <Modal.Header>
         <div className="flex w-full items-center justify-center">
           <h1 className="kr-subtitle-lg">
-            해당 공고는 <span className="text-main-500">`{convertHeaderTitle(applicationMethod)}`</span> 입니다.
+            <Trans
+              i18nKey="application_method.header.title"
+              values={{ method: convertHeaderTitle(applicationMethod) }}
+              components={[<span key="0" className="text-main-500" />]}
+            />
           </h1>
         </div>
       </Modal.Header>
@@ -55,9 +62,9 @@ export default function ApplicationMethodModal({
       <Modal.Footer>
         <>
           <Button onClick={onClose} variant={'outline'}>
-            닫기
+            {t('application_method.footer.close')}
           </Button>
-          <Button onClick={handleCopy}>링크 복사</Button>
+          <Button onClick={handleCopy}>{t('application_method.footer.copy')}</Button>
         </>
       </Modal.Footer>
     </Modal>

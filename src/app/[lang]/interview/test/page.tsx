@@ -1,14 +1,14 @@
-import BottomField from '@/components/interview/test/BottomField'
 import Chat from '@/components/interview/test/Chat'
-import { Spacing } from '@/components/common'
+import BottomField from '@/components/interview/test/BottomField'
+import Spacing from '@/components/common/Spacing'
 
-export default function InterviewTestPage() {
+export default function InterviewTestClient() {
   return (
-    <main className="w-full">
+    <div className="w-full">
       <Chat />
 
       <Spacing height={200} />
       <BottomField />
-    </main>
+    </div>
   )
 }

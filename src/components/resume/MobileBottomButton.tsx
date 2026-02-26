@@ -5,11 +5,12 @@ import { Dispatch, SetStateAction } from 'react'
 import { useModalStore } from '@/store/modalStore'
 import { useResumeStore } from '@/store/resumeStore'
 import { postResume } from '@/lib/client/resume'
+import { useTranslation } from 'react-i18next'
 
 interface MobileBottomButtonProps {
   currentStep: '1' | '2'
   setCurrentStep: Dispatch<SetStateAction<'1' | '2'>>
-  setCurrentLabel: Dispatch<SetStateAction<'이력서 내용 입력' | '템플릿 선택'>>
+  setCurrentLabel: Dispatch<SetStateAction<'이력서 내용 입력' | '템플릿 선택' | string>>
 }
 
 export default function MobileBottomButton({ currentStep, setCurrentStep, setCurrentLabel }: MobileBottomButtonProps) {
@@ -21,6 +22,8 @@ export default function MobileBottomButton({ currentStep, setCurrentStep, setCur
     toggleModal('isCreateResumeModalOpen')
   }
 
+  const { t } = useTranslation('modal')
+
   return (
     <div className="fixed bottom-0 left-0 flex w-full gap-x-4 bg-white px-5 py-3">
       {currentStep === '1' ? (
@@ -29,21 +32,21 @@ export default function MobileBottomButton({ currentStep, setCurrentStep, setCur
           disabled={!(resumeProfileFile && createResume.resumeName)}
           onClick={() => {
             setCurrentStep('2')
-            setCurrentLabel('템플릿 선택')
+            setCurrentLabel(t('create_resume.body.steps.step_2'))
           }}
         >
-          다음
+          {t('footer_buttons.next')}
         </Button>
       ) : (
         <>
           <Button
             onClick={() => {
               setCurrentStep('1')
-              setCurrentLabel('이력서 내용 입력')
+              setCurrentLabel(t('create_resume.body.steps.step_1'))
             }}
             variant={'outline'}
           >
-            이전
+            {t('footer_buttons.prev')}
           </Button>
           <Button
             state={resumeProfileFile && createResume.resumeName ? 'default' : 'disable'}
@@ -57,7 +60,7 @@ export default function MobileBottomButton({ currentStep, setCurrentStep, setCur
               }
             }}
           >
-            완료하기
+            {t('create_resume.footer.completed')}
           </Button>
         </>
       )}

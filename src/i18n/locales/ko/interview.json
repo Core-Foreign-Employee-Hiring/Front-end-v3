@@ -159,5 +159,34 @@
     },
     "header": {
     }
+  },
+
+  "test": {
+    "chat": {
+      "loading": {
+        "next_question": "질문 생성중...",
+        "follow_up": "압박 질문 생성중...",
+        "result": "결과 생성중..."
+      },
+      "question": {
+        "label": "질문",
+        "common_question": "공통",
+        "follow_up_question": "압박 면접"
+      }
+    },
+
+    "bottom_field": {
+      "input_types": {
+        "text": "텍스트 입력",
+        "audio": "음성 입력"
+      },
+      "placeholders": {
+        "default": "질문에 대한 답변을 입력하세요.",
+        "follow_up_loading": "압박 질문을 생성하고 있습니다...",
+        "next_loading": "다음 질문을 불러오고 있습니다...",
+        "result_loading": "면접 결과를 분석 중입니다. 잠시만 기다려주세요..."
+      },
+      "guide": "Shift + Enter로 줄바꿈이 가능합니다."
+    }
   }
 }

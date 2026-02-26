@@ -1,3 +1,5 @@
+'use client'
+
 import { InterviewResultChat, InterviewResultHeader } from '@/components/interview'
 
 interface InterviewResultProps {

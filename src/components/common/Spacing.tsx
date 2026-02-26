@@ -1,3 +1,5 @@
+'use client'
+
 interface SpacingProps {
   width?: number
   height?: number

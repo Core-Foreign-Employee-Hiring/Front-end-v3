@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useResumeStore } from '@/store/resumeStore'
 import { useModalStore } from '@/store/modalStore'
 import ResumePreviewModal from '@/components/common/modal/ResumePreviewModal'
+import { useTranslation } from 'react-i18next'
 
 interface SelectTemplateItemProps {
   type: 'ver1' | 'ver2'
@@ -12,6 +13,7 @@ interface SelectTemplateItemProps {
 }
 
 export default function SelectTemplateItem({ type, selectedType, setSelectedType, imageUrl }: SelectTemplateItemProps) {
+  const { t } = useTranslation('modal')
   const { updateCreateResumeField } = useResumeStore((state) => state)
   const { modals, toggleModal } = useModalStore((state) => state)
   return (
@@ -51,7 +53,7 @@ export default function SelectTemplateItem({ type, selectedType, setSelectedType
           size={'sm'}
           variant={'outline'}
         >
-          미리보기
+          {t('create_resume.body.template.preview_button')}
         </Button>
       </div>
     </div>

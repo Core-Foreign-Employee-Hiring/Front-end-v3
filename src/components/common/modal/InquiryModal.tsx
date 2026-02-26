@@ -3,6 +3,7 @@
 import { Button, Modal } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
 import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 
 interface InquiryModalProps {
   inquiry: string
@@ -10,6 +11,7 @@ interface InquiryModalProps {
 
 export default function InquiryModal({ inquiry }: InquiryModalProps) {
   const { toggleModal, modals } = useModalStore((state) => state)
+  const { t } = useTranslation('modal')
   const onClose = () => {
     toggleModal('isInquiryModalOpen')
   }
@@ -23,7 +25,7 @@ export default function InquiryModal({ inquiry }: InquiryModalProps) {
       <Modal.Footer>
         <>
           <Button onClick={onClose} variant={'outline'}>
-            닫기
+            {t('footer.buttons.close')}
           </Button>
         </>
       </Modal.Footer>

@@ -5,8 +5,10 @@ import { Button, Label, Spacing } from '@/components/common'
 import Image from 'next/image'
 import { UploadIcon } from '@/assets/svgComponents'
 import { useResumeStore } from '@/store/resumeStore'
+import { useTranslation } from 'react-i18next'
 
 export default function ProfileImageUploader() {
+  const { t } = useTranslation('modal')
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const resumeProfileFile = useResumeStore((state) => state.resumeProfileFile)
@@ -37,7 +39,7 @@ export default function ProfileImageUploader() {
 
   return (
     <div>
-      <Label label={'사진'} type={'titleSm'} isRequired={true} />
+      <Label label={t('create_resume.body.info.profile_image_uploader.label')} type={'titleSm'} isRequired={true} />
       <Spacing height={8} />
 
       {/* 이미지 미리보기 영역 */}
@@ -56,10 +58,12 @@ export default function ProfileImageUploader() {
         leftIcon={<UploadIcon width={20} height={20} />}
         size={'sm'}
         variant={'outline'}
-        customClassName={resumeProfileFile ? 'w-[110px]' : 'w-[100px]'}
+        customClassName={'w-fit'}
         onClick={handleUploadClick}
       >
-        {resumeProfileFile ? '재업로드' : '업로드'}
+        {resumeProfileFile
+          ? t('create_resume.body.info.profile_image_uploader.buttons.re_upload')
+          : t('create_resume.body.info.profile_image_uploader.buttons.upload')}
       </Button>
     </div>
   )

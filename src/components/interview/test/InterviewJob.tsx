@@ -2,8 +2,10 @@ import { DropDown, Label, Spacing } from '@/components/common'
 import { useDropDown } from '@/hooks'
 import { JobType } from '@/types/interview'
 import { useInterviewStore } from '@/store/interview/interviewStore'
+import { useTranslation } from 'react-i18next'
 
 export default function InterviewJob() {
+  const { t } = useTranslation('modal')
   const {
     initialValue,
     selectedDropDownContent,
@@ -11,15 +13,15 @@ export default function InterviewJob() {
     setIsDropDownOpen,
     selectedDropDownHandler,
     dropDownOpenHandler,
-  } = useDropDown({ initialValue: '직무 선택' })
+  } = useDropDown({ initialValue: t('ai_interview_test_setting.body.interview_job.placeholder') })
   const { setSettingInterviewOption } = useInterviewStore((state) => state)
   const jobList: { content: string; enum: JobType }[] = [
-    { content: '마케팅', enum: 'marketing' },
-    { content: 'IT', enum: 'it' },
+    { content: t('ai_interview_test_setting.body.interview_job.list.marketing'), enum: 'marketing' },
+    { content: t('ai_interview_test_setting.body.interview_job.list.it'), enum: 'it' },
   ]
   return (
     <div className="w-full">
-      <Label isRequired={true} label={'지원 직무'} />
+      <Label isRequired={true} label={t('ai_interview_test_setting.body.interview_job.label')} />
       <Spacing height={8} />
       <DropDown
         selectedValue={selectedDropDownContent}

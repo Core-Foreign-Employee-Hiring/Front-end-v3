@@ -4,17 +4,19 @@ import InfoPickerItem from '@/components/resume/info-picker/InfoPickerItem'
 import { CheckIcon, UncheckIcon } from '@/assets/svgComponents'
 import { useResumeStore } from '@/store/resumeStore'
 import { ResumeSelectionType } from '@/types/resume'
+import { useTranslation } from 'react-i18next'
 
 export default function InfoPicker() {
+  const { t } = useTranslation('modal')
   const infoList: { key: keyof ResumeSelectionType; content: string }[] = [
-    { key: 'includeIntroduction', content: '자기소개' },
-    { key: 'includeEducation', content: '학력' },
-    { key: 'includeCertificate', content: '자격증' },
-    { key: 'includeLanguage', content: '어학 능력' },
-    { key: 'includeCareer', content: '경력' },
-    { key: 'includeAward', content: '수상' },
-    { key: 'includeActivity', content: '기타 활동' },
-    { key: 'includeUrls', content: 'URL' },
+    { key: 'includeIntroduction', content: t('info_picker.body.info_list.includeIntroduction') },
+    { key: 'includeEducation', content: t('info_picker.body.info_list.includeEducation') },
+    { key: 'includeCertificate', content: t('info_picker.body.info_list.includeCertificate') },
+    { key: 'includeLanguage', content: t('info_picker.body.info_list.includeLanguage') },
+    { key: 'includeCareer', content: t('info_picker.body.info_list.includeCareer') },
+    { key: 'includeAward', content: t('info_picker.body.info_list.includeAward') },
+    { key: 'includeActivity', content: t('info_picker.body.info_list.includeActivity') },
+    { key: 'includeUrls', content: t('info_picker.body.info_list.includeUrls') },
   ]
 
   // Zustand 스토어 연결
@@ -39,7 +41,9 @@ export default function InfoPicker() {
         ) : (
           <UncheckIcon width={20} height={20} />
         )}
-        <p className={`kr-subtitle-md ${isAllSelected ? 'text-main-500' : 'text-gray5'}`}>모두 선택</p>
+        <p className={`kr-subtitle-md ${isAllSelected ? 'text-main-500' : 'text-gray5'}`}>
+          {t('info_picker.body.select_all')}
+        </p>
       </div>
 
       {/* 항목 그리드 */}

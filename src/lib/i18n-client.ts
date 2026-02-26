@@ -33,6 +33,8 @@ i18n
       'login',
       'signup',
       'findAuth',
+      'my',
+      'modal',
     ],
     defaultNS: 'common',
     react: {

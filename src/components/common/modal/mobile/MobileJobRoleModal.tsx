@@ -1,3 +1,4 @@
+'use client'
 import { Button, Label, TextInput } from '@/components/common'
 import { JobCategoryType, JobRoleType } from '@/types/job-post'
 import { useTranslation } from 'react-i18next'
@@ -26,7 +27,7 @@ export default function MobileJobRoleModal({
   onReset,
 }: MobileJobRoleModalProps) {
   const [searchQuery, setSearchQuery] = useState('')
-  const { t } = useTranslation()
+  const { t } = useTranslation(['filter', 'modal'])
 
   // Zustand store 구독 최적화 (modals 객체 전체가 아닌 필요한 값과 함수만)
   const isJobRoleModalOpen = useModalStore((state) => state.modals.isJobRoleModalOpen)
@@ -70,7 +71,7 @@ export default function MobileJobRoleModal({
   return (
     <div className="desktop:hidden tablet:hidden fixed inset-0 z-80 flex h-full w-full flex-col gap-y-[24px] overflow-y-auto bg-white p-5">
       <section className="flex items-center justify-between">
-        <Label label={'직무 선택'} type={'titleMd'} />
+        <Label label={t('modal:job_role.header')} type={'titleMd'} />
         <Gray5XIcon className="cursor-pointer" onClick={onClose} width={24} height={24} />
       </section>
       <div className="flex flex-col gap-y-4">
@@ -121,7 +122,9 @@ export default function MobileJobRoleModal({
                     )}
                   </button>
                 ))
-              : searchQuery && <p className="p-4 text-sm text-gray-400">검색 결과가 없습니다</p>}
+              : searchQuery && (
+                  <p className="p-4 text-sm text-gray-400">{t('modal:job_role.body.message.no_search_result')}</p>
+                )}
           </div>
         </section>
 
@@ -143,9 +146,9 @@ export default function MobileJobRoleModal({
 
       <div className="fixed bottom-0 left-0 z-80 flex w-full gap-x-2 bg-white px-5 py-[24px]">
         <Button onClick={onReset} size={'lg'} variant={'outline'}>
-          초기화
+          {t('modal:footer_buttons.reset')}
         </Button>
-        <Button onClick={onApply}>완료</Button>
+        <Button onClick={onApply}>{t('modal:footer_buttons.completed')}</Button>
       </div>
     </div>
   )

@@ -1,12 +1,15 @@
+'use client'
 import { Button, Label, Modal } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
 import Image from 'next/image'
+import { useTranslation } from 'react-i18next'
 
 interface ResumePreviewModalProps {
   type: 'ver1' | 'ver2'
 }
 
 export default function ResumePreviewModal({ type }: ResumePreviewModalProps) {
+  const { t } = useTranslation('modal')
   const { toggleModal, modals } = useModalStore((state) => state)
   const onClose = () => {
     toggleModal('isResumePreviewModalOpen')
@@ -20,7 +23,7 @@ export default function ResumePreviewModal({ type }: ResumePreviewModalProps) {
     >
       <Modal.Header>
         <div className="flex flex-col gap-y-2">
-          <Label label={'이력서 미리보기'} type={'titleLg'} />
+          <Label label={t('resume_preview.header')} type={'titleLg'} />
           <p className="text-gray5 kr-subtitle-md">{type === 'ver1' ? 'ver.1' : 'ver.2'}</p>
         </div>
       </Modal.Header>
@@ -43,7 +46,7 @@ export default function ResumePreviewModal({ type }: ResumePreviewModalProps) {
       <Modal.Footer>
         <div className="flex w-full justify-start">
           <Button customClassName={'w-[200px]'} onClick={onClose} variant={'outline'}>
-            닫기
+            {t('footer_buttons.close')}
           </Button>
         </div>
       </Modal.Footer>

@@ -1,0 +1,273 @@
+{
+  "footer_buttons": {
+    "close": "Close",
+    "reset": "Reset",
+    "completed": "Done",
+    "cancel": "Cancel",
+    "save": "Save",
+    "next": "Next",
+    "prev": "Prev"
+  },
+
+  "ai_interview_test_setting": {
+    "header": {
+      "title": "Interview Setup",
+      "description": "Select your target job and level, and KORFIT will generate real-world interview questions."
+    },
+    "body": {
+      "basic_setting": "General Settings",
+      "interview_title": {
+        "label": "Interview Title",
+        "placeholder": "Enter a title for this interview."
+      },
+      "interview_job": {
+        "label": "Target Job",
+        "placeholder": "Select Job",
+        "list": {
+          "marketing": "Marketing",
+          "it": "IT"
+        }
+      },
+      "interview_level": {
+        "label": "Experience Level",
+        "placeholder": "Select Level",
+        "list": {
+          "intern": "Intern",
+          "entry": "Newcomer/Junior",
+          "experienced": "Experienced/Senior"
+        }
+      }
+    },
+    "footer": {
+      "start": "Start Interview"
+    },
+    "messages": {
+      "fetch_error": "Failed to load interview data."
+    }
+  },
+
+  "application_method": {
+    "header": {
+      "title": "This is an <0>`{{method}}`</0> announcement.",
+      "types": {
+        "EMAIL": "Email Application",
+        "WEBSITE": "Website Application",
+        "PHONE_SMS": "Phone / SMS Application"
+      }
+    },
+    "body": {
+      "copy_success": "Copied to clipboard!",
+      "copy_fail": "Failed to copy. Please copy it manually."
+    },
+    "footer": {
+      "copy": "Copy Link"
+    }
+  },
+
+  "contract": {
+    "header": {
+      "title": "Select Employment Type"
+    }
+  },
+
+  "create_new_answer_note": {
+    "header": {
+      "title": "New Answer Note"
+    },
+    "body": {
+      "note_name": {
+        "label": "Note Title",
+        "placeholder": "e.g., Self-introduction Collection"
+      }
+    },
+    "messages": {
+      "success": "Note created successfully"
+    }
+  },
+
+  "create_resume": {
+    "header": {
+      "title": "New Resume"
+    },
+    "body": {
+      "steps": {
+        "step_1": "Enter Details",
+        "step_2": "Select Template"
+      },
+      "info": {
+        "profile_image_uploader": {
+          "label": "Photo",
+          "buttons": {
+            "upload": "Upload",
+            "re_upload": "Re-upload"
+          }
+        },
+        "title_field": {
+          "label": "Resume Name",
+          "placeholder": "e.g., Marketing Resume, Application for Company OO"
+        },
+        "self_intro_field": {
+          "label": "Professional Summary",
+          "placeholder": "e.g., Highlights of my career and skills",
+          "tips": [
+            "Be specific about your strengths and experiences.",
+            "Highlight skills relevant to the target job role.",
+            "Quantify your achievements with data or numbers."
+          ]
+        },
+        "url_field": {
+          "button": "Add URL",
+          "title_placeholder": "Title",
+          "url_placeholder": "Enter URL"
+        }
+      },
+      "template": {
+        "preview_button": "Preview"
+      }
+    },
+    "footer": {
+      "completed": "Finish"
+    }
+  },
+
+  "delete_note": {
+    "header": "Delete this answer note?",
+    "body": "Deleted notes cannot be recovered."
+  },
+
+  "edit_note_title": {
+    "header": "Edit Note Title",
+    "body": {
+      "note_title_field": {
+        "label": "Note Title",
+        "placeholder": "e.g., Self-introduction Collection"
+      }
+    }
+  },
+
+  "info_picker": {
+    "header": {
+      "title": "Select the information to include\nin your resume based on your goals.",
+      "sub_title": "Create a customized PDF resume\nthat highlights your key strengths."
+    },
+    "body": {
+      "select_all": "Select All",
+      "info_list": {
+        "includeIntroduction": "Summary",
+        "includeEducation": "Education",
+        "includeCertificate": "Certificates",
+        "includeLanguage": "Languages",
+        "includeCareer": "Work Experience",
+        "includeAward": "Awards",
+        "includeActivity": "Activities",
+        "includeUrls": "URLs"
+      }
+    },
+    "footer": {
+      "export": "Export"
+    }
+  },
+
+  "job_role": {
+    "header": "Select Job Category",
+    "body": {
+      "message": {
+        "no_search_result": "No results found"
+      }
+    }
+  },
+
+  "language": {
+    "header": "Select Language",
+    "body": {
+      "placeholder": "Search for a language...",
+      "message": {
+        "no_search_result": "No results found"
+      }
+    }
+  },
+
+  "not_use_resume_service": {
+    "header": "You must complete a Spec Analysis before exporting a resume.",
+    "footer": {
+      "spec": "Spec Analysis"
+    }
+  },
+
+  "purchase_completion": {
+    "header": {
+      "title": "Your <0>purchase</0> is complete!",
+      "description": "You can check your purchase history in <0>My Page → Content History</0>."
+    },
+    "footer": {
+      "go_to_history": "Content History"
+    }
+  },
+
+  "region": {
+    "header": "Select Region",
+    "body": {
+      "placeholder": "Search for a region...",
+      "message": {
+        "no_search_result": "No results found"
+      }
+    }
+  },
+
+  "required_login": {
+    "header": "Login is required for this service.",
+    "footer": {
+      "login": "Login"
+    }
+  },
+
+  "resume_preview": {
+    "header": "Resume Preview"
+  },
+
+  "save_answer_note": {
+    "header": "Save Answer Note",
+    "body": {
+      "label": "Note Title",
+      "button": "Create New Note"
+    }
+  },
+
+  "service_prepare": {
+    "header": "This service is currently under preparation."
+  },
+
+  "view_review": {
+    "header": "Review"
+  },
+
+  "visa": {
+    "header": "Select Visa Type",
+    "body": {
+      "placeholder": "Search for a visa type...",
+      "message": {
+        "no_search_result": "No results found"
+      }
+    }
+  },
+
+  "write_review": {
+    "header": "Write a Review",
+    "body": {
+      "review_summary": {
+        "price_unit": "${{price}}",
+        "payment_status": "Paid on {{date}}"
+      },
+      "rating": {
+        "label": "Rating"
+      },
+      "review_input_field": {
+        "label": "Review",
+        "placeholder": "Share your experience."
+      }
+    },
+    "footer": {
+      "write": "Submit"
+    }
+  }
+}

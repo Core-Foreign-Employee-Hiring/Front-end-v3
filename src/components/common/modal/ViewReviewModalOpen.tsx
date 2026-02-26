@@ -1,3 +1,4 @@
+'use client'
 import { Button, Label, Modal } from '@/components/common'
 import { StarIcon } from '@/assets/svgComponents'
 import { useModalStore } from '@/store/modalStore'
@@ -12,7 +13,7 @@ interface ViewReviewModalOpenProps {
 }
 
 export default function ViewReviewModalOpen({ reviewId }: ViewReviewModalOpenProps) {
-  const { t } = useTranslation('content')
+  const { t } = useTranslation(['content', 'modal'])
   const { toggleModal, modals } = useModalStore((state) => state)
   const onClose = () => {
     toggleModal('isViewReviewModalOpen')
@@ -28,7 +29,7 @@ export default function ViewReviewModalOpen({ reviewId }: ViewReviewModalOpenPro
   return (
     <Modal isOpen={modals.isViewReviewModalOpen} mobileHidden={false}>
       <Modal.Header>
-        <Label label={'리뷰'} type={'titleMd'} />
+        <Label label={t('modal:view_review.header')} type={'titleMd'} />
       </Modal.Header>
       <Modal.Body>
         <div className="flex flex-col gap-y-3">
@@ -45,7 +46,7 @@ export default function ViewReviewModalOpen({ reviewId }: ViewReviewModalOpenPro
       <Modal.Footer>
         <div className="flex w-full justify-end">
           <Button onClick={onClose} variant={'outline'}>
-            닫기
+            {t('modal:footer_buttons.close')}
           </Button>
         </div>
       </Modal.Footer>

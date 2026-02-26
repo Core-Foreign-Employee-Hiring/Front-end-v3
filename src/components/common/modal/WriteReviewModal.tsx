@@ -8,6 +8,7 @@ import { useModalStore } from '@/store/modalStore'
 import { useReviewStore } from '@/store/reviewStore'
 import { postReview } from '@/lib/client/pass-archives'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface WriteReviewModalProps {
   archiveId: number
@@ -18,6 +19,7 @@ interface WriteReviewModalProps {
 }
 
 export default function WriteReviewModal({ archiveId, title, thumbnailUrl, approvedAt, price }: WriteReviewModalProps) {
+  const { t } = useTranslation('modal')
   const { modals, toggleModal } = useModalStore((state) => state)
   const { reviewData } = useReviewStore((state) => state)
   const router = useRouter()
@@ -28,7 +30,7 @@ export default function WriteReviewModal({ archiveId, title, thumbnailUrl, appro
   return (
     <Modal isOpen={modals.isWriteReviewModalOpen} mobileHidden={false}>
       <Modal.Header>
-        <Label label={'리뷰 작성'} type={'titleMd'} />
+        <Label label={t('write_review.header')} type={'titleMd'} />
       </Modal.Header>
 
       <Modal.Body>
@@ -42,7 +44,7 @@ export default function WriteReviewModal({ archiveId, title, thumbnailUrl, appro
       <Modal.Footer>
         <>
           <Button onClick={onClose} variant={'outline'} customClassName="w-[200px]">
-            닫기
+            {t('footer_buttons.close')}
           </Button>
           <Button
             onClick={async () => {
@@ -54,7 +56,7 @@ export default function WriteReviewModal({ archiveId, title, thumbnailUrl, appro
               onClose()
             }}
           >
-            작성하기
+            {t('write_review.footer.write')}
           </Button>
         </>
       </Modal.Footer>

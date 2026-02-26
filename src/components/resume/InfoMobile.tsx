@@ -9,7 +9,7 @@ import { Spacing } from '@/components/common'
 interface InfoMobileProps {
   currentStep: '1' | '2'
   setCurrentStep: Dispatch<SetStateAction<'1' | '2'>>
-  setCurrentLabel: Dispatch<SetStateAction<'이력서 내용 입력' | '템플릿 선택'>>
+  setCurrentLabel: Dispatch<SetStateAction<string>>
 }
 
 export default function InfoMobile({ currentStep, setCurrentStep, setCurrentLabel }: InfoMobileProps) {

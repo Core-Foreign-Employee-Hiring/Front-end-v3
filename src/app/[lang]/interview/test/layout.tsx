@@ -1,4 +1,6 @@
-import { InterviewHeader, TestHeaderOption, TestHeaderTitle } from '@/components/interview'
+import HeaderTitle from '@/components/interview/test/HeaderTitle'
+import HeaderOption from '@/components/interview/test/HeaderOption'
+import InterviewHeader from '@/components/interview/InterviewHeader'
 
 export default async function InterviewLayout({
   children,
@@ -10,7 +12,7 @@ export default async function InterviewLayout({
   const { lang } = await params
   return (
     <div>
-      <InterviewHeader leftElement={<TestHeaderTitle />} rightElement={<TestHeaderOption />} />
+      <InterviewHeader leftElement={<HeaderTitle />} rightElement={<HeaderOption />} />
       <div className="desktop:px-[40px] tablet:px-[32px] px-[20px] py-[20px]">{children}</div>
     </div>
   )

@@ -1,18 +1,20 @@
 import { Label, Spacing, TextInput } from '@/components/common'
 import { useResumeStore } from '@/store/resumeStore'
+import { useTranslation } from 'react-i18next'
 
 export default function TitleField() {
+  const { t } = useTranslation('modal')
   const { updateCreateResumeField, createResume } = useResumeStore((state) => state)
   return (
     <div>
-      <Label label={'이력서 이름'} type={'titleSm'} isRequired={true} />
+      <Label label={t('create_resume.body.info.title_field.label')} type={'titleSm'} isRequired={true} />
       <Spacing height={8} />
       <TextInput
         value={createResume.resumeName}
         onChange={(e) => {
           updateCreateResumeField('resumeName', e.target.value)
         }}
-        placeholder={'예. 00직무 이력서, 00회사 지원용 이력서'}
+        placeholder={t('create_resume.body.info.title_field.placeholder')}
       />
     </div>
   )

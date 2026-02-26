@@ -4,8 +4,10 @@ import { Button, Label, Spacing } from '@/components/common'
 import UrlField from '@/components/resume/info-form/UrlField'
 import { GrayPlusIcon } from '@/assets/svgComponents'
 import { useResumeStore } from '@/store/resumeStore'
+import { useTranslation } from 'react-i18next'
 
 export default function UrlList() {
+  const { t } = useTranslation('modal')
   const urls = useResumeStore((state) => state.createResume.urls)
   const addUrl = useResumeStore((state) => state.addUrl)
 
@@ -30,7 +32,7 @@ export default function UrlList() {
         variant={'outline'}
         onClick={addUrl} // 클릭 시 스토어에 빈 객체 추가
       >
-        URL 추가
+        {t('create_resume.body.info.url_field.button')}
       </Button>
     </div>
   )

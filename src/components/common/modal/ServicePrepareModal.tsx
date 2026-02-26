@@ -2,8 +2,10 @@
 
 import { Button, Label, Modal } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
+import { useTranslation } from 'react-i18next'
 
 export default function ServicePrepareModal() {
+  const { t } = useTranslation('modal')
   const { toggleModal, modals } = useModalStore((state) => state)
   const onClose = () => {
     toggleModal('isServicePrepareModalOpen')
@@ -12,12 +14,12 @@ export default function ServicePrepareModal() {
     <Modal isOpen={modals.isServicePrepareModalOpen}>
       <Modal.Header>
         <div className="kr-subtitle-lg flex w-full flex-col items-center justify-center">
-          <Label label={'현재 서비스 준비중입니다.'} type={'subtitleLg'} />
+          <Label label={t('service_prepare.header')} type={'subtitleLg'} />
         </div>
       </Modal.Header>
       <Modal.Footer>
         <Button onClick={onClose} size={'lg'} variant={'outline'}>
-          닫기
+          {t('footer_buttons.close')}
         </Button>
       </Modal.Footer>
     </Modal>

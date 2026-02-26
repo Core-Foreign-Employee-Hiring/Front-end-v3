@@ -6,8 +6,10 @@ import InfoPicker from '@/components/resume/info-picker/InfoPicker'
 import { patchResume } from '@/lib/client/resume'
 import { useResumeStore } from '@/store/resumeStore'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 export default function InfoPickerModal() {
+  const { t } = useTranslation('modal')
   const router = useRouter()
 
   const { createResumeResponse, resumeSelection, selectedType } = useResumeStore((state) => state)
@@ -29,13 +31,11 @@ export default function InfoPickerModal() {
       <Modal.Header>
         <div className="flex flex-col gap-y-2">
           <div className="desktop:flex-row tablet:flex-row flex flex-col">
-            <Label label={'지원 목적에 맞게 '} type={'titleMd'} />
-            <Label label={'이력서에 포함할 정보를 선택하세요.'} type={'titleMd'} />
+            <Label label={t('info_picker.header.title')} type={'titleMd'} />
           </div>
 
           <div className="desktop:flex-row tablet:flex-row flex flex-col">
-            <Label label={'나의 강점이 가장 잘 드러나는'} type={'subtitleMd'} labelColor={'text-gray5'} />
-            <Label label={'맞춤형 PDF 이력서를 만들 수 있어요.'} type={'subtitleMd'} labelColor={'text-gray5'} />
+            <Label label={t('info_picker.header.sub_title')} type={'titleMd'} />
           </div>
         </div>
       </Modal.Header>
@@ -45,7 +45,7 @@ export default function InfoPickerModal() {
       <Modal.Footer>
         <>
           <Button onClick={onClose} variant={'outline'} size={'lg'} customClassName={'w-[200px]'}>
-            닫기
+            {t('footer_buttons.close')}
           </Button>
           <Button
             onClick={async () => {
@@ -57,7 +57,7 @@ export default function InfoPickerModal() {
             variant={'primary'}
             size={'lg'}
           >
-            내보내기
+            {t('info_picker.footer.export')}
           </Button>
         </>
       </Modal.Footer>

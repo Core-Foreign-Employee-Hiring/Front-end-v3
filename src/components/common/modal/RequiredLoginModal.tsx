@@ -1,19 +1,22 @@
+'use client'
 import { Button, Label, Modal } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface RequiredLoginModalProps {
   lang: string
 }
 
 export default function RequiredLoginModal({ lang }: RequiredLoginModalProps) {
+  const { t } = useTranslation('modal')
   const { modals, setModal } = useModalStore((state) => state)
   const router = useRouter()
 
   return (
     <Modal mobileHidden={false} isOpen={modals.isRequiredLoginModalOpen}>
       <Modal.Header>
-        <Label label={'로그인이 필요한 서비스입니다.'} />
+        <Label label={t('required_login.header')} />
       </Modal.Header>
       <Modal.Footer>
         <>
@@ -24,7 +27,7 @@ export default function RequiredLoginModal({ lang }: RequiredLoginModalProps) {
             }}
             variant={'primary'}
           >
-            로그인
+            {t('required_login.footer.login')}
           </Button>
         </>
       </Modal.Footer>

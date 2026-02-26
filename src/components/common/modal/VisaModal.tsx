@@ -17,7 +17,7 @@ interface VisaModalProps {
 }
 
 export default function VisaModal({ addVisas, deleteVisas, selectedVisas, onReset, onApply }: VisaModalProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['filter', 'modal'])
   const [searchQuery, setSearchQuery] = useState('')
   const { toggleModal, modals } = useModalStore((state) => state)
 
@@ -39,11 +39,11 @@ export default function VisaModal({ addVisas, deleteVisas, selectedVisas, onRese
       <Modal.Header
         rightElement={
           <Button onClick={onReset} size={'sm'} customClassName={'w-[70px]'} variant={'outline'}>
-            초기화
+            {t('modal:footer_buttons.reset')}
           </Button>
         }
       >
-        <Label label={'비자선택'} type={'titleMd'} />
+        <Label label={t('modal:visa.header')} type={'titleMd'} />
       </Modal.Header>
 
       <Modal.Body>
@@ -52,7 +52,7 @@ export default function VisaModal({ addVisas, deleteVisas, selectedVisas, onRese
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             status={'default'}
-            placeholder={'비자를 검색해주세요.'}
+            placeholder={t('modal:visa.body.placeholder')}
           />
           <div className="flex flex-col gap-y-4">
             {/* 필터링된 리스트만 렌더링 */}
@@ -76,7 +76,9 @@ export default function VisaModal({ addVisas, deleteVisas, selectedVisas, onRese
                   )
                 })
               ) : (
-                <p className="text-gray4 w-full py-10 text-center font-sans">검색 결과가 없습니다.</p>
+                <p className="text-gray4 w-full py-10 text-center font-sans">
+                  {t('modal:visa.body.message.no_search_result')}
+                </p>
               )}
             </section>
 
@@ -104,9 +106,9 @@ export default function VisaModal({ addVisas, deleteVisas, selectedVisas, onRese
 
       <Modal.Footer>
         <Button onClick={onClose} size={'lg'} variant={'outline'} customClassName={'w-[200px]'}>
-          닫기
+          {t('modal:footer_buttons.close')}
         </Button>
-        <Button onClick={onApply}>완료</Button>
+        <Button onClick={onApply}>{t('modal:footer_buttons.completed')}</Button>
       </Modal.Footer>
     </Modal>
   )

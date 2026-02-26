@@ -4,6 +4,7 @@ import { Answer, Question } from '@/components/interview'
 import { Badge, Spacing } from '@/components/common'
 import { useEffect, useRef } from 'react'
 import { useInterviewStore } from '@/store/interview/interviewStore'
+import { useTranslation } from 'react-i18next'
 
 export default function Chat() {
   const {
@@ -17,6 +18,8 @@ export default function Chat() {
   } = useInterviewStore((state) => state)
 
   const isInitialized = useRef(false)
+
+  const { t } = useTranslation('interview')
 
   useEffect(() => {
     if (isInitialized.current || !interviewQuestion || interviewQuestion.questions.length === 0) {
@@ -46,9 +49,9 @@ export default function Chat() {
 
   // 로딩 상태에 따른 뱃지 텍스트 결정 함수
   const getLoadingText = () => {
-    if (isNextLoading) return '질문 생성중...'
-    if (isFollowUpLoading) return '압박 질문 생성중...'
-    if (isResultLoading) return '결과 생성중...'
+    if (isNextLoading) return t('test.chat.loading.next_question')
+    if (isFollowUpLoading) return t('test.chat.loading.follow_up')
+    if (isResultLoading) return t('test.chat.loading.result')
     return null
   }
 

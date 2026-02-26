@@ -8,8 +8,10 @@ import Info from '@/components/resume/Info'
 import Template from '@/components/resume/Template'
 import { useResumeStore } from '@/store/resumeStore'
 import { postResume } from '@/lib/client/resume'
+import { useTranslation } from 'react-i18next'
 
 export default function CreateResumeModal() {
+  const { t } = useTranslation('modal')
   const { modals, toggleModal } = useModalStore((state) => state)
   const { createResume, resumeProfileFile, selectedType, setCreateResumeResponse } = useResumeStore((state) => state)
 
@@ -19,9 +21,10 @@ export default function CreateResumeModal() {
     toggleModal('isCreateResumeModalOpen')
   }
   const steps = [
-    { stepLabel: '이력서 내용 입력', stepNumber: '1' },
-    { stepLabel: '템플릿 선택', stepNumber: '2' },
+    { stepLabel: t('create_resume.body.steps.step_1'), stepNumber: '1' },
+    { stepLabel: t('create_resume.body.steps.step_2'), stepNumber: '2' },
   ]
+
   return (
     <Modal
       customClassName={'desktop:w-[860px] tablet:w-[680px] w-[335px]'}
@@ -29,11 +32,11 @@ export default function CreateResumeModal() {
       onClose={onClose}
     >
       <Modal.Header>
-        <Label type={'titleMd'} label={'새 이력서'} />
+        <Label type={'titleMd'} label={t('create_resume.header.title')} />
       </Modal.Header>
       <Modal.Body>
         <div>
-          <ProgressBar currentStep={currentStep} steps={steps} currentLabel={'1'}></ProgressBar>
+          <ProgressBar currentStep={currentStep} steps={steps} currentLabel={'1'} />
           <Spacing height={20} />
           {currentStep === '1' ? <Info /> : <Template />}
         </div>
@@ -48,7 +51,7 @@ export default function CreateResumeModal() {
             size={'lg'}
             customClassName={'w-[200px]'}
           >
-            닫기
+            {t('footer_buttons.close')}
           </Button>
           <Button
             onClick={async () => {
@@ -68,7 +71,7 @@ export default function CreateResumeModal() {
             disabled={!(resumeProfileFile && createResume.resumeName)}
             size={'lg'}
           >
-            {currentStep === '1' ? '다음' : '작성완료'}
+            {currentStep === '1' ? t('footer_buttons.next') : t('create_resume.footer.completed')}
           </Button>
         </>
       </Modal.Footer>

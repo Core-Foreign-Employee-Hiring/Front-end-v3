@@ -4,8 +4,10 @@ import { Button, Modal } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
 import { PurchaseCompletionIcon } from '@/assets/svgComponents'
 import { useRouter } from 'next/navigation'
+import { Trans, useTranslation } from 'react-i18next'
 
 export default function PurchaseCompletionModal() {
+  const { t } = useTranslation('modal')
   const { toggleModal, modals } = useModalStore((state) => state)
   const router = useRouter()
   const onClose = () => {
@@ -16,10 +18,16 @@ export default function PurchaseCompletionModal() {
       <Modal.Header>
         <div className="flex w-full flex-col items-center gap-y-2">
           <h1 className="kr-title-md">
-            <span className="text-main-500">구매</span>가 완료되었어요!
+            <Trans
+              i18nKey="purchase_completion.header.title"
+              components={[<span key="0" className="text-main-500" />]}
+            />
           </h1>
           <p className="text-gray5 kr-body-md">
-            구매한 내역은 <span className="kr-subtitle-md">마이페이지 → 콘텐츠 내역</span> 에서 확인할 수 있어요.
+            <Trans
+              i18nKey="purchase_completion.header.description"
+              components={[<span key="0" className="kr-subtitle-md" />]}
+            />
           </p>
         </div>
       </Modal.Header>
@@ -31,14 +39,14 @@ export default function PurchaseCompletionModal() {
       <Modal.Footer>
         <>
           <Button onClick={onClose} variant={'outline'}>
-            닫기
+            {t('footer_buttons.close')}
           </Button>
           <Button
             onClick={() => {
               router.push('/mypage/content')
             }}
           >
-            콘텐츠 내역
+            {t('purchase_completion.footer.go_to_history')}
           </Button>
         </>
       </Modal.Footer>

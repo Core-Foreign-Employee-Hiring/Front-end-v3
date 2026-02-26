@@ -1,3 +1,4 @@
+'use client'
 import { Button, Label, Modal, TextInput } from '@/components/common'
 import { getLanguageLabel, LANGUAGE_LIST } from '@/utils/filterList'
 import { Gray5XIcon } from '@/assets/svgComponents'
@@ -21,7 +22,7 @@ export default function LanguageModal({
   onReset,
   onApply,
 }: LanguageModalProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation(['filter', 'modal'])
   const [searchQuery, setSearchQuery] = useState('')
   const { toggleModal, modals } = useModalStore((state) => state)
   const onClose = () => {
@@ -41,11 +42,11 @@ export default function LanguageModal({
       <Modal.Header
         rightElement={
           <Button onClick={onReset} size={'sm'} customClassName={'w-[70px]'} variant={'outline'}>
-            초기화
+            {t('footer_buttons.reset')}
           </Button>
         }
       >
-        <Label label={'비자선택'} type={'titleMd'} />
+        <Label label={t('language.header')} type={'titleMd'} />
       </Modal.Header>
 
       <Modal.Body>
@@ -54,7 +55,7 @@ export default function LanguageModal({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             status={'default'}
-            placeholder={'언어를 검색해주세요.'}
+            placeholder={t('language.body.placeholder')}
           />
           <div className="flex flex-col gap-y-4">
             {/* 필터링된 리스트만 렌더링 */}
@@ -78,7 +79,9 @@ export default function LanguageModal({
                   )
                 })
               ) : (
-                <p className="text-gray4 w-full py-10 text-center font-sans">검색 결과가 없습니다.</p>
+                <p className="text-gray4 w-full py-10 text-center font-sans">
+                  {t('language.body.message.no_search_result')}
+                </p>
               )}
             </section>
 
@@ -106,9 +109,9 @@ export default function LanguageModal({
 
       <Modal.Footer>
         <Button onClick={onClose} size={'lg'} variant={'outline'} customClassName={'w-[200px]'}>
-          닫기
+          {t('modal:footer_buttons.cancel')}
         </Button>
-        <Button onClick={onApply}>완료</Button>
+        <Button onClick={onApply}>{t('modal:footer_buttons.completed')}</Button>
       </Modal.Footer>
     </Modal>
   )

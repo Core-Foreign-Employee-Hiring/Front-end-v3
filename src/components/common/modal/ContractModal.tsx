@@ -17,7 +17,7 @@ interface ContractModalProps {
 
 export default function ContractModal({ addContract, selectedContract, onReset, onApply }: ContractModalProps) {
   const { toggleModal, modals } = useModalStore((state) => state)
-  const { t } = useTranslation()
+  const { t } = useTranslation(['common', 'modal'])
   const onClose = () => {
     toggleModal('isContractModalOpen')
   }
@@ -26,11 +26,11 @@ export default function ContractModal({ addContract, selectedContract, onReset, 
       <Modal.Header
         rightElement={
           <Button onClick={onReset} size={'sm'} customClassName={'w-[70px]'} variant={'outline'}>
-            초기화
+            {t('modal:footer_buttons.reset')}
           </Button>
         }
       >
-        <Label label={'계약 형태 선택'} type={'titleMd'} />
+        <Label label={t('modal:contract.header.title')} type={'titleMd'} />
       </Modal.Header>
 
       <Modal.Body>
@@ -52,9 +52,9 @@ export default function ContractModal({ addContract, selectedContract, onReset, 
 
       <Modal.Footer>
         <Button onClick={onClose} size={'lg'} variant={'outline'} customClassName={'w-[200px]'}>
-          닫기
+          {t('modal:footer_buttons.close')}
         </Button>
-        <Button onClick={onApply}>완료</Button>
+        <Button onClick={onApply}>{t('modal:footer_buttons.completed')}</Button>
       </Modal.Footer>
     </Modal>
   )

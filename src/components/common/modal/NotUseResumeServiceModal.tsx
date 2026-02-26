@@ -2,19 +2,21 @@
 import { Button, Label, Modal } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from 'react-i18next'
 
 interface NotUseResumeServiceModalProps {
   lang: string
 }
 
 export default function NotUseResumeServiceModal({ lang }: NotUseResumeServiceModalProps) {
+  const { t } = useTranslation('modal')
   const { toggleModal, modals } = useModalStore((state) => state)
   const router = useRouter()
 
   return (
     <Modal isOpen={modals.isNotUseResumeService}>
       <Modal.Header>
-        <Label label={'스펙 분석을 먼저 해야 이력서를 추출할 수 있습니다.'} />
+        <Label label={t('not_use_resume_service.header')} />
       </Modal.Header>
       <Modal.Footer>
         <>
@@ -25,7 +27,7 @@ export default function NotUseResumeServiceModal({ lang }: NotUseResumeServiceMo
             }}
             variant={'outline'}
           >
-            닫기
+            {t('footer_buttons.close')}
           </Button>
           <Button
             onClick={() => {
@@ -33,7 +35,7 @@ export default function NotUseResumeServiceModal({ lang }: NotUseResumeServiceMo
             }}
             variant={'primary'}
           >
-            스펙 분석
+            {t('not_use_resume_service.footer.spec')}
           </Button>
         </>
       </Modal.Footer>
