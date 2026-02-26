@@ -235,5 +235,15 @@
       "title": "실패",
       "description": "수정된 노트 제목을 저장하지 못했어요."
     }
+  },
+  "delete_note": {
+    "success": {
+      "title": "성공",
+      "description": "노트를 삭제했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "노트를 삭제하지 못했어요."
+    }
   }
 }

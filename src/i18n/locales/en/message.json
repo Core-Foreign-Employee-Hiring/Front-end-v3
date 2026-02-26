@@ -238,5 +238,16 @@
       "title": "Error",
       "description": "Failed to update note title."
     }
+  },
+
+  "delete_note": {
+    "success": {
+      "title": "Success",
+      "description": "Note deleted successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to delete the note."
+    }
   }
 }
