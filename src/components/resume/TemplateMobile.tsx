@@ -17,13 +17,13 @@ export default function TemplateMobile({ currentStep, setCurrentStep, setCurrent
   return (
     <div className="flex flex-col gap-y-[32px]">
       <SelectTemplateItem
-        type={'ver1'}
+        type={'Modern'}
         selectedType={selectedType}
         setSelectedType={setSelectedType}
         imageUrl={'/template-ver1.png'}
       />
       <SelectTemplateItem
-        type={'ver2'}
+        type={'Classic'}
         selectedType={selectedType}
         setSelectedType={setSelectedType}
         imageUrl={'/template-ver2.png'}

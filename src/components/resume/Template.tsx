@@ -11,13 +11,13 @@ export default function Template() {
       <Spacing height={20} />
       <div className="flex gap-x-5">
         <SelectTemplateItem
-          type={'ver1'}
+          type={'Modern'}
           selectedType={selectedType}
           setSelectedType={setSelectedType}
           imageUrl={'/template-ver1.png'}
         />
         <SelectTemplateItem
-          type={'ver2'}
+          type={'Classic'}
           selectedType={selectedType}
           setSelectedType={setSelectedType}
           imageUrl={'/template-ver2.png'}

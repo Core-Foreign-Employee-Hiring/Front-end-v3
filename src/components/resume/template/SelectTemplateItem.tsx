@@ -4,11 +4,12 @@ import { useResumeStore } from '@/store/resumeStore'
 import { useModalStore } from '@/store/modalStore'
 import ResumePreviewModal from '@/components/common/modal/ResumePreviewModal'
 import { useTranslation } from 'react-i18next'
+import { TemplateType } from '@/types/resume'
 
 interface SelectTemplateItemProps {
-  type: 'ver1' | 'ver2'
-  selectedType: 'ver1' | 'ver2'
-  setSelectedType: (type: 'ver1' | 'ver2') => void
+  type: TemplateType
+  selectedType: TemplateType
+  setSelectedType: (type: TemplateType) => void
   imageUrl: string
 }
 

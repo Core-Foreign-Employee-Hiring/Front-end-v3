@@ -1,5 +1,7 @@
 import { ContractEnumType } from '@/types/spec'
 
+export type TemplateType = 'Modern' | 'Classic'
+
 export interface CreateResumeType {
   resumeName: string
   template: string

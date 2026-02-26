@@ -3,9 +3,10 @@ import { Button, Label, Modal } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
 import Image from 'next/image'
 import { useTranslation } from 'react-i18next'
+import { TemplateType } from '@/types/resume'
 
 interface ResumePreviewModalProps {
-  type: 'ver1' | 'ver2'
+  type: TemplateType
 }
 
 export default function ResumePreviewModal({ type }: ResumePreviewModalProps) {
@@ -24,7 +25,7 @@ export default function ResumePreviewModal({ type }: ResumePreviewModalProps) {
       <Modal.Header>
         <div className="flex flex-col gap-y-2">
           <Label label={t('resume_preview.header')} type={'titleLg'} />
-          <p className="text-gray5 kr-subtitle-md">{type === 'ver1' ? 'ver.1' : 'ver.2'}</p>
+          <p className="text-gray5 kr-subtitle-md">{type === 'Modern' ? 'ver.1' : 'ver.2'}</p>
         </div>
       </Modal.Header>
       <Modal.Body>
@@ -33,7 +34,7 @@ export default function ResumePreviewModal({ type }: ResumePreviewModalProps) {
           <div className="relative w-full" style={{ height: 'fit-content' }}>
             <Image
               alt={'이력서 미리보기'}
-              src={type === 'ver1' ? '/resume_ver1.png' : '/resume_ver2.png'}
+              src={type === 'Modern' ? '/resume_ver1.png' : '/resume_ver2.png'}
               width={0}
               height={0}
               sizes="100vw"

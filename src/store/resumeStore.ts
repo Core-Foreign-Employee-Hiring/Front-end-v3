@@ -1,15 +1,15 @@
 import { create } from 'zustand'
 import { devtools } from 'zustand/middleware'
-import { CreateResumeResponseType, CreateResumeType, ResumeSelectionType } from '@/types/resume'
+import { CreateResumeResponseType, CreateResumeType, ResumeSelectionType, TemplateType } from '@/types/resume'
 
 interface ResumeState {
   createResume: CreateResumeType
   resumeProfileFile: File | null
-  selectedType: 'ver1' | 'ver2'
+  selectedType: TemplateType
   createResumeResponse: CreateResumeResponseType
   resumeSelection: ResumeSelectionType
 
-  setSelectedType: (type: 'ver1' | 'ver2') => void
+  setSelectedType: (type: TemplateType) => void
   updateCreateResumeField: (field: keyof Omit<CreateResumeType, 'urls'>, value: string) => void
   setCreateResumeResponse: (response: CreateResumeResponseType) => void
   updateResumeSelection: (field: keyof ResumeSelectionType, value: boolean) => void
@@ -23,7 +23,7 @@ interface ResumeState {
 const initialResumeData: CreateResumeType = {
   resumeName: '',
   introduction: '',
-  template: 'ver1',
+  template: 'Modern',
   urls: [{ urlTitle: '', urlLink: '' }], // 기본적으로 하나의 입력칸은 제공하는 편이 좋습니다.
 }
 const initialSelection: ResumeSelectionType = {
@@ -42,7 +42,7 @@ export const useResumeStore = create<ResumeState>()(
     createResume: initialResumeData,
     resumeSelection: initialSelection,
     resumeProfileFile: null,
-    selectedType: 'ver1',
+    selectedType: 'Modern',
 
     setAllResumeSelection: (value) =>
       set(
