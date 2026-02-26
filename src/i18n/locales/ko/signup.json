@@ -80,7 +80,8 @@
 
   "step2": {
     "buttons": {
-      "sign_up": "회원가입"
+      "sign_up": "회원가입",
+      "back": "이전"
     },
     "nationalityField": {
       "label": "국적",

@@ -55,9 +55,19 @@ export default function Step2BottomButton({ lang }: Step2BottomButtonProps) {
   return (
     <div className="flex flex-col gap-y-2">
       <ErrorMessage>{errorMessage}</ErrorMessage>
-      <Button state={isValid ? 'default' : 'disable'} onClick={handleRegister}>
-        {t('signup:step2.buttons.sign_up')}
-      </Button>
+      <div className="flex gap-x-2">
+        <Button
+          variant={'outline'}
+          onClick={() => {
+            router.push(`/${lang}/sign-up?step=1`)
+          }}
+        >
+          {t('signup:step2.buttons.back')}
+        </Button>
+        <Button state={isValid ? 'default' : 'disable'} onClick={handleRegister}>
+          {t('signup:step2.buttons.sign_up')}
+        </Button>
+      </div>
     </div>
   )
 }

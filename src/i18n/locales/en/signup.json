@@ -80,7 +80,8 @@
 
   "step2": {
     "buttons": {
-      "sign_up": "Submit"
+      "sign_up": "Submit",
+      "back": "Back"
     },
     "nationalityField": {
       "label": "Nationality",
