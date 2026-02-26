@@ -16,7 +16,7 @@ export default function InterviewLevel() {
     setIsDropDownOpen,
     selectedDropDownHandler,
     dropDownOpenHandler,
-  } = useDropDown({ initialValue: '지원 레벨 선택' })
+  } = useDropDown({ initialValue: t('ai_interview_test_setting.body.interview_level.placeholder') })
   const levelList: { content: string; enum: LevelType }[] = [
     { content: t('ai_interview_test_setting.body.interview_level.list.intern'), enum: 'intern' },
     { content: t('ai_interview_test_setting.body.interview_level.list.entry'), enum: 'entry' },
@@ -24,7 +24,7 @@ export default function InterviewLevel() {
   ]
   return (
     <div className="w-full whitespace-nowrap">
-      <Label isRequired={true} label={'지원 레벨'} />
+      <Label isRequired={true} label={t('ai_interview_test_setting.body.interview_level.label')} />
       <Spacing height={8} />
       <DropDown
         selectedValue={selectedDropDownContent}

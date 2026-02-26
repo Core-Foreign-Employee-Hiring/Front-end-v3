@@ -36,6 +36,15 @@
           "entry": "신입",
           "experienced": "경력"
         }
+      },
+      "question_count": {
+        "label": "질문 개수",
+        "placeholder": "질문 개수 선택",
+        "options": {
+          "count_3": "3개",
+          "count_5": "5개",
+          "count_7": "7개"
+        }
       }
     },
     "footer": {

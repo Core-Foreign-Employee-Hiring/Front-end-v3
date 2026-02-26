@@ -51,7 +51,7 @@ export default function AIInterviewTestSettingModal({ isOpen, onClose }: AIInter
           </section>
           <section className="desktop:flex tablet:flex desktop:gap-y-5 desktop:flex-col tablet:gap-x-[20px] hidden">
             <InterviewGuide
-              bgColor={'bg-gray1'}
+              bgColor={'bg-white'}
               title={t('interview:home.guide.process.title')}
               content1={t('interview:home.guide.process.items.0')}
               content2={t('interview:home.guide.process.items.1')}
@@ -60,7 +60,7 @@ export default function AIInterviewTestSettingModal({ isOpen, onClose }: AIInter
             />
 
             <InterviewGuide
-              bgColor={'bg-gray1'}
+              bgColor={'bg-white'}
               title={t('interview:home.guide.examples.title')}
               content1={t('interview:home.guide.examples.items.0')}
               content2={t('interview:home.guide.examples.items.1')}
