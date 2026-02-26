@@ -2,8 +2,10 @@
 
 import { SpecExperienceType } from '@/types/spec'
 import { ErrorHelperText, Label, Spacing, TextInput } from '@/components/common'
-import { FocusEvent } from 'react'
+import { FocusEvent, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { HelpIcon } from '@/assets/svgComponents'
+import Tooltip from '@/components/common/Tooltip'
 
 interface EditExpImprovementRateProps {
   editExperience: SpecExperienceType
@@ -14,6 +16,7 @@ export default function EditExpImprovementRate({
   handleExperienceChange,
 }: EditExpImprovementRateProps) {
   const { t } = useTranslation(['spec'])
+  const [isToolTipOpen, setIsToolTipOpen] = useState(false)
   // 1. 포커스 시 0 제거 로직
   const handleFocus = (e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>, fieldName: keyof SpecExperienceType) => {
     // 값이 '0'이면 빈 값으로 변경 (사용자가 바로 입력할 수 있게)
@@ -42,11 +45,31 @@ export default function EditExpImprovementRate({
 
   return (
     <div className="w-full">
-      <Label label={t('experience.form.improvementRate.title')} className="kr-subtitle-lg text-gray5"></Label>
+      <div className="relative flex gap-x-1">
+        <Label label={t('experience.form.improvementRate.title')} className="kr-subtitle-lg text-gray5" />
+        <HelpIcon
+          onClick={() => {
+            setIsToolTipOpen(!isToolTipOpen)
+          }}
+          width={24}
+          height={24}
+        />
+        {isToolTipOpen ? (
+          <Tooltip
+            description={
+              '개선 전 대비 결과가 얼마나 향상되었는지 %로 작성해주세요.\n' +
+              '개선률은 지원자의 문제 해결 능력과 실행력을 가장 직관적으로 보여주는 지표입니다.\n' +
+              '예) 개선률 5% → 15% 향상'
+            }
+          />
+        ) : null}
+      </div>
+
       <Spacing height={8} />
       <div className="flex flex-col gap-y-2">
         <div className="flex w-full gap-x-4">
           <TextInput
+            rightElement={<p className="kr-body-md">%</p>}
             status={getStatus()}
             onFocus={(e) => handleFocus(e, 'beforeImprovementRate')}
             onBlur={(e) => handleBlur(e, 'beforeImprovementRate')}
@@ -56,6 +79,7 @@ export default function EditExpImprovementRate({
             placeholder={t('experience.form.improvementRate.beforeImprovementRatePlaceholder')}
           />
           <TextInput
+            rightElement={<p className="kr-body-md">%</p>}
             status={getStatus()}
             onFocus={(e) => handleFocus(e, 'afterImprovementRate')}
             onBlur={(e) => handleBlur(e, 'afterImprovementRate')}

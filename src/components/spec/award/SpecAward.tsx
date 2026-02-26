@@ -80,23 +80,28 @@ export default function SpecAward({ awardsData }: SpecAwardProps) {
         label={t('award.title')}
         type={'titleMd'}
         rightElement={
-          <Button
-            onClick={() => {
-              addAward({
-                awardName: '',
-                host: '',
-                acquiredDate: '',
-                description: '',
-                documentUrl: null,
-              })
-            }}
-            variant={'secondary'}
-            size={'md'}
-            customClassName={'w-fit'}
-            leftIcon={<Main5000PlusIcon width={20} height={20} />}
-          >
-            {t('buttons.add')}
-          </Button>
+          <div className="flex gap-x-2">
+            <Button customClassName={'w-[72px]'} size={'md'} onClick={handleSave}>
+              저장
+            </Button>
+            <Button
+              onClick={() => {
+                addAward({
+                  awardName: '',
+                  host: '',
+                  acquiredDate: '',
+                  description: '',
+                  documentUrl: null,
+                })
+              }}
+              variant={'secondary'}
+              size={'md'}
+              customClassName={'w-fit'}
+              leftIcon={<Main5000PlusIcon width={20} height={20} />}
+            >
+              {t('buttons.add')}
+            </Button>
+          </div>
         }
       />
       <Spacing height={16} />
@@ -118,8 +123,6 @@ export default function SpecAward({ awardsData }: SpecAwardProps) {
           <AwardEntry key={index} award={award} index={index} initialFormOpenState={true} />
         ))}
       </div>
-
-      <Button onClick={handleSave}>저장</Button>
 
       <Spacing height={100} />
       <BottomButton handlePrev={handlePrev} isNextButtonActive={true} handleNext={handleNext} />

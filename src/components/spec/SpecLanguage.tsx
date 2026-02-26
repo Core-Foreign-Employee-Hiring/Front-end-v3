@@ -9,9 +9,9 @@ import LanguageEntry from '@/components/spec/language/LanguageEntry'
 import { useSpecLanguage } from '@/hooks'
 import BottomButton from '@/components/spec/BottomButton'
 import EditLanguageEntry from '@/components/spec/language/EditLanguageEntry'
-import { postSpecLanguageSkills } from '@/lib/client/spec/language'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
+import { postSpecLanguageSkills } from '@/lib/client/spec/language'
 
 interface SpecLanguageProps {
   languageSkillsData: SpecLanguageSkillType[] | null | undefined
@@ -36,17 +36,32 @@ export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) 
         label={t('language.title')}
         type={'titleMd'}
         rightElement={
-          <Button
-            onClick={() => {
-              addLanguageSkill({ title: '', score: '' })
-            }}
-            variant={'secondary'}
-            size={'md'}
-            customClassName={'w-fit'}
-            leftIcon={<Main5000PlusIcon width={20} height={20} />}
-          >
-            {t('buttons.add')}
-          </Button>
+          <div className="flex gap-x-2">
+            <Button
+              size={'md'}
+              customClassName={'w-[72px]'}
+              onClick={async () => {
+                const result = await postSpecLanguageSkills(languageSkills)
+                if (result.success) {
+                  router.refresh()
+                  setLanguageSkills([])
+                }
+              }}
+            >
+              {t('buttons.save')}
+            </Button>
+            <Button
+              onClick={() => {
+                addLanguageSkill({ title: '', score: '' })
+              }}
+              variant={'secondary'}
+              size={'md'}
+              customClassName={'w-fit'}
+              leftIcon={<Main5000PlusIcon width={20} height={20} />}
+            >
+              {t('buttons.add')}
+            </Button>
+          </div>
         }
       />
 
@@ -74,17 +89,6 @@ export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) 
       </div>
 
       <Spacing height={100} />
-      <Button
-        onClick={async () => {
-          const result = await postSpecLanguageSkills(languageSkills)
-          if (result.success) {
-            router.refresh()
-            setLanguageSkills([])
-          }
-        }}
-      >
-        {t('buttons.save')}
-      </Button>
       <BottomButton handlePrev={handlePrev} isNextButtonActive={true} handleNext={handleNext} />
     </div>
   )

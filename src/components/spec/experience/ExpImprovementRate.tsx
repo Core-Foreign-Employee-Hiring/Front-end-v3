@@ -42,6 +42,7 @@ export default function ExpImprovementRate({ index, handleExperienceChange, expe
       <div className="flex flex-col gap-y-2">
         <div className="flex w-full gap-x-4">
           <TextInput
+            rightElement={<p className="kr-body-md">%</p>}
             status={getStatus()}
             onFocus={(e) => handleFocus(e, 'beforeImprovementRate')}
             onBlur={(e) => handleBlur(e, 'beforeImprovementRate')}
@@ -51,6 +52,7 @@ export default function ExpImprovementRate({ index, handleExperienceChange, expe
             placeholder={t('experience.form.improvementRate.beforeImprovementRatePlaceholder')}
           />
           <TextInput
+            rightElement={<p className="kr-body-md">%</p>}
             status={getStatus()}
             onFocus={(e) => handleFocus(e, 'afterImprovementRate')}
             onBlur={(e) => handleBlur(e, 'afterImprovementRate')}

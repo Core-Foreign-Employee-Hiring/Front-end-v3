@@ -52,24 +52,29 @@ export default function SpecCareer({ careersData }: SpecCareerProps) {
         label={t('career.title')}
         type={'titleMd'}
         rightElement={
-          <Button
-            onClick={() => {
-              addCareer({
-                startDate: '',
-                endDate: '',
-                companyName: '',
-                position: '',
-                contractType: 'REGULAR',
-                highlight: '',
-              })
-            }}
-            variant={'secondary'}
-            size={'md'}
-            customClassName={'w-fit'}
-            leftIcon={<Main5000PlusIcon width={20} height={20} />}
-          >
-            {t('buttons.add')}
-          </Button>
+          <div className="flex gap-x-2">
+            <Button customClassName={'w-[72px]'} size={'md'} onClick={handleSave}>
+              {t('buttons.save')}
+            </Button>
+            <Button
+              onClick={() => {
+                addCareer({
+                  startDate: '',
+                  endDate: '',
+                  companyName: '',
+                  position: '',
+                  contractType: 'REGULAR',
+                  highlight: '',
+                })
+              }}
+              variant={'secondary'}
+              size={'md'}
+              customClassName={'w-fit'}
+              leftIcon={<Main5000PlusIcon width={20} height={20} />}
+            >
+              {t('buttons.add')}
+            </Button>
+          </div>
         }
       />
       <Spacing height={16} />
@@ -91,8 +96,6 @@ export default function SpecCareer({ careersData }: SpecCareerProps) {
           <CareerEntry key={index} career={career} index={index} initialFormOpenState={true} />
         ))}
       </div>
-
-      <Button onClick={handleSave}>{t('buttons.save')}</Button>
 
       <Spacing height={100} />
       <BottomButton handlePrev={handlePrev} isNextButtonActive={true} handleNext={handleNext} />

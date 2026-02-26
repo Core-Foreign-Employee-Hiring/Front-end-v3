@@ -68,24 +68,29 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
         label={t('experience.title')}
         type={'titleMd'}
         rightElement={
-          <Button
-            onClick={() => {
-              addExperience({
-                experience: '',
-                beforeImprovementRate: '',
-                afterImprovementRate: '',
-                description: '',
-                startDate: '',
-                endDate: '',
-              })
-            }}
-            variant={'secondary'}
-            size={'md'}
-            customClassName={'w-fit'}
-            leftIcon={<Main5000PlusIcon width={20} height={20} />}
-          >
-            {t('buttons.add')}
-          </Button>
+          <div className="flex gap-x-2">
+            <Button size={'md'} customClassName={'w-[72px]'} onClick={handleSave}>
+              {t('buttons.save')}
+            </Button>
+            <Button
+              onClick={() => {
+                addExperience({
+                  experience: '',
+                  beforeImprovementRate: '',
+                  afterImprovementRate: '',
+                  description: '',
+                  startDate: '',
+                  endDate: '',
+                })
+              }}
+              variant={'secondary'}
+              size={'md'}
+              customClassName={'w-fit'}
+              leftIcon={<Main5000PlusIcon width={20} height={20} />}
+            >
+              {t('buttons.add')}
+            </Button>
+          </div>
         }
       />
       <Spacing height={16} />
@@ -107,8 +112,6 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
           <ExperienceEntry key={index} experience={experience} index={index} initialFormOpenState={true} />
         ))}
       </div>
-
-      <Button onClick={handleSave}>{t('buttons.save')}</Button>
 
       <Spacing height={100} />
       <BottomButton handlePrev={handlePrev} isNextButtonActive={true} handleNext={handleNext} />

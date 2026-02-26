@@ -78,17 +78,22 @@ export default function SpecCertification({ certificationsData }: SpecCertificat
         label={t('certification.title')}
         type={'titleMd'}
         rightElement={
-          <Button
-            onClick={() => {
-              addCertification({ documentUrl: null, certificationName: '', acquiredDate: '' })
-            }}
-            variant={'secondary'}
-            size={'md'}
-            customClassName={'w-fit'}
-            leftIcon={<Main5000PlusIcon width={20} height={20} />}
-          >
-            {t('buttons.add')}
-          </Button>
+          <div className="flex gap-x-2">
+            <Button size={'md'} customClassName={'w-[72px]'} onClick={handleSave}>
+              {t('buttons.save')}
+            </Button>
+            <Button
+              onClick={() => {
+                addCertification({ documentUrl: null, certificationName: '', acquiredDate: '' })
+              }}
+              variant={'secondary'}
+              size={'md'}
+              customClassName={'w-fit'}
+              leftIcon={<Main5000PlusIcon width={20} height={20} />}
+            >
+              {t('buttons.add')}
+            </Button>
+          </div>
         }
       />
 
@@ -112,10 +117,6 @@ export default function SpecCertification({ certificationsData }: SpecCertificat
       </div>
 
       <Spacing height={100} />
-
-      <Button onClick={handleSave}>{t('buttons.save')}</Button>
-      <Spacing height={100} />
-
       <BottomButton handlePrev={handlePrev} isNextButtonActive={true} handleNext={handleNext} />
     </div>
   )
