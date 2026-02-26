@@ -5,9 +5,11 @@ import { useModalStore } from '@/store/modalStore'
 import { useNoteStore } from '@/store/interview/noteStore'
 import { postCreateNote } from '@/lib/client/interview'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 export default function CreateNewAnswerNoteModal() {
-  const { t } = useTranslation('modal')
+  const { t } = useTranslation(['modal', 'message'])
+  const { success, error } = useToast()
   const { modals, toggleModal } = useModalStore((state) => state)
 
   const { setCreateNoteData, createNoteData, resetCreateNoteData } = useNoteStore((state) => state)
@@ -29,13 +31,17 @@ export default function CreateNewAnswerNoteModal() {
       isOpen={modals.isCreateNewAnswerNoteModalOpen}
     >
       <Modal.Header>
-        <Label label={t('create_new_answer_note.header.title')} type={'subtitleLg'} />
+        <Label label={t('modal:create_new_answer_note.header.title')} type={'subtitleLg'} />
       </Modal.Header>
       <Modal.Body>
         <div className="flex flex-col gap-y-2">
-          <Label label={t('create_new_answer_note.body.note_name.label')} type={'titleSm'} labelColor={'text-gray5'} />
+          <Label
+            label={t('modal:create_new_answer_note.body.note_name.label')}
+            type={'titleSm'}
+            labelColor={'text-gray5'}
+          />
           <TextInput
-            placeholder={t('create_new_answer_note.body.note_name.placeholder')}
+            placeholder={t('modal:create_new_answer_note.body.note_name.placeholder')}
             value={createNoteData.title}
             onChange={(e) => {
               setCreateNoteData({ title: e.target.value })
@@ -47,22 +53,24 @@ export default function CreateNewAnswerNoteModal() {
       <Modal.Footer>
         <>
           <Button onClick={toggleCreateNewAnswerNoteState} variant={'outline'} size={'lg'} buttonType={'button'}>
-            {t('footer_buttons.cancel')}
+            {t('modal:footer_buttons.cancel')}
           </Button>
           <Button
             onClick={async () => {
               const result = await postCreateNote(createNoteData)
-              if (result.data) {
+              if (result.data && result.success) {
                 resetCreateNoteData()
-                console.log('노트 추가 성공', result)
+                success(t('message:post_create_note.success.title'), t('message:post_create_note.success.description'))
                 toggleCreateNewAnswerNoteState()
+              } else if (!result.success) {
+                error(t('message:post_create_note.error.title'), t('message:post_create_note.error.description'))
               }
             }}
             variant={'primary'}
             size={'lg'}
             buttonType={'button'}
           >
-            {t('footer_buttons.save')}
+            {t('modal:footer_buttons.save')}
           </Button>
         </>
       </Modal.Footer>

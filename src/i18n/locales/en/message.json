@@ -161,5 +161,16 @@
       "title": "Error",
       "description": "Failed to save to notes."
     }
+  },
+
+  "post_create_note": {
+    "success": {
+      "title": "Success",
+      "description": "New note created successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to create a new note."
+    }
   }
 }

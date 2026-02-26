@@ -161,5 +161,16 @@
       "title": "실패",
       "description": "노트에 저장하지 못했어요."
     }
+  },
+
+  "post_create_note": {
+    "success": {
+      "title": "성공",
+      "description": "새로운 노트를 생성했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "새로운 노트를 만들지 못했어요."
+    }
   }
 }
