@@ -24,7 +24,7 @@ export default function ChangeAuthSwitchButton({ type }: ChangeAuthSwitchButtonP
         <button
           onClick={() => handleStepClick(content.type)}
           key={content.type}
-          className={`${type == content.type ? 'bg-main-500 kr-badge-md text-white' : 'kr-button text-gray5 bg-transparent'} flex w-[120px] cursor-pointer items-center justify-center rounded-[8px] py-3`}
+          className={`${type == content.type ? 'bg-main-500 kr-badge-md text-white' : 'kr-button text-gray5 bg-transparent'} desktop:w-[120px] tablet:w-[120px] flex w-[100px] cursor-pointer items-center justify-center rounded-[8px] py-3`}
         >
           {content.content}
         </button>
