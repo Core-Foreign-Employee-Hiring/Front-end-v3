@@ -18,9 +18,9 @@ export default function UserInfo({ userInfo }: UserInfoProps) {
     <div className="bg-gray1 tablet:flex-row desktop:flex-row flex w-full flex-col justify-between gap-y-[24px] rounded-[12px] p-5">
       <section className="flex flex-col gap-y-2">
         <p className="kr-title-lg">{userInfo?.name}</p>
-        <div className="kr-body-md flex items-center gap-x-2">
+        <div className="kr-body-md tablet:flex-row desktop:flex-row desktop:items-center tablet:items-center flex flex-col gap-x-2 gap-y-2">
           <p>{t(getNationality(userInfo?.nationality))}</p>
-          <p>|</p>
+          <p className="tablet:block desktop:block hidden">|</p>
           <p>{t(getVisaLabel(userInfo?.visa))}</p>
         </div>
         <p className="kr-body-md text-gray5">{userInfo?.phoneNumber}</p>

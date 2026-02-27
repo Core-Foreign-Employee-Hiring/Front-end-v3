@@ -99,7 +99,7 @@ export default function PurchaseItem({
   }
 
   return (
-    <div className="border-gray2 tablet:flex-row desktop:flex-row tablet:justify-between desktop:justify-between tablet:items-end desktop:items-end flex flex-col border-b-[1px] py-[20px]">
+    <div className="border-gray2 tablet:flex-row desktop:flex-row tablet:justify-between desktop:justify-between tablet:items-end desktop:items-end flex flex-col gap-y-3 border-b-[1px] py-[20px]">
       {modals.isWriteReviewModalOpen && selectedArchiveId === passArchiveId && (
         <WriteReviewModal
           archiveId={passArchiveId}
