@@ -19,6 +19,8 @@ interface ResumeState {
   addUrl: () => void
   updateUrl: (index: number, field: 'urlTitle' | 'urlLink', value: string) => void
   removeUrl: (index: number) => void
+
+  resetResume: () => void
 }
 const initialResumeData: CreateResumeType = {
   resumeName: '',
@@ -27,14 +29,14 @@ const initialResumeData: CreateResumeType = {
   urls: [{ urlTitle: '', urlLink: '' }], // 기본적으로 하나의 입력칸은 제공하는 편이 좋습니다.
 }
 const initialSelection: ResumeSelectionType = {
-  includeIntroduction: true,
+  includeIntroduction: false,
   includeEducation: false,
   includeCertificate: false,
   includeLanguage: false,
   includeCareer: false,
   includeAward: false,
   includeActivity: false,
-  includeUrls: true,
+  includeUrls: false,
 }
 
 export const useResumeStore = create<ResumeState>()(
@@ -132,6 +134,17 @@ export const useResumeStore = create<ResumeState>()(
         }),
         false,
         'resume/removeUrl'
+      ),
+    resetResume: () =>
+      set(
+        {
+          createResume: initialResumeData,
+          resumeSelection: initialSelection,
+          resumeProfileFile: null,
+          selectedType: 'Modern',
+        },
+        false,
+        'resume/resetAll'
       ),
   }))
 )

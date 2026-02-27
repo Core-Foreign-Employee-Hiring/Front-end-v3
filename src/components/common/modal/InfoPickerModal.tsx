@@ -12,7 +12,7 @@ export default function InfoPickerModal() {
   const { t } = useTranslation('modal')
   const router = useRouter()
 
-  const { createResumeResponse, resumeSelection, selectedType } = useResumeStore((state) => state)
+  const { createResumeResponse, resumeSelection, selectedType, resetResume } = useResumeStore((state) => state)
   const onNavigate = (resumeId: number) => {
     router.push(`/carrer/resume/${resumeId}/${selectedType}`)
   }
@@ -52,6 +52,7 @@ export default function InfoPickerModal() {
               const result = await patchResume(createResumeResponse.resumeId, resumeSelection)
               console.log('result', result)
               onClose()
+              resetResume()
               onNavigate(createResumeResponse.resumeId)
             }}
             variant={'primary'}

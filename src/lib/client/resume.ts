@@ -1,4 +1,5 @@
 import { CreateResumeResponseType, CreateResumeType, ResumeSelectionType } from '@/types/resume'
+import { ApiCallResult } from '@/types/common'
 
 /**
  * 이력서 생성하기
@@ -44,13 +45,30 @@ export const patchResume = async (resumeId: number, resumeSelection: ResumeSelec
 /**
  * 이력서 삭제
  */
-export const deleteResume = async (resumeId: number) => {
-  const response = await fetch(`/api/resumes/${resumeId}`, {
-    method: 'DELETE',
-  })
+export const deleteResume = async (resumeId: number): Promise<ApiCallResult<void>> => {
+  try {
+    const response = await fetch(`/api/resumes/${resumeId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
 
-  if (!response.ok) throw new Error('Upload failed')
+    if (!response.ok) {
+      const error = await response.json()
+      console.error('API 응답 에러:', error)
+      return { success: false, error: error.error || `HTTP ${response.status}` }
+    }
 
-  const result = await response.json()
-  return result.data
+    const data = await response.json()
+    console.log('이력서 삭제 데이터', data)
+    return data
+  } catch (error) {
+    console.error('Fetch 에러:', error)
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    }
+  }
 }

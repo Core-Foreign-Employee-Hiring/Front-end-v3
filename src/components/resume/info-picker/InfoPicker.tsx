@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react' // useEffect 추가
 import InfoPickerItem from '@/components/resume/info-picker/InfoPickerItem'
 import { CheckIcon, UncheckIcon } from '@/assets/svgComponents'
 import { useResumeStore } from '@/store/resumeStore'
@@ -8,33 +9,51 @@ import { useTranslation } from 'react-i18next'
 
 export default function InfoPicker() {
   const { t } = useTranslation('modal')
+
+  const { createResume, resumeSelection, updateResumeSelection, setAllResumeSelection } = useResumeStore(
+    (state) => state
+  )
+
+  // 1. 초기 데이터 존재 여부에 따른 선택 상태 자동 설정
+  useEffect(() => {
+    // introduction 값이 있고, 실제 텍스트가 존재하는 경우에만 true
+    const hasIntroduction = !!createResume.introduction?.trim()
+    if (hasIntroduction) {
+      updateResumeSelection('includeIntroduction', true)
+    }
+
+    // urls 배열이 있고, 최소 하나 이상의 객체가 비어있지 않은 실제 데이터를 가진 경우
+    const hasValidUrl = createResume.urls?.some((item) => item.urlTitle.trim() !== '' || item.urlLink.trim() !== '')
+
+    if (hasValidUrl) {
+      updateResumeSelection('includeUrls', true)
+    } else {
+      // 기본값 {urlTitle: '', urlLink: ''}만 있다면 false 유지
+      updateResumeSelection('includeUrls', false)
+    }
+  }, [createResume.introduction, createResume.urls, updateResumeSelection])
+
+  console.log('createResume', createResume)
+
   const infoList: { key: keyof ResumeSelectionType; content: string }[] = [
     { key: 'includeIntroduction', content: t('info_picker.body.info_list.includeIntroduction') },
+    { key: 'includeUrls', content: t('info_picker.body.info_list.includeUrls') },
     { key: 'includeEducation', content: t('info_picker.body.info_list.includeEducation') },
     { key: 'includeCertificate', content: t('info_picker.body.info_list.includeCertificate') },
     { key: 'includeLanguage', content: t('info_picker.body.info_list.includeLanguage') },
     { key: 'includeCareer', content: t('info_picker.body.info_list.includeCareer') },
     { key: 'includeAward', content: t('info_picker.body.info_list.includeAward') },
     { key: 'includeActivity', content: t('info_picker.body.info_list.includeActivity') },
-    { key: 'includeUrls', content: t('info_picker.body.info_list.includeUrls') },
   ]
 
-  // Zustand 스토어 연결
-  const resumeSelection = useResumeStore((state) => state.resumeSelection)
-  const updateResumeSelection = useResumeStore((state) => state.updateResumeSelection)
-  const setAllResumeSelection = useResumeStore((state) => state.setAllResumeSelection)
-
-  // 모든 항목이 true인지 확인
   const isAllSelected = Object.values(resumeSelection).every((value) => value === true)
 
-  // 전체 선택/해제 핸들러
   const handleSelectAll = () => {
     setAllResumeSelection(!isAllSelected)
   }
 
   return (
     <div className="flex flex-col gap-y-3">
-      {/* 모두 선택 버튼 */}
       <div className="flex w-fit cursor-pointer items-center gap-x-2" onClick={handleSelectAll}>
         {isAllSelected ? (
           <CheckIcon width={20} height={20} className="text-main-500" />
@@ -46,14 +65,13 @@ export default function InfoPicker() {
         </p>
       </div>
 
-      {/* 항목 그리드 */}
       <div className="tablet:grid-cols-3 desktop:grid-cols-3 grid grid-cols-2 gap-3">
         {infoList.map((info) => (
           <InfoPickerItem
             key={info.key}
             content={info.content}
-            isSelected={resumeSelection[info.key]} // 스토어의 boolean 값 전달
-            onClick={() => updateResumeSelection(info.key, !resumeSelection[info.key])} // 값 반전
+            isSelected={resumeSelection[info.key]}
+            onClick={() => updateResumeSelection(info.key, !resumeSelection[info.key])}
           />
         ))}
       </div>
