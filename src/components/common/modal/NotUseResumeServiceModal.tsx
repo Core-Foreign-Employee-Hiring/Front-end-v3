@@ -14,7 +14,7 @@ export default function NotUseResumeServiceModal({ lang }: NotUseResumeServiceMo
   const router = useRouter()
 
   return (
-    <Modal isOpen={modals.isNotUseResumeService}>
+    <Modal mobileHidden={false} isOpen={modals.isNotUseResumeService}>
       <Modal.Header>
         <Label label={t('not_use_resume_service.header')} />
       </Modal.Header>

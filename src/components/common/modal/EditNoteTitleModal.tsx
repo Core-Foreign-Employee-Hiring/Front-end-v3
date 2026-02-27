@@ -21,12 +21,7 @@ export default function EditNoteTitleModal() {
   }
 
   return (
-    <Modal
-      mobileHidden={false}
-      customClassName={'w-[508px]'}
-      onClose={toggleEditNoteTitleState}
-      isOpen={modals.isEditNoteTitleModalOpen}
-    >
+    <Modal mobileHidden={false} onClose={toggleEditNoteTitleState} isOpen={modals.isEditNoteTitleModalOpen}>
       <Modal.Header>
         <Label label={t('modal:edit_note_title.header')} type={'subtitleLg'} />
       </Modal.Header>
@@ -55,11 +50,14 @@ export default function EditNoteTitleModal() {
             onClick={async () => {
               const result = await putNoteTitle(selectedNoteId, title)
               if (result.success) {
+                setTitle('')
                 success(t('message:put_note_title.success.title'), t('message:put_note_title.success.description'))
                 toggleEditNoteTitleState()
                 router.refresh()
               } else {
+                setTitle('')
                 error(t('message:put_note_title.error.title'), t('message:put_note_title.error.description'))
+                toggleEditNoteTitleState()
               }
             }}
             variant={'primary'}

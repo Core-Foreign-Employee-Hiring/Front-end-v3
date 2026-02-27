@@ -11,7 +11,7 @@ export default function ServicePrepareModal() {
     toggleModal('isServicePrepareModalOpen')
   }
   return (
-    <Modal isOpen={modals.isServicePrepareModalOpen}>
+    <Modal mobileHidden={false} isOpen={modals.isServicePrepareModalOpen}>
       <Modal.Header>
         <div className="kr-subtitle-lg flex w-full flex-col items-center justify-center">
           <Label label={t('service_prepare.header')} type={'subtitleLg'} />

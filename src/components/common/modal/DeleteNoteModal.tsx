@@ -41,8 +41,10 @@ export default function DeleteNoteModal() {
               const result = await deleteNote(selectedNoteId)
               if (result.success) {
                 success(t('message:delete_note.success.title'), t('message:delete_note.success.description'))
+                toggleDeleteNoteState()
               } else {
                 error(t('message:delete_note.error.title'), t('message:delete_note.error.description'))
+                toggleDeleteNoteState()
               }
             }}
             variant={'primary'}

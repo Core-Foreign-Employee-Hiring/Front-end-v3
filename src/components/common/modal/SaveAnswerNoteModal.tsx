@@ -40,12 +40,7 @@ export default function SaveAnswerNoteModal() {
   }
 
   return (
-    <Modal
-      mobileHidden={false}
-      customClassName={'w-[508px]'}
-      onClose={toggleSaveAnswerNoteState}
-      isOpen={modals.isSaveAnswerNoteModalOpen}
-    >
+    <Modal mobileHidden={false} onClose={toggleSaveAnswerNoteState} isOpen={modals.isSaveAnswerNoteModalOpen}>
       <Modal.Header>
         <Label label={t('modal:save_answer_note.header')} type={'subtitleLg'} />
       </Modal.Header>
