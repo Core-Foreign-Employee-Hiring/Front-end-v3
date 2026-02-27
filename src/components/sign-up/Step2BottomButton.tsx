@@ -43,7 +43,7 @@ export default function Step2BottomButton({ lang }: Step2BottomButtonProps) {
       if (result.success) {
         resetAll()
         success(t('message:post_register.success.title'), t('message:post_register.success.description'))
-        router.push(`/${lang}`)
+        router.push(`/${lang}/login`)
       } else {
         error(t('message:post_register.error.title'), t('message:post_register.error.description'))
         setErrorMessage(result.error)
