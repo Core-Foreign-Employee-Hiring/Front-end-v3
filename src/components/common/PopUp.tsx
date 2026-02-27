@@ -23,7 +23,7 @@ PopUp.PopUpItem = function PopUpItem({
 }: {
   onClick: () => void
   children: ReactNode
-  textColor: string
+  textColor?: string
 }) {
   return (
     <button
