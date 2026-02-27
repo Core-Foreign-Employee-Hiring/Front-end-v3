@@ -342,5 +342,12 @@
       "title": "Error",
       "description": "Failed to publish the job posting. Please try again."
     }
+  },
+
+  "post_interview_data": {
+    "error": {
+      "title": "Error",
+      "description": "Failed to load interview data."
+    }
   }
 }

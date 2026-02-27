@@ -337,5 +337,12 @@
       "title": "실패",
       "description": "채용 공고가 등록되지 않았어요."
     }
+  },
+
+  "post_interview_data": {
+    "error": {
+      "title": "실패",
+      "description": "면접 데이터를 불러오는데 실패했습니다."
+    }
   }
 }

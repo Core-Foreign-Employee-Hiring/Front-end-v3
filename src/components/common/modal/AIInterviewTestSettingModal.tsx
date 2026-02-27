@@ -12,6 +12,7 @@ import {
 import { postInterviewData } from '@/lib/client/interview'
 import { useInterviewStore } from '@/store/interview/interviewStore'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface AIInterviewTestSettingProps {
   isOpen: boolean
@@ -19,9 +20,12 @@ interface AIInterviewTestSettingProps {
 }
 
 export default function AIInterviewTestSettingModal({ isOpen, onClose }: AIInterviewTestSettingProps) {
-  const { t } = useTranslation(['interview', 'modal'])
+  const { t } = useTranslation(['interview', 'modal', 'message'])
+  const { error } = useToast()
 
-  const { settingInterviewOption, setInterviewQuestion } = useInterviewStore((state) => state)
+  const { settingInterviewOption, setInterviewQuestion, setSettingInterviewOption, resetInterview } = useInterviewStore(
+    (state) => state
+  )
   const router = useRouter()
 
   return (
@@ -79,13 +83,36 @@ export default function AIInterviewTestSettingModal({ isOpen, onClose }: AIInter
           <Button
             onClick={async () => {
               const result = await postInterviewData(settingInterviewOption)
+              console.log('result', result)
 
               if (result.success && result.data?.data) {
-                setInterviewQuestion(result.data.data)
+                const responseData = result.data.data
+                if ('detail' in responseData) {
+                  error(
+                    t('message:post_interview_data.error.title'),
+                    t('message:post_interview_data.error.description')
+                  )
+                  setSettingInterviewOption({
+                    job_type: null,
+                    level: null,
+                    question_count: null,
+                    title: '',
+                  })
+                  onClose()
+                } else {
+                  resetInterview()
+                  setInterviewQuestion(responseData)
+                  setSettingInterviewOption({
+                    job_type: null,
+                    level: null,
+                    question_count: null,
+                    title: '',
+                  })
 
-                router.push('/ko/interview/test')
+                  router.push('/ko/interview/test')
+                }
               } else {
-                alert(t('modal:ai_interview_test_setting.messages.fetch_error'))
+                error(t('message:post_interview_data.error.title'), t('message:post_interview_data.error.description'))
               }
             }}
             variant={'primary'}

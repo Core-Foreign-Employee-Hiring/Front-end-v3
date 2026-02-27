@@ -135,6 +135,14 @@ export const useInterviewStore = create<InterviewState>()(
 
     resetInterview: () =>
       set(() => ({
+        interviewQuestion: null, // 질문 데이터 초기화 (가장 중요)
+        chatList: [], // 채팅 내역 초기화
+        currentIndex: 0,
+        isNextLoading: false,
+        isResultLoading: false,
+        isFollowUpLoading: false,
+        commonAnswer: initialAnswer,
+        followUpAnswer: initialFollowUpAnswer,
         settingInterviewOption: initialSettingInterviewOption,
         interviewResult: null,
       })),
