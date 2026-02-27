@@ -18,7 +18,7 @@ export default function InterviewQuestionCount() {
   const { setSettingInterviewOption } = useInterviewStore((state) => state)
   const interviewQuestionCountList = [
     { content: t('ai_interview_test_setting.body.question_count.options.count_3'), enum: 3 },
-    // { content: '5개', enum: 5 },
+    { content: t('ai_interview_test_setting.body.question_count.options.count_5'), enum: 5 },
     // { content: '7개', enum: 7 },
   ]
   return (
