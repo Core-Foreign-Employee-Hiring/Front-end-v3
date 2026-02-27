@@ -33,7 +33,7 @@ export default async function CreateJobPost({ params, searchParams }: CreateJobP
   }
 
   return (
-    <main>
+    <main className="w-full">
       <Label label={'공고등록'} type={'titleLg'} />
       <Spacing height={20} />
 
