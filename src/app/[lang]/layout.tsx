@@ -24,7 +24,7 @@ const pretendard = localFont({
 // [수정] generateMetadata에서도 params를 Promise로 처리
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params // await 추가
-  const OG_IMAGE_URL = `${SITE_URL}/og-image.png`
+  const OG_IMAGE_URL = `${SITE_URL}/thumbnail-image.png`
 
   return {
     metadataBase: new URL(SITE_URL),
