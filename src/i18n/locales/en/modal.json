@@ -117,7 +117,7 @@
         },
         "self_intro_field": {
           "label": "Professional Summary",
-          "placeholder": "e.g., Highlights of my career and skills",
+          "placeholder": "Write a self-introduction tailored to the company or job you are applying for.",
           "tips": [
             "Be specific about your strengths and experiences.",
             "Highlight skills relevant to the target job role.",
