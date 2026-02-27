@@ -16,7 +16,7 @@ export default async function JobPostDetail({ params }: { params: Promise<{ lang
       </PageLayout>
 
       <Footer />
-      <Spacing height={80} className={'desktop:hidden'} />
+      <Spacing height={100} className={'desktop:hidden'} />
       <NavBar path={`/${lang}/job-post`} lang={lang} />
     </main>
   )

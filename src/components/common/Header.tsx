@@ -41,13 +41,6 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
   const [isLanguageSelectModalOpen, setIsLanguageSelectModalOpen] = useState(false)
   const { toggleModal, modals } = useModalStore((state) => state)
 
-  // URL 언어와 i18n 인스턴스 동기화
-  useEffect(() => {
-    if (i18n.language !== activeLng) {
-      i18n.changeLanguage(activeLng)
-    }
-  }, [activeLng, i18n])
-
   // --- 기존 사용자 정보 로직 유지 ---
   const rawUserInfo = useSyncExternalStore(
     (callback) => {
@@ -94,6 +87,13 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
       console.error('언어 변경 실패:', error)
     }
   }
+
+  // URL 언어와 i18n 인스턴스 동기화
+  useEffect(() => {
+    if (i18n.language !== activeLng) {
+      i18n.changeLanguage(activeLng)
+    }
+  }, [activeLng, i18n])
 
   const languagePopupList = [
     { content: t('language.ko'), onClick: () => changeLanguage('ko') },

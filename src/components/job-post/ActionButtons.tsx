@@ -12,7 +12,7 @@ interface ActionButtonsProps {
 }
 
 export default function ActionButtons({ applicationMethod, directInputApplicationMethod }: ActionButtonsProps) {
-  const { t } = useTranslation(['jobPost'])
+  const { t } = useTranslation(['jobPost', 'modal'])
 
   const { toggleModal, modals } = useModalStore((state) => state)
 

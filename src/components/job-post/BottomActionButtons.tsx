@@ -15,7 +15,7 @@ export default function BottomActionsButtons({
   applicationMethod,
   directInputApplicationMethod,
 }: BottomActionsButtonsProps) {
-  const { t } = useTranslation(['jobPost'])
+  const { t } = useTranslation(['jobPost', 'modal'])
 
   const { toggleModal, modals } = useModalStore((state) => state)
   return (

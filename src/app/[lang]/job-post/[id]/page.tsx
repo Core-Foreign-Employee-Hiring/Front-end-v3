@@ -13,7 +13,7 @@ import MobileWorkConditions from '@/components/job-post/MobileWorkConditions'
 import BottomActionsButtons from '@/components/job-post/BottomActionButtons'
 import AuthWatcher from '@/components/auth/AuthWatcher'
 
-const namespaces = ['jobPost', 'common', 'filter']
+const namespaces = ['jobPost', 'common', 'filter', 'modal']
 
 export default async function JobPostDetail({
   params,

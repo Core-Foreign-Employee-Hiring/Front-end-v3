@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 export default function Banner() {
   const { t } = useTranslation(['home'])
   return (
-    <div className="relative h-[300px] w-full overflow-hidden">
+    <div className="relative h-[300px] w-full overflow-hidden px-[20px]">
       <div className="relative z-10 flex h-full flex-col items-center justify-center gap-y-[32px]">
         <div className="flex flex-col gap-y-2">
           <h1 className="kr-title-lg desktop:kr-resume-lg text-center text-white">{t('banner.h1')} </h1>
