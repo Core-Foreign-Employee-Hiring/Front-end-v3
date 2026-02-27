@@ -6,10 +6,11 @@ import { postAuth } from '@/lib/auth'
 import { useSaveId } from '@/hooks'
 import { UserInfoType } from '@/types/auth'
 import Cookies from 'js-cookie'
+import { useEffect } from 'react'
 
 export default function useLoginAction(lang: string) {
   const router = useRouter()
-  const { login, isIdSaved, setLoading, setError } = useAuthStore()
+  const { login, isIdSaved, setLoading, setError, setLogin } = useAuthStore()
   const { persistSavedId } = useSaveId()
 
   const validate = () => {
@@ -43,6 +44,15 @@ export default function useLoginAction(lang: string) {
     }
   }
 
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때가 아니라,
+    // 컴포넌트가 언마운트(해당 페이지를 나감)될 때만 실행됩니다.
+    return () => {
+      setLogin({ password: '', userId: '' })
+      setError(null) // 에러 메시지도 같이 지워주는 게 보통 좋습니다.
+    }
+  }, [setLogin, setError]) // 의존성 배열 추가
+
   const loginProcess = async () => {
     if (!validate()) return
 
@@ -67,5 +77,5 @@ export default function useLoginAction(lang: string) {
     }
   }
 
-  return { loginProcess }
+  return { loginProcess, setLogin }
 }
