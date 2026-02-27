@@ -1,5 +1,5 @@
 'use client'
-import { Button, Label, Modal } from '@/components/common'
+import { Button, Modal } from '@/components/common'
 import { useModalStore } from '@/store/modalStore'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
@@ -16,7 +16,9 @@ export default function NotUseResumeServiceModal({ lang }: NotUseResumeServiceMo
   return (
     <Modal mobileHidden={false} isOpen={modals.isNotUseResumeService}>
       <Modal.Header>
-        <Label label={t('not_use_resume_service.header')} />
+        <div className="flex w-full items-center justify-center">
+          <p className="kr-subtitle-lg">{t('not_use_resume_service.header')}</p>
+        </div>
       </Modal.Header>
       <Modal.Footer>
         <>
