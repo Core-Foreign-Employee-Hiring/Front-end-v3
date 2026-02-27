@@ -344,5 +344,16 @@
       "title": "실패",
       "description": "면접 데이터를 불러오는데 실패했습니다."
     }
+  },
+
+  "delete_resume": {
+    "success": {
+      "title": "성공",
+      "description": "이력서를 삭제했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "이력서를 삭제하지 못했어요."
+    }
   }
 }

@@ -18,7 +18,7 @@ export default function ResumeItem({ lang, title, createdAt, modifiedAt, resumeI
   return (
     <div
       onClick={() => {
-        router.push(`/${lang}/carrer/resume/${resumeId}/ver1`)
+        router.push(`/${lang}/carrer/resume/${resumeId}/Modern`)
       }}
       className="border-gray2 hover:border-gray3 flex cursor-pointer items-center justify-between rounded-[12px] border p-5 transition"
     >

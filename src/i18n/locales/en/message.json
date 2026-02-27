@@ -349,5 +349,16 @@
       "title": "Error",
       "description": "Failed to load interview data."
     }
+  },
+
+  "delete_resume": {
+    "success": {
+      "title": "Success",
+      "description": "Resume deleted successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to delete the resume."
+    }
   }
 }
