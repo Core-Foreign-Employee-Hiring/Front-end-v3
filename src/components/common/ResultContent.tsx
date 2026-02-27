@@ -14,14 +14,30 @@ interface ResultContentProps {
 export default function ResultContent({ topPercent, analysis, bottomElement }: ResultContentProps) {
   const { t } = useTranslation(['spec'])
 
-  // .을 기준으로 나누고 \n을 붙여주는 로직 (컴포넌트 리렌더링 최적화)
   const formattedAnalysis = useMemo(() => {
     if (!analysis) return ''
-    // 1. 마침표(.) 뒤에 공백이 오는 패턴을 찾아 줄바꿈(\n)으로 대체합니다.
-    // 2. trim()을 통해 앞뒤 공백을 제거합니다.
-    return analysis.replace(/(?<!\d)\.\s+/g, '.\n').trim()
-  }, [analysis])
 
+    // 1. '---' 기호를 기준으로 섹션을 나눕니다.
+    const sections = analysis.split('---')
+
+    return sections
+      .map((section, index) => {
+        const trimmedSection = section.trim()
+
+        // 첫 번째 섹션(종합평가)은 그대로 두고, 두 번째 섹션부터 들여쓰기를 적용합니다.
+        if (index > 0) {
+          return trimmedSection
+            .split('\n')
+            .map((line) => `        ${line.trim()}`) // 두 번 이상의 들여쓰기 (공백 8칸)
+            .join('\n')
+        }
+
+        // 첫 섹션 내의 마침표 줄바꿈 처리
+        return trimmedSection.replace(/(?<!\d)\.\s+/g, '.\n')
+      })
+      .join('\n\n') // --- 대신 여백(줄바꿈 두 번)으로 구분
+      .trim()
+  }, [analysis])
   return (
     <div className="bg-main-50 flex w-full flex-col rounded-[12px] p-5">
       <div className="flex gap-x-1">
