@@ -15,6 +15,9 @@ export default function InquiryModal({ inquiry }: InquiryModalProps) {
   const onClose = () => {
     toggleModal('isInquiryModalOpen')
   }
+
+  if (!inquiry) return null
+
   return (
     <Modal isOpen={modals.isInquiryModalOpen} mobileHidden={false}>
       <Modal.Header>
@@ -25,7 +28,7 @@ export default function InquiryModal({ inquiry }: InquiryModalProps) {
       <Modal.Footer>
         <>
           <Button onClick={onClose} variant={'outline'}>
-            {t('footer.buttons.close')}
+            {t('footer_buttons.close')}
           </Button>
         </>
       </Modal.Footer>

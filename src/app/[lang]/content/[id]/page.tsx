@@ -16,8 +16,6 @@ export default async function ContentDetailPage({
   const result = await serverFetchContentDetail(id)
   const contentData = result.data
 
-  console.log('result', result)
-
   if (!contentData) {
     return <Loading size={'lg'} />
   }

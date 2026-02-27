@@ -27,7 +27,6 @@ export default function DesktopActionButtons({ archiveId }: DesktopActionButtons
         onClick={async () => {
           const result = await getInquiryUrl(archiveId)
           if (result) {
-            console.log('문의', result)
             setInquiry(result)
             toggleModal('isInquiryModalOpen')
           }

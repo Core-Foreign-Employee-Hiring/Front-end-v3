@@ -6,12 +6,14 @@ import PurchaseCompletionModal from '@/components/common/modal/PurchaseCompletio
 import InquiryModal from '@/components/common/modal/InquiryModal'
 import { useModalStore } from '@/store/modalStore'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface BottomButtonsProps {
   archiveId: string
 }
 
 export default function BottomButtons({ archiveId }: BottomButtonsProps) {
+  const { t } = useTranslation('content')
   const { modals, toggleModal } = useModalStore((state) => state)
 
   const [inquiry, setInquiry] = useState<string>('')
@@ -34,7 +36,7 @@ export default function BottomButtons({ archiveId }: BottomButtonsProps) {
         size={'lg'}
         variant={'outline'}
       >
-        문의
+        {t('detail.contentSummary.actionButtons.inquiryButton')}
       </Button>
       <Button
         onClick={async () => {
@@ -43,7 +45,7 @@ export default function BottomButtons({ archiveId }: BottomButtonsProps) {
           toggleModal('isPurchaseCompletionModalOpen')
         }}
       >
-        구매하기
+        {t('detail.contentSummary.actionButtons.purchaseButton')}
       </Button>
     </div>
   )

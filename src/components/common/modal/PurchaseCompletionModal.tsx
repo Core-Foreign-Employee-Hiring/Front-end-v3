@@ -16,15 +16,17 @@ export default function PurchaseCompletionModal() {
   return (
     <Modal isOpen={modals.isPurchaseCompletionModalOpen} mobileHidden={false}>
       <Modal.Header>
-        <div className="flex w-full flex-col items-center gap-y-2">
+        <div className="flex w-full flex-col items-center justify-center gap-y-2">
           <h1 className="kr-title-md">
             <Trans
+              ns={'modal'}
               i18nKey="purchase_completion.header.title"
               components={[<span key="0" className="text-main-500" />]}
             />
           </h1>
-          <p className="text-gray5 kr-body-md">
+          <p className="text-gray5 kr-body-md text-center">
             <Trans
+              ns={'modal'}
               i18nKey="purchase_completion.header.description"
               components={[<span key="0" className="kr-subtitle-md" />]}
             />
