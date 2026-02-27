@@ -57,7 +57,7 @@ export default function BottomButton({ type }: BottomButtonProps) {
           }}
           customClassName={'w-[200px]'}
         >
-          {t('my:change_auth.bottom_buttons.change_pw"')}
+          {t('my:change_auth.bottom_buttons.change_pw')}
         </Button>
       )}
     </div>
