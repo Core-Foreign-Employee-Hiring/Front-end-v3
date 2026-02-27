@@ -360,5 +360,18 @@
       "title": "Error",
       "description": "Failed to delete the resume."
     }
+  },
+
+  "delete_spec_education": {
+    "success": {
+      "title": "Success",
+      "description": "Education data deleted successfully."
+    },
+    "error": {
+      "title": "Error",
+      "description": "Failed to delete the education data."
+    }
   }
 }
+
+

@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import { deleteSpecEducation } from '@/lib/client/spec/education'
 import { DeleteIcon, EditIcon } from '@/assets/svgComponents'
 import { useTranslation } from 'react-i18next'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface EducationItemProps {
   education: SpecEducationType
@@ -14,7 +15,8 @@ interface EducationItemProps {
 
 export default function EducationItem({ education, onEdit }: EducationItemProps) {
   const router = useRouter()
-  const { t } = useTranslation(['spec'])
+  const { t } = useTranslation(['spec', 'message'])
+  const { success, error } = useToast()
   return (
     <div className="border-gray2 flex justify-between gap-x-[20px] rounded-[12px] border p-5">
       <section className="flex flex-col gap-y-2">
@@ -41,7 +43,7 @@ export default function EducationItem({ education, onEdit }: EducationItemProps)
 
       <section className="desktop:flex tablet:flex hidden shrink-0 gap-x-2 whitespace-nowrap">
         <Button onClick={onEdit} customClassName={'w-fit'} variant={'outline'} size={'sm'}>
-          {t('buttons.edit')}
+          {t('spec:buttons.edit')}
         </Button>
         <Button
           onClick={async () => {
@@ -54,7 +56,7 @@ export default function EducationItem({ education, onEdit }: EducationItemProps)
           variant={'outline'}
           size={'sm'}
         >
-          {t('buttons.delete')}
+          {t('spec:buttons.delete')}
         </Button>
       </section>
 
@@ -70,6 +72,16 @@ export default function EducationItem({ education, onEdit }: EducationItemProps)
           onClick={async () => {
             const result = await deleteSpecEducation(`${education.educationId}`)
             if (result.success) {
+              success(
+                t('message:delete_spec_education.success.title'),
+                t('message:delete_spec_education.success.description')
+              )
+              router.refresh()
+            } else {
+              error(
+                t('message:delete_spec_education.error.title'),
+                t('message:delete_spec_education.error.description')
+              )
               router.refresh()
             }
           }}
