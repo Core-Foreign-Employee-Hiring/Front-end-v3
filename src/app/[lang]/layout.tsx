@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     siteName: 'KORFIT',
     images: [
       {
-        url: `${SITE_URL}/og-image.png`,
+        url: `/og-image.png`,
         width: 1200,
         height: 630,
         alt: 'KORFIT - 외국인을 위한 한국 취업 플랫폼',
