@@ -9,9 +9,13 @@ import { fetchResumeResult } from '@/lib/server/resume'
 import BottomButton from '@/components/resume/template/BottomButton'
 import AchievementsVer1 from '@/components/resume/template/ver1/AchievementsVer1'
 import AuthWatcher from '@/components/auth/AuthWatcher'
+import { Locale } from '@/lib/i18n.types'
+import { getTranslationServer } from '@/lib/i18n'
 
 export default async function ResumeVer1Page({ params }: { params: Promise<{ lang: string; resumeId: string }> }) {
   const { lang, resumeId } = await params
+  const currentLang = lang as Locale
+  const { t } = await getTranslationServer(currentLang, 'resume')
   const result = await fetchResumeResult(resumeId)
   const resumeData = result.data
 
@@ -23,7 +27,12 @@ export default async function ResumeVer1Page({ params }: { params: Promise<{ lan
     <main>
       <AuthWatcher results={[result]} />
 
-      <Header headerType={'default'} currentLng={lang} />
+      <div className="desktop:block hidden">
+        <Header headerType={'default'} currentLng={lang} />
+      </div>
+      <div className="desktop:hidden block">
+        <Header headerType={'dynamic'} currentLng={lang} title={t('resume:title')} />
+      </div>
       <div id="resume-print-area">
         <div className="w-full">
           <IntroVer1

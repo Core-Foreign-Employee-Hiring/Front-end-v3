@@ -58,7 +58,7 @@ export default async function SpecPage({
         <Header headerType={'default'} currentLng={lang} />
       </div>
       <div className="desktop:hidden block">
-        <Header headerType={'dynamic'} currentLng={lang} title={'스펙입력'} />
+        <Header headerType={'dynamic'} currentLng={lang} title={t('spec:title')} />
       </div>
       <PageLayout>
         <div className="w-full">
