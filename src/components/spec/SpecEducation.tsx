@@ -15,14 +15,10 @@ interface SpecEducationProps {
 }
 
 export default function SpecEducation({ educationData }: SpecEducationProps) {
-  const { handleAddEducation, handleNextStep, isActive } = useSpecEducation()
-  const { education, setEducation } = useSpecStore() // 스토어에서 전체 데이터를 세팅하는 함수
+  const { handleAddEducation, handleNextStep, isActive } = useSpecEducation(educationData)
+  const { setEducation } = useSpecStore() // 스토어에서 전체 데이터를 세팅하는 함수
 
   const { t } = useTranslation(['spec'])
-
-  useEffect(() => {
-    console.log('education', education)
-  }, [education])
 
   // 1. 초기 폼 오픈 상태 설정
   const [isEducationFormOpen, setIsEducationFormOpen] = useState(!educationData)

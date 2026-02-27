@@ -23,7 +23,7 @@ export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) 
   const { success, error } = useToast()
   const { languageSkills, addLanguageSkill, setEditLanguageSkills, editLanguageSkills, setLanguageSkills } =
     useSpecStore((state) => state)
-  const { handlePrev, handleNext, isActive } = useSpecLanguage()
+  const { handlePrev, handleNext, isActive } = useSpecLanguage(languageSkillsData)
   const router = useRouter()
   useEffect(() => {
     // 기존에 저장된 값이 있다면 editData에 추가
@@ -47,7 +47,10 @@ export default function SpecLanguage({ languageSkillsData }: SpecLanguageProps) 
                 if (result.data) {
                   if (result.data.success) {
                     router.refresh()
+                    setEditLanguageSkills([...editLanguageSkills, ...languageSkills])
+
                     setLanguageSkills([])
+
                     success(
                       t('message:post_spec_language_skills.success.title'),
                       t('message:post_spec_language_skills.success.description')

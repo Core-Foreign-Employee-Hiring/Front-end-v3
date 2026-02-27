@@ -11,7 +11,7 @@ interface AddLangFormProps {
   index?: number // 새로 생성한다면 languageSkills의 index값을 찾기 위해
 }
 export default function AddLangForm({ languageSkill, toggleState, index }: AddLangFormProps) {
-  const { t } = useTranslation()
+  const { t } = useTranslation('spec')
   const { updateLanguageSkill, removeLanguageSkill } = useSpecStore((state) => state)
 
   return (

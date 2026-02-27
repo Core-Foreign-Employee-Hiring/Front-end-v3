@@ -1,8 +1,7 @@
 'use client'
 
 import { SpecExperienceType } from '@/types/spec'
-import { usePathname, useRouter } from 'next/navigation'
-import { StepType } from '@/app/[lang]/carrer/page'
+import { useRouter } from 'next/navigation'
 import { Button, Label, Spacing } from '@/components/common'
 import { Main5000PlusIcon } from '@/assets/svgComponents'
 import { BottomButton } from '@/components/spec'
@@ -16,42 +15,53 @@ import { useTranslation } from 'react-i18next'
 import { useToast } from '@/components/common/toast/ToastContext'
 import { useModalStore } from '@/store/modalStore'
 import CareerAnalysisLoadingModal from '@/components/common/modal/CareerAnalysisLoadingModal'
+import useSpecExperience from '@/hooks/spec/useSpecExperience'
 
 interface SpecExperienceProps {
   experiencesData: SpecExperienceType[] | null | undefined
 }
+
 export default function SpecExperience({ experiencesData }: SpecExperienceProps) {
   const { t } = useTranslation(['spec', 'message'])
-  const { toggleModal, setModal, modals } = useModalStore((state) => state)
+  const { setModal, modals } = useModalStore((state) => state)
   const router = useRouter()
-  const pathname = usePathname()
   const { success, error } = useToast()
+
   const { addExperience, editExperiences, setEditExperiences, experiences, setExperiences, setSpecEvaluationId } =
     useSpecStore((state) => state)
+
+  // 훅 적용
+  const { handlePrev, isChanged, isActive } = useSpecExperience(experiencesData)
+
   useEffect(() => {
     if (experiencesData) {
       setEditExperiences(experiencesData)
     }
-  }, [experiencesData])
-
-  const navigateToStep = (step: StepType) => {
-    router.push(`${pathname}?tab=spec&step=${encodeURIComponent(step)}`)
-  }
-
-  const handlePrev = () => navigateToStep('5')
+  }, [experiencesData, setEditExperiences])
 
   const handleNext = async () => {
+    // 변경사항이 남아있으면 진행 막기
+    if (isChanged) {
+      error(t('message:save_error.title'), t('message:save_error.description'))
+      return
+    }
+
     setModal('isCareerAnalysisLoadingModalOpen', true)
 
-    const specResult = await postSpecResult()
-    if (specResult.success && specResult.data?.data) {
-      success(t('post_spec_result.success.title'), t('post_spec_result.success.description'))
-      setSpecEvaluationId(specResult.data.data)
+    try {
+      const specResult = await postSpecResult()
+      if (specResult.success && specResult.data?.data) {
+        success(t('message:post_spec_result.success.title'), t('message:post_spec_result.success.description'))
+        setSpecEvaluationId(specResult.data.data)
+        setModal('isCareerAnalysisLoadingModalOpen', false)
+        router.push(`/carrer/${specResult.data.data}`)
+      } else {
+        setModal('isCareerAnalysisLoadingModalOpen', false)
+        error(t('message:post_spec_result.error.title'), t('message:post_spec_result.error.description'))
+      }
+    } catch (e) {
       setModal('isCareerAnalysisLoadingModalOpen', false)
-      router.push(`/carrer/${specResult.data.data}`)
-    } else if (!specResult.data?.success) {
-      setModal('isCareerAnalysisLoadingModalOpen', false)
-      error(t('post_spec_result.error.title'), t('post_spec_result.error.description'))
+      error(t('message:fetch_error.title'), t('message:fetch_error.description'))
     }
   }
 
@@ -59,20 +69,18 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
     try {
       const result = await postSpecExperiences(experiences)
 
-      // 3. 성공 후 처리
-      if (result.data) {
-        if (result.data.success) {
-          setExperiences([]) // 추가용 임시 상태 초기화 (필요시)
-          router.refresh()
-          success(
-            t('message:post_spec_experiences.success.title'),
-            t('message:post_spec_experiences.success.description')
-          )
-        } else {
-          setExperiences([]) // 추가용 임시 상태 초기화 (필요시)
-          router.refresh()
-          error(t('message:post_spec_experiences.error.title'), t('message:post_spec_experiences.error.description'))
-        }
+      if (result.data?.success) {
+        // 성공 시 상태 동기화
+        setEditExperiences([...editExperiences, ...experiences])
+        setExperiences([])
+        router.refresh()
+
+        success(
+          t('message:post_spec_experiences.success.title'),
+          t('message:post_spec_experiences.success.description')
+        )
+      } else {
+        error(t('message:post_spec_experiences.error.title'), t('message:post_spec_experiences.error.description'))
       }
     } catch (e) {
       error(t('message:fetch_error.title'), t('message:fetch_error.description'))
@@ -81,7 +89,7 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
 
   return (
     <div>
-      {modals.isCareerAnalysisLoadingModalOpen ? <CareerAnalysisLoadingModal /> : null}
+      {modals.isCareerAnalysisLoadingModalOpen && <CareerAnalysisLoadingModal />}
       <Label
         label={t('spec:experience.title')}
         type={'titleMd'}
@@ -111,13 +119,15 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
           </div>
         }
       />
+
       <Spacing height={16} />
+
       <div className="flex flex-col gap-y-[16px]">
         {editExperiences.map((editExperience) => (
           <EditExperienceEntry
             experiencesData={experiencesData}
             initialFormOpenState={false}
-            key={editExperience.experienceId}
+            key={editExperience.experienceId || editExperience.experience}
             editExperience={editExperience}
           />
         ))}

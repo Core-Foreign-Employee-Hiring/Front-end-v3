@@ -4,6 +4,11 @@
     "description": "An error occurred while saving. Please try again."
   },
 
+  "save_error": {
+    "title": "Changes weren't saved.",
+    "description": "Please save before clicking Next."
+  },
+
   "file_upload_error": {
     "title": "Error",
     "description": "Failed to upload file."

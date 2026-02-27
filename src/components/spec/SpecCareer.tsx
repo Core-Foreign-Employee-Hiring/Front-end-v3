@@ -21,7 +21,8 @@ interface SpecCareerProps {
 export default function SpecCareer({ careersData }: SpecCareerProps) {
   const { t } = useTranslation(['spec', 'message'])
   const router = useRouter()
-  const { handleNext, handlePrev, careers, isActive } = useSpecCareer()
+  // isChanged를 꺼내오지 않아도 handleNext 내부에서 사용됩니다.
+  const { handleNext, handlePrev, careers, isActive } = useSpecCareer(careersData)
   const { success, error } = useToast()
 
   const { editCareers, setEditCareers, addCareer, setCareers } = useSpecStore((state) => state)
@@ -36,17 +37,20 @@ export default function SpecCareer({ careersData }: SpecCareerProps) {
     try {
       const result = await postSpecCareers(careers)
 
-      // 3. 성공 후 처리
-      if (result.data) {
-        if (result.data.success) {
-          setCareers([]) // 추가용 임시 상태 초기화 (필요시)
-          router.refresh()
-          success(t('message:post_spec_careers.success.title'), t('message:post_spec_careers.success.description'))
-        } else {
-          setCareers([]) // 추가용 임시 상태 초기화 (필요시)
-          router.refresh()
-          error(t('message:post_spec_careers.error.title'), t('message:post_spec_careers.error.description'))
-        }
+      if (result.data?.success) {
+        // 1. 성공 시, 현재 작성한 신규 경력을 기존 리스트(editCareers)에 합침
+        // (ID가 없는 상태일 수 있지만, isChanged 비교 로직에서 텍스트 위주로 비교하므로 통과됨)
+        setEditCareers([...editCareers, ...careers])
+
+        // 2. 추가용 입력창 초기화
+        setCareers([])
+
+        // 3. 서버 데이터 리프레시 (Server Component 데이터 갱신)
+        router.refresh()
+
+        success(t('message:post_spec_careers.success.title'), t('message:post_spec_careers.success.description'))
+      } else {
+        error(t('message:post_spec_careers.error.title'), t('message:post_spec_careers.error.description'))
       }
     } catch (e) {
       error(t('message:fetch_error.title'), t('message:fetch_error.description'))

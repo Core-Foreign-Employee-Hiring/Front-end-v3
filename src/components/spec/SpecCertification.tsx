@@ -22,7 +22,7 @@ interface SpecCertificationProps {
 export default function SpecCertification({ certificationsData }: SpecCertificationProps) {
   const { t } = useTranslation(['spec', 'message'])
   const { success, error } = useToast()
-  const { handleNext, handlePrev, certifications, isActive } = useSpecCertification()
+  const { handleNext, handlePrev, certifications, isActive } = useSpecCertification(certificationsData)
 
   const { editCertifications, setEditCertifications, setCertifications, addCertification } = useSpecStore(
     (state) => state
@@ -42,48 +42,44 @@ export default function SpecCertification({ certificationsData }: SpecCertificat
       const updatedCertifications = await Promise.all(
         certifications.map(async (cert) => {
           const newCert = { ...cert }
-
-          // 1. 실제로 '파일'이 들어있는 경우에만 업로드 실행
           if (newCert.documentUrl instanceof File) {
             const uploadUrl = await uploadFile(newCert.documentUrl)
             if (uploadUrl) {
-              // 업로드된 URL로 데이터 교체
               newCert.documentUrl = uploadUrl
             } else {
               newCert.documentUrl = null
-              // 업로드 실패 시 로직 처리 (예: return 또는 에러 던지기)
               error(t('message:file_upload_error.title'), t('message:file_upload_error.description'))
-              return
+              throw new Error('Upload Failed') // 에러 던져서 catch로 보냄
             }
+          } else if (typeof newCert.documentUrl !== 'string') {
+            newCert.documentUrl = null
           }
-          // 2. 만약 documentUrl이 File도 아니고, 문자열도 아닌 (빈 객체 {} 등) 경우
-          else if (typeof newCert.documentUrl !== 'string') {
-            newCert.documentUrl = null // API가 받을 수 있는 깨끗한 상태로 변경
-          }
-
           return newCert
         })
       )
 
       const result = await postSpecCertifications(updatedCertifications as SpecCertificationType[])
 
-      // 3. 성공 후 처리
-      if (result.data) {
-        if (result.data.success) {
-          setCertifications([]) // 추가용 임시 상태 초기화 (필요시)
-          router.refresh()
-          success(
-            t('message:post_spec_certifications.success.title'),
-            t('message:post_spec_certifications.success.description')
-          )
-        } else {
-          setCertifications([])
-          router.refresh()
-          error(
-            t('message:post_spec_certifications.error.title'),
-            t('message:post_spec_certifications.error.description')
-          )
-        }
+      if (result.data?.success) {
+        // 핵심: 저장 성공 후 스토어 상태 동기화
+        // 1. 새로 추가한 데이터들을 기존 수정 리스트(editCertifications)로 합침
+        setEditCertifications([...editCertifications, ...(updatedCertifications as SpecCertificationType[])])
+
+        // 2. 추가용 입력창 초기화
+        setCertifications([])
+
+        // 3. 서버 데이터 리프레시
+        router.refresh()
+
+        success(
+          t('message:post_spec_certifications.success.title'),
+          t('message:post_spec_certifications.success.description')
+        )
+      } else {
+        error(
+          t('message:post_spec_certifications.error.title'),
+          t('message:post_spec_certifications.error.description')
+        )
       }
     } catch (e) {
       error(t('message:fetch_error.title'), t('message:fetch_error.description'))

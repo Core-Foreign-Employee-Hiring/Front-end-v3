@@ -52,7 +52,6 @@ export default function ExpImprovementRate({ index, handleExperienceChange, expe
         />
         {isToolTipOpen ? <Tooltip description={t('common:tooltip.improvement_rate')} /> : null}
       </div>
-      <Label label={t('spec:experience.form.improvementRate.title')} className="kr-subtitle-lg text-gray5" />
       <Spacing height={8} />
       <div className="flex flex-col gap-y-2">
         <div className="flex w-full gap-x-4">

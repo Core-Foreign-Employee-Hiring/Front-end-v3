@@ -1,51 +1,71 @@
-// hooks/useSpecCertification.ts
 'use client'
 
 import { useMemo } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { useSpecStore } from '@/store/specStore'
 import { StepType } from '@/app/[lang]/carrer/page'
+import { SpecCertificationType } from '@/types/spec'
+import { useToast } from '@/components/common/toast/ToastContext'
+import { useTranslation } from 'react-i18next'
 
-export default function useSpecCertification() {
+export default function useSpecCertification(certificationsData: SpecCertificationType[] | null | undefined) {
   const router = useRouter()
   const pathname = usePathname()
+  const { error } = useToast()
+  const { t } = useTranslation('message')
 
-  const certifications = useSpecStore((state) => state.certifications)
-  const addCertification = useSpecStore((state) => state.addCertification)
+  const { certifications, editCertifications, addCertification } = useSpecStore((state) => state)
 
-  // 1. 단계 이동 공통 함수
   const navigateToStep = (step: StepType) => {
     router.push(`${pathname}?tab=spec&step=${encodeURIComponent(step)}`)
   }
 
-  // 2. 자격증 추가 핸들러
-  const handleAddCertification = () => {
-    addCertification({
-      certificationName: '',
-      acquiredDate: '',
-      documentUrl: null,
-    })
-  }
+  // 변경 사항 감지 로직
+  const isChanged = useMemo(() => {
+    // 1. 현재 화면의 모든 데이터를 합침 (신규 + 수정)
+    const currentTotal = [...editCertifications, ...certifications]
+      .map((cert) => ({
+        certificationName: cert.certificationName.trim(),
+        acquiredDate: cert.acquiredDate.trim(),
+        // 파일 객체인 경우 이름만 비교하거나, 존재 여부만 체크 (비교 가능하게 변환)
+        hasFile: !!cert.documentUrl,
+        fileName: cert.documentUrl instanceof File ? cert.documentUrl.name : cert.documentUrl,
+      }))
+      .filter((cert) => cert.certificationName !== '' || cert.acquiredDate !== '')
 
-  // 3. 유효성 검사 로직
+    // 2. 서버 원본 데이터 가공
+    const original = (certificationsData || []).map((cert) => ({
+      certificationName: cert.certificationName.trim(),
+      acquiredDate: cert.acquiredDate.trim(),
+      hasFile: !!cert.documentUrl,
+      fileName: cert.documentUrl,
+    }))
+
+    if (currentTotal.length !== original.length) return true
+
+    return JSON.stringify(currentTotal) !== JSON.stringify(original)
+  }, [certifications, editCertifications, certificationsData])
+
   const isActive = useMemo(() => {
-    // 자격증 정보가 없거나 빈 배열이면 통과 (선택 사항)
     if (!certifications || certifications.length === 0) return true
-
     return certifications.every((cert) => {
-      const isNameFilled = cert.certificationName.trim() !== ''
-      // 취득일(YYYY-MM) 형식을 고려하여 최소 5자 이상 체크
-      const isDateFilled = cert.acquiredDate.trim() !== '' && cert.acquiredDate.length >= 5
-
-      return isNameFilled && isDateFilled
+      return cert.certificationName.trim() !== '' && cert.acquiredDate.trim().length >= 5
     })
   }, [certifications])
+
+  const handleNext = () => {
+    if (isChanged) {
+      error(t('message:save_error.title'), t('message:save_error.description'))
+      return
+    }
+    navigateToStep('4')
+  }
 
   return {
     certifications,
     isActive,
-    handleAddCertification,
+    isChanged,
     handlePrev: () => navigateToStep('2'),
-    handleNext: () => navigateToStep('4'),
+    handleNext,
   }
 }

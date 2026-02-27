@@ -22,7 +22,7 @@ export default function Experience({ index, experience, handleExperienceChange }
       />
       <Spacing height={8} />
       <TextInput
-        placeholder={t('experience.form.experienceName.placeholder"')}
+        placeholder={t('experience.form.experienceName.placeholder')}
         value={experience.experience}
         onChange={(e) => handleExperienceChange(index, 'experience', e.target.value)}
       />

@@ -17,7 +17,7 @@ interface AddEduFormProps {
 
 export default function AddEduForm({ educationData, onClose }: AddEduFormProps) {
   const { removeEducation, education, setEducation } = useSpecStore((state) => state)
-  const { isActive } = useSpecEducation()
+  const { isActive } = useSpecEducation(educationData)
   const router = useRouter()
   const { t } = useTranslation(['spec', 'message'])
   const { success, error } = useToast()
