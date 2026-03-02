@@ -183,9 +183,9 @@
     "title": "스펙 결과",
     "overallEvaluation": "총평",
     "percentage": "상위",
-    "step2": "이력서 자동 생성",
-    "step3": "KORFIT의 AI 면접 준비",
-    "step4": "취업에 성공한 선배들의 경험담",
+    "step2": "AI 분석을 기반\n직무 맞춤 이력서 완성하기",
+    "step3": "실전 질문 기반\nAI 모의면접으로 합격률 높이기",
+    "step4": "현직자 멘토링으로\n전략을 보완해 합격 준비하기",
     "chat": {
       "experience": "경험",
       "certificate": "자격증",

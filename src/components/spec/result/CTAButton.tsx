@@ -21,7 +21,7 @@ export default function CTAButton({ step, stepContent, path }: CTAButtonProps) {
     >
       <p className="kr-subtitle-lg text-main-500">Step {step}</p>
       <div className="flex items-center justify-between">
-        <p className="kr-subtitle-lg">{stepContent}</p>
+        <p className="kr-subtitle-lg whitespace-pre-wrap">{stepContent}</p>
         <Button customClassName={'w-[52px]'} leftIcon={<WhiteRightArrowIcon width={28} height={28} />} />
       </div>
     </div>
