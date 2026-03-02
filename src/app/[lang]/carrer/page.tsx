@@ -58,8 +58,9 @@ export default async function SpecPage({
         <Header headerType={'default'} currentLng={lang} />
       </div>
       <div className="desktop:hidden block">
-        <Header headerType={'dynamic'} currentLng={lang} title={t('spec:title')} />
+        <Header headerType={'dynamic'} currentLng={lang} title={t('spec:title')} path={`/${lang}`} />
       </div>
+
       <PageLayout>
         <div className="w-full">
           <Label label={t('spec:title')} className={'desktop:block tablet:hidden hidden'} type={'titleLg'} />
