@@ -6,6 +6,7 @@ import LayoutContent from '@/components/common/LayoutContent'
 import Script from 'next/script'
 import { ToastProvider } from '@/components/common/toast/ToastContext'
 import ToastContainer from '@/components/common/toast/ToastContainer'
+import GoogleAnalytics from '@/components/common/GoogleAnalytics'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.korfit.co.kr'
 
@@ -105,6 +106,7 @@ export default async function RootLayout({
         <ReactQueryProvider>
           <LayoutContent>
             <ToastProvider>
+              <GoogleAnalytics />
               {children}
               <ToastContainer />
             </ToastProvider>

@@ -8,7 +8,6 @@ import Footer from '@/components/common/Footer'
 import { serverFetchAllJobPosts } from '@/lib/server/job-post'
 import { serverFetchAllContentPosts } from '@/lib/server/content'
 import NavBar from '@/components/common/NavBar'
-import GATracker from '@/components/common/GATracker'
 import AuthWatcher from '@/components/auth/AuthWatcher'
 
 interface HomeProps {
@@ -24,7 +23,6 @@ export default async function Home({ params }: HomeProps) {
   return (
     <main>
       <AuthWatcher results={[jobPostResult, contentResult]} />
-      <GATracker />
       <Header headerType={'default'} currentLng={lang}></Header>
       <Banner />
       <div className="desktop:gap-y-[100px] flex flex-col gap-y-[60px]">
