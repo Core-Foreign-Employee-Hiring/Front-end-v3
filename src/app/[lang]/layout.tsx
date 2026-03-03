@@ -22,29 +22,20 @@ const pretendard = localFont({
   display: 'swap',
 })
 
-// [수정] generateMetadata에서도 params를 Promise로 처리
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
-  const { lang } = await params // await 추가
+  const { lang } = await params
   const OG_IMAGE_URL = `${SITE_URL}/thumbnail-image.png`
 
   return {
     metadataBase: new URL(SITE_URL),
     title: 'KORFIT',
-    description:
-      '외국인을 위한 한국 취업 로드맵 서비스 KORFIT. 10단계 역량 검증 시스템, AI 취업 코칭, 포트폴리오 지원으로 성공적인 한국 취업을 시작하세요.',
+    description: '외국인을 위한 한국 취업 로드맵 서비스 KORFIT...',
     openGraph: {
       title: 'KORFIT | 외국인을 위한 한국 취업 플랫폼',
       description: '외국인을 위한 한국 취업 로드맵 서비스 KORFIT.',
       url: SITE_URL,
       siteName: 'KORFIT',
-      images: [
-        {
-          url: OG_IMAGE_URL,
-          width: 1200,
-          height: 630,
-          alt: 'KORFIT - 외국인을 위한 한국 취업 플랫폼',
-        },
-      ],
+      images: [{ url: OG_IMAGE_URL, width: 1200, height: 630, alt: 'KORFIT' }],
       type: 'website',
       locale: lang === 'ko' ? 'ko_KR' : 'en_US',
     },
@@ -59,7 +50,6 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   }
 }
 
-// [수정] RootLayout을 async 함수로 바꾸고 params를 await 합니다.
 export default async function RootLayout({
   children,
   params,
@@ -67,11 +57,27 @@ export default async function RootLayout({
   children: React.ReactNode
   params: Promise<{ lang: string }>
 }) {
-  const { lang } = await params // await 추가
+  const { lang } = await params
 
   return (
     <html lang={lang}>
       <head>
+        {/* --- Google Tag Manager (Head) --- */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-M66X5FLW');
+            `,
+          }}
+        />
+        {/* ------------------------------- */}
+
         <meta httpEquiv="Cache-Control" content="public, max-age=3600" />
         <link
           rel="preload"
@@ -103,6 +109,17 @@ export default async function RootLayout({
       </head>
 
       <body className={`${inter.variable} ${pretendard.variable} font-sans antialiased`}>
+        {/* --- Google Tag Manager (Body / noscript) --- */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-M66X5FLW"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        {/* ------------------------------------------- */}
+
         <ReactQueryProvider>
           <LayoutContent>
             <ToastProvider>
@@ -112,6 +129,7 @@ export default async function RootLayout({
             </ToastProvider>
           </LayoutContent>
         </ReactQueryProvider>
+
         <Script
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_KEY}&libraries=services&autoload=false`}
           strategy="beforeInteractive"
