@@ -37,11 +37,11 @@ export default function Footer() {
         </section>
 
         <section className="tablet:w-[250px] kr-body-sm text-gray4 tablet:gap-y-3 desktop:gap-y-3 flex flex-col gap-y-2">
-          <div>{t('footer.ceoName')} | 황유림</div>
-          <div>{t('footer.businessRegistrationNumber')} | 황유림</div>
-          <div>{t('footer.mailOrderBusinessReportNumber')} | 황유림</div>
-          <div>{t('footer.address')} | 황유림</div>
-          <div>{t('footer.phoneNumber')} | 010-7557-9217</div>
+          <div>{t('footer.ceoName')} | 김민혁</div>
+          <div>{t('footer.businessRegistrationNumber')} | 459-25-01432</div>
+          <div>{t('footer.mailOrderBusinessReportNumber')} | 2025-충남천안-3000</div>
+          <div>{t('footer.address')} | 충청남도 천안시 서북구 번영로 278-12,105동 801호</div>
+          <div>{t('footer.phoneNumber')} | 010-8025-8813</div>
         </section>
 
         <section className="desktop:w-[250px] tablet:w-[250px] desktop:flex kr-body-sm text-gray4 hidden flex-col gap-y-3">
