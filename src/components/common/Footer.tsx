@@ -37,6 +37,7 @@ export default function Footer() {
         </section>
 
         <section className="tablet:w-[250px] kr-body-sm text-gray4 tablet:gap-y-3 desktop:gap-y-3 flex flex-col gap-y-2">
+          <div>상호명 | 굿에티튜드</div>
           <div>{t('footer.ceoName')} | 김민혁</div>
           <div>{t('footer.businessRegistrationNumber')} | 459-25-01432</div>
           <div>{t('footer.mailOrderBusinessReportNumber')} | 2025-충남천안-3000</div>
