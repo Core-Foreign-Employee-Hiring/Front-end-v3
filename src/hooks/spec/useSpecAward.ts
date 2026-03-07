@@ -3,7 +3,7 @@
 import { useMemo } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { useSpecStore } from '@/store/specStore'
-import { StepType } from '@/app/[lang]/carrer/page'
+import { StepType } from '@/app/[lang]/career/page'
 import { SpecAwardType } from '@/types/spec'
 import { useToast } from '@/components/common/toast/ToastContext'
 import { useTranslation } from 'react-i18next'
@@ -17,7 +17,7 @@ export default function useSpecAward(awardsData: SpecAwardType[] | null | undefi
   const { awards, editAwards } = useSpecStore((state) => state)
 
   const navigateToStep = (step: StepType) => {
-    router.push(`${pathname}?tab=spec&step=${encodeURIComponent(step)}`)
+    router.push(`${pathname}?tab=spec&type=form&step=${encodeURIComponent(step)}`)
   }
 
   // 1. 변경 사항 감지 로직

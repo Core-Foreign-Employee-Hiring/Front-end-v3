@@ -58,7 +58,6 @@ export const clientFetchAllPosts = async (params: {
     headers: {
       'Content-Type': 'application/json',
     },
-    next: { revalidate: 1800 },
   })
 
   return await response.json()

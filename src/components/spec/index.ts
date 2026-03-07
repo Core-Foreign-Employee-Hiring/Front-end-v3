@@ -21,7 +21,7 @@ export { default as CertName } from './certification/CertName'
 export { default as CertAcquiredDate } from './certification/CertAcquiredDate'
 export { default as CertDocumentURL } from './certification/CertDocumentURL'
 
-//carrer
+//career
 export { default as AddCareerForm } from './carrer/AddCareerForm'
 export { default as CareerCompanyName } from './carrer/CareerCompanyName'
 export { default as CareerPosition } from './carrer/CareerPosition'

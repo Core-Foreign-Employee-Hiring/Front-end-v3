@@ -1,6 +1,6 @@
-import { apiCallServer } from '@/lib/api.server'
-import { ApiCallResult } from '@/types/common'
-import { SpecResultType, SpecType } from '@/types/spec'
+import { apiCallServer, apiFetchServer } from '@/lib/api.server'
+import { ApiCallResult, ApiResponse, PageNation } from '@/types/common'
+import { SpecEvaluationType, SpecResultType, SpecType } from '@/types/spec'
 
 /**
  * 스펙 결과 조회
@@ -46,4 +46,27 @@ export const fetchSpecData = async (): Promise<ApiCallResult<SpecType>> => {
       error: error instanceof Error ? error.message : 'Unknown error',
     }
   }
+}
+
+/**
+ * 스펙 평가 리스트 조회 API
+ */
+export const fetchAllSpecResult = async (params: {
+  page: number
+  size: number
+}): Promise<ApiResponse<PageNation<SpecEvaluationType>>> => {
+  const { page = 0, size = 20 } = params
+
+  const searchParams = new URLSearchParams()
+  searchParams.append('page', page.toString())
+  searchParams.append('size', size.toString())
+
+  const response = await apiFetchServer(`/api/v2/member/specification/evaluation?${searchParams.toString()}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+
+  return await response.json()
 }

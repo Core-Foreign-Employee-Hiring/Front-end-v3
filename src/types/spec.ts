@@ -66,3 +66,11 @@ export interface SpecResultType {
   topPercent: number
   analysis: string
 }
+
+export interface SpecEvaluationType {
+  specEvaluationId: number
+  specName: string
+  evaluatedDate: string
+  topPercent: number
+  summary: string
+}
