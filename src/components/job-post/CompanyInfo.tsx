@@ -65,7 +65,7 @@ export default function CompanyInfo({
 
         {companyIntroduction ? (
           <div className="flex">
-            <div className="kr-body-md text-gray4 w-[80px] shrink-0">
+            <div className="kr-body-md text-gray4 w-[80px] shrink-0 whitespace-pre-wrap">
               {t('jobPost:detail.companyInfo.companyIntroduction')}
             </div>
             <p className="kr-subtitle-md text-gray5">{companyIntroduction}</p>

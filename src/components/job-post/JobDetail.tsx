@@ -77,15 +77,17 @@ export default function JobDetail({
       {submissionDocuments ? (
         <section className="flex flex-col gap-y-1">
           <p className="kr-title-sm">{t('jobPost:detail.jobDetail.submissionDocument.title')}</p>
-          {submissionDocuments.map((submissionDocument, index) => {
-            const isLast = submissionDocuments.length - 1 === index
-            return (
-              <p key={submissionDocument} className="kr-body-md text-gray5">
-                {t(convertEnumToKorSubmissionDocumentLabel(submissionDocument))}
-                {isLast ? '' : ','}
-              </p>
-            )
-          })}
+          <div className="flex gap-x-1">
+            {submissionDocuments.map((submissionDocument, index) => {
+              const isLast = submissionDocuments.length - 1 === index
+              return (
+                <p key={submissionDocument} className="kr-body-md text-gray5">
+                  {t(convertEnumToKorSubmissionDocumentLabel(submissionDocument))}
+                  {isLast ? '' : ','}
+                </p>
+              )
+            })}
+          </div>
         </section>
       ) : null}
 
