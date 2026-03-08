@@ -1,5 +1,5 @@
-import { apiCallServer, apiFetchServer } from '@/lib/api.server'
-import { ApiCallResult, ApiResponse, PageNation } from '@/types/common'
+import { apiCallServer } from '@/lib/api.server'
+import { ApiCallResult, PageNation } from '@/types/common'
 import { SpecEvaluationType, SpecResultType, SpecType } from '@/types/spec'
 
 /**
@@ -54,19 +54,27 @@ export const fetchSpecData = async (): Promise<ApiCallResult<SpecType>> => {
 export const fetchAllSpecResult = async (params: {
   page: number
   size: number
-}): Promise<ApiResponse<PageNation<SpecEvaluationType>>> => {
-  const { page = 0, size = 20 } = params
+}): Promise<ApiCallResult<PageNation<SpecEvaluationType>>> => {
+  try {
+    const { page = 0, size = 20 } = params
 
-  const searchParams = new URLSearchParams()
-  searchParams.append('page', page.toString())
-  searchParams.append('size', size.toString())
+    const searchParams = new URLSearchParams()
+    searchParams.append('page', page.toString())
+    searchParams.append('size', size.toString())
+    const { data, error } = await apiCallServer(`/api/v2/member/specification/evaluation?${searchParams.toString()}`, {
+      method: 'GET',
+    })
 
-  const response = await apiFetchServer(`/api/v2/member/specification/evaluation?${searchParams.toString()}`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
+    if (error) {
+      return { success: false, error }
+    }
 
-  return await response.json()
+    return { success: true, data }
+  } catch (error) {
+    console.error('이력서 상세 조회 불러오기 실패:', error)
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    }
+  }
 }
