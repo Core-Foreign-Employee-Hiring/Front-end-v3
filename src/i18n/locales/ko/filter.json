@@ -514,10 +514,12 @@
       "title": "계약 형태 선택",
       "content": {
         "INTERN": "인턴",
+        "REGULAR": "정규직",
+        "CONTRACT": "계약직",
         "NEWCOMER": "신입",
         "EXPERIENCED": "경력",
-        "CONTRACT": "계약직",
-        "REGULAR": "정규직"
+        "NOT_SPECIFIED": "경력 무관",
+        "ETC": "기타"
       }
     },
     "regionFilter": {

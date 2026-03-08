@@ -2,12 +2,13 @@
 
 import { Label } from '@/components/common'
 import Image from 'next/image'
-import { ApplicationMethodType } from '@/types/job-post'
+import { ApplicationMethodType, SubmissionDocumentType } from '@/types/job-post'
 import { getApplicationMethodLabel } from '@/utils/filterList'
 import { useTranslation } from 'react-i18next'
 import { useModalStore } from '@/store/modalStore'
 import { useState } from 'react'
 import ImageModal from '@/components/common/modal/ImageModal'
+import { convertEnumToKorSubmissionDocumentLabel } from '@/utils/job-post'
 
 interface JobDetailProps {
   posterImageUrl: string
@@ -16,6 +17,7 @@ interface JobDetailProps {
   preferences: string
   others: string
   applicationMethod: ApplicationMethodType
+  submissionDocuments: SubmissionDocumentType[]
 }
 
 export default function JobDetail({
@@ -25,6 +27,7 @@ export default function JobDetail({
   applicationMethod,
   qualifications,
   preferences,
+  submissionDocuments,
 }: JobDetailProps) {
   const { t } = useTranslation(['jobPost'])
   const { toggleModal, modals } = useModalStore((state) => state)
@@ -49,23 +52,42 @@ export default function JobDetail({
 
       <section className="flex flex-col gap-y-1">
         <p className="kr-title-sm">{t('jobPost:detail.jobDetail.mainTasks')}</p>
-        <p className="kr-body-md text-gray5">{mainTasks}</p>
+        <p className="kr-body-md text-gray5 whitespace-pre-wrap">{mainTasks}</p>
       </section>
 
       <section className="flex flex-col gap-y-1">
         <p className="kr-title-sm">{t('jobPost:detail.jobDetail.qualifications')}</p>
-        <p className="kr-body-md text-gray5">{qualifications}</p>
+        <p className="kr-body-md text-gray5 whitespace-pre-wrap">{qualifications}</p>
       </section>
 
-      <section className="flex flex-col gap-y-1">
-        <p className="kr-title-sm">{t('jobPost:detail.jobDetail.preferences')}</p>
-        <p className="kr-body-md text-gray5">{preferences}</p>
-      </section>
+      {preferences ? (
+        <section className="flex flex-col gap-y-1">
+          <p className="kr-title-sm">{t('jobPost:detail.jobDetail.preferences')}</p>
+          <p className="kr-body-md text-gray5 whitespace-pre-wrap">{preferences}</p>
+        </section>
+      ) : null}
 
-      <section className="flex flex-col gap-y-1">
-        <p className="kr-title-sm">{t('jobPost:detail.jobDetail.others')}</p>
-        <p className="kr-body-md text-gray5">{others}</p>
-      </section>
+      {others ? (
+        <section className="flex flex-col gap-y-1">
+          <p className="kr-title-sm">{t('jobPost:detail.jobDetail.others')}</p>
+          <p className="kr-body-md text-gray5 whitespace-pre-wrap">{others}</p>
+        </section>
+      ) : null}
+
+      {submissionDocuments ? (
+        <section className="flex flex-col gap-y-1">
+          <p className="kr-title-sm">{t('jobPost:detail.jobDetail.submissionDocument.title')}</p>
+          {submissionDocuments.map((submissionDocument, index) => {
+            const isLast = submissionDocuments.length - 1 === index
+            return (
+              <p key={submissionDocument} className="kr-body-md text-gray5">
+                {t(convertEnumToKorSubmissionDocumentLabel(submissionDocument))}
+                {isLast ? '' : ','}
+              </p>
+            )
+          })}
+        </section>
+      ) : null}
 
       <section className="flex flex-col gap-y-1">
         <p className="kr-title-sm">{t('jobPost:detail.jobDetail.applicationMethod.title')}</p>

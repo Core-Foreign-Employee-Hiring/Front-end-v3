@@ -518,7 +518,9 @@
         "NEWCOMER": "Entry-level",
         "EXPERIENCED": "Experienced",
         "CONTRACT": "Contract",
-        "REGULAR": "Full-time"
+        "REGULAR": "Full-time",
+        "NOT_SPECIFIED": "Any Experience Level",
+        "ETC": "Others"
       }
     },
 

@@ -38,32 +38,37 @@ export default async function JobPostDetail({
       <main className="flex w-full justify-between gap-x-[64px]">
         <div className="flex w-full flex-col gap-y-[24px]">
           <JobPostSummary
-            zipcode={jobPost.zipcode}
+            isAlwaysRecruiting={jobPost.isAlwaysRecruiting}
+            carrerType={jobPost.carrerType}
+            directInputCarrerType={jobPost.directInputCarrerType}
+            workZipcode={jobPost.workZipcode}
             contractType={jobPost.contractType}
             JobCategoryTypes={jobPost.jobCategories}
             title={jobPost.title}
             jobRoles={jobPost.jobRoles}
             companyName={jobPost.companyName}
-            address1={jobPost.address1}
-            address2={jobPost.address2}
+            workAddress1={jobPost.workAddress1}
+            workAddress2={jobPost.workAddress2}
             companyImageUrl={jobPost.companyImageUrl}
             languageTypes={jobPost.languageTypes}
             recruitEndDate={jobPost.recruitEndDate}
             visas={jobPost.visas}
           />
           <MobileWorkConditions
-            directInputSalaryType={jobPost.directInputSalaryType}
-            directInputWorkDayType={jobPost.directInputWorkDayType}
-            directInputWorkTime={jobPost.directInputWorkTime}
-            directInputWorkType={jobPost.directInputWorkType}
-            workEndTime={jobPost.workEndTime}
-            salaryType={jobPost.salaryType}
-            salary={jobPost.salary}
-            workDayType={jobPost.workDayType}
-            workStartTime={jobPost.workStartTime}
             workType={jobPost.workType}
+            directInputWorkType={jobPost.directInputWorkType}
+            workStartTime={jobPost.workStartTime}
+            workEndTime={jobPost.workEndTime}
+            directInputWorkTime={jobPost.directInputWorkTime}
+            workDayPatternType={jobPost.workDayPatternType}
+            workingDays={jobPost.workingDays}
+            directInputWorkDayType={jobPost.directInputWorkDayType}
+            salaryType={jobPost.salaryType}
+            directInputSalaryType={jobPost.directInputSalaryType}
+            salary={jobPost.salary}
           />
           <JobDetail
+            submissionDocuments={jobPost.submissionDocuments}
             posterImageUrl={jobPost.posterImageUrl}
             applicationMethod={jobPost.applicationMethod}
             mainTasks={jobPost.mainTasks}
@@ -72,15 +77,22 @@ export default async function JobPostDetail({
             qualifications={jobPost.qualifications}
           />
           <BottomBorder height={6} color={'gray1'} />
-          {!(jobPost.zipcode && jobPost.address1 && jobPost.address2) ? (
-            ''
-          ) : (
+          {!(jobPost.workAddress1 && jobPost.workZipcode) ? null : (
             <>
-              <WorkplaceInfo address2={jobPost.address2} address1={jobPost.address1} zipcode={jobPost.zipcode} />
+              <WorkplaceInfo
+                address2={jobPost.workAddress2}
+                address1={jobPost.workAddress1}
+                zipcode={jobPost.workZipcode}
+              />
               <BottomBorder height={6} color={'gray1'} />
             </>
           )}
           <CompanyInfo
+            websiteUrl={jobPost.websiteUrl}
+            companyAddress1={jobPost.companyAddress1}
+            companyAddress2={jobPost.companyAddress2}
+            companyIntroduction={jobPost.companyIntroduction}
+            companyZipcode={jobPost.companyZipcode}
             companyImageUrl={jobPost.companyImageUrl}
             companyName={jobPost.companyName}
             representativeName={jobPost.representativeName}
@@ -98,7 +110,8 @@ export default async function JobPostDetail({
             workEndTime={jobPost.workEndTime}
             salaryType={jobPost.salaryType}
             salary={jobPost.salary}
-            workDayType={jobPost.workDayType}
+            workDayPatternType={jobPost.workDayPatternType}
+            workingDays={jobPost.workingDays}
             workStartTime={jobPost.workStartTime}
             workType={jobPost.workType}
           />

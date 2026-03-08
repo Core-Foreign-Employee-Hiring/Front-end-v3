@@ -2,7 +2,7 @@
 
 import { Badge, BottomBorder } from '@/components/common'
 import Image from 'next/image'
-import { ContractEnumType, JobCategoryType, JobRoleType, LanguageType, VisaType } from '@/types/job-post'
+import { CarrerType, ContractEnumType, JobCategoryType, JobRoleType, LanguageType, VisaType } from '@/types/job-post'
 import { formatToShortDateWithDay } from '@/utils/common'
 import { useTranslation } from 'react-i18next'
 import { convertEnumToKorContractTypeLabel } from '@/utils/job-post'
@@ -14,33 +14,37 @@ import ImageModal from '@/components/common/modal/ImageModal'
 interface JobPostSummaryProps {
   visas: VisaType[]
   languageTypes: LanguageType[]
+  carrerType: CarrerType
+  directInputCarrerType: string
   jobRoles: JobRoleType[]
   JobCategoryTypes: JobCategoryType[]
   contractType: ContractEnumType
-
   title: string
   companyImageUrl: string
   companyName: string
   recruitEndDate: string
-
-  zipcode: string
-  address1: string
-  address2: string
+  workZipcode: string
+  workAddress1: string
+  workAddress2: string
+  isAlwaysRecruiting: boolean
 }
 
 export default function JobPostSummary({
   visas,
+  carrerType,
+  directInputCarrerType,
   companyImageUrl,
   companyName,
   recruitEndDate,
   title,
   languageTypes,
   contractType,
-  zipcode,
+  workZipcode,
   jobRoles,
-  address2,
-  address1,
+  workAddress2,
+  workAddress1,
   JobCategoryTypes,
+  isAlwaysRecruiting,
 }: JobPostSummaryProps) {
   const { t } = useTranslation(['jobPost', 'common', 'filter'])
   const { toggleModal, modals } = useModalStore((state) => state)
@@ -77,7 +81,11 @@ export default function JobPostSummary({
               ) : null
             ) : null}
           </div>
-          <p className="kr-button text-gray4">{formatToShortDateWithDay(recruitEndDate, t)}</p>
+          {isAlwaysRecruiting ? (
+            <p className="kr-button text-gray4">{t('jobPost:detail.jobPostSummary.isAlwaysRecruiting')}</p>
+          ) : (
+            <p className="kr-button text-gray4">{formatToShortDateWithDay(recruitEndDate, t)}</p>
+          )}
         </div>
 
         <h1 className="kr-subtitle-lg">{title}</h1>
@@ -103,11 +111,15 @@ export default function JobPostSummary({
             <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">
               {t('jobPost:detail.jobPostSummary.jobCategory')}
             </div>
-            {JobCategoryTypes?.map((JobCategoryType) => (
-              <p key={JobCategoryType} className="kr-body-md">
-                {t(getJobCategoryLabel(JobCategoryType))}
-              </p>
-            ))}
+            {JobCategoryTypes?.map((JobCategoryType, index) => {
+              const isLast = JobCategoryTypes.length - 1 === index
+              return (
+                <p key={JobCategoryType} className="kr-body-md">
+                  {t(getJobCategoryLabel(JobCategoryType))}
+                  {isLast ? '' : ','}
+                </p>
+              )
+            })}
           </div>
         ) : null}
 
@@ -115,11 +127,30 @@ export default function JobPostSummary({
           <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">
             {t('jobPost:detail.jobPostSummary.jobRole')}
           </div>
-          {jobRoles.map((jobRole) => (
-            <p key={jobRole} className="kr-body-md">
-              {`${t(getJobRoleLabel(jobRole))}`}
-            </p>
-          ))}
+          {jobRoles.map((jobRole, index) => {
+            const isLast = jobRoles.length - 1 === index
+            return (
+              <p key={jobRole} className="kr-body-md">
+                {`${t(getJobRoleLabel(jobRole))}`}
+                {isLast ? '' : ','}
+              </p>
+            )
+          })}
+        </div>
+
+        <div className="flex items-center gap-x-1">
+          <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">
+            {t('jobPost:detail.jobPostSummary.career')}
+          </div>
+          <div className="flex items-center gap-x-1">
+            <p className="kr-body-md">{t(convertEnumToKorContractTypeLabel(carrerType))}</p>
+            {directInputCarrerType ? (
+              <>
+                <p className="kr-body-md">|</p>
+                <p className="kr-body-md">{directInputCarrerType}</p>
+              </>
+            ) : null}
+          </div>
         </div>
 
         <div className="flex items-center gap-x-1">
@@ -151,7 +182,9 @@ export default function JobPostSummary({
 
         {languageTypes.length > 0 ? (
           <div className="flex items-center gap-x-1">
-            <div className="kr-subtitle-md text-gray4 w-[80px]">{t('jobPost:detail.jobPostSummary.language')}</div>
+            <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">
+              {t('jobPost:detail.jobPostSummary.language')}
+            </div>
 
             {languageTypes.map((languageType, index) => {
               const isLast = languageTypes.length - 1 === index
@@ -165,10 +198,12 @@ export default function JobPostSummary({
           </div>
         ) : null}
 
-        {!(address1 && zipcode && address2) ? null : (
+        {!(workAddress1 && workZipcode) ? null : (
           <div className="flex items-center gap-x-1">
-            <div className="kr-subtitle-md text-gray4 w-[80px]">{t('jobPost:detail.jobPostSummary.workAddress')}</div>
-            <p className="kr-body-md">{`${zipcode ? `(${zipcode})` : ''} ${address1 ? `${address1}` : ''} ${address2 ? `${address2}` : ''}`}</p>
+            <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">
+              {t('jobPost:detail.jobPostSummary.workAddress')}
+            </div>
+            <p className="kr-body-md">{[`(${workZipcode})`, workAddress1, workAddress2].filter(Boolean).join(' ')}</p>
           </div>
         )}
       </section>

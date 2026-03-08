@@ -11,12 +11,17 @@ import { useModalStore } from '@/store/modalStore'
 import { useState } from 'react'
 
 interface CompanyInfoProps {
-  companyName: string
-  companyType: CompanyType
   companyImageUrl: string
-  representativeName: string
-  establishedDate: string
+  companyName: string
   businessType: string
+  companyIntroduction: string
+  companyType: CompanyType
+  establishedDate: string
+  representativeName: string
+  companyZipcode: string
+  companyAddress1: string
+  companyAddress2: string
+  websiteUrl: string
 }
 
 export default function CompanyInfo({
@@ -26,6 +31,11 @@ export default function CompanyInfo({
   companyImageUrl,
   representativeName,
   establishedDate,
+  companyIntroduction,
+  companyAddress1,
+  companyAddress2,
+  companyZipcode,
+  websiteUrl,
 }: CompanyInfoProps) {
   const { t } = useTranslation(['jobPost'])
   const { toggleModal, modals } = useModalStore((state) => state)
@@ -53,31 +63,62 @@ export default function CompanyInfo({
           </div>
         </div>
 
+        {companyIntroduction ? (
+          <div className="flex">
+            <div className="kr-body-md text-gray4 w-[80px] shrink-0">
+              {t('jobPost:detail.companyInfo.companyIntroduction')}
+            </div>
+            <p className="kr-subtitle-md text-gray5">{companyIntroduction}</p>
+          </div>
+        ) : null}
+
         <div className="flex flex-col gap-y-3">
-          <div className="flex">
-            <div className="kr-body-md text-gray4 w-[80px]">{t('jobPost:detail.companyInfo.representativeName')}</div>
-            <p className="kr-subtitle-md text-gray5">{representativeName}</p>
-          </div>
+          {representativeName ? (
+            <div className="flex">
+              <div className="kr-body-md text-gray4 w-[80px] shrink-0">
+                {t('jobPost:detail.companyInfo.representativeName')}
+              </div>
+              <p className="kr-subtitle-md text-gray5">{representativeName}</p>
+            </div>
+          ) : null}
 
-          <div className="flex">
-            <div className="kr-body-md text-gray4 w-[80px]">{t('jobPost:detail.companyInfo.establishedDate')}</div>
-            <p className="kr-subtitle-md text-gray5">{establishedDate}</p>
-          </div>
+          {establishedDate ? (
+            <div className="flex">
+              <div className="kr-body-md text-gray4 w-[80px] shrink-0">
+                {t('jobPost:detail.companyInfo.establishedDate')}
+              </div>
+              <p className="kr-subtitle-md text-gray5">{establishedDate}</p>
+            </div>
+          ) : null}
 
-          <div className="flex">
-            <div className="kr-body-md text-gray4 w-[80px]">{t('jobPost:detail.companyInfo.companyType.title')}</div>
-            <p className="kr-subtitle-md text-gray5">{t(changeCompanyTypeEnumToKor(companyType))}</p>
-          </div>
+          {companyType ? (
+            <div className="flex">
+              <div className="kr-body-md text-gray4 w-[80px] shrink-0">
+                {t('jobPost:detail.companyInfo.companyType.title')}
+              </div>
+              <p className="kr-subtitle-md text-gray5">{t(changeCompanyTypeEnumToKor(companyType))}</p>
+            </div>
+          ) : null}
 
-          <div className="flex">
-            <div className="kr-body-md text-gray4 w-[80px]">{t('jobPost:detail.companyInfo.webSite')}</div>
-            <Link
-              href={'/https://www.korfit.co.kr/ko'}
-              className="kr-subtitle-md text-gray5 underline decoration-1 underline-offset-4"
-            >
-              웹사이트
-            </Link>
-          </div>
+          {!(companyZipcode && companyAddress1) ? null : (
+            <div className="flex">
+              <div className="kr-body-md text-gray4 w-[80px] shrink-0">
+                {t('jobPost:detail.companyInfo.companyAddress')}
+              </div>
+              <p className="kr-subtitle-md text-gray5">
+                {[`(${companyZipcode})`, companyAddress1, companyAddress2].filter(Boolean).join(' ')}
+              </p>
+            </div>
+          )}
+
+          {websiteUrl ? (
+            <div className="flex">
+              <div className="kr-body-md text-gray4 w-[80px] shrink-0">{t('jobPost:detail.companyInfo.webSite')}</div>
+              <Link href={websiteUrl} className="kr-subtitle-md text-gray5 underline decoration-1 underline-offset-4">
+                {websiteUrl}
+              </Link>
+            </div>
+          ) : null}
         </div>
       </section>
     </div>

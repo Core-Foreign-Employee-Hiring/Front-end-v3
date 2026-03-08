@@ -30,10 +30,12 @@
       },
       "jobCategory": "Category",
       "jobRole": "Role",
+      "career": "Experience",
       "contractType": "Type",
       "visa": "Visa",
       "language": "Language",
-      "workAddress": "Location"
+      "workAddress": "Workplace",
+      "isAlwaysRecruiting": "Always Hiring"
     },
 
     "workConditions": {
@@ -77,6 +79,14 @@
       "mainTasks": "Key Tasks",
       "qualifications": "Requirements",
       "preferences": "Preferences",
+      "submissionDocument": {
+        "title": "Required Documents",
+        "RESUME": "Resume",
+        "COVER_LETTER": "Cover Letter",
+        "PORTFOLIO": "Portfolio",
+        "CAREER_DESCRIPTION": "Work Experience Description",
+        "ETC": "Others"
+      },
       "others": "Others",
       "applicationMethod": {
         "title": "How to Apply",
@@ -94,6 +104,8 @@
       "title": "Company Info",
       "representativeName": "CEO",
       "establishedDate": "Founded",
+      "companyIntroduction": "About",
+      "companyAddress": "Address",
       "companyType": {
         "title": "Company Type",
         "LARGE_CORPORATION": "Large Corp",
