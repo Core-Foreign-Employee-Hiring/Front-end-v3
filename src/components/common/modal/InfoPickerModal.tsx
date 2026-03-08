@@ -14,7 +14,7 @@ export default function InfoPickerModal() {
 
   const { createResumeResponse, resumeSelection, selectedType, resetResume } = useResumeStore((state) => state)
   const onNavigate = (resumeId: number) => {
-    router.push(`/carrer/resume/${resumeId}/${selectedType}`)
+    router.push(`/career/resume/${resumeId}/${selectedType}`)
   }
   const { modals, toggleModal } = useModalStore((state) => state)
   const onClose = () => {

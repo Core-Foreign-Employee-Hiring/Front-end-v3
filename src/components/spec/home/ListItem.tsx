@@ -28,14 +28,13 @@ export default function ListItem({
       <div className="kr-button text-gray4 flex w-[360px] shrink-0 items-center justify-center truncate">{summary}</div>
       <Button
         onClick={() => {
-          router.push(`/carrer/${specEvaluationId}`)
+          router.push(`/career/${specEvaluationId}`)
         }}
         customClassName={'w-[100px]'}
         variant={'secondary'}
         size={'sm'}
       >
         {t('spec:home.spec_diagnostic_history_list.item')}
-        상세보기
       </Button>
       <Gray5OptionIcon width={32} height={32} />
     </div>

@@ -17,7 +17,7 @@ export default function ResumeItemContent({ title, createdAt, modifiedAt, id }: 
 
   //TODO: 템플릿 유형 선택 추가
   const onNavigate = () => {
-    router.push(`/carrer/resume/${id}`)
+    router.push(`/career/resume/${id}`)
   }
 
   return (

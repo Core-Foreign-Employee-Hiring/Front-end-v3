@@ -33,7 +33,7 @@ export default function NotUseResumeServiceModal({ lang }: NotUseResumeServiceMo
           </Button>
           <Button
             onClick={() => {
-              router.push(`/${lang}/carrer?tab=spec`)
+              router.push(`/${lang}/career?tab=spec&type=form&step=1`)
             }}
             variant={'primary'}
           >

@@ -12,7 +12,7 @@ export default function CreateNewSpecButton() {
   const { t } = useTranslation(['spec'])
 
   const handleStepClick = (type: SpecType) => {
-    router.push(`${pathname}?tab=spec&type=${encodeURIComponent(type)}`)
+    router.push(`${pathname}?tab=spec&type=${encodeURIComponent(type)}&step=1`)
   }
   return (
     <Button
