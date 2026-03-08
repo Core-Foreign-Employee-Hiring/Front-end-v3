@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation'
 import { formatToShortDateWithDay, getShortAddress } from '@/utils/common'
 import { getJobRoleLabel, getLanguageLabel } from '@/utils/filterList'
 import { useTranslation } from 'react-i18next'
+import { convertEnumToKorContractTypeLabel } from '@/utils/job-post'
 
 export default function JobPostCard({
   recruitId,
@@ -83,7 +84,7 @@ export default function JobPostCard({
           {carrerType ? (
             <>
               <p>・</p>
-              <p>{carrerType}</p>
+              <p>{t(convertEnumToKorContractTypeLabel(carrerType))}</p>
             </>
           ) : null}
         </div>
