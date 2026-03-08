@@ -4,12 +4,17 @@ export async function POST(request: Request) {
   try {
     const endpoint = `/api/v2/member/specification/evaluation`
 
+    const requestData: {
+      specName: string
+    } = await request.json()
+
     // 서버에서 백엔드 API 호출
     const { data, error } = await apiCallServer(endpoint, {
       method: 'POST',
+      body: JSON.stringify(requestData),
     })
 
-    console.log('스펙 결과 분석 res', data)
+    console.log('스펙 결과 분석 res', requestData)
 
     if (error) {
       return Response.json({ error }, { status: 400 })

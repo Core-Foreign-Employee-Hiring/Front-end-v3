@@ -112,7 +112,7 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
   const navItems = [
     { label: t('navigation.home'), href: `/${activeLng}` },
     { label: t('navigation.job_post'), href: `/${activeLng}/job-post` },
-    { label: t('navigation.career'), href: `/${activeLng}/carrer?tab=spec` },
+    { label: t('navigation.career'), href: `/${activeLng}/career?tab=spec&type=home` },
     { label: t('navigation.interview'), href: `/${activeLng}/interview?tab=home` },
     { label: t('navigation.content'), href: `/${activeLng}/content` },
     { label: t('navigation.program'), href: `/${activeLng}/program` },

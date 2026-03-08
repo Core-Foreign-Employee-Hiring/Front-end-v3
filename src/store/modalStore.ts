@@ -6,6 +6,7 @@ import { devtools } from 'zustand/middleware'
  * 여기에 새로운 모달 이름을 추가하기만 하면 자동 완성이 지원됩니다.
  */
 export type ModalKey =
+  | 'isCreateSpecNameModalOpen'
   | 'isSaveAnswerNoteModalOpen'
   | 'isCreateNewAnswerNoteModalOpen'
   | 'isEditNoteTitleModalOpen'

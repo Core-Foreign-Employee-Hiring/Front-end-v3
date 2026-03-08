@@ -3,7 +3,7 @@
 import { useMemo } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { useSpecStore } from '@/store/specStore'
-import { StepType } from '@/app/[lang]/carrer/page'
+import { StepType } from '@/app/[lang]/career/page'
 import { useToast } from '@/components/common/toast/ToastContext'
 import { SpecEducationType } from '@/types/spec'
 import { useTranslation } from 'react-i18next'
@@ -20,7 +20,7 @@ export default function useSpecEducation(educationData: SpecEducationType | unde
   const setEducation = useSpecStore((state) => state.setEducation)
 
   const handleStepClick = (step: StepType) => {
-    router.push(`${pathname}?tab=spec&step=${encodeURIComponent(step)}`)
+    router.push(`${pathname}?tab=spec&type=form&step=${encodeURIComponent(step)}`)
   }
 
   // 데이터 변경 여부를 확인하는 유틸 함수
@@ -62,6 +62,17 @@ export default function useSpecEducation(educationData: SpecEducationType | unde
     handleStepClick('2')
   }
 
+  const handlePrevStep = () => {
+    // 변경사항이 있는데 저장을 안 한 경우
+    if (isChanged) {
+      error(t('message:save_error.title'), t('message:save_error.description')) // 토스트 에러 발생
+      return // 함수 종료 (다음 단계로 안 넘어감)
+    }
+
+    // 변경사항이 없으면 다음 단계로 이동
+    router.push(`${pathname}?tab=spec&type=home`)
+  }
+
   // ... (isActive 로직은 그대로 유지)
   const isActive = useMemo(() => {
     if (!education) return false
@@ -99,6 +110,7 @@ export default function useSpecEducation(educationData: SpecEducationType | unde
         earnedScore: '',
         maxScore: '',
       }),
+    handlePrevStep,
     handleNextStep, // 업데이트된 함수 반환
   }
 }

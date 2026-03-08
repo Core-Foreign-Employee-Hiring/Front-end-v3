@@ -71,6 +71,7 @@ export default function BottomButtons({ currentStep, lang }: BottomButtonsProps)
 
       // 5. 최종 POST 요청
       const result = await postRecruit(submitData as CreateJobPostType)
+      console.log('post 결과 result', result)
       if (result.success) {
         success(t('message:post_recruit.success.title'), t('message:post_recruit.success.description'))
       } else {

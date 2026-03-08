@@ -11,6 +11,7 @@ import {
 
 interface SpecState {
   specEvaluationId: number
+  specName: string
   // --- States ---
   education: SpecEducationType | null
   languageSkills: SpecLanguageSkillType[]
@@ -30,6 +31,7 @@ interface SpecState {
 
   // --- Actions ---
   setSpecEvaluationId: (specEvaluationId: number) => void
+  setSpecName: (specName: string) => void
 
   // Education
   setEducation: (data: SpecEducationType | null) => void
@@ -93,6 +95,8 @@ export const useSpecStore = create<SpecState>()(
   devtools((set) => ({
     // 초기 상태
     specEvaluationId: 0,
+    specName: '',
+
     education: null,
     languageSkills: [],
     editLanguageSkills: [],
@@ -110,6 +114,8 @@ export const useSpecStore = create<SpecState>()(
     editExperiences: [],
 
     setSpecEvaluationId: (specEvaluationId) => set({ specEvaluationId }, false, 'spec/setSpecEvaluationId'),
+    setSpecName: (specName) => set({ specName }, false, 'spec/specName'),
+
     // --- 기존 Education Actions ---
     setEducation: (education) => set({ education }, false, 'spec/setEducation'),
     updateEducation: <K extends keyof SpecEducationType>(field: K, value: SpecEducationType[K]) =>

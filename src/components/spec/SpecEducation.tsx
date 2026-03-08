@@ -15,7 +15,7 @@ interface SpecEducationProps {
 }
 
 export default function SpecEducation({ educationData }: SpecEducationProps) {
-  const { handleAddEducation, handleNextStep, isActive } = useSpecEducation(educationData)
+  const { handleAddEducation, handleNextStep, handlePrevStep, isActive } = useSpecEducation(educationData)
   const { setEducation } = useSpecStore() // 스토어에서 전체 데이터를 세팅하는 함수
 
   const { t } = useTranslation(['spec'])
@@ -79,7 +79,7 @@ export default function SpecEducation({ educationData }: SpecEducationProps) {
       )}
 
       <Spacing height={100} />
-      <BottomButton isNextButtonActive={true} handleNext={handleNextStep} />
+      <BottomButton handlePrev={handlePrevStep} isNextButtonActive={true} handleNext={handleNextStep} />
     </div>
   )
 }

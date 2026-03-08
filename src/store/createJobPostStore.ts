@@ -12,6 +12,7 @@ interface CreateJobPostState {
 
 const initCreateJobPostData: Partial<CreateJobPostType> = {
   directInputContractType: '',
+  recruitPublishStatus: 'PUBLISHED',
   title: '',
 }
 

@@ -11,14 +11,18 @@ export interface JobPostType {
   companyImageUrl: string
   companyName: string
 }
+
 export interface JobPostDetailType {
   recruitId: number
   title: string
   isAlwaysRecruiting: boolean
   recruitStartDate: string
   recruitEndDate: string
+  directInputRecruitDate: string
   contractType: ContractEnumType
   directInputContractType: string
+  carrerType: CarrerType
+  directInputCarrerType: string
   jobCategories: JobCategoryType[]
   jobRoles: JobRoleType[]
   languageTypes: LanguageType[]
@@ -26,7 +30,8 @@ export interface JobPostDetailType {
   workRegion: RegionType
   workType: WorkType
   directInputWorkType: string
-  workDayType: WorkDayPatternType
+  workDayPatternType: WorkDayPatternType
+  workingDays: WorkingDaysType[]
   directInputWorkDayType: string
   workStartTime: string
   workEndTime: string
@@ -41,15 +46,26 @@ export interface JobPostDetailType {
   others: string
   applicationMethod: ApplicationMethodType
   directInputApplicationMethod: string
+  websiteUrl: string
+  companyIntroduction: string
+  submissionDocuments: SubmissionDocumentType[]
+  directInputSubmissionDocument: string
   companyName: string
   companyType: CompanyType
-  zipcode: string
-  address1: string
-  address2: string
+  companyZipcode: string
+  companyAddress1: string
+  companyAddress2: string
+  companyLatitude: number
+  companyLongitude: number
+  workZipcode: string
+  workAddress1: string
+  workAddress2: string
+  workLatitude: number
+  workLongitude: number
   representativeName: string
   establishedDate: string
   businessType: string
-  recruitBookmarkStatus: 'ACTIVE'
+  recruitBookmarkStatus: RecruitBookmarkStatusType
   companyImageUrl: string
 }
 export type ApplicationMethodType = 'WEBSITE' | 'PHONE_SMS' | 'EMAIL'
@@ -91,6 +107,7 @@ export type RegionType =
   | 'JEONNAM'
 
 export type WorkType = 'ONSITE' | 'HYBRID' | 'REMOTE' | 'ETC'
+export type RecruitBookmarkStatusType = 'ACTIVE' | 'INACTIVE'
 
 export type LanguageType =
   | 'ENGLISH'

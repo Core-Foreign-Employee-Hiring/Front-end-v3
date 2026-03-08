@@ -3,7 +3,7 @@
 import { useMemo } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 import { useSpecStore } from '@/store/specStore'
-import { StepType } from '@/app/[lang]/carrer/page'
+import { StepType } from '@/app/[lang]/career/page'
 import { SpecLanguageSkillType } from '@/types/spec'
 import { useToast } from '@/components/common/toast/ToastContext'
 import { useTranslation } from 'react-i18next'
@@ -18,7 +18,7 @@ export default function useSpecLanguage(languageSkillsData: SpecLanguageSkillTyp
   const { languageSkills, addLanguageSkill, editLanguageSkills } = useSpecStore((state) => state)
 
   const navigateToStep = (step: StepType) => {
-    router.push(`${pathname}?tab=spec&step=${encodeURIComponent(step)}`)
+    router.push(`${pathname}?tab=spec&type=form&step=${encodeURIComponent(step)}`)
   }
 
   const isChanged = useMemo(() => {

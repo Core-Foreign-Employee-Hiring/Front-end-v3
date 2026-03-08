@@ -3,14 +3,15 @@
 import { Label } from '@/components/common'
 import { changeEnumToKorWorkDaysTypeLabel, changeEnumToKorWorkTypeLabel } from '@/utils/filterList'
 import SalaryTypeBadge from '@/components/common/SalaryTypeBadge'
-import { SalaryEnumType, WorkDayPatternType, WorkType } from '@/types/job-post'
+import { SalaryEnumType, WorkDayPatternType, WorkingDaysType, WorkType } from '@/types/job-post'
 import { useTranslation } from 'react-i18next'
 import BottomBorder from '../common/BottomBorder'
 
 interface WorkConditionsProps {
   workType: WorkType
   directInputWorkType: string
-  workDayType: WorkDayPatternType
+  workDayPatternType: WorkDayPatternType
+  workingDays: WorkingDaysType[]
   directInputWorkDayType: string
   workStartTime: string
   workEndTime: string
@@ -30,7 +31,8 @@ export default function MobileWorkConditions({
   workEndTime,
   salaryType,
   directInputWorkType,
-  workDayType,
+  workDayPatternType,
+  workingDays,
 }: WorkConditionsProps) {
   const { t } = useTranslation(['jobPost'])
 
@@ -64,7 +66,21 @@ export default function MobileWorkConditions({
               {t('jobPost:detail.workConditions.workDaysType.title')}
             </div>
             <div className="flex flex-col">
-              <p className="kr-body-md">{t(changeEnumToKorWorkDaysTypeLabel(workDayType))}</p>
+              {workDayPatternType ? (
+                <p className="kr-body-md">{t(changeEnumToKorWorkDaysTypeLabel(workDayPatternType))}</p>
+              ) : (
+                <div className="flex flex-wrap">
+                  {workingDays.map((workingDay, index) => {
+                    const isLast = workingDays.length - 1 === index
+                    return (
+                      <p key={workingDay} className="kr-body-md">
+                        {t(changeEnumToKorWorkDaysTypeLabel(workingDay))}
+                        {isLast ? '' : ', '}
+                      </p>
+                    )
+                  })}
+                </div>
+              )}
               <p className="kr-body-sm text-gray5">{directInputWorkDayType}</p>
             </div>
           </div>

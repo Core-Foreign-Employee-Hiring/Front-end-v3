@@ -3,12 +3,14 @@
 import { ResponsiveRadar } from '@nivo/radar'
 import { SpecResultType } from '@/types/spec'
 import { useTranslation } from 'react-i18next'
+import { twMerge } from 'tailwind-merge'
 
 interface ChatProps {
   specResult: SpecResultType | undefined
+  customClassname?: string
 }
 
-export default function Chat({ specResult }: ChatProps) {
+export default function SpecChat({ specResult, customClassname }: ChatProps) {
   const { t } = useTranslation(['spec'])
   const data = [
     { label: t('result.chat.experience'), value: specResult?.experience },
@@ -18,7 +20,12 @@ export default function Chat({ specResult }: ChatProps) {
     { label: t('result.chat.education'), value: specResult?.education },
   ]
   return (
-    <div className="desktop:w-[486px] desktop:h-[433px] h-[286px] w-[321px] flex-shrink-0 whitespace-nowrap">
+    <div
+      className={twMerge(
+        'desktop:w-[486px] desktop:h-[433px] v h-[286px] w-[321px] flex-shrink-0 whitespace-nowrap',
+        customClassname
+      )}
+    >
       <ResponsiveRadar
         data={data}
         keys={['value']}

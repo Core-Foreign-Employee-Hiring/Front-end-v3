@@ -13,7 +13,7 @@ export default function WorkplaceInfo({ zipcode, address1, address2 }: Workplace
   const { t } = useTranslation(['jobPost'])
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={t('jobPost:detail.workPlace')} type={'subtitleLg'} />
+      <Label label={t('jobPost:detail.workPlace.title')} type={'subtitleLg'} />
       <div className="flex items-center gap-x-2">
         <Gray5LocationIcon width={20} height={20} />
         <p className="kr-body-md text-gray5">{`${zipcode ? `(${zipcode})` : ''} ${address1 ? address1 : ''} ${address2 ? address2 : ''}`}</p>

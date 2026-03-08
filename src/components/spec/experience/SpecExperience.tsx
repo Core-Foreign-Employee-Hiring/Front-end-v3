@@ -10,12 +10,12 @@ import { useEffect } from 'react'
 import EditExperienceEntry from '@/components/spec/experience/EditExperienceEntry'
 import ExperienceEntry from '@/components/spec/experience/ExperienceEntry'
 import { postSpecExperiences } from '@/lib/client/spec/experience'
-import { postSpecResult } from '@/lib/client/spec'
 import { useTranslation } from 'react-i18next'
 import { useToast } from '@/components/common/toast/ToastContext'
 import { useModalStore } from '@/store/modalStore'
-import CareerAnalysisLoadingModal from '@/components/common/modal/CareerAnalysisLoadingModal'
 import useSpecExperience from '@/hooks/spec/useSpecExperience'
+import CreateSpecNameModal from '@/components/common/modal/CreateSpecNameModal'
+import CareerAnalysisLoadingModal from '@/components/common/modal/CareerAnalysisLoadingModal'
 
 interface SpecExperienceProps {
   experiencesData: SpecExperienceType[] | null | undefined
@@ -45,24 +45,7 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
       error(t('message:save_error.title'), t('message:save_error.description'))
       return
     }
-
-    setModal('isCareerAnalysisLoadingModalOpen', true)
-
-    try {
-      const specResult = await postSpecResult()
-      if (specResult.success && specResult.data?.data) {
-        success(t('message:post_spec_result.success.title'), t('message:post_spec_result.success.description'))
-        setSpecEvaluationId(specResult.data.data)
-        setModal('isCareerAnalysisLoadingModalOpen', false)
-        router.push(`/carrer/${specResult.data.data}`)
-      } else {
-        setModal('isCareerAnalysisLoadingModalOpen', false)
-        error(t('message:post_spec_result.error.title'), t('message:post_spec_result.error.description'))
-      }
-    } catch (e) {
-      setModal('isCareerAnalysisLoadingModalOpen', false)
-      error(t('message:fetch_error.title'), t('message:fetch_error.description'))
-    }
+    setModal('isCreateSpecNameModalOpen', true)
   }
 
   const handleSave = async () => {
@@ -89,7 +72,8 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
 
   return (
     <div>
-      {modals.isCareerAnalysisLoadingModalOpen && <CareerAnalysisLoadingModal />}
+      <CreateSpecNameModal />
+      <CareerAnalysisLoadingModal />
       <Label
         label={t('spec:experience.title')}
         type={'titleMd'}
@@ -142,7 +126,7 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
       </div>
 
       <Spacing height={100} />
-      <BottomButton handlePrev={handlePrev} isNextButtonActive={true} handleNext={handleNext} />
+      <BottomButton step={'6'} handlePrev={handlePrev} isNextButtonActive={true} handleNext={handleNext} />
     </div>
   )
 }

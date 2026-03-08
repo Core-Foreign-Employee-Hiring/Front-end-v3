@@ -9,22 +9,25 @@ import { getTranslationServer } from '@/lib/i18n'
 import { Locale } from '@/lib/i18n.types'
 
 export type StepType = '1' | '2' | '3' | '4' | '5' | '6'
+export type SpecType = 'home' | 'form'
 export type TabType = 'spec' | 'resume'
 
 function FindCarrerStepSwitcher({
   tab,
   step,
+  type,
   lang,
   resumeList,
 }: {
   tab: TabType
   step: StepType
+  type: SpecType
   lang: Locale
   resumeList: ResumeListType[] | undefined
 }) {
-  if (tab === 'spec') return <Spec step={step} lang={lang} />
+  if (tab === 'spec') return <Spec step={step} type={type} lang={lang} />
   if (tab === 'resume') return <Resume resumeList={resumeList} lang={lang} />
-  return <Spec step={step} lang={lang} />
+  return <Spec step={step} type={type} lang={lang} />
 }
 
 export default async function SpecPage({
@@ -38,13 +41,13 @@ export default async function SpecPage({
   const { t } = await getTranslationServer(lang, ['spec', 'resume'])
   const resolvedSearchParams = await searchParams
 
+  const tab = (resolvedSearchParams.tab as TabType) || 'spec'
+  const type = (resolvedSearchParams.type as SpecType) || 'home'
   const step = (resolvedSearchParams.step as StepType) || '1'
 
-  const tab = (resolvedSearchParams.tab as TabType) || 'spec'
-
   const tabList: { content: string; path: string; key: string }[] = [
-    { content: t('spec:home.title'), path: `/${lang}/carrer?tab=spec`, key: 'spec' },
-    { content: t('resume:title'), path: `/${lang}/carrer?tab=resume`, key: 'resume' },
+    { content: t('spec:home.title'), path: `/${lang}/career?tab=spec&type=home`, key: 'spec' },
+    { content: t('resume:title'), path: `/${lang}/career?tab=resume`, key: 'resume' },
   ]
 
   const resumeResult = await fetchResumeList(0, 20)
@@ -69,7 +72,13 @@ export default async function SpecPage({
           <Tab tabList={tabList} />
           <Spacing height={20} />
 
-          <FindCarrerStepSwitcher resumeList={resumeResult.data?.content} tab={tab} step={step} lang={lang} />
+          <FindCarrerStepSwitcher
+            resumeList={resumeResult.data?.content}
+            tab={tab}
+            type={type}
+            step={step}
+            lang={lang}
+          />
         </div>
       </PageLayout>
     </main>
