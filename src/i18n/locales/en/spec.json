@@ -32,7 +32,7 @@
       "header": {
         "current_diagnosis": "Current Diagnosis",
         "last_modified": "Modified Date",
-        "view_spec": "View Spec"
+        "view_spec": "View More"
       }
     },
     "spec_diagnostic_history": {
@@ -47,7 +47,7 @@
         "summary": "Summary"
       },
       "item": {
-        "button": "View Details"
+        "button": "View More"
       }
     }
   },

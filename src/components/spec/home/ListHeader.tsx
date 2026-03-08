@@ -19,7 +19,6 @@ export default function ListHeader() {
         {t('spec:home.spec_diagnostic_history_list.header.summary')}
       </div>
       <div className="w-[100px]" />
-      <div className="w-[32px]" />
     </div>
   )
 }

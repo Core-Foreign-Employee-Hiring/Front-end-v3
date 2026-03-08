@@ -21,3 +21,8 @@ export const padMonth = (value: string | undefined | null) => {
   }
   return value
 }
+
+export function getInvertedPercent(value: number) {
+  // 100에서 값을 뺀 후, 소수점 이하를 버림
+  return Math.floor(100 - Number(value))
+}

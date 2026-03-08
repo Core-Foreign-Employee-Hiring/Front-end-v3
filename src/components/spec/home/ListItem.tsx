@@ -1,10 +1,10 @@
 'use client'
 
 import { Button } from '@/components/common'
-import { Gray5OptionIcon } from '@/assets/svgComponents'
 import { SpecEvaluationType } from '@/types/spec'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
+import { getInvertedPercent } from '@/utils/spec'
 
 interface ListItemProps extends SpecEvaluationType {
   isLast?: boolean
@@ -24,7 +24,9 @@ export default function ListItem({
     <div className={`${isLast ? '' : 'border-gray2 border-b'} flex h-[76px] items-center justify-between px-5 py-2`}>
       <div className="kr-subtitle-md flex w-[168px] shrink-0 items-center justify-center truncate">{specName}</div>
       <div className="kr-body-sm text-gray4 flex w-[84px] shrink-0 items-center justify-center">{evaluatedDate}</div>
-      <div className="kr-badge-md flex w-[56px] shrink-0 items-center justify-center truncate">{topPercent}</div>
+      <div className="kr-badge-md flex w-[56px] shrink-0 items-center justify-center truncate">
+        {getInvertedPercent(topPercent)}
+      </div>
       <div className="kr-button text-gray4 flex w-[360px] shrink-0 items-center justify-center truncate">{summary}</div>
       <Button
         onClick={() => {
@@ -34,9 +36,8 @@ export default function ListItem({
         variant={'secondary'}
         size={'sm'}
       >
-        {t('spec:home.spec_diagnostic_history_list.item')}
+        {t('spec:home.spec_diagnostic_history_list.item.button')}
       </Button>
-      <Gray5OptionIcon width={32} height={32} />
     </div>
   )
 }

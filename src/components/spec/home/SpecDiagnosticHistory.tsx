@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 
 export default function SpecDiagnosticHistory() {
   const { t } = useTranslation(['spec'])
-  const pageSize = 21
+  const pageSize = 5
   const [currentPage, setCurrentPage] = useState(1)
 
   const { data, isLoading } = useQuery({
@@ -29,6 +29,9 @@ export default function SpecDiagnosticHistory() {
   // --- 수정된 부분 ---
   // 첫 번째 요소를 제외한 나머지 배열 생성
   const filteredSpecResults = specResults.slice(1)
+  console.log('filteredSpecResults', filteredSpecResults)
+  console.log('data', data)
+
   // ------------------
 
   if (isLoading && !data) return <Loading size={'lg'} />
