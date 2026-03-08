@@ -20,12 +20,12 @@ interface ResumeProps {
 
 export default function Resume({ lang, resumeList }: ResumeProps) {
   const { t } = useTranslation('resume')
-  const { toggleModal, modals } = useModalStore((state) => state)
+  const { toggleModal, modals, setModal } = useModalStore((state) => state)
 
   useEffect(() => {
     clientFetchSpecData().then((res) => {
       if (!res.success) {
-        toggleModal('isNotUseResumeService')
+        setModal('isNotUseResumeService', true)
       }
     })
   }, [])
