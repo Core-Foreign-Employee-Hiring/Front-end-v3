@@ -26,3 +26,8 @@ export function getInvertedPercent(value: number) {
   // 100에서 값을 뺀 후, 소수점 이하를 버림
   return Math.floor(100 - Number(value))
 }
+
+export function getIntegerPart(value: number) {
+  // 숫자가 아닌 값이 들어올 경우를 대비해 Number()로 한 번 감싸주는 것이 안전합니다.
+  return Math.floor(Number(value))
+}

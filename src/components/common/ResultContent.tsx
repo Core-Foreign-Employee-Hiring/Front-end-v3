@@ -4,6 +4,7 @@ import { Spacing } from '@/components/common'
 import { DiamondIcon } from '@/assets/svgComponents'
 import { ReactNode, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
+import { getIntegerPart } from '@/utils/spec'
 
 interface ResultContentProps {
   topPercent?: number | undefined
@@ -50,7 +51,7 @@ export default function ResultContent({ topPercent, analysis, bottomElement }: R
         <>
           <div className="kr-title-md flex gap-x-1">
             <p>{t('result.percentage')}</p>
-            <p className="text-main-500">{topPercent}%</p>
+            <p className="text-main-500">{getIntegerPart(topPercent)}%</p>
           </div>
           <Spacing height={16} />
         </>
