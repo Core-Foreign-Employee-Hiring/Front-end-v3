@@ -1,3 +1,4 @@
+'use client'
 import { Button, Label, Modal, TextInput } from '@/components/common'
 import { useTranslation } from 'react-i18next'
 import { useToast } from '@/components/common/toast/ToastContext'
@@ -16,21 +17,22 @@ export default function CreateSpecNameModal() {
 
   const onClose = () => {
     toggleModal('isCreateSpecNameModalOpen')
+    setSpecName('')
   }
 
   return (
     <Modal mobileHidden={false} onClose={onClose} isOpen={modals.isCreateSpecNameModalOpen}>
       <Modal.Header>
-        <Label label={'마케터 준비'} type={'subtitleLg'} />
+        <Label label={t('modal:create_spec_name.title')} type={'subtitleLg'} />
       </Modal.Header>
 
       <Modal.Body>
         <div className="flex flex-col gap-y-2">
-          <Label label={'스펙 명'} type={'titleSm'} labelColor={'text-gray5'} />
+          <Label label={t('modal:create_spec_name.body.label')} type={'titleSm'} labelColor={'text-gray5'} />
           <TextInput
             maxLength={12}
             rightElement={<TextIndicator currentTextLength={specName.length} maxTextLength={12} />}
-            placeholder={'예: 2025년도 스펙'}
+            placeholder={t('modal:create_spec_name.body.placeholder')}
             value={specName}
             onChange={(e) => {
               setSpecName(e.target.value)
@@ -58,6 +60,7 @@ export default function CreateSpecNameModal() {
                   )
                   setSpecEvaluationId(specResult.data.data)
                   setModal('isCareerAnalysisLoadingModalOpen', false)
+                  setSpecName('')
                   router.push(`/career/${specResult.data.data}`)
                 } else {
                   setModal('isCareerAnalysisLoadingModalOpen', false)

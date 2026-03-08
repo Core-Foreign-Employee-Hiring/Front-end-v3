@@ -297,5 +297,13 @@
       "Benchmarking against thousands of successful hiring data points.",
       "Please wait. A precise analysis takes a moment."
     ]
+  },
+
+  "create_spec_name": {
+    "title": "New Spec Name",
+    "body": {
+      "label": "Spec Name",
+      "placeholder": "e.g., Marketing Prep"
+    }
   }
 }
