@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 export default function CTAButtons() {
   const { t } = useTranslation('spec')
   const ctaButtons: { step: '2' | '3' | '4'; content: string; path: string }[] = [
-    { step: '2', content: t('spec:result.step2'), path: '/career?tab=resume' },
+    { step: '2', content: t('spec:result.step2'), path: '/career?tab=resume&type=home' },
     { step: '3', content: t('spec:result.step3'), path: '/interview?tab=home' },
     { step: '4', content: t('spec:result.step4'), path: '/content' },
   ]

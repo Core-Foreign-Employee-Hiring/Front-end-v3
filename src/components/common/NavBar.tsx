@@ -50,13 +50,13 @@ export default function NavBar({ path, lang }: NavBarProps) {
         </Link>
       )}
 
-      {path === `/${lang}/carrer` && !modals.isMoreOptionsMenuOpen ? (
-        <Link href={`/${lang}/carrer?tab=spec`} className="flex w-[63px] flex-col items-center gap-y-[6px]">
+      {path === `/${lang}/career` && !modals.isMoreOptionsMenuOpen ? (
+        <Link href={`/${lang}/career?tab=spec&type=home`} className="flex w-[63px] flex-col items-center gap-y-[6px]">
           <SelectedCarrerIcon width={24} height={24} />
           <p className="kr-badge-sm text-main-500">{t('navigation.career')}</p>
         </Link>
       ) : (
-        <Link href={`/${lang}/carrer?tab=spec`} className="flex w-[63px] flex-col items-center gap-y-[6px]">
+        <Link href={`/${lang}/career?tab=spec&type=home`} className="flex w-[63px] flex-col items-center gap-y-[6px]">
           <UnselectedCarrerIcon width={24} height={24} />
           <p className="kr-badge-sm text-gray3">{t('navigation.career')}</p>
         </Link>

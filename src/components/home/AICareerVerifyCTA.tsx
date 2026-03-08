@@ -16,13 +16,13 @@ export default function AICareerVerifyCTA({ lang }: AICareerVerifyCTAProps) {
       icon: <WhiteClopboardIcon width={21} height={26} />,
       title: t('aiCareerVerifyCTA.specCard.title'),
       description: t('aiCareerVerifyCTA.specCard.content'),
-      path: `/${lang}/carrer?tab=spec&step=1`,
+      path: `/${lang}/career?tab=spec&type=home`,
     },
     {
       icon: <WhiteEditDocumentIcon width={23} height={25} />,
       title: t('aiCareerVerifyCTA.resumeCard.title'),
       description: t('aiCareerVerifyCTA.resumeCard.content'),
-      path: `/${lang}/carrer?tab=resume`,
+      path: `/${lang}/career?tab=resume`,
     },
     {
       icon: <WhiteVoiceChatOutlineIcon width={30} height={30} />,
