@@ -24,11 +24,15 @@ export default function Resume({ lang, resumeList }: ResumeProps) {
 
   useEffect(() => {
     clientFetchSpecData().then((res) => {
-      if (!res.success) {
+      if (res.success) {
+        // 데이터가 성공적으로 왔다면 모달을 닫아줌 (초기화)
+        setModal('isNotUseResumeService', false)
+      } else {
+        // 데이터가 없거나 실패했을 때만 모달을 띄움
         setModal('isNotUseResumeService', true)
       }
     })
-  }, [])
+  }, [setModal])
 
   return (
     <div>

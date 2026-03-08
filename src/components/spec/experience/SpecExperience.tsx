@@ -126,7 +126,7 @@ export default function SpecExperience({ experiencesData }: SpecExperienceProps)
       </div>
 
       <Spacing height={100} />
-      <BottomButton handlePrev={handlePrev} isNextButtonActive={true} handleNext={handleNext} />
+      <BottomButton step={'6'} handlePrev={handlePrev} isNextButtonActive={true} handleNext={handleNext} />
     </div>
   )
 }
