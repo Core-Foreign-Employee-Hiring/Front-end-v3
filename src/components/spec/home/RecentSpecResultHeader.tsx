@@ -1,7 +1,6 @@
 'use client'
 
 import { Badge, Button } from '@/components/common'
-import { OptionIcon } from '@/assets/svgComponents'
 import { useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
 
@@ -42,7 +41,6 @@ export default function RecentSpecResultHeader({
         >
           {t('spec:home.recent_spec_result.header.view_spec')}
         </Button>
-        <OptionIcon width={32} height={32} />
       </section>
     </div>
   )
