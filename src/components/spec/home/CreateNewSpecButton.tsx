@@ -4,10 +4,12 @@ import { Button } from '@/components/common'
 import { WhitePlusIcon } from '@/assets/svgComponents'
 import { usePathname, useRouter } from 'next/navigation'
 import { SpecType } from '@/app/[lang]/career/page'
+import { useTranslation } from 'react-i18next'
 
 export default function CreateNewSpecButton() {
   const router = useRouter()
   const pathname = usePathname()
+  const { t } = useTranslation(['spec'])
 
   const handleStepClick = (type: SpecType) => {
     router.push(`${pathname}?tab=spec&type=${encodeURIComponent(type)}`)
@@ -19,7 +21,7 @@ export default function CreateNewSpecButton() {
       customClassName={'w-fit'}
       leftIcon={<WhitePlusIcon width={20} height={20} />}
     >
-      새 스펙 작성하기
+      {t('spec:home.button.create_new_spec')}
     </Button>
   )
 }

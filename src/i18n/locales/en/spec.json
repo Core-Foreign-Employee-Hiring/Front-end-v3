@@ -2,7 +2,7 @@
   "title": "Career Assessment",
 
   "home": {
-    "title": "Manage Profile",
+    "title": "Spec Management",
     "education": {
       "title": "Education"
     },
@@ -13,13 +13,42 @@
       "title": "Certifications"
     },
     "career": {
-      "title": "Work Experience"
+      "title": "Experience"
     },
     "award": {
       "title": "Awards"
     },
     "experience": {
-      "title": "Other Activities"
+      "title": "Activities"
+    },
+    "button": {
+      "create_new_spec": "Create New Spec"
+    },
+    "no_spec_result": {
+      "title": "No spec analysis yet",
+      "description": "Analyze your specs to discover strengths, skill gaps,\nand strategies tailored to your target job."
+    },
+    "recent_spec_result": {
+      "header": {
+        "current_diagnosis": "Current Diagnosis",
+        "last_modified": "Modified Date",
+        "view_spec": "View Spec"
+      }
+    },
+    "spec_diagnostic_history": {
+      "title": "Previous Records",
+      "total_count": "Total {{count}}"
+    },
+    "spec_diagnostic_history_list": {
+      "header": {
+        "spec_name": "Spec Name",
+        "evaluated_date": "Date",
+        "score": "Score",
+        "summary": "Summary"
+      },
+      "item": {
+        "button": "View Details"
+      }
     }
   },
 

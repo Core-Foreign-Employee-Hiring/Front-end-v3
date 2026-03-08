@@ -1,5 +1,6 @@
 {
   "title": "커리어 진단",
+
   "home": {
     "title": "스펙 관리",
     "education": {
@@ -19,6 +20,35 @@
     },
     "experience": {
       "title": "기타 경험"
+    },
+    "button": {
+      "create_new_spec": "새 스펙 작성하기"
+    },
+    "no_spec_result": {
+      "title": "아직 분석한 스펙이 없습니다",
+      "description": "스펙을 분석하면\n지원 직무에 맞는 강점, 부족한 역량, 보완 전략을 제공합니다."
+    },
+    "recent_spec_result": {
+      "header": {
+        "current_diagnosis": "현재 진단",
+        "last_modified": "수정일자",
+        "view_spec": "스펙 보기"
+      }
+    },
+    "spec_diagnostic_history": {
+      "title": "이전 진단 기록",
+      "total_count": "총 {{count}}개"
+    },
+    "spec_diagnostic_history_list": {
+      "header": {
+        "spec_name": "스펙 이름",
+        "evaluated_date": "진단일",
+        "score": "점수",
+        "summary": "요약"
+      },
+      "item": {
+        "button": "상세 보기"
+      }
     }
   },
 

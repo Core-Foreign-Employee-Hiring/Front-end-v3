@@ -29,7 +29,7 @@ export default function SpecDiagnosticHistoryList({
       {specResults.length > 0 ? (
         specResults.map((result: SpecEvaluationType) => <ListItem key={result.specEvaluationId} {...result} />)
       ) : (
-        <div className="col-span-full py-20 text-center text-gray-400">{t('spec:home.noResults')}</div>
+        <div className="col-span-full py-20 text-center text-gray-400">{t('spec:home.no_spec_result.title')}</div>
       )}
 
       <Spacing height={40} />
