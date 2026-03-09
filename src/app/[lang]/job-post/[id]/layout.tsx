@@ -24,9 +24,19 @@ export async function generateMetadata({
 
     if (!jobPost) throw new Error('Job post not found')
 
-    // title은 jobPost.title로, description은 jobPost.mainTasks로 설정
-    const pageTitle = `KORFIT | ${jobPost.title}`
-    const pageDescription = jobPost.mainTasks || 'KORFIT에서 상세 채용 정보를 확인하세요.'
+    // 1. 제목 길이를 조절합니다. (카카오톡 기준 약 30~35자 내외가 안전)
+    const rawTitle = jobPost.title
+    const truncatedTitle = rawTitle.length > 30 ? `${rawTitle.slice(0, 30)}...` : rawTitle
+
+    const pageTitle = `${truncatedTitle}`
+
+    // 2. 설명글(Description)의 앞부분에 핵심 정보를 먼저 배치합니다.
+    // 줄바꿈이나 특수문자를 제거하여 한 줄로 깔끔하게 보이게 처리
+    const cleanDescription = jobPost.mainTasks
+      ? jobPost.mainTasks.replace(/\r?\n|\r/g, ' ').slice(0, 100)
+      : '상세 채용 정보를 확인하세요.'
+
+    const pageDescription = cleanDescription
 
     return {
       title: pageTitle,
