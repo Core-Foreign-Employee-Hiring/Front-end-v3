@@ -18,7 +18,7 @@ const namespaces = ['jobPost', 'common', 'filter', 'modal']
 export default async function JobPostDetail({
   params,
 }: Readonly<{
-  params: Promise<{ lang: string; id: number }>
+  params: Promise<{ lang: string; id: string }>
 }>) {
   const { lang, id } = await params
 

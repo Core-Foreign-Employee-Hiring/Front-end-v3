@@ -67,7 +67,7 @@ export const serverFetchAllJobPosts = async (params: {
 /**
  * 이력서 상세 조회
  */
-export const fetchJobPostDetail = async (recruitId: number): Promise<ApiCallResult<JobPostDetailType>> => {
+export const fetchJobPostDetail = async (recruitId: string): Promise<ApiCallResult<JobPostDetailType>> => {
   try {
     const { data, error } = await apiCallServer(`/api/v2/recruit/${recruitId}`, {
       method: 'GET',
