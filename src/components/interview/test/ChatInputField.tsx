@@ -40,14 +40,18 @@ export default function ChatInputField({
   }, [value])
 
   const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    // IME 입력 중이면 무시
     if (e.nativeEvent.isComposing) return
 
     if (e.key === 'Enter') {
       if (e.shiftKey) {
-        return
+        return // 줄바꿈 허용
       } else {
         e.preventDefault()
-        if (!isDisable) handleMessageSubmit()
+        // 로딩 중이 아닐 때만 제출
+        if (!isDisable && !isLoading) {
+          handleMessageSubmit()
+        }
       }
     }
   }

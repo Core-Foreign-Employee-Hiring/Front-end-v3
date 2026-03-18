@@ -42,6 +42,7 @@ export default function BottomField() {
   useEffect(() => {
     console.log('💙일반 답변:', commonAnswer)
   }, [commonAnswer])
+
   useEffect(() => {
     console.log('️🔥압박 답변:', followUpAnswer)
   }, [followUpAnswer])
@@ -49,6 +50,9 @@ export default function BottomField() {
   const isFollowUpMode = chatList.length > 0 && chatList[chatList.length - 1].type === 'FOLLOW_UP_QUESTION'
 
   const handleSubmit = () => {
+    // 로딩 중이면 아예 실행하지 않음
+    if (isAnyLoading) return
+
     if (isFollowUpMode) {
       handleFollowUpSubmit()
     } else {
