@@ -9,7 +9,7 @@ export default function PageLayout({ children, className }: PageLayoutProps) {
   return (
     <div
       className={twMerge(
-        'desktop:p-[40px] tablet:px-[32px] tablet:py-[40px] flex w-full flex-col px-[20px] py-[32px]',
+        'desktop:p-[40px] tablet:px-[32px] tablet:py-[32px] flex w-full flex-col px-[20px] py-[20px]',
         className
       )}
     >

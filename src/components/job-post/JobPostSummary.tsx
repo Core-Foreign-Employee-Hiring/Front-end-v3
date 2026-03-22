@@ -107,7 +107,7 @@ export default function JobPostSummary({
 
       <section className="flex flex-col gap-y-3">
         {JobCategoryTypes.length !== 0 ? (
-          <div className="flex items-center gap-x-1">
+          <div className="flex gap-x-1">
             <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">
               {t('jobPost:detail.jobPostSummary.jobCategory')}
             </div>
@@ -183,7 +183,7 @@ export default function JobPostSummary({
         ) : null}
 
         {languageTypes.length > 0 ? (
-          <div className="flex items-center gap-x-1">
+          <div className="flex gap-x-1">
             <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">
               {t('jobPost:detail.jobPostSummary.language')}
             </div>
@@ -201,7 +201,7 @@ export default function JobPostSummary({
         ) : null}
 
         {!(workAddress1 && workZipcode) ? null : (
-          <div className="flex items-center gap-x-1">
+          <div className="flex gap-x-1">
             <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">
               {t('jobPost:detail.jobPostSummary.workAddress')}
             </div>
