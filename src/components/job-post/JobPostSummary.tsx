@@ -123,19 +123,21 @@ export default function JobPostSummary({
           </div>
         ) : null}
 
-        <div className="flex items-center gap-x-1">
+        <div className="flex gap-x-1">
           <div className="kr-subtitle-md text-gray4 w-[80px] shrink-0 whitespace-nowrap">
             {t('jobPost:detail.jobPostSummary.jobRole')}
           </div>
-          {jobRoles.map((jobRole, index) => {
-            const isLast = jobRoles.length - 1 === index
-            return (
-              <p key={jobRole} className="kr-body-md">
-                {`${t(getJobRoleLabel(jobRole))}`}
-                {isLast ? '' : ','}
-              </p>
-            )
-          })}
+          <div className="flex flex-wrap">
+            {jobRoles.map((jobRole, index) => {
+              const isLast = jobRoles.length - 1 === index
+              return (
+                <p key={jobRole} className="kr-body-md">
+                  {`${t(getJobRoleLabel(jobRole))}`}
+                  {isLast ? '' : ','}
+                </p>
+              )
+            })}
+          </div>
         </div>
 
         <div className="flex items-center gap-x-1">
