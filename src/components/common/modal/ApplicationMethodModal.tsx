@@ -51,8 +51,11 @@ export default function ApplicationMethodModal({
         </div>
       </Modal.Header>
       <Modal.Body>
-        <div className="flex w-full items-center justify-center">
-          <p className="kr-body-md text-gray5">{directInputApplicationMethod}</p>
+        <div className="flex w-full items-center justify-center p-6">
+          {/* 링크가 길 경우를 대비해 텍스트 정렬과 강제 줄바꿈 속성 추가 */}
+          <p className="kr-body-md text-gray5 text-center leading-relaxed break-all whitespace-normal">
+            {directInputApplicationMethod}
+          </p>
         </div>
       </Modal.Body>
       <Modal.Footer>
