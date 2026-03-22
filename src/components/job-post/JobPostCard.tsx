@@ -62,18 +62,15 @@ export default function JobPostCard({
 
       <section>
         <h2 className="kr-subtitle-md line-clamp-2 h-[52px] overflow-hidden">{title}</h2>
-        <div className="kr-body-sm text-gray5 mt-1 flex gap-x-2">
-          {jobRoles.length > 0 ? (
-            jobRoles.length === 1 ? (
-              <p>{t(getJobRoleLabel(jobRoles[0]))}</p>
-            ) : jobRoles.length > 1 ? (
-              <p>
-                {t('jobPost:home.jobPostCard.jobRoles.others', {
-                  main: t(getJobRoleLabel(jobRoles[0])),
-                  count: jobRoles.length - 1,
-                })}
-              </p>
-            ) : null
+        <div className="kr-body-sm text-gray5 mt-1 flex flex-wrap gap-x-2">
+          {jobRoles.length > 1 ? (
+            <p>
+              {t('jobPost:home.jobPostCard.jobRoles.others', {
+                main: t(getJobRoleLabel(jobRoles[0])),
+                count: jobRoles.length - 1,
+                interpolation: { escapeValue: false }, // HTML 이스케이프 방지
+              })}
+            </p>
           ) : null}
           {directInputCarrerType ? (
             <>
@@ -95,6 +92,7 @@ export default function JobPostCard({
           <p className="kr-small text-gray5">{companyName}</p>
         </div>
       </section>
+
       <section className="flex justify-between">
         <div className="flex gap-x-1">
           <LocationIcon width={13} height={16} />
