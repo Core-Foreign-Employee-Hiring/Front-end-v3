@@ -106,8 +106,9 @@ export default async function FindAuthLayout({
 
       <PageLayout>{children}</PageLayout>
 
-      <Spacing height={150} />
+      <Spacing height={60} />
       <Footer />
+      <Spacing height={100} className={'desktop:hidden'} />
     </div>
   )
 }
