@@ -34,7 +34,7 @@ export default function InterviewResult({
   }
 
   return (
-    <div className="">
+    <div className="flex w-full flex-col items-center justify-center">
       <InterviewResultHeader
         score={calculateAverage({ logic, evidence, job_understanding, formality, completeness })}
       />

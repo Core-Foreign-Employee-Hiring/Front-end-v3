@@ -23,7 +23,7 @@ export default function DetailedFeedbackHeader({
   return (
     <>
       <section className="flex items-center justify-between">
-        <p className="kr-title-sm">
+        <p className="kr-title-sm tablet:w-[70%] w-[90%]">
           Q{questionOrder}. {question}
         </p>
         <div className="flex items-center gap-x-2">

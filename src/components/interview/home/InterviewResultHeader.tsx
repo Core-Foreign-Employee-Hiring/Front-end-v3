@@ -27,23 +27,25 @@ export default function InterviewResultHeader({ score }: InterviewResultHeaderPr
   const evaluationText = t(`history.setDetail.header.evaluations.${key}.text`)
 
   return (
-    <div>
-      <Label label={t('history.setDetail.header.total_score_label')} labelColor={'text-gray5'} type={'button'} />
-      <Spacing height={12} />
-      <div className="flex items-end justify-between">
-        <div className="flex items-end gap-x-1">
-          <h4 className="kr-title-md">
-            {score}
-            {t('history.setDetail.header.score_unit')}
-          </h4>
-          <p className="kr-subtitle-md text-gray4">/</p>
-          <p className="kr-subtitle-md text-gray4">100{t('history.setDetail.header.score_unit')}</p>
+    <div className="desktop:gap-y-3 flex w-full flex-col gap-y-1">
+      <div className="desktop:flex-col flex justify-between">
+        <Label label={t('history.setDetail.header.total_score_label')} labelColor={'text-gray5'} type={'button'} />
+        <Spacing height={8} className="desktop:block hidden" />
+        <div className="flex items-end justify-between">
+          <div className="flex items-end gap-x-1">
+            <h4 className="kr-title-md">
+              {score}
+              {t('history.setDetail.header.score_unit')}
+            </h4>
+            <p className="kr-subtitle-md text-gray4">/</p>
+            <p className="kr-subtitle-md text-gray4">100{t('history.setDetail.header.score_unit')}</p>
+          </div>
         </div>
-
-        <p className="kr-title-sm" style={{ color }}>
-          {`${evaluationLabel}, ${evaluationText}`}
-        </p>
       </div>
+
+      <p className="kr-title-sm" style={{ color }}>
+        {`${evaluationLabel}, ${evaluationText}`}
+      </p>
     </div>
   )
 }
