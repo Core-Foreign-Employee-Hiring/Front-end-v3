@@ -39,13 +39,15 @@ export default function ApplicationMethodModal({
   return (
     <Modal isOpen={modals.isApplicationMethodModalOpen} mobileHidden={false} onClose={onClose}>
       <Modal.Header>
-        <div className="flex w-full items-center justify-center">
+        {/* 1. w-full과 text-center를 통해 텍스트가 정중앙에 오도록 보장합니다. */}
+        <div className="flex w-full items-center justify-center text-center">
           <h1 className="kr-subtitle-lg">
             <Trans
               ns="modal"
               i18nKey="application_method.header.title"
               values={{ method: convertHeaderTitle(applicationMethod) }}
-              components={[<span key="0" className="text-main-500" />]}
+              tOptions={{ interpolation: { escapeValue: false } }}
+              components={[<span key="0" className="text-main-500 whitespace-nowrap" />]}
             />
           </h1>
         </div>
