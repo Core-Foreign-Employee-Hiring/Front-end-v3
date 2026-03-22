@@ -92,20 +92,11 @@ export default async function FindAuthLayout({
   // i18n 번역 데이터 로드
   const { t } = await getTranslationServer(currentLang, 'jobPost')
 
-  // 실제 콘텐츠 렌더링을 위한 데이터 로드
-  // (generateMetadata와 동일한 fetch 요청을 해도 Next.js가 한 번만 실행되도록 보장함)
-  const result = await fetchJobPostDetail(id)
-  const jobPost = result.data
-
   return (
     <div>
       {/* 모바일 헤더 */}
       <div className="desktop:hidden block">
-        <Header
-          headerType={'dynamic'}
-          currentLng={lang}
-          title={jobPost?.title || t('detail.title')} // 번역 키 대신 실제 공고 제목 노출 가능
-        />
+        <Header headerType={'dynamic'} currentLng={lang} title={t('detail.title')} />
       </div>
 
       {/* 데스크탑 헤더 */}
