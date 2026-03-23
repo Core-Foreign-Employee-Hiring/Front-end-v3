@@ -1,8 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { Button } from '@/components/common'
-import { ArrowFowardMain500Icon } from '@/assets/svgComponents'
 import { useTranslation } from 'react-i18next'
 
 export default function Banner() {
@@ -17,15 +15,15 @@ export default function Banner() {
             <p className="kr-subtitle-md desktop:kr-title-sm text-center text-white">{t('banner.description')}</p>
           </div>
         </div>
-        <Button
-          rightIcon={<ArrowFowardMain500Icon width={20} height={20} />}
-          onClick={() => {}}
-          variant={'secondary'}
-          size={'lg'}
-          customClassName={'w-[313px]'}
-        >
-          {t('banner.button')}
-        </Button>
+        {/*<Button*/}
+        {/*  rightIcon={<ArrowFowardMain500Icon width={20} height={20} />}*/}
+        {/*  onClick={() => {}}*/}
+        {/*  variant={'secondary'}*/}
+        {/*  size={'lg'}*/}
+        {/*  customClassName={'w-[313px]'}*/}
+        {/*>*/}
+        {/*  {t('banner.button')}*/}
+        {/*</Button>*/}
       </div>
 
       {/* 3. 배경 이미지 (z-index를 따로 주지 않으면 기본적으로 z-0입니다) */}
