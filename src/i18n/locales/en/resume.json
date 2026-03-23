@@ -8,5 +8,9 @@
   "item": {
     "modified_date": "Last Modified",
     "created_date": "Date Created"
+  },
+  "empty": {
+    "title": "No resumes found",
+    "description": "Create your own resume and\napply for your dream job!"
   }
 }

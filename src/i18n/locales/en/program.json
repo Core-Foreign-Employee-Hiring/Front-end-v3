@@ -1,3 +1,10 @@
 {
-  "title": "Program"
+  "title": "Program",
+  "prepare": {
+    "title": "Service Under Preparation",
+    "description": "We are working hard to bring you a better experience.\nPlease check back soon!",
+    "button": {
+      "back": "Go Back"
+    }
+  }
 }

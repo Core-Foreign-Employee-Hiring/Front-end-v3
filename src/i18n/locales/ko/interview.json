@@ -85,6 +85,10 @@
   "history": {
     "title": "면접 기록",
     "no_data": "기존 면접 기록이 없습니다.",
+    "empty": {
+      "title": "진행한 면접 내역이 없습니다",
+      "description": "AI 면접 테스트를 시작하고\n실전 감각을 익혀보세요!"
+    },
     "button": {
       "report": "리포트 보기",
       "resume": "이어서 진행하기"
@@ -104,6 +108,7 @@
         "experienced": "경력"
       }
     },
+
     "setDetail": {
       "headerOptionButton":"다시 도전하기",
       "chat": {
@@ -158,6 +163,10 @@
       "delete": "삭제"
     },
     "header": {
+    },
+    "empty": {
+      "title": "저장된 답변 노트 없습니다.",
+      "description": "나만의 면접 답변을 저장하고\n성공적인 취업을 준비해 보세요!"
     }
   },
 

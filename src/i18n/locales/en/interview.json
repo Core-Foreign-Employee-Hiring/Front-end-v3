@@ -102,6 +102,10 @@
         "experienced": "Experienced"
       }
     },
+    "empty": {
+      "title": "No interview history found",
+      "description": "Start an AI interview test and\nget ready for the real thing!"
+    },
     "setDetail": {
       "headerOptionButton": "Retry Challenge",
       "chat": {
@@ -159,6 +163,10 @@
       "title": "Interview Notes",
       "create_note": "Create New Note",
       "search_placeholder": "Search notes..."
+    },
+    "empty": {
+      "title": "No saved answer notes found.",
+      "description": "Save your own interview answers\nand get ready for a successful career!"
     }
   },
 

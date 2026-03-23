@@ -17,7 +17,7 @@ export type TabType = 'home' | 'history' | 'note'
 
 function FindInterviewProcessStepSwitcher({ tab, lang }: { lang: Locale; tab: TabType }) {
   if (tab === 'home') return <InterviewHome />
-  if (tab === 'history') return <InterviewHistory />
+  if (tab === 'history') return <InterviewHistory lang={lang} />
   if (tab === 'note') return <InterviewNote lang={lang} />
   return <InterviewHome />
 }

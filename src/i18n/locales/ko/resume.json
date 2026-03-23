@@ -8,5 +8,9 @@
   "item": {
     "modified_date": "수정일자",
     "created_date": "생성일자"
+  },
+  "empty": {
+    "title": "생성한 이력서가 없습니다",
+    "description": "나만의 이력서를 작성하고\n원하는 기업에 도전해 보세요!"
   }
 }

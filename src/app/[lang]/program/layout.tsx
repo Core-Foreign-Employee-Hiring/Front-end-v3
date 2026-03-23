@@ -1,4 +1,4 @@
-import { Header, Spacing } from '@/components/common'
+import { Header, PageLayout, Spacing } from '@/components/common'
 import NavBar from '@/components/common/NavBar'
 import type { Metadata } from 'next'
 import { Locale } from '@/lib/i18n.types'
@@ -77,7 +77,8 @@ export default async function ProgramLayout({
       <div className="desktop:hidden block">
         <Header headerType={'dynamic'} currentLng={lang} title={t('title')} />
       </div>
-      {children}
+      <PageLayout>{children}</PageLayout>
+
       <Spacing height={80} />
       <NavBar path={`/${lang}/interview`} lang={lang} />
     </div>
