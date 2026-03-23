@@ -59,34 +59,36 @@ export default function Chat() {
 
   return (
     <div className="flex w-full flex-col items-center justify-center">
-      {chatList.map((chat, index) => {
-        const isQuestion = chat.type === 'COMMON_QUESTION' || chat.type === 'FOLLOW_UP_QUESTION'
-        return (
-          <div className="w-full" key={`${chat.id}-${index}`}>
-            <Spacing height={20} />
-            {isQuestion ? (
-              <Question
-                question={chat.content}
-                type={chat.type as 'COMMON_QUESTION' | 'FOLLOW_UP_QUESTION'}
-                sequence={chat.order ?? 0}
-              />
-            ) : (
-              <Answer answer={chat.content} />
-            )}
+      <div className="w-full max-w-[1280px]">
+        {chatList.map((chat, index) => {
+          const isQuestion = chat.type === 'COMMON_QUESTION' || chat.type === 'FOLLOW_UP_QUESTION'
+          return (
+            <div className="w-full" key={`${chat.id}-${index}`}>
+              <Spacing height={20} />
+              {isQuestion ? (
+                <Question
+                  question={chat.content}
+                  type={chat.type as 'COMMON_QUESTION' | 'FOLLOW_UP_QUESTION'}
+                  sequence={chat.order ?? 0}
+                />
+              ) : (
+                <Answer answer={chat.content} />
+              )}
+            </div>
+          )
+        })}
+
+        <Spacing height={20} />
+
+        {/* 로딩 뱃지 중앙 정렬 처리 */}
+        {loadingText && (
+          <div className="flex w-full animate-pulse justify-center py-2">
+            <Badge bgColor={'bg-gray1 border border-gray2'} textColor={'text-gray4'}>
+              {loadingText}
+            </Badge>
           </div>
-        )
-      })}
-
-      <Spacing height={20} />
-
-      {/* 로딩 뱃지 중앙 정렬 처리 */}
-      {loadingText && (
-        <div className="flex w-full animate-pulse justify-center py-2">
-          <Badge bgColor={'bg-gray1 border border-gray2'} textColor={'text-gray4'}>
-            {loadingText}
-          </Badge>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   )
 }

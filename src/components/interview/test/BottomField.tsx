@@ -61,40 +61,42 @@ export default function BottomField() {
   }
 
   return (
-    <div className="border-gray2 tablet:px-[32px] desktop:px-[40px] fixed bottom-0 left-0 flex w-full flex-col gap-y-3 border-t bg-white px-[20px] py-[20px]">
+    <div className="border-gray2 tablet:px-[32px] desktop:px-[40px] fixed bottom-0 left-0 flex w-full items-center justify-center border-t bg-white px-[20px] py-[20px]">
       {modals.isServicePrepareModalOpen && <ServicePrepareModal />}
-      <SwitchButton
-        type={type}
-        onClick={(clickedType) => {
-          if (clickedType === 'text') {
-            setType('text')
-          } else if (clickedType === 'audio') {
-            // 2. 서비스 준비 중인 경우 로직
-            toggleModal('isServicePrepareModalOpen')
-            // 선택은 바꾸지 않거나, 기획에 따라 처리
-          }
-        }}
-        contentList={[
-          { content: t('test.bottom_field.input_types.text'), type: 'text' },
-          { content: t('test.bottom_field.input_types.audio'), type: 'audio' },
-        ]}
-      />
-
-      <div className="flex flex-col gap-y-2">
-        <ChatInputField
-          // 4. 통합 로딩 상태 전달
-          isLoading={isAnyLoading}
-          value={isFollowUpMode ? followUpAnswer.follow_up_answer : commonAnswer.user_answer}
-          handleMessageSubmit={handleSubmit}
-          onChange={(e) =>
-            isFollowUpMode
-              ? setFollowUpAnswer({ follow_up_answer: e.target.value })
-              : setCommonAnswer({ user_answer: e.target.value })
-          }
-          // 5. 동적 플레이스홀더 전달
-          placeholder={getPlaceholder()}
+      <div className="flex w-full max-w-[1280px] flex-col gap-y-3">
+        <SwitchButton
+          type={type}
+          onClick={(clickedType) => {
+            if (clickedType === 'text') {
+              setType('text')
+            } else if (clickedType === 'audio') {
+              // 2. 서비스 준비 중인 경우 로직
+              toggleModal('isServicePrepareModalOpen')
+              // 선택은 바꾸지 않거나, 기획에 따라 처리
+            }
+          }}
+          contentList={[
+            { content: t('test.bottom_field.input_types.text'), type: 'text' },
+            { content: t('test.bottom_field.input_types.audio'), type: 'audio' },
+          ]}
         />
-        <p className="kr-subtitle-sm text-gray5">{t('test.bottom_field.guide')}</p>
+
+        <div className="flex flex-col gap-y-2">
+          <ChatInputField
+            // 4. 통합 로딩 상태 전달
+            isLoading={isAnyLoading}
+            value={isFollowUpMode ? followUpAnswer.follow_up_answer : commonAnswer.user_answer}
+            handleMessageSubmit={handleSubmit}
+            onChange={(e) =>
+              isFollowUpMode
+                ? setFollowUpAnswer({ follow_up_answer: e.target.value })
+                : setCommonAnswer({ user_answer: e.target.value })
+            }
+            // 5. 동적 플레이스홀더 전달
+            placeholder={getPlaceholder()}
+          />
+          <p className="kr-subtitle-sm text-gray5">{t('test.bottom_field.guide')}</p>
+        </div>
       </div>
     </div>
   )

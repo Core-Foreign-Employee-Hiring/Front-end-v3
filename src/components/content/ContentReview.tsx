@@ -19,7 +19,7 @@ export default function ContentReview({ archiveId, star, starCount }: ContentRev
         <Label label={t('detail.contentReview.title')} type={'subtitleLg'} />
         <div className="flex items-center gap-x-[40px] px-[20px]">
           <div className="flex items-end gap-x-1">
-            <Label label={`${starCount}`} type={'subtitleLg'} />
+            <Label label={`${star}`} type={'subtitleLg'} />
             <Label label={'/ 5'} type={'titleSm'} labelColor={'text-gray4'} />
           </div>
           <div className="border-gray2 h-[40px] border-r-[1px]" />

@@ -33,14 +33,15 @@ export default async function ResumeVer1Page({ params }: { params: Promise<{ lan
       <div className="desktop:hidden block">
         <Header headerType={'dynamic'} currentLng={lang} title={t('resume:title')} />
       </div>
-      <div id="resume-print-area">
-        <div className="w-full">
+
+      <PageLayout>
+        <div className="w-full" id="resume-print-area">
           <IntroVer1
             memberBasicInfo={resumeData?.memberBasicInfo}
             introduction={resumeData?.introduction}
             profileImageUrl={resumeData?.profileImageUrl}
           />
-          <PageLayout>
+          <div className="tablet:px-[32px] tablet:py-[32px] desktop:p-[40px] flex w-full flex-col px-[20px] py-[20px]">
             {resumeData.careers.length !== 0 && <WorkExperienceVer1 careers={resumeData.careers} />}
             {resumeData.educations.length !== 0 && <EducationVer1 educations={resumeData.educations} />}
             {(resumeData.awards.length > 0 || resumeData.experiences.length > 0) && (
@@ -53,9 +54,9 @@ export default async function ResumeVer1Page({ params }: { params: Promise<{ lan
               <LanguageSkillsVer1 languageSkills={resumeData.languageSkills} />
             )}
             {resumeData.urls.length !== 0 && <URLsVer1 urls={resumeData.urls} />}
-          </PageLayout>
+          </div>
         </div>
-      </div>
+      </PageLayout>
 
       <Spacing height={92} />
       <BottomButton targetId="resume-print-area" />

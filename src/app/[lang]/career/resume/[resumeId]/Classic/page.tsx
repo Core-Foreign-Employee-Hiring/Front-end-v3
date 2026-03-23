@@ -1,5 +1,5 @@
 import { fetchResumeResult } from '@/lib/server/resume'
-import { Header, Loading, Spacing } from '@/components/common'
+import { Header, Loading, PageLayout, Spacing } from '@/components/common'
 import BottomButton from '@/components/resume/template/BottomButton'
 import IntroVer2 from '@/components/resume/template/ver2/IntroVer2'
 import WorkExperienceVer2 from '@/components/resume/template/ver2/WorkExperienceVer2'
@@ -36,8 +36,9 @@ export default async function ResumeVer2Page({ params }: { params: Promise<{ lan
       <div className="desktop:hidden block">
         <Header headerType={'dynamic'} currentLng={lang} title={t('resume:title')} />
       </div>
-      <div id="resume-print-area">
-        <div className="w-full">
+
+      <PageLayout>
+        <div className="w-full" id="resume-print-area">
           <IntroVer2
             memberBasicInfo={resumeData.memberBasicInfo}
             profileImageUrl={resumeData.profileImageUrl}
@@ -58,7 +59,7 @@ export default async function ResumeVer2Page({ params }: { params: Promise<{ lan
             {resumeData.urls.length !== 0 && <URLsVer2 urls={resumeData.urls} />}
           </div>
         </div>
-      </div>
+      </PageLayout>
 
       <Spacing height={92} />
       <BottomButton targetId="resume-print-area" />

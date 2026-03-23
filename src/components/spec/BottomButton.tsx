@@ -21,33 +21,35 @@ export default function BottomButton({
   const { t } = useTranslation(['spec'])
 
   return (
-    <div className="fixed bottom-0 left-0 flex w-full justify-between gap-x-3 bg-white px-5 py-5">
-      {handlePrev ? (
-        <Button
-          state={isPrevButtonActive ? 'default' : 'disable'}
-          disabled={!isPrevButtonActive}
-          onClick={handlePrev}
-          customClassName={'w-[180px]'}
-          variant={'outline'}
-        >
-          {t('buttons.prev')}
-        </Button>
-      ) : (
-        <div className="w-[180px]" />
-      )}
-      {handleNext ? (
-        <Button
-          state={isNextButtonActive ? 'default' : 'disable'}
-          disabled={!isNextButtonActive}
-          onClick={handleNext}
-          customClassName={'w-[180px]'}
-          variant={'primary'}
-        >
-          {step === '6' ? t('buttons.submit') : t('buttons.next')}
-        </Button>
-      ) : (
-        <div className="w-[180px]" />
-      )}
+    <div className="border-gray2 fixed bottom-0 left-0 flex w-full items-center justify-center gap-x-3 border-t bg-white px-5 py-5">
+      <div className="flex w-full max-w-[1280px] justify-between">
+        {handlePrev ? (
+          <Button
+            state={isPrevButtonActive ? 'default' : 'disable'}
+            disabled={!isPrevButtonActive}
+            onClick={handlePrev}
+            customClassName={'w-[180px]'}
+            variant={'outline'}
+          >
+            {t('buttons.prev')}
+          </Button>
+        ) : (
+          <div className="w-[180px]" />
+        )}
+        {handleNext ? (
+          <Button
+            state={isNextButtonActive ? 'default' : 'disable'}
+            disabled={!isNextButtonActive}
+            onClick={handleNext}
+            customClassName={'w-[180px]'}
+            variant={'primary'}
+          >
+            {step === '6' ? t('buttons.submit') : t('buttons.next')}
+          </Button>
+        ) : (
+          <div className="w-[180px]" />
+        )}
+      </div>
     </div>
   )
 }

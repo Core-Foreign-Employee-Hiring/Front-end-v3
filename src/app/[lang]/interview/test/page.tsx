@@ -4,7 +4,7 @@ import Spacing from '@/components/common/Spacing'
 
 export default function InterviewTestClient() {
   return (
-    <div className="w-full">
+    <div className="flex w-full flex-col items-center justify-center">
       <Chat />
 
       <Spacing height={200} />

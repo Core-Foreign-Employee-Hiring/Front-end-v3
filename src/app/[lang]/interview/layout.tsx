@@ -68,7 +68,7 @@ export default async function InterviewLayout({
   const { lang } = (await params) as { lang: Locale }
   const { t } = await getTranslationServer(lang, 'interview')
   return (
-    <div>
+    <div className="">
       <div className="desktop:block hidden">
         <Header headerType={'default'} currentLng={lang} />
       </div>

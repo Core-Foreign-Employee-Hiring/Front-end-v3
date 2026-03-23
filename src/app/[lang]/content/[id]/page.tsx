@@ -21,21 +21,23 @@ export default async function ContentDetailPage({
   }
 
   return (
-    <main className="flex flex-col gap-y-[32px]">
-      <AuthWatcher results={[result]} />
+    <div className="flex flex-col items-center justify-center">
+      <main className="flex w-full max-w-[1280px] flex-col gap-y-[32px]">
+        <AuthWatcher results={[result]} />
 
-      <ContentSummary
-        archiveId={id}
-        price={contentData.price}
-        oneLineReview={contentData.oneLineReview}
-        title={contentData.title}
-        thumbnailUrl={contentData.thumbnailUrl}
-      />
-      <BottomBoarder customClassName={'block desktop:hidden'} />
-      <ContentDescription description={contentData.description} />
-      <ContentImages imageUrls={contentData.imageUrls} />
-      <BottomBoarder customClassName={'desktop:mx-[40px]'} />
-      <ContentReview archiveId={id} starCount={contentData.starCount} star={contentData.star} />
-    </main>
+        <ContentSummary
+          archiveId={id}
+          price={contentData.price}
+          oneLineReview={contentData.oneLineReview}
+          title={contentData.title}
+          thumbnailUrl={contentData.thumbnailUrl}
+        />
+        <BottomBoarder customClassName={'block desktop:hidden'} />
+        <ContentDescription description={contentData.description} />
+        <ContentImages imageUrls={contentData.imageUrls} />
+        <BottomBoarder customClassName={'desktop:mx-[40px]'} />
+        <ContentReview archiveId={id} starCount={contentData.starCount} star={contentData.star} />
+      </main>
+    </div>
   )
 }

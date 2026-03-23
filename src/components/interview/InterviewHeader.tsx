@@ -17,18 +17,20 @@ export default function InterviewHeader({ leftElement, rightElement }: Interview
   const { modals } = useModalStore((state) => state)
 
   return (
-    <header className="border-gray2 tablet:px-[32px] desktop:px-[40px] flex w-full items-center gap-x-5 border-b px-[20px] py-[20px]">
+    <header className="border-gray2 tablet:px-[32px] desktop:px-[40px] flex w-full items-center justify-center gap-x-5 border-b px-[20px] py-[20px]">
       {modals.isSaveAnswerNoteModalOpen && <SaveAnswerNoteModal />}
       {modals.isCreateNewAnswerNoteModalOpen && <CreateNewAnswerNoteModal />}
-      <BackIcon
-        onClick={() => {
-          router.back()
-        }}
-        className="desktop:block tablet:hidden hidden h-8 w-8"
-      />
-      <div className="flex w-full items-center justify-between">
-        {leftElement && leftElement}
-        {rightElement && rightElement}
+      <div className="flex w-full max-w-[1280px] items-center">
+        <BackIcon
+          onClick={() => {
+            router.back()
+          }}
+          className="desktop:block tablet:hidden hidden h-8 w-8"
+        />
+        <div className="flex w-full items-center justify-between">
+          {leftElement && leftElement}
+          {rightElement && rightElement}
+        </div>
       </div>
     </header>
   )

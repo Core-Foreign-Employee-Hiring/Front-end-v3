@@ -13,7 +13,7 @@ export default async function InterviewLayout({
   return (
     <div>
       <InterviewHeader leftElement={<HeaderTitle />} rightElement={<HeaderOption />} />
-      <div className="desktop:px-[40px] tablet:px-[32px] px-[20px] py-[20px]">{children}</div>
+      <div className="desktop:px-[40px] tablet:px-[32px] w-full px-[20px] py-[20px]">{children}</div>
     </div>
   )
 }

@@ -119,7 +119,7 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
   ]
 
   const renderDefaultHeader = () => (
-    <div className="flex w-full items-center justify-between">
+    <div className="desktop:w-[1280px] flex w-full items-center justify-between">
       <section className="desktop:gap-x-[60px] flex items-center gap-x-6">
         <Link href={`/${activeLng}`}>
           <LogoIcon className="desktop:h-9 desktop:w-[115px] h-7 w-[90px]" />
@@ -219,7 +219,7 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
   )
 
   return (
-    <header className="desktop:h-[80px] tablet:px-8 desktop:px-10 sticky top-0 z-50 flex h-[56px] w-full items-center bg-white px-5 py-3">
+    <header className="border-gray2 desktop:h-[80px] tablet:px-8 desktop:px-10 sticky top-0 z-50 flex h-[56px] w-full items-center justify-center border-b bg-white px-5 py-3">
       {headerType === 'default' ? renderDefaultHeader() : renderDynamicHeader()}
     </header>
   )

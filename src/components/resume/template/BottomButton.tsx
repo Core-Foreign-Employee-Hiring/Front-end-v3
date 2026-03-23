@@ -15,13 +15,12 @@ export default function BottomButton({ targetId }: BottomButtonProps) {
     await exportComponentToPdf(targetId, '이력서_내보내기')
   }
   return (
-    <div className="fixed bottom-0 flex w-full justify-end gap-x-[16px] bg-white px-[40px] py-5">
-      {/*<Button customClassName={'w-[180px]'} variant={'outline'} size={'lg'} onClick={() => {}}>*/}
-      {/*  수정*/}
-      {/*</Button>*/}
-      <Button customClassName={'w-[180px]'} variant={'primary'} size={'lg'} onClick={handleDownloadPdf}>
-        {t('buttons.export_pdf')}
-      </Button>
+    <div className="border-gray2 fixed bottom-0 flex w-full items-center justify-center gap-x-[16px] border-t bg-white px-[40px] py-5">
+      <div className="flex w-full max-w-[1280px] justify-end">
+        <Button customClassName={'w-[180px]'} variant={'primary'} size={'lg'} onClick={handleDownloadPdf}>
+          {t('buttons.export_pdf')}
+        </Button>
+      </div>
     </div>
   )
 }

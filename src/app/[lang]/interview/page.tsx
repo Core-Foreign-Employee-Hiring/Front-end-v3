@@ -35,7 +35,7 @@ export default async function InterviewPage({ params, searchParams }: InterViewP
     { content: t('interview:menu.note'), path: `/${lang}/interview?tab=note`, key: 'note' },
   ]
   return (
-    <main>
+    <main className={'w-full'}>
       <PageLayout>
         <div className="w-full">
           <Label label={t('interview:title')} type={'titleLg'} rightElement={<StartInterviewButton />} />
