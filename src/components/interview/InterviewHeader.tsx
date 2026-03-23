@@ -23,7 +23,7 @@ export default function InterviewHeader({ leftElement, rightElement }: Interview
       <div className="flex w-full max-w-[1280px] items-center">
         <BackIcon
           onClick={() => {
-            router.back()
+            router.push(`/interview?tab=home`)
           }}
           className="desktop:block tablet:hidden hidden h-8 w-8"
         />

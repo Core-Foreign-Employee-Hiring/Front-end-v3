@@ -38,7 +38,16 @@ export default function VisaModal({ addVisas, deleteVisas, selectedVisas, onRese
     <Modal customClassName={'desktop:w-[860px] tablet:w-[680px]'} isOpen={modals.isVisaModalOpen} onClose={onClose}>
       <Modal.Header
         rightElement={
-          <Button onClick={onReset} size={'sm'} customClassName={'w-[70px]'} variant={'outline'}>
+          <Button
+            onClick={(e) => {
+              e.stopPropagation() // 이벤트 전파 중단
+              onReset()
+            }}
+            buttonType="button"
+            size={'sm'}
+            customClassName={'w-[70px]'}
+            variant={'outline'}
+          >
             {t('modal:footer_buttons.reset')}
           </Button>
         }
@@ -66,8 +75,6 @@ export default function VisaModal({ addVisas, deleteVisas, selectedVisas, onRese
                       key={visa.code}
                       size={'md'}
                       customClassName={'w-fit'}
-                      // 선택되었거나 검색어와 일치하는 부분이 있을 때 강조하고 싶다면
-                      // 여기서 variant나 border를 조정할 수 있습니다.
                       variant={isSelected ? 'primary' : 'outline'}
                       onClick={() => addVisas(visa.code)}
                     >

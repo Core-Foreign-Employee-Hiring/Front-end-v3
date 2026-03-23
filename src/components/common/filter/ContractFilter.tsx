@@ -33,7 +33,6 @@ export default function ContractFilter() {
   const onContractFilterReset = () => {
     setSelectedContract(undefined)
     setContractFilter(undefined)
-    onContractClose()
   }
 
   const onContractClose = () => {
@@ -42,7 +41,7 @@ export default function ContractFilter() {
 
   return (
     <div>
-      {modals.isContractModalOpen && (
+      {modals.isContractModalOpen ? (
         <ContractModal
           onApply={onContractFilterApply}
           onReset={onContractFilterReset}
@@ -50,8 +49,8 @@ export default function ContractFilter() {
           deleteContract={deleteContract}
           selectedContract={selectedContract}
         />
-      )}
-      {modals.isContractModalOpen && (
+      ) : null}
+      {modals.isContractModalOpen ? (
         <MobileContractModal
           onApply={onContractFilterApply}
           onReset={onContractFilterReset}
@@ -59,7 +58,7 @@ export default function ContractFilter() {
           deleteContract={deleteContract}
           selectedContract={selectedContract}
         />
-      )}
+      ) : null}
       <button
         onClick={() => {
           toggleModal('isContractModalOpen')

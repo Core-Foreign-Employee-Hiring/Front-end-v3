@@ -41,7 +41,6 @@ export default function Language() {
   const onReset = () => {
     setSelectedLanguages(undefined)
     updateCreateJobPost('languageTypes', undefined)
-    onClose()
   }
 
   const onClose = () => {

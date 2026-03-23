@@ -39,8 +39,6 @@ export default function RegionFilter() {
   const onReset = () => {
     setSelectedRegions([])
     setSelectedRegionFilterList([])
-
-    onClose()
   }
 
   const onClose = () => {
@@ -49,7 +47,7 @@ export default function RegionFilter() {
 
   return (
     <div>
-      {modals.isRegionModalOpen && (
+      {modals.isRegionModalOpen ? (
         <RegionModal
           onReset={onReset}
           onApply={onApply}
@@ -57,8 +55,8 @@ export default function RegionFilter() {
           addRegions={addRegions}
           deleteRegions={deleteRegions}
         />
-      )}
-      {modals.isRegionModalOpen && (
+      ) : null}
+      {modals.isRegionModalOpen ? (
         <MobileRegionModal
           onReset={onReset}
           onApply={onApply}
@@ -66,7 +64,7 @@ export default function RegionFilter() {
           addRegions={addRegions}
           deleteRegions={deleteRegions}
         />
-      )}
+      ) : null}
       <button
         onClick={() => {
           toggleModal('isRegionModalOpen')

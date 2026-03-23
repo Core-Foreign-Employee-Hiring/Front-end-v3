@@ -41,7 +41,6 @@ export default function VisaFilter() {
   const onReset = () => {
     setSelectedVisas([])
     setSelectedVisaFilterList([])
-    onClose()
   }
 
   const onClose = () => {
@@ -50,7 +49,7 @@ export default function VisaFilter() {
 
   return (
     <div>
-      {modals.isVisaModalOpen && (
+      {modals.isVisaModalOpen ? (
         <VisaModal
           addVisas={addVisas}
           deleteVisas={deleteVisas}
@@ -58,8 +57,8 @@ export default function VisaFilter() {
           selectedVisas={selectedVisas}
           onApply={onApply}
         />
-      )}
-      {modals.isVisaModalOpen && (
+      ) : null}
+      {modals.isVisaModalOpen ? (
         <MobileVisaModal
           addVisas={addVisas}
           deleteVisas={deleteVisas}
@@ -67,7 +66,7 @@ export default function VisaFilter() {
           selectedVisas={selectedVisas}
           onApply={onApply}
         />
-      )}
+      ) : null}
       <button
         onClick={() => {
           toggleModal('isVisaModalOpen')

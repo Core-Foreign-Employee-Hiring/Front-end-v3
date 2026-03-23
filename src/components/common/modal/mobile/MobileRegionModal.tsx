@@ -102,7 +102,7 @@ export default function MobileRegionModal({
 
       <div className="fixed bottom-0 left-0 z-80 flex w-full gap-x-2 bg-white px-5 py-[24px]">
         <Button onClick={onReset} size={'lg'} variant={'outline'}>
-          {t('modal:footer_buttons.close')}
+          {t('modal:footer_buttons.reset')}
         </Button>
         <Button onClick={onApply}>{t('modal:footer_buttons.completed')}</Button>
       </div>

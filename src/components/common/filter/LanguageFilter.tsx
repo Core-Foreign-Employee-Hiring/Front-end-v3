@@ -39,8 +39,6 @@ export default function LanguageFilter() {
   const onReset = () => {
     setSelectedLanguages([])
     setSelectedLanguageFilterList([])
-
-    onClose()
   }
 
   const onClose = () => {

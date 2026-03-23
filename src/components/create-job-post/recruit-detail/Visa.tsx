@@ -41,7 +41,6 @@ export default function Visa() {
   const onReset = () => {
     setSelectedVisas(undefined)
     updateCreateJobPost('visas', undefined)
-    onClose()
   }
 
   const onClose = () => {
