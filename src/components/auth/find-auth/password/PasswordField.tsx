@@ -31,7 +31,8 @@ export default function PasswordField() {
     }
 
     // 2. 정규식 검사 (~ 포함)
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&~])[A-Za-z\d@$!%*?&~]{8,15}$/
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&~#^()\-_+=\[\]{}|\\:;"'<>,.?/])[A-Za-z\d@$!%*?&~#^()\-_+=\[\]{}|\\:;"'<>,.?/]{8,15}$/
 
     if (!passwordRegex.test(password)) {
       // 검증 실패

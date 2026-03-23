@@ -20,21 +20,28 @@ export default function PasswordField() {
   useEffect(() => {
     const password = registerData.password
 
-    // 사용자가 아직 필드를 건드리지 않았거나 값이 없으면 에러 메시지를 비움
     if (!isTouched || !password || password.length === 0) {
       setNotValidPWErrorMessage('')
       return
     }
 
-    // 정규식 검사
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&~])[A-Za-z\d@$!%*?&~]{8,15}$/
+    /**
+     * 수정된 정규식:
+     * ^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&~#^()\-_+=\[\]{}|\\:;"'<>,.?/])
+     * 1. 영문 소문자 포함
+     * 2. 영문 대문자 포함
+     * 3. 숫자 포함
+     * 4. 요청하신 모든 특수문자 포함 (#^()-_+=></|\.,:;"'{[}])
+     * 5. 8~15자 제한
+     */
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&~#^()\-_+=\[\]{}|\\:;"'<>,.?/])[A-Za-z\d@$!%*?&~#^()\-_+=\[\]{}|\\:;"'<>,.?/]{8,15}$/
 
     if (!passwordRegex.test(password)) {
       setNotValidPWErrorMessage(t('step1.passwordField.messages.invalidFormat'))
     } else {
       setNotValidPWErrorMessage('')
     }
-    // isTouched를 의존성에 추가하여 포커스를 잃은 시점에도 체크되게 함
   }, [registerData.password, isTouched, setNotValidPWErrorMessage, t])
 
   return (
