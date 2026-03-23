@@ -42,11 +42,11 @@ export default function LanguageModal({
       <Modal.Header
         rightElement={
           <Button onClick={onReset} size={'sm'} customClassName={'w-[70px]'} variant={'outline'}>
-            {t('footer_buttons.reset')}
+            {t('modal:footer_buttons.reset')}
           </Button>
         }
       >
-        <Label label={t('language.header')} type={'titleMd'} />
+        <Label label={t('modal:language.header')} type={'titleMd'} />
       </Modal.Header>
 
       <Modal.Body>
@@ -55,7 +55,7 @@ export default function LanguageModal({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             status={'default'}
-            placeholder={t('language.body.placeholder')}
+            placeholder={t('modal:language.body.placeholder')}
           />
           <div className="flex flex-col gap-y-4">
             {/* 필터링된 리스트만 렌더링 */}
@@ -80,7 +80,7 @@ export default function LanguageModal({
                 })
               ) : (
                 <p className="text-gray4 w-full py-10 text-center font-sans">
-                  {t('language.body.message.no_search_result')}
+                  {t('modal:language.body.message.no_search_result')}
                 </p>
               )}
             </section>
