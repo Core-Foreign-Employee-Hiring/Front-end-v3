@@ -7,6 +7,8 @@ import Spacing from '@/components/common/Spacing'
 import Label from '@/components/common/Label'
 import InterviewHeader from '@/components/interview/InterviewHeader'
 import DetailedFeedbackItem from '@/components/interview/result/DetailedFeedbackItem'
+import DeleteEntryButton from '@/components/interview/note/DeleteEntryButton'
+import { DeleteIcon } from '@/assets/svgComponents'
 
 interface InterviewNoteDetailPageProps {
   params: Promise<{ noteId: string }>
@@ -44,7 +46,11 @@ export default async function InterviewNoteDetailPage({ params }: InterviewNoteD
               entryId={entry.id}
               finalAnswer={entry.final_answer}
               isFinalElement={true}
-              // headerRightElement={<DeleteEntryButton />}
+              headerRightElement={
+                <div className="desktop:block tablet:block hidden">
+                  <DeleteEntryButton icon={<DeleteIcon width={20} height={20} />} noteId={noteId} entryId={entry.id} />
+                </div>
+              }
             />
           ))}
         </div>

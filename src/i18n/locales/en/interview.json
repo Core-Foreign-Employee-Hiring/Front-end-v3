@@ -157,7 +157,8 @@
     },
     "buttons": {
       "edit_title": "Edit Note Name",
-      "delete": "Delete"
+      "delete": "Delete",
+      "entry_delete": "Delete Question"
     },
     "header": {
       "title": "Interview Notes",

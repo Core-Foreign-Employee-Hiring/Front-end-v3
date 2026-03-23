@@ -1,16 +1,42 @@
-import { Button } from '@/components/common'
-import { DeleteIcon } from '@/assets/svgComponents'
+'use client'
 
-interface DeleteEntryButtonProps {}
-export default function DeleteEntryButton({}: DeleteEntryButtonProps) {
+import { Button } from '@/components/common'
+import { deleteNoteEntryId } from '@/lib/client/interview'
+import { useToast } from '@/components/common/toast/ToastContext'
+import { useTranslation } from 'react-i18next'
+import { useRouter } from 'next/navigation'
+import { ReactNode } from 'react'
+
+interface DeleteEntryButtonProps {
+  icon?: ReactNode
+  noteId: string
+  entryId: string
+}
+export default function DeleteEntryButton({ icon, noteId, entryId }: DeleteEntryButtonProps) {
+  const { t } = useTranslation(['interview', 'message'])
+  const { success, error } = useToast()
+  const router = useRouter()
   return (
     <Button
-      leftIcon={<DeleteIcon width={20} height={20} />}
+      onClick={async (e) => {
+        e.stopPropagation()
+        const result = await deleteNoteEntryId(noteId, entryId)
+        if (result.success) {
+          success(
+            t('message:delete_interview_entry.success.title'),
+            t('message:delete_interview_entry.success.description')
+          )
+          router.refresh()
+        } else {
+          error(t('message:delete_interview_entry.error.title'), t('message:delete_interview_entry.error.description'))
+        }
+      }}
+      leftIcon={icon ? icon : null}
       size={'sm'}
       variant={'outline'}
-      customClassName={'w-[115px]'}
+      customClassName={'w-fit'}
     >
-      질문 삭제
+      {t('interview:note.buttons.entry_delete')}
     </Button>
   )
 }

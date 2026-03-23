@@ -334,7 +334,7 @@ export const putNoteTitle = async (noteId: string | undefined, title: string) =>
 }
 
 /**
- * 기존 노트에 답변 노트 항목 삭제
+ * 기존 노트에 답변 노트 삭제
  */
 export const deleteNote = async (noteId: string | undefined) => {
   try {
@@ -354,6 +354,37 @@ export const deleteNote = async (noteId: string | undefined) => {
 
     const data = await response.json()
     console.log('답변 데이터', data)
+    return { success: true, data }
+  } catch (error) {
+    console.error('Fetch 에러:', error)
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    }
+  }
+}
+
+/**
+ * 기존 노트에 답변 노트 항목 삭제
+ */
+export const deleteNoteEntryId = async (noteId: string | undefined, entryId: string | undefined) => {
+  try {
+    const response = await fetch(`/api/answer-notes/${noteId}/entries/${entryId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+
+    if (!response.ok) {
+      const error = await response.json()
+      console.error('API 응답 에러:', error)
+      return { success: false, error: error.error || `HTTP ${response.status}` }
+    }
+
+    const data = await response.json()
+    console.log('답변 노트 항목 제거 데이터', data)
     return { success: true, data }
   } catch (error) {
     console.error('Fetch 에러:', error)

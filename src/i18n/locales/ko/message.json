@@ -366,5 +366,16 @@
       "title": "실패",
       "description": "교육 데이터를 삭제하지 못했어요."
     }
+  },
+
+  "delete_interview_entry": {
+    "success": {
+      "title": "성공",
+      "description": "질문을 삭제했어요."
+    },
+    "error": {
+      "title": "실패",
+      "description": "질문을 삭제하지 못했어요."
+    }
   }
 }
