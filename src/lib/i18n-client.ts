@@ -37,6 +37,7 @@ i18n
       'modal',
       'program',
       'message',
+      'payment',
     ],
     defaultNS: 'common',
     react: {

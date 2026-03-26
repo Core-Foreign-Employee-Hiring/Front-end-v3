@@ -1,0 +1,6 @@
+import * as React from "react";
+import type { SVGProps } from "react";
+const SvgPaymentSuccessIcon = (props: SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 60 60" {...props}><mask id="payment_success_icon_svg__a" width={60} height={60} x={0} y={0} maskUnits="userSpaceOnUse" style={{
+    maskType: "alpha"
+  }}><path fill="#D9D9D9" d="M0 0h60v60H0z" /></mask><g mask="url(#payment_success_icon_svg__a)"><path fill="#768AFE" d="m26.313 35.688-6.125-6.126A1.87 1.87 0 0 0 18.813 29q-.813 0-1.438.625A1.87 1.87 0 0 0 16.813 31q0 .813.562 1.375L25 40.063q.563.562 1.313.562t1.312-.562l14.938-14.938q.624-.626.624-1.437 0-.813-.624-1.438a2 2 0 0 0-1.47-.531q-.843.03-1.406.593zM30 55q-5.126 0-9.687-1.969-4.563-1.968-7.97-5.375-3.405-3.406-5.374-7.968Q4.999 35.125 5 30q0-5.187 1.969-9.75 1.968-4.563 5.375-7.937t7.969-5.344T30 5q5.187 0 9.75 1.969 4.563 1.968 7.938 5.344 3.374 3.375 5.343 7.937Q55.001 24.813 55 30q0 5.125-1.969 9.688-1.968 4.561-5.343 7.968t-7.938 5.375Q35.187 55.001 30 55" /></g></svg>;
+export default SvgPaymentSuccessIcon;

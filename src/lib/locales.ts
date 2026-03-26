@@ -13,6 +13,7 @@ import myKo from '@/i18n/locales/ko/my.json'
 import modalKo from '@/i18n/locales/ko/modal.json'
 import programKo from '@/i18n/locales/ko/program.json'
 import messageKo from '@/i18n/locales/ko/message.json'
+import paymentKo from '@/i18n/locales/ko/payment.json'
 
 import commonEn from '@/i18n/locales/en/common.json'
 import contentEn from '@/i18n/locales/en/content.json'
@@ -29,6 +30,7 @@ import myEn from '@/i18n/locales/en/my.json'
 import modalEn from '@/i18n/locales/en/modal.json'
 import programEn from '@/i18n/locales/en/program.json'
 import messageEn from '@/i18n/locales/en/message.json'
+import paymentEn from '@/i18n/locales/en/payment.json'
 
 import { Locale } from './i18n.types'
 
@@ -55,6 +57,7 @@ export const resources: Resources = {
     modal: modalKo,
     program: programKo,
     message: messageKo,
+    payment: paymentKo,
   },
   en: {
     common: commonEn,
@@ -72,5 +75,6 @@ export const resources: Resources = {
     modal: modalEn,
     program: programEn,
     message: messageEn,
+    payment: paymentEn,
   },
 }
