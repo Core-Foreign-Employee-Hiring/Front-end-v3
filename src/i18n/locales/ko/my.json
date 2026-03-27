@@ -1,7 +1,8 @@
 {
   "side_bar": {
     "home": "my 홈",
-    "content": "콘텐츠 내역"
+    "content": "콘텐츠 내역",
+    "payment": "결제 내역"
   },
   "home": {
     "title": "마이페이지",

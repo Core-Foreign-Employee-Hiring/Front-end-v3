@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Header, PageLayout } from '@/components/common'
 import { getTranslationServer } from '@/lib/i18n'
 import { Locale } from '@/lib/i18n.types'
-import Footer from '@/components/common/Footer'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.korfit.co.kr'
 
@@ -59,7 +58,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default async function PaymentLayout({
+export default async function PaymentFailLayout({
   children,
   params,
 }: Readonly<{
@@ -82,7 +81,6 @@ export default async function PaymentLayout({
       </div>
 
       <PageLayout>{children}</PageLayout>
-      <Footer />
     </div>
   )
 }

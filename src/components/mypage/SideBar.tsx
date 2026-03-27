@@ -4,8 +4,10 @@ import { usePathname, useRouter } from 'next/navigation'
 import {
   SidebarSelectedContentIcon,
   SidebarSelectedHomeIcon,
+  SidebarSelectedPayIcon,
   SidebarUnselectedContentIcon,
   SidebarUnselectedHomeIcon,
+  SidebarUnselectedPayIcon,
 } from '@/assets/svgComponents'
 import { useTranslation } from 'react-i18next'
 
@@ -31,7 +33,7 @@ export default function SideBar({ lang }: SideBarProps) {
     } flex w-full cursor-pointer items-center gap-x-2 rounded-[8px] p-3 transition-colors`
 
   return (
-    <nav className="desktop:w-[180px] desktop:block hidden space-y-1">
+    <nav className="desktop:w-[180px] desktop:block hidden shrink-0 space-y-1">
       {/* MY 홈 탭 */}
       <div onClick={() => router.push(`/${lang}/mypage/home`)} className={getTabClass('home')}>
         {isActive('home') ? (
@@ -50,6 +52,16 @@ export default function SideBar({ lang }: SideBarProps) {
           <SidebarUnselectedContentIcon width={24} height={24} />
         )}
         <p>{t('side_bar.content')}</p>
+      </div>
+
+      {/* 결제 내역 탭 */}
+      <div onClick={() => router.push(`/${lang}/mypage/payment`)} className={getTabClass('payment')}>
+        {isActive('content') ? (
+          <SidebarSelectedPayIcon width={24} height={24} />
+        ) : (
+          <SidebarUnselectedPayIcon width={24} height={24} />
+        )}
+        <p>{t('side_bar.payment')}</p>
       </div>
     </nav>
   )

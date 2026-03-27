@@ -1,6 +1,6 @@
 import { ApiCallResult, PageNation } from '@/types/common'
 import { ModifyProfileType } from '@/types/auth/modify-profile'
-import { PurchaseArchiveType, SoldArchiveType, WriteArchiveType } from '@/types/mypage'
+import { ContentPaymentType, PurchaseArchiveType, SoldArchiveType, WriteArchiveType } from '@/types/mypage'
 
 export const patchModifyProfile = async (
   registerData: Partial<ModifyProfileType>
@@ -183,6 +183,40 @@ export const fetchWriteArchiveList = async ({
 
     const data = await response.json()
     console.log('판매 아카이브 데이터', data)
+    return data
+  } catch (error) {
+    console.error('Fetch 에러:', error)
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    }
+  }
+}
+
+export const fetchContentPaymentList = async ({
+  page,
+  size,
+}: {
+  page: number
+  size: number
+}): Promise<ApiCallResult<PageNation<ContentPaymentType>>> => {
+  try {
+    const response = await fetch(`/api/payment/history?page=${page}&size=${size}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    })
+
+    if (!response.ok) {
+      const error = await response.json()
+      console.error('API 응답 에러:', error)
+      return { success: false, error: error.error || `HTTP ${response.status}` }
+    }
+
+    const data = await response.json()
+    console.log('판매 아카이브 list 데이터', data)
     return data
   } catch (error) {
     console.error('Fetch 에러:', error)

@@ -32,3 +32,22 @@ export interface WriteArchiveType {
   star: number
   starCount: number
 }
+
+export interface ContentPaymentType {
+  thumbnailUrl: string
+  title: string
+  merchantOrderId: string
+  approvedAt: string
+  paymentStatus: PaymentStatusType
+  totalAmount: string
+  downloaded: true
+}
+export type PaymentStatusType =
+  | 'IN_PROGRESS'
+  | 'DONE'
+  | 'CANCELED'
+  | 'ABORTED'
+  | 'EXPIRED'
+  | 'DONE_CANCELED'
+  | 'TIMEOUT'
+  | 'UNKNOWN'

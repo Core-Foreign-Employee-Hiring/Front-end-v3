@@ -1,7 +1,8 @@
 {
   "side_bar": {
     "home": "My Home",
-    "content": "My Content"
+    "content": "My Content",
+    "payment": "Payment History"
   },
   "home": {
     "title": "My Page",

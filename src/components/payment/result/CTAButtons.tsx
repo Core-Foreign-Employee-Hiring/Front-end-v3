@@ -1,10 +1,19 @@
-import { Button } from '@/components/common'
+'use client'
 
-export default function CTAButtons() {
+import { useRouter } from 'next/navigation'
+
+interface CTAButtonsProps {
+  leftElement?: React.ReactNode
+  rightElement?: React.ReactNode
+}
+
+export default function CTAButtons({ leftElement, rightElement }: CTAButtonsProps) {
+  const router = useRouter()
+
   return (
     <div className="flex items-center gap-x-4">
-      <Button variant={'secondary'}>결제 내역</Button>
-      <Button variant={'primary'}>결제상품 바로 이용</Button>
+      {leftElement}
+      {rightElement}
     </div>
   )
 }

@@ -30,7 +30,8 @@ export default function PayButton({ amount, orderId, orderName, customerName, cu
       method: 'CARD', // 결제 수단 (CARD, TRANSFER, VIRTUAL_ACCOUNT 등)
       amount: {
         currency: 'KRW',
-        value: 1,
+        value: 101,
+        // value: parseInt(amount),
       },
       orderId: orderId,
       orderName: orderName,

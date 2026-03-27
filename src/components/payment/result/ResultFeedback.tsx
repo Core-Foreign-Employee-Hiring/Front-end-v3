@@ -1,11 +1,17 @@
-import { PaymentSuccessIcon } from '@/assets/svgComponents'
+import { ReactElement } from 'react'
 
-export default function ResultFeedback() {
+interface ResultFeedbackProps {
+  icon: ReactElement
+  title: string
+  content: string
+}
+
+export default function ResultFeedback({ icon, content, title }: ResultFeedbackProps) {
   return (
     <div className="flex flex-col items-center justify-center gap-y-2">
-      <PaymentSuccessIcon width={60} height={60} />
-      <div className="kr-title-lg">결제 완료</div>
-      <p className="kr-body-md text-gray5 text-center whitespace-pre">{`구매해주셔서 감사합니다.\n한국 취업에 큰 도움이 되길 바랍니다.`}</p>
+      {icon && icon}
+      <div className="kr-title-lg">{title}</div>
+      <p className="kr-body-md text-gray5 text-center whitespace-pre">{content}</p>
     </div>
   )
 }

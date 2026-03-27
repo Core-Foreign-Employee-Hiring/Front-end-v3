@@ -19,6 +19,30 @@ export const formatDate = (dateString: string | undefined): string => {
 }
 
 /**
+ * ISO 날짜 문자열을 'YYYY. MM. DD. HH:mm' 형식으로 변환합니다.
+ * @param dateString - "2026-01-29T16:55:19.435571"와 같은 날짜 문자열
+ */
+export const formatDateTime = (dateString: string | undefined): string => {
+  if (!dateString) return ''
+
+  const date = new Date(dateString)
+
+  // 유효하지 않은 날짜인 경우 빈 문자열 반환
+  if (isNaN(date.getTime())) return ''
+
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+
+  // 시간과 분 추출
+  const hours = String(date.getHours()).padStart(2, '0')
+  const minutes = String(date.getMinutes()).padStart(2, '0')
+  // const seconds = String(date.getSeconds()).padStart(2, '0') // 초가 필요하면 사용하세요.
+
+  return `${year}. ${month}. ${day}. ${hours}:${minutes}`
+}
+
+/**
  * @param dateString - "2026-12-12" 형식의 문자열
  * @param t - i18next 번역 함수
  * @returns "~12/12(토)" 형식의 문자열
