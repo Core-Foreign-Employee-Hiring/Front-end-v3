@@ -56,7 +56,7 @@ export default function SideBar({ lang }: SideBarProps) {
 
       {/* 결제 내역 탭 */}
       <div onClick={() => router.push(`/${lang}/mypage/payment`)} className={getTabClass('payment')}>
-        {isActive('content') ? (
+        {isActive('payment') ? (
           <SidebarSelectedPayIcon width={24} height={24} />
         ) : (
           <SidebarUnselectedPayIcon width={24} height={24} />
