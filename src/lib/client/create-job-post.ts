@@ -22,7 +22,7 @@ export const postRecruit = async (createJobPost: CreateJobPostType): Promise<Api
     }
 
     const data = await response.json()
-    console.log('스펙 데이터', data)
+    console.log('공고 생성 데이터', data)
     return { success: true, data }
   } catch (error) {
     console.error('Fetch 에러:', error)

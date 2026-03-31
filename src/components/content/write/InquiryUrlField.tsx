@@ -3,17 +3,18 @@
 import { Label, TextInput } from '@/components/common'
 import { useCreateContentStore } from '@/store/contentStore'
 
-export default function TitleField() {
+export default function InquiryUrlField() {
   const { updateCreateContent, createContent } = useCreateContentStore((state) => state)
+
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'제목'} isRequired={true} />
+      <Label label={'문의하기 URL'} isRequired={true} />
       <TextInput
+        value={createContent.inquiryUrl ?? ''}
         onChange={(e) => {
-          updateCreateContent('title', e.target.value)
+          updateCreateContent('inquiryUrl', e.target.value)
         }}
-        value={createContent.title ?? ''}
-        placeholder={'상품에 대한 제목을 작성해주세요.'}
+        placeholder={'문의 시 연결될 오픈채팅 URL을 입력해 주세요.'}
       />
     </div>
   )

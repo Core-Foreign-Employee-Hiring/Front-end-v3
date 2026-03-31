@@ -3,17 +3,18 @@
 import { Label, TextInput } from '@/components/common'
 import { useCreateContentStore } from '@/store/contentStore'
 
-export default function TitleField() {
+export default function OneLineReviewField() {
   const { updateCreateContent, createContent } = useCreateContentStore((state) => state)
+
   return (
     <div className="flex flex-col gap-y-2">
-      <Label label={'제목'} isRequired={true} />
+      <Label label={'한줄 설명'} isRequired={true} />
       <TextInput
         onChange={(e) => {
-          updateCreateContent('title', e.target.value)
+          updateCreateContent('oneLineReview', e.target.value)
         }}
-        value={createContent.title ?? ''}
-        placeholder={'상품에 대한 제목을 작성해주세요.'}
+        value={createContent.oneLineReview ?? ''}
+        placeholder={'상품에 대한 한줄 설명을 작성해주세요.'}
       />
     </div>
   )

@@ -26,3 +26,10 @@ export interface ReviewType {
   content: string
   createdAt: string
 }
+export interface CreateContentType {
+  title: string
+  oneLineReview: string
+  description: string
+  price: number
+  inquiryUrl: string
+}
