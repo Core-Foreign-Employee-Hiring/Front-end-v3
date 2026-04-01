@@ -5,6 +5,7 @@ import PaymentMethod from '@/components/payment/PaymentMethod'
 import PayButton from '@/components/payment/PayButton'
 import PaySummary from '@/components/payment/PaySummary'
 import { serverFetchPreview } from '@/lib/server/payment'
+import AuthWatcher from '@/components/auth/AuthWatcher'
 
 export default async function PaymentPage({
   params,
@@ -19,6 +20,8 @@ export default async function PaymentPage({
 
   return (
     <main className="desktop:flex-row flex flex-col gap-x-[45px] gap-y-[24px]">
+      <AuthWatcher results={[paymentResult]} />
+
       <section className="flex w-full flex-col gap-y-[24px]">
         <h1 className="kr-title-md desktop:block hidden text-black">콘텐츠 구매</h1>
         <ContentSummary
