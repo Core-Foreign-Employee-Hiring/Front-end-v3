@@ -32,13 +32,13 @@ export default function CashReceiptModal() {
     })
 
     if (result.success) {
-      success(t('message:post_cash_receipt.success.title', 'message:post_cash_receipt.success.description'))
+      success(t('message:post_cash_receipt.success.title'), t('message:post_cash_receipt.success.description'))
       // 스토어 초기화 로직 (이미 만드신 resetCashReceipt가 있다면 그걸 쓰셔도 좋습니다)
       updateCashReceipt('type', '')
       updateCashReceipt('customerIdentityNumber', '')
       closeModal()
     } else {
-      error(t('message:post_cash_receipt.error.title', 'message:post_cash_receipt.error.description'))
+      error(t('message:post_cash_receipt.error.title'), t('message:post_cash_receipt.error.description'))
     }
   }
 
