@@ -377,5 +377,20 @@
       "title": "실패",
       "description": "질문을 삭제하지 못했어요."
     }
+  },
+
+  "post_cash_receipt": {
+    "success": {
+      "title": "성공",
+      "description": "현금영수증 정보가 저장되었습니다."
+    },
+    "error": {
+      "title": "실패",
+      "description": "현금영수증 정보가 저장되지 않았어요."
+    },
+    "input_error": {
+      "title": "입력 오류",
+      "description": "모든 항목을 입력해주세요."
+    }
   }
 }

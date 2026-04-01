@@ -303,5 +303,26 @@
       "label": "스펙 명",
       "placeholder": "예: 마케터 준비"
     }
+  },
+
+  "cash_receipt": {
+    "title": "현금영수증 신청",
+    "type": {
+      "label": "발행 종류",
+      "personal": "소득공제",
+      "business": "지출증빙"
+    },
+    "input": {
+      "personalLabel": "휴대폰 번호 또는 카드번호",
+      "businessLabel": "사업자 등록번호",
+      "personalPlaceholder": "'-' 없이 입력",
+      "businessPlaceholder": "사업자 번호 10자리 입력",
+      "personalDescription": "소비자 인증수단으로 휴대폰 번호 등을 입력하세요.",
+      "businessDescription": "지출증빙을 위해 사업자등록번호를 입력하세요."
+    },
+    "button": {
+      "cancel": "취소",
+      "apply": "적용하기"
+    }
   }
 }

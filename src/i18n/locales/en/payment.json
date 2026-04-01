@@ -1,1 +1,92 @@
-{}
+{
+  "success": {
+    "title": "Payment Successful",
+    "processingTitle": "Processing Payment...",
+    "processingContent": "Please wait a moment. We are finalizing your payment.",
+    "thanksMessage": "Thank you for your purchase.\nWe hope this helps you with your career in Korea.",
+    "orderId": "Order ID",
+    "amount": "Total Amount",
+    "amountValue": "KRW {{amount}}",
+    "button": {
+      "useNow": "Access Content Now",
+      "viewHistory": "View History"
+    },
+    "error": {
+      "confirmFailed": "An error occurred during payment confirmation.",
+      "missingParams": "Payment information is missing."
+    }
+  },
+
+  "fail": {
+    "title": "Payment Failed",
+    "content": "Payment failed. Please try again.",
+    "orderId": "Order ID",
+    "amount": "Total Amount",
+    "button": {
+      "retry": "Try Again"
+    },
+    "errorReason": "Reason for Failure"
+  },
+
+  "content": {
+    "title": "Purchase Content",
+    "summary": {
+      "amountValue": "KRW {{amount}}"
+    },
+    "orderInfo": {
+      "title": "Customer Information",
+      "name": "Name",
+      "email": "Email",
+      "phoneNumber": "Phone Number"
+    },
+    "paymentMethod": {
+      "title": "Select Payment Method"
+    },
+    "paySummary": {
+      "title": "Order Summary",
+      "orderAmount": "Subtotal",
+      "totalAmount": "Total Payment",
+      "amountValue": "KRW {{amount}}",
+      "terms": {
+        "agreeAll": "I agree to all Payment Terms and Privacy Policy (Required)",
+        "service": "Terms of Service",
+        "privacyCollection": "Consent to Collection and Use of Personal Information",
+        "privacyThirdParty": "Consent to Provision of Personal Information to Third Parties",
+        "notice": "I have reviewed the <0>Refund Policy</0> and agree to the <1>Paid Service Terms</1> and <2>Privacy Policy</2>."
+      }
+    },
+    "payButton": {
+      "pay": "Pay Now",
+      "preparing": "Preparing..."
+    },
+    "terms": {
+      "agreeAll": "Agree to All",
+      "privacy": "Privacy Policy",
+      "cancel": "Cancellation and Refund Policy"
+    }
+  },
+
+  "mypage": {
+    "title": "Payment History",
+    "description": "For cancellations or <0>refund inquiries</0>, please use <1>KakaoTalk Consultation</1>.\nThe amounts shown below may differ from the actual payment.\nClick 'View Receipt' to check the actual amount.",
+    "noResults": "No payment history found.",
+    "card": {
+      "status": {
+        "done": "Completed",
+        "pending": "Pending",
+        "canceled": "Canceled"
+      },
+      "label": {
+        "approvedAt": "Payment Date",
+        "method": "Payment Method",
+        "orderId": "Order ID",
+        "methodType": "Toss Pay"
+      },
+      "button": {
+        "receipt": "View Receipt",
+        "download": "Download"
+      },
+      "amount": "KRW {{amount}}"
+    }
+  }
+}

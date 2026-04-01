@@ -1,1 +1,92 @@
-{}
+{
+  "success": {
+    "title": "결제 완료",
+    "processingTitle": "결제 승인 중...",
+    "processingContent": "잠시만 기다려주세요. 결제를 마무리하고 있습니다.",
+    "thanksMessage": "구매해주셔서 감사합니다.\n한국 취업에 큰 도움이 되길 바랍니다.",
+    "orderId": "주문 번호",
+    "amount": "결제 금액",
+    "amountValue": "{{amount}}원",
+    "button": {
+      "useNow": "결제상품 바로 이용",
+      "viewHistory": "결제 내역"
+    },
+    "error": {
+      "confirmFailed": "결제 승인 중 오류가 발생했습니다.",
+      "missingParams": "결제 정보가 누락되었습니다."
+    }
+  },
+
+  "fail": {
+    "title": "결제 실패",
+    "content": "결제에 실패했어요. 다시 시도해주세요.",
+    "orderId": "주문 번호",
+    "amount": "결제 금액",
+    "button": {
+      "retry": "다시 시도"
+    },
+    "errorReason": "실패 사유"
+  },
+
+  "content": {
+    "title": "콘텐츠 구매",
+    "summary": {
+      "amountValue": "{{amount}}원"
+    },
+    "orderInfo": {
+      "title": "주문자 정보",
+      "name": "이름",
+      "email": "이메일",
+      "phoneNumber": "휴대폰 번호"
+    },
+    "paymentMethod": {
+      "title": "결제 수단 선택"
+    },
+    "paySummary": {
+      "title": "결제 금액",
+      "orderAmount": "주문 금액",
+      "totalAmount": "총 결제 금액",
+      "amountValue": "{{amount}}원",
+      "terms": {
+        "agreeAll": "결제 서비스 이용약관, 개인정보 처리 동의 (필수)",
+        "service": "서비스 이용 약관",
+        "privacyCollection": "개인(신용)정보 수집 및 이용 동의",
+        "privacyThirdParty": "개인(신용)정보 제 3자 제공 동의",
+        "notice": "회원 본인은 주문 내용 및 <0>환불 규정</0>을 확인하였으며, <1>유료 서비스 이용약관</1> 및 <2>개인정보처리방침</2>과 결제에 동의합니다."
+      }
+    },
+    "payButton": {
+      "pay": "결제하기",
+      "preparing": "결제 준비 중..."
+    },
+    "terms": {
+      "agreeAll": "전체 동의하기",
+      "privacy": "개인정보 수집 및 이용 동의",
+      "cancel": "취소 및 환불 규정 동의"
+    }
+  },
+
+  "mypage": {
+    "title": "결제 내역",
+    "description": "구매 취소 및 <0>환불 문의</0>는 <1>카카오톡 상담하기</1>를 이용해 주세요.\n아래 신청 내역에 표시된 금액은 실제 결제 금액과 다를 수 있습니다.\n‘영수증 보기’를 눌러 실제 결제 금액을 확인할 수 있습니다.",
+    "noResults": "결제 내역이 없습니다.",
+    "card": {
+      "status": {
+        "done": "결제 완료",
+        "pending": "결제 대기",
+        "canceled": "결제 취소"
+      },
+      "label": {
+        "approvedAt": "결제 일시",
+        "method": "결제 수단",
+        "orderId": "주문 번호",
+        "methodType": "토스페이"
+      },
+      "button": {
+        "receipt": "영수증 보기",
+        "download": "다운로드"
+      },
+      "amount": "{{amount}}원"
+    }
+  }
+}

@@ -4,27 +4,33 @@ import { useEffect, useState } from 'react'
 import { CheckIcon, RightArrowIcon, UncheckIcon } from '@/assets/svgComponents' // ChevronRightIcon 추가 가정
 import { useOrderStore } from '@/store/orderStore'
 import Link from 'next/link'
+import { Trans, useTranslation } from 'react-i18next'
 
 interface PaySummaryProps {
   amount: string
 }
 
 export default function PaySummary({ amount }: PaySummaryProps) {
+  const { t } = useTranslation('payment')
+  const formattedAmount = new Intl.NumberFormat('ko-KR').format(Number(amount))
+
   return (
     <div className="flex flex-col gap-y-[24px]">
       <section className="border-gray2 rounded-[12px] border p-4">
         <section className="desktop:border-gray2 desktop:border-b desktop:pb-[20px] flex flex-col">
-          <h2 className="kr-title-md">결제 금액</h2>
+          <h2 className="kr-title-md">{t('payment:content.paySummary.title')}</h2>
           <section className="mt-[32px] flex flex-col gap-y-2">
             <div className="flex items-center justify-between">
-              <div className="kr-subtitle-md text-gray5">주문 금액</div>
-              <p className="kr-title-sm">{Number(amount).toLocaleString()}원</p>
+              <div className="kr-subtitle-md text-gray5">{t('payment:content.paySummary.orderAmount')}</div>
+              <p className="kr-title-sm">{t('payment:content.paySummary.amountValue', { amount: formattedAmount })}</p>
             </div>
           </section>
 
           <section className="mt-[20px] flex items-center justify-between">
-            <p className="kr-subtitle-lg">총 결제 금액</p>
-            <p className="kr-subtitle-lg text-main-500">{Number(amount).toLocaleString()}원</p>
+            <p className="kr-subtitle-lg">{t('payment:content.paySummary.totalAmount')}</p>
+            <div className="kr-subtitle-lg text-main-500">
+              {t('payment:content.paySummary.amountValue', { amount: formattedAmount })}
+            </div>
           </section>
         </section>
 
@@ -43,6 +49,8 @@ export default function PaySummary({ amount }: PaySummaryProps) {
 }
 
 function TermsSection() {
+  const { t } = useTranslation('payment')
+
   // Zustand 스토어의 set함수나 상태가 단일 boolean이라면, 내부에서 개별 체크박스 상태를 관리합니다.
   const { setAgreedToTerms } = useOrderStore() // 스토어에 상태 저장 함수가 있다고 가정
 
@@ -72,15 +80,19 @@ function TermsSection() {
   }, [isAllChecked, setAgreedToTerms])
 
   const subTerms = [
-    { id: 'term1', label: '서비스 이용 약관', url: 'https://pages.tosspayments.com/terms/user' },
+    {
+      id: 'term1',
+      label: t('payment:content.paySummary.terms.service'),
+      url: 'https://pages.tosspayments.com/terms/user',
+    },
     {
       id: 'term2',
-      label: '개인(신용)정보 수집 및 이용 동의',
+      label: t('payment:content.paySummary.terms.privacyCollection'),
       url: 'https://pages.tosspayments.com/terms/v2/tables/291/records/1174337',
     },
     {
       id: 'term3',
-      label: '개인(신용)정보 제 3자 제공 동의',
+      label: t('payment:content.paySummary.terms.privacyThirdParty'),
       url: 'https://pages.tosspayments.com/terms/v2/tables/291/records/1174339',
     },
   ]
@@ -95,7 +107,7 @@ function TermsSection() {
           <UncheckIcon width={24} height={24} className="text-gray3" />
         )}
         <p className={`kr-subtitle-md ${isAllChecked ? 'text-gray9' : 'text-gray5'} font-bold`}>
-          결제 서비스 이용약관, 개인정보 처리 동의 (필수)
+          {t('payment:content.paySummary.terms.agreeAll')}
         </p>
       </div>
 
@@ -122,31 +134,30 @@ function TermsSection() {
       </div>
 
       <div className="kr-body-sm text-gray4 bg-gray1 mt-2 rounded-[8px] p-3">
-        회원 본인은 주문 내용 및{' '}
-        <Link
-          className={'text-gray6 font-medium underline'}
-          href={'https://fifth-soil-7ed.notion.site/335244b92af280b082edd35df86803d7?source=copy_link'}
-          target="_blank"
-        >
-          환불 규정
-        </Link>
-        을 확인하였으며,{' '}
-        <Link
-          className={'text-gray6 font-medium underline'}
-          href={'https://fifth-soil-7ed.notion.site/335244b92af280a8a12bf8468d78ac68?source=copy_link'}
-          target="_blank"
-        >
-          유료 서비스 이용약관
-        </Link>{' '}
-        및{' '}
-        <Link
-          className={'text-gray6 font-medium underline'}
-          href={'https://fifth-soil-7ed.notion.site/335244b92af2808ab447c0f044da88cb?source=copy_link'}
-          target="_blank"
-        >
-          개인정보처리방침
-        </Link>
-        과 결제에 동의합니다.
+        <Trans
+          i18nKey="content.paySummary.terms.notice"
+          ns="payment"
+          components={[
+            <Link
+              key="refund"
+              className="text-gray6 font-medium underline"
+              href="https://fifth-soil-7ed.notion.site/335244b92af280b082edd35df86803d7?source=copy_link"
+              target="_blank"
+            />,
+            <Link
+              key="service"
+              className="text-gray6 font-medium underline"
+              href="https://fifth-soil-7ed.notion.site/335244b92af280a8a12bf8468d78ac68?source=copy_link"
+              target="_blank"
+            />,
+            <Link
+              key="privacy"
+              className="text-gray6 font-medium underline"
+              href="https://fifth-soil-7ed.notion.site/335244b92af2808ab447c0f044da88cb?source=copy_link"
+              target="_blank"
+            />,
+          ]}
+        />
       </div>
     </div>
   )

@@ -9,9 +9,11 @@ import { PaymentSuccessIcon } from '@/assets/svgComponents'
 import { Button } from '@/components/common'
 import { PaymentConfirmType } from '@/types/order'
 import { postPaymentContent } from '@/lib/client/payment'
+import { useTranslation } from 'react-i18next'
 
 export default function PaymentSuccessPage() {
   const searchParams = useSearchParams()
+  const { t } = useTranslation('payment')
   const router = useRouter()
   const [isProcessing, setIsProcessing] = useState(true)
 
@@ -60,12 +62,8 @@ export default function PaymentSuccessPage() {
     <main className="desktop:w-[588px] mx-auto flex w-full flex-col gap-y-8 px-4 py-20">
       <ResultFeedback
         icon={<PaymentSuccessIcon width={60} height={60} />}
-        title={isProcessing ? '결제 승인 중...' : '결제 완료'}
-        content={
-          isProcessing
-            ? '잠시만 기다려주세요. 결제를 마무리하고 있습니다.'
-            : `구매해주셔서 감사합니다.\n한국 취업에 큰 도움이 되길 바랍니다.`
-        }
+        title={isProcessing ? t('payment:success.processingTitle') : t('payment:success.title')}
+        content={isProcessing ? t('payment:success.processingContent') : t('payment:success.thanksMessage')}
       />
 
       <PaymentResultSummary orderId={orderId} amount={amount} />
@@ -77,12 +75,12 @@ export default function PaymentSuccessPage() {
             variant={'primary'}
             disabled={isProcessing} // 승인 중에는 클릭 방지
           >
-            결제상품 바로 이용
+            {t('payment:success.button.useNow')}
           </Button>
         }
         leftElement={
           <Button onClick={() => router.push('/mypage/payment')} variant={'secondary'} disabled={isProcessing}>
-            결제 내역
+            {t('payment:success.button.viewHistory')}
           </Button>
         }
       />

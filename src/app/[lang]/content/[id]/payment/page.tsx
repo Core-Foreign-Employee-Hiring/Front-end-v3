@@ -6,6 +6,8 @@ import PayButton from '@/components/payment/PayButton'
 import PaySummary from '@/components/payment/PaySummary'
 import { serverFetchPreview } from '@/lib/server/payment'
 import AuthWatcher from '@/components/auth/AuthWatcher'
+import { getTranslationServer } from '@/lib/i18n'
+import { Locale } from '@/lib/i18n.types'
 
 export default async function PaymentPage({
   params,
@@ -13,6 +15,9 @@ export default async function PaymentPage({
   params: Promise<{ lang: string; id: string }>
 }>) {
   const { id, lang } = await params
+  const currentLang = lang as Locale
+
+  const { t } = await getTranslationServer(currentLang, 'payment')
   const paymentResult = await serverFetchPreview({ passArchiveId: id })
   const paymentData = paymentResult.data
 
@@ -23,7 +28,7 @@ export default async function PaymentPage({
       <AuthWatcher results={[paymentResult]} />
 
       <section className="flex w-full flex-col gap-y-[24px]">
-        <h1 className="kr-title-md desktop:block hidden text-black">콘텐츠 구매</h1>
+        <h1 className="kr-title-md desktop:block hidden text-black">{t('payment:content.title')}</h1>
         <ContentSummary
           amount={paymentData.amount}
           oneLineReview={paymentData.oneLineReview}

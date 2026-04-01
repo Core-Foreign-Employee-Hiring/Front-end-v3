@@ -305,5 +305,26 @@
       "label": "Spec Name",
       "placeholder": "e.g., Marketing Prep"
     }
+  },
+
+  "cash_receipt": {
+    "title": "Request Cash Receipt",
+    "type": {
+      "label": "Issuance Type",
+      "personal": "Personal (Income Deduction)",
+      "business": "Business (Expense Proof)"
+    },
+    "input": {
+      "personalLabel": "Mobile Number or Card Number",
+      "businessLabel": "Business Registration Number",
+      "personalPlaceholder": "Enter numbers only",
+      "businessPlaceholder": "Enter 10-digit business number",
+      "personalDescription": "Enter your mobile number or card number as a means of authentication.",
+      "businessDescription": "Enter the business registration number for expense proof."
+    },
+    "button": {
+      "cancel": "Cancel",
+      "apply": "Apply"
+    }
   }
 }

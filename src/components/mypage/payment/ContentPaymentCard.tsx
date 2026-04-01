@@ -7,7 +7,7 @@ import { useModalStore } from '@/store/modalStore'
 import CashReceiptModal from '@/components/common/modal/CashReceiptModal'
 import { useOrderStore } from '@/store/orderStore'
 import { getCashReceipt } from '@/lib/client/order'
-import { useToast } from '@/components/common/toast/ToastContext'
+import { useTranslation } from 'react-i18next'
 
 export default function ContentPaymentCard({
   downloaded,
@@ -19,9 +19,10 @@ export default function ContentPaymentCard({
   totalAmount,
   thumbnailUrl,
 }: ContentPaymentType) {
+  const { t } = useTranslation('payment')
+
   const setModal = useModalStore((state) => state.setModal)
   const updateMerchantOrderId = useOrderStore((state) => state.updateMerchantOrderId)
-  const { success, error } = useToast()
   /**
    * 아카이브의 모든 파일을 로컬에 다운로드
    * @param passArchiveId - 아카이브 ID
@@ -119,7 +120,7 @@ export default function ContentPaymentCard({
         {/* 3. 배지 (우측 상단 배치) */}
         <div className="absolute top-3 left-3 z-10">
           <Badge bgColor={'bg-[#00B0A9]'} textColor={'text-white'}>
-            {paymentStatus === 'DONE' ? '결제 완료' : '결제 대기'}
+            {paymentStatus === 'DONE' ? t('payment:mypage.card.status.done') : t('payment:mypage.card.status.pending')}
           </Badge>
         </div>
       </section>
@@ -128,28 +129,32 @@ export default function ContentPaymentCard({
           <p className="kr-subtitle-md mb-1">{title}</p>
 
           <div className="flex items-center justify-between">
-            <div className="kr-button text-gray5 shrink-0">결제일시</div>
+            <div className="kr-button text-gray5 shrink-0">{t('payment:mypage.card.label.approvedAt')}</div>
             <div className="kr-subtitle-sm">{formatDateTime(approvedAt)}</div>
           </div>
 
           <div className="flex items-center justify-between">
-            <div className="kr-button text-gray5 shrink-0">결제수단</div>
-            <div className="kr-subtitle-sm">토스페이</div>
+            <div className="kr-button text-gray5 shrink-0">{t('payment:mypage.card.label.method')}</div>
+            <div className="kr-subtitle-sm">TossPay</div>
           </div>
 
           {/* 주문번호 섹션: 공간이 좁을 땐 위아래, 넓을 땐 좌우로 유연하게 */}
-          <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
-            <div className="kr-button text-gray5 shrink-0">주문번호</div>
-            <div className="kr-subtitle-sm text-right break-words text-gray-800 sm:max-w-[70%]">{merchantOrderId}</div>
+          <div className="flex items-center justify-between">
+            <div className="kr-button text-gray5 shrink-0">{t('payment:mypage.card.label.orderId')}</div>
+            <div className="kr-subtitle-sm block truncate text-right text-gray-800 sm:max-w-[60%]">
+              {merchantOrderId}
+            </div>
           </div>
         </section>
 
         <div className="border-gray2 border-b" />
 
-        <p className="kr-subtitle-lg text-main-500">{totalAmount}원</p>
+        <p className="kr-subtitle-lg text-main-500">
+          {t('payment:mypage.card.amount', { amount: Number(totalAmount).toLocaleString() })}
+        </p>
         <section className="flex gap-x-3">
           <Button onClick={() => handleViewReceipt(merchantOrderId)} size={'md'} variant={'outline'}>
-            영수증 보기
+            {t('payment:mypage.card.button.receipt')}
           </Button>
           <Button
             onClick={async () => {
@@ -158,7 +163,7 @@ export default function ContentPaymentCard({
             size={'md'}
             variant={'primary'}
           >
-            다운로드
+            {t('payment:mypage.card.button.download')}
           </Button>
         </section>
       </section>

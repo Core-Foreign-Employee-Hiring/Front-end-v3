@@ -382,6 +382,21 @@
       "title": "Error",
       "description": "Failed to delete the question."
     }
+  },
+
+  "post_cash_receipt": {
+    "success": {
+      "title": "Success",
+      "description": "Cash receipt information has been saved successfully."
+    },
+    "error": {
+      "title": "Failed",
+      "description": "Failed to save cash receipt information. Please try again."
+    },
+    "input_error": {
+      "title": "Input Error",
+      "description": "Please fill in all required fields."
+    }
   }
 }
 

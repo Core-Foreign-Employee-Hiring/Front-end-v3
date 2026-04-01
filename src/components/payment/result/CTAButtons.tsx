@@ -11,7 +11,7 @@ export default function CTAButtons({ leftElement, rightElement }: CTAButtonsProp
   const router = useRouter()
 
   return (
-    <div className="flex items-center gap-x-4">
+    <div className="desktop:static desktop:p-0 fixed bottom-0 left-0 z-50 flex w-full items-center gap-x-4 border-t border-gray-100 bg-white p-5">
       {leftElement}
       {rightElement}
     </div>
