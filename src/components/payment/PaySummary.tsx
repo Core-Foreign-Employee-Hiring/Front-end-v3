@@ -143,19 +143,25 @@ function TermsSection() {
               className="text-gray6 font-medium underline"
               href="https://fifth-soil-7ed.notion.site/335244b92af280b082edd35df86803d7?source=copy_link"
               target="_blank"
-            />,
+            >
+              refund
+            </Link>,
             <Link
               key="service"
               className="text-gray6 font-medium underline"
               href="https://fifth-soil-7ed.notion.site/335244b92af280a8a12bf8468d78ac68?source=copy_link"
               target="_blank"
-            />,
+            >
+              service
+            </Link>,
             <Link
               key="privacy"
               className="text-gray6 font-medium underline"
               href="https://fifth-soil-7ed.notion.site/335244b92af2808ab447c0f044da88cb?source=copy_link"
               target="_blank"
-            />,
+            >
+              privacy
+            </Link>,
           ]}
         />
       </div>

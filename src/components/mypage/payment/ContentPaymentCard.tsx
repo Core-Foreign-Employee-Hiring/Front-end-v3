@@ -139,7 +139,7 @@ export default function ContentPaymentCard({
           </div>
 
           {/* 주문번호 섹션: 공간이 좁을 땐 위아래, 넓을 땐 좌우로 유연하게 */}
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-x-2">
             <div className="kr-button text-gray5 shrink-0">{t('payment:mypage.card.label.orderId')}</div>
             <div className="kr-subtitle-sm block truncate text-right text-gray-800 sm:max-w-[60%]">
               {merchantOrderId}

@@ -46,10 +46,14 @@ export default function ContentPaymentCards() {
               <Link
                 key="refund"
                 className="shrink-0 underline"
-                href="https://fifth-soil-7ed.notion.site/..."
+                href="https://fifth-soil-7ed.notion.site/335244b92af280b082edd35df86803d7"
                 target="_blank"
-              />,
-              <Link key="kakao" className="shrink-0 underline" href="https://pf.kakao.com/_xfxbmMX" target="_blank" />,
+              >
+                refund
+              </Link>,
+              <Link key="kakao" className="shrink-0 underline" href="https://pf.kakao.com/_xfxbmMX" target="_blank">
+                kakao
+              </Link>,
             ]}
           />
         </div>
