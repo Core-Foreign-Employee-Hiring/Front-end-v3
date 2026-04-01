@@ -34,6 +34,7 @@ export interface WriteArchiveType {
 }
 
 export interface ContentPaymentType {
+  passArchiveId: number
   thumbnailUrl: string
   title: string
   merchantOrderId: string

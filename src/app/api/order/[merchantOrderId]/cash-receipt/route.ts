@@ -1,5 +1,6 @@
 import { apiCallServer } from '@/lib/api.server'
 import { NextRequest, NextResponse } from 'next/server'
+import { CashReceiptDataType } from '@/types/order'
 
 // context 타입을 Promise를 포함하도록 설정합니다.
 export async function GET(request: Request, context: { params: Promise<{ merchantOrderId: string }> }) {
@@ -31,10 +32,7 @@ export async function GET(request: Request, context: { params: Promise<{ merchan
 
 export async function POST(request: NextRequest, context: { params: Promise<{ merchantOrderId: string }> }) {
   try {
-    const requestData: {
-      type: string
-      customerIdentityNumber: string
-    } = await request.json()
+    const requestData: CashReceiptDataType = await request.json()
     if (!requestData) {
       return Response.json({ error: 'requestData is required' }, { status: 500 })
     }

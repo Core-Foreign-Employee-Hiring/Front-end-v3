@@ -28,3 +28,7 @@ export interface OrderPreviewDataType {
   phoneNumber: string
   email: string
 }
+export interface CashReceiptDataType {
+  type: string
+  customerIdentityNumber: string
+}
