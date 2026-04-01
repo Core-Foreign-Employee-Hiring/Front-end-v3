@@ -1,6 +1,6 @@
 import { serverFetchAllContentPosts } from '@/lib/server/content'
 import ContentCard from '@/components/content/ContentCard'
-import { Label, PageLayout, Spacing } from '@/components/common'
+import { Header, Label, PageLayout, Spacing } from '@/components/common'
 import NavBar from '@/components/common/NavBar'
 import type { Metadata } from 'next'
 import AuthWatcher from '@/components/auth/AuthWatcher'
@@ -75,6 +75,12 @@ export default async function ContentPage({
   return (
     <div>
       <AuthWatcher results={[contentResult]} />
+      <div className="desktop:block hidden">
+        <Header headerType={'default'} currentLng={lang} />
+      </div>
+      <div className="desktop:hidden block">
+        <Header headerType={'dynamic'} currentLng={lang} title={t('home.title')} />
+      </div>
 
       <PageLayout>
         <main>

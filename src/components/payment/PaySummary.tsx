@@ -1,7 +1,9 @@
 'use client'
 
-import { CheckIcon, UncheckIcon } from '@/assets/svgComponents'
-import { useOrderStore } from '@/store/orderStore' // CheckIcon이 있다고 가정합니다.
+import { useEffect, useState } from 'react'
+import { CheckIcon, RightArrowIcon, UncheckIcon } from '@/assets/svgComponents' // ChevronRightIcon 추가 가정
+import { useOrderStore } from '@/store/orderStore'
+import Link from 'next/link'
 
 interface PaySummaryProps {
   amount: string
@@ -33,33 +35,119 @@ export default function PaySummary({ amount }: PaySummaryProps) {
       </section>
 
       {/* 모바일 버전 약관 */}
-      <section className="desktop:hidden flex flex-col">
+      <section className="desktop:hidden flex flex-col px-4">
         <TermsSection />
       </section>
     </div>
   )
 }
 
-// 공통 약관 섹션 컴포넌트화 (중복 코드 방지)
 function TermsSection() {
-  // 스토어에서 상태와 액션 가져오기
-  const { agreedToTerms, toggleAgreedToTerms } = useOrderStore()
+  // Zustand 스토어의 set함수나 상태가 단일 boolean이라면, 내부에서 개별 체크박스 상태를 관리합니다.
+  const { setAgreedToTerms } = useOrderStore() // 스토어에 상태 저장 함수가 있다고 가정
+
+  const [checks, setChecks] = useState({
+    term1: false, // 서비스 이용 약관
+    term2: false, // 개인(신용)정보 수집 및 이용 동의
+    term3: false, // 개인(신용)정보 제 3자 제공 동의
+  })
+
+  // 모든 약관이 체크되었는지 확인
+  const isAllChecked = checks.term1 && checks.term2 && checks.term3
+
+  // 개별 체크 핸들러
+  const handleCheck = (key: keyof typeof checks) => {
+    setChecks((prev) => ({ ...prev, [key]: !prev[key] }))
+  }
+
+  // 전체 동의 핸들러
+  const handleAllCheck = () => {
+    const newValue = !isAllChecked
+    setChecks({ term1: newValue, term2: newValue, term3: newValue })
+  }
+
+  // 모든 체크 상태가 변할 때마다 스토어의 최종 동의 상태 업데이트
+  useEffect(() => {
+    setAgreedToTerms(isAllChecked)
+  }, [isAllChecked, setAgreedToTerms])
+
+  const subTerms = [
+    { id: 'term1', label: '서비스 이용 약관', url: 'https://pages.tosspayments.com/terms/user' },
+    {
+      id: 'term2',
+      label: '개인(신용)정보 수집 및 이용 동의',
+      url: 'https://pages.tosspayments.com/terms/v2/tables/291/records/1174337',
+    },
+    {
+      id: 'term3',
+      label: '개인(신용)정보 제 3자 제공 동의',
+      url: 'https://pages.tosspayments.com/terms/v2/tables/291/records/1174339',
+    },
+  ]
+
   return (
     <div className="flex flex-col gap-y-4">
-      <div className="flex cursor-pointer items-center gap-x-2" onClick={toggleAgreedToTerms}>
-        {/* 상태에 따라 아이콘 변경 */}
-        {agreedToTerms ? (
-          <CheckIcon width={20} height={20} className="text-main-500" />
+      {/* 전체 동의 섹션 */}
+      <div className="flex cursor-pointer items-center gap-x-2 pb-2" onClick={handleAllCheck}>
+        {isAllChecked ? (
+          <CheckIcon width={24} height={24} className="text-main-500" />
         ) : (
-          <UncheckIcon width={20} height={20} />
+          <UncheckIcon width={24} height={24} className="text-gray3" />
         )}
-        <p className={`kr-subtitle-md ${agreedToTerms ? 'text-gray9' : 'text-gray5'}`}>
+        <p className={`kr-subtitle-md ${isAllChecked ? 'text-gray9' : 'text-gray5'} font-bold`}>
           결제 서비스 이용약관, 개인정보 처리 동의 (필수)
         </p>
       </div>
-      <p className="kr-body-sm text-gray4">
-        회원 본인은 주문내용을 확인하였으며, 유료 서비스 이용약관 및 개인정보처리방침과 결제에 동의합니다.
-      </p>
+
+      {/* 개별 약관 리스트 */}
+      <div className="flex flex-col gap-y-3 pl-1">
+        {subTerms.map((term) => (
+          <div key={term.id} className="flex items-center justify-between">
+            <div
+              className="flex cursor-pointer items-center gap-x-2"
+              onClick={() => handleCheck(term.id as keyof typeof checks)}
+            >
+              {checks[term.id as keyof typeof checks] ? (
+                <CheckIcon width={18} height={18} className="text-main-500" />
+              ) : (
+                <UncheckIcon width={18} height={18} className="text-gray3" />
+              )}
+              <span className="kr-body-sm text-gray6">{term.label}</span>
+            </div>
+            <Link href={term.url} target="_blank">
+              <RightArrowIcon className="text-gray4 h-4 w-4" />
+            </Link>
+          </div>
+        ))}
+      </div>
+
+      <div className="kr-body-sm text-gray4 bg-gray1 mt-2 rounded-[8px] p-3">
+        회원 본인은 주문 내용 및{' '}
+        <Link
+          className={'text-gray6 font-medium underline'}
+          href={'https://fifth-soil-7ed.notion.site/335244b92af280b082edd35df86803d7?source=copy_link'}
+          target="_blank"
+        >
+          환불 규정
+        </Link>
+        을 확인하였으며,{' '}
+        <Link
+          className={'text-gray6 font-medium underline'}
+          href={'https://fifth-soil-7ed.notion.site/335244b92af280a8a12bf8468d78ac68?source=copy_link'}
+          target="_blank"
+        >
+          유료 서비스 이용약관
+        </Link>{' '}
+        및{' '}
+        <Link
+          className={'text-gray6 font-medium underline'}
+          href={'https://fifth-soil-7ed.notion.site/335244b92af2808ab447c0f044da88cb?source=copy_link'}
+          target="_blank"
+        >
+          개인정보처리방침
+        </Link>
+        과 결제에 동의합니다.
+      </div>
     </div>
   )
 }

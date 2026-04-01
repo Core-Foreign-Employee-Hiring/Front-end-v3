@@ -1,6 +1,3 @@
-import Footer from '@/components/common/Footer'
-import { Spacing } from '@/components/common'
-import BottomButtons from '@/components/content/BottomButtons'
 import type { Metadata } from 'next'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.korfit.co.kr'
@@ -66,14 +63,5 @@ export default async function ContentDetailLayout({
   params: Promise<{ lang: string; id: string }>
 }>) {
   const { lang, id } = await params
-  return (
-    <div>
-      {children}
-      <Spacing height={80} />
-      <Footer />
-
-      <Spacing className={'desktop:hidden'} height={100} />
-      <BottomButtons archiveId={id} />
-    </div>
-  )
+  return <div>{children}</div>
 }

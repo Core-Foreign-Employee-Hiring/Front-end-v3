@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Header, PageLayout } from '@/components/common'
+import { Header, PageLayout, Spacing } from '@/components/common'
 import { getTranslationServer } from '@/lib/i18n'
 import { Locale } from '@/lib/i18n.types'
 import Footer from '@/components/common/Footer'
@@ -83,6 +83,7 @@ export default async function PaymentLayout({
 
       <PageLayout>{children}</PageLayout>
       <Footer />
+      <Spacing height={80} className={'desktop:hidden'} />
     </div>
   )
 }

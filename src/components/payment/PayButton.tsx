@@ -3,17 +3,19 @@
 import { Button } from '@/components/common'
 import { useOrderStore } from '@/store/orderStore'
 import { ANONYMOUS, loadTossPayments } from '@tosspayments/tosspayments-sdk'
+import { postOrder } from '@/lib/client/order'
+import { useToast } from '@/components/common/toast/ToastContext'
 
 interface PayButtonProps {
   amount: string
-  orderId: string
-  orderName: string
   customerName: string
   customerEmail: string
+  archiveId: string
 }
 
-export default function PayButton({ amount, orderId, orderName, customerName, customerEmail }: PayButtonProps) {
+export default function PayButton({ amount, customerName, customerEmail, archiveId }: PayButtonProps) {
   const { agreedToTerms } = useOrderStore()
+  const { success, error } = useToast()
 
   const handlePayment = async () => {
     const clientKey = process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY || 'test_ck_코드'
@@ -24,33 +26,40 @@ export default function PayButton({ amount, orderId, orderName, customerName, cu
     // 2. 결제 객체 생성 (v2에서 추가된 단계)
     // 비회원 결제라면 ANONYMOUS를, 회원 결제라면 고유한 ID를 입력합니다.
     const payment = tossPayments.payment({ customerKey: ANONYMOUS })
-
-    // 3. 결제창 호출
-    await payment.requestPayment({
-      method: 'CARD', // 결제 수단 (CARD, TRANSFER, VIRTUAL_ACCOUNT 등)
-      amount: {
-        currency: 'KRW',
-        value: 101,
-        // value: parseInt(amount),
-      },
-      orderId: orderId,
-      orderName: orderName,
-      successUrl: `${window.location.origin}/payment/success`,
-      failUrl: `${window.location.origin}/payment/fail`,
-      customerEmail: customerEmail,
-      customerName: customerName,
-      card: {
-        useEscrow: false,
-        flowMode: 'DEFAULT',
-        useCardPoint: false,
-        useAppCardOnly: false,
-      },
-    })
+    // const result = await postPaymentContent(archiveId)
+    const result = await postOrder([parseInt(archiveId)])
+    if (result.success && result.data?.data) {
+      // 3. 결제창 호출
+      await payment.requestPayment({
+        method: 'CARD', // 결제 수단 (CARD, TRANSFER, VIRTUAL_ACCOUNT 등)
+        amount: {
+          currency: 'KRW',
+          // value: 101,
+          value: parseInt(amount),
+        },
+        orderId: result.data.data.merchantOrderId,
+        orderName: result.data.data.orderName,
+        successUrl: `${window.location.origin}/payment/success`,
+        failUrl: `${window.location.origin}/payment/fail`,
+        customerEmail: customerEmail,
+        customerName: customerName,
+        card: {
+          useEscrow: false,
+          flowMode: 'DEFAULT',
+          useCardPoint: false,
+          useAppCardOnly: false,
+        },
+      })
+    } else if (!result.success) {
+      error('결제중 오류 발생', '결제중 오류가 발생하였습니다.')
+    }
   }
 
   return (
-    <Button disabled={!agreedToTerms} onClick={handlePayment}>
-      결제하기
-    </Button>
+    <div className="desktop:static desktop:p-0 fixed bottom-0 left-0 w-full bg-white p-5">
+      <Button disabled={!agreedToTerms} onClick={handlePayment}>
+        결제하기
+      </Button>
+    </div>
   )
 }
