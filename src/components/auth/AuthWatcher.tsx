@@ -24,7 +24,11 @@ export default function AuthWatcher({ results }: Props) {
 
     // 3. 토큰이 없는 상태에서만 401 에러 확인
     const hasAuthError = results.some(
-      (res) => res?.status === 401 || res?.status === '401' || res?.error?.includes('401')
+      (res) =>
+        res?.status === 401 ||
+        res?.status === '401' ||
+        res?.error?.includes('401') ||
+        res?.error?.includes('No refresh token')
     )
 
     if (hasAuthError) {
