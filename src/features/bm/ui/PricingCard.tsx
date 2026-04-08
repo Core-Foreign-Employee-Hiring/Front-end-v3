@@ -10,8 +10,6 @@ function FeatureItem({ label }: { label: string }) {
   )
 }
 
-// ✅ PricingCard로 네이밍 변경 - 역할이 명확
-// ✅ Props 확장 가능한 구조로 설계
 interface PricingCardProps {
   planName: 'Free' | 'Pro'
   price: string
