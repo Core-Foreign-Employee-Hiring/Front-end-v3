@@ -29,7 +29,7 @@ export default function PricingCard({
 }: PricingCardProps) {
   return (
     <div
-      className={`${isCurrentPlan ? 'border-gray3' : 'border-main-300'} flex w-[335px] flex-col gap-y-10 rounded-[24px] border p-6`}
+      className={`${isCurrentPlan ? 'border-gray3 border' : 'border-main-300 border-2'} flex w-[335px] flex-col gap-y-10 rounded-[24px] p-6`}
     >
       {/* 플랜 정보 */}
       <section className="flex flex-col gap-y-5">

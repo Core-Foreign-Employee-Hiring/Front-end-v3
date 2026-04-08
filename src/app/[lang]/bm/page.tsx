@@ -22,22 +22,24 @@ const PLAN_CONFIGS = [
 
 export default function BMPage() {
   return (
-    <main className="flex flex-col items-center justify-center gap-y-10">
+    <main className="desktop:gap-y-[40px] flex flex-col items-center justify-center gap-y-[20px]">
       {/* 헤더 */}
       <section className="flex flex-col items-center gap-y-1">
-        <h1 className="kr-resume-lg">Choose Your Career Plan</h1>
-        <p className="kr-resume-md-light text-gray5">취업 준비를 넘어, 합격까지 이어지는 맞춤형 플랜을 선택하세요</p>
+        <h1 className="tablet:kr-resume-lg">Choose Your Career Plan</h1>
+        <p className="kr-subtitle-md tablet:kr-subtitle-lg desktop:kr-resume-md-light text-gray5 text-center whitespace-pre-wrap">
+          {`취업 준비를 넘어, 합격까지 이어지는\n맞춤형 플랜을 선택하세요`}
+        </p>
       </section>
 
       {/* 플랜 카드 목록 */}
-      <section className="flex gap-x-10">
+      <section className="tablet:grid-cols-2 desktop:grid-cols-2 grid grid-cols-1 gap-x-10 gap-y-5">
         {PLAN_CONFIGS.map((plan) => (
           <PricingCard key={plan.planName} {...plan} />
         ))}
       </section>
 
       {/* 환불 정책 안내 */}
-      <p className="text-gray4 kr-subtitle-md">
+      <p className="text-gray4 kr-button tablet:kr-subtitle-md desktop:kr-subtitle-md mt-[12px]">
         위 플랜을 선택할 경우{' '}
         <Link href={REFUND_POLICY_URL} className="text-main-500 underline" target="_blank" rel="noopener noreferrer">
           환불정책

@@ -2,7 +2,6 @@ export const FREE_PLAN_FEATURES = [
   '스펙 분석 기능 무료 제공',
   '이력서 생성 1회 제공\n(PDF 내보내기 불가능)',
   'AI 면접 1회 제공\n(결과 분석 미제공, 심화 질문 불가능)',
-  '스펙 분석 기능 무료 제공',
 ] as const
 
 export const PRO_PLAN_FEATURES = [

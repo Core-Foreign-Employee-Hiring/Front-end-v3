@@ -17,7 +17,7 @@ import { useModalStore } from '@/store/modalStore'
 import { useTranslation } from 'react-i18next'
 
 interface NavBarProps {
-  path: string
+  path?: string
   lang: string
 }
 
