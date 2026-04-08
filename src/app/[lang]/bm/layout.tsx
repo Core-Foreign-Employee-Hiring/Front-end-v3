@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Header, PageLayout } from '@/components/common'
+import { Header, PageLayout, Spacing } from '@/components/common'
 import { Locale } from '@/lib/i18n.types'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.korfit.co.kr'
@@ -69,6 +69,7 @@ export default async function BMLayout({
   return (
     <div>
       <Header currentLng={currentLng} headerType={'default'} />
+      <Spacing height={80} />
       <PageLayout>{children}</PageLayout>
     </div>
   )
