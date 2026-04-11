@@ -9,7 +9,7 @@ import { ContentType } from '@/types/content'
 import { useGTM } from '@/hooks/common/useGTM'
 
 const GTM_EVENT = {
-  CARD_CLICK: 'click_explore_content_home_card',
+  CARD_CLICK: 'click_explore_content_card',
 } as const
 
 export default function ContentCard({
@@ -28,7 +28,7 @@ export default function ContentCard({
 
   const handleCardClick = useCallback(() => {
     pushEvent(GTM_EVENT.CARD_CLICK, {
-      element_id: 'click_explore_content_home_card',
+      element_id: 'click_explore_content_card',
       archive_id: passArchiveId,
       source_path: pathname,
       title,
