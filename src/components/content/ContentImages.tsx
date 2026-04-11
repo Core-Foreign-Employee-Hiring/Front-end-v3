@@ -3,6 +3,7 @@
 import { useModalStore } from '@/store/modalStore'
 import { useCallback, useRef, useState } from 'react'
 import ImageModal from '@/components/common/modal/ImageModal'
+import { useGTM } from '@/hooks/common/useGTM'
 
 interface ContentImagesProps {
   imageUrls: string[]
@@ -16,27 +17,20 @@ declare global {
 }
 
 const GTM_EVENT = {
-  SCROLL: 'horizontal_scroll',
-  SCROLL_END: 'horizontal_scroll_end',
+  SCROLL: 'view_explore_content_scroll',
+  SCROLL_END: 'view_explore_content_scroll_end',
 } as const
 
 export default function ContentImages({ imageUrls }: ContentImagesProps) {
-  // ✅ store 전체 구독 X → 필요한 값만 선택
+  const { pushEvent } = useGTM()
   const isImageModalOpen = useModalStore((state) => state.modals.isImageModalOpen)
   const toggleModal = useModalStore((state) => state.toggleModal)
 
-  // ✅ null | undefined 중 하나만 — 초기값 null로 통일
   const [selectedImageUrl, setSelectedImageUrl] = useState<string | null | undefined>(null)
 
   const scrollRef = useRef<HTMLDivElement>(null)
   const hasScrolledRef = useRef(false) // 스크롤 시작 여부 (중복 이벤트 방지)
   const scrollEndTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-
-  // ✅ GTM push 유틸 — 이벤트명 + 추가 데이터
-  const pushGTMEvent = useCallback((event: string, payload?: Record<string, unknown>) => {
-    window.dataLayer = window.dataLayer ?? []
-    window.dataLayer.push({ event, ...payload })
-  }, [])
 
   const handleScroll = useCallback(() => {
     const el = scrollRef.current
@@ -45,7 +39,7 @@ export default function ContentImages({ imageUrls }: ContentImagesProps) {
     // 스크롤 시작 이벤트 — 첫 스크롤에만 한 번 발송
     if (!hasScrolledRef.current) {
       hasScrolledRef.current = true
-      pushGTMEvent(GTM_EVENT.SCROLL, {
+      pushEvent(GTM_EVENT.SCROLL, {
         element_id: 'view_explore_content_scroll',
         scroll_left: el.scrollLeft,
         total_width: el.scrollWidth,
@@ -57,7 +51,7 @@ export default function ContentImages({ imageUrls }: ContentImagesProps) {
     scrollEndTimerRef.current = setTimeout(() => {
       const scrollRatio = el.scrollLeft / (el.scrollWidth - el.clientWidth)
 
-      pushGTMEvent(GTM_EVENT.SCROLL_END, {
+      pushEvent(GTM_EVENT.SCROLL_END, {
         element_id: 'view_explore_content_scroll',
         scroll_left: Math.round(el.scrollLeft),
         scroll_ratio: Math.round(scrollRatio * 100), // 0~100%
@@ -67,7 +61,7 @@ export default function ContentImages({ imageUrls }: ContentImagesProps) {
       // 다음 스크롤 시작 감지를 위해 초기화
       hasScrolledRef.current = false
     }, 150)
-  }, [pushGTMEvent])
+  }, [pushEvent])
 
   // ✅ 핸들러 인라인 X → 분리
   const handleImageClick = useCallback(
