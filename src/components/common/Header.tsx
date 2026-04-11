@@ -110,12 +110,12 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
   ]
 
   const navItems = [
-    { label: t('navigation.home'), href: `/${activeLng}` },
-    { label: t('navigation.job_post'), href: `/${activeLng}/job-post` },
-    { label: t('navigation.career'), href: `/${activeLng}/career?tab=spec&type=home` },
-    { label: t('navigation.interview'), href: `/${activeLng}/interview?tab=home` },
-    { label: t('navigation.content'), href: `/${activeLng}/content` },
-    { label: t('navigation.program'), href: `/${activeLng}/program` },
+    { label: t('navigation.home'), href: `/${activeLng}`, id: 'home' },
+    { label: t('navigation.job_post'), href: `/${activeLng}/job-post`, id: 'job-post' },
+    { label: t('navigation.career'), href: `/${activeLng}/career?tab=spec&type=home`, id: 'career' },
+    { label: t('navigation.interview'), href: `/${activeLng}/interview?tab=home`, id: 'interview' },
+    { label: t('navigation.content'), href: `/${activeLng}/content`, id: 'click_expose_content_header' },
+    { label: t('navigation.program'), href: `/${activeLng}/program`, id: 'program' },
   ]
 
   const renderDefaultHeader = () => (
@@ -136,6 +136,7 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
 
             return (
               <Link
+                id={item.id}
                 key={item.href}
                 href={item.href}
                 className={`kr-title-sm transition-colors ${

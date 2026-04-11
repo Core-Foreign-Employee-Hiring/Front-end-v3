@@ -1,10 +1,16 @@
 'use client'
 
-import { StarIcon } from '@/assets/svgComponents'
-import Image from 'next/image'
-import { ContentType } from '@/types/content'
-import { useRouter } from 'next/navigation'
+import { useCallback } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
+import Image from 'next/image'
+import { StarIcon } from '@/assets/svgComponents'
+import { ContentType } from '@/types/content'
+import { useGTM } from '@/hooks/common/useGTM'
+
+const GTM_EVENT = {
+  CARD_CLICK: 'click_explore_content_home_card',
+} as const
 
 export default function ContentCard({
   passArchiveId,
@@ -17,19 +23,29 @@ export default function ContentCard({
 }: ContentType) {
   const router = useRouter()
   const { t } = useTranslation(['content'])
+  const { pushEvent } = useGTM()
+  const pathname = usePathname()
+
+  const handleCardClick = useCallback(() => {
+    pushEvent(GTM_EVENT.CARD_CLICK, {
+      element_id: 'click_explore_content_home_card',
+      archive_id: passArchiveId,
+      source_path: pathname,
+      title,
+      price,
+    })
+    router.push(`/content/${passArchiveId}`)
+  }, [pushEvent, passArchiveId, title, price, router, pathname])
 
   return (
     <div
-      onClick={() => {
-        router.push(`/content/${passArchiveId}`)
-      }}
-      // h-auto로 변경하여 내부 이미지 비율에 따라 높이가 결정되게 합니다.
+      id="click_explore_content_home_card"
+      onClick={handleCardClick}
       className="flex w-full shrink-0 cursor-pointer flex-col gap-y-3"
     >
-      {/* 이미지 컨테이너: 384x240 비율(8:5) 유지 */}
       <div className="relative aspect-[8/5] w-full overflow-hidden">
         <Image
-          alt={'콘텐츠 사진'}
+          alt={title}
           src={thumbnailUrl}
           fill
           sizes="(max-width: 768px) 100vw, 384px"

@@ -10,27 +10,35 @@ import { Button } from '@/components/common'
 import { PaymentConfirmType } from '@/types/order'
 import { postPaymentContent } from '@/lib/client/payment'
 import { useTranslation } from 'react-i18next'
+import { useGTM } from '@/hooks/common/useGTM'
+
+// 결제 처리 상태를 명확하게 표현
+type PaymentStatus = 'processing' | 'success' | 'error'
+
+const GTM_EVENT = {
+  PAGE_VIEW: 'view_complete_content_purchase_success',
+  CONFIRM_ERROR: 'view_complete_content_purchase_error',
+} as const
 
 export default function PaymentSuccessPage() {
-  const searchParams = useSearchParams()
   const { t } = useTranslation('payment')
+  const searchParams = useSearchParams()
   const router = useRouter()
-  const [isProcessing, setIsProcessing] = useState(true)
+  const { pushEvent } = useGTM()
 
-  // 1. URL에서 값 추출
-  const orderId = searchParams.get('orderId') || ''
-  const amount = searchParams.get('amount') || '0'
-  const paymentKey = searchParams.get('paymentKey') || ''
+  const [status, setStatus] = useState<PaymentStatus>('processing')
 
-  // 2. 페이지 진입 시 자동 승인 요청
+  const orderId = searchParams.get('orderId') ?? ''
+  const amount = searchParams.get('amount') ?? ''
+  const paymentKey = searchParams.get('paymentKey') ?? ''
+
   useEffect(() => {
-    const confirmPayment = async () => {
-      // 값이 모두 존재할 때만 실행
-      if (!paymentKey || !orderId || !amount) return
+    if (!paymentKey || !orderId || !amount) return
 
+    const confirmPayment = async () => {
       const paymentConfirmData: PaymentConfirmType = {
         paymentKey,
-        merchantOrderId: orderId, // orderId를 merchantOrderId로 매핑
+        merchantOrderId: orderId,
         amount,
         agreePaymentTerms: true,
         agreePrivacyPolicy: true,
@@ -41,29 +49,50 @@ export default function PaymentSuccessPage() {
         const result = await postPaymentContent(paymentConfirmData)
 
         if (result.success) {
-          console.log('결제 승인 성공:', result.data)
-          // 성공 시 처리 로직 (예: 알림 띄우기)
+          setStatus('success')
+          pushEvent(GTM_EVENT.PAGE_VIEW, {
+            element_id: 'view_complete_content_purchase_success',
+            order_id: orderId,
+            amount,
+          })
         } else {
-          console.error('결제 승인 실패:', result.error)
-          // 실패 시 에러 페이지 이동 혹은 안내 로직
-          // alert('결제 승인 중 오류가 발생했습니다.')
+          setStatus('error')
+          pushEvent(GTM_EVENT.CONFIRM_ERROR, {
+            element_id: 'view_complete_content_purchase_success',
+            order_id: orderId,
+            amount,
+          })
         }
       } catch (error) {
-        console.error('API 호출 중 예상치 못한 에러:', error)
-      } finally {
-        setIsProcessing(false)
+        setStatus('error')
+        pushEvent(GTM_EVENT.CONFIRM_ERROR, {
+          order_id: orderId,
+          amount,
+          error: error instanceof Error ? error.message : 'unknown',
+        })
       }
     }
 
     confirmPayment()
-  }, [paymentKey, orderId, amount]) // 파라미터가 준비되면 실행
+  }, [paymentKey, orderId, amount, pushEvent])
+
+  useEffect(() => {
+    if (status === 'error') {
+      router.replace(`/payment/error?orderId=${orderId}&amount=${amount}`)
+    }
+  }, [status, router, orderId, amount])
+
+  const isProcessing = status === 'processing'
 
   return (
-    <main className="desktop:w-[588px] mx-auto flex w-full flex-col gap-y-8 px-4 py-20">
+    <main
+      id="view_complete_content_purchase_success"
+      className="desktop:w-[588px] mx-auto flex w-full flex-col gap-y-8 px-4 py-20"
+    >
       <ResultFeedback
         icon={<PaymentSuccessIcon width={60} height={60} />}
-        title={isProcessing ? t('payment:success.processingTitle') : t('payment:success.title')}
-        content={isProcessing ? t('payment:success.processingContent') : t('payment:success.thanksMessage')}
+        title={t(isProcessing ? 'payment:success.processingTitle' : 'payment:success.title')}
+        content={t(isProcessing ? 'payment:success.processingContent' : 'payment:success.thanksMessage')}
       />
 
       <PaymentResultSummary orderId={orderId} amount={amount} />
@@ -71,15 +100,23 @@ export default function PaymentSuccessPage() {
       <CTAButtons
         rightElement={
           <Button
-            onClick={() => router.push('/mypage/payment')}
-            variant={'primary'}
-            disabled={isProcessing} // 승인 중에는 클릭 방지
+            onClick={() => {
+              router.push('/mypage/payment')
+            }}
+            variant="primary"
+            disabled={isProcessing}
           >
             {t('payment:success.button.useNow')}
           </Button>
         }
         leftElement={
-          <Button onClick={() => router.push('/mypage/payment')} variant={'secondary'} disabled={isProcessing}>
+          <Button
+            onClick={() => {
+              router.push('/mypage/payment')
+            }}
+            variant="secondary"
+            disabled={isProcessing}
+          >
             {t('payment:success.button.viewHistory')}
           </Button>
         }

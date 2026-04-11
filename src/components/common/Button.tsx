@@ -42,6 +42,7 @@ interface ButtonProps {
   disabled?: boolean
   buttonType?: 'button' | 'submit'
   isLoading?: boolean
+  id?: string
 }
 
 export default function Button({
@@ -56,6 +57,7 @@ export default function Button({
   leftIcon,
   customClassName,
   isLoading,
+  id,
 }: ButtonProps) {
   const isDisabled = disabled || isLoading
   const currentState = isDisabled ? 'disable' : state
@@ -67,6 +69,7 @@ export default function Button({
 
   return (
     <button
+      id={id}
       disabled={disabled}
       type={buttonType}
       onClick={onClick}

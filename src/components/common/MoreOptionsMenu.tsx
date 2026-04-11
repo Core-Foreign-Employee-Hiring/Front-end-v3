@@ -221,6 +221,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
 
         {path === `/${lang}/content` ? (
           <div
+            id={'click_expose_content_header'}
             onClick={() => {
               router.push(`/${lang}/content`)
               toggleModal('isMoreOptionsMenuOpen')
@@ -232,6 +233,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
           </div>
         ) : (
           <div
+            id={'click_expose_content_header'}
             onClick={() => {
               router.push(`/${lang}/content`)
               toggleModal('isMoreOptionsMenuOpen')
@@ -245,6 +247,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
 
         {path === `/${lang}/program` ? (
           <div
+            id={''}
             onClick={() => {
               router.push(`/${lang}/program`)
               toggleModal('isMoreOptionsMenuOpen')
@@ -256,6 +259,7 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
           </div>
         ) : (
           <div
+            id={''}
             onClick={() => {
               router.push(`/${lang}/program`)
               toggleModal('isMoreOptionsMenuOpen')
