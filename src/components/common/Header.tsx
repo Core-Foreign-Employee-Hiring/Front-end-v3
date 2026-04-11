@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useMemo, useState, useSyncExternalStore } from 'react'
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
@@ -17,6 +17,7 @@ import '@/lib/i18n-client'
 import PopUp from '@/components/common/PopUp'
 import { Locale } from '@/lib/i18n.types'
 import { useModalStore } from '@/store/modalStore'
+import { useGTM } from '@/hooks/common/useGTM'
 
 interface HeaderProps {
   headerType?: 'default' | 'dynamic'
@@ -27,6 +28,21 @@ interface HeaderProps {
 
 export default function Header({ headerType = 'default', currentLng = 'ko', path, title }: HeaderProps) {
   const { t, i18n } = useTranslation('common')
+  const { pushEvent } = useGTM()
+
+  const handleNavClick = useCallback(
+    (id: string, label: string, href: string) => {
+      if (id === 'click_expose_content_header') {
+        pushEvent(id, {
+          element_id: id,
+          label,
+          href,
+        })
+      }
+    },
+    [pushEvent]
+  )
+
   const pathname = usePathname()
   const router = useRouter()
 
@@ -139,6 +155,7 @@ export default function Header({ headerType = 'default', currentLng = 'ko', path
                 id={item.id}
                 key={item.href}
                 href={item.href}
+                onClick={() => handleNavClick(item.id, item.label, item.href)}
                 className={`kr-title-sm transition-colors ${
                   isActive ? 'text-main-500' : 'hover:text-main-400 text-black'
                 }`}

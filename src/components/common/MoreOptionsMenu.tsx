@@ -20,9 +20,10 @@ import {
 import NavBar from '@/components/common/NavBar'
 import Header from '@/components/common/Header'
 import { useRouter } from 'next/navigation'
-import { useMemo, useSyncExternalStore } from 'react'
+import { useCallback, useMemo, useSyncExternalStore } from 'react'
 import { useModalStore } from '@/store/modalStore'
 import { useTranslation } from 'react-i18next'
+import { useGTM } from '@/hooks/common/useGTM'
 
 interface MoreOptionsMenuProps {
   lang: string
@@ -54,6 +55,18 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
       return null
     }
   }, [rawUserInfo])
+
+  const { pushEvent } = useGTM()
+
+  const handleContentClick = useCallback(() => {
+    pushEvent('click_expose_content_header', {
+      element_id: 'click_expose_content_header',
+      source: 'more_options_menu',
+      is_active: path === `/${lang}/content`,
+    })
+    router.push(`/${lang}/content`)
+    toggleModal('isMoreOptionsMenuOpen')
+  }, [pushEvent, path, lang, router, toggleModal])
 
   const handleLogout = () => {
     // 1. localStorage 삭제
@@ -219,31 +232,23 @@ export default function MoreOptionsMenu({ lang, path }: MoreOptionsMenuProps) {
           </div>
         )}
 
-        {path === `/${lang}/content` ? (
-          <div
-            id={'click_expose_content_header'}
-            onClick={() => {
-              router.push(`/${lang}/content`)
-              toggleModal('isMoreOptionsMenuOpen')
-            }}
-            className="flex cursor-pointer items-center gap-x-3 py-3"
-          >
-            <SelectedContentIcon width={24} height={24} />
-            <p className="text-main-500 kr-subtitle-sm">{t('navigation.content')}</p>
-          </div>
-        ) : (
-          <div
-            id={'click_expose_content_header'}
-            onClick={() => {
-              router.push(`/${lang}/content`)
-              toggleModal('isMoreOptionsMenuOpen')
-            }}
-            className="flex cursor-pointer items-center gap-x-3 py-3"
-          >
-            <UnselectedContentIcon width={24} height={24} />
-            <p className="text-gray4 kr-subtitle-sm">{t('navigation.content')}</p>
-          </div>
-        )}
+        <div
+          id="click_expose_content_header"
+          onClick={handleContentClick}
+          className="flex cursor-pointer items-center gap-x-3 py-3"
+        >
+          {path === `/${lang}/content` ? (
+            <>
+              <SelectedContentIcon width={24} height={24} />
+              <p className="text-main-500 kr-subtitle-sm">{t('navigation.content')}</p>
+            </>
+          ) : (
+            <>
+              <UnselectedContentIcon width={24} height={24} />
+              <p className="text-gray4 kr-subtitle-sm">{t('navigation.content')}</p>
+            </>
+          )}
+        </div>
 
         {path === `/${lang}/program` ? (
           <div
