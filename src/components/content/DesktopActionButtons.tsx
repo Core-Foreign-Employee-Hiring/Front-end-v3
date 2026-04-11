@@ -8,6 +8,7 @@ import { useModalStore } from '@/store/modalStore'
 import { getInquiryUrl } from '@/lib/client/content'
 import InquiryModal from '@/components/common/modal/InquiryModal'
 import { useGTM } from '@/hooks/common/useGTM'
+import { useBackPathStore } from '@/store/backPathStore'
 
 interface DesktopActionButtonsProps {
   archiveId: string
@@ -22,6 +23,7 @@ export default function DesktopActionButtons({ archiveId }: DesktopActionButtons
   const router = useRouter()
   const { t } = useTranslation(['content'])
   const { pushEvent } = useGTM()
+  const setBackPath = useBackPathStore((state) => state.setBackPath)
 
   const isInquiryModalOpen = useModalStore((state) => state.modals.isInquiryModalOpen)
   const toggleModal = useModalStore((state) => state.toggleModal)
@@ -47,7 +49,8 @@ export default function DesktopActionButtons({ archiveId }: DesktopActionButtons
       archive_id: archiveId,
     })
     router.push(`/content/${archiveId}/payment`)
-  }, [pushEvent, archiveId, router])
+    setBackPath(`/content/${archiveId}`)
+  }, [pushEvent, archiveId, router, setBackPath])
 
   return (
     <div className="desktop:flex hidden gap-x-[20px]">

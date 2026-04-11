@@ -9,6 +9,7 @@ import { PaymentErrorIcon } from '@/assets/svgComponents'
 import { Button } from '@/components/common'
 import { useTranslation } from 'react-i18next'
 import { useGTM } from '@/hooks/common/useGTM'
+import { useBackPathStore } from '@/store/backPathStore'
 
 declare global {
   interface Window {
@@ -23,6 +24,7 @@ const GTM_EVENT = {
 
 export default function PaymentErrorPage() {
   const { t } = useTranslation('payment')
+  const backPath = useBackPathStore((state) => state.backPath)
   const searchParams = useSearchParams()
   const router = useRouter()
   const { pushEvent } = useGTM()
@@ -44,8 +46,8 @@ export default function PaymentErrorPage() {
       order_id: orderId,
       amount,
     })
-    router.back()
-  }, [pushEvent, orderId, amount, router])
+    router.push(backPath ?? '/content')
+  }, [pushEvent, orderId, amount, router, backPath])
 
   return (
     <main

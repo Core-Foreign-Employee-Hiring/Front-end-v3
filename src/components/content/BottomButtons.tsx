@@ -9,6 +9,7 @@ import InquiryModal from '@/components/common/modal/InquiryModal'
 import { useModalStore } from '@/store/modalStore'
 import { useToast } from '@/components/common/toast/ToastContext'
 import { useGTM } from '@/hooks/common/useGTM'
+import { useBackPathStore } from '@/store/backPathStore'
 
 interface BottomButtonsProps {
   archiveId: string
@@ -24,6 +25,7 @@ export default function BottomButtons({ archiveId }: BottomButtonsProps) {
   const { t } = useTranslation('content')
   const { error } = useToast()
   const { pushEvent } = useGTM()
+  const setBackPath = useBackPathStore((state) => state.setBackPath)
 
   const isInquiryModalOpen = useModalStore((state) => state.modals.isInquiryModalOpen)
   const toggleModal = useModalStore((state) => state.toggleModal)
@@ -53,7 +55,8 @@ export default function BottomButtons({ archiveId }: BottomButtonsProps) {
       archive_id: archiveId,
     })
     router.push(`/content/${archiveId}/payment`)
-  }, [pushEvent, archiveId, router])
+    setBackPath(`/content/${archiveId}`)
+  }, [pushEvent, archiveId, router, setBackPath])
 
   return (
     <div className="desktop:hidden tablet:px-[32px] tablet:gap-x-4 fixed bottom-0 left-0 flex w-full gap-x-3 bg-white px-[20px] py-[20px]">

@@ -11,6 +11,7 @@ import { PaymentConfirmType } from '@/types/order'
 import { postPaymentContent } from '@/lib/client/payment'
 import { useTranslation } from 'react-i18next'
 import { useGTM } from '@/hooks/common/useGTM'
+import { useBackPathStore } from '@/store/backPathStore'
 
 // 결제 처리 상태를 명확하게 표현
 type PaymentStatus = 'processing' | 'success' | 'error'
@@ -22,6 +23,8 @@ const GTM_EVENT = {
 
 export default function PaymentSuccessPage() {
   const { t } = useTranslation('payment')
+  const backPath = useBackPathStore((state) => state.backPath)
+
   const searchParams = useSearchParams()
   const router = useRouter()
   const { pushEvent } = useGTM()
