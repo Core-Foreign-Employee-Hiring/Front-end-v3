@@ -39,7 +39,7 @@ export default function ContentCard({
 
   return (
     <div
-      id="click_explore_content_home_card"
+      id="click_explore_content_card"
       onClick={handleCardClick}
       className="flex w-full shrink-0 cursor-pointer flex-col gap-y-3"
     >
