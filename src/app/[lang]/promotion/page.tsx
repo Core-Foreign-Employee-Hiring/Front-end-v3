@@ -25,7 +25,7 @@ export default function PromotionPage() {
               'bg-main-500 kr-subtitle-md flex h-[52px] w-full items-center justify-center rounded-[12px] text-white'
             }
           >
-            신청하기
+            무료 LIVE CLASS 신청하기
           </Link>
         </section>
       </div>
