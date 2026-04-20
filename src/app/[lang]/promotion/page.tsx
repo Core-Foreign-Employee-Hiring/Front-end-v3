@@ -16,6 +16,8 @@ export default function PromotionPage() {
             priority
           />
         </div>
+
+        <div className="h-[80px]" />
         <section className="fixed bottom-0 w-full max-w-[600px] bg-black px-[20px] py-[20px]">
           <Link
             href={'https://forms.gle/ZAqJZLEwr4dW4shh7'}
