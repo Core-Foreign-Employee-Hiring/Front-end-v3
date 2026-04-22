@@ -174,7 +174,8 @@
       "service": "서비스 이용약관 동의",
       "privacy": "개인정보 수집 및 이용 동의",
       "marketing_sms": "광고성 정보 수신 동의 (SMS/MMS)",
-      "marketing_email": "광고성 정보 수신 동의 (이메일)"
+      "marketing_email": "광고성 정보 수신 동의 (이메일)",
+      "refund": "유료 서비스 이용약관 및 환불 규정"
     },
 
     "sms_terms": {

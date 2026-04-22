@@ -173,7 +173,8 @@
       "service": "Agreement to Terms of Service",
       "privacy": "Consent to Privacy Policy",
       "marketing_sms": "Consent to Marketing Alerts (SMS/MMS)",
-      "marketing_email": "Consent to Marketing Alerts (Email)"
+      "marketing_email": "Consent to Marketing Alerts (Email)",
+      "refund": "Paid Service Terms of Use and Refund Policy"
     },
     "sms_terms": {
       "title": "Consent to Receive Marketing Information (SMS/MMS)",

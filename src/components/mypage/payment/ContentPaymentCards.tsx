@@ -46,7 +46,7 @@ export default function ContentPaymentCards() {
               <Link
                 key="refund"
                 className="shrink-0 underline"
-                href="https://fifth-soil-7ed.notion.site/335244b92af280b082edd35df86803d7"
+                href="https://www.korfit.co.kr/ko/mypage/home/terms-of-service/refund"
                 target="_blank"
               >
                 refund

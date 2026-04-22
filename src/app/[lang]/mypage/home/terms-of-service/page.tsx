@@ -26,6 +26,7 @@ export default async function TermsOfServicePage({ params }: { params: Promise<{
           path={`/${lang}/mypage/home/terms-of-service/email`}
           title={t('terms_of_service.items.marketing_email')}
         />
+        <MyPageItem path={`/${lang}/mypage/home/terms-of-service/refund`} title={t('terms_of_service.items.refund')} />
       </PageLayout>
       <Spacing height={430} />
       <Footer />
