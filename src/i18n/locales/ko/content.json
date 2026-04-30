@@ -4,6 +4,7 @@
   },
   "detail": {
     "contentSummary": {
+      "content": "* 결제 후 즉시 다운로드 가능합니다.",
       "unit": "원",
       "actionButtons": {
         "inquiryButton": "문의",

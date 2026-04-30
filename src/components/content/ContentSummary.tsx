@@ -41,6 +41,7 @@ export default function ContentSummary({ archiveId, title, price, thumbnailUrl, 
           <section className="flex flex-col gap-y-1">
             <p className="kr-subtitle-lg">{title}</p>
             <p className="kr-body-sm text-gray5">{oneLineReview}</p>
+            <p className="kr-body-sm text-error">{t('detail.contentSummary.content')}</p>
           </section>
           <p className="kr-title-sm">
             {price.toLocaleString()} {t('detail.contentSummary.unit')}
