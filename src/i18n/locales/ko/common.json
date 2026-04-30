@@ -8,7 +8,8 @@
     "address": "주소",
     "phoneNumber": "전화번호",
     "customerCenter": "고객센터",
-    "customerComplaints": "민원접수"
+    "customerComplaints": "민원접수",
+    "terms": "이용약관"
   },
 
   "navigation": {

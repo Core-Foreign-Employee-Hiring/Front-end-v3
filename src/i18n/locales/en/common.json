@@ -8,7 +8,8 @@
     "address": "Address",
     "phoneNumber": "Phone",
     "customerCenter": "CS Center",
-    "customerComplaints": "Inquiry"
+    "customerComplaints": "Inquiry",
+    "terms": "Terms of Service"
   },
 
   "navigation": {

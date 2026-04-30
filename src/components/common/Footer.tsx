@@ -3,9 +3,12 @@
 import { InstagramIcon, KakaoIcon, LogoIcon } from '@/assets/svgComponents'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
+import { useRouter } from 'next/navigation'
 
 export default function Footer() {
   const { t } = useTranslation(['common'])
+  const router = useRouter()
+
   return (
     <div className="bg-gray1 desktop:px-[40px] desktop:py-[40px] tablet:px-[32px] tablet:py-[40px] tablet:gap-y-[32px] tablet:items-center flex flex-col gap-y-[20px] px-[20px] py-[32px]">
       <div className="desktop:justify-between tablet:justify-between tablet:flex-row desktop:flex-row flex w-full flex-col gap-y-[20px]">
@@ -50,6 +53,14 @@ export default function Footer() {
           <div>010-7557-9217</div>
           <div>hske3602@naver.com</div>
           <div>{t('footer.customerComplaints')}</div>
+          <div
+            className="cursor-pointer underline"
+            onClick={() => {
+              router.push(`/mypage/home/terms-of-service`)
+            }}
+          >
+            {t('footer.terms')}
+          </div>
           <div className="">© 2026 KORFIT. All rights reserved</div>
         </section>
       </div>
