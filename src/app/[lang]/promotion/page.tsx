@@ -63,11 +63,11 @@ export default function PromotionPage() {
         {/* 하단 고정 버튼 섹션 */}
         <section className="fixed bottom-0 w-full max-w-[600px] bg-black px-[20px] py-[20px]">
           <Link
-            href="https://forms.gle/ZAqJZLEwr4dW4shh7"
+            href="https://forms.gle/jzmngTzfRsQPPNy19"
             onClick={handleLinkClick}
             className="bg-main-500 kr-subtitle-md flex h-[52px] w-full items-center justify-center rounded-[12px] text-white"
           >
-            무료 LIVE CLASS 신청하기
+            유료 LIVE CLASS 신청하기
           </Link>
         </section>
       </div>
